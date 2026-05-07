@@ -116,6 +116,18 @@ python -m novel_speaker_label discover --volume 1 --overwrite-cache
 python -m novel_speaker_label discover --volume 1 --stop-on-error
 ```
 
+如果已经跑完 Ollama，只想用现有 `discovery/cache/*.json` 按当前代码重新生成角色库和记忆文件，不重写 prompts，也不再调用 Ollama：
+
+```bash
+python -m novel_speaker_label rebuild-memory \
+  --volume 1 \
+  --model qwen3:32b \
+  --max-paragraphs-per-request 15 \
+  --max-dialogues-per-request 20
+```
+
+注意：`--max-paragraphs-per-request` 和 `--max-dialogues-per-request` 必须和生成 cache 时使用的切分参数一致，否则会找不到对应的 cache 文件。
+
 ## 本地测试
 
 ```bash

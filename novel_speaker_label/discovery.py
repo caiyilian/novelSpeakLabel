@@ -61,6 +61,8 @@ class DiscoveryConfig:
     max_paragraphs_per_request: int = 30
     max_dialogues_per_request: int = 40
     continue_on_error: bool = True
+    cache_only: bool = False
+    write_prompts: bool = True
 
 
 class CharacterStore:
@@ -216,16 +218,18 @@ def discover_volume(config: DiscoveryConfig) -> dict:
             flush=True,
         )
 
-        prompt_payload = _build_scene_payload(
-            job=job,
-            known_characters=character_store.snapshot_for_prompt(
-                config.max_known_characters
-            ),
-            volume_meta=volume_meta,
-        )
-        prompt = _build_discovery_prompt(prompt_payload)
         prompt_path = prompt_dir / f"{job['request_id']}.txt"
-        prompt_path.write_text(prompt, encoding="utf-8", newline="\n")
+        prompt = ""
+        if config.write_prompts or config.dry_run:
+            prompt_payload = _build_scene_payload(
+                job=job,
+                known_characters=character_store.snapshot_for_prompt(
+                    config.max_known_characters
+                ),
+                volume_meta=volume_meta,
+            )
+            prompt = _build_discovery_prompt(prompt_payload)
+            prompt_path.write_text(prompt, encoding="utf-8", newline="\n")
         prompt_count += 1
 
         cached_path = cache_dir / f"{job['request_id']}.json"
@@ -234,7 +238,38 @@ def discover_volume(config: DiscoveryConfig) -> dict:
         if cached_path.exists() and not config.overwrite_cache:
             discovery = read_json(cached_path)
             response_text = json.dumps(discovery, ensure_ascii=False)
+        elif config.cache_only:
+            failure = {
+                "request_id": job["request_id"],
+                "scene_id": job["scene_id"],
+                "chunk_index": job["chunk_index"],
+                "model": config.model,
+                "error_type": "CacheMissing",
+                "error": f"Cached response not found: {cached_path}",
+                "prompt_path": str(prompt_path),
+                "paragraph_count": len(job["paragraphs"]),
+                "dialogue_count": len(job["dialogues"]),
+            }
+            write_json(failure_dir / f"{job['request_id']}.json", failure)
+            failed_requests.append(failure)
+            print(
+                "[discover] missing cache "
+                f"{job['request_id']}: {cached_path}",
+                flush=True,
+            )
+            if not config.continue_on_error:
+                raise RuntimeError(f"Cached discovery response not found: {cached_path}")
+            continue
         else:
+            if not prompt:
+                prompt_payload = _build_scene_payload(
+                    job=job,
+                    known_characters=character_store.snapshot_for_prompt(
+                        config.max_known_characters
+                    ),
+                    volume_meta=volume_meta,
+                )
+                prompt = _build_discovery_prompt(prompt_payload)
             try:
                 response_text = client.generate(prompt)
                 (raw_dir / f"{job['request_id']}.txt").write_text(
@@ -308,6 +343,7 @@ def discover_volume(config: DiscoveryConfig) -> dict:
                 "model": config.model,
                 "prompt_count": prompt_count,
                 "request_count": len(request_jobs),
+                "cache_only": config.cache_only,
                 "message": "Prompts were generated; no Ollama requests were made.",
             },
         )
@@ -327,6 +363,7 @@ def discover_volume(config: DiscoveryConfig) -> dict:
         "volume_id": volume_meta["volume_id"],
         "model": config.model,
         "dry_run": config.dry_run,
+        "cache_only": config.cache_only,
         "processed_scene_count": prompt_count if config.dry_run else len(scene_discoveries),
         "prompt_count": prompt_count,
         "request_count": len(request_jobs),
@@ -335,7 +372,18 @@ def discover_volume(config: DiscoveryConfig) -> dict:
         "mystery_entity_count": len(mystery_entities),
     }
     write_json(discovery_dir / "run_summary.json", run_summary)
+    print(
+        "[discover] wrote "
+        f"{output_dir_for_log(config.output_dir / 'memory' / 'semantic' / 'characters.jsonl')} "
+        f"characters={run_summary['character_count']} "
+        f"failures={run_summary['failed_request_count']}",
+        flush=True,
+    )
     return run_summary
+
+
+def output_dir_for_log(path: Path) -> str:
+    return str(path).replace("\\", "/")
 
 
 def _build_scene_payload(

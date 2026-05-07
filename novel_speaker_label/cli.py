@@ -83,6 +83,31 @@ def main(argv: list[str] | None = None) -> int:
         action="store_true",
         help="Stop immediately when one discovery request fails.",
     )
+    discover_parser.add_argument(
+        "--cache-only",
+        action="store_true",
+        help="Only read existing discovery/cache JSON files; never call Ollama.",
+    )
+
+    rebuild_parser = subparsers.add_parser(
+        "rebuild-memory",
+        help="Rebuild scene_discoveries and memory files from existing cache only.",
+    )
+    _add_common_volume_args(rebuild_parser, require_input=False)
+    rebuild_parser.add_argument("--model", default="qwen3:32b")
+    rebuild_parser.add_argument(
+        "--max-paragraphs-per-request",
+        type=int,
+        default=30,
+        help="Must match the request split used when the cache was created.",
+    )
+    rebuild_parser.add_argument(
+        "--max-dialogues-per-request",
+        type=int,
+        default=40,
+        help="Must match the request split used when the cache was created.",
+    )
+    rebuild_parser.add_argument("--stop-on-error", action="store_true")
 
     run_parser = subparsers.add_parser(
         "run-volume", help="Run stage 0 followed by stage 1 for one volume."
@@ -137,9 +162,25 @@ def main(argv: list[str] | None = None) -> int:
                 max_paragraphs_per_request=args.max_paragraphs_per_request,
                 max_dialogues_per_request=args.max_dialogues_per_request,
                 continue_on_error=not args.stop_on_error,
+                cache_only=args.cache_only,
             )
         )
         _print_summary("discover", summary)
+        return 0
+
+    if args.command == "rebuild-memory":
+        summary = discover_volume(
+            DiscoveryConfig(
+                output_dir=_resolve_output(args),
+                model=args.model,
+                max_paragraphs_per_request=args.max_paragraphs_per_request,
+                max_dialogues_per_request=args.max_dialogues_per_request,
+                continue_on_error=not args.stop_on_error,
+                cache_only=True,
+                write_prompts=False,
+            )
+        )
+        _print_summary("rebuild-memory", summary)
         return 0
 
     if args.command == "run-volume":
