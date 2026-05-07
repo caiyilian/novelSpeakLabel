@@ -42,9 +42,14 @@ def main(argv: list[str] | None = None) -> int:
     _add_common_volume_args(discover_parser, require_input=False)
     discover_parser.add_argument("--model", default="qwen3:32b")
     discover_parser.add_argument("--ollama-host", default="http://127.0.0.1:11434")
-    discover_parser.add_argument("--timeout", type=int, default=120)
+    discover_parser.add_argument(
+        "--timeout",
+        type=int,
+        default=1800,
+        help="Socket timeout in seconds. Use 0 to disable it for long local runs.",
+    )
     discover_parser.add_argument("--temperature", type=float, default=0.0)
-    discover_parser.add_argument("--num-predict", type=int, default=8192)
+    discover_parser.add_argument("--num-predict", type=int, default=4096)
     discover_parser.add_argument(
         "--dry-run",
         action="store_true",
@@ -61,6 +66,23 @@ def main(argv: list[str] | None = None) -> int:
         default=30,
         help="Number of recently discovered character cards sent into the next prompt.",
     )
+    discover_parser.add_argument(
+        "--max-paragraphs-per-request",
+        type=int,
+        default=30,
+        help="Maximum paragraphs sent to Ollama in one discovery request.",
+    )
+    discover_parser.add_argument(
+        "--max-dialogues-per-request",
+        type=int,
+        default=40,
+        help="Maximum dialogue units sent to Ollama in one discovery request.",
+    )
+    discover_parser.add_argument(
+        "--stop-on-error",
+        action="store_true",
+        help="Stop immediately when one discovery request fails.",
+    )
 
     run_parser = subparsers.add_parser(
         "run-volume", help="Run stage 0 followed by stage 1 for one volume."
@@ -68,11 +90,19 @@ def main(argv: list[str] | None = None) -> int:
     _add_common_volume_args(run_parser)
     run_parser.add_argument("--model", default="qwen3:32b")
     run_parser.add_argument("--ollama-host", default="http://127.0.0.1:11434")
-    run_parser.add_argument("--timeout", type=int, default=120)
+    run_parser.add_argument(
+        "--timeout",
+        type=int,
+        default=1800,
+        help="Socket timeout in seconds. Use 0 to disable it for long local runs.",
+    )
     run_parser.add_argument("--temperature", type=float, default=0.0)
-    run_parser.add_argument("--num-predict", type=int, default=8192)
+    run_parser.add_argument("--num-predict", type=int, default=4096)
     run_parser.add_argument("--dry-run", action="store_true")
     run_parser.add_argument("--overwrite-cache", action="store_true")
+    run_parser.add_argument("--max-paragraphs-per-request", type=int, default=30)
+    run_parser.add_argument("--max-dialogues-per-request", type=int, default=40)
+    run_parser.add_argument("--stop-on-error", action="store_true")
 
     args = parser.parse_args(argv)
 
@@ -104,6 +134,9 @@ def main(argv: list[str] | None = None) -> int:
                 dry_run=args.dry_run,
                 overwrite_cache=args.overwrite_cache,
                 max_known_characters=args.max_known_characters,
+                max_paragraphs_per_request=args.max_paragraphs_per_request,
+                max_dialogues_per_request=args.max_dialogues_per_request,
+                continue_on_error=not args.stop_on_error,
             )
         )
         _print_summary("discover", summary)
@@ -130,6 +163,9 @@ def main(argv: list[str] | None = None) -> int:
                 num_predict=args.num_predict,
                 dry_run=args.dry_run,
                 overwrite_cache=args.overwrite_cache,
+                max_paragraphs_per_request=args.max_paragraphs_per_request,
+                max_dialogues_per_request=args.max_dialogues_per_request,
+                continue_on_error=not args.stop_on_error,
             )
         )
         _print_summary("discover", discovery_summary)

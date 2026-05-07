@@ -15,12 +15,15 @@ class DiscoveryConfig:
     output_dir: Path
     model: str = "qwen3:32b"
     ollama_host: str = "http://127.0.0.1:11434"
-    timeout: int = 120
+    timeout: int = 1800
     temperature: float = 0.0
-    num_predict: int = 8192
+    num_predict: int = 4096
     dry_run: bool = False
     overwrite_cache: bool = False
     max_known_characters: int = 30
+    max_paragraphs_per_request: int = 30
+    max_dialogues_per_request: int = 40
+    continue_on_error: bool = True
 
 
 class CharacterStore:
@@ -123,9 +126,13 @@ def discover_volume(config: DiscoveryConfig) -> dict:
     dialogues_by_scene = _group_by(dialogues, "scene_id")
     discovery_dir = config.output_dir / "discovery"
     cache_dir = discovery_dir / "cache"
+    failure_dir = discovery_dir / "failures"
     prompt_dir = discovery_dir / "prompts"
+    raw_dir = discovery_dir / "raw"
     cache_dir.mkdir(parents=True, exist_ok=True)
+    failure_dir.mkdir(parents=True, exist_ok=True)
     prompt_dir.mkdir(parents=True, exist_ok=True)
+    raw_dir.mkdir(parents=True, exist_ok=True)
 
     client = OllamaClient(
         OllamaConfig(
@@ -141,50 +148,92 @@ def discover_volume(config: DiscoveryConfig) -> dict:
     raw_responses: list[dict] = []
     mystery_entities: list[dict] = []
     alias_rows: list[dict] = []
+    failed_requests: list[dict] = []
     prompt_count = 0
+    request_jobs = _build_request_jobs(
+        scenes=scenes,
+        paragraphs_by_id=paragraphs_by_id,
+        dialogues_by_scene=dialogues_by_scene,
+        max_paragraphs=config.max_paragraphs_per_request,
+        max_dialogues=config.max_dialogues_per_request,
+    )
 
-    for scene in scenes:
-        scene_dialogues = dialogues_by_scene.get(scene["scene_id"], [])
-        if not scene_dialogues:
-            continue
+    for request_number, job in enumerate(request_jobs, start=1):
+        print(
+            "[discover] "
+            f"{request_number}/{len(request_jobs)} {job['request_id']} "
+            f"paragraphs={len(job['paragraphs'])} dialogues={len(job['dialogues'])}",
+            flush=True,
+        )
 
         prompt_payload = _build_scene_payload(
-            scene=scene,
-            paragraphs_by_id=paragraphs_by_id,
-            dialogues=scene_dialogues,
+            job=job,
             known_characters=character_store.snapshot_for_prompt(
                 config.max_known_characters
             ),
             volume_meta=volume_meta,
         )
         prompt = _build_discovery_prompt(prompt_payload)
-        prompt_path = prompt_dir / f"{scene['scene_id']}.txt"
+        prompt_path = prompt_dir / f"{job['request_id']}.txt"
         prompt_path.write_text(prompt, encoding="utf-8", newline="\n")
         prompt_count += 1
 
-        cached_path = cache_dir / f"{scene['scene_id']}.json"
+        cached_path = cache_dir / f"{job['request_id']}.json"
         if config.dry_run:
             continue
         if cached_path.exists() and not config.overwrite_cache:
             discovery = read_json(cached_path)
             response_text = json.dumps(discovery, ensure_ascii=False)
         else:
-            response_text = client.generate(prompt)
-            discovery = _parse_json_response(response_text)
-            write_json(cached_path, discovery)
+            try:
+                response_text = client.generate(prompt)
+                (raw_dir / f"{job['request_id']}.txt").write_text(
+                    response_text, encoding="utf-8", newline="\n"
+                )
+                discovery = _parse_json_response(response_text)
+                write_json(cached_path, discovery)
+            except Exception as exc:
+                failure = {
+                    "request_id": job["request_id"],
+                    "scene_id": job["scene_id"],
+                    "chunk_index": job["chunk_index"],
+                    "model": config.model,
+                    "error_type": exc.__class__.__name__,
+                    "error": str(exc),
+                    "prompt_path": str(prompt_path),
+                    "paragraph_count": len(job["paragraphs"]),
+                    "dialogue_count": len(job["dialogues"]),
+                }
+                write_json(failure_dir / f"{job['request_id']}.json", failure)
+                failed_requests.append(failure)
+                print(
+                    "[discover] failed "
+                    f"{job['request_id']}: {failure['error_type']}: {failure['error']}",
+                    flush=True,
+                )
+                if not config.continue_on_error:
+                    raise RuntimeError(
+                        f"Discovery request failed: {job['request_id']}. "
+                        f"Prompt is saved at {prompt_path}"
+                    ) from exc
+                continue
 
-        discovery.setdefault("scene_id", scene["scene_id"])
+        discovery.setdefault("scene_id", job["request_id"])
+        discovery.setdefault("parent_scene_id", job["scene_id"])
+        discovery.setdefault("chunk_index", job["chunk_index"])
         scene_discoveries.append(discovery)
         raw_responses.append(
             {
-                "scene_id": scene["scene_id"],
+                "request_id": job["request_id"],
+                "scene_id": job["scene_id"],
+                "chunk_index": job["chunk_index"],
                 "model": config.model,
                 "response": response_text,
             }
         )
 
         for candidate in _as_list(discovery.get("character_candidates")):
-            entity = character_store.add_or_update(candidate, scene["scene_id"])
+            entity = character_store.add_or_update(candidate, job["request_id"])
             if entity:
                 for alias in entity["aliases"]:
                     alias_rows.append(
@@ -192,11 +241,11 @@ def discover_volume(config: DiscoveryConfig) -> dict:
                             "entity_id": entity["entity_id"],
                             "display_name": entity["display_name"],
                             "alias": alias,
-                            "source_scene_id": scene["scene_id"],
+                            "source_scene_id": job["request_id"],
                         }
                     )
         for mystery in _as_list(discovery.get("mystery_entities")):
-            mystery_entities.append(_normalize_mystery_entity(mystery, scene["scene_id"]))
+            mystery_entities.append(_normalize_mystery_entity(mystery, job["request_id"]))
 
     if config.dry_run:
         write_json(
@@ -205,12 +254,14 @@ def discover_volume(config: DiscoveryConfig) -> dict:
                 "volume_id": volume_meta["volume_id"],
                 "model": config.model,
                 "prompt_count": prompt_count,
+                "request_count": len(request_jobs),
                 "message": "Prompts were generated; no Ollama requests were made.",
             },
         )
     else:
         write_jsonl(discovery_dir / "scene_discoveries.jsonl", scene_discoveries)
         write_jsonl(discovery_dir / "raw_responses.jsonl", raw_responses)
+        write_jsonl(discovery_dir / "failed_requests.jsonl", failed_requests)
         _write_memory_outputs(
             output_dir=config.output_dir,
             characters=character_store.characters,
@@ -225,6 +276,8 @@ def discover_volume(config: DiscoveryConfig) -> dict:
         "dry_run": config.dry_run,
         "processed_scene_count": prompt_count if config.dry_run else len(scene_discoveries),
         "prompt_count": prompt_count,
+        "request_count": len(request_jobs),
+        "failed_request_count": len(failed_requests),
         "character_count": len(character_store.characters),
         "mystery_entity_count": len(mystery_entities),
     }
@@ -233,30 +286,26 @@ def discover_volume(config: DiscoveryConfig) -> dict:
 
 
 def _build_scene_payload(
-    scene: dict,
-    paragraphs_by_id: dict[str, dict],
-    dialogues: list[dict],
+    job: dict,
     known_characters: list[dict],
     volume_meta: dict,
 ) -> dict:
-    paragraphs = [
-        paragraphs_by_id[paragraph_id]
-        for paragraph_id in scene["paragraph_ids"]
-        if paragraph_id in paragraphs_by_id
-    ]
     return {
         "volume_id": volume_meta["volume_id"],
         "scene": {
-            "scene_id": scene["scene_id"],
-            "chapter_id": scene["chapter_id"],
-            "chapter_title": scene["chapter_title"],
+            "request_id": job["request_id"],
+            "scene_id": job["scene_id"],
+            "chapter_id": job["chapter_id"],
+            "chapter_title": job["chapter_title"],
+            "chunk_index": job["chunk_index"],
+            "chunk_count": job["chunk_count"],
         },
         "paragraphs": [
             {
                 "paragraph_id": row["paragraph_id"],
                 "text": row["text"],
             }
-            for row in paragraphs
+            for row in job["paragraphs"]
         ],
         "dialogues": [
             {
@@ -264,10 +313,91 @@ def _build_scene_payload(
                 "paragraph_id": row["paragraph_id"],
                 "text": row["text"],
             }
-            for row in dialogues
+            for row in job["dialogues"]
         ],
         "known_characters": known_characters,
     }
+
+
+def _build_request_jobs(
+    scenes: list[dict],
+    paragraphs_by_id: dict[str, dict],
+    dialogues_by_scene: dict[str, list[dict]],
+    max_paragraphs: int,
+    max_dialogues: int,
+) -> list[dict]:
+    jobs: list[dict] = []
+    for scene in scenes:
+        scene_dialogues = dialogues_by_scene.get(scene["scene_id"], [])
+        if not scene_dialogues:
+            continue
+
+        scene_jobs = _split_scene_into_requests(
+            scene=scene,
+            paragraphs_by_id=paragraphs_by_id,
+            dialogues=scene_dialogues,
+            max_paragraphs=max_paragraphs,
+            max_dialogues=max_dialogues,
+        )
+        for index, job in enumerate(scene_jobs, start=1):
+            job["chunk_index"] = index
+            job["chunk_count"] = len(scene_jobs)
+            job["request_id"] = f"{scene['scene_id']}-r{index:03d}"
+            jobs.append(job)
+    return jobs
+
+
+def _split_scene_into_requests(
+    scene: dict,
+    paragraphs_by_id: dict[str, dict],
+    dialogues: list[dict],
+    max_paragraphs: int,
+    max_dialogues: int,
+) -> list[dict]:
+    paragraphs = [
+        paragraphs_by_id[paragraph_id]
+        for paragraph_id in scene["paragraph_ids"]
+        if paragraph_id in paragraphs_by_id
+    ]
+    dialogues_by_paragraph = _group_by(dialogues, "paragraph_id")
+    max_paragraphs = max(1, max_paragraphs)
+    max_dialogues = max(1, max_dialogues)
+
+    jobs: list[dict] = []
+    current_paragraphs: list[dict] = []
+    current_dialogues: list[dict] = []
+
+    def flush_current() -> None:
+        if not current_dialogues:
+            current_paragraphs.clear()
+            return
+        jobs.append(
+            {
+                "scene_id": scene["scene_id"],
+                "chapter_id": scene["chapter_id"],
+                "chapter_title": scene["chapter_title"],
+                "paragraphs": list(current_paragraphs),
+                "dialogues": list(current_dialogues),
+            }
+        )
+        current_paragraphs.clear()
+        current_dialogues.clear()
+
+    for paragraph in paragraphs:
+        paragraph_dialogues = dialogues_by_paragraph.get(paragraph["paragraph_id"], [])
+        would_exceed_paragraphs = len(current_paragraphs) >= max_paragraphs
+        would_exceed_dialogues = (
+            current_dialogues
+            and len(current_dialogues) + len(paragraph_dialogues) > max_dialogues
+        )
+        if current_paragraphs and (would_exceed_paragraphs or would_exceed_dialogues):
+            flush_current()
+
+        current_paragraphs.append(paragraph)
+        current_dialogues.extend(paragraph_dialogues)
+
+    flush_current()
+    return jobs
 
 
 def _build_discovery_prompt(payload: dict) -> str:
