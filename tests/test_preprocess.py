@@ -4,7 +4,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from novel_speaker_label.discovery import _split_scene_into_requests
+from novel_speaker_label.discovery import CharacterStore, _split_scene_into_requests
 from novel_speaker_label.jsonl import read_jsonl
 from novel_speaker_label.ollama_client import OllamaConfig, OllamaClient, collect_streaming_response
 from novel_speaker_label.preprocess import PreprocessConfig, preprocess_volume
@@ -76,6 +76,40 @@ class DiscoveryRequestSplitTests(unittest.TestCase):
         self.assertEqual(len(jobs), 3)
         self.assertLessEqual(max(len(job["paragraphs"]) for job in jobs), 2)
         self.assertLessEqual(max(len(job["dialogues"]) for job in jobs), 2)
+
+
+class CharacterStoreTests(unittest.TestCase):
+    def test_titles_do_not_merge_distinct_named_characters(self) -> None:
+        store = CharacterStore()
+        store.add_or_update(
+            {"display_name": "罗伦斯", "aliases": ["老板"], "titles": ["旅行商人"]},
+            "scene-1",
+        )
+        store.add_or_update(
+            {"display_name": "杰廉", "titles": ["旅行商人", "年轻人"]},
+            "scene-2",
+        )
+
+        self.assertEqual(
+            [character["display_name"] for character in store.characters],
+            ["罗伦斯", "杰廉"],
+        )
+        self.assertNotIn("老板", store.characters[0]["aliases"])
+        self.assertIn("老板", store.characters[0]["titles"])
+
+    def test_related_names_merge_without_generic_titles(self) -> None:
+        store = CharacterStore()
+        store.add_or_update(
+            {"display_name": "列支敦·马贺特", "titles": ["行长"]},
+            "scene-1",
+        )
+        store.add_or_update(
+            {"display_name": "马贺特", "titles": ["行长"]},
+            "scene-2",
+        )
+
+        self.assertEqual(len(store.characters), 1)
+        self.assertEqual(store.characters[0]["display_name"], "列支敦·马贺特")
 
 
 class OllamaClientTests(unittest.TestCase):

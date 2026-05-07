@@ -9,6 +9,43 @@ from typing import Any
 from .jsonl import read_json, read_jsonl, write_json, write_jsonl
 from .ollama_client import OllamaClient, OllamaConfig
 
+GENERIC_MERGE_KEYS = {
+    "中间人",
+    "交易者",
+    "同行",
+    "商人",
+    "小毛头",
+    "市井无赖",
+    "年轻人",
+    "年轻商人",
+    "开店者",
+    "情报贩子",
+    "提议者",
+    "新手",
+    "旅行商人",
+    "旅行商人亲戚",
+    "经验丰富的商人",
+    "行商人",
+    "老板",
+    "小的",
+    "男子",
+    "女人",
+    "店员",
+    "女店员",
+    "店老板",
+    "骑士",
+    "农夫",
+    "马夫",
+    "采购人员",
+    "商行代表",
+    "行长",
+    "丰收之神",
+    "贤狼",
+    "神秘少女",
+    "咱",
+    "汝",
+}
+
 
 @dataclass(frozen=True)
 class DiscoveryConfig:
@@ -36,29 +73,31 @@ class CharacterStore:
         if not display_name:
             return None
 
-        aliases = {
+        raw_aliases = {
             _clean_name(alias)
             for alias in _as_list(candidate.get("aliases"))
             if _clean_name(alias)
         }
+        aliases = {alias for alias in raw_aliases if _is_safe_merge_key(alias)}
         titles = {
             _clean_name(title)
             for title in _as_list(candidate.get("titles"))
             if _clean_name(title)
         }
-        keys = {display_name, *aliases, *titles}
-        existing_id = next((self.key_to_id[key] for key in keys if key in self.key_to_id), None)
+        titles.update(alias for alias in raw_aliases if alias not in aliases)
+        merge_keys = _merge_keys(display_name, aliases)
+        existing_id = self._find_existing_id(merge_keys)
 
         if existing_id is None:
             entity = {
                 "entity_id": f"char_{len(self.characters) + 1:04d}",
                 "display_name": display_name,
-                "aliases": sorted(aliases),
-                "titles": sorted(titles),
+                "aliases": sorted(aliases)[:20],
+                "titles": sorted(titles)[:20],
                 "description": _clean_text(candidate.get("description")),
                 "speech_style": _clean_text(candidate.get("speech_style")),
                 "relationship_hints": _unique_strings(
-                    _as_list(candidate.get("relationship_hints"))
+                    _as_list(candidate.get("relationship_hints")), limit=80
                 ),
                 "evidence": [],
                 "first_seen_scene_id": scene_id,
@@ -68,11 +107,12 @@ class CharacterStore:
             self.characters.append(entity)
         else:
             entity = self._by_id(existing_id)
-            entity["aliases"] = sorted(set(entity["aliases"]) | aliases)
-            entity["titles"] = sorted(set(entity["titles"]) | titles)
+            entity["aliases"] = sorted(set(entity["aliases"]) | aliases)[:20]
+            entity["titles"] = sorted(set(entity["titles"]) | titles)[:20]
             entity["relationship_hints"] = _unique_strings(
                 entity["relationship_hints"]
-                + _as_list(candidate.get("relationship_hints"))
+                + _as_list(candidate.get("relationship_hints")),
+                limit=80,
             )
             entity["description"] = _join_field(
                 entity["description"], _clean_text(candidate.get("description"))
@@ -85,7 +125,7 @@ class CharacterStore:
                 entity["confidence"], _safe_float(candidate.get("confidence"), default=0.5)
             )
 
-        for key in {display_name, *entity["aliases"], *entity["titles"]}:
+        for key in _merge_keys(display_name, set(entity["aliases"])):
             self.key_to_id[key] = entity["entity_id"]
 
         for evidence in _as_list(candidate.get("evidence")):
@@ -100,6 +140,16 @@ class CharacterStore:
             if entity["entity_id"] == entity_id:
                 return entity
         raise KeyError(entity_id)
+
+    def _find_existing_id(self, keys: set[str]) -> str | None:
+        for key in keys:
+            if key in self.key_to_id:
+                return self.key_to_id[key]
+        for key in keys:
+            for existing_key, entity_id in self.key_to_id.items():
+                if _names_look_related(key, existing_key):
+                    return entity_id
+        return None
 
     def snapshot_for_prompt(self, limit: int) -> list[dict]:
         rows = self.characters[-limit:]
@@ -218,9 +268,12 @@ def discover_volume(config: DiscoveryConfig) -> dict:
                     ) from exc
                 continue
 
-        discovery.setdefault("scene_id", job["request_id"])
-        discovery.setdefault("parent_scene_id", job["scene_id"])
-        discovery.setdefault("chunk_index", job["chunk_index"])
+        model_scene_id = discovery.get("scene_id")
+        discovery["scene_id"] = job["request_id"]
+        discovery["parent_scene_id"] = job["scene_id"]
+        discovery["model_scene_id"] = model_scene_id
+        discovery["chunk_index"] = job["chunk_index"]
+        discovery["chunk_count"] = job["chunk_count"]
         scene_discoveries.append(discovery)
         raw_responses.append(
             {
@@ -407,10 +460,12 @@ def _build_discovery_prompt(payload: dict) -> str:
         "关系线索、说话风格线索、场景摘要，以及尚未命名但可追踪的神秘人物。\n\n"
         "规则：\n"
         "1. 只输出严格 JSON，不要 Markdown，不要解释性前后缀。\n"
-        "2. 不要编造没有文本证据的人名。\n"
-        "3. 如果人物未命名但看起来可在后文追踪，放入 mystery_entities。\n"
-        "4. character_candidates 只放可以从文本中看到名字、称谓或稳定身份线索的人物。\n"
-        "5. evidence 使用 paragraph_id 或 dialogue_id 相关的短证据，不要长篇复制原文。\n\n"
+        "2. scene_id 必须填写输入 scene.request_id。\n"
+        "3. 不要编造没有文本证据的人名。\n"
+        "4. 如果人物未命名但看起来可在后文追踪，放入 mystery_entities。\n"
+        "5. character_candidates 只放可以从文本中看到名字、称谓或稳定身份线索的人物。\n"
+        "6. titles 只放身份/职业/称谓，不要把职业称谓当成人物别名。\n"
+        "7. evidence 使用 paragraph_id 或 dialogue_id 相关的短证据，不要长篇复制原文。\n\n"
         "输出 JSON 结构：\n"
         "{\n"
         '  "scene_id": "string",\n'
@@ -499,7 +554,33 @@ def _clean_text(value: Any) -> str:
     return re.sub(r"\s+", " ", str(value)).strip()
 
 
-def _unique_strings(values: list[Any]) -> list[str]:
+def _merge_keys(display_name: str, aliases: set[str]) -> set[str]:
+    keys = {display_name}
+    keys.update(alias for alias in aliases if _is_safe_merge_key(alias))
+    return {key for key in keys if key}
+
+
+def _is_safe_merge_key(value: str) -> bool:
+    if not value:
+        return False
+    if value in GENERIC_MERGE_KEYS:
+        return False
+    if len(value) <= 1:
+        return False
+    return True
+
+
+def _names_look_related(left: str, right: str) -> bool:
+    if not (_is_safe_merge_key(left) and _is_safe_merge_key(right)):
+        return False
+    if left == right:
+        return True
+    if len(left) < 3 or len(right) < 3:
+        return False
+    return left.endswith(right) or right.endswith(left)
+
+
+def _unique_strings(values: list[Any], limit: int | None = None) -> list[str]:
     seen: set[str] = set()
     result: list[str] = []
     for value in values:
@@ -507,17 +588,20 @@ def _unique_strings(values: list[Any]) -> list[str]:
         if cleaned and cleaned not in seen:
             seen.add(cleaned)
             result.append(cleaned)
+            if limit is not None and len(result) >= limit:
+                break
     return result
 
 
-def _join_field(existing: str, new_value: str) -> str:
+def _join_field(existing: str, new_value: str, max_parts: int = 12) -> str:
     if not new_value:
         return existing
     if not existing:
         return new_value
-    if new_value in existing:
-        return existing
-    return f"{existing} / {new_value}"
+    parts = [part.strip() for part in existing.split(" / ") if part.strip()]
+    if new_value not in parts:
+        parts.append(new_value)
+    return " / ".join(parts[-max_parts:])
 
 
 def _safe_float(value: Any, default: float) -> float:
