@@ -1,0 +1,29 @@
+```json
+{
+  "scene_id": "volume_01-c002-s001",
+  "scene_summary": "罗伦斯完成了一次深山村落的交易，离开后在草原上行驶马车，途中观察到远处的修道院，并回忆起与修道院相关的商业期望落空的经历。",
+  "active_characters": ["罗伦斯"],
+  "character_candidates": [
+    {
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": ["行商人"],
+      "description": "一位二十五岁的自力更生旅行商人，已有七年行商经验，性格泰然自若。",
+      "speech_style": "自然、自信、略带轻松的语气。",
+      "relationship_hints": ["与深山村落的村民有交易关系", "对修道院抱有商业期望但未成功"],
+      "evidence": ["volume_01-c002-s001-p000081", "volume_01-c002-s001-p000085", "volume_01-c002-s001-p000088"],
+      "confidence": 0.95
+    }
+  ],
+  "mystery_entities": [
+    {
+      "temporary_name": "修道院居民",
+      "description": "修道院中的修道士和男仆，人数约四十人，生活简朴，不与民间商人往来。",
+      "evidence": ["volume_01-c002-s001-p000087", "volume_01-c002-s001-p000088"],
+      "confidence": 0.7
+    }
+  ],
+  "relationships": ["罗伦斯与深山村落的村民有交易关系", "罗伦斯对修道院抱有商业期望但未成功"],
+  "notes": "场景中未出现赫萝，但罗伦斯的背景与她相关。修道院居民未被命名，但可追踪其行为模式与罗伦斯的互动线索。"
+}
+```

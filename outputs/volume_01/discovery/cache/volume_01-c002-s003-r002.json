@@ -1,0 +1,51 @@
+{
+  "scene_id": "volume_01-c002-s003",
+  "scene_summary": "罗伦斯在马车上发现了一位拥有狼耳的神秘女孩，两人展开对话。罗伦斯怀疑她是妖怪，而女孩则表现出轻松幽默的态度。",
+  "active_characters": [
+    "罗伦斯",
+    "赫萝"
+  ],
+  "character_candidates": [
+    {
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": [
+        "旅行商人"
+      ],
+      "description": "一位冷静但逐渐感到不安的旅行商人，正在与神秘女孩对话。",
+      "speech_style": "冷静、略带怀疑和警惕",
+      "relationship_hints": [
+        "与女孩初次相遇，表现出保护欲和怀疑"
+      ],
+      "evidence": [
+        "volume_01-c002-s003-p000251",
+        "volume_01-c002-s003-p000256",
+        "volume_01-c002-s003-p000257"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "赫萝",
+      "aliases": [],
+      "titles": [
+        "丰收之神"
+      ],
+      "description": "拥有狼耳的神秘女孩，外表美丽，行为轻松幽默，似乎对罗伦斯的怀疑感到好笑。",
+      "speech_style": "轻松、幽默、略带挑衅",
+      "relationship_hints": [
+        "与罗伦斯互动频繁，表现出对他的信任和玩笑态度"
+      ],
+      "evidence": [
+        "volume_01-c002-s003-p000253",
+        "volume_01-c002-s003-p000260",
+        "volume_01-c002-s003-p000264"
+      ],
+      "confidence": 0.9
+    }
+  ],
+  "mystery_entities": [],
+  "relationships": [
+    "罗伦斯与赫萝初次相遇，关系尚处于试探阶段"
+  ],
+  "notes": "赫萝的狼耳和尖牙暗示她可能具有非人类的特质，但她的行为和反应又显得非常人性化。罗伦斯的怀疑和警惕为两人关系的后续发展埋下伏笔。"
+}

@@ -1,0 +1,117 @@
+你是轻小说说话人标注项目的阶段 1：角色发现与建库助手。
+你的任务不是给每句台词最终打标签，而是从当前场景中发现角色、别名、称谓、关系线索、说话风格线索、场景摘要，以及尚未命名但可追踪的神秘人物。
+
+规则：
+1. 只输出严格 JSON，不要 Markdown，不要解释性前后缀。
+2. 不要编造没有文本证据的人名。
+3. 如果人物未命名但看起来可在后文追踪，放入 mystery_entities。
+4. character_candidates 只放可以从文本中看到名字、称谓或稳定身份线索的人物。
+5. evidence 使用 paragraph_id 或 dialogue_id 相关的短证据，不要长篇复制原文。
+
+输出 JSON 结构：
+{
+  "scene_id": "string",
+  "scene_summary": "string",
+  "active_characters": ["string"],
+  "character_candidates": [
+    {
+      "display_name": "string",
+      "aliases": ["string"],
+      "titles": ["string"],
+      "description": "string",
+      "speech_style": "string",
+      "relationship_hints": ["string"],
+      "evidence": ["string"],
+      "confidence": 0.0
+    }
+  ],
+  "mystery_entities": [
+    {
+      "temporary_name": "string",
+      "description": "string",
+      "evidence": ["string"],
+      "confidence": 0.0
+    }
+  ],
+  "relationships": ["string"],
+  "notes": "string"
+}
+
+输入场景 JSON：
+{
+  "volume_id": "volume_01",
+  "scene": {
+    "request_id": "volume_01-c000-s003-r001",
+    "scene_id": "volume_01-c000-s003",
+    "chapter_id": "volume_01-c000",
+    "chapter_title": "front_matter",
+    "chunk_index": 1,
+    "chunk_count": 1
+  },
+  "paragraphs": [
+    {
+      "paragraph_id": "volume_01-c000-s003-p000029",
+      "text": "简介"
+    },
+    {
+      "paragraph_id": "volume_01-c000-s003-p000030",
+      "text": "简介"
+    },
+    {
+      "paragraph_id": "volume_01-c000-s003-p000031",
+      "text": "行商人罗伦斯在马车货台上的麦束堆里，发现睡梦中的少女。"
+    },
+    {
+      "paragraph_id": "volume_01-c000-s003-p000032",
+      "text": "自称是丰收之神赫萝的美丽少女，长了狼的耳朵及尾巴。"
+    },
+    {
+      "paragraph_id": "volume_01-c000-s003-p000033",
+      "text": "「虽然咱长久以来被尊为神，不过，咱就是咱，咱是赫萝。」"
+    },
+    {
+      "paragraph_id": "volume_01-c000-s003-p000034",
+      "text": "罗伦斯不断被说话狡诈的赫萝捉弄。"
+    },
+    {
+      "paragraph_id": "volume_01-c000-s003-p000035",
+      "text": "尽管无法确信赫萝是否是掌控丰收的狼神，罗伦斯还是答应让赫萝与他一同旅行。"
+    },
+    {
+      "paragraph_id": "volume_01-c000-s003-p000036",
+      "text": "二人展开旅途不久，一个意外的发财机会降临，据说某种银币在不久的将来会升值。"
+    },
+    {
+      "paragraph_id": "volume_01-c000-s003-p000037",
+      "text": "心存怀疑的罗伦斯决定放手一搏，但是——"
+    },
+    {
+      "paragraph_id": "volume_01-c000-s003-p000038",
+      "text": "插图"
+    },
+    {
+      "paragraph_id": "volume_01-c000-s003-p000039",
+      "text": "插图"
+    },
+    {
+      "paragraph_id": "volume_01-c000-s003-p000040",
+      "text": "插图"
+    },
+    {
+      "paragraph_id": "volume_01-c000-s003-p000041",
+      "text": "插图"
+    },
+    {
+      "paragraph_id": "volume_01-c000-s003-p000042",
+      "text": "插图"
+    }
+  ],
+  "dialogues": [
+    {
+      "dialogue_id": "volume_01-d000001",
+      "paragraph_id": "volume_01-c000-s003-p000033",
+      "text": "虽然咱长久以来被尊为神，不过，咱就是咱，咱是赫萝。"
+    }
+  ],
+  "known_characters": []
+}

@@ -1,0 +1,39 @@
+```json
+{
+  "scene_id": "volume_01-c002-s001",
+  "scene_summary": "罗伦斯与一名下级骑士在修道院附近对话。骑士态度傲慢，但被罗伦斯用蜂蜜糖和貂皮吸引，最终放行。罗伦斯提到他前往东边山头的小村落卖盐，并计划将麦子带到西北方。",
+  "active_characters": ["罗伦斯", "骑士"],
+  "character_candidates": [
+    {
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": ["旅行商人", "行商人"],
+      "description": "一位行商人，正在前往修道院的路上，与骑士对话。他从容应对骑士的傲慢态度，并用蜂蜜糖和貂皮吸引对方的注意。",
+      "speech_style": "从容、理性、略带幽默",
+      "relationship_hints": ["与骑士有短暂互动", "与小村落的村民有交易关系"],
+      "evidence": ["volume_01-c002-s001-p000107", "volume_01-c002-s001-p000115", "volume_01-c002-s001-p000118"],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "骑士",
+      "aliases": [],
+      "titles": [],
+      "description": "身穿银色盔甲的下级骑士，态度傲慢但容易被诱惑。他与罗伦斯短暂互动后放行。",
+      "speech_style": "傲慢、迟疑、略带犹豫",
+      "relationship_hints": ["与罗伦斯有短暂互动"],
+      "evidence": ["volume_01-c002-s001-p000105", "volume_01-c002-s001-p000106", "volume_01-c002-s001-p000111"],
+      "confidence": 0.85
+    }
+  ],
+  "mystery_entities": [
+    {
+      "temporary_name": "小村落的村民",
+      "description": "罗伦斯提到的小村落的村民，他们种植耐寒且抗虫的麦子，并与罗伦斯有交易关系。",
+      "evidence": ["volume_01-c002-s001-p000118"],
+      "confidence": 0.7
+    }
+  ],
+  "relationships": ["罗伦斯与骑士有短暂互动", "罗伦斯与小村落的村民有交易关系"],
+  "notes": "场景中未出现赫萝，但罗伦斯的行动和对话暗示他可能与她有联系。"
+}
+```

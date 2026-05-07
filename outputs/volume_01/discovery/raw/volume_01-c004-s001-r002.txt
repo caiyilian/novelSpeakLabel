@@ -1,0 +1,32 @@
+```json
+{
+  "scene_id": "volume_01-c004-s001",
+  "scene_summary": "罗伦斯与赫萝在前往帕斯罗村的路上，赫萝对路边的摊贩表现出浓厚兴趣，罗伦斯则担心她的外貌会引起村民注意。",
+  "active_characters": ["罗伦斯", "赫萝"],
+  "character_candidates": [
+    {
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": ["旅行商人"],
+      "description": "冷静理性的旅行商人，对赫萝的身份持怀疑态度，但仍保持互动。",
+      "speech_style": "理性、谨慎、略带担忧",
+      "relationship_hints": ["与赫萝同行", "对赫萝的外貌和身份感到不安"],
+      "evidence": ["volume_01-c004-s001-p000934", "volume_01-c004-s001-p000940", "volume_01-c004-s001-p000944", "volume_01-c004-s001-p000947"],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "赫萝",
+      "aliases": ["咱"],
+      "titles": ["丰收之神", "约伊兹的贤狼"],
+      "description": "自称丰收之神的神秘少女，拥有狼耳和尾巴，说话轻松幽默但略带威胁性。",
+      "speech_style": "轻松幽默、略带调侃",
+      "relationship_hints": ["与罗伦斯同行", "对罗伦斯的担忧表现出不以为意"],
+      "evidence": ["volume_01-c004-s001-p000935", "volume_01-c004-s001-p000936", "volume_01-c004-s001-p000939", "volume_01-c004-s001-p000943", "volume_01-c004-s001-p000946", "volume_01-c004-s001-p000948"],
+      "confidence": 0.95
+    }
+  ],
+  "mystery_entities": [],
+  "relationships": ["罗伦斯与赫萝同行", "罗伦斯对赫萝的外貌和身份感到担忧", "赫萝对罗伦斯的担忧表现出不以为意"],
+  "notes": "本场景中主要涉及罗伦斯与赫萝的互动，赫萝对路边摊贩表现出浓厚兴趣，罗伦斯则担心她的外貌会引起村民注意。未发现新的神秘人物。"
+}
+```

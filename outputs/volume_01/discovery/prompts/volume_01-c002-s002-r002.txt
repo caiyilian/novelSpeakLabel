@@ -1,0 +1,187 @@
+你是轻小说说话人标注项目的阶段 1：角色发现与建库助手。
+你的任务不是给每句台词最终打标签，而是从当前场景中发现角色、别名、称谓、关系线索、说话风格线索、场景摘要，以及尚未命名但可追踪的神秘人物。
+
+规则：
+1. 只输出严格 JSON，不要 Markdown，不要解释性前后缀。
+2. 不要编造没有文本证据的人名。
+3. 如果人物未命名但看起来可在后文追踪，放入 mystery_entities。
+4. character_candidates 只放可以从文本中看到名字、称谓或稳定身份线索的人物。
+5. evidence 使用 paragraph_id 或 dialogue_id 相关的短证据，不要长篇复制原文。
+
+输出 JSON 结构：
+{
+  "scene_id": "string",
+  "scene_summary": "string",
+  "active_characters": ["string"],
+  "character_candidates": [
+    {
+      "display_name": "string",
+      "aliases": ["string"],
+      "titles": ["string"],
+      "description": "string",
+      "speech_style": "string",
+      "relationship_hints": ["string"],
+      "evidence": ["string"],
+      "confidence": 0.0
+    }
+  ],
+  "mystery_entities": [
+    {
+      "temporary_name": "string",
+      "description": "string",
+      "evidence": ["string"],
+      "confidence": 0.0
+    }
+  ],
+  "relationships": ["string"],
+  "notes": "string"
+}
+
+输入场景 JSON：
+{
+  "volume_id": "volume_01",
+  "scene": {
+    "request_id": "volume_01-c002-s002-r002",
+    "scene_id": "volume_01-c002-s002",
+    "chapter_id": "volume_01-c002",
+    "chapter_title": "第一幕",
+    "chunk_index": 2,
+    "chunk_count": 6
+  },
+  "paragraphs": [
+    {
+      "paragraph_id": "volume_01-c002-s002-p000170",
+      "text": "罗伦斯从马车上走下，探头往人墙的另一边望去，正好看见叶勒抓住最后一束麦子。叶勒沾满泥土和汗水的黑脸露出苦笑，他一口气割下麦子后，举高整束麦子，朝着天空大喊："
+    },
+    {
+      "paragraph_id": "volume_01-c002-s002-p000171",
+      "text": "「嗷呜～～～～～～～」"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s002-p000172",
+      "text": "「赫萝！赫萝！赫萝！」"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s002-p000173",
+      "text": "「狼赫萝出现了！狼赫萝出现了！」"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s002-p000174",
+      "text": "「抓住祂！快抓住！」"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s002-p000175",
+      "text": "「别让祂逃走了！快追！」"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s002-p000176",
+      "text": "叶勒突然跑了出去，刚刚不停叫喊的男子们紧追在后。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s002-p000177",
+      "text": "被追赶的丰收之神会附在人类身上，企图逃跑到其他地方。所以大家必须抓住丰收之神，好让祂未来一年继续留在这块麦田里。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s002-p000178",
+      "text": "事实上，没人知道丰收之神到底存不存在。不过，这个习俗已经在这块土地延续很久了。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s002-p000179",
+      "text": "罗伦斯是跑遍各地的旅行商人，他压根儿就不相信教会的教诲。不过，说起迷信或信仰的程度，可是在农夫们之上。毕竟在他辛苦翻越山头，好不容易来到城镇时，却发现商品价值暴跌的事情屡见不鲜，也难怪他会变得迷信或执著于信仰了。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s002-p000180",
+      "text": "因此，对于热忱信徒或教会相关人士特别关注的这些仪式，罗伦斯一点也不在意。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s002-p000181",
+      "text": "不过，关于叶勒成为赫萝这件事，倒是让罗伦斯感到有些困扰。这么一来，在祭典结束以前，叶勒会被关在有准备佳肴的谷仓里整整一个星期，根本没法与他说话。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s002-p000182",
+      "text": "「算了……」"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s002-p000183",
+      "text": "罗伦斯叹了口气，坐回马车，朝村长的住处前去。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s002-p000184",
+      "text": "罗伦斯原本打算跟叶勒聊聊修道院发生的事，顺便与他小酌几杯。但是如果不赶紧把堆在货台上的貂皮变卖成现金，就来不及支付在其他地方采买商品的货款。再加上罗伦斯想要早些卖掉从深山村落带下山的麦子，所以他不能一直等到祭典结束。"
+    }
+  ],
+  "dialogues": [
+    {
+      "dialogue_id": "volume_01-d000039",
+      "paragraph_id": "volume_01-c002-s002-p000171",
+      "text": "嗷呜～～～～～～～"
+    },
+    {
+      "dialogue_id": "volume_01-d000040",
+      "paragraph_id": "volume_01-c002-s002-p000172",
+      "text": "赫萝！赫萝！赫萝！"
+    },
+    {
+      "dialogue_id": "volume_01-d000041",
+      "paragraph_id": "volume_01-c002-s002-p000173",
+      "text": "狼赫萝出现了！狼赫萝出现了！"
+    },
+    {
+      "dialogue_id": "volume_01-d000042",
+      "paragraph_id": "volume_01-c002-s002-p000174",
+      "text": "抓住祂！快抓住！"
+    },
+    {
+      "dialogue_id": "volume_01-d000043",
+      "paragraph_id": "volume_01-c002-s002-p000175",
+      "text": "别让祂逃走了！快追！"
+    },
+    {
+      "dialogue_id": "volume_01-d000044",
+      "paragraph_id": "volume_01-c002-s002-p000182",
+      "text": "算了……"
+    }
+  ],
+  "known_characters": [
+    {
+      "entity_id": "char_0001",
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": [
+        "旅行商人",
+        "行商人"
+      ],
+      "description": "一位行商人，发现并收留了赫萝，决定与她一同旅行。 / 一位二十五岁的自力更生旅行商人，已有七年行商经验，性格泰然自若。 / 一位旅行商人，正在前往修道院的路上，与骑士对话。 / 一位行商人，正在前往修道院的路上，与骑士对话。他从容应对骑士的傲慢态度，并用蜂蜜糖和貂皮吸引对方的注意。 / 一位机智的旅行商人，与骑士互动时表现出从容与策略。他使用蜂蜜糖和貂皮吸引骑士的注意，并巧妙地应对对方的提问。 / 一位二十五岁的自力更生旅行商人，已有七年行商经验，性格泰然自若。他正在前往修道院的路上，与骑士对话。 / 一位行商人，正在帕斯罗村的麦田中与农夫交谈。 / 一位行商人，正在前往叶勒的麦田，观察村民的丰收祭典。"
+    },
+    {
+      "entity_id": "char_0002",
+      "display_name": "赫萝",
+      "aliases": [],
+      "titles": [
+        "丰收之神"
+      ],
+      "description": "自称是丰收之神的少女，拥有狼的耳朵和尾巴，说话狡诈。"
+    },
+    {
+      "entity_id": "char_0003",
+      "display_name": "骑士",
+      "aliases": [],
+      "titles": [],
+      "description": "身穿银色盔甲的骑士，站在修道院附近，态度傲慢，与罗伦斯对话。 / 身穿银色盔甲的下级骑士，态度傲慢但容易被诱惑。他与罗伦斯短暂互动后放行。 / 一位年轻骑士，身穿银色盔甲，态度傲慢但容易被诱惑。他因罗伦斯递给他蜂蜜糖而态度缓和，并询问关于异教徒祭典的消息。 / 身穿银色盔甲的年轻骑士，态度傲慢但容易被诱惑。他因罗伦斯递给他蜂蜜糖而态度缓和，并询问关于异教徒祭典的消息。"
+    },
+    {
+      "entity_id": "char_0004",
+      "display_name": "叶勒",
+      "aliases": [],
+      "titles": [],
+      "description": "帕斯罗村的农夫，今年雇用年轻人种田。 / 帕斯罗村的农夫，今年雇用年轻人种田，是村民丰收祭典的中心人物。"
+    },
+    {
+      "entity_id": "char_0005",
+      "display_name": "农夫",
+      "aliases": [],
+      "titles": [],
+      "description": "一位晒得黝黑的农夫，与罗伦斯有互动，笑容真诚。"
+    }
+  ]
+}

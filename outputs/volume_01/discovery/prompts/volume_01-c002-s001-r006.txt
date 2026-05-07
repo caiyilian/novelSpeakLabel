@@ -1,0 +1,123 @@
+你是轻小说说话人标注项目的阶段 1：角色发现与建库助手。
+你的任务不是给每句台词最终打标签，而是从当前场景中发现角色、别名、称谓、关系线索、说话风格线索、场景摘要，以及尚未命名但可追踪的神秘人物。
+
+规则：
+1. 只输出严格 JSON，不要 Markdown，不要解释性前后缀。
+2. 不要编造没有文本证据的人名。
+3. 如果人物未命名但看起来可在后文追踪，放入 mystery_entities。
+4. character_candidates 只放可以从文本中看到名字、称谓或稳定身份线索的人物。
+5. evidence 使用 paragraph_id 或 dialogue_id 相关的短证据，不要长篇复制原文。
+
+输出 JSON 结构：
+{
+  "scene_id": "string",
+  "scene_summary": "string",
+  "active_characters": ["string"],
+  "character_candidates": [
+    {
+      "display_name": "string",
+      "aliases": ["string"],
+      "titles": ["string"],
+      "description": "string",
+      "speech_style": "string",
+      "relationship_hints": ["string"],
+      "evidence": ["string"],
+      "confidence": 0.0
+    }
+  ],
+  "mystery_entities": [
+    {
+      "temporary_name": "string",
+      "description": "string",
+      "evidence": ["string"],
+      "confidence": 0.0
+    }
+  ],
+  "relationships": ["string"],
+  "notes": "string"
+}
+
+输入场景 JSON：
+{
+  "volume_id": "volume_01",
+  "scene": {
+    "request_id": "volume_01-c002-s001-r006",
+    "scene_id": "volume_01-c002-s001",
+    "chapter_id": "volume_01-c002",
+    "chapter_title": "第一幕",
+    "chunk_index": 6,
+    "chunk_count": 6
+  },
+  "paragraphs": [
+    {
+      "paragraph_id": "volume_01-c002-s001-p000150",
+      "text": "「嗨！辛苦了。」"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000151",
+      "text": "罗伦斯朝正在帕斯罗村的麦田一角，把麦子往马车上堆的农夫打招呼。马车上的麦穗十分饱满，看来可以让购买麦子期货的人们松一口气吧。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000152",
+      "text": "「喔？」"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000153",
+      "text": "「请问叶勒在哪里啊？」"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000154",
+      "text": "「喔！叶勒在那儿。有没有看到很多人聚集在那边？他就在那块麦田里。叶勒今年都雇用年轻人来种田，因为他们比较不得要领，今年应该是他们田里的某个人会是『赫萝』吧。」"
+    }
+  ],
+  "dialogues": [
+    {
+      "dialogue_id": "volume_01-d000027",
+      "paragraph_id": "volume_01-c002-s001-p000150",
+      "text": "嗨！辛苦了。"
+    },
+    {
+      "dialogue_id": "volume_01-d000028",
+      "paragraph_id": "volume_01-c002-s001-p000152",
+      "text": "喔？"
+    },
+    {
+      "dialogue_id": "volume_01-d000029",
+      "paragraph_id": "volume_01-c002-s001-p000153",
+      "text": "请问叶勒在哪里啊？"
+    },
+    {
+      "dialogue_id": "volume_01-d000030",
+      "paragraph_id": "volume_01-c002-s001-p000154",
+      "text": "喔！叶勒在那儿。有没有看到很多人聚集在那边？他就在那块麦田里。叶勒今年都雇用年轻人来种田，因为他们比较不得要领，今年应该是他们田里的某个人会是『赫萝』吧。"
+    }
+  ],
+  "known_characters": [
+    {
+      "entity_id": "char_0001",
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": [
+        "旅行商人",
+        "行商人"
+      ],
+      "description": "一位行商人，发现并收留了赫萝，决定与她一同旅行。 / 一位二十五岁的自力更生旅行商人，已有七年行商经验，性格泰然自若。 / 一位旅行商人，正在前往修道院的路上，与骑士对话。 / 一位行商人，正在前往修道院的路上，与骑士对话。他从容应对骑士的傲慢态度，并用蜂蜜糖和貂皮吸引对方的注意。 / 一位机智的旅行商人，与骑士互动时表现出从容与策略。他使用蜂蜜糖和貂皮吸引骑士的注意，并巧妙地应对对方的提问。 / 一位二十五岁的自力更生旅行商人，已有七年行商经验，性格泰然自若。他正在前往修道院的路上，与骑士对话。"
+    },
+    {
+      "entity_id": "char_0002",
+      "display_name": "赫萝",
+      "aliases": [],
+      "titles": [
+        "丰收之神"
+      ],
+      "description": "自称是丰收之神的少女，拥有狼的耳朵和尾巴，说话狡诈。"
+    },
+    {
+      "entity_id": "char_0003",
+      "display_name": "骑士",
+      "aliases": [],
+      "titles": [],
+      "description": "身穿银色盔甲的骑士，站在修道院附近，态度傲慢，与罗伦斯对话。 / 身穿银色盔甲的下级骑士，态度傲慢但容易被诱惑。他与罗伦斯短暂互动后放行。 / 一位年轻骑士，身穿银色盔甲，态度傲慢但容易被诱惑。他因罗伦斯递给他蜂蜜糖而态度缓和，并询问关于异教徒祭典的消息。 / 身穿银色盔甲的年轻骑士，态度傲慢但容易被诱惑。他因罗伦斯递给他蜂蜜糖而态度缓和，并询问关于异教徒祭典的消息。"
+    }
+  ]
+}

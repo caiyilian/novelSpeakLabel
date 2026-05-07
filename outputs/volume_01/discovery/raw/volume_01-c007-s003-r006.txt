@@ -1,0 +1,53 @@
+```json
+{
+  "scene_id": "volume_01-c007-s003",
+  "scene_summary": "罗伦斯与叶勒对峙，梅迪欧商行的手下准备战斗，罗伦斯与叶勒表达离别之情，最后有人下令活捉女孩。",
+  "active_characters": ["罗伦斯", "叶勒", "梅迪欧商行手下"],
+  "character_candidates": [
+    {
+      "display_name": "罗伦斯",
+      "aliases": ["罗伦斯"],
+      "titles": ["旅行商人"],
+      "description": "冷静理性的旅行商人，与赫萝一同旅行。在本场景中与叶勒对峙，表达离别之情。",
+      "speech_style": "冷静、理性、略带感伤",
+      "relationship_hints": ["与赫萝有长期旅行关系", "与叶勒有旧识"],
+      "evidence": ["volume_01-d001252", "volume_01-d001253"],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "叶勒",
+      "aliases": ["叶勒"],
+      "titles": ["帕斯罗村农夫", "村民代表"],
+      "description": "帕斯罗村的农夫，被认为是丰收之神附身的载体。在本场景中与罗伦斯对峙，试图说服他参与计划。",
+      "speech_style": "坚定、略带威胁",
+      "relationship_hints": ["与罗伦斯有旧识", "与梅迪欧商行有关联"],
+      "evidence": ["volume_01-c007-s003-p002792"],
+      "confidence": 0.9
+    },
+    {
+      "display_name": "梅迪欧商行手下",
+      "aliases": [],
+      "titles": [],
+      "description": "梅迪欧商行的战斗人员，听从命令准备战斗。",
+      "speech_style": "命令式、直接",
+      "relationship_hints": ["隶属于梅迪欧商行"],
+      "evidence": ["volume_01-c007-s003-p002792", "volume_01-d001254"],
+      "confidence": 0.8
+    }
+  ],
+  "mystery_entities": [
+    {
+      "temporary_name": "神秘命令者",
+      "description": "未直接出现的人物，下令活捉女孩，可能是梅迪欧商行的高层。",
+      "evidence": ["volume_01-d001254"],
+      "confidence": 0.7
+    }
+  ],
+  "relationships": [
+    "罗伦斯与叶勒有旧识",
+    "叶勒与梅迪欧商行有关联",
+    "梅迪欧商行手下听从神秘命令者"
+  ],
+  "notes": "本场景中罗伦斯与叶勒的互动暗示了他们之间有复杂的历史。梅迪欧商行的出现表明他们可能在策划针对罗伦斯和赫萝的行动。神秘命令者的存在表明梅迪欧商行内部有更高层的决策者。"
+}
+```

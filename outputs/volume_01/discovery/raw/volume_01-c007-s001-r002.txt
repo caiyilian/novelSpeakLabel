@@ -1,0 +1,39 @@
+```json
+{
+  "scene_id": "volume_01-c007-s001",
+  "scene_summary": "罗伦斯和赫萝在黑暗中奔跑，试图避开追捕者。赫萝察觉到猎犬的踪迹，两人在复杂的迷宫中寻找退路。",
+  "active_characters": ["罗伦斯", "赫萝"],
+  "character_candidates": [
+    {
+      "display_name": "罗伦斯",
+      "aliases": ["小的", "提议者", "罗伦斯", "罗伦斯先生", "老板", "行商人"],
+      "titles": ["中间人", "交易者", "同行", "商人", "小毛头", "市井无赖", "年轻人", "开店者", "情报贩子", "提议者", "新手", "旅行商人", "旅行商人亲戚", "经验丰富的商人", "行商人"],
+      "description": "冷静理性的旅行商人，与赫萝一同旅行。在本场景中表现出对赫萝的关心，并试图确保她的安全。",
+      "speech_style": "理性、冷静、略带焦虑",
+      "relationship_hints": ["与赫萝关系亲密，两人共同行动"],
+      "evidence": ["volume_01-c007-s001-p002572", "volume_01-c007-s001-p002574", "volume_01-c007-s001-p002580"],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "赫萝",
+      "aliases": ["咱"],
+      "titles": ["丰收之神", "神秘少女", "约伊兹的贤狼", "贤狼"],
+      "description": "自称丰收之神的神秘少女，拥有狼的耳朵和尾巴。在本场景中察觉到猎犬的踪迹，并引导罗伦斯行动。",
+      "speech_style": "轻松幽默但略带威胁性",
+      "relationship_hints": ["与罗伦斯关系亲密，两人共同行动"],
+      "evidence": ["volume_01-c007-s001-p002574", "volume_01-c007-s001-p002577", "volume_01-c007-s001-p002581", "volume_01-c007-s001-p002584"],
+      "confidence": 0.95
+    }
+  ],
+  "mystery_entities": [
+    {
+      "temporary_name": "猎犬",
+      "description": "被追捕者放出的猎犬，追踪能力极强，是罗伦斯和赫萝的主要威胁。",
+      "evidence": ["volume_01-c007-s001-p002581", "volume_01-c007-s001-p002585"],
+      "confidence": 0.8
+    }
+  ],
+  "relationships": ["罗伦斯与赫萝是亲密的旅伴，共同面对危险"],
+  "notes": "场景中未出现新角色，但猎犬作为神秘威胁被提及，值得关注后续发展。"
+}
+```

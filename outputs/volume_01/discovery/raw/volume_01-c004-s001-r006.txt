@@ -1,0 +1,32 @@
+```json
+{
+  "scene_id": "volume_01-c004-s001",
+  "scene_summary": "罗伦斯和赫萝在对话中讨论苹果期货，赫萝试图转移话题，但罗伦斯继续谈论此事。",
+  "active_characters": ["罗伦斯", "赫萝"],
+  "character_candidates": [
+    {
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": ["旅行商人"],
+      "description": "冷静理性的旅行商人，对商业话题感兴趣，与赫萝互动频繁。",
+      "speech_style": "理性、略带调侃",
+      "relationship_hints": ["与赫萝有长期互动，似乎彼此熟悉"],
+      "evidence": ["volume_01-c004-s001-p000996", "volume_01-c004-s001-p000997"],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "赫萝",
+      "aliases": ["咱"],
+      "titles": ["丰收之神", "约伊兹的贤狼"],
+      "description": "自称丰收之神的神秘少女，拥有狼耳和尾巴，与罗伦斯一同旅行。",
+      "speech_style": "轻松幽默，略带威胁性",
+      "relationship_hints": ["与罗伦斯有长期互动，似乎彼此熟悉"],
+      "evidence": ["volume_01-c004-s001-p000994", "volume_01-c004-s001-p000998"],
+      "confidence": 0.95
+    }
+  ],
+  "mystery_entities": [],
+  "relationships": ["罗伦斯与赫萝有长期互动，彼此熟悉"],
+  "notes": "本场景中未出现新的神秘人物，对话主要围绕苹果期货展开，赫萝试图转移话题，罗伦斯则继续谈论此事。"
+}
+```

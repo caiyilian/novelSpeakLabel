@@ -1,0 +1,68 @@
+{
+  "scene_id": "volume_01-c004-s007",
+  "scene_summary": "罗伦斯与怀兹重逢，两人关系亲密，怀兹询问罗伦斯身旁的神秘女孩身份，罗伦斯称她是他在帕斯罗村路上捡到的。",
+  "active_characters": [
+    "罗伦斯",
+    "怀兹"
+  ],
+  "character_candidates": [
+    {
+      "display_name": "罗伦斯",
+      "aliases": [
+        "罗伦斯"
+      ],
+      "titles": [
+        "行商人"
+      ],
+      "description": "一位冷静理性的旅行商人，与怀兹有长期合作关系。他提到自己从约连沿路行商而来，并称身旁的女孩是他在帕斯罗村路上捡到的。",
+      "speech_style": "冷静、理性、略带调侃",
+      "relationship_hints": [
+        "与怀兹是朋友，关系亲密",
+        "与神秘女孩一同旅行"
+      ],
+      "evidence": [
+        "volume_01-c004-s007-p001414",
+        "volume_01-c004-s007-p001416",
+        "volume_01-c004-s007-p001426"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "怀兹",
+      "aliases": [
+        "怀兹"
+      ],
+      "titles": [
+        "兑换商"
+      ],
+      "description": "与罗伦斯有长期合作关系的年轻兑换商，金发，工作认真。他与罗伦斯关系亲密，像朋友一样。",
+      "speech_style": "轻松、调侃、略带幽默",
+      "relationship_hints": [
+        "与罗伦斯是朋友，关系亲密",
+        "对罗伦斯的神秘女孩表现出好奇"
+      ],
+      "evidence": [
+        "volume_01-c004-s007-p001414",
+        "volume_01-c004-s007-p001417",
+        "volume_01-c004-s007-p001425"
+      ],
+      "confidence": 0.9
+    }
+  ],
+  "mystery_entities": [
+    {
+      "temporary_name": "神秘女孩",
+      "description": "罗伦斯称其为在帕斯罗村路上捡到的女孩，身份不明，引起怀兹的注意。",
+      "evidence": [
+        "volume_01-c004-s007-p001425",
+        "volume_01-c004-s007-p001426"
+      ],
+      "confidence": 0.75
+    }
+  ],
+  "relationships": [
+    "罗伦斯与怀兹是朋友",
+    "罗伦斯与神秘女孩一同旅行"
+  ],
+  "notes": "怀兹对罗伦斯身旁的神秘女孩表现出好奇，罗伦斯称其为在帕斯罗村路上捡到的，暗示该女孩身份不明，可能是后续剧情的关键人物。"
+}

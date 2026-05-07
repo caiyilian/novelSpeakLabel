@@ -1,0 +1,79 @@
+{
+  "scene_id": "volume_01-c006-s004",
+  "scene_summary": "赫萝与罗伦斯在对话中回忆帕斯罗村的经历，提及村民对她的态度以及她作为丰收之神的职责。赫萝表现出对村民的愤怒与不满，同时透露出她对麦田管理的自信。",
+  "active_characters": [
+    "罗伦斯",
+    "赫萝"
+  ],
+  "character_candidates": [
+    {
+      "display_name": "赫萝",
+      "aliases": [
+        "咱"
+      ],
+      "titles": [
+        "丰收之神",
+        "贤狼"
+      ],
+      "description": "自称丰收之神的神秘少女，拥有狼耳和尾巴，情绪波动明显，表现出对帕斯罗村村民的愤怒与不满。",
+      "speech_style": "轻松幽默但略带威胁性，带有调侃和挑衅的语气。",
+      "relationship_hints": [
+        "与罗伦斯一同旅行，表现出依赖与信任",
+        "对帕斯罗村村民怀有怨恨"
+      ],
+      "evidence": [
+        "volume_01-c006-s004-p002466",
+        "volume_01-c006-s004-p002469",
+        "volume_01-c006-s004-p002471",
+        "volume_01-c006-s004-p002473"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "罗伦斯",
+      "aliases": [
+        "小的",
+        "提议者",
+        "老板"
+      ],
+      "titles": [
+        "行商人",
+        "中间人"
+      ],
+      "description": "冷静理性的旅行商人，对赫萝的身份持怀疑态度，但仍保持互动。",
+      "speech_style": "理性、冷静，带有分析和推理的语气。",
+      "relationship_hints": [
+        "与赫萝一同旅行，表现出关心与理解",
+        "对赫萝的背景表示怀疑，但仍保持互动"
+      ],
+      "evidence": [
+        "volume_01-c006-s004-p002464",
+        "volume_01-c006-s004-p002467",
+        "volume_01-c006-s004-p002472",
+        "volume_01-c006-s004-p002476"
+      ],
+      "confidence": 0.98
+    },
+    {
+      "display_name": "叶勒",
+      "aliases": [],
+      "titles": [],
+      "description": "帕斯罗村的农夫，被认为是丰收之神附身的载体。",
+      "speech_style": "未直接发言，但被提及。",
+      "relationship_hints": [
+        "与赫萝有互动，可能是她愤怒的来源"
+      ],
+      "evidence": [
+        "volume_01-c006-s004-p002464",
+        "volume_01-c006-s004-p002466"
+      ],
+      "confidence": 0.75
+    }
+  ],
+  "mystery_entities": [],
+  "relationships": [
+    "罗伦斯与赫萝一同旅行，表现出信任与依赖",
+    "赫萝对帕斯罗村村民怀有怨恨，尤其是叶勒"
+  ],
+  "notes": "赫萝表现出对帕斯罗村的复杂情绪，既有愤怒也有怀念。罗伦斯试图理解她的立场，但保持理性分析。叶勒作为村民代表被提及，可能是赫萝情绪的触发点。"
+}

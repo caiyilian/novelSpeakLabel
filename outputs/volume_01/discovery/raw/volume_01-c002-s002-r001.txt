@@ -1,0 +1,53 @@
+```json
+{
+  "scene_id": "volume_01-c002-s002",
+  "scene_summary": "罗伦斯离开农夫后前往叶勒的麦田，发现村民正在举行一个与狼有关的丰收祭典。人们围绕麦田中央高声叫喊，庆祝最后割下麦子的人。叶勒是这场活动的中心人物。",
+  "active_characters": ["罗伦斯", "叶勒", "农夫"],
+  "character_candidates": [
+    {
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": ["旅行商人", "行商人"],
+      "description": "一位行商人，正在前往叶勒的麦田，观察村民的丰收祭典。",
+      "speech_style": "从容、观察性强",
+      "relationship_hints": ["与农夫有互动", "在村民中保持低调"],
+      "evidence": ["volume_01-c002-s002-p000156", "volume_01-c002-s002-p000159"],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "叶勒",
+      "aliases": [],
+      "titles": [],
+      "description": "帕斯罗村的农夫，今年雇用年轻人种田，是村民丰收祭典的中心人物。",
+      "speech_style": "未直接说话，但被村民高声呼喊",
+      "relationship_hints": ["是村民活动的组织者", "与农夫有联系"],
+      "evidence": ["volume_01-c002-s002-p000157", "volume_01-c002-s002-p000169"],
+      "confidence": 0.9
+    },
+    {
+      "display_name": "农夫",
+      "aliases": [],
+      "titles": [],
+      "description": "一位晒得黝黑的农夫，与罗伦斯有互动，笑容真诚。",
+      "speech_style": "朴实、真诚",
+      "relationship_hints": ["与罗伦斯有互动", "与叶勒有联系"],
+      "evidence": ["volume_01-c002-s002-p000155", "volume_01-c002-s002-p000156"],
+      "confidence": 0.85
+    }
+  ],
+  "mystery_entities": [
+    {
+      "temporary_name": "赫萝",
+      "description": "传说中的丰收之神，被村民称为狼，是祭典的核心象征。",
+      "evidence": ["volume_01-c002-s002-p000160", "volume_01-c002-s002-p000164"],
+      "confidence": 0.8
+    }
+  ],
+  "relationships": [
+    "罗伦斯与农夫有互动",
+    "叶勒是村民活动的中心人物",
+    "赫萝是村民祭典的象征"
+  ],
+  "notes": "赫萝虽然未直接出现，但通过村民的呼喊和描述可以推测其存在。罗伦斯在场景中保持低调，未直接参与村民的活动。"
+}
+```

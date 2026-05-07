@@ -1,0 +1,39 @@
+```json
+{
+  "scene_id": "volume_01-c002-s001",
+  "scene_summary": "罗伦斯在前往修道院的路上，发现一名骑士挥手示意。罗伦斯靠近后确认对方是骑士，并与其对话。骑士态度傲慢，质疑罗伦斯的商人身份。",
+  "active_characters": ["罗伦斯", "骑士"],
+  "character_candidates": [
+    {
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": ["旅行商人"],
+      "description": "一位旅行商人，正在前往修道院的路上，与骑士对话。",
+      "speech_style": "理性、礼貌、略带怀疑",
+      "relationship_hints": ["与骑士有短暂互动"],
+      "evidence": ["volume_01-c002-s001-p000091", "volume_01-d000009"],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "骑士",
+      "aliases": [],
+      "titles": [],
+      "description": "身穿银色盔甲的骑士，站在修道院附近，态度傲慢，与罗伦斯对话。",
+      "speech_style": "命令式、带有优越感",
+      "relationship_hints": ["与修道院有关联", "可能是站岗的骑士之一"],
+      "evidence": ["volume_01-c002-s001-p000098", "volume_01-d000008", "volume_01-d000010"],
+      "confidence": 0.85
+    }
+  ],
+  "mystery_entities": [
+    {
+      "temporary_name": "修道院骑士2",
+      "description": "站在修道院另一头的骑士，疑似与第一骑士一同站岗。",
+      "evidence": ["volume_01-c002-s001-p000103"],
+      "confidence": 0.7
+    }
+  ],
+  "relationships": ["罗伦斯与骑士有短暂互动", "骑士与修道院有关联"],
+  "notes": "场景中出现了两名骑士，其中一名与罗伦斯对话，另一名未参与对话但存在。骑士身份和目的尚不明确，可能在后文有进一步揭示。"
+}
+```

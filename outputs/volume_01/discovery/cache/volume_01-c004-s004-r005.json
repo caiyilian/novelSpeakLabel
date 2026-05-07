@@ -1,0 +1,108 @@
+{
+  "scene_id": "volume_01-c004-s004",
+  "scene_summary": "罗伦斯与赫萝在一家酒吧中寻找名为杰廉的旅行商人。罗伦斯向女店员询问店老板是否在场，并请求她转达联络杰廉的讯息。女店员回应称杰廉会在日落后出现，建议罗伦斯在店内等待。",
+  "active_characters": [
+    "罗伦斯",
+    "赫萝",
+    "女店员"
+  ],
+  "character_candidates": [
+    {
+      "display_name": "罗伦斯",
+      "aliases": [
+        "罗伦斯"
+      ],
+      "titles": [
+        "旅行商人"
+      ],
+      "description": "正在酒吧中寻找名为杰廉的男子，表现出冷静和策略。",
+      "speech_style": "冷静、理性，用词简洁。",
+      "relationship_hints": [
+        "与赫萝一同行动",
+        "寻找杰廉"
+      ],
+      "evidence": [
+        "volume_01-c004-s004-p001221",
+        "volume_01-c004-s004-p001223",
+        "volume_01-c004-s004-p001226"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "赫萝",
+      "aliases": [
+        "咱"
+      ],
+      "titles": [
+        "神秘少女"
+      ],
+      "description": "与罗伦斯一同在酒吧中等待，未直接参与对话。",
+      "speech_style": "轻松幽默，略带威胁性。",
+      "relationship_hints": [
+        "与罗伦斯一同行动"
+      ],
+      "evidence": [
+        "volume_01-c004-s004-p001221"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "display_name": "女店员",
+      "aliases": [],
+      "titles": [],
+      "description": "酒吧的女店员，对杰廉的名字反应积极，提供有用信息。",
+      "speech_style": "开朗、直接，语气友好。",
+      "relationship_hints": [
+        "与杰廉有联系",
+        "在酒吧工作"
+      ],
+      "evidence": [
+        "volume_01-c004-s004-p001224",
+        "volume_01-c004-s004-p001225",
+        "volume_01-c004-s004-p001227",
+        "volume_01-c004-s004-p001229",
+        "volume_01-c004-s004-p001231",
+        "volume_01-c004-s004-p001233"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "display_name": "杰廉",
+      "aliases": [],
+      "titles": [
+        "旅行商人"
+      ],
+      "description": "被罗伦斯寻找的男子，据称会在日落后出现。",
+      "speech_style": "未知",
+      "relationship_hints": [
+        "与酒吧有联系",
+        "与罗伦斯有联络需求"
+      ],
+      "evidence": [
+        "volume_01-c004-s004-p001219",
+        "volume_01-c004-s004-p001226",
+        "volume_01-c004-s004-p001229",
+        "volume_01-c004-s004-p001231"
+      ],
+      "confidence": 0.8
+    }
+  ],
+  "mystery_entities": [
+    {
+      "temporary_name": "店老板",
+      "description": "酒吧的经营者，目前外出采买东西。",
+      "evidence": [
+        "volume_01-c004-s004-p001220",
+        "volume_01-c004-s004-p001225"
+      ],
+      "confidence": 0.7
+    }
+  ],
+  "relationships": [
+    "罗伦斯与赫萝一同行动",
+    "罗伦斯与杰廉有联络需求",
+    "女店员与杰廉有联系",
+    "罗伦斯与女店员有短暂互动"
+  ],
+  "notes": "杰廉是本场景中关键的联络对象，但尚未出现。女店员对杰廉的反应表明她可能了解其行踪。"
+}

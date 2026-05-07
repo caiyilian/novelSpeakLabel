@@ -1,0 +1,57 @@
+{
+  "scene_id": "volume_01-c002-s004",
+  "scene_summary": "赫萝在罗伦斯面前展示她的狼耳和尾巴，强调自己是丰收之神。罗伦斯对此感到震惊并开始怀疑她的身份。",
+  "active_characters": [
+    "罗伦斯",
+    "赫萝"
+  ],
+  "character_candidates": [
+    {
+      "display_name": "赫萝",
+      "aliases": [
+        "咱"
+      ],
+      "titles": [
+        "丰收之神",
+        "约伊兹的贤狼"
+      ],
+      "description": "自称是丰收之神的少女，拥有狼的耳朵和尾巴，说话狡诈且轻松幽默。",
+      "speech_style": "轻松幽默，带有自夸和挑衅的语气。",
+      "relationship_hints": [
+        "与罗伦斯有互动，罗伦斯对她身份感到怀疑",
+        "可能是帕斯罗村中因外貌异常而被藏匿的村民女孩"
+      ],
+      "evidence": [
+        "volume_01-c002-s004-p000331",
+        "volume_01-c002-s004-p000335",
+        "volume_01-c002-s004-p000341"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": [
+        "旅行商人"
+      ],
+      "description": "冷静且经验丰富的旅行商人，对赫萝的身份表示怀疑，但仍保持理性。",
+      "speech_style": "理性、冷静，带有怀疑和思考的语气。",
+      "relationship_hints": [
+        "对赫萝的身份感到怀疑",
+        "与赫萝有互动"
+      ],
+      "evidence": [
+        "volume_01-c002-s004-p000333",
+        "volume_01-c002-s004-p000336",
+        "volume_01-c002-s004-p000342"
+      ],
+      "confidence": 0.9
+    }
+  ],
+  "mystery_entities": [],
+  "relationships": [
+    "罗伦斯对赫萝的身份感到怀疑",
+    "赫萝展示自己的狼耳和尾巴以证明身份"
+  ],
+  "notes": "赫萝表现出强烈的自我认同和神秘感，罗伦斯则表现出理性怀疑的态度。场景中没有出现新的神秘人物。"
+}

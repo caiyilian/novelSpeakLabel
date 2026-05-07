@@ -1,0 +1,54 @@
+{
+  "scene_id": "volume_01-c000-s003",
+  "scene_summary": "行商人罗伦斯在麦束堆中发现自称丰收之神赫萝的少女，她拥有狼的耳朵和尾巴。尽管罗伦斯怀疑赫萝的真实性，仍决定与她一同旅行。",
+  "active_characters": [
+    "罗伦斯",
+    "赫萝"
+  ],
+  "character_candidates": [
+    {
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": [
+        "行商人"
+      ],
+      "description": "一位行商人，发现并收留了赫萝，决定与她一同旅行。",
+      "speech_style": "理性、怀疑但愿意冒险",
+      "relationship_hints": [
+        "与赫萝一同旅行",
+        "对赫萝的真实性持怀疑态度"
+      ],
+      "evidence": [
+        "volume_01-c000-s003-p000031",
+        "volume_01-c000-s003-p000034",
+        "volume_01-c000-s003-p000035"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "display_name": "赫萝",
+      "aliases": [],
+      "titles": [
+        "丰收之神"
+      ],
+      "description": "自称是丰收之神的少女，拥有狼的耳朵和尾巴，说话狡诈。",
+      "speech_style": "狡诈、自信、带有神明的语气",
+      "relationship_hints": [
+        "与罗伦斯一同旅行",
+        "被罗伦斯怀疑是否为真正的神"
+      ],
+      "evidence": [
+        "volume_01-c000-s003-p000032",
+        "volume_01-d000001",
+        "volume_01-c000-s003-p000034"
+      ],
+      "confidence": 0.85
+    }
+  ],
+  "mystery_entities": [],
+  "relationships": [
+    "罗伦斯与赫萝一同旅行",
+    "罗伦斯对赫萝的真实性持怀疑态度"
+  ],
+  "notes": "赫萝的身份和真实性尚未完全确认，但已明确与罗伦斯有互动。"
+}

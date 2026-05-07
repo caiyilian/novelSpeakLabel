@@ -1,0 +1,70 @@
+{
+  "scene_id": "volume_01-c004-s002",
+  "scene_summary": "罗伦斯牵着一匹马来到卸货场，与负责鉴定商品的采购人员交谈。采购人员向罗伦斯表示感谢，并确认了他的身份。",
+  "active_characters": [
+    "罗伦斯",
+    "采购人员"
+  ],
+  "character_candidates": [
+    {
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": [
+        "旅行商人",
+        "行商人"
+      ],
+      "description": "牵着一匹马来到卸货场，与采购人员交谈。他被确认为克拉福·罗伦斯先生。",
+      "speech_style": "冷静、理性，对话简洁。",
+      "relationship_hints": [
+        "与采购人员有商业关系"
+      ],
+      "evidence": [
+        "volume_01-c004-s002-p001076",
+        "volume_01-d000448"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "克拉福·罗伦斯",
+      "aliases": [
+        "罗伦斯"
+      ],
+      "titles": [
+        "旅行商人",
+        "行商人"
+      ],
+      "description": "被采购人员确认为克拉福·罗伦斯先生，牵着一匹马来到卸货场。",
+      "speech_style": "冷静、理性，对话简洁。",
+      "relationship_hints": [
+        "与采购人员有商业关系"
+      ],
+      "evidence": [
+        "volume_01-d000448"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "display_name": "采购人员",
+      "aliases": [],
+      "titles": [
+        "鉴定商品的采购人员",
+        "米隆商行店员"
+      ],
+      "description": "负责鉴定商品的男子，被唤来协助罗伦斯，态度专业。",
+      "speech_style": "礼貌、正式。",
+      "relationship_hints": [
+        "与罗伦斯有商业关系"
+      ],
+      "evidence": [
+        "volume_01-c004-s002-p001077",
+        "volume_01-d000448"
+      ],
+      "confidence": 0.85
+    }
+  ],
+  "mystery_entities": [],
+  "relationships": [
+    "罗伦斯与采购人员有商业关系"
+  ],
+  "notes": "场景中未出现未命名但可追踪的神秘人物。"
+}

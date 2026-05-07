@@ -1,0 +1,45 @@
+```json
+{
+  "scene_id": "volume_01-c004-s002",
+  "scene_summary": "赫萝和罗伦斯在场景中互动，赫萝吃了很多苹果，并表现出对金钱的自信，罗伦斯则显得无奈和困扰。",
+  "active_characters": ["罗伦斯", "赫萝"],
+  "character_candidates": [
+    {
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": ["旅行商人"],
+      "description": "冷静理性的旅行商人，对赫萝的身份持怀疑态度，但仍保持互动。",
+      "speech_style": "理性、冷静、略带无奈",
+      "relationship_hints": ["与赫萝有经济上的互动", "对赫萝的行为感到困扰"],
+      "evidence": [
+        "volume_01-c004-s002-p001014",
+        "volume_01-c004-s002-p001020",
+        "volume_01-c004-s002-p001022",
+        "volume_01-c004-s002-p001025"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "赫萝",
+      "aliases": ["咱"],
+      "titles": ["贤狼", "丰收之神"],
+      "description": "自称丰收之神的神秘少女，拥有狼耳和尾巴，说话轻松幽默但略带威胁性。",
+      "speech_style": "轻松幽默、略带挑衅",
+      "relationship_hints": ["与罗伦斯有经济上的互动", "表现出对金钱的自信"],
+      "evidence": [
+        "volume_01-c004-s002-p001015",
+        "volume_01-c004-s002-p001018",
+        "volume_01-c004-s002-p001021",
+        "volume_01-c004-s002-p001024"
+      ],
+      "confidence": 0.95
+    }
+  ],
+  "mystery_entities": [],
+  "relationships": [
+    "罗伦斯与赫萝之间存在经济互动和相互怀疑",
+    "赫萝表现出对罗伦斯的不信任和挑衅"
+  ],
+  "notes": "赫萝在本场景中表现出对金钱的自信，罗伦斯则显得无奈。两人之间的互动显示出他们之间存在复杂的信任与经济关系。"
+}
+```

@@ -1,0 +1,58 @@
+```json
+{
+  "scene_id": "volume_01-c007-s003",
+  "scene_summary": "罗伦斯与赫萝在帕斯罗村的麦田中与叶勒互动，叶勒试图说服罗伦斯参与一项涉及麦子交易和撤销关税的计划。赫萝表现出情绪波动，而罗伦斯则坚持遵守商人合约的原则。",
+  "active_characters": ["罗伦斯", "赫萝", "叶勒"],
+  "character_candidates": [
+    {
+      "display_name": "罗伦斯",
+      "aliases": ["罗伦斯"],
+      "titles": ["商人", "旅行商人", "开店者"],
+      "description": "冷静理性的旅行商人，与赫萝一同旅行。在本场景中与叶勒对话，坚持遵守商人合约的原则。",
+      "speech_style": "理性、坚定、略带严肃",
+      "relationship_hints": ["与赫萝有长期旅行关系", "与叶勒有旧识"],
+      "evidence": [
+        "volume_01-c007-s003-p002779",
+        "volume_01-c007-s003-p002784",
+        "volume_01-c007-s003-p002787"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "赫萝",
+      "aliases": ["赫萝"],
+      "titles": ["丰收之神", "神秘少女"],
+      "description": "自称丰收之神的神秘少女，拥有狼耳和尾巴。在本场景中表现出情绪波动，对罗伦斯的决定感到惊讶。",
+      "speech_style": "轻松幽默但略带威胁性",
+      "relationship_hints": ["与罗伦斯有长期旅行关系", "对叶勒的出现感到惊讶"],
+      "evidence": [
+        "volume_01-c007-s003-p002780",
+        "volume_01-c007-s003-p002782",
+        "volume_01-c007-s003-p002788"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "叶勒",
+      "aliases": ["叶勒"],
+      "titles": ["帕斯罗村农夫", "村民代表"],
+      "description": "帕斯罗村的农夫，被认为是丰收之神附身的载体。在本场景中试图说服罗伦斯参与一项涉及麦子交易和撤销关税的计划。",
+      "speech_style": "热情、说服性强",
+      "relationship_hints": ["与罗伦斯有旧识", "与赫萝有互动"],
+      "evidence": [
+        "volume_01-c007-s003-p002777",
+        "volume_01-c007-s003-p002780",
+        "volume_01-c007-s003-p002786"
+      ],
+      "confidence": 0.9
+    }
+  ],
+  "mystery_entities": [],
+  "relationships": [
+    "罗伦斯与赫萝是长期旅行伙伴",
+    "罗伦斯与叶勒有旧识",
+    "赫萝对叶勒的出现感到惊讶"
+  ],
+  "notes": "本场景中，罗伦斯表现出对商人合约的坚持，赫萝则表现出情绪波动，叶勒试图说服罗伦斯参与一项计划。三人之间的互动揭示了他们之间的关系和立场。"
+}
+```

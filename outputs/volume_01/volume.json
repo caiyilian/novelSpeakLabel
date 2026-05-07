@@ -1,0 +1,18 @@
+{
+  "volume_id": "volume_01",
+  "volume": 1,
+  "source_path": "novels/狼与辛香料 01（台）.txt",
+  "output_dir": "outputs/volume_01",
+  "chapter_count": 11,
+  "paragraph_count": 3121,
+  "scene_count": 49,
+  "dialogue_count": 1345,
+  "context_paragraphs": 3,
+  "max_scene_paragraphs": 80,
+  "files": {
+    "chapters": "outputs/volume_01/preprocess/chapters.jsonl",
+    "paragraphs": "outputs/volume_01/preprocess/paragraphs.jsonl",
+    "scenes": "outputs/volume_01/preprocess/scenes.jsonl",
+    "dialogues": "outputs/volume_01/preprocess/dialogues.jsonl"
+  }
+}

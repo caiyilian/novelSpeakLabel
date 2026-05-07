@@ -1,0 +1,57 @@
+{
+  "scene_id": "volume_01-c002-s005",
+  "scene_summary": "罗伦斯在痛苦中做出抉择，并向赫萝提出关于帕斯罗村麦田的问题。",
+  "active_characters": [
+    "罗伦斯",
+    "赫萝"
+  ],
+  "character_candidates": [
+    {
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": [
+        "旅行商人",
+        "行商人"
+      ],
+      "description": "一位冷静但逐渐感到不安的旅行商人，对赫萝的身份表示怀疑，但仍保持理性。",
+      "speech_style": "理性、谨慎、略带不安",
+      "relationship_hints": [
+        "与赫萝有互动，提出问题以试探她的身份"
+      ],
+      "evidence": [
+        "volume_01-c002-s005-p000470",
+        "volume_01-c002-s005-p000471",
+        "volume_01-c002-s005-p000472",
+        "volume_01-c002-s005-p000474"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "赫萝",
+      "aliases": [
+        "咱"
+      ],
+      "titles": [
+        "丰收之神",
+        "约伊兹的贤狼",
+        "贤狼"
+      ],
+      "description": "自称丰收之神的神秘少女，拥有狼耳和尾巴，说话轻松幽默但带有威胁性。",
+      "speech_style": "轻松幽默、略带威胁",
+      "relationship_hints": [
+        "与罗伦斯有互动，被提问关于帕斯罗村麦田的问题"
+      ],
+      "evidence": [
+        "volume_01-c002-s005-p000471",
+        "volume_01-c002-s005-p000473",
+        "volume_01-c002-s005-p000474"
+      ],
+      "confidence": 0.95
+    }
+  ],
+  "mystery_entities": [],
+  "relationships": [
+    "罗伦斯与赫萝之间存在互动和试探关系"
+  ],
+  "notes": "场景中未出现新的神秘人物，赫萝和罗伦斯的互动继续揭示他们的关系和背景。"
+}

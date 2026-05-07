@@ -1,0 +1,55 @@
+{
+  "scene_id": "volume_01-c002-s004",
+  "scene_summary": "罗伦斯怀疑赫萝是否真的是狼的化身，试图让她变回狼形以验证身份。赫萝表现出厌恶和抗拒，不愿配合。罗伦斯则坚持要确认她的身份，因为这关系到他是否将她交给教会。",
+  "active_characters": [
+    "罗伦斯",
+    "赫萝"
+  ],
+  "character_candidates": [
+    {
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": [
+        "旅行商人"
+      ],
+      "description": "冷静且理性，对赫萝的身份持怀疑态度，试图通过对话和逻辑推理确认她的真伪。",
+      "speech_style": "理性、坚定、略带试探性",
+      "relationship_hints": [
+        "与赫萝有互动，试图验证她的身份"
+      ],
+      "evidence": [
+        "volume_01-d000104",
+        "volume_01-d000109",
+        "volume_01-d000110"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "赫萝",
+      "aliases": [
+        "咱"
+      ],
+      "titles": [
+        "丰收之神",
+        "约伊兹的贤狼"
+      ],
+      "description": "拥有狼的耳朵和尾巴，表现出非人类的特征，但拒绝变回狼形，态度傲慢且带有情绪。",
+      "speech_style": "轻松幽默、略带讽刺、情绪化",
+      "relationship_hints": [
+        "与罗伦斯有互动，表现出抗拒和厌恶"
+      ],
+      "evidence": [
+        "volume_01-d000105",
+        "volume_01-d000106",
+        "volume_01-d000108"
+      ],
+      "confidence": 0.9
+    }
+  ],
+  "mystery_entities": [],
+  "relationships": [
+    "罗伦斯怀疑赫萝的真实身份",
+    "赫萝对罗伦斯的怀疑表现出厌恶"
+  ],
+  "notes": "赫萝表现出不愿配合罗伦斯的测试，暗示她可能不愿暴露真实身份。罗伦斯则试图通过逻辑推理和对话掌握主导权。"
+}

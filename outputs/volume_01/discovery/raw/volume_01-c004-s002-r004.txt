@@ -1,0 +1,52 @@
+```json
+{
+  "scene_id": "volume_01-c004-s002",
+  "scene_summary": "罗伦斯与赫萝讨论貂皮交易的策略，赫萝提出插嘴抬价并分利的建议，罗伦斯虽怀疑但同意。随后，他们前往米隆商行，罗伦斯希望借此获取情报，特别是关于杰廉的消息。",
+  "active_characters": ["罗伦斯", "赫萝"],
+  "character_candidates": [
+    {
+      "display_name": "赫萝",
+      "aliases": ["咱"],
+      "titles": ["丰收之神", "约伊兹的贤狼", "贤狼"],
+      "description": "自称丰收之神的少女，拥有狼的耳朵和尾巴，说话轻松幽默但略带威胁性。她提出插嘴抬价的策略，并表现出对商业的自信。",
+      "speech_style": "轻松幽默，略带威胁性，使用自称‘咱’",
+      "relationship_hints": ["与罗伦斯有合作关系", "对罗伦斯的商业能力持怀疑态度"],
+      "evidence": [
+        "volume_01-d000431",
+        "volume_01-d000433",
+        "volume_01-d000434"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": ["旅行商人", "情报贩子", "行商人"],
+      "description": "冷静理性的旅行商人，对赫萝的策略持怀疑态度，但仍选择合作。他前往米隆商行，希望获取商业情报。",
+      "speech_style": "理性、冷静，带有商业判断力",
+      "relationship_hints": ["与赫萝有合作关系", "对赫萝的能力持保留态度"],
+      "evidence": [
+        "volume_01-d000432",
+        "volume_01-c004-s002-p001047",
+        "volume_01-c004-s002-p001056"
+      ],
+      "confidence": 0.98
+    }
+  ],
+  "mystery_entities": [
+    {
+      "temporary_name": "杰廉",
+      "description": "年轻旅行商人，罗伦斯希望在米隆商行获取关于他的情报。",
+      "evidence": [
+        "volume_01-c004-s002-p001056"
+      ],
+      "confidence": 0.75
+    }
+  ],
+  "relationships": [
+    "罗伦斯与赫萝是合作关系，赫萝提出策略，罗伦斯执行",
+    "罗伦斯与杰廉之间存在情报联系，罗伦斯希望获取关于杰廉的消息"
+  ],
+  "notes": "赫萝表现出对商业的自信，罗伦斯虽怀疑但选择信任。杰廉作为年轻商人，是罗伦斯情报网络的一部分。"
+}
+```

@@ -1,0 +1,39 @@
+```json
+{
+  "scene_id": "volume_01-c004-s004",
+  "scene_summary": "罗伦斯在酒吧中等待名为杰廉的男子，与女店员互动，并品尝葡萄酒。场景中提及日落前的等待和对杰廉的期待。",
+  "active_characters": ["罗伦斯", "女店员"],
+  "character_candidates": [
+    {
+      "display_name": "罗伦斯",
+      "aliases": ["罗伦斯"],
+      "titles": ["旅行商人", "行商人", "经验丰富的商人"],
+      "description": "正在酒吧中等待杰廉的旅行商人，表现出对葡萄酒的偏好和对商业的熟悉。",
+      "speech_style": "冷静、理性，偏好甜味饮品，偶尔提及商业话题。",
+      "relationship_hints": ["与女店员有礼貌互动", "正在等待杰廉"],
+      "evidence": ["volume_01-c004-s004-p001234", "volume_01-c004-s004-p001238"],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "女店员",
+      "aliases": [],
+      "titles": [],
+      "description": "酒吧的女店员，对顾客礼貌，提供服务，并对杰廉的名字表现出兴趣。",
+      "speech_style": "礼貌、简短，服务导向。",
+      "relationship_hints": ["与罗伦斯有互动", "对杰廉的名字反应积极"],
+      "evidence": ["volume_01-c004-s004-p001237", "volume_01-d000533"],
+      "confidence": 0.85
+    }
+  ],
+  "mystery_entities": [
+    {
+      "temporary_name": "杰廉",
+      "description": "被罗伦斯提及的男子，预计在日落后出现，目前尚未现身。",
+      "evidence": ["volume_01-c004-s004-p001234"],
+      "confidence": 0.7
+    }
+  ],
+  "relationships": ["罗伦斯与女店员有互动", "罗伦斯正在等待杰廉"],
+  "notes": "杰廉是当前场景中提及但尚未出现的神秘人物，值得后续追踪。罗伦斯表现出对葡萄酒的偏好，暗示其对饮品的品味和商业经验。"
+}
+```

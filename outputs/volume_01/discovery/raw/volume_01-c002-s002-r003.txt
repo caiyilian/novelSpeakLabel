@@ -1,0 +1,45 @@
+```json
+{
+  "scene_id": "volume_01-c002-s002",
+  "scene_summary": "罗伦斯离开村庄，回顾过去与叶勒的交易经历，并思考自己孤独的旅行生活。他仰望满月，感叹自己对陪伴的渴望。",
+  "active_characters": ["罗伦斯", "叶勒"],
+  "character_candidates": [
+    {
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": ["旅行商人"],
+      "description": "二十五岁的旅行商人，独自一人踏上旅途，思考未来与孤独。",
+      "speech_style": "内省、感性、略带忧郁",
+      "relationship_hints": ["与叶勒有商业交易关系", "对赫萝有情感牵连"],
+      "evidence": ["volume_01-c002-s002-p000190", "volume_01-c002-s002-p000195", "volume_01-c002-s002-p000197"],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "叶勒",
+      "aliases": [],
+      "titles": [],
+      "description": "帕斯罗村的农夫，曾与罗伦斯交易麦子，对罗伦斯怀有感恩之心。",
+      "speech_style": "未直接说话，但通过他人叙述体现其性格",
+      "relationship_hints": ["与罗伦斯有商业交易关系", "被村民视为丰收之神附身的载体"],
+      "evidence": ["volume_01-c002-s002-p000186", "volume_01-c002-s002-p000195"],
+      "confidence": 0.85
+    }
+  ],
+  "mystery_entities": [
+    {
+      "temporary_name": "村民",
+      "description": "村庄中的普通居民，参与祭典，与罗伦斯互动。",
+      "evidence": ["volume_01-c002-s002-p000185", "volume_01-c002-s002-p000187"],
+      "confidence": 0.7
+    },
+    {
+      "temporary_name": "赫萝",
+      "description": "虽然未直接出现，但被提及为祭典的核心人物，与罗伦斯有情感牵连。",
+      "evidence": ["volume_01-c002-s002-p000187", "volume_01-c002-s002-p000195"],
+      "confidence": 0.75
+    }
+  ],
+  "relationships": ["罗伦斯与叶勒有商业交易关系", "罗伦斯与赫萝有情感牵连", "罗伦斯与村民有互动"],
+  "notes": "赫萝虽然未直接出现，但通过罗伦斯的回忆和情感牵连，可推测其在场景中的重要性。"
+}
+```

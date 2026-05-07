@@ -1,0 +1,52 @@
+{
+  "scene_id": "volume_01-c003-s003",
+  "scene_summary": "罗伦斯与杰廉达成初步协议，决定在河口城镇帕兹欧，在公证人见证下签订正式合约。杰廉告知联络地点为帕兹欧的优伦朵酒吧。",
+  "active_characters": [
+    "罗伦斯",
+    "杰廉"
+  ],
+  "character_candidates": [
+    {
+      "display_name": "杰廉",
+      "aliases": [],
+      "titles": [
+        "情报贩子"
+      ],
+      "description": "与罗伦斯达成交易的中间人，提供情报服务，自称小人物，但行为谨慎。",
+      "speech_style": "谦卑但自信，带有职业性的谨慎语气。",
+      "relationship_hints": [
+        "与罗伦斯有商业合作关系",
+        "提供情报服务"
+      ],
+      "evidence": [
+        "volume_01-c003-s003-p000825",
+        "volume_01-d000314",
+        "volume_01-d000315"
+      ],
+      "confidence": 0.9
+    }
+  ],
+  "mystery_entities": [
+    {
+      "temporary_name": "公证人",
+      "description": "将在帕兹欧见证罗伦斯与杰廉签订正式合约的人物，目前未出现。",
+      "evidence": [
+        "volume_01-c003-s003-p000826"
+      ],
+      "confidence": 0.6
+    },
+    {
+      "temporary_name": "优伦朵酒吧老板",
+      "description": "杰廉提到的联络地点优伦朵酒吧的负责人，可能是联络中介。",
+      "evidence": [
+        "volume_01-d000314"
+      ],
+      "confidence": 0.5
+    }
+  ],
+  "relationships": [
+    "罗伦斯与杰廉有商业合作关系",
+    "杰廉与罗伦斯之间存在信任与谨慎的互动"
+  ],
+  "notes": "杰廉可能是情报贩子，罗伦斯与他之间存在商业合作的初步协议。场景中提及的公证人和优伦朵酒吧老板为潜在可追踪人物。"
+}

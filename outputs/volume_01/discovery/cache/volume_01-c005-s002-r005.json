@@ -1,0 +1,96 @@
+{
+  "scene_id": "volume_01-c005-s002",
+  "scene_summary": "罗伦斯与赫萝在店内休息，赫萝因宿醉而显得虚弱。店老板为他们提供果汁，赫萝与罗伦斯讨论宿醉与动物的联系，提及熊和狼一起喝酒的场景。赫萝试图回忆一件重要的事，但未能想起。",
+  "active_characters": [
+    "罗伦斯",
+    "赫萝",
+    "店老板"
+  ],
+  "character_candidates": [
+    {
+      "display_name": "罗伦斯",
+      "aliases": [
+        "老板"
+      ],
+      "titles": [
+        "商人",
+        "旅行商人",
+        "中间人"
+      ],
+      "description": "冷静理性的旅行商人，与赫萝一同旅行。在本场景中照顾赫萝，与店老板互动。",
+      "speech_style": "理性、温和、略带调侃",
+      "relationship_hints": [
+        "与赫萝关系亲密",
+        "与店老板有互动"
+      ],
+      "evidence": [
+        "volume_01-c005-s002-p001734",
+        "volume_01-c005-s002-p001735",
+        "volume_01-c005-s002-p001746",
+        "volume_01-c005-s002-p001748"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "赫萝",
+      "aliases": [
+        "咱"
+      ],
+      "titles": [
+        "丰收之神",
+        "神秘少女",
+        "约伊兹的贤狼"
+      ],
+      "description": "自称丰收之神的神秘少女，拥有狼的耳朵和尾巴。在本场景中因宿醉虚弱，与罗伦斯互动频繁。",
+      "speech_style": "轻松幽默、略带威胁性",
+      "relationship_hints": [
+        "与罗伦斯关系亲密",
+        "与熊有互动"
+      ],
+      "evidence": [
+        "volume_01-c005-s002-p001736",
+        "volume_01-c005-s002-p001737",
+        "volume_01-c005-s002-p001742",
+        "volume_01-c005-s002-p001747"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "店老板",
+      "aliases": [],
+      "titles": [
+        "店主"
+      ],
+      "description": "店中的老板，观察赫萝的宿醉状态并发表评论。",
+      "speech_style": "轻松、幽默",
+      "relationship_hints": [
+        "与罗伦斯互动",
+        "提供果汁"
+      ],
+      "evidence": [
+        "volume_01-c005-s002-p001734",
+        "volume_01-c005-s002-p001735"
+      ],
+      "confidence": 0.8
+    }
+  ],
+  "mystery_entities": [
+    {
+      "temporary_name": "熊",
+      "description": "与赫萝一起喝酒的动物，被提及为宿醉的常见对象。",
+      "evidence": [
+        "volume_01-c005-s002-p001739",
+        "volume_01-c005-s002-p001740",
+        "volume_01-c005-s002-p001741",
+        "volume_01-c005-s002-p001742"
+      ],
+      "confidence": 0.7
+    }
+  ],
+  "relationships": [
+    "罗伦斯与赫萝关系亲密",
+    "罗伦斯与店老板有互动",
+    "赫萝与熊有互动"
+  ],
+  "notes": "赫萝提到熊，但熊未在已知角色中出现，可能是后文重要角色。赫萝提到的重要事未明确，可能在后续场景中揭示。"
+}

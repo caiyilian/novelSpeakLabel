@@ -1,0 +1,70 @@
+{
+  "scene_id": "volume_01-c008-s002",
+  "scene_summary": "罗伦斯与马贺特在房间中进行交易和对话，随后有人敲门，暗示有新的事件即将发生。罗伦斯在窗边凝视天空，思考未来。",
+  "active_characters": [
+    "罗伦斯",
+    "马贺特"
+  ],
+  "character_candidates": [
+    {
+      "display_name": "罗伦斯",
+      "aliases": [
+        "罗伦斯先生",
+        "行商人"
+      ],
+      "titles": [
+        "商人",
+        "旅行商人"
+      ],
+      "description": "一位冷静理性的旅行商人，正在与米隆商行的马贺特进行交易。他表现出对开店的期待，并思考未来。",
+      "speech_style": "理性、沉稳、略带幽默",
+      "relationship_hints": [
+        "与马贺特有商业关系",
+        "与赫萝一同旅行"
+      ],
+      "evidence": [
+        "volume_01-c008-s002-p003045",
+        "volume_01-c008-s002-p003046",
+        "volume_01-c008-s002-p003048",
+        "volume_01-c008-s002-p003058"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "马贺特",
+      "aliases": [
+        "行长"
+      ],
+      "titles": [
+        "米隆商行帕兹欧分行行长"
+      ],
+      "description": "米隆商行帕兹欧分行的行长，冷静且自信，与罗伦斯进行交易谈判。",
+      "speech_style": "专业、自信、礼貌",
+      "relationship_hints": [
+        "与罗伦斯有商业关系",
+        "属于米隆商行"
+      ],
+      "evidence": [
+        "volume_01-c008-s002-p003047",
+        "volume_01-c008-s002-p003049",
+        "volume_01-c008-s002-p003050"
+      ],
+      "confidence": 0.9
+    }
+  ],
+  "mystery_entities": [
+    {
+      "temporary_name": "敲门者",
+      "description": "在罗伦斯与马贺特对话时敲门的人，身份不明，可能是新的访客或与罗伦斯有关联的人物。",
+      "evidence": [
+        "volume_01-c008-s002-p003051"
+      ],
+      "confidence": 0.6
+    }
+  ],
+  "relationships": [
+    "罗伦斯与马贺特有商业关系",
+    "罗伦斯与赫萝一同旅行"
+  ],
+  "notes": "场景中暗示有新的访客即将出现，可能与罗伦斯的商业或旅行计划有关。罗伦斯表现出对开店的期待，暗示他正在为未来做准备。"
+}

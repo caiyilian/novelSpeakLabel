@@ -1,0 +1,84 @@
+{
+  "scene_id": "volume_01-c004-s007",
+  "scene_summary": "罗伦斯、赫萝与怀兹在场景中互动。怀兹试图追求赫萝，罗伦斯则表现出不悦。赫萝对怀兹的追求表现出扭捏的态度，但罗伦斯认为她是在故意挑衅。",
+  "active_characters": [
+    "罗伦斯",
+    "赫萝",
+    "怀兹"
+  ],
+  "character_candidates": [
+    {
+      "display_name": "罗伦斯",
+      "aliases": [
+        "小的",
+        "老板"
+      ],
+      "titles": [
+        "中间人",
+        "商人",
+        "旅行商人"
+      ],
+      "description": "冷静理性的旅行商人，对赫萝的身份持怀疑态度，但仍保持互动。他打断怀兹的追求话题，表现出对赫萝的占有欲。",
+      "speech_style": "冷静、理性，略带讽刺和不耐烦",
+      "relationship_hints": [
+        "与赫萝有长期互动",
+        "与怀兹有竞争关系"
+      ],
+      "evidence": [
+        "volume_01-c004-s007-p001436",
+        "volume_01-c004-s007-p001440",
+        "volume_01-c004-s007-p001443"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "赫萝",
+      "aliases": [
+        "咱"
+      ],
+      "titles": [
+        "丰收之神",
+        "神秘少女"
+      ],
+      "description": "自称丰收之神的神秘少女，拥有狼耳和尾巴。她对怀兹的追求表现出扭捏态度，但罗伦斯认为她是在故意挑衅。",
+      "speech_style": "轻松幽默，略带威胁性",
+      "relationship_hints": [
+        "与罗伦斯有长期互动",
+        "被怀兹追求"
+      ],
+      "evidence": [
+        "volume_01-c004-s007-p001432",
+        "volume_01-c004-s007-p001442"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "怀兹",
+      "aliases": [
+        "怀兹"
+      ],
+      "titles": [
+        "兑换商"
+      ],
+      "description": "与罗伦斯有长期合作关系的年轻兑换商，金发，工作认真。他试图追求赫萝，表现出厚脸皮和直接的态度。",
+      "speech_style": "直接、不掩饰情绪，略带挑衅",
+      "relationship_hints": [
+        "与罗伦斯有竞争关系",
+        "追求赫萝"
+      ],
+      "evidence": [
+        "volume_01-c004-s007-p001434",
+        "volume_01-c004-s007-p001438",
+        "volume_01-c004-s007-p001441"
+      ],
+      "confidence": 0.9
+    }
+  ],
+  "mystery_entities": [],
+  "relationships": [
+    "罗伦斯与赫萝有长期互动",
+    "罗伦斯与怀兹有竞争关系",
+    "怀兹追求赫萝"
+  ],
+  "notes": "场景中三人互动明显，怀兹的追求行为引发罗伦斯的不悦，赫萝则表现出轻松幽默的态度。"
+}

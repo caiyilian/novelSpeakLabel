@@ -1,0 +1,96 @@
+{
+  "scene_id": "volume_01-c003-s001",
+  "scene_summary": "罗伦斯和赫萝躲雨进入一间教会，赫萝伪装成人类，罗伦斯试图融入对话。教会中聚集了形形色色的客人，罗伦斯与一对夫妻交谈，试图获取情报。",
+  "active_characters": [
+    "罗伦斯",
+    "赫萝"
+  ],
+  "character_candidates": [
+    {
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": [
+        "旅行商人"
+      ],
+      "description": "冷静且理性的旅行商人，与赫萝一同旅行。在教会中为赫萝的狼耳和尾巴编造谎言，以避免引起怀疑。",
+      "speech_style": "理性、谨慎、略带幽默",
+      "relationship_hints": [
+        "与赫萝有长期旅行关系",
+        "对赫萝的身份持怀疑态度但保持理性"
+      ],
+      "evidence": [
+        "volume_01-c003-s001-p000650",
+        "volume_01-c003-s001-p000651",
+        "volume_01-c003-s001-p000652",
+        "volume_01-c003-s001-p000654",
+        "volume_01-c003-s001-p000660"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "赫萝",
+      "aliases": [
+        "咱"
+      ],
+      "titles": [
+        "贤狼",
+        "丰收之神"
+      ],
+      "description": "自称丰收之神的神秘少女，拥有狼的耳朵和尾巴。在教会中伪装成人类，表现出轻松幽默但略带威胁性的说话风格。",
+      "speech_style": "轻松幽默、略带威胁性",
+      "relationship_hints": [
+        "与罗伦斯一同旅行",
+        "对罗伦斯的怀疑感到好笑"
+      ],
+      "evidence": [
+        "volume_01-c003-s001-p000650",
+        "volume_01-c003-s001-p000653",
+        "volume_01-c003-s001-p000654"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "教会夫妻",
+      "aliases": [
+        "那对夫妻",
+        "有钱人夫妻"
+      ],
+      "titles": [],
+      "description": "一对在教会中占据暖炉正前方位置的夫妻，似乎是捐赠大笔款项给教会的有钱人。",
+      "speech_style": "自然、略带欢迎态度",
+      "relationship_hints": [
+        "与罗伦斯有短暂对话",
+        "对罗伦斯的加入表现出欢迎态度"
+      ],
+      "evidence": [
+        "volume_01-c003-s001-p000659",
+        "volume_01-c003-s001-p000661"
+      ],
+      "confidence": 0.7
+    }
+  ],
+  "mystery_entities": [
+    {
+      "temporary_name": "教会客人1",
+      "description": "教会中的一位客人，与罗伦斯和赫萝同时在场，但未直接互动。",
+      "evidence": [
+        "volume_01-c003-s001-p000656"
+      ],
+      "confidence": 0.6
+    },
+    {
+      "temporary_name": "教会客人2",
+      "description": "教会中的一位客人，与罗伦斯和赫萝同时在场，但未直接互动。",
+      "evidence": [
+        "volume_01-c003-s001-p000656"
+      ],
+      "confidence": 0.6
+    }
+  ],
+  "relationships": [
+    "罗伦斯与赫萝一同旅行",
+    "罗伦斯与教会夫妻有短暂对话",
+    "赫萝伪装成人类以避免引起怀疑"
+  ],
+  "notes": "赫萝在教会中伪装成人类，罗伦斯试图融入对话。教会中有多位客人，但只有夫妻与罗伦斯有直接互动。"
+}

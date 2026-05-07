@@ -1,0 +1,29 @@
+```json
+{
+  "scene_id": "volume_01-c002-s002",
+  "scene_summary": "罗伦斯在河边露宿，思考关于马儿变成人类的传闻，并与他的马儿互动。他感到孤独，决定早睡。当他掀开麻布时，发现了一个令人难以置信的景象。",
+  "active_characters": ["罗伦斯"],
+  "character_candidates": [
+    {
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": ["旅行商人"],
+      "description": "一位旅行商人，独自在河边露宿，思考关于马儿变成人类的传闻，并与他的马儿互动。",
+      "speech_style": "内省、略带幽默、理性思考",
+      "relationship_hints": ["与马儿有长期的互动关系", "表现出对孤独的思考"],
+      "evidence": ["volume_01-c002-s002-p000200", "volume_01-c002-s002-p000202", "volume_01-c002-s002-p000203", "volume_01-c002-s002-p000206", "volume_01-c002-s002-p000210", "volume_01-c002-s002-p000211", "volume_01-c002-s002-p000212", "volume_01-c002-s002-p000213"],
+      "confidence": 0.95
+    }
+  ],
+  "mystery_entities": [
+    {
+      "temporary_name": "神秘生物",
+      "description": "在罗伦斯掀开麻布时出现的难以置信的景象，可能是某种非人类的存在。",
+      "evidence": ["volume_01-c002-s002-p000213", "volume_01-d000047"],
+      "confidence": 0.7
+    }
+  ],
+  "relationships": ["罗伦斯与马儿的长期互动", "罗伦斯与神秘生物的初次接触"],
+  "notes": "场景中出现了一个未命名的神秘存在，可能在后文有重要发展。罗伦斯表现出孤独和对未来的思考，暗示他可能在寻找某种陪伴。"
+}
+```

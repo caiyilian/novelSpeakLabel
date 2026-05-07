@@ -1,0 +1,60 @@
+{
+  "scene_id": "volume_01-c005-s007",
+  "scene_summary": "罗伦斯在沉思赫萝的真实身份时，被马贺特打断，场景围绕赫萝的神秘身份展开。",
+  "active_characters": [
+    "罗伦斯",
+    "马贺特"
+  ],
+  "character_candidates": [
+    {
+      "display_name": "罗伦斯",
+      "aliases": [
+        "罗伦斯先生",
+        "老板"
+      ],
+      "titles": [
+        "中间人",
+        "商人",
+        "行商人"
+      ],
+      "description": "冷静理性的旅行商人，对赫萝的身份持怀疑态度，但仍保持互动。",
+      "speech_style": "理性、冷静、略带忧虑",
+      "relationship_hints": [
+        "与赫萝一同旅行",
+        "对赫萝的身份持怀疑态度"
+      ],
+      "evidence": [
+        "volume_01-c005-s007-p002150",
+        "volume_01-c005-s007-p002152"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "马贺特",
+      "aliases": [
+        "行长"
+      ],
+      "titles": [
+        "米隆商行帕兹欧分行行长"
+      ],
+      "description": "米隆商行帕兹欧分行的行长，冷静且自信，与罗伦斯进行交易谈判。",
+      "speech_style": "专业、冷静、自信",
+      "relationship_hints": [
+        "与罗伦斯有商业往来",
+        "打断罗伦斯的沉思"
+      ],
+      "evidence": [
+        "volume_01-c005-s007-p002152",
+        "volume_01-d000997"
+      ],
+      "confidence": 0.85
+    }
+  ],
+  "mystery_entities": [],
+  "relationships": [
+    "罗伦斯与赫萝一同旅行",
+    "罗伦斯对赫萝身份持怀疑态度",
+    "罗伦斯与马贺特有商业往来"
+  ],
+  "notes": "本场景中，罗伦斯正在思考赫萝的真实身份，而马贺特打断了他的沉思。赫萝虽然未直接出现，但她的身份仍是场景的核心线索。"
+}

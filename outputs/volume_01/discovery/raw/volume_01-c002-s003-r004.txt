@@ -1,0 +1,39 @@
+```json
+{
+  "scene_id": "volume_01-c002-s003",
+  "scene_summary": "罗伦斯与赫萝在对话中探讨赫萝的身份，赫萝自称是丰收之神，但罗伦斯怀疑她可能是帕斯罗村中因外貌异常而被藏匿的村民女孩。赫萝的说话风格轻松幽默，表现出非人类的特征。",
+  "active_characters": ["罗伦斯", "赫萝"],
+  "character_candidates": [
+    {
+      "display_name": "赫萝",
+      "aliases": ["咱"],
+      "titles": ["丰收之神"],
+      "description": "自称丰收之神的神秘少女，拥有狼耳和尾巴，说话轻松幽默，表现出非人类的特征。",
+      "speech_style": "轻松幽默，带有非人类的语气和措辞。",
+      "relationship_hints": ["与罗伦斯有互动，似乎是被他收留的神秘女孩。", "与帕斯罗村的丰收之神有关联。"],
+      "evidence": ["volume_01-c002-s003-p000281", "volume_01-c002-s003-p000284", "volume_01-c002-s003-p000288", "volume_01-c002-s003-p000292"],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": ["旅行商人"],
+      "description": "冷静的旅行商人，对赫萝的身份表示怀疑，推测她可能是帕斯罗村中因外貌异常而被藏匿的村民女孩。",
+      "speech_style": "理性、冷静，带有推理性质。",
+      "relationship_hints": ["与赫萝有互动，似乎是她的发现者和收留者。", "对赫萝的背景进行推测和分析。"],
+      "evidence": ["volume_01-c002-s003-p000280", "volume_01-c002-s003-p000284", "volume_01-c002-s003-p000294"],
+      "confidence": 0.98
+    }
+  ],
+  "mystery_entities": [
+    {
+      "temporary_name": "帕斯罗村丰收之神",
+      "description": "赫萝声称自己是帕斯罗村的丰收之神，但其真实身份尚不明确。",
+      "evidence": ["volume_01-c002-s003-p000283", "volume_01-c002-s003-p000290"],
+      "confidence": 0.75
+    }
+  ],
+  "relationships": ["罗伦斯与赫萝之间存在发现与收留的关系。", "赫萝自称是丰收之神，与帕斯罗村的丰收之神存在潜在关联。"],
+  "notes": "赫萝的说话风格和外貌特征表明她可能不是人类，但她的身份仍需进一步确认。罗伦斯的推理表明他怀疑赫萝是帕斯罗村的异常儿童。"
+}
+```

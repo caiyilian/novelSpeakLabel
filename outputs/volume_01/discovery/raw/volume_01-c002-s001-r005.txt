@@ -1,0 +1,39 @@
+```json
+{
+  "scene_id": "volume_01-c002-s001",
+  "scene_summary": "罗伦斯在前往修道院的路上，与一位骑士对话，讨论关于祭典和教会的敏感问题。他提到祭典的性质、教会的权威变化，以及帕斯罗村的麦田和伯爵的赞助情况。",
+  "active_characters": ["罗伦斯", "骑士"],
+  "character_candidates": [
+    {
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": ["旅行商人", "行商人"],
+      "description": "一位二十五岁的自力更生旅行商人，已有七年行商经验，性格泰然自若。他正在前往修道院的路上，与骑士对话。",
+      "speech_style": "冷静、理性、略带讽刺",
+      "relationship_hints": ["与骑士有短暂互动", "对教会和异教徒问题有见解"],
+      "evidence": ["volume_01-c002-s001-p000135", "volume_01-c002-s001-p000145", "volume_01-d000026"],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "骑士",
+      "aliases": [],
+      "titles": [],
+      "description": "身穿银色盔甲的年轻骑士，态度傲慢但容易被诱惑。他因罗伦斯递给他蜂蜜糖而态度缓和，并询问关于异教徒祭典的消息。",
+      "speech_style": "傲慢、直接",
+      "relationship_hints": ["与罗伦斯有短暂互动", "对教会和异教徒问题敏感"],
+      "evidence": ["volume_01-c002-s001-p000135", "volume_01-d000026"],
+      "confidence": 0.85
+    }
+  ],
+  "mystery_entities": [
+    {
+      "temporary_name": "亚伦多伯爵",
+      "description": "管理帕斯罗村麦田的贵族，喜欢下田耕作，每年赞助祭典。",
+      "evidence": ["volume_01-c002-s001-p000148"],
+      "confidence": 0.75
+    }
+  ],
+  "relationships": ["罗伦斯与骑士有短暂互动", "罗伦斯与亚伦多伯爵无直接互动但提及"],
+  "notes": "场景中未出现赫萝的台词，但罗伦斯的行动和背景暗示她可能在后文出现。"
+}
+```
