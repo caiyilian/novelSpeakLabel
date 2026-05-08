@@ -1,0 +1,42 @@
+```json
+{
+  "scene_id": "volume_01-c004-s004",
+  "scene_summary": "罗伦斯与赫萝在优伦朵酒吧中进行貂皮交易的谈判，赫萝表现出自信和狡黠，而罗伦斯则显得疲惫和无奈。两人在交易中互动频繁，赫萝多次插嘴抬价，最终成功达成交易。",
+  "active_characters": ["罗伦斯", "赫萝", "商行代表"],
+  "character_candidates": [
+    {
+      "display_name": "罗伦斯",
+      "aliases": ["罗伦斯"],
+      "titles": ["旅行商人", "行商人"],
+      "description": "冷静理性的旅行商人，与赫萝一同旅行。在交易中表现出对赫萝策略的无奈与困惑。",
+      "speech_style": "理性、克制、略带疲惫",
+      "relationship_hints": ["与赫萝有亲密关系，是她的旅伴", "与商行代表进行交易"],
+      "evidence": ["volume_01-c004-s004-p001175", "volume_01-c004-s004-p001182", "volume_01-c004-s004-p001184", "volume_01-c004-s004-p001186"],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "赫萝",
+      "aliases": ["咱"],
+      "titles": ["丰收之神", "约伊兹的贤狼"],
+      "description": "自称丰收之神的神秘少女，拥有狼耳和尾巴，说话轻松幽默但略带威胁性。在交易中表现出自信与策略。",
+      "speech_style": "轻松幽默、略带威胁性、自信",
+      "relationship_hints": ["与罗伦斯有亲密关系，是他的旅伴", "主导交易谈判"],
+      "evidence": ["volume_01-c004-s004-p001176", "volume_01-c004-s004-p001178", "volume_01-c004-s004-p001181", "volume_01-c004-s004-p001187"],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "商行代表",
+      "aliases": [],
+      "titles": ["本商行"],
+      "description": "与罗伦斯进行貂皮交易谈判的商行代表，表现出专业和合作态度。",
+      "speech_style": "礼貌、专业",
+      "relationship_hints": ["与罗伦斯进行交易", "被赫萝影响"],
+      "evidence": ["volume_01-c004-s004-p001179"],
+      "confidence": 0.8
+    }
+  ],
+  "mystery_entities": [],
+  "relationships": ["罗伦斯与赫萝是旅伴", "罗伦斯与商行代表进行交易", "赫萝主导交易谈判"],
+  "notes": "赫萝在交易中表现出主导地位，罗伦斯则显得疲惫和无奈。场景中未出现新的神秘人物。"
+}
+```

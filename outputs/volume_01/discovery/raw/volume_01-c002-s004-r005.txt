@@ -1,0 +1,32 @@
+```json
+{
+  "scene_id": "volume_01-c002-s004",
+  "scene_summary": "罗伦斯与赫萝之间展开一段关于赫萝真实身份的对话。赫萝暗示自己可能是狼，但不愿以狼形示人，罗伦斯则表现出怀疑与不安。赫萝以轻松幽默的语气掌控对话节奏，同时透露出对人类反应的敏感与不满。",
+  "active_characters": ["罗伦斯", "赫萝"],
+  "character_candidates": [
+    {
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": ["旅行商人"],
+      "description": "冷静但逐渐感到不安的旅行商人，对赫萝的身份表示怀疑，但仍保持理性。",
+      "speech_style": "紧张、理性、略带不安",
+      "relationship_hints": ["与赫萝有长期互动，表现出信任与怀疑的矛盾心理"],
+      "evidence": ["volume_01-d000121", "volume_01-d000123", "volume_01-d000129"],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "赫萝",
+      "aliases": ["咱"],
+      "titles": ["丰收之神", "约伊兹的贤狼"],
+      "description": "自称丰收之神的神秘少女，拥有狼耳和尾巴，说话轻松幽默但带有威胁性。",
+      "speech_style": "轻松幽默、略带嘲讽、情绪化",
+      "relationship_hints": ["与罗伦斯有长期互动，表现出对他的掌控与信任"],
+      "evidence": ["volume_01-d000122", "volume_01-d000124", "volume_01-d000125", "volume_01-d000126", "volume_01-d000128", "volume_01-d000130"],
+      "confidence": 0.98
+    }
+  ],
+  "mystery_entities": [],
+  "relationships": ["罗伦斯与赫萝之间存在信任与怀疑的复杂关系", "赫萝对罗伦斯表现出一定程度的依赖与掌控"],
+  "notes": "赫萝在对话中多次使用自称‘咱’，暗示其非人类身份。罗伦斯的反应表明他仍对赫萝的真实身份存疑，但已逐渐接受她的存在。"
+}
+```

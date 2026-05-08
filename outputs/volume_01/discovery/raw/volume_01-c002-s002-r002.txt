@@ -1,0 +1,53 @@
+```json
+{
+  "scene_id": "volume_01-c002-s002",
+  "scene_summary": "罗伦斯在帕斯罗村的麦田中观察村民举行的丰收祭典，叶勒被村民视为丰收之神附身的载体，被追逐并准备关入谷仓。罗伦斯对此感到困扰，因为他需要与叶勒交谈，但时间紧迫。",
+  "active_characters": ["罗伦斯", "叶勒", "赫萝"],
+  "character_candidates": [
+    {
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": ["旅行商人"],
+      "description": "一位旅行商人，正在帕斯罗村的麦田中观察村民的丰收祭典。他不关心宗教仪式，但对叶勒被关入谷仓感到困扰。",
+      "speech_style": "冷静、理性，略带讽刺。",
+      "relationship_hints": ["与叶勒有交谈的意图", "对赫萝的存在感到困惑"],
+      "evidence": ["volume_01-c002-s002-p000170", "volume_01-c002-s002-p000181", "volume_01-c002-s002-p000184"],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "叶勒",
+      "aliases": [],
+      "titles": [],
+      "description": "帕斯罗村的农夫，今年雇用年轻人种田，是村民丰收祭典的中心人物。他被村民认为是丰收之神附身的载体。",
+      "speech_style": "热情、激动，带有仪式感。",
+      "relationship_hints": ["与罗伦斯有交谈的意图", "被村民追逐"],
+      "evidence": ["volume_01-c002-s002-p000170", "volume_01-c002-s002-p000176", "volume_01-c002-s002-p000181"],
+      "confidence": 0.9
+    },
+    {
+      "display_name": "赫萝",
+      "aliases": [],
+      "titles": ["丰收之神"],
+      "description": "被村民认为附身在叶勒身上的丰收之神，是祭典的核心人物。",
+      "speech_style": "未直接说话，但通过村民的呼喊体现其存在。",
+      "relationship_hints": ["与叶勒有附身关系", "与罗伦斯有潜在互动"],
+      "evidence": ["volume_01-c002-s002-p000172", "volume_01-c002-s002-p000173", "volume_01-c002-s002-p000174", "volume_01-c002-s002-p000175"],
+      "confidence": 0.85
+    }
+  ],
+  "mystery_entities": [
+    {
+      "temporary_name": "村民",
+      "description": "参与丰收祭典的村民，集体呼喊赫萝的名字并追逐叶勒。",
+      "evidence": ["volume_01-c002-s002-p000171", "volume_01-c002-s002-p000172", "volume_01-c002-s002-p000173", "volume_01-c002-s002-p000174", "volume_01-c002-s002-p000175"],
+      "confidence": 0.7
+    }
+  ],
+  "relationships": [
+    "罗伦斯与叶勒有交谈的意图",
+    "叶勒被村民视为丰收之神的载体",
+    "赫萝通过叶勒体现存在"
+  ],
+  "notes": "赫萝未直接说话，但通过村民的呼喊体现其存在。村民作为一个集体角色参与祭典，但未被单独命名。"
+}
+```

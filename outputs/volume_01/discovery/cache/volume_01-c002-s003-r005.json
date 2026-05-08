@@ -1,0 +1,57 @@
+{
+  "scene_id": "volume_01-c002-s003",
+  "scene_summary": "罗伦斯与赫萝在对话中探讨赫萝的出生地和经历。赫萝提到自己来自遥远的北方大地，罗伦斯则分享了自己在极北地区的行商经验。赫萝的反应自然，似乎并非刻意编造。",
+  "active_characters": [
+    "罗伦斯",
+    "赫萝"
+  ],
+  "character_candidates": [
+    {
+      "display_name": "赫萝",
+      "aliases": [
+        "咱"
+      ],
+      "titles": [
+        "丰收之神"
+      ],
+      "description": "自称来自遥远北方的神秘少女，拥有狼耳和尾巴，说话轻松幽默，似乎对罗伦斯的怀疑感到好笑。",
+      "speech_style": "轻松幽默，带有神秘感",
+      "relationship_hints": [
+        "与罗伦斯对话，表现出信任与互动"
+      ],
+      "evidence": [
+        "volume_01-c002-s003-p000297",
+        "volume_01-c002-s003-p000299",
+        "volume_01-c002-s003-p000306",
+        "volume_01-c002-s003-p000309"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": [
+        "旅行商人",
+        "行商人"
+      ],
+      "description": "一位冷静且经验丰富的旅行商人，对赫萝的背景表示怀疑，但愿意通过对话进一步了解。",
+      "speech_style": "理性、冷静，略带试探性",
+      "relationship_hints": [
+        "与赫萝互动频繁，表现出关心与怀疑"
+      ],
+      "evidence": [
+        "volume_01-c002-s003-p000296",
+        "volume_01-c002-s003-p000300",
+        "volume_01-c002-s003-p000302",
+        "volume_01-c002-s003-p000304",
+        "volume_01-c002-s003-p000307"
+      ],
+      "confidence": 0.98
+    }
+  ],
+  "mystery_entities": [],
+  "relationships": [
+    "罗伦斯与赫萝之间存在信任与怀疑的复杂关系"
+  ],
+  "notes": "赫萝的出生地和经历仍存疑，但她的反应自然，未表现出刻意隐瞒的迹象。罗伦斯的行商经验为对话提供了背景支撑。"
+}

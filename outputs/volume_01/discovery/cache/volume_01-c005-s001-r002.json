@@ -1,0 +1,59 @@
+{
+  "scene_id": "volume_01-c005-s001",
+  "scene_summary": "罗伦斯与赫萝在对话中讨论葡萄酒的品质，赫萝因罗伦斯称她身份高而感到不悦，表现出情绪波动。",
+  "active_characters": [
+    "罗伦斯",
+    "赫萝"
+  ],
+  "character_candidates": [
+    {
+      "display_name": "罗伦斯",
+      "aliases": [
+        "老板"
+      ],
+      "titles": [
+        "商人",
+        "旅行商人",
+        "行商人"
+      ],
+      "description": "冷静理性的旅行商人，与赫萝一同旅行。在本场景中解释葡萄酒的品质，并试图理解赫萝的情绪。",
+      "speech_style": "理性、解释性强、语气轻松",
+      "relationship_hints": [
+        "与赫萝有长期互动，表现出关心和理解"
+      ],
+      "evidence": [
+        "volume_01-c005-s001-p001625",
+        "volume_01-c005-s001-p001628",
+        "volume_01-c005-s001-p001635"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "赫萝",
+      "aliases": [
+        "咱"
+      ],
+      "titles": [
+        "丰收之神",
+        "神秘少女",
+        "约伊兹的贤狼"
+      ],
+      "description": "自称丰收之神的神秘少女，拥有狼耳和尾巴。在本场景中因罗伦斯称她身份高而感到不悦，表现出情绪波动。",
+      "speech_style": "轻松幽默但略带威胁性，情绪多变",
+      "relationship_hints": [
+        "与罗伦斯有长期互动，表现出依赖和情绪波动"
+      ],
+      "evidence": [
+        "volume_01-c005-s001-p001627",
+        "volume_01-c005-s001-p001629",
+        "volume_01-c005-s001-p001633"
+      ],
+      "confidence": 0.95
+    }
+  ],
+  "mystery_entities": [],
+  "relationships": [
+    "罗伦斯与赫萝之间存在长期互动和情感联系"
+  ],
+  "notes": "赫萝对身份的敏感反应暗示了她对自身身份的复杂态度，罗伦斯表现出理解和关心。场景中未出现新角色，但赫萝的情绪变化值得关注。"
+}

@@ -1,0 +1,32 @@
+```json
+{
+  "scene_id": "volume_01-c002-s006",
+  "scene_summary": "罗伦斯在清晨醒来，发现赫萝已经起床并穿着他的上等衣物。赫萝不以为意，反而得意地展示自己的穿着，而罗伦斯虽然感到惊讶，却没有生气。",
+  "active_characters": ["罗伦斯", "赫萝"],
+  "character_candidates": [
+    {
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": ["旅行商人"],
+      "description": "一位冷静且理性的旅行商人，对赫萝的行为感到惊讶但并未生气。他拥有上等衣物，对穿着有讲究。",
+      "speech_style": "理性、克制、略带责备",
+      "relationship_hints": ["与赫萝有长期的旅行关系", "对赫萝的行为感到惊讶但未表现出强烈情绪"],
+      "evidence": ["volume_01-c002-s006-p000540", "volume_01-c002-s006-p000542", "volume_01-c002-s006-p000543", "volume_01-c002-s006-p000549"],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "赫萝",
+      "aliases": ["咱"],
+      "titles": ["丰收之神", "贤狼"],
+      "description": "自称丰收之神的神秘少女，拥有狼耳和尾巴。她大胆、自信，不拘小节，甚至擅自穿着罗伦斯的衣物。",
+      "speech_style": "轻松、自信、略带挑衅",
+      "relationship_hints": ["与罗伦斯有长期的旅行关系", "对罗伦斯的反应显得得意"],
+      "evidence": ["volume_01-c002-s006-p000541", "volume_01-c002-s006-p000544", "volume_01-c002-s006-p000545"],
+      "confidence": 0.95
+    }
+  ],
+  "mystery_entities": [],
+  "relationships": ["罗伦斯与赫萝之间存在长期的旅行伙伴关系", "赫萝对罗伦斯的物品表现出随意的态度"],
+  "notes": "赫萝的行为显示出她对罗伦斯的物品并不在意，甚至带有某种自信和挑衅意味。罗伦斯虽然惊讶，但并未表现出强烈的负面情绪，暗示两人之间有某种默契或信任。"
+}
+```

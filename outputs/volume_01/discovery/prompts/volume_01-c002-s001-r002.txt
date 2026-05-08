@@ -1,0 +1,160 @@
+你是轻小说说话人标注项目的阶段 1：角色发现与建库助手。
+你的任务不是给每句台词最终打标签，而是从当前场景中发现角色、别名、称谓、关系线索、说话风格线索、场景摘要，以及尚未命名但可追踪的神秘人物。
+
+规则：
+1. 只输出严格 JSON，不要 Markdown，不要解释性前后缀。
+2. 不要编造没有文本证据的人名。
+3. 如果人物未命名但看起来可在后文追踪，放入 mystery_entities。
+4. character_candidates 只放可以从文本中看到名字、称谓或稳定身份线索的人物。
+5. evidence 使用 paragraph_id 或 dialogue_id 相关的短证据，不要长篇复制原文。
+
+输出 JSON 结构：
+{
+  "scene_id": "string",
+  "scene_summary": "string",
+  "active_characters": ["string"],
+  "character_candidates": [
+    {
+      "display_name": "string",
+      "aliases": ["string"],
+      "titles": ["string"],
+      "description": "string",
+      "speech_style": "string",
+      "relationship_hints": ["string"],
+      "evidence": ["string"],
+      "confidence": 0.0
+    }
+  ],
+  "mystery_entities": [
+    {
+      "temporary_name": "string",
+      "description": "string",
+      "evidence": ["string"],
+      "confidence": 0.0
+    }
+  ],
+  "relationships": ["string"],
+  "notes": "string"
+}
+
+输入场景 JSON：
+{
+  "volume_id": "volume_01",
+  "scene": {
+    "request_id": "volume_01-c002-s001-r002",
+    "scene_id": "volume_01-c002-s001",
+    "chapter_id": "volume_01-c002",
+    "chapter_title": "第一幕",
+    "chunk_index": 2,
+    "chunk_count": 6
+  },
+  "paragraphs": [
+    {
+      "paragraph_id": "volume_01-c002-s001-p000090",
+      "text": "单纯就买卖的对象来说，修道士比盗贼还要恶劣。不过，只要能够和他们做生意，对商人来说还是有好处。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000091",
+      "text": "因为这个缘故，罗伦斯还是恋恋不舍地望着修道院，但是他突然瞇起眼睛。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000092",
+      "text": "修道院那头，有人正朝向这边挥手。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000093",
+      "text": "「怎么回事？」"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000094",
+      "text": "那人看起来不像男仆，因为男仆身上穿的应该是肮脏的深褐色工作服，而正在挥手的人穿着看似灰色的衣服。虽然要特地走到那头有些麻烦，但就这么漠视的话，恐怕会造成日后的困扰。罗伦斯不得已，只好把马车转向修道院的方向。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000095",
+      "text": "马车转向后，原本挥着手的人可能是发现罗伦斯朝自己的方向走来，便停止挥手，但也没有走向罗伦斯的意思。看来，他要等罗伦斯自己走到修道院。教会相关人士的态度傲慢已是司空见惯的事，罗伦斯不会为了这点小事生气。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000096",
+      "text": "不过，在缓缓靠近修道院，清楚看见那人的身影后，罗伦斯不禁发出声音说："
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000097",
+      "text": "「……骑士？」"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000098",
+      "text": "起初罗伦斯心想：骑士怎么可能会出现在这里？但靠近后他发现确实是名骑士，原来看起来灰灰的衣服是银色的盔甲。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000099",
+      "text": "「你是什么人？」"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000100",
+      "text": "骑士在罗伦斯到了两人要交谈还稍嫌远的距离时，便如此大喊。那语气仿佛自己不用报上名来，每个人也该认得他似的。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000101",
+      "text": "「我是旅行商人罗伦斯，有什么能为您效劳的吗？」"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000102",
+      "text": "修道院已近在眼前，往南方延伸的田地里，正在耕作的男仆寥寥可数。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000103",
+      "text": "罗伦斯发现骑士不止一名，还有一名骑士站在修道院另一头，说不定骑士们是在站岗巡视。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000104",
+      "text": "「旅行商人？你来的方向应该没有任何城镇。」"
+    }
+  ],
+  "dialogues": [
+    {
+      "dialogue_id": "volume_01-d000006",
+      "paragraph_id": "volume_01-c002-s001-p000093",
+      "text": "怎么回事？"
+    },
+    {
+      "dialogue_id": "volume_01-d000007",
+      "paragraph_id": "volume_01-c002-s001-p000097",
+      "text": "……骑士？"
+    },
+    {
+      "dialogue_id": "volume_01-d000008",
+      "paragraph_id": "volume_01-c002-s001-p000099",
+      "text": "你是什么人？"
+    },
+    {
+      "dialogue_id": "volume_01-d000009",
+      "paragraph_id": "volume_01-c002-s001-p000101",
+      "text": "我是旅行商人罗伦斯，有什么能为您效劳的吗？"
+    },
+    {
+      "dialogue_id": "volume_01-d000010",
+      "paragraph_id": "volume_01-c002-s001-p000104",
+      "text": "旅行商人？你来的方向应该没有任何城镇。"
+    }
+  ],
+  "known_characters": [
+    {
+      "entity_id": "char_0001",
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": [
+        "行商人"
+      ],
+      "description": "一位行商人，发现并收留了赫萝，决定与她一同旅行。 / 一位二十五岁的自力更生旅行商人，已有七年行商经验，性格泰然自若。"
+    },
+    {
+      "entity_id": "char_0002",
+      "display_name": "赫萝",
+      "aliases": [],
+      "titles": [
+        "丰收之神"
+      ],
+      "description": "自称是丰收之神的少女，拥有狼的耳朵和尾巴，说话狡诈。"
+    }
+  ]
+}

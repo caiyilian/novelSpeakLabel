@@ -1,0 +1,46 @@
+```json
+{
+  "scene_id": "volume_01-c004-s003",
+  "scene_summary": "罗伦斯来到米隆商行，与负责鉴定商品的男子进行皮草交易。赫萝随行在旁。商行作风直接，双方迅速进入交易谈判。罗伦斯展示皮草并强调其品质，对方则表现出专业且谨慎的态度。",
+  "active_characters": ["罗伦斯", "赫萝", "鉴定商品的采购人员"],
+  "character_candidates": [
+    {
+      "display_name": "罗伦斯",
+      "aliases": ["罗伦斯"],
+      "titles": ["行商人", "经验丰富的商人"],
+      "description": "正在米隆商行推销皮草的旅行商人，与赫萝一同行动。",
+      "speech_style": "冷静、理性、专业，善于强调商品价值。",
+      "relationship_hints": ["与赫萝一同旅行", "曾与本商行做过麦子交易"],
+      "evidence": ["volume_01-c004-s003-p001079", "volume_01-d000450", "volume_01-d000452"],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "赫萝",
+      "aliases": ["咱"],
+      "titles": ["丰收之神", "约伊兹的贤狼"],
+      "description": "与罗伦斯一同前往商行的神秘少女，拥有狼耳和尾巴。",
+      "speech_style": "未直接发言，但行为轻松幽默，略带威胁性。",
+      "relationship_hints": ["与罗伦斯一同旅行", "对商业活动表现出兴趣"],
+      "evidence": ["volume_01-c004-s003-p001083", "volume_01-c004-s003-p001091"],
+      "confidence": 0.9
+    },
+    {
+      "display_name": "鉴定商品的采购人员",
+      "aliases": [],
+      "titles": ["米隆商行店员", "鉴定商品的采购人员"],
+      "description": "负责鉴定罗伦斯带来的皮草，作风直接且专业。",
+      "speech_style": "直接、务实、专业，注重商品质量。",
+      "relationship_hints": ["与罗伦斯进行交易", "三年前曾与罗伦斯交易麦子"],
+      "evidence": ["volume_01-d000449", "volume_01-d000451", "volume_01-d000453", "volume_01-d000454", "volume_01-d000455"],
+      "confidence": 0.85
+    }
+  ],
+  "mystery_entities": [],
+  "relationships": [
+    "罗伦斯与赫萝一同旅行",
+    "罗伦斯与鉴定商品的采购人员进行交易",
+    "罗伦斯曾与鉴定商品的采购人员交易麦子"
+  ],
+  "notes": "本场景中，罗伦斯与商行采购人员的互动显示出其作为经验丰富的商人的特质。赫萝虽未发言，但其存在和行为暗示了她与罗伦斯的密切关系。采购人员的直接作风与罗伦斯的策略性回应形成对比，为后续谈判埋下伏笔。"
+}
+```

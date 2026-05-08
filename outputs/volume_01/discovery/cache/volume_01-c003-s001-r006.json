@@ -1,0 +1,50 @@
+{
+  "scene_id": "volume_01-c003-s001",
+  "scene_summary": "罗伦斯向一位来自佩连佐的男子解释了汇兑体制的运作方式，男子对此感到惊讶并提出疑问。",
+  "active_characters": [
+    "罗伦斯",
+    "佩连佐男子"
+  ],
+  "character_candidates": [
+    {
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": [
+        "旅行商人",
+        "行商人"
+      ],
+      "description": "一位冷静且理性的旅行商人，对商业制度有深入理解，并能清晰地向他人解释。",
+      "speech_style": "理性、清晰、有条理",
+      "relationship_hints": [
+        "与佩连佐男子进行商业知识的交流"
+      ],
+      "evidence": [
+        "volume_01-d000232",
+        "volume_01-c003-s001-p000666"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "佩连佐男子",
+      "aliases": [],
+      "titles": [
+        "葡萄园主人"
+      ],
+      "description": "来自佩连佐的男子，对罗伦斯提到的汇兑体制感到惊讶，并询问是否适用于他的葡萄园。",
+      "speech_style": "惊讶、好奇、略带困惑",
+      "relationship_hints": [
+        "与罗伦斯进行商业知识的交流"
+      ],
+      "evidence": [
+        "volume_01-d000233",
+        "volume_01-d000234"
+      ],
+      "confidence": 0.85
+    }
+  ],
+  "mystery_entities": [],
+  "relationships": [
+    "罗伦斯与佩连佐男子进行商业知识的交流"
+  ],
+  "notes": "场景中未出现赫萝或其他已知角色，主要聚焦于罗伦斯与一位来自佩连佐的男子之间的对话。"
+}

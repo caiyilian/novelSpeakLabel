@@ -1,0 +1,177 @@
+你是轻小说说话人标注项目的阶段 1：角色发现与建库助手。
+你的任务不是给每句台词最终打标签，而是从当前场景中发现角色、别名、称谓、关系线索、说话风格线索、场景摘要，以及尚未命名但可追踪的神秘人物。
+
+规则：
+1. 只输出严格 JSON，不要 Markdown，不要解释性前后缀。
+2. 不要编造没有文本证据的人名。
+3. 如果人物未命名但看起来可在后文追踪，放入 mystery_entities。
+4. character_candidates 只放可以从文本中看到名字、称谓或稳定身份线索的人物。
+5. evidence 使用 paragraph_id 或 dialogue_id 相关的短证据，不要长篇复制原文。
+
+输出 JSON 结构：
+{
+  "scene_id": "string",
+  "scene_summary": "string",
+  "active_characters": ["string"],
+  "character_candidates": [
+    {
+      "display_name": "string",
+      "aliases": ["string"],
+      "titles": ["string"],
+      "description": "string",
+      "speech_style": "string",
+      "relationship_hints": ["string"],
+      "evidence": ["string"],
+      "confidence": 0.0
+    }
+  ],
+  "mystery_entities": [
+    {
+      "temporary_name": "string",
+      "description": "string",
+      "evidence": ["string"],
+      "confidence": 0.0
+    }
+  ],
+  "relationships": ["string"],
+  "notes": "string"
+}
+
+输入场景 JSON：
+{
+  "volume_id": "volume_01",
+  "scene": {
+    "request_id": "volume_01-c002-s002-r005",
+    "scene_id": "volume_01-c002-s002",
+    "chapter_id": "volume_01-c002",
+    "chapter_title": "第一幕",
+    "chunk_index": 5,
+    "chunk_count": 6
+  },
+  "paragraphs": [
+    {
+      "paragraph_id": "volume_01-c002-s002-p000215",
+      "text": "竟然有人捷足先登。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s002-p000216",
+      "text": "「喂！」"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s002-p000217",
+      "text": "罗伦斯不确定自己有没有喊出声。他心想自己可能单纯只是受到惊吓，也或许是过度寂寞而产生幻觉。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s002-p000218",
+      "text": "然而，不管他用力甩头还是搓揉眼睛，捷足先登的女孩依旧在眼前。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s002-p000219",
+      "text": "有着美丽脸孔的女孩睡得香甜的模样，让人有些不忍心叫醒她。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s002-p000220",
+      "text": "「喂！我说你啊！」"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s002-p000221",
+      "text": "尽管不忍心，罗伦斯还是打起精神开口说道。罗伦斯非得搞清楚女孩睡在他的马车上有什么企图。对方说不定是从村落离家出走的女孩，罗伦斯可不想牵涉上麻烦事。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s002-p000222",
+      "text": "「……嗯唔？」"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s002-p000223",
+      "text": "随着罗伦斯的声音，女孩闭着双眼、慢了半拍做出反应，她的声音听来显得毫无防备。对于只光顾过城里妓院的旅行商人来说，那是会让他们感到昏眩的甜美声音。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s002-p000224",
+      "text": "而且，在月光笼罩下裹着貂皮睡觉的女孩，看起来虽然年轻，却富有惊人的魅力。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s002-p000225",
+      "text": "罗伦斯不自觉地咽下口水，不过这反倒让他立刻冷静下来。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s002-p000226",
+      "text": "倘若如此美丽的女孩是名风尘女子，要是随随便便碰了她，还不知道会被勒索多少钱呢。只要牵扯到钱，那比在教会祈祷更能让自己冷静。罗伦斯一下子就恢复平常心，他开口说："
+    },
+    {
+      "paragraph_id": "volume_01-c002-s002-p000227",
+      "text": "「喂！起床啊！你在我的马车上做什么？」"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s002-p000228",
+      "text": "然而，女孩却完全没有起床的意思。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s002-p000229",
+      "text": "看着丝毫不想起床的女孩，怒气难抑的罗伦斯抓住支撑女孩头部的貂皮，用力一拉。女孩的头部顿时失去支撑，掉进貂皮缝里，这时总算听见女孩显得不悦的声音。"
+    }
+  ],
+  "dialogues": [
+    {
+      "dialogue_id": "volume_01-d000048",
+      "paragraph_id": "volume_01-c002-s002-p000216",
+      "text": "喂！"
+    },
+    {
+      "dialogue_id": "volume_01-d000049",
+      "paragraph_id": "volume_01-c002-s002-p000220",
+      "text": "喂！我说你啊！"
+    },
+    {
+      "dialogue_id": "volume_01-d000050",
+      "paragraph_id": "volume_01-c002-s002-p000222",
+      "text": "……嗯唔？"
+    },
+    {
+      "dialogue_id": "volume_01-d000051",
+      "paragraph_id": "volume_01-c002-s002-p000227",
+      "text": "喂！起床啊！你在我的马车上做什么？"
+    }
+  ],
+  "known_characters": [
+    {
+      "entity_id": "char_0001",
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": [
+        "旅行商人",
+        "行商人"
+      ],
+      "description": "一位行商人，发现并收留了赫萝，决定与她一同旅行。 / 一位二十五岁的自力更生旅行商人，已有七年行商经验，性格泰然自若。 / 一位旅行商人，正在前往修道院的路上，与骑士对话。 / 一位行商人，正在前往修道院的路上，与骑士对话。他从容应对骑士的傲慢态度，并用蜂蜜糖和貂皮吸引对方的注意。 / 一位机智的旅行商人，与骑士互动时表现出从容与策略。他使用蜂蜜糖和貂皮吸引骑士的注意，并巧妙地应对对方的提问。 / 一位二十五岁的自力更生旅行商人，已有七年行商经验，性格泰然自若。他正在前往修道院的路上，与骑士对话。 / 一位行商人，正在帕斯罗村的麦田中与农夫交谈。 / 一位行商人，正在前往叶勒的麦田，观察村民的丰收祭典。 / 一位旅行商人，正在帕斯罗村的麦田中观察村民的丰收祭典。他不关心宗教仪式，但对叶勒被关入谷仓感到困扰。 / 二十五岁的旅行商人，独自一人踏上旅途，思考未来与孤独。 / 一位旅行商人，独自在河边露宿，思考关于马儿变成人类的传闻，并与他的马儿互动。"
+    },
+    {
+      "entity_id": "char_0002",
+      "display_name": "赫萝",
+      "aliases": [],
+      "titles": [
+        "丰收之神"
+      ],
+      "description": "自称是丰收之神的少女，拥有狼的耳朵和尾巴，说话狡诈。 / 被村民认为附身在叶勒身上的丰收之神，是祭典的核心人物。"
+    },
+    {
+      "entity_id": "char_0003",
+      "display_name": "骑士",
+      "aliases": [],
+      "titles": [],
+      "description": "身穿银色盔甲的骑士，站在修道院附近，态度傲慢，与罗伦斯对话。 / 身穿银色盔甲的下级骑士，态度傲慢但容易被诱惑。他与罗伦斯短暂互动后放行。 / 一位年轻骑士，身穿银色盔甲，态度傲慢但容易被诱惑。他因罗伦斯递给他蜂蜜糖而态度缓和，并询问关于异教徒祭典的消息。 / 身穿银色盔甲的年轻骑士，态度傲慢但容易被诱惑。他因罗伦斯递给他蜂蜜糖而态度缓和，并询问关于异教徒祭典的消息。"
+    },
+    {
+      "entity_id": "char_0004",
+      "display_name": "叶勒",
+      "aliases": [],
+      "titles": [],
+      "description": "帕斯罗村的农夫，今年雇用年轻人种田。 / 帕斯罗村的农夫，今年雇用年轻人种田，是村民丰收祭典的中心人物。 / 帕斯罗村的农夫，今年雇用年轻人种田，是村民丰收祭典的中心人物。他被村民认为是丰收之神附身的载体。 / 帕斯罗村的农夫，曾与罗伦斯交易麦子，对罗伦斯怀有感恩之心。"
+    },
+    {
+      "entity_id": "char_0005",
+      "display_name": "农夫",
+      "aliases": [],
+      "titles": [],
+      "description": "一位晒得黝黑的农夫，与罗伦斯有互动，笑容真诚。"
+    }
+  ]
+}

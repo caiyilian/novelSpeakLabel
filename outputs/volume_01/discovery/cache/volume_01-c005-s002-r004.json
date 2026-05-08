@@ -1,0 +1,79 @@
+{
+  "scene_id": "volume_01-c005-s002",
+  "scene_summary": "罗伦斯和赫萝在一家店中休息，赫萝因宿醉显得虚弱无力。罗伦斯与店老板交谈，支付了苹果汁和面包的费用，并建议两人在此休息。",
+  "active_characters": [
+    "罗伦斯",
+    "赫萝",
+    "店老板"
+  ],
+  "character_candidates": [
+    {
+      "display_name": "罗伦斯",
+      "aliases": [
+        "老板"
+      ],
+      "titles": [
+        "旅行商人",
+        "经验丰富的商人"
+      ],
+      "description": "冷静理性的旅行商人，与赫萝一同旅行。在本场景中与店老板交谈，支付费用，并建议两人休息。",
+      "speech_style": "冷静、理性、简洁",
+      "relationship_hints": [
+        "与赫萝一同旅行",
+        "对赫萝的状况表示关心"
+      ],
+      "evidence": [
+        "volume_01-c005-s002-p001720",
+        "volume_01-c005-s002-p001726",
+        "volume_01-c005-s002-p001732"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "赫萝",
+      "aliases": [
+        "咱"
+      ],
+      "titles": [
+        "丰收之神",
+        "神秘少女"
+      ],
+      "description": "自称丰收之神的神秘少女，拥有狼耳和尾巴。在本场景中因宿醉显得虚弱，趴在桌上。",
+      "speech_style": "轻松幽默但略带威胁性",
+      "relationship_hints": [
+        "与罗伦斯一同旅行",
+        "对罗伦斯的关心表现出调侃态度"
+      ],
+      "evidence": [
+        "volume_01-c005-s002-p001719",
+        "volume_01-c005-s002-p001722"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "店老板",
+      "aliases": [],
+      "titles": [
+        "店主"
+      ],
+      "description": "店中的老板，观察赫萝的宿醉状态并发表评论。",
+      "speech_style": "温和、观察力强",
+      "relationship_hints": [
+        "对赫萝的状况表示理解",
+        "对旅行商人有经验"
+      ],
+      "evidence": [
+        "volume_01-c005-s002-p001728",
+        "volume_01-c005-s002-p001733"
+      ],
+      "confidence": 0.8
+    }
+  ],
+  "mystery_entities": [],
+  "relationships": [
+    "罗伦斯与赫萝一同旅行",
+    "罗伦斯与店老板有交易互动",
+    "赫萝与店老板有间接互动"
+  ],
+  "notes": "赫萝在本场景中表现出宿醉状态，罗伦斯表现出对她的关心。店老板对赫萝的状况表示理解，并建议两人休息。"
+}

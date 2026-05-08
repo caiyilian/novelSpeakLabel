@@ -1,0 +1,32 @@
+```json
+{
+  "scene_id": "volume_01-c003-s003",
+  "scene_summary": "罗伦斯与赫萝在对话中讨论如何应对杰廉的提议。赫萝表现出狡黠和自信，而罗伦斯则显得无奈和懊恼。两人之间有明显的互动和情感张力，赫萝的言语中带有挑衅和幽默，罗伦斯则表现出对赫萝的不信任和困扰。",
+  "active_characters": ["罗伦斯", "赫萝"],
+  "character_candidates": [
+    {
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": ["旅行商人"],
+      "description": "冷静且理性的旅行商人，对赫萝的身份持怀疑态度，但仍保持理性。他表现出对赫萝的不信任和困扰。",
+      "speech_style": "理性、冷静、略带无奈",
+      "relationship_hints": ["与赫萝有长期互动，表现出对她的不信任和困扰"],
+      "evidence": ["volume_01-c003-s003-p000780", "volume_01-c003-s003-p000786", "volume_01-c003-s003-p000791", "volume_01-c003-s003-p000793"],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "赫萝",
+      "aliases": ["咱"],
+      "titles": ["贤狼", "丰收之神"],
+      "description": "自称丰收之神的神秘少女，拥有狼的耳朵和尾巴，说话狡诈且轻松幽默。她表现出自信和挑衅的特质。",
+      "speech_style": "轻松幽默、略带威胁性",
+      "relationship_hints": ["与罗伦斯有长期互动，表现出对他的调侃和挑衅"],
+      "evidence": ["volume_01-c003-s003-p000781", "volume_01-c003-s003-p000783", "volume_01-c003-s003-p000787", "volume_01-c003-s003-p000792"],
+      "confidence": 0.95
+    }
+  ],
+  "mystery_entities": [],
+  "relationships": ["罗伦斯与赫萝之间存在长期互动，赫萝对罗伦斯表现出调侃和挑衅，罗伦斯则表现出不信任和困扰"],
+  "notes": "本场景中没有出现未命名但可追踪的神秘人物。罗伦斯和赫萝的互动清晰，且已有明确身份和描述。"
+}
+```

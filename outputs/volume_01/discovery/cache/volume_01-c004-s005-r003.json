@@ -1,0 +1,84 @@
+{
+  "scene_id": "volume_01-c004-s005",
+  "scene_summary": "罗伦斯与杰廉就银币含银量的情报交易进行谈判。杰廉表现出谨慎和不自信，而罗伦斯则冷静且理性地分析对方的提议。",
+  "active_characters": [
+    "罗伦斯",
+    "杰廉",
+    "赫萝"
+  ],
+  "character_candidates": [
+    {
+      "display_name": "罗伦斯",
+      "aliases": [
+        "老板"
+      ],
+      "titles": [
+        "商人",
+        "旅行商人",
+        "情报贩子"
+      ],
+      "description": "冷静且理性的旅行商人，正在与杰廉谈判银币含银量的情报交易。",
+      "speech_style": "冷静、理性、略带讽刺",
+      "relationship_hints": [
+        "与赫萝同行",
+        "对杰廉持怀疑态度"
+      ],
+      "evidence": [
+        "volume_01-c004-s005-p001269",
+        "volume_01-d000551",
+        "volume_01-d000556",
+        "volume_01-d000559",
+        "volume_01-d000561"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "杰廉",
+      "aliases": [],
+      "titles": [
+        "情报贩子"
+      ],
+      "description": "提供银币含银量情报的中间人，表现出谨慎和不自信。",
+      "speech_style": "谦卑、谨慎、略带紧张",
+      "relationship_hints": [
+        "与罗伦斯进行交易",
+        "对罗伦斯的反应感到不安"
+      ],
+      "evidence": [
+        "volume_01-c004-s005-p001270",
+        "volume_01-d000552",
+        "volume_01-d000554",
+        "volume_01-d000558",
+        "volume_01-d000560"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "display_name": "赫萝",
+      "aliases": [
+        "咱"
+      ],
+      "titles": [
+        "丰收之神",
+        "神秘少女"
+      ],
+      "description": "与罗伦斯同行的神秘少女，拥有狼耳和尾巴，未直接参与对话。",
+      "speech_style": "轻松幽默、略带威胁性",
+      "relationship_hints": [
+        "与罗伦斯同行",
+        "被杰廉瞄了一眼"
+      ],
+      "evidence": [
+        "volume_01-c004-s005-p001269"
+      ],
+      "confidence": 0.9
+    }
+  ],
+  "mystery_entities": [],
+  "relationships": [
+    "罗伦斯与杰廉进行情报交易谈判",
+    "罗伦斯对杰廉的提议持怀疑态度",
+    "赫萝在场但未参与对话"
+  ],
+  "notes": "杰廉是新出现的角色，与罗伦斯进行交易。赫萝虽在场但未发言，可能在后文有更多互动。"
+}

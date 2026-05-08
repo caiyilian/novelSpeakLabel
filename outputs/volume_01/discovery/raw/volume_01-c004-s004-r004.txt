@@ -1,0 +1,49 @@
+```json
+{
+  "scene_id": "volume_01-c004-s004",
+  "scene_summary": "罗伦斯与赫萝在商行交易后，继续讨论杰廉的提议。罗伦斯分析货币行情的可能发展，强调利益优先。赫萝则调侃罗伦斯的商人哲学，两人在轻松氛围中等待店老板出现。",
+  "active_characters": ["罗伦斯", "赫萝"],
+  "character_candidates": [
+    {
+      "display_name": "罗伦斯",
+      "aliases": ["罗伦斯"],
+      "titles": ["行商人", "经验丰富的商人"],
+      "description": "冷静理性的旅行商人，与赫萝一同旅行。在交易和商业分析中表现出策略性和经验。",
+      "speech_style": "理性、冷静、略带讽刺",
+      "relationship_hints": ["与赫萝有互动，赫萝调侃他", "与杰廉有交易关系"],
+      "evidence": ["volume_01-d000513", "volume_01-d000516", "volume_01-d000517", "volume_01-d000520"],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "赫萝",
+      "aliases": ["咱"],
+      "titles": ["丰收之神", "神秘少女"],
+      "description": "自称丰收之神的神秘少女，拥有狼耳和尾巴，说话轻松幽默但略带威胁性。",
+      "speech_style": "轻松幽默、略带调侃和威胁",
+      "relationship_hints": ["与罗伦斯有互动，调侃他", "提及杰廉的提议"],
+      "evidence": ["volume_01-d000514", "volume_01-d000515", "volume_01-d000518"],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "杰廉",
+      "aliases": [],
+      "titles": ["提议者"],
+      "description": "提出交易提议的人物，未直接出现，但被赫萝提及。",
+      "speech_style": "未知",
+      "relationship_hints": ["与罗伦斯有交易关系", "被赫萝提及"],
+      "evidence": ["volume_01-d000516", "volume_01-c004-s004-p001209"],
+      "confidence": 0.7
+    }
+  ],
+  "mystery_entities": [
+    {
+      "temporary_name": "店老板",
+      "description": "未出现的商行负责人，赫萝和罗伦斯在等待其出现。",
+      "evidence": ["volume_01-d000521"],
+      "confidence": 0.6
+    }
+  ],
+  "relationships": ["罗伦斯与赫萝有互动", "罗伦斯与杰廉有交易关系", "赫萝提及杰廉的提议"],
+  "notes": "杰廉未直接出现，但通过赫萝的提及和罗伦斯的回应可推测其存在。店老板虽未出现，但被提及，可作为神秘人物追踪。"
+}
+```

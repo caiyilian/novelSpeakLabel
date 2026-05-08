@@ -1,0 +1,98 @@
+{
+  "scene_id": "volume_01-c004-s002",
+  "scene_summary": "罗伦斯与赫萝来到米隆商行的卸货场，与店员和一名魁梧的搬运工互动，准备推销皮草。",
+  "active_characters": [
+    "罗伦斯",
+    "赫萝",
+    "店员",
+    "彪形大汉"
+  ],
+  "character_candidates": [
+    {
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": [
+        "旅行商人",
+        "行商人"
+      ],
+      "description": "正在米隆商行推销皮草的旅行商人，与赫萝一同行动。",
+      "speech_style": "礼貌、理性、简洁",
+      "relationship_hints": [
+        "与赫萝同行",
+        "与米隆商行店员互动"
+      ],
+      "evidence": [
+        "volume_01-c004-s002-p001059",
+        "volume_01-d000438",
+        "volume_01-d000442"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "赫萝",
+      "aliases": [
+        "咱"
+      ],
+      "titles": [
+        "丰收之神",
+        "贤狼"
+      ],
+      "description": "与罗伦斯同行的神秘少女，拥有狼耳和尾巴，对商行的盛况感到惊讶。",
+      "speech_style": "轻松幽默，略带调侃",
+      "relationship_hints": [
+        "与罗伦斯同行",
+        "对卸货场的盛况感到惊讶"
+      ],
+      "evidence": [
+        "volume_01-c004-s002-p001065",
+        "volume_01-d000441"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "display_name": "店员",
+      "aliases": [],
+      "titles": [
+        "米隆商行店员"
+      ],
+      "description": "在卸货场迎接罗伦斯的店员，穿着整洁，态度专业。",
+      "speech_style": "礼貌、热情、简洁",
+      "relationship_hints": [
+        "与罗伦斯互动",
+        "引导罗伦斯前往左手边人员"
+      ],
+      "evidence": [
+        "volume_01-d000437",
+        "volume_01-d000439"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "display_name": "彪形大汉",
+      "aliases": [],
+      "titles": [
+        "搬运工"
+      ],
+      "description": "卸货场的魁梧搬运工，负责接待罗伦斯的马车。",
+      "speech_style": "直接、热情、粗犷",
+      "relationship_hints": [
+        "与罗伦斯互动",
+        "在卸货场左侧工作"
+      ],
+      "evidence": [
+        "volume_01-d000440",
+        "volume_01-d000443",
+        "volume_01-d000444"
+      ],
+      "confidence": 0.8
+    }
+  ],
+  "mystery_entities": [],
+  "relationships": [
+    "罗伦斯与赫萝同行",
+    "罗伦斯与店员互动",
+    "罗伦斯与彪形大汉互动",
+    "赫萝对卸货场的盛况感到惊讶"
+  ],
+  "notes": "场景中出现的店员和搬运工虽未命名，但可通过身份和行为线索进行追踪。赫萝的反应暗示她对商业环境的陌生，可能与她的神秘身份有关。"
+}

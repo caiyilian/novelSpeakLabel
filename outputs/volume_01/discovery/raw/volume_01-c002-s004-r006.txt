@@ -1,0 +1,32 @@
+```json
+{
+  "scene_id": "volume_01-c002-s004",
+  "scene_summary": "赫萝展示她可以部分变身的能力，她从麦束中摘下麦穗并吞下，罗伦斯对此感到疑惑。",
+  "active_characters": ["赫萝", "罗伦斯"],
+  "character_candidates": [
+    {
+      "display_name": "赫萝",
+      "aliases": ["咱"],
+      "titles": ["丰收之神", "约伊兹的贤狼"],
+      "description": "自称丰收之神的神秘少女，拥有狼耳和尾巴，说话轻松幽默但带有威胁性。她展示部分变身能力，并通过吞食麦穗来维持变身。",
+      "speech_style": "轻松幽默，带有威胁性，使用古风语气。",
+      "relationship_hints": ["与罗伦斯有互动，罗伦斯对她保持怀疑但愿意继续观察。"],
+      "evidence": ["volume_01-d000131", "volume_01-c002-s004-p000391", "volume_01-c002-s004-p000392", "volume_01-c002-s004-p000394"],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": ["旅行商人", "行商人"],
+      "description": "冷静且经验丰富的旅行商人，对赫萝的身份表示怀疑，但仍保持理性。他观察赫萝的行为并提出问题。",
+      "speech_style": "理性、谨慎，语气中带有疑惑。",
+      "relationship_hints": ["与赫萝互动密切，表现出对她的怀疑和好奇。"],
+      "evidence": ["volume_01-d000132", "volume_01-c002-s004-p000394"],
+      "confidence": 0.9
+    }
+  ],
+  "mystery_entities": [],
+  "relationships": ["赫萝与罗伦斯之间存在互动和信任的试探", "赫萝展示部分变身能力，暗示她与麦子有特殊联系"],
+  "notes": "赫萝展示部分变身能力，暗示她与麦子有特殊联系。罗伦斯表现出理性与怀疑，但愿意继续观察。场景中没有出现新的神秘人物。"
+}
+```

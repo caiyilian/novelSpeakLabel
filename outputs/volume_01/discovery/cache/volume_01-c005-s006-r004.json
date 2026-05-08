@@ -1,0 +1,125 @@
+{
+  "scene_id": "volume_01-c005-s006",
+  "scene_summary": "一名年长男子在米隆商行帕兹欧分行的栅栏外怒斥试图破坏的不法分子，强调商行与大公的关联。随后，罗伦斯与赫萝讨论夜间骚动的起因，并提到可能被梅迪欧商行的人袭击，同时考虑联系米隆商行的行长。",
+  "active_characters": [
+    "罗伦斯",
+    "赫萝",
+    "米隆侯爵",
+    "梅迪欧商行的人",
+    "米隆商行帕兹欧分行店员"
+  ],
+  "character_candidates": [
+    {
+      "display_name": "米隆侯爵",
+      "aliases": [
+        "大米隆侯爵",
+        "拉翁迪尔公国三十三世"
+      ],
+      "titles": [
+        "侯爵",
+        "米隆商行帕兹欧分行所有者"
+      ],
+      "description": "拉翁迪尔公国三十三世的贵族，经营米隆商行帕兹欧分行，拥有高地位和影响力。",
+      "speech_style": "气势十足，带有权威感",
+      "relationship_hints": [
+        "与米隆商行帕兹欧分行有关联",
+        "受到拉翁迪尔大公的庇护"
+      ],
+      "evidence": [
+        "volume_01-c005-s006-p002039",
+        "volume_01-c005-s006-p002040"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": [
+        "旅行商人"
+      ],
+      "description": "冷静理性的旅行商人，与赫萝一同行动，正在米隆商行帕兹欧分行进行交易。",
+      "speech_style": "理性、策略性强",
+      "relationship_hints": [
+        "与赫萝同行",
+        "与米隆商行有交易"
+      ],
+      "evidence": [
+        "volume_01-c005-s006-p002049",
+        "volume_01-c005-s006-p002050",
+        "volume_01-c005-s006-p002052"
+      ],
+      "confidence": 1.0
+    },
+    {
+      "display_name": "赫萝",
+      "aliases": [],
+      "titles": [
+        "神秘少女"
+      ],
+      "description": "自称丰收之神的神秘少女，与罗伦斯一同旅行，参与夜间骚动的讨论。",
+      "speech_style": "轻松幽默但略带威胁性",
+      "relationship_hints": [
+        "与罗伦斯同行",
+        "对梅迪欧商行的袭击表示担忧"
+      ],
+      "evidence": [
+        "volume_01-c005-s006-p002047",
+        "volume_01-c005-s006-p002051",
+        "volume_01-c005-s006-p002052"
+      ],
+      "confidence": 1.0
+    },
+    {
+      "display_name": "梅迪欧商行的人",
+      "aliases": [],
+      "titles": [],
+      "description": "试图破坏米隆商行帕兹欧分行的不法分子，与罗伦斯的交易存在竞争关系。",
+      "speech_style": "未直接说话",
+      "relationship_hints": [
+        "与罗伦斯存在商业竞争",
+        "袭击米隆商行"
+      ],
+      "evidence": [
+        "volume_01-c005-s006-p002047"
+      ],
+      "confidence": 0.8
+    },
+    {
+      "display_name": "米隆商行帕兹欧分行店员",
+      "aliases": [],
+      "titles": [
+        "采购人员",
+        "鉴定员"
+      ],
+      "description": "米隆商行帕兹欧分行的工作人员，协助罗伦斯进行交易。",
+      "speech_style": "未直接说话",
+      "relationship_hints": [
+        "与罗伦斯进行交易",
+        "与米隆侯爵有关联"
+      ],
+      "evidence": [
+        "volume_01-c005-s006-p002043",
+        "volume_01-c005-s006-p002053"
+      ],
+      "confidence": 0.7
+    }
+  ],
+  "mystery_entities": [
+    {
+      "temporary_name": "治安队成员",
+      "description": "远处传来警笛声，可能是治安队成员，但未直接出现。",
+      "evidence": [
+        "volume_01-c005-s006-p002041"
+      ],
+      "confidence": 0.6
+    }
+  ],
+  "relationships": [
+    "米隆侯爵与米隆商行帕兹欧分行有关联",
+    "罗伦斯与赫萝同行",
+    "罗伦斯与米隆商行帕兹欧分行有交易",
+    "梅迪欧商行的人与罗伦斯存在竞争关系",
+    "米隆侯爵受到拉翁迪尔大公的庇护"
+  ],
+  "notes": "米隆侯爵的发言表明其地位和影响力，罗伦斯与赫萝的对话揭示了夜间骚动的背景，梅迪欧商行的人可能是竞争对手。治安队成员虽未出现，但其存在影响了事件发展。"
+}

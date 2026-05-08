@@ -1,0 +1,155 @@
+你是轻小说说话人标注项目的阶段 1：角色发现与建库助手。
+你的任务不是给每句台词最终打标签，而是从当前场景中发现角色、别名、称谓、关系线索、说话风格线索、场景摘要，以及尚未命名但可追踪的神秘人物。
+
+规则：
+1. 只输出严格 JSON，不要 Markdown，不要解释性前后缀。
+2. 不要编造没有文本证据的人名。
+3. 如果人物未命名但看起来可在后文追踪，放入 mystery_entities。
+4. character_candidates 只放可以从文本中看到名字、称谓或稳定身份线索的人物。
+5. evidence 使用 paragraph_id 或 dialogue_id 相关的短证据，不要长篇复制原文。
+
+输出 JSON 结构：
+{
+  "scene_id": "string",
+  "scene_summary": "string",
+  "active_characters": ["string"],
+  "character_candidates": [
+    {
+      "display_name": "string",
+      "aliases": ["string"],
+      "titles": ["string"],
+      "description": "string",
+      "speech_style": "string",
+      "relationship_hints": ["string"],
+      "evidence": ["string"],
+      "confidence": 0.0
+    }
+  ],
+  "mystery_entities": [
+    {
+      "temporary_name": "string",
+      "description": "string",
+      "evidence": ["string"],
+      "confidence": 0.0
+    }
+  ],
+  "relationships": ["string"],
+  "notes": "string"
+}
+
+输入场景 JSON：
+{
+  "volume_id": "volume_01",
+  "scene": {
+    "request_id": "volume_01-c002-s001-r001",
+    "scene_id": "volume_01-c002-s001",
+    "chapter_id": "volume_01-c002",
+    "chapter_title": "第一幕",
+    "chunk_index": 1,
+    "chunk_count": 6
+  },
+  "paragraphs": [
+    {
+      "paragraph_id": "volume_01-c002-s001-p000075",
+      "text": "第一幕"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000076",
+      "text": "第"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000077",
+      "text": "一"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000078",
+      "text": "幕"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000079",
+      "text": "「这是最后一件了吧？」"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000080",
+      "text": "「嗯，这里确实有……七十件。多谢惠顾。」"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000081",
+      "text": "「不，我们才要谢谢你呢。只有罗伦斯先生你愿意到这深山里来，真是帮了我们大忙。」"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000082",
+      "text": "「不过，我也因此拿到上等的皮草啊，我会再来的。」"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000083",
+      "text": "结束一如往常的对话，离开深山里的村落已过了五个小时。太阳升起后就立刻动身，下山来到这片草原时已过了中午。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000084",
+      "text": "这天的天气晴朗，没有半点风，是个适合坐在马车上，悠哉横越草原的日子。因为这阵子的天气寒冷，原以为冬天就快到了，现在却一点儿也感觉不到。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000085",
+      "text": "成为自力更生的旅行商人，只身行商至今已有七个年头，今年二十五岁的罗伦斯坐在马车驾座上，泰然自若地打着呵欠。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000086",
+      "text": "这里几乎没有高大的草木会阻碍视线，眼前景色一望无际，也因此可以看清远方的景象。在视野最远处，可看到一所几年前建盖好的修道院。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000087",
+      "text": "或许是有某地方的贵族子弟成了他们的修道士吧，尽管在如此偏僻荒远的土地上，但这所修道院不仅是一栋优良的石造建筑物，甚至还使用了铁制门窗，令人难以置信。记得没错的话，修道院里应该有二十多位修道士，另外还有将近同样人数的男仆为他们打点生活。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000088",
+      "text": "修道院刚开始建盖时，罗伦斯以为可以招揽到新顾客而满怀期待。可惜修道院似乎不跟民间商人往来，而是以独自的通路调度物资，罗伦斯的期望因而落空。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000089",
+      "text": "虽然期望是落了空，但是修道士的生活并不奢侈，他们甚至会下田耕作；就算做成了生意，可能也没有太多利益可图。不仅如此，或许还有可能被迫捐款，或者被倒债。"
+    }
+  ],
+  "dialogues": [
+    {
+      "dialogue_id": "volume_01-d000002",
+      "paragraph_id": "volume_01-c002-s001-p000079",
+      "text": "这是最后一件了吧？"
+    },
+    {
+      "dialogue_id": "volume_01-d000003",
+      "paragraph_id": "volume_01-c002-s001-p000080",
+      "text": "嗯，这里确实有……七十件。多谢惠顾。"
+    },
+    {
+      "dialogue_id": "volume_01-d000004",
+      "paragraph_id": "volume_01-c002-s001-p000081",
+      "text": "不，我们才要谢谢你呢。只有罗伦斯先生你愿意到这深山里来，真是帮了我们大忙。"
+    },
+    {
+      "dialogue_id": "volume_01-d000005",
+      "paragraph_id": "volume_01-c002-s001-p000082",
+      "text": "不过，我也因此拿到上等的皮草啊，我会再来的。"
+    }
+  ],
+  "known_characters": [
+    {
+      "entity_id": "char_0001",
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": [
+        "行商人"
+      ],
+      "description": "一位行商人，发现并收留了赫萝，决定与她一同旅行。"
+    },
+    {
+      "entity_id": "char_0002",
+      "display_name": "赫萝",
+      "aliases": [],
+      "titles": [
+        "丰收之神"
+      ],
+      "description": "自称是丰收之神的少女，拥有狼的耳朵和尾巴，说话狡诈。"
+    }
+  ]
+}

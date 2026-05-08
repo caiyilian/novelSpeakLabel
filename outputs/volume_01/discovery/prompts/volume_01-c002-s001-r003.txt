@@ -1,0 +1,183 @@
+你是轻小说说话人标注项目的阶段 1：角色发现与建库助手。
+你的任务不是给每句台词最终打标签，而是从当前场景中发现角色、别名、称谓、关系线索、说话风格线索、场景摘要，以及尚未命名但可追踪的神秘人物。
+
+规则：
+1. 只输出严格 JSON，不要 Markdown，不要解释性前后缀。
+2. 不要编造没有文本证据的人名。
+3. 如果人物未命名但看起来可在后文追踪，放入 mystery_entities。
+4. character_candidates 只放可以从文本中看到名字、称谓或稳定身份线索的人物。
+5. evidence 使用 paragraph_id 或 dialogue_id 相关的短证据，不要长篇复制原文。
+
+输出 JSON 结构：
+{
+  "scene_id": "string",
+  "scene_summary": "string",
+  "active_characters": ["string"],
+  "character_candidates": [
+    {
+      "display_name": "string",
+      "aliases": ["string"],
+      "titles": ["string"],
+      "description": "string",
+      "speech_style": "string",
+      "relationship_hints": ["string"],
+      "evidence": ["string"],
+      "confidence": 0.0
+    }
+  ],
+  "mystery_entities": [
+    {
+      "temporary_name": "string",
+      "description": "string",
+      "evidence": ["string"],
+      "confidence": 0.0
+    }
+  ],
+  "relationships": ["string"],
+  "notes": "string"
+}
+
+输入场景 JSON：
+{
+  "volume_id": "volume_01",
+  "scene": {
+    "request_id": "volume_01-c002-s001-r003",
+    "scene_id": "volume_01-c002-s001",
+    "chapter_id": "volume_01-c002",
+    "chapter_title": "第一幕",
+    "chunk_index": 3,
+    "chunk_count": 6
+  },
+  "paragraphs": [
+    {
+      "paragraph_id": "volume_01-c002-s001-p000105",
+      "text": "骑士骄傲地挺起刻有红色十字架的银制胸甲，态度蛮横地说道。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000106",
+      "text": "然而，骑士直接套在肩上的大衣同样是灰色，这代表他只是一名下级骑士。短短的金发似乎刚剃不久，体格也看不出身经百战的样子。或许是刚刚成为骑士，所以显得趾高气扬。面对这种人，必须从容应付，免得他们一下子就得意忘形。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000107",
+      "text": "罗伦斯没有马上回答，他从怀里拿出一只皮袋，缓缓解开绑住袋口的绳子，袋子里装着蜂蜜糖。罗伦斯拿出一颗放入口中，再把整袋蜂蜜糖递给骑士。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000108",
+      "text": "「要不要来一颗？」"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000109",
+      "text": "「呃……」"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000110",
+      "text": "虽然骑士瞬间露出迟疑的神情，但终究敌不过糖果的诱惑。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000111",
+      "text": "不过，身为骑士的自尊，让他从点头到伸手取糖花了不少时间。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000112",
+      "text": "「从这里往东边山头走上约半天的时间，就可以看到一座小村落。我是到那里卖盐回来的。」"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000113",
+      "text": "「原来如此。我看你车上还有货，是盐吗？」"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000114",
+      "text": "「不，这些是皮草。您瞧。」"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000115",
+      "text": "罗伦斯一边说，一边转向货台掀开覆盖的麻布。那是非常漂亮的貂皮。如果以眼前这位骑士的薪水来看，相信貂皮的价值比他的年薪还要高。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000116",
+      "text": "「喔，那这是什么？」"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000117",
+      "text": "「啊，这是山里的村民给我的麦子。」"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000118",
+      "text": "成束的麦子就放在貂皮堆旁边，那是罗伦斯前去卖盐的村落所种植的麦子。那里的麦子不但耐寒，也不容易被虫咬。去年西北方受到严重的寒害，罗伦斯打算把麦子拿到西北方去卖。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000119",
+      "text": "「嗯。好了，你可以走了。」"
+    }
+  ],
+  "dialogues": [
+    {
+      "dialogue_id": "volume_01-d000011",
+      "paragraph_id": "volume_01-c002-s001-p000108",
+      "text": "要不要来一颗？"
+    },
+    {
+      "dialogue_id": "volume_01-d000012",
+      "paragraph_id": "volume_01-c002-s001-p000109",
+      "text": "呃……"
+    },
+    {
+      "dialogue_id": "volume_01-d000013",
+      "paragraph_id": "volume_01-c002-s001-p000112",
+      "text": "从这里往东边山头走上约半天的时间，就可以看到一座小村落。我是到那里卖盐回来的。"
+    },
+    {
+      "dialogue_id": "volume_01-d000014",
+      "paragraph_id": "volume_01-c002-s001-p000113",
+      "text": "原来如此。我看你车上还有货，是盐吗？"
+    },
+    {
+      "dialogue_id": "volume_01-d000015",
+      "paragraph_id": "volume_01-c002-s001-p000114",
+      "text": "不，这些是皮草。您瞧。"
+    },
+    {
+      "dialogue_id": "volume_01-d000016",
+      "paragraph_id": "volume_01-c002-s001-p000116",
+      "text": "喔，那这是什么？"
+    },
+    {
+      "dialogue_id": "volume_01-d000017",
+      "paragraph_id": "volume_01-c002-s001-p000117",
+      "text": "啊，这是山里的村民给我的麦子。"
+    },
+    {
+      "dialogue_id": "volume_01-d000018",
+      "paragraph_id": "volume_01-c002-s001-p000119",
+      "text": "嗯。好了，你可以走了。"
+    }
+  ],
+  "known_characters": [
+    {
+      "entity_id": "char_0001",
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": [
+        "旅行商人",
+        "行商人"
+      ],
+      "description": "一位行商人，发现并收留了赫萝，决定与她一同旅行。 / 一位二十五岁的自力更生旅行商人，已有七年行商经验，性格泰然自若。 / 一位旅行商人，正在前往修道院的路上，与骑士对话。"
+    },
+    {
+      "entity_id": "char_0002",
+      "display_name": "赫萝",
+      "aliases": [],
+      "titles": [
+        "丰收之神"
+      ],
+      "description": "自称是丰收之神的少女，拥有狼的耳朵和尾巴，说话狡诈。"
+    },
+    {
+      "entity_id": "char_0003",
+      "display_name": "骑士",
+      "aliases": [],
+      "titles": [],
+      "description": "身穿银色盔甲的骑士，站在修道院附近，态度傲慢，与罗伦斯对话。"
+    }
+  ]
+}

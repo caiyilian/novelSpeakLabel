@@ -1,0 +1,100 @@
+{
+  "scene_id": "volume_01-c004-s005",
+  "scene_summary": "罗伦斯与赫萝在酒吧中讨论女店员的谎言，推测杰廉会在日落后出现。赫萝指出女店员的谎言可能是为了拖延时间，让两人多消费。最终，杰廉如预期般出现。",
+  "active_characters": [
+    "罗伦斯",
+    "赫萝",
+    "女店员",
+    "杰廉"
+  ],
+  "character_candidates": [
+    {
+      "display_name": "罗伦斯",
+      "aliases": [
+        "罗伦斯"
+      ],
+      "titles": [
+        "旅行商人"
+      ],
+      "description": "冷静理性的旅行商人，与赫萝一同旅行。在酒吧中分析女店员的谎言，并推测杰廉的出现。",
+      "speech_style": "理性、冷静、分析性强",
+      "relationship_hints": [
+        "与赫萝一同旅行",
+        "对女店员的谎言持怀疑态度"
+      ],
+      "evidence": [
+        "volume_01-c004-s005-p001239",
+        "volume_01-c004-s005-p001246",
+        "volume_01-c004-s005-p001247",
+        "volume_01-c004-s005-p001248",
+        "volume_01-c004-s005-p001251"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "赫萝",
+      "aliases": [
+        "咱"
+      ],
+      "titles": [
+        "丰收之神"
+      ],
+      "description": "自称丰收之神的神秘少女，拥有狼耳和尾巴。在酒吧中与罗伦斯互动，指出女店员的谎言。",
+      "speech_style": "轻松幽默、略带威胁性",
+      "relationship_hints": [
+        "与罗伦斯一同旅行",
+        "对女店员的谎言表示怀疑"
+      ],
+      "evidence": [
+        "volume_01-c004-s005-p001241",
+        "volume_01-c004-s005-p001243",
+        "volume_01-c004-s005-p001249"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "女店员",
+      "aliases": [],
+      "titles": [],
+      "description": "酒吧的女店员，对杰廉的名字表现出兴趣，并提供信息。她的行为被罗伦斯和赫萝认为是谎言。",
+      "speech_style": "礼貌、服务性",
+      "relationship_hints": [
+        "与杰廉有联系",
+        "试图拖延罗伦斯与赫萝的时间"
+      ],
+      "evidence": [
+        "volume_01-c004-s005-p001242",
+        "volume_01-c004-s005-p001248",
+        "volume_01-c004-s005-p001250"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "display_name": "杰廉",
+      "aliases": [],
+      "titles": [
+        "年轻人"
+      ],
+      "description": "据称会在日落后出现的男子，被罗伦斯和赫萝推测会如女店员所说出现。",
+      "speech_style": "未直接出现",
+      "relationship_hints": [
+        "与女店员有联系",
+        "被罗伦斯和赫萝等待"
+      ],
+      "evidence": [
+        "volume_01-c004-s005-p001244",
+        "volume_01-c004-s005-p001247",
+        "volume_01-c004-s005-p001253"
+      ],
+      "confidence": 0.8
+    }
+  ],
+  "mystery_entities": [],
+  "relationships": [
+    "罗伦斯与赫萝一同旅行",
+    "罗伦斯怀疑女店员的谎言",
+    "女店员与杰廉有联系",
+    "罗伦斯与赫萝推测杰廉会在日落后出现"
+  ],
+  "notes": "场景中出现的杰廉尚未直接登场，但已被提及并被推测会在日落后出现。女店员的谎言是本场景的核心线索之一。"
+}

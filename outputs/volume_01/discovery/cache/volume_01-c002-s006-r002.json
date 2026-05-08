@@ -1,0 +1,63 @@
+{
+  "scene_id": "volume_01-c002-s006",
+  "scene_summary": "赫萝在情绪激动后表现出脆弱的一面，罗伦斯试图安抚她并了解她的想法。赫萝提到想回到北方，暗示她对故乡的思念。",
+  "active_characters": [
+    "罗伦斯",
+    "赫萝"
+  ],
+  "character_candidates": [
+    {
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": [
+        "旅行商人"
+      ],
+      "description": "冷静且理性的旅行商人，试图安抚赫萝的情绪并了解她的想法。",
+      "speech_style": "理性、温和、试图缓和气氛",
+      "relationship_hints": [
+        "与赫萝有长期互动，表现出关心和怀疑并存的态度"
+      ],
+      "evidence": [
+        "volume_01-c002-s006-p000493",
+        "volume_01-c002-s006-p000500"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "赫萝",
+      "aliases": [
+        "咱"
+      ],
+      "titles": [
+        "丰收之神",
+        "贤狼"
+      ],
+      "description": "情绪波动明显，表现出脆弱和愤怒的一面，同时透露出对故乡的思念。",
+      "speech_style": "情绪化、讽刺、带有威胁性",
+      "relationship_hints": [
+        "与罗伦斯有复杂互动，表现出依赖与抗拒并存的态度"
+      ],
+      "evidence": [
+        "volume_01-c002-s006-p000491",
+        "volume_01-c002-s006-p000498",
+        "volume_01-c002-s006-p000504"
+      ],
+      "confidence": 0.98
+    }
+  ],
+  "mystery_entities": [
+    {
+      "temporary_name": "北方",
+      "description": "赫萝提到的故乡，可能是她身份和背景的关键线索。",
+      "evidence": [
+        "volume_01-c002-s006-p000504"
+      ],
+      "confidence": 0.8
+    }
+  ],
+  "relationships": [
+    "罗伦斯与赫萝之间存在复杂的情感互动，既有怀疑也有关心。",
+    "赫萝表现出对故乡北方的强烈情感联系。"
+  ],
+  "notes": "赫萝的情绪波动和对北方的提及可能暗示她身份的深层背景，值得后续追踪。"
+}

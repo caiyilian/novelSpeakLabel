@@ -1,0 +1,49 @@
+```json
+{
+  "scene_id": "volume_01-c004-s002",
+  "scene_summary": "赫萝与罗伦斯在交谈中讨论苹果的诱惑与禁欲的利弊，赫萝试图说服罗伦斯让她参与生意赚取利益。",
+  "active_characters": ["罗伦斯", "赫萝"],
+  "character_candidates": [
+    {
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": ["旅行商人", "经验丰富的商人"],
+      "description": "冷静理性的旅行商人，对赫萝的身份持怀疑态度，但仍保持互动。",
+      "speech_style": "理性、克制、略带讽刺",
+      "relationship_hints": ["与赫萝一同旅行", "对赫萝的提议保持谨慎"],
+      "evidence": [
+        "volume_01-c004-s002-p001033",
+        "volume_01-c004-s002-p001034",
+        "volume_01-c004-s002-p001036",
+        "volume_01-c004-s002-p001040",
+        "volume_01-c004-s002-p001041"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "赫萝",
+      "aliases": ["咱"],
+      "titles": ["丰收之神", "贤狼"],
+      "description": "自称丰收之神的神秘少女，拥有狼耳和尾巴，说话轻松幽默但略带威胁性。",
+      "speech_style": "轻松幽默、略带狡辩和威胁",
+      "relationship_hints": ["与罗伦斯一同旅行", "试图影响罗伦斯的商业决策"],
+      "evidence": [
+        "volume_01-c004-s002-p001030",
+        "volume_01-c004-s002-p001032",
+        "volume_01-c004-s002-p001035",
+        "volume_01-c004-s002-p001037",
+        "volume_01-c004-s002-p001039",
+        "volume_01-c004-s002-p001042"
+      ],
+      "confidence": 0.95
+    }
+  ],
+  "mystery_entities": [],
+  "relationships": [
+    "罗伦斯与赫萝一同旅行",
+    "赫萝试图影响罗伦斯的商业决策",
+    "罗伦斯对赫萝的提议保持谨慎"
+  ],
+  "notes": "赫萝表现出对食物（尤其是苹果）的强烈兴趣，同时试图说服罗伦斯让她参与商业活动。罗伦斯则表现出理性与克制，对赫萝的提议持怀疑态度。"
+}
+```

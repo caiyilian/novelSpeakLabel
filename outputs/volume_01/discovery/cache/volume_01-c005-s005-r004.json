@@ -1,0 +1,68 @@
+{
+  "scene_id": "volume_01-c005-s005",
+  "scene_summary": "罗伦斯和赫萝从窗户跳下逃离危险，罗伦斯虽然摔倒但仍听从赫萝的建议放弃马车。赫萝取出皮袋中的物品分给罗伦斯，两人准备继续行动。",
+  "active_characters": [
+    "罗伦斯",
+    "赫萝"
+  ],
+  "character_candidates": [
+    {
+      "display_name": "罗伦斯",
+      "aliases": [
+        "小的",
+        "老板"
+      ],
+      "titles": [
+        "旅行商人",
+        "行商人",
+        "商人"
+      ],
+      "description": "冷静理性的旅行商人，听从赫萝的建议放弃马车，表现出对她的信任。",
+      "speech_style": "理性、克制、略带无奈",
+      "relationship_hints": [
+        "听从赫萝的建议",
+        "被赫萝搀扶",
+        "与赫萝一同行动"
+      ],
+      "evidence": [
+        "volume_01-c005-s005-p001960",
+        "volume_01-c005-s005-p001963",
+        "volume_01-c005-s005-p001966",
+        "volume_01-c005-s005-p001969"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "赫萝",
+      "aliases": [
+        "咱"
+      ],
+      "titles": [
+        "丰收之神",
+        "神秘少女",
+        "贤狼"
+      ],
+      "description": "拥有狼耳和尾巴的神秘少女，主动带领罗伦斯行动，并分给他食物，表现出主导地位。",
+      "speech_style": "轻松幽默、略带威胁性",
+      "relationship_hints": [
+        "搀扶罗伦斯",
+        "分给罗伦斯食物",
+        "主导行动"
+      ],
+      "evidence": [
+        "volume_01-c005-s005-p001959",
+        "volume_01-c005-s005-p001964",
+        "volume_01-c005-s005-p001971",
+        "volume_01-c005-s005-p001972"
+      ],
+      "confidence": 0.95
+    }
+  ],
+  "mystery_entities": [],
+  "relationships": [
+    "罗伦斯听从赫萝的建议",
+    "赫萝主动帮助罗伦斯",
+    "两人共同行动"
+  ],
+  "notes": "本场景中没有出现尚未命名但可追踪的神秘人物。罗伦斯和赫萝的互动进一步确认了他们的关系和性格特征。"
+}

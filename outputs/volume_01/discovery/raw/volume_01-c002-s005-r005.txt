@@ -1,0 +1,32 @@
+```json
+{
+  "scene_id": "volume_01-c002-s005",
+  "scene_summary": "罗伦斯在与赫萝的对话中陷入内心挣扎，一方面怀疑赫萝是否真的是丰收之神，另一方面又因她的哀求而动摇。赫萝表现出脆弱和不安，与先前的霸气形象形成对比。",
+  "active_characters": ["罗伦斯", "赫萝"],
+  "character_candidates": [
+    {
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": ["旅行商人"],
+      "description": "一位冷静但逐渐感到不安的旅行商人，对赫萝的身份表示怀疑，但仍保持理性。",
+      "speech_style": "理性、内省、语气中带有犹豫和挣扎",
+      "relationship_hints": ["与赫萝有长期互动，表现出关心和责任感"],
+      "evidence": ["volume_01-c002-s005-p000459", "volume_01-c002-s005-p000463", "volume_01-c002-s005-p000464"],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "赫萝",
+      "aliases": ["咱"],
+      "titles": ["丰收之神", "贤狼"],
+      "description": "自称丰收之神的神秘少女，拥有狼耳和尾巴，表现出脆弱和哀求的一面。",
+      "speech_style": "轻松幽默但带有哀求和威胁性",
+      "relationship_hints": ["与罗伦斯有依赖和信任关系", "表现出对罗伦斯的期待和不安"],
+      "evidence": ["volume_01-c002-s005-p000456", "volume_01-c002-s005-p000468", "volume_01-c002-s005-p000469"],
+      "confidence": 0.95
+    }
+  ],
+  "mystery_entities": [],
+  "relationships": ["罗伦斯与赫萝之间存在信任与怀疑的复杂关系", "赫萝对罗伦斯表现出依赖和期待"],
+  "notes": "赫萝在本场景中表现出不同于以往的脆弱情绪，暗示其身份或动机可能有更多层次。罗伦斯的内心挣扎为后续剧情发展埋下伏笔。"
+}
+```

@@ -1,0 +1,83 @@
+{
+  "scene_id": "volume_01-c004-s003",
+  "scene_summary": "罗伦斯与鉴定员进行交易洽谈，赫萝突然插嘴，质疑交易金额，引起罗伦斯和鉴定员的惊讶。",
+  "active_characters": [
+    "罗伦斯",
+    "赫萝",
+    "鉴定的男子"
+  ],
+  "character_candidates": [
+    {
+      "display_name": "罗伦斯",
+      "aliases": [
+        "罗伦斯"
+      ],
+      "titles": [
+        "旅行商人",
+        "行商人",
+        "经验丰富的商人"
+      ],
+      "description": "正在与鉴定员进行交易洽谈的旅行商人，表现出冷静和理性。",
+      "speech_style": "冷静、理性、简洁",
+      "relationship_hints": [
+        "与赫萝一同旅行",
+        "对赫萝的突然插嘴感到惊讶"
+      ],
+      "evidence": [
+        "volume_01-c004-s003-p001109",
+        "volume_01-c004-s003-p001115"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "赫萝",
+      "aliases": [
+        "咱"
+      ],
+      "titles": [
+        "丰收之神",
+        "约伊兹的贤狼",
+        "神秘少女"
+      ],
+      "description": "突然插嘴质疑交易金额的神秘少女，拥有狼耳和尾巴，表现出自信和策略。",
+      "speech_style": "轻松幽默但略带威胁性",
+      "relationship_hints": [
+        "与罗伦斯一同旅行",
+        "对罗伦斯的反应感到好笑"
+      ],
+      "evidence": [
+        "volume_01-c004-s003-p001113",
+        "volume_01-c004-s003-p001117",
+        "volume_01-c004-s003-p001120"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "鉴定的男子",
+      "aliases": [],
+      "titles": [
+        "鉴定员",
+        "采购人员"
+      ],
+      "description": "与罗伦斯进行交易洽谈的男子，态度礼貌但对赫萝的插嘴感到困惑。",
+      "speech_style": "礼貌、谨慎",
+      "relationship_hints": [
+        "与罗伦斯进行交易",
+        "对赫萝的突然插嘴感到惊讶"
+      ],
+      "evidence": [
+        "volume_01-c004-s003-p001110",
+        "volume_01-c004-s003-p001118",
+        "volume_01-c004-s003-p001123"
+      ],
+      "confidence": 0.85
+    }
+  ],
+  "mystery_entities": [],
+  "relationships": [
+    "罗伦斯与赫萝一同旅行",
+    "罗伦斯与鉴定的男子进行交易洽谈",
+    "赫萝打断罗伦斯与鉴定的男子的对话"
+  ],
+  "notes": "赫萝在交易中表现出对商业的敏锐度，暗示她可能具备商人特质。鉴定的男子对赫萝的突然插嘴感到困惑，显示其对女性参与商业活动的不习惯。"
+}

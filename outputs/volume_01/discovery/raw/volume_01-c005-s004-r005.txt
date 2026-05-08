@@ -1,0 +1,77 @@
+```json
+{
+  "scene_id": "volume_01-c005-s004",
+  "scene_summary": "罗伦斯发现赫萝因梦中失去朋友而情绪低落，他温柔地安慰她，表现出对赫萝的关心。",
+  "active_characters": ["罗伦斯", "赫萝"],
+  "character_candidates": [
+    {
+      "display_name": "罗伦斯",
+      "aliases": ["小的", "老板"],
+      "titles": ["商人", "旅行商人", "行商人"],
+      "description": "一位冷静理性的旅行商人，对赫萝的身份持怀疑态度，但仍保持互动。他表现出对赫萝的关心，并在旅途中照顾她。",
+      "speech_style": "理性、冷静、温和",
+      "relationship_hints": ["与赫萝有亲密关系", "照顾赫萝", "对赫萝的梦境表现出理解与同情"],
+      "evidence": [
+        "volume_01-c005-s004-p001895",
+        "volume_01-c005-s004-p001899",
+        "volume_01-c005-s004-p001900",
+        "volume_01-c005-s004-p001904"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "赫萝",
+      "aliases": ["咱"],
+      "titles": ["丰收之神", "神秘少女", "贤狼"],
+      "description": "自称丰收之神的神秘少女，拥有狼耳和尾巴，情绪波动明显，表现出对朋友的怀念。",
+      "speech_style": "轻松幽默但略带威胁性，情绪化",
+      "relationship_hints": ["与罗伦斯有亲密关系", "依赖罗伦斯的安慰", "在梦中失去朋友"],
+      "evidence": [
+        "volume_01-c005-s004-p001901",
+        "volume_01-c005-s004-p001903",
+        "volume_01-c005-s004-p001905"
+      ],
+      "confidence": 0.95
+    }
+  ],
+  "mystery_entities": [
+    {
+      "temporary_name": "悠椰",
+      "description": "赫萝梦中提到的朋友之一，可能是她的狼同伴或神灵。",
+      "evidence": [
+        "volume_01-c005-s004-p001903"
+      ],
+      "confidence": 0.7
+    },
+    {
+      "temporary_name": "英堤",
+      "description": "赫萝梦中提到的朋友之一，可能是她的狼同伴或神灵。",
+      "evidence": [
+        "volume_01-c005-s004-p001903"
+      ],
+      "confidence": 0.7
+    },
+    {
+      "temporary_name": "巴罗",
+      "description": "赫萝梦中提到的朋友之一，可能是她的狼同伴或神灵。",
+      "evidence": [
+        "volume_01-c005-s004-p001903"
+      ],
+      "confidence": 0.7
+    },
+    {
+      "temporary_name": "缪里",
+      "description": "赫萝梦中提到的朋友之一，可能是她的狼同伴或神灵。",
+      "evidence": [
+        "volume_01-c005-s004-p001903"
+      ],
+      "confidence": 0.7
+    }
+  ],
+  "relationships": [
+    "罗伦斯与赫萝之间有亲密关系，罗伦斯照顾赫萝并安慰她的情绪",
+    "赫萝在梦中失去朋友，表现出对他们的怀念"
+  ],
+  "notes": "赫萝在梦中失去朋友，表现出强烈的情绪波动。罗伦斯表现出对她的关心和理解。梦中提到的悠椰、英堤、巴罗和缪里可能是赫萝的狼同伴或神灵，值得后续追踪。"
+}
+```

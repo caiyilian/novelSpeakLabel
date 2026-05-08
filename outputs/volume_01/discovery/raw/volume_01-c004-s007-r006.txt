@@ -1,0 +1,42 @@
+```json
+{
+  "scene_id": "volume_01-c004-s007",
+  "scene_summary": "罗伦斯对赫萝能否测出货币纯度表示怀疑，赫萝以摇动货币的方式展示她的方法，怀兹对此感到好笑。",
+  "active_characters": ["罗伦斯", "赫萝", "怀兹"],
+  "character_candidates": [
+    {
+      "display_name": "罗伦斯",
+      "aliases": ["小的", "罗伦斯", "老板"],
+      "titles": ["中间人", "同行", "商人", "小毛头", "市井无赖", "年轻人", "情报贩子", "提议者", "新手", "旅行商人", "旅行商人亲戚", "经验丰富的商人", "行商人"],
+      "description": "冷静理性的旅行商人，对赫萝的身份持怀疑态度，但仍保持互动。",
+      "speech_style": "理性、冷静、略带怀疑",
+      "relationship_hints": ["与赫萝一同旅行", "与怀兹有长期合作关系"],
+      "evidence": ["volume_01-c004-s007-p001474"],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "赫萝",
+      "aliases": ["咱"],
+      "titles": ["丰收之神", "神秘少女", "约伊兹的贤狼", "贤狼"],
+      "description": "自称丰收之神的神秘少女，拥有狼耳和尾巴，说话轻松幽默但略带威胁性。",
+      "speech_style": "轻松幽默、略带威胁",
+      "relationship_hints": ["与罗伦斯一同旅行", "对怀兹的追求表现出扭捏态度"],
+      "evidence": ["volume_01-d000673"],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "怀兹",
+      "aliases": ["怀兹"],
+      "titles": ["兑换商"],
+      "description": "与罗伦斯有长期合作关系的年轻兑换商，金发，工作认真。",
+      "speech_style": "轻松、略带嘲讽",
+      "relationship_hints": ["与罗伦斯有长期合作关系", "试图追求赫萝"],
+      "evidence": ["volume_01-c004-s007-p001478", "volume_01-d000674"],
+      "confidence": 0.9
+    }
+  ],
+  "mystery_entities": [],
+  "relationships": ["罗伦斯与赫萝一同旅行", "罗伦斯与怀兹有长期合作关系", "怀兹试图追求赫萝"],
+  "notes": "赫萝展示了她检测货币纯度的方法，罗伦斯对此持怀疑态度，怀兹则表现出嘲讽。场景中未出现新的神秘人物。"
+}
+```

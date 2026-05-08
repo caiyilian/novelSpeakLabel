@@ -1,0 +1,39 @@
+```json
+{
+  "scene_id": "volume_01-c002-s003",
+  "scene_summary": "罗伦斯与赫萝讨论赫萝的出生地约伊兹，赫萝表现出对故乡的怀念与空虚感，罗伦斯则对她的说法感到怀疑。",
+  "active_characters": ["罗伦斯", "赫萝"],
+  "character_candidates": [
+    {
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": ["旅行商人"],
+      "description": "冷静的旅行商人，对赫萝的背景表示怀疑，但仍保持理性。",
+      "speech_style": "理性、克制、怀疑",
+      "relationship_hints": ["与赫萝有互动，对其身份表示怀疑"],
+      "evidence": ["volume_01-c002-s003-p000310", "volume_01-c002-s003-p000314"],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "赫萝",
+      "aliases": ["咱"],
+      "titles": ["丰收之神"],
+      "description": "自称来自遥远北方的神秘少女，拥有狼耳和尾巴，表现出对故乡的怀念。",
+      "speech_style": "轻松幽默、略带忧伤",
+      "relationship_hints": ["与罗伦斯有互动，表现出对故乡的怀念"],
+      "evidence": ["volume_01-c002-s003-p000312", "volume_01-c002-s003-p000313"],
+      "confidence": 0.9
+    }
+  ],
+  "mystery_entities": [
+    {
+      "temporary_name": "约伊兹",
+      "description": "赫萝提到的出生地，是一个古老传说中的地名。",
+      "evidence": ["volume_01-c002-s003-p000310", "volume_01-c002-s003-p000312"],
+      "confidence": 0.7
+    }
+  ],
+  "relationships": ["罗伦斯对赫萝的背景表示怀疑", "赫萝表现出对故乡的怀念"],
+  "notes": "赫萝提到的约伊兹是一个未命名但可追踪的神秘地点，可能在后文有重要线索。"
+}
+```

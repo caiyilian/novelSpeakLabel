@@ -1,0 +1,207 @@
+你是轻小说说话人标注项目的阶段 1：角色发现与建库助手。
+你的任务不是给每句台词最终打标签，而是从当前场景中发现角色、别名、称谓、关系线索、说话风格线索、场景摘要，以及尚未命名但可追踪的神秘人物。
+
+规则：
+1. 只输出严格 JSON，不要 Markdown，不要解释性前后缀。
+2. 不要编造没有文本证据的人名。
+3. 如果人物未命名但看起来可在后文追踪，放入 mystery_entities。
+4. character_candidates 只放可以从文本中看到名字、称谓或稳定身份线索的人物。
+5. evidence 使用 paragraph_id 或 dialogue_id 相关的短证据，不要长篇复制原文。
+
+输出 JSON 结构：
+{
+  "scene_id": "string",
+  "scene_summary": "string",
+  "active_characters": ["string"],
+  "character_candidates": [
+    {
+      "display_name": "string",
+      "aliases": ["string"],
+      "titles": ["string"],
+      "description": "string",
+      "speech_style": "string",
+      "relationship_hints": ["string"],
+      "evidence": ["string"],
+      "confidence": 0.0
+    }
+  ],
+  "mystery_entities": [
+    {
+      "temporary_name": "string",
+      "description": "string",
+      "evidence": ["string"],
+      "confidence": 0.0
+    }
+  ],
+  "relationships": ["string"],
+  "notes": "string"
+}
+
+输入场景 JSON：
+{
+  "volume_id": "volume_01",
+  "scene": {
+    "request_id": "volume_01-c002-s003-r003",
+    "scene_id": "volume_01-c002-s003",
+    "chapter_id": "volume_01-c002",
+    "chapter_title": "第一幕",
+    "chunk_index": 3,
+    "chunk_count": 6
+  },
+  "paragraphs": [
+    {
+      "paragraph_id": "volume_01-c002-s003-p000265",
+      "text": "女孩一边继续笑，一边捡起掉落的肉干再咬了一口。她果然有着锐利尖牙，接着看看她的耳朵，可以知道这女孩绝对不是正常人类。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s003-p000266",
+      "text": "「你是谁？」"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s003-p000267",
+      "text": "「汝问咱？」"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s003-p000268",
+      "text": "「除了你还有谁！」"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s003-p000269",
+      "text": "「那匹马啊。」"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s003-p000270",
+      "text": "「……」"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s003-p000271",
+      "text": "罗伦斯拔出短剑，这时女孩总算收起了脸上的笑容，她瞇起带点红色的琥珀色眼睛。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s003-p000272",
+      "text": "「你到底是谁？」"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s003-p000273",
+      "text": "「胆敢拿剑指着咱，真是不懂礼貌。」"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s003-p000274",
+      "text": "「你说什么？」"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s003-p000275",
+      "text": "「嗯？对喔，咱逃跑成功了。抱歉抱歉，咱都给忘了。」"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s003-p000276",
+      "text": "女孩说完后，露出开心的笑容。那笑脸天真无邪，可爱极了。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s003-p000277",
+      "text": "罗伦斯并非被笑容收买，他只是觉得拿短剑指着女孩不该是男子汉所为，于是收起短剑。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s003-p000278",
+      "text": "「咱的名字是赫萝，好久没有以这种模样出现了。嗯，还不赖呢。」"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s003-p000279",
+      "text": "女孩一边说，一边打量自己。罗伦斯虽然没听懂女孩后面说的话，不过，前面的内容却令他相当在意。"
+    }
+  ],
+  "dialogues": [
+    {
+      "dialogue_id": "volume_01-d000063",
+      "paragraph_id": "volume_01-c002-s003-p000266",
+      "text": "你是谁？"
+    },
+    {
+      "dialogue_id": "volume_01-d000064",
+      "paragraph_id": "volume_01-c002-s003-p000267",
+      "text": "汝问咱？"
+    },
+    {
+      "dialogue_id": "volume_01-d000065",
+      "paragraph_id": "volume_01-c002-s003-p000268",
+      "text": "除了你还有谁！"
+    },
+    {
+      "dialogue_id": "volume_01-d000066",
+      "paragraph_id": "volume_01-c002-s003-p000269",
+      "text": "那匹马啊。"
+    },
+    {
+      "dialogue_id": "volume_01-d000067",
+      "paragraph_id": "volume_01-c002-s003-p000270",
+      "text": "……"
+    },
+    {
+      "dialogue_id": "volume_01-d000068",
+      "paragraph_id": "volume_01-c002-s003-p000272",
+      "text": "你到底是谁？"
+    },
+    {
+      "dialogue_id": "volume_01-d000069",
+      "paragraph_id": "volume_01-c002-s003-p000273",
+      "text": "胆敢拿剑指着咱，真是不懂礼貌。"
+    },
+    {
+      "dialogue_id": "volume_01-d000070",
+      "paragraph_id": "volume_01-c002-s003-p000274",
+      "text": "你说什么？"
+    },
+    {
+      "dialogue_id": "volume_01-d000071",
+      "paragraph_id": "volume_01-c002-s003-p000275",
+      "text": "嗯？对喔，咱逃跑成功了。抱歉抱歉，咱都给忘了。"
+    },
+    {
+      "dialogue_id": "volume_01-d000072",
+      "paragraph_id": "volume_01-c002-s003-p000278",
+      "text": "咱的名字是赫萝，好久没有以这种模样出现了。嗯，还不赖呢。"
+    }
+  ],
+  "known_characters": [
+    {
+      "entity_id": "char_0001",
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": [
+        "旅行商人",
+        "行商人"
+      ],
+      "description": "一位行商人，发现并收留了赫萝，决定与她一同旅行。 / 一位二十五岁的自力更生旅行商人，已有七年行商经验，性格泰然自若。 / 一位旅行商人，正在前往修道院的路上，与骑士对话。 / 一位行商人，正在前往修道院的路上，与骑士对话。他从容应对骑士的傲慢态度，并用蜂蜜糖和貂皮吸引对方的注意。 / 一位机智的旅行商人，与骑士互动时表现出从容与策略。他使用蜂蜜糖和貂皮吸引骑士的注意，并巧妙地应对对方的提问。 / 一位二十五岁的自力更生旅行商人，已有七年行商经验，性格泰然自若。他正在前往修道院的路上，与骑士对话。 / 一位行商人，正在帕斯罗村的麦田中与农夫交谈。 / 一位行商人，正在前往叶勒的麦田，观察村民的丰收祭典。 / 一位旅行商人，正在帕斯罗村的麦田中观察村民的丰收祭典。他不关心宗教仪式，但对叶勒被关入谷仓感到困扰。 / 二十五岁的旅行商人，独自一人踏上旅途，思考未来与孤独。 / 一位旅行商人，独自在河边露宿，思考关于马儿变成人类的传闻，并与他的马儿互动。 / 一位旅行商人，独自在马车上发现陌生女孩，试图叫醒她并弄清她的身份。 / 一位旅行商人，正在马车上发现并试图叫醒一名神秘女孩。 / 一位旅行商人，面对神秘女孩时表现出冷静但逐渐感到恐惧。 / 一位冷静但逐渐感到不安的旅行商人，正在与神秘女孩对话。"
+    },
+    {
+      "entity_id": "char_0002",
+      "display_name": "赫萝",
+      "aliases": [],
+      "titles": [
+        "丰收之神"
+      ],
+      "description": "自称是丰收之神的少女，拥有狼的耳朵和尾巴，说话狡诈。 / 被村民认为附身在叶勒身上的丰收之神，是祭典的核心人物。 / 一名头上长着小狗耳朵的神秘女孩，似乎处于昏迷状态。 / 神秘女孩，拥有动物耳朵，能发出狼嚎，外表美丽但带有诡异气质。 / 拥有狼耳的神秘女孩，外表美丽，行为轻松幽默，似乎对罗伦斯的怀疑感到好笑。"
+    },
+    {
+      "entity_id": "char_0003",
+      "display_name": "骑士",
+      "aliases": [],
+      "titles": [],
+      "description": "身穿银色盔甲的骑士，站在修道院附近，态度傲慢，与罗伦斯对话。 / 身穿银色盔甲的下级骑士，态度傲慢但容易被诱惑。他与罗伦斯短暂互动后放行。 / 一位年轻骑士，身穿银色盔甲，态度傲慢但容易被诱惑。他因罗伦斯递给他蜂蜜糖而态度缓和，并询问关于异教徒祭典的消息。 / 身穿银色盔甲的年轻骑士，态度傲慢但容易被诱惑。他因罗伦斯递给他蜂蜜糖而态度缓和，并询问关于异教徒祭典的消息。"
+    },
+    {
+      "entity_id": "char_0004",
+      "display_name": "叶勒",
+      "aliases": [],
+      "titles": [],
+      "description": "帕斯罗村的农夫，今年雇用年轻人种田。 / 帕斯罗村的农夫，今年雇用年轻人种田，是村民丰收祭典的中心人物。 / 帕斯罗村的农夫，今年雇用年轻人种田，是村民丰收祭典的中心人物。他被村民认为是丰收之神附身的载体。 / 帕斯罗村的农夫，曾与罗伦斯交易麦子，对罗伦斯怀有感恩之心。"
+    },
+    {
+      "entity_id": "char_0005",
+      "display_name": "农夫",
+      "aliases": [],
+      "titles": [],
+      "description": "一位晒得黝黑的农夫，与罗伦斯有互动，笑容真诚。"
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+```json
+{
+  "scene_id": "volume_01-c002-s003",
+  "scene_summary": "罗伦斯在月光下遇到一名赤裸的神秘女孩，女孩发出狼嚎，令他感到恐惧。随后女孩恢复平静，询问是否有酒。",
+  "active_characters": ["罗伦斯", "赫萝"],
+  "character_candidates": [
+    {
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": ["旅行商人"],
+      "description": "一位旅行商人，面对神秘女孩时表现出冷静但逐渐感到恐惧。",
+      "speech_style": "理性、自信，但面对未知时会表现出紧张。",
+      "relationship_hints": ["与女孩有互动，但尚未明确关系"],
+      "evidence": ["volume_01-c002-s003-p000235", "volume_01-c002-s003-p000236", "volume_01-c002-s003-p000243", "volume_01-c002-s003-p000245"],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "赫萝",
+      "aliases": [],
+      "titles": ["丰收之神"],
+      "description": "神秘女孩，拥有动物耳朵，能发出狼嚎，外表美丽但带有诡异气质。",
+      "speech_style": "神秘、优雅，偶尔带有幽默感。",
+      "relationship_hints": ["与罗伦斯有互动，但尚未明确关系"],
+      "evidence": ["volume_01-c002-s003-p000237", "volume_01-c002-s003-p000238", "volume_01-c002-s003-p000239", "volume_01-c002-s003-p000241", "volume_01-c002-s003-p000248"],
+      "confidence": 0.9
+    }
+  ],
+  "mystery_entities": [
+    {
+      "temporary_name": "神秘女孩",
+      "description": "赤裸的神秘女孩，拥有动物耳朵，能发出狼嚎，外表美丽但带有诡异气质。",
+      "evidence": ["volume_01-c002-s003-p000237", "volume_01-c002-s003-p000238", "volume_01-c002-s003-p000239", "volume_01-c002-s003-p000241", "volume_01-c002-s003-p000248"],
+      "confidence": 0.85
+    }
+  ],
+  "relationships": ["罗伦斯与赫萝有互动，但关系尚未明确"],
+  "notes": "赫萝的动物耳朵和狼嚎暗示她可能与狼有关联，但具体身份尚不明确。"
+}
+```

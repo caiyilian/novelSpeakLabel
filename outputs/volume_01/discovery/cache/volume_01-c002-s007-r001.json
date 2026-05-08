@@ -1,0 +1,58 @@
+{
+  "scene_id": "volume_01-c002-s007",
+  "scene_summary": "罗伦斯与赫萝在交易后展开对话，赫萝表明希望与罗伦斯一同旅行，罗伦斯最终同意。赫萝展现出自信与轻松的态度，而罗伦斯则表现出理性与谨慎。",
+  "active_characters": [
+    "罗伦斯",
+    "赫萝"
+  ],
+  "character_candidates": [
+    {
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": [
+        "旅行商人",
+        "行商人"
+      ],
+      "description": "冷静且理性的旅行商人，对赫萝的身份持怀疑态度，但仍愿意倾听并互动。",
+      "speech_style": "理性、谨慎、略带讽刺",
+      "relationship_hints": [
+        "与赫萝有互动，决定让她同行",
+        "对赫萝的背景表示怀疑但保持理性"
+      ],
+      "evidence": [
+        "volume_01-c002-s007-p000566",
+        "volume_01-c002-s007-p000568"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "赫萝",
+      "aliases": [
+        "咱"
+      ],
+      "titles": [
+        "丰收之神",
+        "约伊兹的贤狼",
+        "贤狼"
+      ],
+      "description": "自称丰收之神的神秘少女，拥有狼耳和尾巴，说话轻松幽默但略带威胁性。",
+      "speech_style": "轻松幽默、略带威胁性",
+      "relationship_hints": [
+        "请求与罗伦斯一同旅行",
+        "表现出对罗伦斯的信赖"
+      ],
+      "evidence": [
+        "volume_01-c002-s007-p000559",
+        "volume_01-c002-s007-p000562",
+        "volume_01-c002-s007-p000569"
+      ],
+      "confidence": 0.95
+    }
+  ],
+  "mystery_entities": [],
+  "relationships": [
+    "罗伦斯与赫萝之间建立初步信任",
+    "赫萝请求与罗伦斯同行"
+  ],
+  "notes": "赫萝表现出自信和轻松的态度，罗伦斯则理性且谨慎。两人之间建立了初步的信任关系。"
+}

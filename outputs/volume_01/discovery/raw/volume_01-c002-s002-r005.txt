@@ -1,0 +1,29 @@
+```json
+{
+  "scene_id": "volume_01-c002-s002",
+  "scene_summary": "罗伦斯在马车上发现一名陌生女孩，她似乎在睡觉。尽管罗伦斯试图叫醒她，但女孩毫无反应，罗伦斯感到困惑且警惕。",
+  "active_characters": ["罗伦斯", "神秘女孩"],
+  "character_candidates": [
+    {
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": ["旅行商人"],
+      "description": "一位旅行商人，独自在马车上发现陌生女孩，试图叫醒她并弄清她的身份。",
+      "speech_style": "直接、冷静、略带警惕",
+      "relationship_hints": ["与神秘女孩初次相遇"],
+      "evidence": ["volume_01-c002-s002-p000217", "volume_01-c002-s002-p000221", "volume_01-c002-s002-p000227"],
+      "confidence": 0.95
+    }
+  ],
+  "mystery_entities": [
+    {
+      "temporary_name": "神秘女孩",
+      "description": "一名在罗伦斯的马车上睡觉的陌生女孩，拥有美丽外貌和甜美声音，身份不明。",
+      "evidence": ["volume_01-c002-s002-p000218", "volume_01-c002-s002-p000219", "volume_01-c002-s002-p000223", "volume_01-c002-s002-p000224", "volume_01-c002-s002-p000228"],
+      "confidence": 0.85
+    }
+  ],
+  "relationships": ["罗伦斯与神秘女孩初次相遇"],
+  "notes": "神秘女孩的身份和目的尚未明确，但她的出现引发了罗伦斯的警觉。"
+}
+```

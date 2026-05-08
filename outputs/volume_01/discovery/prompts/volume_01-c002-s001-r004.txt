@@ -1,0 +1,178 @@
+你是轻小说说话人标注项目的阶段 1：角色发现与建库助手。
+你的任务不是给每句台词最终打标签，而是从当前场景中发现角色、别名、称谓、关系线索、说话风格线索、场景摘要，以及尚未命名但可追踪的神秘人物。
+
+规则：
+1. 只输出严格 JSON，不要 Markdown，不要解释性前后缀。
+2. 不要编造没有文本证据的人名。
+3. 如果人物未命名但看起来可在后文追踪，放入 mystery_entities。
+4. character_candidates 只放可以从文本中看到名字、称谓或稳定身份线索的人物。
+5. evidence 使用 paragraph_id 或 dialogue_id 相关的短证据，不要长篇复制原文。
+
+输出 JSON 结构：
+{
+  "scene_id": "string",
+  "scene_summary": "string",
+  "active_characters": ["string"],
+  "character_candidates": [
+    {
+      "display_name": "string",
+      "aliases": ["string"],
+      "titles": ["string"],
+      "description": "string",
+      "speech_style": "string",
+      "relationship_hints": ["string"],
+      "evidence": ["string"],
+      "confidence": 0.0
+    }
+  ],
+  "mystery_entities": [
+    {
+      "temporary_name": "string",
+      "description": "string",
+      "evidence": ["string"],
+      "confidence": 0.0
+    }
+  ],
+  "relationships": ["string"],
+  "notes": "string"
+}
+
+输入场景 JSON：
+{
+  "volume_id": "volume_01",
+  "scene": {
+    "request_id": "volume_01-c002-s001-r004",
+    "scene_id": "volume_01-c002-s001",
+    "chapter_id": "volume_01-c002",
+    "chapter_title": "第一幕",
+    "chunk_index": 4,
+    "chunk_count": 6
+  },
+  "paragraphs": [
+    {
+      "paragraph_id": "volume_01-c002-s001-p000120",
+      "text": "自己把人叫来，现在又想随便打发我，如果乖乖说「是」的话，就不配当商人了。罗伦斯一边有意无意地把玩刚刚的皮袋，一边转回骑士的方向。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000121",
+      "text": "「发生什么事了吗？平常在这里应该见不到骑士吧？」"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000122",
+      "text": "年轻骑士可能是因为被询问而感到不悦，稍稍皱起眉头，再看到罗伦斯手中的皮袋，眉头皱得更深了。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000123",
+      "text": "看来骑士似乎是上钩了。罗伦斯解开绳子，拿出一颗蜂蜜糖递给骑士。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000124",
+      "text": "「嗯……真好吃，我得好好答谢你才行。」"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000125",
+      "text": "骑士喜欢讲道理。罗伦斯露出营业用笑容，表现出非常感谢的模样，向骑士鞠躬。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000126",
+      "text": "「听说最近，这一带会有异教徒祭典，所以我们才受命在这里防卫。你知道什么消息吗？」"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000127",
+      "text": "这时，如果表现出失望的表情，那么演技就太差了。罗伦斯假装想了好一会儿后，回答说：「我不知道耶。」事实上，罗伦斯是在撒谎，不过骑士说的话也不甚正确，所以他不得不扯谎。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000128",
+      "text": "「他们果然想在背地里偷偷举办祭典，异教徒真是一群胆小鬼。」"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000129",
+      "text": "虽然骑士完全猜想错误的发言听来好笑，但罗伦斯当然没有予以指正，他表示赞同骑士说的话后，随即向骑士告辞。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000130",
+      "text": "骑士点点头，再度为蜂蜜糖向罗伦斯道谢。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000131",
+      "text": "可见骑士是真的喜欢吃蜂蜜糖。下级骑士的钱都花费在装备和旅费上。事实上，他们的生活还不如初入门的鞋匠学徒。骑士肯定很久没吃到甜的东西了。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000132",
+      "text": "话虽如此，但罗伦斯并不打算再多拿蜂蜜糖分给骑士，毕竟蜂蜜糖并不便宜。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000133",
+      "text": "「异教徒祭典……还真会猜啊。」"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000134",
+      "text": "离开修道院一会儿后，罗伦斯喃喃念着骑士说的话，苦笑了一下。"
+    }
+  ],
+  "dialogues": [
+    {
+      "dialogue_id": "volume_01-d000019",
+      "paragraph_id": "volume_01-c002-s001-p000120",
+      "text": "是"
+    },
+    {
+      "dialogue_id": "volume_01-d000020",
+      "paragraph_id": "volume_01-c002-s001-p000121",
+      "text": "发生什么事了吗？平常在这里应该见不到骑士吧？"
+    },
+    {
+      "dialogue_id": "volume_01-d000021",
+      "paragraph_id": "volume_01-c002-s001-p000124",
+      "text": "嗯……真好吃，我得好好答谢你才行。"
+    },
+    {
+      "dialogue_id": "volume_01-d000022",
+      "paragraph_id": "volume_01-c002-s001-p000126",
+      "text": "听说最近，这一带会有异教徒祭典，所以我们才受命在这里防卫。你知道什么消息吗？"
+    },
+    {
+      "dialogue_id": "volume_01-d000023",
+      "paragraph_id": "volume_01-c002-s001-p000127",
+      "text": "我不知道耶。"
+    },
+    {
+      "dialogue_id": "volume_01-d000024",
+      "paragraph_id": "volume_01-c002-s001-p000128",
+      "text": "他们果然想在背地里偷偷举办祭典，异教徒真是一群胆小鬼。"
+    },
+    {
+      "dialogue_id": "volume_01-d000025",
+      "paragraph_id": "volume_01-c002-s001-p000133",
+      "text": "异教徒祭典……还真会猜啊。"
+    }
+  ],
+  "known_characters": [
+    {
+      "entity_id": "char_0001",
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": [
+        "旅行商人",
+        "行商人"
+      ],
+      "description": "一位行商人，发现并收留了赫萝，决定与她一同旅行。 / 一位二十五岁的自力更生旅行商人，已有七年行商经验，性格泰然自若。 / 一位旅行商人，正在前往修道院的路上，与骑士对话。 / 一位行商人，正在前往修道院的路上，与骑士对话。他从容应对骑士的傲慢态度，并用蜂蜜糖和貂皮吸引对方的注意。"
+    },
+    {
+      "entity_id": "char_0002",
+      "display_name": "赫萝",
+      "aliases": [],
+      "titles": [
+        "丰收之神"
+      ],
+      "description": "自称是丰收之神的少女，拥有狼的耳朵和尾巴，说话狡诈。"
+    },
+    {
+      "entity_id": "char_0003",
+      "display_name": "骑士",
+      "aliases": [],
+      "titles": [],
+      "description": "身穿银色盔甲的骑士，站在修道院附近，态度傲慢，与罗伦斯对话。 / 身穿银色盔甲的下级骑士，态度傲慢但容易被诱惑。他与罗伦斯短暂互动后放行。"
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "scene_id": "volume_01-c002-s006",
+  "scene_summary": "罗伦斯察觉赫萝情绪异常，赫萝愤怒地讲述自己在帕斯罗村守护麦田的经历，以及村民对她的误解与不信任。",
+  "active_characters": [
+    "罗伦斯",
+    "赫萝"
+  ],
+  "character_candidates": [
+    {
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": [
+        "旅行商人"
+      ],
+      "description": "冷静且经验丰富的旅行商人，对赫萝的身份持怀疑态度，但仍保持理性。他观察赫萝的行为并提出问题。",
+      "speech_style": "理性、谨慎、逻辑性强",
+      "relationship_hints": [
+        "与赫萝有互动，试图理解她的背景",
+        "对赫萝的反应表现出关心"
+      ],
+      "evidence": [
+        "volume_01-c002-s006-p000475",
+        "volume_01-c002-s006-p000478",
+        "volume_01-c002-s006-p000482"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "赫萝",
+      "aliases": [
+        "咱"
+      ],
+      "titles": [
+        "丰收之神",
+        "约伊兹的贤狼"
+      ],
+      "description": "自称丰收之神的神秘少女，拥有狼耳和尾巴，情绪波动明显，表现出对帕斯罗村村民的愤怒与失望。",
+      "speech_style": "情绪化、带有威胁性、轻松幽默但愤怒时语气急躁",
+      "relationship_hints": [
+        "与罗伦斯有互动，向他倾诉内心",
+        "曾与帕斯罗村的村民有长期关系"
+      ],
+      "evidence": [
+        "volume_01-c002-s006-p000480",
+        "volume_01-c002-s006-p000484",
+        "volume_01-c002-s006-p000487"
+      ],
+      "confidence": 0.98
+    }
+  ],
+  "mystery_entities": [
+    {
+      "temporary_name": "帕斯罗村的村民",
+      "description": "赫萝提到的村民群体，对她的行为有误解和不信任，是她愤怒的来源。",
+      "evidence": [
+        "volume_01-c002-s006-p000487",
+        "volume_01-c002-s006-p000489"
+      ],
+      "confidence": 0.75
+    },
+    {
+      "temporary_name": "帕斯罗村的领主（亚伦多伯爵）",
+      "description": "赫萝提到的统治者，引进新农耕方法，可能间接导致村民对她的误解。",
+      "evidence": [
+        "volume_01-c002-s006-p000488"
+      ],
+      "confidence": 0.65
+    }
+  ],
+  "relationships": [
+    "罗伦斯与赫萝之间存在信任与怀疑的复杂关系",
+    "赫萝与帕斯罗村的村民之间存在长期的守护与误解关系",
+    "赫萝与亚伦多伯爵的政策间接相关"
+  ],
+  "notes": "赫萝表现出强烈的情绪波动，暗示她与帕斯罗村的过往有深刻联系。罗伦斯的理性态度与赫萝的情绪化形成对比，为后续互动埋下伏笔。"
+}

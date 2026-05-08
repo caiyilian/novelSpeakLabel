@@ -1,0 +1,64 @@
+{
+  "scene_id": "volume_01-c003-s002",
+  "scene_summary": "罗伦斯与赫萝在旅途中交谈，赫萝谈论咀嚼与马铃薯的经历，并提到跳蚤的问题，表现出轻松幽默但略带威胁的说话风格。",
+  "active_characters": [
+    "罗伦斯",
+    "赫萝"
+  ],
+  "character_candidates": [
+    {
+      "display_name": "赫萝",
+      "aliases": [
+        "咱"
+      ],
+      "titles": [
+        "丰收之神",
+        "约伊兹的贤狼",
+        "贤狼"
+      ],
+      "description": "自称丰收之神的神秘少女，拥有狼的耳朵和尾巴，说话轻松幽默但略带威胁性。",
+      "speech_style": "轻松幽默，略带调侃与威胁语气",
+      "relationship_hints": [
+        "与罗伦斯一同旅行",
+        "对罗伦斯的怀疑感到好笑"
+      ],
+      "evidence": [
+        "volume_01-d000265",
+        "volume_01-d000266",
+        "volume_01-d000268",
+        "volume_01-d000272",
+        "volume_01-d000274"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": [
+        "市井无赖",
+        "新手",
+        "旅行商人",
+        "旅行商人亲戚",
+        "经验丰富的商人",
+        "行商人"
+      ],
+      "description": "冷静且理性的旅行商人，对赫萝的身份持怀疑态度，但仍保持理性。",
+      "speech_style": "冷静、理性，偶尔表现出不安",
+      "relationship_hints": [
+        "与赫萝一同旅行",
+        "对赫萝的背景表示怀疑"
+      ],
+      "evidence": [
+        "volume_01-c003-s002-p000735",
+        "volume_01-d000270"
+      ],
+      "confidence": 0.9
+    }
+  ],
+  "mystery_entities": [],
+  "relationships": [
+    "罗伦斯与赫萝一同旅行",
+    "罗伦斯对赫萝的身份持怀疑态度"
+  ],
+  "notes": "赫萝表现出轻松幽默但略带威胁的说话风格，罗伦斯则保持理性与怀疑态度。两人之间存在互动与信任的微妙平衡。"
+}

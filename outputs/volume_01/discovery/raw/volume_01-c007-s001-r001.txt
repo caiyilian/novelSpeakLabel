@@ -1,0 +1,32 @@
+```json
+{
+  "scene_id": "volume_01-c007-s001",
+  "scene_summary": "罗伦斯和赫萝在一条黑暗的地下通道中行走，赫萝突然停下脚步，察觉到空气的震动。罗伦斯推测震动来自上方的人群和马车，但赫萝似乎察觉到某种异常。",
+  "active_characters": ["罗伦斯", "赫萝"],
+  "character_candidates": [
+    {
+      "display_name": "罗伦斯",
+      "aliases": ["行商人"],
+      "titles": ["商人", "旅行商人"],
+      "description": "冷静理性的旅行商人，与赫萝一同旅行。在黑暗中牵着赫萝的手，推测震动来自上方的人群和马车。",
+      "speech_style": "理性、推测性强",
+      "relationship_hints": ["与赫萝同行", "牵着赫萝的手"],
+      "evidence": ["volume_01-c007-s001-p002561", "volume_01-c007-s001-p002564", "volume_01-c007-s001-p002570"],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "赫萝",
+      "aliases": ["咱"],
+      "titles": ["神秘少女", "丰收之神"],
+      "description": "自称丰收之神的神秘少女，拥有狼耳和尾巴。在黑暗中停下脚步，察觉到空气的震动，表现出对异常的敏感。",
+      "speech_style": "警觉、神秘",
+      "relationship_hints": ["与罗伦斯同行", "对罗伦斯的推测表示怀疑"],
+      "evidence": ["volume_01-c007-s001-p002560", "volume_01-c007-s001-p002563", "volume_01-c007-s001-p002568"],
+      "confidence": 0.95
+    }
+  ],
+  "mystery_entities": [],
+  "relationships": ["罗伦斯与赫萝同行", "罗伦斯牵着赫萝的手", "赫萝对罗伦斯的推测表示怀疑"],
+  "notes": "赫萝对空气震动的感知可能暗示她拥有非人类的感官能力。罗伦斯的理性推测与赫萝的直觉形成对比，暗示两人之间存在信任与怀疑的微妙关系。"
+}
+```

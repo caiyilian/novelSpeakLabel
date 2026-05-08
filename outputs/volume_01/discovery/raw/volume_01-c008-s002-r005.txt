@@ -1,0 +1,68 @@
+```json
+{
+  "scene_id": "volume_01-c008-s002",
+  "scene_summary": "罗伦斯收到一份请款单，但对单据上的商品名称没有印象。他向马贺特询问并查看文件，随后因困惑而跳下床，表现出急切的情绪。",
+  "active_characters": [
+    "罗伦斯",
+    "马贺特"
+  ],
+  "character_candidates": [
+    {
+      "display_name": "罗伦斯",
+      "aliases": [
+        "罗伦斯先生",
+        "行商人"
+      ],
+      "titles": [
+        "商人",
+        "旅行商人"
+      ],
+      "description": "一位冷静理性的旅行商人，正在处理一份请款单，但对单据内容感到困惑。",
+      "speech_style": "理性、冷静，但因困惑而表现出急切。",
+      "relationship_hints": [
+        "罗伦斯与马贺特之间存在交易关系。"
+      ],
+      "evidence": [
+        "volume_01-c008-s002-p003061",
+        "volume_01-c008-s002-p003062",
+        "volume_01-c008-s002-p003064",
+        "volume_01-c008-s002-p003065",
+        "volume_01-c008-s002-p003066",
+        "volume_01-c008-s002-p003067",
+        "volume_01-c008-s002-p003068",
+        "volume_01-c008-s002-p003069",
+        "volume_01-c008-s002-p003070",
+        "volume_01-c008-s002-p003072",
+        "volume_01-c008-s002-p003073"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "马贺特",
+      "aliases": [
+        "行长"
+      ],
+      "titles": [
+        "米隆商行帕兹欧分行行长"
+      ],
+      "description": "米隆商行帕兹欧分行的行长，协助罗伦斯查看请款单，并提供文件。",
+      "speech_style": "专业、冷静。",
+      "relationship_hints": [
+        "马贺特与罗伦斯之间存在交易关系。"
+      ],
+      "evidence": [
+        "volume_01-c008-s002-p003060",
+        "volume_01-c008-s002-p003061",
+        "volume_01-c008-s002-p003062",
+        "volume_01-c008-s002-p003067"
+      ],
+      "confidence": 0.9
+    }
+  ],
+  "mystery_entities": [],
+  "relationships": [
+    "罗伦斯与马贺特之间存在交易关系。"
+  ],
+  "notes": "罗伦斯对请款单内容感到困惑，表现出急切的情绪。马贺特协助他查看文件，两人之间存在交易关系。"
+}
+```

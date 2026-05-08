@@ -1,0 +1,45 @@
+```json
+{
+  "scene_id": "volume_01-c004-s003",
+  "scene_summary": "罗伦斯与一名男子在貂皮的气味上进行互动，男子表现出从困惑到惊讶的情绪变化，罗伦斯也对气味感到疑惑。",
+  "active_characters": ["罗伦斯", "男子"],
+  "character_candidates": [
+    {
+      "display_name": "罗伦斯",
+      "aliases": ["罗伦斯"],
+      "titles": ["旅行商人", "行商人", "经验丰富的商人"],
+      "description": "冷静理性的旅行商人，对赫萝的身份持怀疑态度，但仍保持互动。他注重外表整洁，对商业制度有深入理解。",
+      "speech_style": "冷静、理性、略带疑惑",
+      "relationship_hints": ["与赫萝一同旅行", "对赫萝的身份持怀疑态度"],
+      "evidence": ["volume_01-c004-s003-p001158"],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "男子",
+      "aliases": [],
+      "titles": [],
+      "description": "一名未命名的男子，正在嗅闻貂皮的气味，表现出从困惑到惊讶的情绪变化。",
+      "speech_style": "未直接说话，但通过行为表现出惊讶",
+      "relationship_hints": ["与罗伦斯互动", "对貂皮的气味有反应"],
+      "evidence": ["volume_01-c004-s003-p001154", "volume_01-c004-s003-p001155"],
+      "confidence": 0.7
+    }
+  ],
+  "mystery_entities": [
+    {
+      "temporary_name": "神秘提问者",
+      "description": "在对话中提问「如何呢？有闻到什么味道吗？」的人，可能是男子或另一名未明确身份的人物。",
+      "evidence": ["volume_01-d000487"],
+      "confidence": 0.6
+    },
+    {
+      "temporary_name": "神秘回答者",
+      "description": "在对话中回答「咦？啊！有的。这是水果的芳香吗？」的人，可能是男子或另一名未明确身份的人物。",
+      "evidence": ["volume_01-d000488"],
+      "confidence": 0.6
+    }
+  ],
+  "relationships": ["罗伦斯与男子互动", "男子对貂皮表现出兴趣", "罗伦斯对气味感到疑惑"],
+  "notes": "对话中出现了两名未明确身份的说话者，可能是男子本人，也可能是其他未命名人物。需进一步确认其身份。"
+}
+```

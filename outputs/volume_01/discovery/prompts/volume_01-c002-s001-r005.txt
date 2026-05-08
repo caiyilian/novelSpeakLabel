@@ -1,0 +1,148 @@
+你是轻小说说话人标注项目的阶段 1：角色发现与建库助手。
+你的任务不是给每句台词最终打标签，而是从当前场景中发现角色、别名、称谓、关系线索、说话风格线索、场景摘要，以及尚未命名但可追踪的神秘人物。
+
+规则：
+1. 只输出严格 JSON，不要 Markdown，不要解释性前后缀。
+2. 不要编造没有文本证据的人名。
+3. 如果人物未命名但看起来可在后文追踪，放入 mystery_entities。
+4. character_candidates 只放可以从文本中看到名字、称谓或稳定身份线索的人物。
+5. evidence 使用 paragraph_id 或 dialogue_id 相关的短证据，不要长篇复制原文。
+
+输出 JSON 结构：
+{
+  "scene_id": "string",
+  "scene_summary": "string",
+  "active_characters": ["string"],
+  "character_candidates": [
+    {
+      "display_name": "string",
+      "aliases": ["string"],
+      "titles": ["string"],
+      "description": "string",
+      "speech_style": "string",
+      "relationship_hints": ["string"],
+      "evidence": ["string"],
+      "confidence": 0.0
+    }
+  ],
+  "mystery_entities": [
+    {
+      "temporary_name": "string",
+      "description": "string",
+      "evidence": ["string"],
+      "confidence": 0.0
+    }
+  ],
+  "relationships": ["string"],
+  "notes": "string"
+}
+
+输入场景 JSON：
+{
+  "volume_id": "volume_01",
+  "scene": {
+    "request_id": "volume_01-c002-s001-r005",
+    "scene_id": "volume_01-c002-s001",
+    "chapter_id": "volume_01-c002",
+    "chapter_title": "第一幕",
+    "chunk_index": 5,
+    "chunk_count": 6
+  },
+  "paragraphs": [
+    {
+      "paragraph_id": "volume_01-c002-s001-p000135",
+      "text": "罗伦斯知道骑士在说什么。应该说，只要是这附近的人都会知道吧。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000136",
+      "text": "那根本不是什么异教徒祭典。况且异教徒不是在更北边、就是在更东边的地方出没。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000137",
+      "text": "这附近所举办的祭典，不过是随处可见，为了庆祝麦田收割、祈祷丰收的祭典罢了，根本不需要特地派驻骑士。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000138",
+      "text": "但是，这附近的祭典比其他地方盛大且特别，所以修道院的人可能因此特别向城里的教会提出报告。或许是长久以来，这地方从不曾正式纳入教会的版图，所以教会才显得特别敏感。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000139",
+      "text": "再说，教会近来热衷异端"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000140",
+      "text": "审判及异教徒改教活动，最近也常听说城里的神学者与自然学者发生言论斗争的消息。民众已渐渐不像从前那样，无条件服从教会。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000141",
+      "text": "注：指非正统的宗教派别"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000142",
+      "text": "就算城里的居民没有说出口，但相信大家都能够感觉到教会的绝对性威严已逐渐消失。事实上，据说因为教皇收到的教会税比预期来得少，而向多国国王请求捐助费用修复大神殿。早在十年前，这根本是不可能发生的事。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000143",
+      "text": "面对这样的局势，也难怪教会急于设法找回威严。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000144",
+      "text": "「不管哪一行的生意都不好做呢。」"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000145",
+      "text": "罗伦斯苦笑，把蜂蜜糖丢入口中。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000146",
+      "text": "当罗伦斯来到宽广的麦田时，西边的天空已经泛起比麦穗还要美丽的金黄色。远方鸟儿小小的身影赶着回家，处处传来的青蛙鸣，仿佛在宣告自己即将入眠似的。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000147",
+      "text": "几乎所有麦田都已完成收割，应该这几天就会举办祭典。快的话，或许后天就会举办了。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000148",
+      "text": "在罗伦斯眼前延伸开来的这片麦田，是这个区域中以高收割量而自豪的帕斯罗村麦田。收割量越高，村民的生活也就越富裕。再加上管理这一带的亚伦多伯爵是个附近无人不知的怪人，他身为贵族却喜欢下田耕作，因此自然愿意赞助祭典，每年都会在祭典上饮酒欢唱，好不热闹。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000149",
+      "text": "然而，罗伦斯从未曾参加过他们的祭典。很遗憾，外人是不允许参加的。"
+    }
+  ],
+  "dialogues": [
+    {
+      "dialogue_id": "volume_01-d000026",
+      "paragraph_id": "volume_01-c002-s001-p000144",
+      "text": "不管哪一行的生意都不好做呢。"
+    }
+  ],
+  "known_characters": [
+    {
+      "entity_id": "char_0001",
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": [
+        "旅行商人",
+        "行商人"
+      ],
+      "description": "一位行商人，发现并收留了赫萝，决定与她一同旅行。 / 一位二十五岁的自力更生旅行商人，已有七年行商经验，性格泰然自若。 / 一位旅行商人，正在前往修道院的路上，与骑士对话。 / 一位行商人，正在前往修道院的路上，与骑士对话。他从容应对骑士的傲慢态度，并用蜂蜜糖和貂皮吸引对方的注意。 / 一位机智的旅行商人，与骑士互动时表现出从容与策略。他使用蜂蜜糖和貂皮吸引骑士的注意，并巧妙地应对对方的提问。"
+    },
+    {
+      "entity_id": "char_0002",
+      "display_name": "赫萝",
+      "aliases": [],
+      "titles": [
+        "丰收之神"
+      ],
+      "description": "自称是丰收之神的少女，拥有狼的耳朵和尾巴，说话狡诈。"
+    },
+    {
+      "entity_id": "char_0003",
+      "display_name": "骑士",
+      "aliases": [],
+      "titles": [],
+      "description": "身穿银色盔甲的骑士，站在修道院附近，态度傲慢，与罗伦斯对话。 / 身穿银色盔甲的下级骑士，态度傲慢但容易被诱惑。他与罗伦斯短暂互动后放行。 / 一位年轻骑士，身穿银色盔甲，态度傲慢但容易被诱惑。他因罗伦斯递给他蜂蜜糖而态度缓和，并询问关于异教徒祭典的消息。"
+    }
+  ]
+}

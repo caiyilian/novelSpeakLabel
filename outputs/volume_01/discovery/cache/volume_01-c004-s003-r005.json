@@ -1,0 +1,80 @@
+{
+  "scene_id": "volume_01-c004-s003",
+  "scene_summary": "赫萝要求罗伦斯给她一件貂皮，随后与一位鉴定员进行交易洽谈。赫萝在对话中表现出幽默和狡黠，试图影响交易的气氛和价格。罗伦斯则显得无奈，被动地配合赫萝的策略。",
+  "active_characters": [
+    "罗伦斯",
+    "赫萝",
+    "鉴定员"
+  ],
+  "character_candidates": [
+    {
+      "display_name": "罗伦斯",
+      "aliases": [
+        "罗伦斯"
+      ],
+      "titles": [
+        "旅行商人"
+      ],
+      "description": "冷静理性的旅行商人，与赫萝一同旅行。在交易中表现出对赫萝策略的无奈与困惑。",
+      "speech_style": "被动、理性、略带无奈",
+      "relationship_hints": [
+        "与赫萝一同旅行",
+        "与鉴定员进行交易"
+      ],
+      "evidence": [
+        "volume_01-c004-s003-p001141",
+        "volume_01-c004-s003-p001152"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "赫萝",
+      "aliases": [
+        "咱"
+      ],
+      "titles": [
+        "丰收之神",
+        "神秘少女"
+      ],
+      "description": "自称丰收之神的神秘少女，拥有狼耳和尾巴。在交易中表现出幽默和狡黠，试图影响交易气氛。",
+      "speech_style": "轻松幽默、略带威胁性",
+      "relationship_hints": [
+        "与罗伦斯一同旅行",
+        "主导交易策略"
+      ],
+      "evidence": [
+        "volume_01-d000479",
+        "volume_01-d000484",
+        "volume_01-d000485",
+        "volume_01-d000486"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "鉴定员",
+      "aliases": [],
+      "titles": [
+        "鉴定商品的采购人员"
+      ],
+      "description": "负责鉴定罗伦斯带来的貂皮，态度专业但对赫萝的插嘴感到困惑。",
+      "speech_style": "礼貌、专业、略显困惑",
+      "relationship_hints": [
+        "与罗伦斯进行交易洽谈",
+        "被赫萝影响气氛"
+      ],
+      "evidence": [
+        "volume_01-d000481",
+        "volume_01-d000483",
+        "volume_01-c004-s003-p001151"
+      ],
+      "confidence": 0.85
+    }
+  ],
+  "mystery_entities": [],
+  "relationships": [
+    "罗伦斯与赫萝一同旅行",
+    "罗伦斯与鉴定员进行交易",
+    "赫萝主导交易策略并影响气氛"
+  ],
+  "notes": "赫萝在交易中表现出主导地位，罗伦斯则显得被动。鉴定员对赫萝的幽默感到困惑，但态度仍保持专业。"
+}

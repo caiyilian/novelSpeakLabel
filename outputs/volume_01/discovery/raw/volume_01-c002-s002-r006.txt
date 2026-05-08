@@ -1,0 +1,39 @@
+```json
+{
+  "scene_id": "volume_01-c002-s002",
+  "scene_summary": "罗伦斯发现一名头上长着小狗耳朵的女孩，试图叫醒她并质问她为何擅自坐上他的马车。",
+  "active_characters": ["罗伦斯", "赫萝"],
+  "character_candidates": [
+    {
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": ["旅行商人"],
+      "description": "一位旅行商人，正在马车上发现并试图叫醒一名神秘女孩。",
+      "speech_style": "直接、坚定，带有关心和警觉。",
+      "relationship_hints": ["与女孩有互动，试图弄清她的身份。"],
+      "evidence": ["volume_01-c002-s002-p000230", "volume_01-c002-s002-p000233", "volume_01-c002-s002-p000234"],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "赫萝",
+      "aliases": [],
+      "titles": ["丰收之神"],
+      "description": "一名头上长着小狗耳朵的神秘女孩，似乎处于昏迷状态。",
+      "speech_style": "模糊、微弱，尚未完全清醒。",
+      "relationship_hints": ["与罗伦斯有互动，似乎是被他发现并收留的。"],
+      "evidence": ["volume_01-c002-s002-p000231", "volume_01-d000052"],
+      "confidence": 0.85
+    }
+  ],
+  "mystery_entities": [
+    {
+      "temporary_name": "神秘女孩",
+      "description": "一名头上长着小狗耳朵的女孩，似乎处于昏迷状态，身份不明。",
+      "evidence": ["volume_01-c002-s002-p000231", "volume_01-d000052"],
+      "confidence": 0.7
+    }
+  ],
+  "relationships": ["罗伦斯与赫萝之间存在发现与收留的关系线索。"],
+  "notes": "赫萝的身份和背景仍需进一步确认，她是否与已知的丰收之神身份一致，或是新的角色。"
+}
+```
