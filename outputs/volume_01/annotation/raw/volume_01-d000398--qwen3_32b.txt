@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000398",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.98
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.02
+    }
+  ],
+  "evidence": [
+    "罗伦斯夹杂着叹息声，喃喃自语说：「早知道我也应该跟着买。」",
+    "上下文显示罗伦斯在谈论苹果期货，语气中带有懊悔和自责，符合其理性但略带情绪化的说话风格。",
+    "当前段落明确指出说话者是罗伦斯，且与前文的对话逻辑一致。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

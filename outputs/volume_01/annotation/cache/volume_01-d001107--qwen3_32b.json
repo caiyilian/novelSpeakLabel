@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d001107",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "前一段提到赫萝问罗伦斯「汝猜猜看捉住咱的人当中有谁？」，紧接着罗伦斯松开赫萝的手腕，随后本段对话「有谁？」语气简短，符合罗伦斯冷静理性的说话风格。",
+    "赫萝在前一段表现出强烈情绪，不太可能紧接着用如此平淡的语气回应，而罗伦斯更可能以理性方式回应问题。",
+    "场景记忆中，罗伦斯与赫萝的互动频繁，且罗伦斯通常以理性、冷静的语气回应赫萝的情绪化表达。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

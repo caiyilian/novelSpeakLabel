@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d000842",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "赫萝在场景中抱怨面包难吃，接着询问是否有喝的，符合她说话轻松幽默但略带调侃的风格。",
+    "场景记忆显示赫萝与罗伦斯一同旅行，且在本段对话中表现出对食物和水的关注。",
+    "下一段对话中赫萝朝水壶望去并喝水，进一步确认说话人是赫萝。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

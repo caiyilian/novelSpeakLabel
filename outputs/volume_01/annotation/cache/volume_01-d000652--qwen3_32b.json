@@ -1,0 +1,28 @@
+{
+  "dialogue_id": "volume_01-d000652",
+  "speaker_entity_id": "char_0019",
+  "speaker_display": "怀兹",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0019",
+      "display": "怀兹",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "前一段中怀兹打断罗伦斯的话题并表现出厌恶，下一段提到怀兹说话态度一贯如此，说明说话人是怀兹。",
+    "对话内容「什么嘛，你已经先下手了啊？」语气直接、略带挑衅，符合怀兹的说话风格。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

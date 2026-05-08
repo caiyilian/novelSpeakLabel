@@ -1,0 +1,32 @@
+{
+  "dialogue_id": "volume_01-d001268",
+  "speaker_entity_id": "char_0033",
+  "speaker_display": "巨大狼",
+  "speaker_status": "known",
+  "confidence": 0.9,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0033",
+      "display": "巨大狼",
+      "status": "known",
+      "score": 0.9
+    },
+    {
+      "entity_id": "mystery_volume_01_c007_s004_r004_士兵A",
+      "display": "士兵A",
+      "status": "mystery",
+      "score": 0.1
+    }
+  ],
+  "evidence": [
+    "狼身体的重量感使得四周的空气变得沉重，散发的热气仿佛一靠近就会融化似的。然而，狼的眼睛却是极其冷静且清澈。",
+    "逃不了。",
+    "只要是人类都会这么想吧。",
+    "「哇、哇啊啊啊啊啊啊啊啊啊啊啊！」",
+    "就在某个人大叫之后，现场几乎所有人都丢下武器落荒而逃，有两个人应该是因为过度惊恐，以致于把武器朝狼丢去。",
+    "巨大的狼身手矫健地用嘴巴咬住丢向他的武器，易如反掌地把铁制的武器咬得粉碎。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

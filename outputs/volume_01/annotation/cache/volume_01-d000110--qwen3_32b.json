@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000110",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "对话内容中提到「动物化身」和「变回原本的模样」，这是罗伦斯对赫萝身份的质疑和推理，符合他的理性说话风格。",
+    "上下文显示罗伦斯一直在试图验证赫萝是否为真正的动物化身，而赫萝则表现出抗拒和情绪化反应。",
+    "赫萝的回应和行为（如「脸上厌恶的表情加重」）表明她并非说话人，而是被罗伦斯提问的对象。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

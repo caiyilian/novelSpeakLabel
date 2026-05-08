@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d000088",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    }
+  ],
+  "evidence": [
+    "赫萝在场景中多次提及自己的出生地和经历，包括提到约伊兹。",
+    "赫萝的说话风格轻松幽默但略带威胁性，与台词「咱去过约伊兹，怎么着？」相符。",
+    "赫萝自称来自遥远的北方大地，与约伊兹的古老传说有关联。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

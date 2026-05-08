@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d001073",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "上下文显示罗伦斯在地下道中行动，心理描写和身体反应表明他处于紧张状态。",
+    "台词「这、怎么可能。」符合罗伦斯冷静理性但因震惊而情绪波动的说话风格。",
+    "场景记忆中，罗伦斯是唯一明确出现并有大量心理描写和行动描述的角色。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

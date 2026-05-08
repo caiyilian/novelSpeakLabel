@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000565",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0009",
+      "display": "杰廉",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "对话内容涉及情报费、利益分配和亏损责任，符合罗伦斯冷静理性、注重商业细节的说话风格。",
+    "上下文显示罗伦斯正在与杰廉进行交易谈判，但此句是罗伦斯在确认交易条款。",
+    "场景记忆中明确提到罗伦斯与杰廉进行情报交易，罗伦斯主导谈判并提出条件。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

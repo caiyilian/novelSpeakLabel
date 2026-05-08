@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000746",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "上下文显示赫萝刚刚提到「咱还以为这是普通的酒」，随后罗伦斯回应「哈哈，你的身分高嘛。」",
+    "场景记忆中明确指出罗伦斯与赫萝的互动，罗伦斯经常以调侃或理性的方式回应赫萝的言行。",
+    "下一段提到「罗伦斯笑着说」，进一步确认说话人是罗伦斯。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

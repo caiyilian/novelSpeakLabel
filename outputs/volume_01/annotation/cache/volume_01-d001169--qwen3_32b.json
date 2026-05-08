@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d001169",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "前一段提到罗伦斯在赫萝说话之前便已回头跑，说明罗伦斯是主动行动者，且在对话中主导。",
+    "当前对话内容「这是一条路通到底吗？」符合罗伦斯冷静理性、思考路线的说话风格。",
+    "场景记忆中罗伦斯多次确认路线和方向，表现出对路线的担忧和判断，与当前台词相符。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

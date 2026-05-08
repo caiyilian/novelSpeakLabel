@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d001014",
+  "speaker_entity_id": "char_0020",
+  "speaker_display": "列支敦·马贺特",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0020",
+      "display": "列支敦·马贺特",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "上下文显示该段对话紧接在「马贺特像在自言自语似的轻声说」之后，暗示说话人是马贺特。",
+    "场景记忆中，马贺特与罗伦斯频繁对话，且本段内容符合马贺特冷静分析局势的风格。",
+    "下一段提到「罗伦斯只能用如坐针毡的心情听马贺特说话」，进一步确认说话人是马贺特。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

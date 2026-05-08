@@ -1,0 +1,28 @@
+{
+  "dialogue_id": "volume_01-d000129",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "前文对话中，赫萝提出变身条件，罗伦斯回应「刚才说的话？」，随后当前台词「这……」是对赫萝的进一步反应，语气犹豫，符合罗伦斯理性怀疑的性格。",
+    "当前段落之后的叙述明确提到「罗伦斯顿时不知该如何回答」，表明说话人是罗伦斯。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

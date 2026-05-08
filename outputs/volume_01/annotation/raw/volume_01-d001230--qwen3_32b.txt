@@ -1,0 +1,30 @@
+```json
+{
+  "dialogue_id": "volume_01-d001230",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "罗伦斯用还使得上力的右手拔出腰上的短剑，以仿佛在水中动作的速度，缓缓挡在赫萝面前。",
+    "「退后。」这句话出现在罗伦斯保护赫萝的场景中，语气坚定，符合罗伦斯的理性与冷静性格。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

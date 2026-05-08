@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000472",
+  "speaker_entity_id": "char_0016",
+  "speaker_display": "鉴定员",
+  "speaker_status": "known",
+  "confidence": 0.9,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0016",
+      "display": "鉴定员",
+      "status": "known",
+      "score": 0.9
+    },
+    {
+      "entity_id": "char_0015",
+      "display": "鉴定的男子",
+      "status": "known",
+      "score": 0.7
+    }
+  ],
+  "evidence": [
+    "前一段提到「鉴定员注视着赫萝，一脸惊讶的表情」，暗示说话人是鉴定员。",
+    "下一段提到「阅历丰富的老江湖，看来似乎真心向赫萝道歉」，进一步确认说话人是鉴定员。",
+    "说话内容「很、很抱歉，我是不是有漏看什么？」语气诚恳，符合鉴定员在赫萝影响下的态度变化。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

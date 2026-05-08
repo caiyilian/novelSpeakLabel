@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000715",
+  "speaker_entity_id": "char_0009",
+  "speaker_display": "杰廉",
+  "speaker_status": "known",
+  "confidence": 0.85,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0009",
+      "display": "杰廉",
+      "status": "known",
+      "score": 0.85
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.15
+    }
+  ],
+  "evidence": [
+    "对话内容「呵，人类真是聪明呐。」语气带有调侃和讽刺，符合杰廉的说话风格。",
+    "上下文提到杰廉的交易策略和罗伦斯被设计的交易，暗示杰廉的狡猾和自得。",
+    "杰廉是场景中关键但未直接说话的角色，其动机和行为通过罗伦斯和赫萝的对话间接体现。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

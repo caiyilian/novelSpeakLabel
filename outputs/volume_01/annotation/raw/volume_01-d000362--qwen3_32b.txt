@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000362",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "前一段中赫萝说「嗯……这不是祭典呗？」，而当前段落是对这一问题的回答，语气理性且冷静，符合罗伦斯的说话风格。",
+    "当前段落中提到「如果是教会举办祭典……」，罗伦斯对教会和宗教活动有较多了解，符合他的背景。",
+    "场景记忆中显示罗伦斯与赫萝的对话多围绕现实观察和理性分析，而赫萝更倾向于情绪化和调侃的表达。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

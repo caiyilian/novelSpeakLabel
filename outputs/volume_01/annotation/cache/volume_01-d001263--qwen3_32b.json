@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d001263",
+  "speaker_entity_id": "char_0004",
+  "speaker_display": "叶勒",
+  "speaker_status": "known",
+  "confidence": 0.9,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0004",
+      "display": "叶勒",
+      "status": "known",
+      "score": 0.9
+    },
+    {
+      "entity_id": "mystery_volume_01_c007_s004_r002_梅迪欧商行手下",
+      "display": "梅迪欧商行手下",
+      "status": "mystery",
+      "score": 0.2
+    }
+  ],
+  "evidence": [
+    "台词内容为命令性质，符合叶勒在场景中试图控制局势的行为。",
+    "场景中提到「叶勒的吆喝声也无法迫使男子们往前迈进」，暗示他刚刚发出命令。",
+    "叶勒在场景中被描述为指挥梅迪欧商行手下，是当前局势的主导者之一。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

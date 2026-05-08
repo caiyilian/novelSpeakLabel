@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000275",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "前一段提到罗伦斯决定不提及自己联想到的事情，暗示他正在与赫萝对话。",
+    "当前段落是直接引语，语气符合罗伦斯冷静理性、略带怀疑的说话风格。",
+    "下一段赫萝回应「嗯？喔，多多少少可以。」，符合两人对话的延续性。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

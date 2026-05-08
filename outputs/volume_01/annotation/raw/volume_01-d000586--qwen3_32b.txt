@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d000586",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "赫萝在前一段中指向面包摊贩并表达想吃面包的意愿，随后该段明确描述了她对蜂蜜面包的偏好。",
+    "场景记忆中明确指出赫萝对蜂蜜面包表现出强烈兴趣，且是对话的核心人物。",
+    "当前段落是赫萝对前一句「面包吗？」的回应，符合她的说话风格和兴趣。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

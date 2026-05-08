@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d001009",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.98
+    },
+    {
+      "entity_id": "char_0020",
+      "display": "列支敦·马贺特",
+      "status": "known",
+      "score": 0.02
+    }
+  ],
+  "evidence": [
+    "上下文显示该句出现在罗伦斯与马贺特讨论应对梅迪欧商行威胁的场景中，罗伦斯是主要发言者。",
+    "该句语气冷静理性，符合罗伦斯的说话风格。",
+    "马贺特在下一段才开始回应，因此该句不可能是他说的。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

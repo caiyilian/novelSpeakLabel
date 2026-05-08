@@ -1,0 +1,32 @@
+```json
+{
+  "dialogue_id": "volume_01-d000721",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.9,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.9
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.1
+    }
+  ],
+  "evidence": [
+    "前一段落中罗伦斯说：「不，一般会非常谨慎地维持一定含量。」",
+    "当前段落是「唔……」，语气与罗伦斯在困惑或思考时的反应相符。",
+    "后一段落提到「罗伦斯心想赫萝的脸上会带着微笑」，暗示说话人是罗伦斯。",
+    "场景记忆中，罗伦斯和赫萝是主要对话者，且罗伦斯经常表现出困惑或思考的语气。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

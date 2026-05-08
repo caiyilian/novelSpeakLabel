@@ -1,0 +1,30 @@
+```json
+{
+  "dialogue_id": "volume_01-d000664",
+  "speaker_entity_id": "char_0019",
+  "speaker_display": "怀兹",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0019",
+      "display": "怀兹",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "怀兹说道，想必他早已谨慎比较过货币的重量及色泽。",
+    "怀兹双手托着腮，把手肘撑在兑换台上笑着说。他的意思是告诉罗伦斯别试了。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d001315",
+  "speaker_entity_id": "char_0020",
+  "speaker_display": "列支敦·马贺特",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0020",
+      "display": "列支敦·马贺特",
+      "status": "known",
+      "score": 0.98
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.02
+    }
+  ],
+  "evidence": [
+    "上下文显示罗伦斯和马贺特正在进行交易谈判，且马贺特在前一段中提到「梅迪欧商行的人应该也觉得拿马作人质没用吧」，语气和行为符合马贺特的风格。",
+    "当前段落语气礼貌、理性，符合马贺特的说话风格，而非罗伦斯的冷静理性但略带情绪化的语气。",
+    "场景记忆中，马贺特多次与罗伦斯进行交易谈判，且在本场景中是主要对话者之一。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

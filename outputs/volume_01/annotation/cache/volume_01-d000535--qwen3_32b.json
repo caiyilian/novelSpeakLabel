@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000535",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "前一段提到赫萝说「那个女孩在撒谎」，当前对话「什么谎？」是对这句话的回应，语气符合罗伦斯冷静理性的风格。",
+    "场景中罗伦斯与赫萝正在讨论女店员的谎言，罗伦斯通常会以提问方式回应赫萝的判断。",
+    "赫萝在前一段有发言，当前对话更可能是罗伦斯的回应。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

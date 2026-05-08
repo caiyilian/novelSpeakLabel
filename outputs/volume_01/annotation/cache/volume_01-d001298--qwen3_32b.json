@@ -1,0 +1,28 @@
+{
+  "dialogue_id": "volume_01-d001298",
+  "speaker_entity_id": "char_0034",
+  "speaker_display": "国王",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0034",
+      "display": "国王",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0035",
+      "display": "御用商人",
+      "status": "known",
+      "score": 0.6
+    }
+  ],
+  "evidence": [
+    "对话内容提到国王打算降低银币含银量，并以现金支付，这与场景记忆中国王通过复杂策略榨取米隆商行利益的描述一致。",
+    "国王未直接发言，但其行为逻辑和策略在场景中被罗伦斯推测，符合当前对话中提及的国王行为。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

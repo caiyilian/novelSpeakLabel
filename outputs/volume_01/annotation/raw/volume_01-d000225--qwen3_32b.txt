@@ -1,0 +1,32 @@
+```json
+{
+  "dialogue_id": "volume_01-d000225",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "mystery_volume_01_c003_s001_r005_教会客人1",
+      "display": "教会客人1",
+      "status": "mystery",
+      "score": 0.1
+    }
+  ],
+  "evidence": [
+    "赫萝在场景中伪装成人类，说话风格轻松幽默且略带威胁性，符合台词语气。",
+    "上下文显示赫萝正在提醒罗伦斯不要暴露伪装，台词内容与她的行为和角色设定一致。",
+    "场景记忆中赫萝多次以类似语气说话，表现出对罗伦斯的调侃和保护。",
+    "当前段落之后赫萝继续以「咱是贤狼赫萝」自称，进一步确认说话人身份。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

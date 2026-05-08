@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d000622",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "赫萝在对话中表现出对经济话题的理解，且说话风格轻松幽默但略带威胁性，符合她的语言特征。",
+    "上下文显示罗伦斯正在向赫萝解释货币机制，赫萝随后提出总结性提问，表明她理解了罗伦斯的解释。",
+    "赫萝是场景中唯一持续参与货币讨论的角色，且她的提问风格与她的性格一致。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

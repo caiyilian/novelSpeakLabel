@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d000154",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    }
+  ],
+  "evidence": [
+    "对话中使用了「咱」自称，这是赫萝的典型说话风格。",
+    "提到「村子」和「逃出来」，与赫萝在场景中提到的帕斯罗村和她与叶勒的关联一致。",
+    "上下文显示赫萝在解释自己与罗伦斯的关系，并提到自己是「救命恩人」，这与赫萝在场景中试图说服罗伦斯相信她的身份相符。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

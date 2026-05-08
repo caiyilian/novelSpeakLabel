@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000564",
+  "speaker_entity_id": "char_0009",
+  "speaker_display": "杰廉",
+  "speaker_status": "known",
+  "confidence": 0.9,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0009",
+      "display": "杰廉",
+      "status": "known",
+      "score": 0.9
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.1
+    }
+  ],
+  "evidence": [
+    "当前段落是「啊，谢谢您！」，语气较为谦卑，符合杰廉在场景中作为谨慎、不自信的情报贩子形象。",
+    "在前文的对话中，罗伦斯与杰廉进行交易谈判，杰廉尚未直接发言，但此句语气更符合杰廉的风格。",
+    "场景记忆中提到杰廉提出交易条件并试图说服罗伦斯，因此他更可能在此时表达感谢。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

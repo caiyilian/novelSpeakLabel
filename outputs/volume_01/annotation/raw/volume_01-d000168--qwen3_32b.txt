@@ -1,0 +1,30 @@
+```json
+{
+  "dialogue_id": "volume_01-d000168",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "前一段提到罗伦斯正在试图换话题，当前对话是罗伦斯的回应语气。",
+    "下一段赫萝的回应「汝认为咱说谎？」表明她是在回应当前说话人，符合罗伦斯的语气和上下文逻辑。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

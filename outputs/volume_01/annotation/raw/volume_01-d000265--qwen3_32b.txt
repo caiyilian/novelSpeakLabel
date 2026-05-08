@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d000265",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    }
+  ],
+  "evidence": [
+    "上下文提到赫萝吃马铃薯、被噎着、说话风格轻松幽默略带威胁，与当前台词中「狼没有这东西」的比喻一致。",
+    "当前段落中赫萝被描述为「狼吞虎咽」，与当前台词中「没法儿慢慢咀嚼」的逻辑一致。",
+    "赫萝是场景中唯一持续出现并有对话的非人类角色，且台词风格与她的描述高度吻合。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

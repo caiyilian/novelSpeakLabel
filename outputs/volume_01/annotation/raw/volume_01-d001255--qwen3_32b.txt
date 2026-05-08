@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d001255",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.98
+    }
+  ],
+  "evidence": [
+    "台词中直接称呼「赫萝」，表明说话人与赫萝有亲密关系，且处于被赫萝抱住的被动状态。",
+    "上下文显示罗伦斯正在与赫萝互动，赫萝的动作引发了罗伦斯的反应。",
+    "场景记忆中明确指出罗伦斯与赫萝一同旅行，且罗伦斯对赫萝的行为有反应。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

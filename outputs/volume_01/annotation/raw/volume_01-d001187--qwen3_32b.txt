@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d001187",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "上下文显示罗伦斯和赫萝正在地下道中逃跑，罗伦斯在分析敌人如何发现他们。",
+    "该台词符合罗伦斯冷静理性、逻辑分析的说话风格。",
+    "赫萝的台词风格更偏向轻松幽默和情绪化，与该句理性分析的语气不符。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

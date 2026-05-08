@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000850",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "对话内容提到‘开店的理想城镇’，这与罗伦斯在场景中展示的开店计划和蓝图高度相关。",
+    "上下文显示对话是罗伦斯对赫萝提问的回应，语气理性且带有规划性，符合罗伦斯的说话风格。",
+    "场景记忆中明确指出罗伦斯是开店计划的提出者和主导者，而赫萝则表现出冷淡或调侃的态度。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

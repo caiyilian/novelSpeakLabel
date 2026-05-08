@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000368",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "上下文显示赫萝刚刚回答完问题，随后是罗伦斯的发言，语气和内容符合罗伦斯对赫萝外貌和身份的担忧。",
+    "该段对话延续了罗伦斯对赫萝是否会被村民认出的讨论，符合他一贯的理性与谨慎风格。",
+    "赫萝在后续回应中表现出不悦，暗示她对罗伦斯的提醒感到不满，符合两人互动模式。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

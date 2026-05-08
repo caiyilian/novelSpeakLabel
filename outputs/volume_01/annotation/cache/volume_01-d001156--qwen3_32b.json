@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d001156",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    },
+    {
+      "entity_id": "char_0031",
+      "display": "马夫",
+      "status": "known",
+      "score": 0.02
+    }
+  ],
+  "evidence": [
+    "上下文显示赫萝在黑暗中说话，随后罗伦斯回应，符合赫萝轻松幽默但略带威胁的说话风格。",
+    "「这样的咱很可爱呗！」是赫萝典型的自称方式，符合其角色设定。",
+    "场景记忆中赫萝与罗伦斯有亲密互动，且本段对话是赫萝对罗伦斯的调侃。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

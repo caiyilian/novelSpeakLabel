@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000050",
+  "speaker_entity_id": "mystery_volume_01_c002_s002_r005_神秘女孩",
+  "speaker_display": "神秘女孩",
+  "speaker_status": "mystery",
+  "confidence": 0.85,
+  "candidate_speakers": [
+    {
+      "entity_id": "mystery_volume_01_c002_s002_r005_神秘女孩",
+      "display": "神秘女孩",
+      "status": "mystery",
+      "score": 0.85
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.15
+    }
+  ],
+  "evidence": [
+    "「……嗯唔？」是神秘女孩在罗伦斯叫醒她时的反应，她的声音甜美但毫无防备。",
+    "上下文显示她刚刚被罗伦斯叫醒，尚未完全清醒，因此说话简短且模糊。",
+    "神秘女孩的身份尚未明确，但她的出现与赫萝的线索有重叠，但此处更符合神秘女孩的反应。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

@@ -1,0 +1,28 @@
+{
+  "dialogue_id": "volume_01-d000032",
+  "speaker_entity_id": "mystery_volume_01_c002_s002_r002_村民",
+  "speaker_display": "村民",
+  "speaker_status": "mystery",
+  "confidence": 0.75,
+  "candidate_speakers": [
+    {
+      "entity_id": "mystery_volume_01_c002_s002_r002_村民",
+      "display": "村民",
+      "status": "mystery",
+      "score": 0.75
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.25
+    }
+  ],
+  "evidence": [
+    "村民在祭典中高声呼喊，庆祝最后割下麦子的人。",
+    "台词「快看！狼就躺在那边！」与村民的集体呼喊行为一致，且与赫萝的象征性存在相关，但无直接证据表明是赫萝本人说话。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

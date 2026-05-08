@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000674",
+  "speaker_entity_id": "char_0019",
+  "speaker_display": "怀兹",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0019",
+      "display": "怀兹",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "前文提到怀兹对赫萝的检测方法感到好笑，而当前台词「哈哈，这太胡闹了。」符合怀兹调侃和轻松的语气。",
+    "场景中三人互动频繁，怀兹对赫萝的态度一贯带有嘲讽和调侃，而赫萝通常以幽默或威胁回应，因此该台词更符合怀兹的说话风格。",
+    "下一段提到「怀兹苦笑着说。」进一步确认说话人是怀兹。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

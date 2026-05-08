@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d001196",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "前一段提到赫萝握住罗伦斯的手并加重力道，显示她的情绪波动。",
+    "当前段落是「等一下。」，语气短促且带有情绪，符合赫萝的说话风格。",
+    "下一段提到罗伦斯立刻停下脚步，暗示赫萝的发言是触发点。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

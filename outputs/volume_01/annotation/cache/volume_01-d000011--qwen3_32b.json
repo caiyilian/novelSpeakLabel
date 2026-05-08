@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000011",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.98
+    },
+    {
+      "entity_id": "char_0003",
+      "display": "骑士",
+      "status": "known",
+      "score": 0.02
+    }
+  ],
+  "evidence": [
+    "罗伦斯从怀里拿出皮袋，拿出蜂蜜糖并递给骑士，随后问「要不要来一颗？」",
+    "上下文显示罗伦斯是主动提供糖果的一方，语气自然，符合其冷静理性的说话风格。",
+    "骑士尚未回应，因此说话人不可能是骑士。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

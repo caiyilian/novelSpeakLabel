@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000886",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "当前段落前文描述赫萝情绪不稳定，罗伦斯抱着她，而此句「呜……」是情绪低落的表达，符合赫萝的反应。",
+    "场景记忆中赫萝多次表现出情绪波动，如哭泣、抽鼻涕等，而罗伦斯则保持冷静和安抚。",
+    "赫萝在后续段落中「……抱歉。」，进一步确认她为说话人。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

@@ -1,0 +1,28 @@
+{
+  "dialogue_id": "volume_01-d000943",
+  "speaker_entity_id": "char_0026",
+  "speaker_display": "老卸货工",
+  "speaker_status": "known",
+  "confidence": 0.85,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0026",
+      "display": "老卸货工",
+      "status": "known",
+      "score": 0.85
+    },
+    {
+      "entity_id": "char_0024",
+      "display": "梅迪欧商行的人",
+      "status": "known",
+      "score": 0.15
+    }
+  ],
+  "evidence": [
+    "对话内容提到「比起这个，那些家伙究竟是什么来头？」，与前一段老卸货工的发言「大半夜的，这么大骚动到底是怎么回事？」相呼应，语气和风格一致。",
+    "老卸货工在场景中是唯一明确提到「那些家伙」的已知角色，且与梅迪欧商行的敌对行为有关联。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

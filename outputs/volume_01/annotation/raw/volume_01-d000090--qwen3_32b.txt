@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000090",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "mystery_volume_01_c002_s003_r006_约伊兹",
+      "display": "约伊兹",
+      "status": "mystery",
+      "score": 0.1
+    }
+  ],
+  "evidence": [
+    "赫萝在对话中提到自己来自约伊兹，且在场景中多次提及出生地，语气自然。",
+    "赫萝的说话风格轻松幽默但略带威胁性，符合其角色特征。",
+    "罗伦斯对赫萝的说法表示怀疑，但未质疑说话人身份，表明说话人是赫萝。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

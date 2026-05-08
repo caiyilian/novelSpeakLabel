@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d000026",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "上下文显示该段落紧接在罗伦斯与骑士的对话之后，且下一段提到罗伦斯「苦笑，把蜂蜜糖丢入口中」，表明说话人是罗伦斯。",
+    "场景记忆中，罗伦斯是当前场景中唯一持续活跃的已知角色，且没有其他角色在此段落中发言。",
+    "台词「不管哪一行的生意都不好做呢。」符合罗伦斯冷静理性、略带失落的说话风格。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

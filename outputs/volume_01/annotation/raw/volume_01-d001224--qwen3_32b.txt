@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d001224",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "前一段对话中赫萝问「……这纱布？」，罗伦斯回答「咱撕下袖子当纱布。」，表明两人对话的连续性。",
+    "当前台词「没有，我知道，没事的。」语气冷静、理性，符合罗伦斯的说话风格。",
+    "场景记忆中明确指出罗伦斯和赫萝是主要角色，且罗伦斯在本段中试图安抚赫萝的情绪。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

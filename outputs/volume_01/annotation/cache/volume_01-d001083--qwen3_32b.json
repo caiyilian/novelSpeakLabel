@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d001083",
+  "speaker_entity_id": "char_0024",
+  "speaker_display": "梅迪欧商行的人",
+  "speaker_status": "known",
+  "confidence": 0.9,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0024",
+      "display": "梅迪欧商行的人",
+      "status": "known",
+      "score": 0.9
+    },
+    {
+      "entity_id": "char_0027",
+      "display": "米隆商行人员",
+      "status": "known",
+      "score": 0.6
+    }
+  ],
+  "evidence": [
+    "「里昂」、「奴马」是商行人员之间确认身份的暗号，符合商行人员的行动模式。",
+    "罗伦斯「爬入车厢内」，说明说话人是在车厢外的商行人员，与场景中协助撤离的商行人员一致。",
+    "场景记忆中提到商行人员协助罗伦斯与赫萝撤离，使用暗号确认身份，符合当前对话语境。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

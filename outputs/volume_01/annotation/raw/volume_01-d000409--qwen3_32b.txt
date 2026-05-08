@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d000409",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "赫萝在场景中表现出对苹果的强烈渴望，且说话风格轻松幽默但略带威胁性，符合台词「咱……想要……吃……苹果……」的语气。",
+    "上下文显示罗伦斯回应了赫萝的请求，说明说话人是赫萝。",
+    "赫萝的自称「咱」在台词中出现，符合她的语言特征。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

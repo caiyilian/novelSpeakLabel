@@ -1,0 +1,30 @@
+```json
+{
+  "dialogue_id": "volume_01-d000277",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0009",
+      "display": "杰廉",
+      "status": "ambiguous",
+      "score": 0.1
+    }
+  ],
+  "evidence": [
+    "前文提到赫萝捏死跳蚤后继续吃马铃薯，接着是「可以分辨多少呢？」的提问，符合赫萝轻松幽默但略带威胁的说话风格。",
+    "赫萝在场景中频繁出现，且是主要互动角色，而杰廉在本段场景中已离开，不太可能继续发言。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

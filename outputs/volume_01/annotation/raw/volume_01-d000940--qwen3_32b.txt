@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000940",
+  "speaker_entity_id": "char_0026",
+  "speaker_display": "老卸货工",
+  "speaker_status": "known",
+  "confidence": 0.9,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0026",
+      "display": "老卸货工",
+      "status": "known",
+      "score": 0.9
+    },
+    {
+      "entity_id": "char_0025",
+      "display": "米隆商行帕兹欧分行店员",
+      "status": "known",
+      "score": 0.1
+    }
+  ],
+  "evidence": [
+    "一名留有胡子，稍稍上了年纪的男子从里面走出来，他对栅栏外大喝：",
+    "「混帐！你们以为这里是什么地方！这里可是拉翁迪尔公国三十三世，拉翁迪尔大公公认之大米隆侯爵，所经营的米隆商行帕兹欧分行！」",
+    "老卸货工的描述与说话风格一致，且在场景中出现并发表长篇大论。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

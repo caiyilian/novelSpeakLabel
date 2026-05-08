@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d000127",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    }
+  ],
+  "evidence": [
+    "前一段中赫萝抢先解释并问罗伦斯「汝刚才说的话是否当真？」，上下文显示是赫萝在回应。",
+    "当前段落是赫萝的反问「刚才说的话？」，延续了她对罗伦斯的质疑和互动。",
+    "场景记忆中赫萝多次以轻松幽默但略带威胁的语气与罗伦斯对话，符合当前台词风格。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

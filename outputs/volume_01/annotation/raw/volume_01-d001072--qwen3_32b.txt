@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d001072",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "上下文显示罗伦斯是当前场景中唯一明确出现并有大量心理描写和行动描述的角色。",
+    "台词「这里吗？」出现在罗伦斯判断地下道尽头的段落中，符合他的行为逻辑。",
+    "场景记忆中没有其他角色在此时说话的记录。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

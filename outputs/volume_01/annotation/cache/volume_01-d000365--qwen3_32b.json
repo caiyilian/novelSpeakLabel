@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000365",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.9,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.9
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.6
+    }
+  ],
+  "evidence": [
+    "前一段罗伦斯说「喂。」，接着是「嗯？」的回应，符合罗伦斯冷静、理性、略带失落的说话风格。",
+    "赫萝的注意力集中在摊贩上，不太可能立即回应罗伦斯的对话。",
+    "场景中只有罗伦斯和赫萝是活跃角色，且罗伦斯更可能在对话中提出问题或表达疑虑。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

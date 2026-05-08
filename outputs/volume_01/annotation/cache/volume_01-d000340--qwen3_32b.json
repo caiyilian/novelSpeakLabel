@@ -1,0 +1,23 @@
+{
+  "dialogue_id": "volume_01-d000340",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "赫萝拥有狼的耳朵和尾巴，对话中提到「如果是野狗群还好，狼群就难对付了」，符合她作为狼的视角和语气。",
+    "上下文显示赫萝正在与罗伦斯讨论狼群的威胁，语气轻松但略带调侃，符合赫萝的说话风格。",
+    "场景记忆中赫萝多次以轻松幽默但略带威胁的语气与罗伦斯互动，与当前台词风格一致。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

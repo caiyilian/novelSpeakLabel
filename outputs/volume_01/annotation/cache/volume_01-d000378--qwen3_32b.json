@@ -1,0 +1,23 @@
+{
+  "dialogue_id": "volume_01-d000378",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    }
+  ],
+  "evidence": [
+    "赫萝在前一段落中从外套底下忽然开口说话，符合「咱说汝啊。」的说话风格。",
+    "赫萝的台词风格通常使用「咱」自称，符合该句台词的自称方式。",
+    "当前段落紧接着赫萝的行动描述，逻辑上应为她继续发言。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000504",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0018",
+      "display": "女店员",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "赫萝在前一段中连续打了两次嗝，并向女店员追加酒杯，表现出她正在喝酒的场景。",
+    "当前台词「怎么着？汝不喝吗？」语气轻松调侃，符合赫萝一贯的说话风格。",
+    "下一段中赫萝一边吃炒干豆一边提问，进一步确认说话人是赫萝。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

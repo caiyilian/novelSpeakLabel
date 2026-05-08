@@ -1,0 +1,24 @@
+```json
+{
+  "dialogue_id": "volume_01-d000382",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    }
+  ],
+  "evidence": [
+    "赫萝自嘲似的轻轻笑了笑，然后回答：「哎，没什么好担心的。」",
+    "当前段落明确指出说话人是赫萝，且上下文显示她与罗伦斯的互动中表现出自嘲和轻松的语气，符合赫萝的说话风格。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

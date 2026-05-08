@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d001290",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.98
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.02
+    }
+  ],
+  "evidence": [
+    "上下文显示对话者在询问赫萝的下落，语气中带有焦急和失落，符合罗伦斯对赫萝的关心态度。",
+    "场景记忆中提到罗伦斯得知赫萝独自前往市场，情绪受到影响，符合当前对话的语境。",
+    "当前段落紧接着马贺特的叙述，罗伦斯作为回应者是最合理的说话人。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

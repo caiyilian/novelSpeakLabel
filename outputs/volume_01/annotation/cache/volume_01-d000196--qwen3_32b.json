@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000196",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.9,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.9
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.6
+    }
+  ],
+  "evidence": [
+    "前一段描述赫萝握住罗伦斯的手，随后赫萝说「先这样呗！」，语气轻松，而当前台词「什……你怎么不早点说！」语气明显带有责备和急切，更符合罗伦斯的理性与谨慎性格。",
+    "场景记忆中提到罗伦斯在本场景中逐渐接受赫萝的存在，但仍然保持理性，因此更可能对赫萝的某些行为或信息表达不满或责备。",
+    "当前段落之后的段落描述罗伦斯大声吆喝马儿，表现出他此时处于主导和行动状态，因此更可能是他发出的台词。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

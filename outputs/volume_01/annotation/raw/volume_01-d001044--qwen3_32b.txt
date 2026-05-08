@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d001044",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.98
+    },
+    {
+      "entity_id": "char_0020",
+      "display": "列支敦·马贺特",
+      "status": "known",
+      "score": 0.02
+    }
+  ],
+  "evidence": [
+    "台词中提到「米隆商行」，并以威胁的语气表示会说出对其不利的证词，这与罗伦斯在场景中试图说服马贺特合作营救赫萝的策略一致。",
+    "场景记忆中提到罗伦斯使用威胁和策略说服马贺特协助营救赫萝，符合该台词的语气和内容。",
+    "上下文显示该台词是对马贺特的回应，而罗伦斯是唯一持续使用威胁策略的角色。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

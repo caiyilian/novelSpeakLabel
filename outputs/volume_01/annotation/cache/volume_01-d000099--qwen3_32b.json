@@ -1,0 +1,28 @@
+{
+  "dialogue_id": "volume_01-d000099",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "前文提到罗伦斯对赫萝的身份感到怀疑，并自问自答似的喃喃道，而当前台词「不，不可能。」符合他理性怀疑的语气。",
+    "当前段落之后紧接着罗伦斯继续观察赫萝并思考她是否是人或鬼怪，进一步支持说话人为罗伦斯。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

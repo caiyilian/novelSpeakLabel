@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d000140",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "赫萝在场景中频繁互动，表现出非人类特征和轻松幽默但略带威胁性的说话风格。",
+    "当前对话前的段落提到赫萝叫了一声，吓到了罗伦斯，暗示她可能是说话人。",
+    "赫萝是场景中主要角色之一，与罗伦斯有持续的互动和情绪交流。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

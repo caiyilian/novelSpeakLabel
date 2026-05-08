@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d001068",
+  "speaker_entity_id": "char_0027",
+  "speaker_display": "米隆商行人员",
+  "speaker_status": "known",
+  "confidence": 0.85,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0027",
+      "display": "米隆商行人员",
+      "status": "known",
+      "score": 0.85
+    },
+    {
+      "entity_id": "char_0020",
+      "display": "列支敦·马贺特",
+      "status": "known",
+      "score": 0.15
+    }
+  ],
+  "evidence": [
+    "对话内容为「你是说好景气、坏景气吗？」，语气简洁，符合米隆商行人员在场景中使用暗号和简短指令的风格。",
+    "上下文显示罗伦斯与米隆商行人员一同行动，进行地下营救任务，对话内容与场景中商行人员的职责相符。",
+    "米隆商行人员在场景中协助罗伦斯，使用暗号和指令，而马贺特作为行长更可能使用正式语气，而非简短调侃的语句。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

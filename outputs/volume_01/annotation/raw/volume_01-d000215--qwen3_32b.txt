@@ -1,0 +1,32 @@
+```json
+{
+  "dialogue_id": "volume_01-d000215",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.02
+    }
+  ],
+  "evidence": [
+    "赫萝在前一段中提到脸上的灼伤，并拉高外套露出脸，随后骄傲地说出这句话。",
+    "场景记忆中明确指出赫萝的说话风格轻松幽默，带有自信和挑衅的语气，与该台词风格一致。",
+    "赫萝拥有耳朵和尾巴，台词中提到「耳朵和尾巴」作为证明，符合她的特征。",
+    "罗伦斯在后续段落中被描述为「心想」，并未直接说出这句话，因此排除。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

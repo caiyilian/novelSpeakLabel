@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d001181",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "上下文显示罗伦斯和赫萝在地下道中逃跑，罗伦斯对赫萝的健康和安全表现出关心。",
+    "当前台词是对赫萝的回应，语气中带有安抚和承诺，符合罗伦斯的说话风格。",
+    "赫萝在前一段中表达了想吃苹果的愿望，罗伦斯的回应符合对话逻辑。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

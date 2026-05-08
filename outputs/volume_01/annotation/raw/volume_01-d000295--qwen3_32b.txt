@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000295",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0009",
+      "display": "杰廉",
+      "status": "known",
+      "score": 0.1
+    }
+  ],
+  "evidence": [
+    "对话中提到「假装接受杰廉的提议」，表明说话人是在回应杰廉的提议，语气理性且带有策略性，符合罗伦斯的说话风格。",
+    "上下文显示赫萝在调侃罗伦斯的判断力，而罗伦斯在思考如何应对杰廉的提议，因此说话人应为罗伦斯。",
+    "罗伦斯在场景中表现出冷静、理性的特质，与该句台词的语气一致。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

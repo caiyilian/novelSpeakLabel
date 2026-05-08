@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d001208",
+  "speaker_entity_id": "mystery_volume_01_c007_s002_r003_矮小孩童",
+  "speaker_display": "矮小孩童",
+  "speaker_status": "mystery",
+  "confidence": 0.75,
+  "candidate_speakers": [
+    {
+      "entity_id": "mystery_volume_01_c007_s002_r003_矮小孩童",
+      "display": "矮小孩童",
+      "status": "mystery",
+      "score": 0.75
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.2
+    }
+  ],
+  "evidence": [
+    "对话前文提到赫萝发出低吼声，但未提及她发出类似「呜噜噜咕噜噜噜噜！」的声音。",
+    "场景中出现了一个矮小孩童模样的黑影，手持小刀，试图袭击罗伦斯和赫萝。",
+    "该台词出现在罗伦斯被小刀割伤之前，因此不可能是赫萝或罗伦斯的正常反应。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

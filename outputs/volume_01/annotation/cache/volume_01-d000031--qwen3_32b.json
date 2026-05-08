@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000031",
+  "speaker_entity_id": "mystery_volume_01_c002_s002_r002_村民",
+  "speaker_display": "村民",
+  "speaker_status": "mystery",
+  "confidence": 0.75,
+  "candidate_speakers": [
+    {
+      "entity_id": "mystery_volume_01_c002_s002_r002_村民",
+      "display": "村民",
+      "status": "mystery",
+      "score": 0.75
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.25
+    }
+  ],
+  "evidence": [
+    "村民在麦田中央高声呼喊，内容为「有狼喔！有狼！」，符合集体行为特征。",
+    "场景中村民是祭典的集体参与者，赫萝虽然被提及，但未直接说话。",
+    "罗伦斯在人墙后方停下马车，完全未被发现，说明说话人是村民群体，而非罗伦斯或赫萝。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000292",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0009",
+      "display": "杰廉",
+      "status": "known",
+      "score": 0.1
+    }
+  ],
+  "evidence": [
+    "前一段对话中赫萝说：「说谎的时候，重点不在于说谎的内容，而在于为何要说谎。」",
+    "下一段对话中赫萝得意地笑着说，说明说话人是赫萝",
+    "赫萝的说话风格轻松幽默但略带威胁性，符合该句台词的语气"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

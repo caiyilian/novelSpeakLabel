@@ -1,0 +1,26 @@
+```json
+{
+  "dialogue_id": "volume_01-d000069",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    }
+  ],
+  "evidence": [
+    "赫萝的说话风格轻松幽默但略带威胁性，符合台词中的语气。",
+    "场景记忆中明确提到赫萝拥有狼的耳朵和尾巴，且与罗伦斯有互动。",
+    "台词中使用「咱」自称，与赫萝的自称方式一致。",
+    "上下文显示罗伦斯拔出短剑，赫萝对此作出反应，符合她的性格和行为模式。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

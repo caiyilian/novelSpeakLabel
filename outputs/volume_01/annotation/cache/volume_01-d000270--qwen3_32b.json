@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000270",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0009",
+      "display": "杰廉",
+      "status": "known",
+      "score": 0.1
+    }
+  ],
+  "evidence": [
+    "前一段落中提到「罗伦斯开口道」，紧接着是该句台词，表明说话人是罗伦斯。",
+    "场景记忆中显示罗伦斯与赫萝的互动频繁，且该句台词是罗伦斯对赫萝的质问，符合两人对话的语境。",
+    "赫萝在下一段中回应了罗伦斯的提问，进一步确认说话人是罗伦斯。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

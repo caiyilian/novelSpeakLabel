@@ -1,0 +1,30 @@
+```json
+{
+  "dialogue_id": "volume_01-d000730",
+  "speaker_entity_id": "mystery_volume_01_c004_s009_r002_神秘人物",
+  "speaker_display": "神秘人物",
+  "speaker_status": "mystery",
+  "confidence": 0.7,
+  "candidate_speakers": [
+    {
+      "entity_id": "mystery_volume_01_c004_s009_r002_神秘人物",
+      "display": "神秘人物",
+      "status": "mystery",
+      "score": 0.7
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.2
+    }
+  ],
+  "evidence": [
+    "「呵，看来汝好像发现了什么呐。」——这句话打断了罗伦斯的思考，语气带有调侃意味，与场景记忆中提到的神秘人物相符。",
+    "场景记忆中提到神秘人物打断了罗伦斯的思路，可能是关键角色，但尚未明确身份。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000621",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "上下文显示罗伦斯正在向赫萝解释货币的运作机制，特别是含银量变化如何影响货币价值。",
+    "当前台词「货币如果有大幅波动时，一定会有征兆。」符合罗伦斯冷静理性、对商业制度有深入理解的说话风格。",
+    "赫萝虽然参与对话，但当前台词更符合罗伦斯的理性分析语气，而非赫萝轻松幽默略带威胁的风格。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

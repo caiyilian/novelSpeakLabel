@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d000799",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "赫萝因宿醉而虚弱无力，趴在桌上抱怨。",
+    "赫萝提到宿醉，并以轻松幽默但略带调侃的语气说话。",
+    "赫萝在场景中多次表现出宿醉状态，说话风格与台词一致。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000043",
+  "speaker_entity_id": "mystery_volume_01_c002_s002_r002_村民",
+  "speaker_display": "村民",
+  "speaker_status": "mystery",
+  "confidence": 0.8,
+  "candidate_speakers": [
+    {
+      "entity_id": "mystery_volume_01_c002_s002_r002_村民",
+      "display": "村民",
+      "status": "mystery",
+      "score": 0.8
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.2
+    }
+  ],
+  "evidence": [
+    "台词「别让祂逃走了！快追！」出现在村民集体追逐叶勒的场景中。",
+    "上下文显示村民在呼喊「抓住祂」，并试图抓住丰收之神的载体。",
+    "赫萝虽然被提及，但未直接说话，且台词风格更偏向村民的集体呼喊。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

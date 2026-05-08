@@ -1,0 +1,28 @@
+{
+  "dialogue_id": "volume_01-d001245",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0004",
+      "display": "叶勒",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "上下文提到叶勒正在说服罗伦斯参与一项涉及麦子交易和撤销关税的计划，而罗伦斯作为冷静理性的商人，最有可能回应「我当然懂得计算损益。」",
+    "罗伦斯在场景中被描述为冷静、理性且对商业制度有深入理解，符合该台词的语气和内容。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

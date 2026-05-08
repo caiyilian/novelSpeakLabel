@@ -1,0 +1,23 @@
+{
+  "dialogue_id": "volume_01-d001102",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "上下文显示赫萝与罗伦斯有亲密互动，且本句台词符合赫萝说话风格，情绪化且带有悲伤和愤怒的语气。",
+    "赫萝在场景中多次表达对帕斯罗村和叶勒的不满，本句台词延续了她对人类行为的批判态度。",
+    "当前段落前文提到赫萝没有推开罗伦斯的手，并用手指顶着他的口袋说话，暗示她正在表达某种情绪，与本句台词情绪一致。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

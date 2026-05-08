@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d001275",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.98
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.02
+    }
+  ],
+  "evidence": [
+    "前一段提到赫萝离开，罗伦斯突然大喊。",
+    "当前段落是「等、等一下！」，符合罗伦斯试图挽留赫萝的语境。",
+    "后一段提到赫萝没有停下脚步，说明说话人是罗伦斯在呼喊。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

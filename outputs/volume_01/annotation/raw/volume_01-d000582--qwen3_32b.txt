@@ -1,0 +1,35 @@
+```json
+{
+  "dialogue_id": "volume_01-d000582",
+  "speaker_entity_id": "mystery_volume_01_c004_s006_r001_工匠男子",
+  "speaker_display": "工匠男子",
+  "speaker_status": "mystery",
+  "confidence": 0.9,
+  "candidate_speakers": [
+    {
+      "entity_id": "mystery_volume_01_c004_s006_r001_工匠男子",
+      "display": "工匠男子",
+      "status": "mystery",
+      "score": 0.9
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.1
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.1
+    }
+  ],
+  "evidence": [
+    "赫萝突然停下，后方的男子撞上她，男子打算骂人但被赫萝道歉后，他只说了句「小、小心点」后离开。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

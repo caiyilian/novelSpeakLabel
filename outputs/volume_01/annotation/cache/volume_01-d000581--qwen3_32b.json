@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000581",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "当前段落是赫萝在集市上与罗伦斯讨论银币用途的对话中的一部分，语气轻松且带有提问性质，符合赫萝的说话风格。",
+    "场景记忆中显示赫萝在本场景中频繁发言，表现出轻松幽默但略带威胁性的语气，与当前台词「比方说？」的风格一致。",
+    "前一段落中罗伦斯的发言是「该说是新发现吗？我是有想到几件事。」，语气理性，与当前台词风格不符。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

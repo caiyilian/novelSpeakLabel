@@ -1,0 +1,26 @@
+```json
+{
+  "dialogue_id": "volume_01-d000198",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    }
+  ],
+  "evidence": [
+    "赫萝在场景中表现出轻松幽默但略带嘲讽的说话风格，与台词中的语气一致。",
+    "场景记忆中提到赫萝的说话风格轻松幽默，带有嘲讽意味，暗示她对教会的不满。",
+    "上下文显示赫萝光着上半身在拧头发，随后说出了这句台词，符合她的行为模式。",
+    "赫萝曾说过教会让她吃了不少苦头，台词中对教会的冷嘲热讽符合她的态度。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

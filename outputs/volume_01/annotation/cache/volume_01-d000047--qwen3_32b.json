@@ -1,0 +1,28 @@
+{
+  "dialogue_id": "volume_01-d000047",
+  "speaker_entity_id": "mystery_volume_01_c002_s002_r004_神秘生物",
+  "speaker_display": "神秘生物",
+  "speaker_status": "mystery",
+  "confidence": 0.7,
+  "candidate_speakers": [
+    {
+      "entity_id": "mystery_volume_01_c002_s002_r004_神秘生物",
+      "display": "神秘生物",
+      "status": "mystery",
+      "score": 0.7
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.3
+    }
+  ],
+  "evidence": [
+    "掀开麻布的那一刻，罗伦斯之所以没有叫出声，或许是因为眼前的光景太教人难以置信了。",
+    "「……」"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": true
+}

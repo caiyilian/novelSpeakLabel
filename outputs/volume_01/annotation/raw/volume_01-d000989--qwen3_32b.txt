@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000989",
+  "speaker_entity_id": "char_0020",
+  "speaker_display": "列支敦·马贺特",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0020",
+      "display": "列支敦·马贺特",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "对话内容为冷静、理性、强调商行利益优先的语气，符合列支敦·马贺特的说话风格。",
+    "上下文显示罗伦斯处于情绪低落状态，而说话人表现出理性劝导，符合马贺特的立场。",
+    "场景记忆中列支敦·马贺特多次劝说罗伦斯冷静，符合此台词的语境。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

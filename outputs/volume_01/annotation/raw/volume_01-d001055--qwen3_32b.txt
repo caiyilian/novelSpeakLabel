@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d001055",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "上下文显示罗伦斯正在与马贺特进行交易谈判，且当前对话是罗伦斯提出的问题。",
+    "场景记忆中提到罗伦斯试图说服马贺特协助营救赫萝，符合当前对话内容。",
+    "前一段落提到罗伦斯「一边伸出右手，一边像询问天气状况般自然地问马贺特」，暗示接下来是罗伦斯的提问。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

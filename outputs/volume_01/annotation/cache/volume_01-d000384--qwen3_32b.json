@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000384",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "上下文显示罗伦斯和赫萝在讨论水果的来源，罗伦斯通常会提供背景信息，而赫萝更倾向于表达情绪或兴趣。",
+    "该句台词语气理性、冷静，符合罗伦斯的说话风格，而非赫萝轻松幽默的语气。",
+    "场景记忆中，罗伦斯多次解释地理和商业背景，而赫萝较少涉及此类说明。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d001089",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "上下文显示罗伦斯刚刚完成营救赫萝的行动，情绪激动，说话结巴。",
+    "下一段明确提到「罗伦斯好不容易没结巴地说出这句话」，说明说话人是罗伦斯。",
+    "赫萝在前一段被描述为「摊开原本围在脖子上的布，并将之当成头巾盖在头上」，她并未直接发言。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

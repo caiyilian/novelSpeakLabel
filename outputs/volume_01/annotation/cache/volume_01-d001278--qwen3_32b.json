@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d001278",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "上下文显示罗伦斯正在努力拼凑话语试图挽留赫萝，而这句话是罗伦斯最后拼凑出的话语之一。",
+    "该段落紧接着描述「这就是罗伦斯最后拼凑出来的话语」，明确指出说话人是罗伦斯。",
+    "赫萝在本场景中主要以威胁和命令的语气说话，而这句话的语气更符合罗伦斯的理性与情绪化表达。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

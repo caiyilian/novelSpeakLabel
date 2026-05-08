@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000870",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.02
+    }
+  ],
+  "evidence": [
+    "对话中使用了「咱」自称，这是赫萝的典型说话风格。",
+    "对话内容涉及开店与旅行的矛盾，与赫萝在场景中对罗伦斯开店计划的反应一致。",
+    "场景记忆中明确指出赫萝对罗伦斯开店计划表现出依赖和不安，符合该台词的情绪表达。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

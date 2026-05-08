@@ -1,0 +1,23 @@
+{
+  "dialogue_id": "volume_01-d001237",
+  "speaker_entity_id": "char_0004",
+  "speaker_display": "叶勒",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0004",
+      "display": "叶勒",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "前一段提到「我才吓了一跳。说到金属的味道就只会联想到镰刀和锄头的帕斯罗村，竟然会图谋如此狂妄自大的银币交易。」，暗示说话者与帕斯罗村有关。",
+    "当前段落「懂得这笔交易的村民很少。」与叶勒在场景中提及帕斯罗村的银币交易计划相关。",
+    "后一段提到「叶勒说话的神情仿佛自己不是村民似的」，明确指出说话者是叶勒。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

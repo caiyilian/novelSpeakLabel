@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d000081",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    }
+  ],
+  "evidence": [
+    "赫萝在场景中多次提到自己的出生地和北方大地，说话风格轻松幽默但略带威胁性，符合她的角色特征。",
+    "当前段落中使用「咱」自称，与赫萝的说话风格一致。",
+    "场景记忆中明确指出赫萝是对话的主动参与者，且她的出生地是对话的核心内容之一。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

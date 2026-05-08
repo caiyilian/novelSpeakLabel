@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000908",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "上下文显示赫萝在罗伦斯起身之后主动说话，语气符合她轻松幽默但略带调侃的风格。",
+    "场景记忆中赫萝多次主动发言，与罗伦斯互动频繁，而罗伦斯通常较为克制。",
+    "当前段落紧接着赫萝的动作描述，暗示她为说话人。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

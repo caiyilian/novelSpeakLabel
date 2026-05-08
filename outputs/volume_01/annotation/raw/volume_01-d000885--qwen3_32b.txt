@@ -1,0 +1,26 @@
+```json
+{
+  "dialogue_id": "volume_01-d000885",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    }
+  ],
+  "evidence": [
+    "赫萝在场景中表现出情绪不稳，流露出对孤独的恐惧，与罗伦斯的安抚行为相呼应。",
+    "赫萝在梦中失去朋友，表现出强烈的情绪波动，符合台词中对孤独的描述。",
+    "赫萝的台词使用了「咱」自称，符合她的语言风格。",
+    "赫萝在场景中多次表达对孤独和失去的恐惧，与当前台词内容一致。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

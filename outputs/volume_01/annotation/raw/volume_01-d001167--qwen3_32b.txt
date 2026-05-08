@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d001167",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "赫萝在场景中表现出敏锐的感知能力，能察觉到细微的声音和空气震动。",
+    "当前对话内容与赫萝在场景中对环境的警觉和感知行为一致。",
+    "赫萝在场景中多次发言，语气和内容符合她的角色特征。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

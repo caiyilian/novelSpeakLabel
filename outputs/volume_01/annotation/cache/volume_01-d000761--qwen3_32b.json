@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000761",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "前一段对话中提到「找朋友啊？」，赫萝回答「嗯。」，随后罗伦斯发问「那，找到了吗？」，符合罗伦斯的理性发问风格。",
+    "场景记忆中显示罗伦斯与赫萝的互动中，罗伦斯常主动发问，而赫萝倾向于简短回应或情绪化表达。",
+    "罗伦斯的台词风格理性、直接，符合「那，找到了吗？」的语气。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

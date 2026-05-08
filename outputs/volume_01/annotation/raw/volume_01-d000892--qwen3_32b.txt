@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000892",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.02
+    }
+  ],
+  "evidence": [
+    "赫萝在场景中表现出对罗伦斯的依赖和感激，说话风格轻松幽默但略带威胁性，符合台词「咱欠汝一个大人情呐。」的语气。",
+    "上下文显示赫萝刚刚恢复平静，并表现出对罗伦斯的依赖，符合她在此时表达感激的逻辑。",
+    "「咱」是赫萝常用的自称，而「汝」是她对罗伦斯的称呼方式。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

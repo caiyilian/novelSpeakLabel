@@ -1,0 +1,23 @@
+{
+  "dialogue_id": "volume_01-d000829",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "上下文显示赫萝和罗伦斯在对话中互动频繁，赫萝的狼耳和尾巴多次被提及，暗示她的情绪反应。",
+    "当前段落前一句是「那，汝啊。」，符合罗伦斯的说话风格，而「嗯？」是赫萝常见的简短回应。",
+    "场景记忆中赫萝多次以轻松幽默但略带威胁的语气回应罗伦斯，符合当前台词的语气。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

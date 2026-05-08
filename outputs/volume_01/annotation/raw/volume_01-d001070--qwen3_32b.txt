@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d001070",
+  "speaker_entity_id": "char_0020",
+  "speaker_display": "列支敦·马贺特",
+  "speaker_status": "known",
+  "confidence": 0.9,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0020",
+      "display": "列支敦·马贺特",
+      "status": "known",
+      "score": 0.9
+    },
+    {
+      "entity_id": "char_0027",
+      "display": "米隆商行人员",
+      "status": "known",
+      "score": 0.6
+    }
+  ],
+  "evidence": [
+    "场景中提及商行人员使用暗号和地下通道进行秘密行动，符合米隆商行人员的描述。",
+    "前文提到罗伦斯与米隆商行的马贺特讨论行动细节，马贺特作为主要决策者，最有可能下达行动指令。",
+    "当前段落是行动指令的发出，符合马贺特作为商行代表的职责和场景中的角色行为。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

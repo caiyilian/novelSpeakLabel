@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000243",
+  "speaker_entity_id": "char_0009",
+  "speaker_display": "杰廉",
+  "speaker_status": "known",
+  "confidence": 0.9,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0009",
+      "display": "杰廉",
+      "status": "known",
+      "score": 0.9
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.1
+    }
+  ],
+  "evidence": [
+    "对话中提到「老板您却轻轻松松做到了」，表明说话人是罗伦斯的同行，且对罗伦斯表示敬佩。",
+    "场景记忆中提到「杰廉试图接近赫萝」、「杰廉试图从罗伦斯获取情报」、「杰廉对罗伦斯表示敬佩」，符合说话人的语气和态度。",
+    "上下文显示说话人是「年轻商人」，与罗伦斯互动频繁，且在对话中表现出对罗伦斯的敬佩和竞争意识。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

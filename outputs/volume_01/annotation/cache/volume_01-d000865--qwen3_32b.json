@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000865",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.98
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.02
+    }
+  ],
+  "evidence": [
+    "前一句是「除了赚钱还有啥？」，罗伦斯在解释旅行商人的生活方式。",
+    "当前句「这样的生活根本没法交到什么朋友，顶多认识交易的对象。」符合罗伦斯理性分析的语气。",
+    "下一句提到「听了罗伦斯的说明，赫萝像是突然察觉到什么」，明确指出说话人是罗伦斯。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

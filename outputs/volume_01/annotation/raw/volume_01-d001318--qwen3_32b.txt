@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d001318",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.98
+    },
+    {
+      "entity_id": "char_0020",
+      "display": "列支敦·马贺特",
+      "status": "known",
+      "score": 0.02
+    }
+  ],
+  "evidence": [
+    "对话内容中提到「请教」和「支付银币」，符合罗伦斯在交易场景中礼貌且理性地与马贺特沟通的风格。",
+    "上下文显示罗伦斯刚刚接受了马贺特提供的银币，并正在考虑是否将其换成商品，符合当前对话的语境。",
+    "场景记忆中，罗伦斯与马贺特的互动频繁，且罗伦斯在交易中表现出主动询问和礼貌的态度。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

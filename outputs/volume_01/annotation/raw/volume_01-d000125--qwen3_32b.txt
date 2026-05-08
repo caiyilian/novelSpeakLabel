@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d000125",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    }
+  ],
+  "evidence": [
+    "赫萝在场景中持续与罗伦斯互动，说话风格轻松幽默但略带威胁性，符合台词语气。",
+    "上下文显示罗伦斯刚刚因赫萝的玩笑感到尴尬，赫萝在此时以调侃的语气回应，符合她的行为模式。",
+    "赫萝在场景中多次使用类似语气，如「咱」自称，表现出非人类特征和轻松调侃的说话风格。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

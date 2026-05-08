@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d001319",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.98
+    },
+    {
+      "entity_id": "char_0020",
+      "display": "列支敦·马贺特",
+      "status": "known",
+      "score": 0.02
+    }
+  ],
+  "evidence": [
+    "对话内容提到胡椒的商业价值，与罗伦斯的商人身份和交易策略相符。",
+    "上下文显示罗伦斯正在与马贺特进行交易谈判，且在思考如何利用商品增加收益。",
+    "罗伦斯在场景中表现出对交易细节的主动思考，符合该台词的语气和内容。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

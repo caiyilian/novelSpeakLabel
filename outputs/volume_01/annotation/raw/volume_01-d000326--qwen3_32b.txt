@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d000326",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "赫萝在本场景中以轻松幽默但略带威胁性的语气说话，符合她的说话风格。",
+    "前一段中赫萝提到「哼。汝的眼睛到底长在哪里？」，显示她正在与罗伦斯对话。",
+    "下一段中赫萝继续详细解释人类对空气的依赖，进一步确认说话人是她。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

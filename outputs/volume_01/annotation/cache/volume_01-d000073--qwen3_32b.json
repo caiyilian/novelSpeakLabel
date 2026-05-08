@@ -1,0 +1,28 @@
+{
+  "dialogue_id": "volume_01-d000073",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    },
+    {
+      "entity_id": "mystery_volume_01_c002_s003_r001_神秘女孩",
+      "display": "神秘女孩",
+      "status": "mystery",
+      "score": 0.02
+    }
+  ],
+  "evidence": [
+    "前一段中女孩自称「咱的名字是赫萝」，当前段落重复「赫萝？」，符合赫萝的说话风格和身份。",
+    "场景记忆中明确指出赫萝是本场景的活跃角色，且拥有狼耳和非人类特征，与当前台词风格一致。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

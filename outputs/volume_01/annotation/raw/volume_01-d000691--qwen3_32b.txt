@@ -1,0 +1,26 @@
+```json
+{
+  "dialogue_id": "volume_01-d000691",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    }
+  ],
+  "evidence": [
+    "前一段中赫萝调侃罗伦斯说「哎，没什么好在意的，所有雄性都是爱吃醋的傻瓜呐。」",
+    "当前段落紧接着赫萝的发言，延续了她调侃的语气，符合她的说话风格。",
+    "场景记忆中赫萝与罗伦斯的互动频繁，且她常以轻松幽默但略带威胁的语气说话。",
+    "下一段提到「赫萝稍稍把身子贴近罗伦斯说道」，进一步确认说话人是赫萝。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

@@ -1,0 +1,26 @@
+```json
+{
+  "dialogue_id": "volume_01-d000062",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    }
+  ],
+  "evidence": [
+    "赫萝的说话风格轻松幽默但略带威胁性，与台词「当然好笑啊，咱还是第一次被说是恶魔呢。」相符。",
+    "场景记忆中提到赫萝拥有狼耳和尖牙，与前文描述的神秘女孩一致。",
+    "「咱」是赫萝常用的自称，符合她的语言特征。",
+    "上下文显示该台词是对「有什么好笑的？」的回应，符合赫萝一贯的轻松调侃态度。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

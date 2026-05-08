@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000494",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0016",
+      "display": "鉴定员",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "赫萝在交易中主导发言，使用生动的比喻和商业说服技巧，符合她的说话风格。",
+    "前文提到「赫萝的手段之高，简直是商人的典范」，暗示这段台词是她所说。",
+    "场景记忆中明确指出赫萝在交易中主导，影响鉴定员态度。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

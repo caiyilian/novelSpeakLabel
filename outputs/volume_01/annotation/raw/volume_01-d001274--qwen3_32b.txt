@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d001274",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "前文提到罗伦斯在思考麦子的用途，随后他提出疑问「拿麦子要做什么？」",
+    "场景记忆中提到罗伦斯对麦子的用途感到不安，暗示他可能是提问者",
+    "当前段落是罗伦斯的直接提问，语气和上下文符合他的理性风格"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

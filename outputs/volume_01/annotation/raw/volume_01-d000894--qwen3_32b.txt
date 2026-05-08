@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000894",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "前一段赫萝说「咱还觉得困，汝不睡吗？」，当前段罗伦斯回应「嗯，该睡觉了。不睡觉的话，太浪费蜡烛了。」，语气符合罗伦斯理性、略带调侃的说话风格。",
+    "场景记忆中明确指出罗伦斯与赫萝在准备休息，罗伦斯表现出理性与克制，符合该台词的语气。",
+    "赫萝的台词风格更偏向轻松幽默且略带威胁性，而该句台词更偏向理性与节制，更符合罗伦斯的风格。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

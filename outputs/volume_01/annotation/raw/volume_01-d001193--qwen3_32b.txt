@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d001193",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0020",
+      "display": "列支敦·马贺特",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "对话内容提到「打垮米隆商行在这个城市的分行」，这与罗伦斯一贯的商业策略和对米隆商行的敌意相符。",
+    "上下文显示罗伦斯和赫萝正在被追捕，罗伦斯通常会冷静分析局势并提出策略，符合该台词的语气。",
+    "赫萝在前一段对话中说「咱们好像被出卖了」，罗伦斯对此类情况通常会理性回应，而该台词是对局势的冷静分析。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d001325",
+  "speaker_entity_id": "char_0020",
+  "speaker_display": "列支敦·马贺特",
+  "speaker_status": "known",
+  "confidence": 0.9,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0020",
+      "display": "列支敦·马贺特",
+      "status": "known",
+      "score": 0.9
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.1
+    }
+  ],
+  "evidence": [
+    "上下文显示罗伦斯正在倾听马贺特讲述宗教戏剧故事，而「喔？」是对马贺特叙述的回应。",
+    "马贺特在场景中是主要对话者，罗伦斯则表现出倾听和点头的反应。",
+    "「喔？」是简短的惊讶或回应语气，符合马贺特在讲述故事时的互动风格。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

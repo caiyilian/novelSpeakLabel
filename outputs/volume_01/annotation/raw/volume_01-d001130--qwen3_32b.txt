@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d001130",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "当前段落是赫萝在描述帕斯罗村的村民对丰收之神的信仰和行为，与她之前提到的村民拘留她、捆绑她等情节一致。",
+    "赫萝在场景中多次提及帕斯罗村的村民和叶勒，表现出她对这些事件的熟悉和情绪反应，符合她的说话风格和角色设定。",
+    "该段落的语气和用词与赫萝一贯的轻松幽默但略带威胁性的说话风格相符。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000601",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "对话内容提到「杰廉所说的话可能不假」，表明说话者在评价杰廉的言论，而罗伦斯是场景中唯一明确提及杰廉并对其行为持怀疑态度的角色。",
+    "上下文显示对话围绕货币和交易展开，罗伦斯是场景中主导经济讨论的角色。",
+    "赫萝的台词风格更偏向轻松幽默和调侃，而该句语气理性、分析性强，更符合罗伦斯的说话风格。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

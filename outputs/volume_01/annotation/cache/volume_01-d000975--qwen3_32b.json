@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000975",
+  "speaker_entity_id": "char_0020",
+  "speaker_display": "列支敦·马贺特",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0020",
+      "display": "列支敦·马贺特",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "mystery_volume_01_c005_s007_r002_梅迪欧商行的人",
+      "display": "梅迪欧商行的人",
+      "status": "mystery",
+      "score": 0.2
+    }
+  ],
+  "evidence": [
+    "对话中提到「贵商行」，与上下文中的米隆商行相关，而列支敦·马贺特是米隆商行帕兹欧分行的行长。",
+    "对话内容与前文讨论的商行策略和梅迪欧商行的威胁有关，符合列支敦·马贺特的立场和角色。",
+    "说话风格冷静、理性，符合列支敦·马贺特的描述。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000244",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0009",
+      "display": "杰廉",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "前一段提到罗伦斯回忆自己刚入行时的想法，接着表示赞同地说，暗示接下来的台词是罗伦斯的。",
+    "下一段中杰廉自我介绍，说明前一段的说话人不是他。",
+    "台词内容与罗伦斯的说话风格一致，理性、略带幽默，且提到「凡事靠努力」，符合他的性格。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

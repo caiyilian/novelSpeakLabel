@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000420",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "上下文显示罗伦斯与赫萝在讨论食物和交易，赫萝刚刚提到用银币支付晚餐和住宿费，而「吃完再说吧」更符合罗伦斯冷静理性的语气。",
+    "场景记忆中罗伦斯多次表现出对赫萝的理性引导，而赫萝则更情绪化和调侃。",
+    "赫萝在后续段落中点头并吃苹果，说明她并未直接说出这句话，而是回应了说话人。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

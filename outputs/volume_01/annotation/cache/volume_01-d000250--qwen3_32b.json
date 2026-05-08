@@ -1,0 +1,23 @@
+{
+  "dialogue_id": "volume_01-d000250",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "对话中提到「妻子」，而赫萝是罗伦斯的旅伴，且在场景中被描述为「妻子」。",
+    "赫萝在场景中被提及并出现，与罗伦斯互动频繁。",
+    "赫萝的说话风格轻松幽默但略带威胁性，符合该句台词的语气。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

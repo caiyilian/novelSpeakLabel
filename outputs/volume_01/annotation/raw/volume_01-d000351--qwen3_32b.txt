@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d000351",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "上下文显示赫萝在认真说话，且在前一段中提到她「认真说话」。",
+    "赫萝的说话风格为轻松幽默但略带威胁性，符合「你也吃过……」的语气。",
+    "后文赫萝迅速拉住罗伦斯并说「就算是咱，也有不能回答的事。」，表明这是赫萝的连续发言。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

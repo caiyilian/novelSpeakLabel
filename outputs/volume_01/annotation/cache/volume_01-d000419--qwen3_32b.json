@@ -1,0 +1,23 @@
+{
+  "dialogue_id": "volume_01-d000419",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "前一段中明确提到「赫萝点了点头」，随后是她的台词，符合说话人连续性",
+    "场景记忆中赫萝是主要角色之一，且在本段中表现出对食物的强烈兴趣",
+    "台词中使用「咱」自称，与赫萝的说话风格一致"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

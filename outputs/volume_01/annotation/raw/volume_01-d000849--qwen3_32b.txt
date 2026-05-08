@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d000849",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "赫萝在场景中多次使用「汝」称呼罗伦斯，符合台词中的语气。",
+    "场景记忆中明确指出赫萝与罗伦斯的互动频繁，且她对罗伦斯的计划表现出调侃和冷淡态度。",
+    "台词中「是么。汝也有画城镇的图」是对罗伦斯展示蓝图的回应，符合赫萝的说话风格。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000366",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "赫萝在上一段中正专注于摊贩，未表现出主动提问的倾向。",
+    "罗伦斯在场景中持续表现出对赫萝外貌和身份的担忧，符合此句台词的语气和动机。",
+    "赫萝的下一句回应「嗯？脸？」语气迟疑，符合她对罗伦斯提问的反应模式。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

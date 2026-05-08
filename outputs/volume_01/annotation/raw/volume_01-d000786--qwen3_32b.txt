@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000786",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "上下文显示罗伦斯在与赫萝互动，赫萝因宿醉趴在桌上，罗伦斯表现出关心。",
+    "对话后赫萝没有回应，而是继续趴在桌上，符合罗伦斯说话的场景逻辑。",
+    "罗伦斯在场景中多次表现出对赫萝的关心和担忧，语气符合该句台词的语境。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

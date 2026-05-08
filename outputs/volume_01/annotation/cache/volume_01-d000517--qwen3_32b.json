@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000517",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "对话内容提到商行的人，与罗伦斯在场景中与商行代表和杰廉的交易行为一致。",
+    "说话风格理性、冷静，符合罗伦斯的商业分析语气。",
+    "上下文显示罗伦斯正在分析市场情报，与对话内容一致。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

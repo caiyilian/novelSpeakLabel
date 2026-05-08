@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000471",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0016",
+      "display": "鉴定员",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "赫萝在交易中频繁插嘴并提出问题，如「您提议的是一百四十枚崔尼银币，没错呗？」",
+    "当前台词「嗯。汝没有发现吗？」与赫萝一贯的说话风格一致，轻松幽默但略带调侃和威胁",
+    "上下文提到「被一直保持沉默的赫萝这么一问」，明确指出说话人是赫萝"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

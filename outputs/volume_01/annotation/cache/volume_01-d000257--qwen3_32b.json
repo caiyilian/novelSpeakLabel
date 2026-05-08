@@ -1,0 +1,23 @@
+{
+  "dialogue_id": "volume_01-d000257",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "赫萝在场景中被多次提及，并表现出对食物的强烈兴趣，尤其是马铃薯。",
+    "当前段落之后的段落中明确提到「赫萝抬起头说」，表明她对味道的反应。",
+    "赫萝在场景中未直接发言，但有动作和反应描写，符合她对食物的敏感反应。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

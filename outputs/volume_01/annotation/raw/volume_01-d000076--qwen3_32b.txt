@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d000076",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    }
+  ],
+  "evidence": [
+    "台词中自称「咱」，与赫萝的说话风格一致。",
+    "提到「赫萝」这个名字，暗示说话人也是赫萝。",
+    "场景记忆中赫萝是主要角色，且与罗伦斯对话频繁，符合当前语境。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

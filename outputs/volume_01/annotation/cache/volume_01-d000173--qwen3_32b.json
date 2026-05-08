@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000173",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "上下文显示赫萝刚刚提到「咱想回到北方去」，而当前对话「北方？」是对这句话的回应，语气上更符合罗伦斯冷静理性的说话风格。",
+    "场景记忆中罗伦斯多次对赫萝的发言做出回应，表现出理性分析和追问的倾向，而赫萝更倾向于情绪化表达。",
+    "当前段落中赫萝刚刚表达完想法，接下来的段落也显示罗伦斯在观察赫萝的反应，符合罗伦斯的视角和行为模式。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

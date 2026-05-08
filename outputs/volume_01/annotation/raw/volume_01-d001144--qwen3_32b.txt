@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d001144",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "赫萝在本场景中表现出情绪波动和脆弱性，与罗伦斯有亲密互动。",
+    "赫萝在对话前的段落中被描述为「露出受伤的表情注视着罗伦斯」，暗示她即将回应。",
+    "下一段对话「嗯，这是雌性的特权。」符合赫萝轻松幽默但略带威胁的说话风格。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

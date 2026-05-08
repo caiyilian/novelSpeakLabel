@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d001242",
+  "speaker_entity_id": "char_0004",
+  "speaker_display": "叶勒",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0004",
+      "display": "叶勒",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "前一段提到叶勒把视线移向罗伦斯身后的赫萝并继续说，表明当前台词是叶勒的继续发言。",
+    "下一段提到叶勒往前踏出一步说，进一步确认说话人是叶勒。",
+    "场景记忆中叶勒多次出现，并与罗伦斯和赫萝有互动，符合当前语境。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

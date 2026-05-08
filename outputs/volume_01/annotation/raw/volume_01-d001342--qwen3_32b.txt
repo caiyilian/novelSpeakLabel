@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d001342",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "罗伦斯简短道了声谢，随即快步跑出去。",
+    "对话前文显示罗伦斯正在询问卸货场的位置，并得到了指引。",
+    "场景记忆中提到罗伦斯拿着请款单，兴奋地跑向卸货场。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

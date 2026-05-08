@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d001069",
+  "speaker_entity_id": "char_0020",
+  "speaker_display": "列支敦·马贺特",
+  "speaker_status": "known",
+  "confidence": 0.92,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0020",
+      "display": "列支敦·马贺特",
+      "status": "known",
+      "score": 0.92
+    },
+    {
+      "entity_id": "char_0027",
+      "display": "米隆商行人员",
+      "status": "known",
+      "score": 0.15
+    }
+  ],
+  "evidence": [
+    "上下文显示罗伦斯与米隆商行的代表马贺特正在讨论营救计划，包括暗号和路线，符合马贺特的职责和说话风格。",
+    "当前台词「简单又易懂，不是吗？」语气冷静、理性，符合马贺特在场景中一贯的商行代表风格。",
+    "后续段落提到「罗伦斯苦笑，并点头告诉对方自己明白了。米隆商行似乎挺喜欢使用这类暗号。」表明说话人是米隆商行的代表，而非罗伦斯或赫萝。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

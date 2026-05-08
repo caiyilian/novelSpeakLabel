@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d000686",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "上下文显示赫萝和罗伦斯的对话风格，此句语气轻松但略带调侃，符合赫萝的说话风格。",
+    "前一句提到赫萝「轻轻笑笑」，暗示接下来的对话是她继续发言。",
+    "赫萝在场景中主导对话节奏，常以轻松幽默但略带威胁的语气调侃罗伦斯。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

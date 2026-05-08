@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000063",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "上下文显示对话发生在罗伦斯与赫萝的互动中，赫萝刚刚表现出非人类特征，而罗伦斯作为理性商人，更可能提出质疑性问题「你是谁？」",
+    "赫萝的说话风格轻松幽默，而该句台词语气理性、直接，符合罗伦斯的说话风格。",
+    "前一句是赫萝的笑声和动作描写，下一句是赫萝的回应「汝问咱？」，因此该句更可能是罗伦斯的提问。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

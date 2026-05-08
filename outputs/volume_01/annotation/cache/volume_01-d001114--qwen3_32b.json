@@ -1,0 +1,23 @@
+{
+  "dialogue_id": "volume_01-d001114",
+  "speaker_entity_id": "char_0031",
+  "speaker_display": "马夫",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0031",
+      "display": "马夫",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "前一段对话中罗伦斯问马夫「有听到刚刚的话吗？」，紧接着当前段落回应「是的，有听到。」，符合马夫的回应逻辑。",
+    "场景记忆中提到马夫是罗伦斯与赫萝任务的见证者，且与罗伦斯有短暂互动，执行他的指令。",
+    "当前段落中马夫跳下马车快跑而去，说明他确实听到了罗伦斯的指示。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

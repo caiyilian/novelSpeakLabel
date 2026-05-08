@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000293",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.02
+    }
+  ],
+  "evidence": [
+    "说话风格轻松幽默且略带调侃，符合赫萝的说话方式。",
+    "台词中提到「汝刚刚说那个叫杰廉的男子是个小毛头」，呼应了前文罗伦斯对杰廉的评价，赫萝在此进行反讽。",
+    "后文提到「赫萝得意地笑着说」，明确指出说话人是赫萝。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

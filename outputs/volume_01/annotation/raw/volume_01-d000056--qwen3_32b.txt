@@ -1,0 +1,26 @@
+```json
+{
+  "dialogue_id": "volume_01-d000056",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    }
+  ],
+  "evidence": [
+    "赫萝在场景中被描述为拥有狼耳的神秘女孩，且在对话中表现出轻松幽默但略带威胁性的语气。",
+    "当前段落中提到「……呼，真是好月色，有没有酒啊？」，符合赫萝的说话风格。",
+    "场景记忆中明确指出赫萝是罗伦斯在马车上发现的神秘女孩，且是主要对话角色。",
+    "赫萝自称丰收之神，拥有狼耳和尾巴，与当前描述一致。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

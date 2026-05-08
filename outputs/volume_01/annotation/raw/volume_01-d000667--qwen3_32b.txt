@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000667",
+  "speaker_entity_id": "char_0019",
+  "speaker_display": "怀兹",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0019",
+      "display": "怀兹",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "前一段中罗伦斯夹杂着叹息声说道，把货币还给怀兹。",
+    "当前段落是「说什么傻话，那怎么可能！」，语气激动且带有调侃，符合怀兹对罗伦斯的反应风格。",
+    "下一段提到「无论在哪一个国家，都不允许熔毁货币。怀兹一副要快说出『愚蠢极了』的表情笑着带过。」，进一步确认说话人是怀兹。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

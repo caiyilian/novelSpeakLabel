@@ -1,0 +1,28 @@
+{
+  "dialogue_id": "volume_01-d001002",
+  "speaker_entity_id": "mystery_volume_01_c005_s008_r001_神秘收信人",
+  "speaker_display": "神秘收信人",
+  "speaker_status": "mystery",
+  "confidence": 0.6,
+  "candidate_speakers": [
+    {
+      "entity_id": "mystery_volume_01_c005_s008_r001_神秘收信人",
+      "display": "神秘收信人",
+      "status": "mystery",
+      "score": 0.6
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.4
+    }
+  ],
+  "evidence": [
+    "信封上写着「给狼……与狼的森林？」，暗示收信人与赫萝有关。",
+    "罗伦斯意识到这封信与赫萝有关，但说话人未明确。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": true
+}

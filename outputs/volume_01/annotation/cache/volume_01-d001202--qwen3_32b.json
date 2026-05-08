@@ -1,0 +1,30 @@
+{
+  "dialogue_id": "volume_01-d001202",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "上下文显示罗伦斯和赫萝在地下道中迷路并决定回头，罗伦斯表现出对路线的担忧和对赫萝的安抚。",
+    "对话前文提到「可恶，还是先回头。我记不了再多的路了。」，语气与罗伦斯的理性、略带情绪化的风格一致。",
+    "下文提到「罗伦斯一向以自己是健步的旅行商人而自豪」，进一步确认说话人是罗伦斯。",
+    "赫萝在后续对话中回应「多少可以。」，说明她不是说话人。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

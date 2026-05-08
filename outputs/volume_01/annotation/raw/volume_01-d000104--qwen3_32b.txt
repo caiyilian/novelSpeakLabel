@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d000104",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.98
+    }
+  ],
+  "evidence": [
+    "对话内容质疑赫萝是否真的是狼的化身，符合罗伦斯一贯对赫萝身份持怀疑态度的特征。",
+    "上下文显示赫萝刚刚展示狼耳和尾巴，罗伦斯对此提出进一步验证的逻辑问题。",
+    "场景记忆中明确提到罗伦斯怀疑赫萝身份，并试图让她变回狼形。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

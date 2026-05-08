@@ -1,0 +1,23 @@
+{
+  "dialogue_id": "volume_01-d000102",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    }
+  ],
+  "evidence": [
+    "对话内容「你还说自己是狼。」与赫萝在场景中反复强调自己是狼的对话风格一致。",
+    "上下文显示罗伦斯正在质疑赫萝的身份，而赫萝以轻松幽默但略带威胁的语气回应，符合她的说话风格。",
+    "场景记忆中赫萝多次提到自己是狼，并展示狼耳和尾巴，表明她对这个身份的强调。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

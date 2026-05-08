@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000253",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    },
+    {
+      "entity_id": "char_0009",
+      "display": "杰廉",
+      "status": "known",
+      "score": 0.02
+    }
+  ],
+  "evidence": [
+    "前一段提到「赫萝本人却开口说」，紧接着就是当前段落的台词。",
+    "当前段落之后的段落提到「赫萝说完后，在外套底下轻轻笑了笑」，明确指出说话人是赫萝。",
+    "赫萝的说话风格轻松幽默但略带威胁性，与当前台词的语气一致。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

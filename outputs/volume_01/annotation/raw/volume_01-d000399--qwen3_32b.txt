@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000399",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.02
+    }
+  ],
+  "evidence": [
+    "当前段落描述赫萝「摆出一副『现在不应该说这些吧』的表情注视罗伦斯」，表明这句话是赫萝的内心表达或拟态台词。",
+    "上下文显示赫萝对罗伦斯的装傻行为感到不满，符合她说话的语气和情绪。",
+    "场景记忆中赫萝和罗伦斯是主要互动角色，且赫萝常以轻松幽默但略带威胁的语气说话。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

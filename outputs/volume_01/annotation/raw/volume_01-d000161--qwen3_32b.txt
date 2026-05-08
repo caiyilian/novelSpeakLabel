@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000161",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.98
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.02
+    }
+  ],
+  "evidence": [
+    "前一段落中提到「他缓慢把头转向赫萝，开口说」，表明说话人是罗伦斯。",
+    "当前段落是直接引语，且上下文显示罗伦斯正在向赫萝提问，符合他的说话风格。",
+    "场景记忆中显示罗伦斯对赫萝的身份持怀疑态度，并提出问题，符合当前台词的语境。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

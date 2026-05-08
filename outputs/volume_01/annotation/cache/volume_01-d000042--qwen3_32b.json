@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000042",
+  "speaker_entity_id": "mystery_volume_01_c002_s002_r002_村民",
+  "speaker_display": "村民",
+  "speaker_status": "mystery",
+  "confidence": 0.75,
+  "candidate_speakers": [
+    {
+      "entity_id": "mystery_volume_01_c002_s002_r002_村民",
+      "display": "村民",
+      "status": "mystery",
+      "score": 0.75
+    },
+    {
+      "entity_id": "char_0004",
+      "display": "叶勒",
+      "status": "known",
+      "score": 0.2
+    }
+  ],
+  "evidence": [
+    "台词「抓住祂！快抓住！」出现在村民追逐叶勒的场景中，与村民的集体呼喊行为一致。",
+    "上下文显示村民在呼喊「狼赫萝出现了！」，随后呼喊「抓住祂！快抓住！」，符合村民作为集体角色的说话特征。",
+    "场景记忆中提到村民作为一个集体角色参与祭典，但未被单独命名。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

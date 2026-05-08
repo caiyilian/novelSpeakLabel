@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000095",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "前一段提到罗伦斯对赫萝说：「看着赫萝的模样，罗伦斯的嘴角忍不住上扬了一些。不过，有件事让罗伦斯在意，于是他对钻进貂皮底下的赫萝说：」",
+    "当前段落是罗伦斯对赫萝的提问：「你刚刚也有提到模样如何又如何的，到底是什么意思啊？」",
+    "下一段提到赫萝回应罗伦斯的提问，说明说话人是罗伦斯。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

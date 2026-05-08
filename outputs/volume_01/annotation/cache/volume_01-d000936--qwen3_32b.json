@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000936",
+  "speaker_entity_id": "mystery_volume_01_c005_s006_r003_追捕者",
+  "speaker_display": "追捕者",
+  "speaker_status": "mystery",
+  "confidence": 0.75,
+  "candidate_speakers": [
+    {
+      "entity_id": "mystery_volume_01_c005_s006_r003_追捕者",
+      "display": "追捕者",
+      "status": "mystery",
+      "score": 0.75
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.2
+    }
+  ],
+  "evidence": [
+    "声音从罗伦斯的斜后方传来。",
+    "台词中提到「只捉到一个？他们应该有两个人！」，暗示说话者是追捕者之一，正在确认罗伦斯和赫萝的下落。",
+    "上下文显示罗伦斯正在奔跑，追捕者在后方行动。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

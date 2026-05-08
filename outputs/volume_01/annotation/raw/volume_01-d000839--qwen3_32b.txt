@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000839",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "上下文显示罗伦斯正在规划开店，并照顾赫萝的恢复状态。",
+    "赫萝刚刚起床，罗伦斯关心她的身体状况。",
+    "「感觉怎么样？」是罗伦斯对赫萝的关心提问，语气符合他的理性与温和风格。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

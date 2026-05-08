@@ -1,0 +1,23 @@
+{
+  "dialogue_id": "volume_01-d001126",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    }
+  ],
+  "evidence": [
+    "赫萝在前一段中刚刚开口说话，上下文明确指向她继续发言。",
+    "台词中使用了「咱」自称，这是赫萝的典型说话风格。",
+    "场景记忆中赫萝多次表达对帕斯罗村和叶勒的复杂情绪，与本句台词的语境一致。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

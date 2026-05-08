@@ -1,0 +1,23 @@
+{
+  "dialogue_id": "volume_01-d000341",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "对话内容提到「狼」的视角，与赫萝自称丰收之神、具有狼的特征的身份相符。",
+    "场景记忆中赫萝多次以轻松幽默但略带威胁的语气谈论狼与人类的关系，符合当前台词风格。",
+    "当前场景中罗伦斯回忆遭遇狼群袭击的经历，赫萝表现出歉意和关心，与当前台词的语境一致。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

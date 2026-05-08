@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000070",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "前一段对话中罗伦斯拔出短剑，女孩眯起琥珀色眼睛，随后问「你到底是谁？」，接着是「胆敢拿剑指着咱，真是不懂礼貌。」，语气轻松带调侃，符合赫萝的说话风格。",
+    "当前对话「你说什么？」语气短促、带有反问，符合赫萝在对话中常见的轻松幽默但略带威胁的语气。",
+    "场景记忆中赫萝多次以「咱」自称，且与罗伦斯有频繁互动，符合当前对话的语境。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

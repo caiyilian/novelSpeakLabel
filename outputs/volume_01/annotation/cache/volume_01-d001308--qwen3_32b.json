@@ -1,0 +1,30 @@
+{
+  "dialogue_id": "volume_01-d001308",
+  "speaker_entity_id": "char_0020",
+  "speaker_display": "列支敦·马贺特",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0020",
+      "display": "列支敦·马贺特",
+      "status": "known",
+      "score": 0.98
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.02
+    }
+  ],
+  "evidence": [
+    "前一段对话中罗伦斯对马贺特的语调表示疑惑，随后马贺特表现出开朗的语气。",
+    "当前段落中说话者语气开朗，符合马贺特的说话风格。",
+    "下一段提到罗伦斯收下马贺特递来的文件，说明说话者是马贺特。",
+    "场景记忆中明确指出马贺特与罗伦斯进行交易谈判，并透露梅迪欧商行的意图。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

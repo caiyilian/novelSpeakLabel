@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d001011",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0020",
+      "display": "列支敦·马贺特",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "前一段对话是罗伦斯提问「我们能做的，应该只有主动出击而已吧？」，接着是马贺特的回应，再之后是罗伦斯的「如果逃出城镇外呢？」，符合罗伦斯的说话风格和逻辑。",
+    "罗伦斯在场景中持续提出策略性问题，而马贺特则负责分析和回应，因此该句更可能是罗伦斯的提问。",
+    "罗伦斯的台词风格理性、冷静，且常以策略性问题引导对话，而该句符合其风格。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

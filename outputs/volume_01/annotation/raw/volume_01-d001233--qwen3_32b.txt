@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d001233",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "赫萝在场景中表现出对罗伦斯虚弱状态的担忧和情绪波动，说话风格轻松幽默但略带威胁性，符合台词中的语气。",
+    "当前段落中提到「咱的耳朵」，这是赫萝常用的自称方式，符合她的语言特征。",
+    "上下文显示赫萝对罗伦斯的谎言表现出敏锐的察觉，符合她对罗伦斯的熟悉程度和互动模式。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

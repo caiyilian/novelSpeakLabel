@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000924",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.9,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.9
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.1
+    }
+  ],
+  "evidence": [
+    "前一段中赫萝提出「要不兵分两路？」，接着是「咱会尽可能在大街道上奔跑好拖延时间，汝就趁这段时间——」，随后是「「等一下！这怎么可以！」，而当前台词「「比如说？」」是对此策略的追问，语气符合罗伦斯冷静理性的风格。",
+    "场景记忆中明确指出罗伦斯对赫萝的策略表示担忧，并试图提出自己的想法，符合当前对话的语境。",
+    "赫萝的台词风格轻松幽默，而当前台词语气理性，更符合罗伦斯的说话方式。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

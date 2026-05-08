@@ -1,0 +1,29 @@
+```json
+{
+  "dialogue_id": "volume_01-d001261",
+  "speaker_entity_id": "char_0004",
+  "speaker_display": "叶勒",
+  "speaker_status": "known",
+  "confidence": 0.9,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0004",
+      "display": "叶勒",
+      "status": "known",
+      "score": 0.9
+    },
+    {
+      "entity_id": "mystery_volume_01_c007_s004_r002_梅迪欧商行手下",
+      "display": "梅迪欧商行手下",
+      "status": "mystery",
+      "score": 0.1
+    }
+  ],
+  "evidence": [
+    "叶勒的声音响起，因为赫萝的怪异举动而停下脚步的梅迪欧商行手下回过神来，架起武器往前逼近。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

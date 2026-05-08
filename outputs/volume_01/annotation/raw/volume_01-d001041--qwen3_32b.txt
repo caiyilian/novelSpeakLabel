@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d001041",
+  "speaker_entity_id": "char_0020",
+  "speaker_display": "列支敦·马贺特",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0020",
+      "display": "列支敦·马贺特",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "前一段提到「救出赫萝，然后拼命逃跑，直到贵商行完成交涉」，马贺特听到后倒抽了一口气，接着本句「这太胡闹了。」是对其的直接反应。",
+    "场景记忆中明确指出马贺特对罗伦斯的提议感到震惊和苦恼，符合该句台词的情绪表达。",
+    "罗伦斯的策略性语气与「这太胡闹了」的惊讶语气不符，更可能是马贺特的反应。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

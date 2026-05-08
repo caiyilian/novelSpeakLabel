@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d000884",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    }
+  ],
+  "evidence": [
+    "赫萝在梦中醒来后表示大家都不见了，情绪低落，说话内容与当前台词一致。",
+    "当前场景中赫萝表现出强烈的情绪波动，罗伦斯在安抚她，符合上下文逻辑。",
+    "赫萝的台词风格为第一人称自称「咱」，与她的说话风格一致。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

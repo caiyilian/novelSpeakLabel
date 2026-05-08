@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000291",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0009",
+      "display": "杰廉",
+      "status": "known",
+      "score": 0.1
+    }
+  ],
+  "evidence": [
+    "赫萝在场景中频繁出现并发表带有调侃和自信语气的台词，符合该句说话风格。",
+    "前一句是「不明白他说谎的理由，是呗？」，符合赫萝的说话方式。",
+    "后一句是「你以为我花了多少年才明白这个道理？」，进一步确认说话人是赫萝。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

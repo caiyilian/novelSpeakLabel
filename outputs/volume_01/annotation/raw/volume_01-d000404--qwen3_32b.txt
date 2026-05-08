@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000404",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "场景中赫萝表现出对食物的渴望和心不在焉的回应，符合「唔，啊。」这种简短、情绪化的语气。",
+    "赫萝是场景中主要的互动角色之一，且在前文多次表现出类似语气和行为。",
+    "罗伦斯的语气通常更理性、完整，不太可能用如此简短的语气表达。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

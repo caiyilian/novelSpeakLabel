@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000559",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0009",
+      "display": "杰廉",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "前文杰廉提出交易条件，罗伦斯在对话中保持冷静分析，此句语气符合罗伦斯的理性调侃风格。",
+    "赫萝未在此段对话中发言，而罗伦斯是主要对话者。",
+    "此句是对杰廉提出的交易条件的回应，语气带有讽刺和理性分析，符合罗伦斯的说话风格。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

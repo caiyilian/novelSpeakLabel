@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d000186",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    }
+  ],
+  "evidence": [
+    "赫萝在前文刚刚完成一个自然的动作（从货台跳下），随后罗伦斯对她是否逃跑表示犹豫，接着是这句台词。",
+    "台词中使用了「咱」这一自称，与赫萝的说话风格一致。",
+    "场景记忆中明确提到赫萝与罗伦斯的互动，包括她表明希望与罗伦斯一同旅行，态度自信轻松。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

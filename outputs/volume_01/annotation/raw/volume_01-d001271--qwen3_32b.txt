@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d001271",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0033",
+      "display": "巨大狼",
+      "status": "known",
+      "score": 0.1
+    }
+  ],
+  "evidence": [
+    "赫萝在场景中多次表现出对神的不满和情绪化反应，台词风格与她的轻松幽默但略带威胁性的语气一致。",
+    "场景中提到「神」，而赫萝自称丰收之神，因此她对神的抱怨符合她的身份和情绪表达。",
+    "下一段明确提到「那是叶勒的声音」，说明当前台词不是叶勒所说。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

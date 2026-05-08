@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000246",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.98
+    },
+    {
+      "entity_id": "char_0009",
+      "display": "杰廉",
+      "status": "known",
+      "score": 0.02
+    }
+  ],
+  "evidence": [
+    "前一段中杰廉自称「小的名叫杰廉」，而当前段落中「我是罗伦斯」符合罗伦斯的说话风格和身份。",
+    "场景记忆中明确提到罗伦斯与杰廉对话，罗伦斯是对话的主导者。",
+    "罗伦斯的台词风格理性、简洁，与当前台词一致。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000511",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0014",
+      "display": "商行代表",
+      "status": "known",
+      "score": 0.1
+    }
+  ],
+  "evidence": [
+    "说话风格轻松幽默且略带威胁性，使用自称‘咱’，这是赫萝的显著特征。",
+    "上下文显示罗伦斯和赫萝在讨论交易策略，赫萝表现出主导地位。",
+    "赫萝在场景中多次插嘴并主导对话，符合当前台词的语境。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

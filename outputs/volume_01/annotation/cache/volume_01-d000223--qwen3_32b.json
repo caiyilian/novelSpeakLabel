@@ -1,0 +1,23 @@
+{
+  "dialogue_id": "volume_01-d000223",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "前一段中赫萝说：「咱觉得汝的胡子挺好看的。」，本句延续了「咱」的自称风格，符合赫萝的说话习惯。",
+    "场景记忆中赫萝的说话风格轻松幽默，略带调侃和威胁，与本句语气一致。",
+    "当前段落中罗伦斯的反应表明他正在回应赫萝的评论，而非与其他人对话。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

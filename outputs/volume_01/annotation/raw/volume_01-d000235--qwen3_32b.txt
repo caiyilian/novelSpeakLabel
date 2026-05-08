@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000235",
+  "speaker_entity_id": "char_0007",
+  "speaker_display": "佩连佐男子",
+  "speaker_status": "known",
+  "confidence": 0.9,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0007",
+      "display": "佩连佐男子",
+      "status": "known",
+      "score": 0.9
+    },
+    {
+      "entity_id": "char_0008",
+      "display": "年轻商人",
+      "status": "known",
+      "score": 0.3
+    }
+  ],
+  "evidence": [
+    "对话内容涉及葡萄园和葡萄酒商，与佩连佐男子的背景相符。",
+    "上下文显示该男子是葡萄园领主，对汇兑体制提出疑问。",
+    "场景记忆中明确指出佩连佐男子是贵族和葡萄园领主，与罗伦斯有短暂互动。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

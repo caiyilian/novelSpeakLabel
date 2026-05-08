@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000729",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.9,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.9
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.1
+    }
+  ],
+  "evidence": [
+    "赫萝在本场景中引导罗伦斯从不同角度看待问题，提到「如果用不同的观点来观察眼前的状况，经常会发现完全相反的事实」，与当前台词「使用不同观点」高度呼应。",
+    "当前段落是赫萝引导罗伦斯思考的延续，而非罗伦斯的主动发言。",
+    "赫萝的说话风格轻松幽默但略带威胁性，而当前台词简洁理性，更符合她引导他人思考的语气。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

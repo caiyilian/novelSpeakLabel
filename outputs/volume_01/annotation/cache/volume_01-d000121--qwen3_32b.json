@@ -1,0 +1,23 @@
+{
+  "dialogue_id": "volume_01-d000121",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    }
+  ],
+  "evidence": [
+    "前一段提到赫萝把视线从罗伦斯身上移开并开口说话",
+    "下一段提到罗伦斯觉得赫萝在嘲讽自己，反问她，说明赫萝是前一句的说话人",
+    "赫萝在场景中频繁出现并主导对话，语气符合她的风格"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

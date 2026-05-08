@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000027",
+  "speaker_entity_id": "char_0005",
+  "speaker_display": "农夫",
+  "speaker_status": "known",
+  "confidence": 0.9,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0005",
+      "display": "农夫",
+      "status": "known",
+      "score": 0.9
+    },
+    {
+      "entity_id": "char_0004",
+      "display": "叶勒",
+      "status": "known",
+      "score": 0.1
+    }
+  ],
+  "evidence": [
+    "对话发生在帕斯罗村麦田，罗伦斯朝正在麦田一角堆麦子的农夫打招呼。",
+    "对话内容为「嗨！辛苦了。」，语气朴实，符合农夫身份。",
+    "后续段落提到罗伦斯询问叶勒的下落，说明当前说话人不是叶勒。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

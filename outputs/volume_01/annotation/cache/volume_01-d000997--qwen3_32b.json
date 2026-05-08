@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000997",
+  "speaker_entity_id": "char_0020",
+  "speaker_display": "列支敦·马贺特",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0020",
+      "display": "列支敦·马贺特",
+      "status": "known",
+      "score": 0.98
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.02
+    }
+  ],
+  "evidence": [
+    "上下文显示罗伦斯正在沉思赫萝的身份，随后被「马贺特的声音拉回现实」，接着马贺特提问「您知道原因是吗？」，表明说话人是马贺特。",
+    "当前段落「『罗伦斯先生。』」是马贺特打断罗伦斯沉思的开始。",
+    "场景记忆中，列支敦·马贺特是米隆商行帕兹欧分行的行长，与罗伦斯有频繁对话，且在本场景中主导对话节奏。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

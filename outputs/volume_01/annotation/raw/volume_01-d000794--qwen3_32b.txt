@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000794",
+  "speaker_entity_id": "char_0021",
+  "speaker_display": "店老板",
+  "speaker_status": "known",
+  "confidence": 0.9,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0021",
+      "display": "店老板",
+      "status": "known",
+      "score": 0.9
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.1
+    }
+  ],
+  "evidence": [
+    "对话内容描述了「年轻的旅行商人脸色惨白，摇摇晃晃地走出去」，这与前文提到的赫萝宿醉、店老板观察旅行商人的状态一致。",
+    "场景记忆中提到店老板对赫萝的宿醉状态表示理解，并建议休息，符合该段对话的语气和内容。",
+    "该段对话没有使用第一人称或明显属于罗伦斯的理性语气，更符合店老板的观察性语气。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

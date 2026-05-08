@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d000156",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    }
+  ],
+  "evidence": [
+    "赫萝在场景中表现出非人类特征，如狼的耳朵和尾巴，并以轻松幽默但略带威胁性的语气说话。",
+    "当前对话「汝……是在跟咱开玩笑呗？」符合赫萝的说话风格，特别是使用「咱」自称，这是她的标志性语言特征。",
+    "上下文显示赫萝因罗伦斯的怀疑而表现出被背叛的表情，随后以挑衅的语气回应，符合她的性格和行为模式。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d001321",
+  "speaker_entity_id": "char_0020",
+  "speaker_display": "列支敦·马贺特",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0020",
+      "display": "列支敦·马贺特",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "前一段对话中罗伦斯询问胡椒的供应情况，接着是「您是说胡椒吗？」，随后是「怎么了吗？」，语气上像是回应前一句的提问，符合马贺特的说话风格。",
+    "场景记忆中明确指出罗伦斯与马贺特是主要对话者，且马贺特在场景中频繁发言，包括解释和回应罗伦斯的提问。",
+    "当前段落紧接着马贺特的提问「您是说胡椒吗？」，因此「怎么了吗？」很可能是马贺特的回应。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

@@ -1,0 +1,30 @@
+```json
+{
+  "dialogue_id": "volume_01-d000227",
+  "speaker_entity_id": "char_0007",
+  "speaker_display": "佩连佐男子",
+  "speaker_status": "known",
+  "confidence": 0.85,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0007",
+      "display": "佩连佐男子",
+      "status": "known",
+      "score": 0.85
+    },
+    {
+      "entity_id": "mystery_volume_01_c003_s001_r005_教会客人1",
+      "display": "教会客人1",
+      "status": "mystery",
+      "score": 0.15
+    }
+  ],
+  "evidence": [
+    "上下文显示罗伦斯正在与一位男子交谈，该男子提到自己从约连过来，符合佩连佐男子的对话风格和场景关联。",
+    "该男子的发言内容与罗伦斯的商业对话相关，符合佩连佐男子在场景中出现的记录。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

@@ -1,0 +1,30 @@
+{
+  "dialogue_id": "volume_01-d000935",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.9,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.9
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.1
+    }
+  ],
+  "evidence": [
+    "罗伦斯在赫萝离开后，听到追捕声，急忙追赶。他穿越小巷和街道，试图找到赫萝并逃脱追捕者。",
+    "赫萝在场景中独自离开，引发罗伦斯的担忧。",
+    "对话前文提到赫萝跑出去后，罗伦斯紧闭眼睛并开始奔跑，暗示他正在寻找赫萝或追踪者。",
+    "台词「看到了！在洛依大道上！」符合罗伦斯在奔跑中发现目标的语气。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

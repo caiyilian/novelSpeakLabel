@@ -1,0 +1,27 @@
+{
+  "dialogue_id": "volume_01-d001088",
+  "speaker_entity_id": "char_0024",
+  "speaker_display": "梅迪欧商行的人",
+  "speaker_status": "known",
+  "confidence": 0.9,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0024",
+      "display": "梅迪欧商行的人",
+      "status": "known",
+      "score": 0.9
+    },
+    {
+      "entity_id": "char_0027",
+      "display": "米隆商行人员",
+      "status": "known",
+      "score": 0.1
+    }
+  ],
+  "evidence": [
+    "商行的人盖上马车底板，说了句「那么，祝您们成功」后，拿着罗伦斯与赫萝带来的包袱走下马车。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

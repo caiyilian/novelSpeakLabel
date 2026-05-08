@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d001197",
+  "speaker_entity_id": "mystery_volume_01_c007_s001_r005_追捕者",
+  "speaker_display": "追捕者",
+  "speaker_status": "mystery",
+  "confidence": 0.7,
+  "candidate_speakers": [
+    {
+      "entity_id": "mystery_volume_01_c007_s001_r005_追捕者",
+      "display": "追捕者",
+      "status": "mystery",
+      "score": 0.7
+    },
+    {
+      "entity_id": "char_0030",
+      "display": "米隆商行",
+      "status": "known",
+      "score": 0.3
+    }
+  ],
+  "evidence": [
+    "从缓缓蜿蜒的地下道另一头深处看见摇来晃去的灯光，并传来「找到了！」的声音。",
+    "场景中提到追捕者正在接近罗伦斯和赫萝，可能是他们发出的声音。",
+    "没有明确提到罗伦斯或赫萝在此时发出此句台词。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

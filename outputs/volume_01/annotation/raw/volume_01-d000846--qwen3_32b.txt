@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000846",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "前文提到赫萝在喝水配面包，并评论罗伦斯的店面构图，但未提及她对画作的评价。",
+    "当前台词「喔，画得不错。」语气理性、冷静，符合罗伦斯的说话风格。",
+    "后文提到「罗伦斯对自己画图的技巧本来就相当有自信，但被人褒奖还是令他开心。」暗示他画了图并得到他人称赞，符合说话人身份。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

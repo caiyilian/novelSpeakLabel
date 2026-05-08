@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d000049",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "上下文显示罗伦斯正在试图叫醒神秘女孩，台词「喂！我说你啊！」符合他冷静但略带急切的语气。",
+    "场景记忆中提到罗伦斯发现神秘女孩并试图与她交谈，台词符合他的行为动机。",
+    "候选角色中罗伦斯是唯一明确在该场景中主动行动的角色。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

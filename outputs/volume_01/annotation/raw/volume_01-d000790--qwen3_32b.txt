@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000790",
+  "speaker_entity_id": "char_0021",
+  "speaker_display": "店老板",
+  "speaker_status": "known",
+  "confidence": 0.9,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0021",
+      "display": "店老板",
+      "status": "known",
+      "score": 0.9
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.1
+    }
+  ],
+  "evidence": [
+    "对话内容为「要先付啊？一共三十二路特。」，符合店老板在场景中提供服务并要求付款的语境。",
+    "前文提到「多少钱？」，暗示对话发生在付款环节，店老板是合理说话人。",
+    "场景记忆中提到「罗伦斯与店老板有交易互动」，且店老板在场景中出现并提供果汁和面包。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

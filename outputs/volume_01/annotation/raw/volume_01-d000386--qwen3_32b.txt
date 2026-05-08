@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000386",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "对话内容与赫萝对水果的偏好和兴趣相关，符合她的性格和对话风格。",
+    "上下文显示赫萝在讨论水果来源和种类，表现出轻松幽默但略带调侃的语气。",
+    "场景记忆中赫萝多次提到水果和甜食，与当前对话内容一致。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

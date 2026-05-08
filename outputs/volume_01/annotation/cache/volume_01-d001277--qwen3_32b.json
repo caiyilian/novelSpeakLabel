@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d001277",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "罗伦斯心想「没用吗？」但赫萝在此时停下脚步。",
+    "前文提到罗伦斯呼喊赫萝，并表现出挽留她的意图，说明当前语境中罗伦斯是主要行动者。",
+    "当前段落明确指出「罗伦斯心想」，表明说话人是罗伦斯的内心独白。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d001096",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    }
+  ],
+  "evidence": [
+    "上下文显示赫萝站在罗伦斯面前，揪住他的胸口，语气情绪化且带有威胁性，符合赫萝的说话风格。",
+    "赫萝在场景中多次表现出强烈情绪波动，包括愤怒和失望，与台词中的「咱有跟汝说过吧，咱要汝来救咱」语气一致。",
+    "赫萝的自称「咱」是其标志性语言特征，与台词中的自称一致。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

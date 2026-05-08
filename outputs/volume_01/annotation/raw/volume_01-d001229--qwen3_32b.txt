@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d001229",
+  "speaker_entity_id": "mystery_volume_01_c007_s003_r002_未知追踪者",
+  "speaker_display": "未知追踪者",
+  "speaker_status": "mystery",
+  "confidence": 0.7,
+  "candidate_speakers": [
+    {
+      "entity_id": "mystery_volume_01_c007_s003_r002_未知追踪者",
+      "display": "未知追踪者",
+      "status": "mystery",
+      "score": 0.7
+    },
+    {
+      "entity_id": "char_0032",
+      "display": "梅迪欧商行手下",
+      "status": "known",
+      "score": 0.5
+    }
+  ],
+  "evidence": [
+    "「找到了！」是突然从转角出现的声音，与罗伦斯和赫萝的沉默形成对比。",
+    "场景中提到脚步声从转角传来，暗示说话人是追踪者，而非罗伦斯或赫萝。",
+    "当前段落之后的段落提到两人听到喊叫声后才回过头，说明说话人是突然出现的第三方。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000249",
+  "speaker_entity_id": "char_0009",
+  "speaker_display": "杰廉",
+  "speaker_status": "known",
+  "confidence": 0.9,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0009",
+      "display": "杰廉",
+      "status": "known",
+      "score": 0.9
+    },
+    {
+      "entity_id": "char_0008",
+      "display": "年轻商人",
+      "status": "known",
+      "score": 0.3
+    }
+  ],
+  "evidence": [
+    "杰廉在场景中表现出厚颜无耻的说话风格，试图接近赫萝。",
+    "对话内容「喔，夫妻俩一同行商啊？」符合杰廉试图获取情报和调侃的语气。",
+    "杰廉是场景中唯一新出现的可追踪人物，且与罗伦斯和赫萝有直接互动。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

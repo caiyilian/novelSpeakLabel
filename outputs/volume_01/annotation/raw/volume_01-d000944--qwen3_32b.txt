@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000944",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0024",
+      "display": "梅迪欧商行的人",
+      "status": "mystery",
+      "score": 0.1
+    }
+  ],
+  "evidence": [
+    "对话中提到「他们应该是梅迪欧商行的人」，但说话人是在分析对方身份，而非自称是梅迪欧商行的人。",
+    "上下文显示说话人正在与赫萝和米隆商行的代表讨论梅迪欧商行的威胁，语气理性且冷静，符合罗伦斯的说话风格。",
+    "罗伦斯在场景中是主要的对话者，且与梅迪欧商行存在商业竞争关系，因此他最有可能是说话人。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

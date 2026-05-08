@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000231",
+  "speaker_entity_id": "char_0007",
+  "speaker_display": "佩连佐男子",
+  "speaker_status": "known",
+  "confidence": 0.9,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0007",
+      "display": "佩连佐男子",
+      "status": "known",
+      "score": 0.9
+    },
+    {
+      "entity_id": "char_0006",
+      "display": "教会夫妻",
+      "status": "known",
+      "score": 0.3
+    }
+  ],
+  "evidence": [
+    "场景中提到罗伦斯向一位来自佩连佐的男子解释了汇兑体制的运作方式，男子对此感到惊讶并提出疑问。",
+    "当前对话内容「喔喔？有意思，说来听听如何？」符合佩连佐男子对罗伦斯解释的回应语气。",
+    "上下文显示对话发生在罗伦斯与佩连佐男子之间，而非教会夫妻或其他角色。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

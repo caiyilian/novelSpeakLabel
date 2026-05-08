@@ -1,0 +1,26 @@
+```json
+{
+  "dialogue_id": "volume_01-d000098",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    }
+  ],
+  "evidence": [
+    "台词中自称‘咱’，与赫萝的说话风格一致。",
+    "提到‘狼的耳朵和尾巴’，与赫萝的特征完全吻合。",
+    "提到‘约伊兹的贤狼’，这是赫萝的自称之一。",
+    "上下文显示赫萝刚刚展示她的耳朵和尾巴，罗伦斯对此感到震惊。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

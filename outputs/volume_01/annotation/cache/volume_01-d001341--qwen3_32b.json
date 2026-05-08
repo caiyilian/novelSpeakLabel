@@ -1,0 +1,23 @@
+{
+  "dialogue_id": "volume_01-d001341",
+  "speaker_entity_id": "char_0010",
+  "speaker_display": "店员",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0010",
+      "display": "店员",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "罗伦斯询问卸货场的位置，随后得到指引：「啊，呃，这个走廊走到底左转，然后一直往前走就是了。」",
+    "场景记忆中明确提到罗伦斯与店员有互动，并且店员负责提供卸货场的指引。",
+    "该段对话符合店员礼貌、简洁的说话风格。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d001066",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0020",
+      "display": "列支敦·马贺特",
+      "status": "known",
+      "score": 0.6
+    }
+  ],
+  "evidence": [
+    "对话内容涉及营救赫萝的地下行动细节，与罗伦斯在场景中主导的营救计划一致。",
+    "罗伦斯在场景中与米隆商行人员合作，讨论地下通道的行动路线。",
+    "对话语气理性、冷静，符合罗伦斯的说话风格。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

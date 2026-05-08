@@ -1,0 +1,35 @@
+{
+  "dialogue_id": "volume_01-d000456",
+  "speaker_entity_id": "char_0013",
+  "speaker_display": "鉴定商品的采购人员",
+  "speaker_status": "known",
+  "confidence": 0.9,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0013",
+      "display": "鉴定商品的采购人员",
+      "status": "known",
+      "score": 0.9
+    },
+    {
+      "entity_id": "char_0016",
+      "display": "鉴定员",
+      "status": "known",
+      "score": 0.75
+    },
+    {
+      "entity_id": "char_0014",
+      "display": "商行代表",
+      "status": "known",
+      "score": 0.6
+    }
+  ],
+  "evidence": [
+    "前文提到「罗伦斯先生曾经与本商行做过麦子交易，承蒙您平日关照，这个金额您意下如何？」，表明说话者是商行的采购人员。",
+    "当前对话中提到「崔尼银币」，与商行代表的交易专业性相符。",
+    "后续段落中「罗伦斯瞬间露出困惑的表情说」表明罗伦斯是回应者，而非说话人。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

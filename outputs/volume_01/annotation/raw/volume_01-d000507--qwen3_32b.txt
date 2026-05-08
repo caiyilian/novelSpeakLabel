@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d000507",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "说话风格轻松幽默但略带威胁性，使用自称‘咱’，符合赫萝的说话特征。",
+    "上下文显示赫萝在与罗伦斯进行交易谈判，且她经常使用类似的语气和措辞。",
+    "场景记忆中明确提到赫萝在交易中主导策略，并表现出自信和狡黠的语气。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

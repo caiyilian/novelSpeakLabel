@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000499",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0014",
+      "display": "商行代表",
+      "status": "known",
+      "score": 0.1
+    }
+  ],
+  "evidence": [
+    "赫萝在交易中频繁插嘴，说话风格轻松幽默但略带威胁性，符合当前台词的语气。",
+    "当前场景中赫萝主导交易，罗伦斯表现出无奈，符合赫萝的主导行为。",
+    "台词「唔，呃……」是赫萝在交易中常见的语气词，用于表达犹豫或思考。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

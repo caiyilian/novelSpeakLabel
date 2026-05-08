@@ -1,0 +1,30 @@
+{
+  "dialogue_id": "volume_01-d000796",
+  "speaker_entity_id": "char_0021",
+  "speaker_display": "店老板",
+  "speaker_status": "known",
+  "confidence": 0.9,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0021",
+      "display": "店老板",
+      "status": "known",
+      "score": 0.9
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.1
+    }
+  ],
+  "evidence": [
+    "对话内容提到「金额没错」、「两位就在这里休息一下吧」，语气符合店老板对旅行商人的观察和建议。",
+    "场景记忆中提到店老板观察赫萝的宿醉状态并发表评论，符合说话风格。",
+    "前文提到「三十二路特」，暗示店老板在处理交易金额，符合其身份。",
+    "后文提到「罗伦斯点点头，店老板见状『哇哈哈』大笑」，说明说话人是店老板。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

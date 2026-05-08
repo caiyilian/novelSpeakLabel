@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000681",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0009",
+      "display": "杰廉",
+      "status": "ambiguous",
+      "score": 0.1
+    }
+  ],
+  "evidence": [
+    "前一段提到赫萝笑说「真有趣的人」，紧接着本句是「没办法，他是个好色鬼。」，语境上是罗伦斯对怀兹的评价。",
+    "场景记忆中提到罗伦斯认为怀兹是个好色鬼，与本句台词一致。",
+    "罗伦斯在场景中多次对怀兹的行为表示不满，语气符合本句台词的贬低语气。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d001310",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.98
+    },
+    {
+      "entity_id": "char_0020",
+      "display": "列支敦·马贺特",
+      "status": "known",
+      "score": 0.02
+    }
+  ],
+  "evidence": [
+    "罗伦斯手上的文件，写着以分享特别利益的名目，赠给罗伦斯一千枚银币。",
+    "「一千枚……这么多好吗？」——这是对文件内容的直接反应，语气中带有惊讶和怀疑，符合罗伦斯的理性性格。",
+    "上下文显示罗伦斯刚刚看完文件，对银币数量感到震惊，符合他在此时提出疑问的逻辑。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000642",
+  "speaker_entity_id": "mystery_volume_01_c004_s007_r002_神秘女孩",
+  "speaker_display": "神秘女孩",
+  "speaker_status": "mystery",
+  "confidence": 0.8,
+  "candidate_speakers": [
+    {
+      "entity_id": "mystery_volume_01_c004_s007_r002_神秘女孩",
+      "display": "神秘女孩",
+      "status": "mystery",
+      "score": 0.8
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.2
+    }
+  ],
+  "evidence": [
+    "「那位女孩是谁？」是怀兹对罗伦斯身旁的神秘女孩提出的问题，暗示说话人是怀兹。",
+    "上下文显示怀兹对罗伦斯身旁的神秘女孩表现出好奇，而该女孩身份不明。",
+    "罗伦斯在对话中称该女孩是他在帕斯罗村路上「捡到的」，进一步确认该女孩是新出现的神秘人物。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d001135",
+  "speaker_entity_id": "char_0004",
+  "speaker_display": "叶勒",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0004",
+      "display": "叶勒",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "mystery_volume_01_c006_s004_r005_叶勒",
+      "display": "叶勒",
+      "status": "mystery",
+      "score": 0.85
+    }
+  ],
+  "evidence": [
+    "对话内容提到「那家伙」，与前文赫萝提到的叶勒相关联。",
+    "赫萝在前文提到「那家伙」时表现出情绪波动，暗示是叶勒。",
+    "场景记忆中明确指出叶勒是帕斯罗村的农夫，与赫萝有冲突。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d000958",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.98
+    }
+  ],
+  "evidence": [
+    "对话中提到「我的伙伴可能已经被捉住」，而场景记忆中明确指出赫萝是罗伦斯的伙伴。",
+    "对话中提到「可否借助贵商行的力量救出我的伙伴呢？」，与场景记忆中罗伦斯向米隆商行的马贺特请求协助营救赫萝的情节一致。",
+    "上下文显示罗伦斯正在与米隆商行的代表马贺特对话，且情绪激动，符合罗伦斯的说话风格和行为模式。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

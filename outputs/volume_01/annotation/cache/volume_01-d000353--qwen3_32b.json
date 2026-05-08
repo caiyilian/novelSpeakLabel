@@ -1,0 +1,23 @@
+{
+  "dialogue_id": "volume_01-d000353",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "前一段赫萝说「就算是咱，也有不能回答的事。」",
+    "当前段落是赫萝的引号对话「唔……」，符合她说话风格中情绪波动明显、轻松幽默但略带威胁性的特点。",
+    "后一段提到罗伦斯责备自己乱说话，暗示赫萝的反应是直接的回应。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

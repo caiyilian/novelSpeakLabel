@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000773",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.98
+    },
+    {
+      "entity_id": "char_0020",
+      "display": "列支敦·马贺特",
+      "status": "known",
+      "score": 0.02
+    }
+  ],
+  "evidence": [
+    "前一段提到罗伦斯表现大方地和对方说",
+    "当前段落是罗伦斯提出的利益分配问题",
+    "后文提到罗伦斯获得米隆商行5%的利益分配"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d001150",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "上下文显示罗伦斯与赫萝和马夫在场景中互动，且罗伦斯是主要对话者。",
+    "台词语气理性且略带调侃，符合罗伦斯的说话风格。",
+    "赫萝的台词通常更情绪化和调侃，而此句更偏向罗伦斯的理性表达。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

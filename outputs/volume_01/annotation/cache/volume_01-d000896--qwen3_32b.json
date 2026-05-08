@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000896",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "前文提到罗伦斯发现有人已经先躺在床铺上，而接下来的对话中赫萝表现出调侃和威胁的语气，符合她的说话风格。",
+    "场景记忆中赫萝多次表现出轻松幽默但略带威胁性的语气，与当前台词「做……什么？」的语气相符。",
+    "当前段落之后的对话中，赫萝以娇媚的语气说话，进一步确认说话人是赫萝。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

@@ -1,0 +1,30 @@
+```json
+{
+  "dialogue_id": "volume_01-d000920",
+  "speaker_entity_id": "mystery_volume_01_c005_s006_r001_追踪者A",
+  "speaker_display": "追踪者A",
+  "speaker_status": "mystery",
+  "confidence": 0.7,
+  "candidate_speakers": [
+    {
+      "entity_id": "mystery_volume_01_c005_s006_r001_追踪者A",
+      "display": "追踪者A",
+      "status": "mystery",
+      "score": 0.7
+    },
+    {
+      "entity_id": "mystery_volume_01_c005_s006_r001_追踪者B",
+      "display": "追踪者B",
+      "status": "mystery",
+      "score": 0.6
+    }
+  ],
+  "evidence": [
+    "对话中提到「对方派出来的人数众多，而且对地形也十分熟悉」，与场景记忆中提到的追踪者特征相符。",
+    "前一段提到两名男子怒气冲冲地从小巷狂奔而过，暗示说话人可能是追踪者之一。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000481",
+  "speaker_entity_id": "char_0016",
+  "speaker_display": "鉴定员",
+  "speaker_status": "known",
+  "confidence": 0.9,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0016",
+      "display": "鉴定员",
+      "status": "known",
+      "score": 0.9
+    },
+    {
+      "entity_id": "char_0014",
+      "display": "商行代表",
+      "status": "known",
+      "score": 0.6
+    }
+  ],
+  "evidence": [
+    "「谢谢。那么，先生啊。」是礼貌且正式的回应，符合鉴定员或商行代表的语气。",
+    "上下文显示赫萝和罗伦斯正在与鉴定员互动，而该句台词出现在赫萝展示貂皮之后，符合鉴定员对商品表示认可的场景。",
+    "场景记忆中提到鉴定员态度专业，对赫萝的插嘴感到困惑，但最终表现出认同，符合该句台词的语气。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

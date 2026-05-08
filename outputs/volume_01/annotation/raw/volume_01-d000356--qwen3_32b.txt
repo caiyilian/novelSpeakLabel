@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000356",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "「汝跟咱活着的世界大不相同呐。」——赫萝的说话风格轻松幽默但略带威胁性，且使用「咱」自称，符合其角色特征。",
+    "在诉说着明天也是晴朗好天气的星空下，窝在貂皮堆里的赫萝突然说出这句话。——明确指出说话人是赫萝。",
+    "赫萝与罗伦斯一同旅行，且在本场景中表现出轻松幽默但略带神秘的说话风格。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

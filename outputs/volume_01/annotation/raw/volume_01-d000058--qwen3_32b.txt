@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d000058",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    }
+  ],
+  "evidence": [
+    "赫萝在场景中表现出轻松幽默但略带威胁性的说话风格，与台词「搞什么，没酒啊。那食物……哦哟，真浪费。」语气一致。",
+    "上下文提到女孩懒洋洋地说话并捡起肉干吃，符合赫萝的行为特征。",
+    "赫萝的狼耳和非人类特征在场景中多次提及，与当前对话的说话人一致。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

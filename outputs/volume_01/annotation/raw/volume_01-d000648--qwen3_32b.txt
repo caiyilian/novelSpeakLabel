@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d000648",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    }
+  ],
+  "evidence": [
+    "对话中自称「咱」，并明确表示「咱的名字是赫萝」，与已知角色赫萝的自称风格一致。",
+    "上下文显示该角色被罗伦斯和怀兹提及并互动，符合赫萝在场景中的活跃表现。",
+    "赫萝是场景中已知的主要角色之一，且她的说话风格为轻松幽默但略带威胁性，与该句台词相符。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

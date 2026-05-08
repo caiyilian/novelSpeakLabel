@@ -1,0 +1,24 @@
+```json
+{
+  "dialogue_id": "volume_01-d000234",
+  "speaker_entity_id": "char_0007",
+  "speaker_display": "佩连佐男子",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0007",
+      "display": "佩连佐男子",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "对话中提到「我住在一个叫做佩连佐的城镇」，与场景记忆中「来自佩连佐的男子」相符。",
+    "上下文显示该男子正在与罗伦斯讨论汇兑体制，且对葡萄园的交易方式提出疑问。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

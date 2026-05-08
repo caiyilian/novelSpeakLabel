@@ -1,0 +1,30 @@
+```json
+{
+  "dialogue_id": "volume_01-d000401",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "上下文显示罗伦斯在讨论商业策略，包括坐船的风险与收益，语气理性且符合罗伦斯的说话风格。",
+    "赫萝在此场景中表现出心不在焉和焦虑，不太可能说出理性分析的句子。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

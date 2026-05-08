@@ -1,0 +1,26 @@
+```json
+{
+  "dialogue_id": "volume_01-d000266",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "对话中使用了「咱」这一自称，与赫萝的说话风格一致。",
+    "上下文提到「狼嘛，当然是狼吞虎咽了」、「汝瞧，那是因为狼没有这东西，所以没法儿慢慢咀嚼」，暗示说话者是狼的化身，即赫萝。",
+    "后续对话中提到「或许咱天生跟马铃薯不合呗」、「罗伦斯心想：单纯只是你吃得太猴急了！」，进一步确认说话者是赫萝。",
+    "赫萝在场景中被多次提及，且是唯一一个表现出狼的特征和幽默威胁风格的角色。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

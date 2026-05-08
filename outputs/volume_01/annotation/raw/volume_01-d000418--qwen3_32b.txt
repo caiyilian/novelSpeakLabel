@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000418",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "对话内容提到「那枚银币」，暗示说话人正在谈论金钱交易，这与罗伦斯的商业行为高度相关。",
+    "上下文显示赫萝在前一段对话中提到「咱是贤狼赫萝呐，这么点钱一下子就有了」，语气轻松，而当前对话语气更理性、略带无奈，符合罗伦斯的说话风格。",
+    "场景记忆中明确指出罗伦斯与赫萝在讨论金钱和交易，罗伦斯是主要的理性发言者。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

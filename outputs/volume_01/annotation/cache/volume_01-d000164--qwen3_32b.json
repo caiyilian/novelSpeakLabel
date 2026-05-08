@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000164",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.9,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.9
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.1
+    }
+  ],
+  "evidence": [
+    "前一段提到「赫萝面带不悦的表情说道」，而当前段是「……是这样啊？」，语气较为冷静，符合罗伦斯的理性风格。",
+    "后一段提到「罗伦斯虽然如此回答」，明确指出罗伦斯在回应赫萝的愤怒。",
+    "场景记忆中，罗伦斯和赫萝是主要互动角色，且罗伦斯常以冷静理性的方式回应赫萝的情绪化表达。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

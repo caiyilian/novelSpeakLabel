@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000052",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.9,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.9
+    },
+    {
+      "entity_id": "mystery_volume_01_c002_s002_r006_神秘女孩",
+      "display": "神秘女孩",
+      "status": "mystery",
+      "score": 0.6
+    }
+  ],
+  "evidence": [
+    "女孩头上竟然有着像小狗的耳朵",
+    "罗伦斯打算继续说话，却整个人僵住了",
+    "看女孩总算是醒了过来，罗伦斯打起精神，提足丹田之力开口说"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000982",
+  "speaker_entity_id": "char_0020",
+  "speaker_display": "列支敦·马贺特",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0020",
+      "display": "列支敦·马贺特",
+      "status": "known",
+      "score": 0.98
+    },
+    {
+      "entity_id": "mystery_volume_01_c005_s007_r001_梅迪欧商行的人",
+      "display": "梅迪欧商行的人",
+      "status": "mystery",
+      "score": 0.02
+    }
+  ],
+  "evidence": [
+    "上下文显示该段对话是马贺特在解释商行的立场，语气冷静且理性，符合其角色特征。",
+    "对话中提到「因为我们已经收集到这笔交易所有必需的情报」，这与马贺特在场景中代表米隆商行、强调利益优先的立场一致。",
+    "前一段提到「马贺特露出了一丝丝悲伤的表情轻轻点头」，表明说话人是马贺特。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

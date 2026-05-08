@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d001062",
+  "speaker_entity_id": "char_0020",
+  "speaker_display": "列支敦·马贺特",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0020",
+      "display": "列支敦·马贺特",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0027",
+      "display": "米隆商行人员",
+      "status": "known",
+      "score": 0.6
+    }
+  ],
+  "evidence": [
+    "对话内容提到教会和暗号，与场景记忆中列支敦·马贺特提供情报和建议的描述一致。",
+    "场景记忆中列支敦·马贺特是米隆商行帕兹欧分行的行长，与罗伦斯有商业策略讨论，符合提供暗号和建议的说话风格。",
+    "对话中提到「暗号是皮里昂、奴马」，这与场景中米隆商行人员协助行动的描述相符，但更符合行长的权威性表达。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

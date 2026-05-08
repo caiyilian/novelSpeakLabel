@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000051",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.98
+    },
+    {
+      "entity_id": "mystery_volume_01_c002_s002_r005_神秘女孩",
+      "display": "神秘女孩",
+      "status": "mystery",
+      "score": 0.02
+    }
+  ],
+  "evidence": [
+    "上下文显示罗伦斯在试图叫醒神秘女孩，语气中带有责备和警觉，符合罗伦斯冷静理性的说话风格。",
+    "场景记忆中提到罗伦斯发现神秘女孩在马车上睡觉，并试图叫醒她。",
+    "台词中提到「你的马车」，表明说话人是马车的主人，而罗伦斯是马车的主人。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

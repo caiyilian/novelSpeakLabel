@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d001160",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "前一段提到赫萝说话带点受不了罗伦斯似的口吻，让罗伦斯感到生气。",
+    "当前段落是「太狡猾了。」，符合赫萝轻松幽默但略带调侃的说话风格。",
+    "场景记忆中赫萝对罗伦斯表现出调侃和撒娇的态度，符合此句台词的语气。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000537",
+  "speaker_entity_id": "char_0009",
+  "speaker_display": "杰廉",
+  "speaker_status": "known",
+  "confidence": 0.8,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0009",
+      "display": "杰廉",
+      "status": "known",
+      "score": 0.8
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "ambiguous",
+      "score": 0.2
+    }
+  ],
+  "evidence": [
+    "前文提到赫萝在等待女店员走进厨房才开口说话，但当前对话「嗯……」更符合杰廉在场景中被推测会如女店员所说出现的语气。",
+    "场景中杰廉是被推测会在日落后出现的人物，而当前对话可能是他首次出现的回应。",
+    "杰廉在场景中被提及为「被罗伦斯寻找的男子」，而当前对话可能是他回应罗伦斯或赫萝的提问。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

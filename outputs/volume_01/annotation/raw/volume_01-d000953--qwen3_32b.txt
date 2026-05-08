@@ -1,0 +1,30 @@
+```json
+{
+  "dialogue_id": "volume_01-d000953",
+  "speaker_entity_id": "char_0026",
+  "speaker_display": "老卸货工",
+  "speaker_status": "known",
+  "confidence": 0.9,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0026",
+      "display": "老卸货工",
+      "status": "known",
+      "score": 0.9
+    },
+    {
+      "entity_id": "char_0020",
+      "display": "列支敦·马贺特",
+      "status": "known",
+      "score": 0.1
+    }
+  ],
+  "evidence": [
+    "老卸货工承诺保护赫萝，并询问她的名字及长相。",
+    "对话内容「喔，是女孩啊？漂亮吗？」符合老卸货工在场景中对赫萝外貌表现出兴趣的语气和行为。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

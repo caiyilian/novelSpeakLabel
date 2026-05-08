@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d000864",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "上下文显示罗伦斯正在与赫萝讨论开店与行商的利弊，此段对话符合罗伦斯冷静理性、分析性的说话风格。",
+    "该段对话内容涉及旅行商人的生活方式，与罗伦斯作为旅行商人的身份和经验相符。",
+    "后续段落中罗伦斯继续分析行商的孤独与开店的社交优势，进一步确认说话人为罗伦斯。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

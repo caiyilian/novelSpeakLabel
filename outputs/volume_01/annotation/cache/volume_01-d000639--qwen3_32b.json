@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000639",
+  "speaker_entity_id": "char_0019",
+  "speaker_display": "怀兹",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0019",
+      "display": "怀兹",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "怀兹是场景中活跃的兑换商，与罗伦斯有长期合作关系，且在对话中表现出轻松调侃的语气，符合台词风格。",
+    "台词中提到「传染了师父的口头禅」，暗示说话者是怀兹，因为他是罗伦斯的朋友，且场景中提到他试图追求赫萝，性格幽默。",
+    "后续段落提到「虽然怀兹苦笑着说...」，明确指出说话者是怀兹。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

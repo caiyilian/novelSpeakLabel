@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d001034",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.98
+    },
+    {
+      "entity_id": "char_0020",
+      "display": "列支敦·马贺特",
+      "status": "known",
+      "score": 0.02
+    }
+  ],
+  "evidence": [
+    "上下文显示罗伦斯正在向马贺特分析梅迪欧商行的策略，且当前段落是罗伦斯的发言。",
+    "场景记忆中明确提到罗伦斯在本场景中推测梅迪欧商行的动机和行为。",
+    "前一段落提到「罗伦斯按着脑海里组织好的台词说」，表明接下来的发言是罗伦斯的分析。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

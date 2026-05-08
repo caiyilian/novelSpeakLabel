@@ -1,0 +1,32 @@
+```json
+{
+  "dialogue_id": "volume_01-d000696",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "当前段落是赫萝与罗伦斯讨论崔尼银币含银量的场景，赫萝主导对话并提出观察。",
+    "赫萝在场景中表现出对银币纯度的敏锐观察，符合她对商业和交易的熟悉程度。",
+    "前一段中赫萝刚刚结束玩笑话，罗伦斯恢复正经表情，接下来的台词符合赫萝继续讨论的语气。",
+    "场景记忆中明确指出赫萝在对话中主导节奏，提出观察和分析。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

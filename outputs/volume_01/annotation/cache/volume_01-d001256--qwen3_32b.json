@@ -1,0 +1,23 @@
+{
+  "dialogue_id": "volume_01-d001256",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    }
+  ],
+  "evidence": [
+    "对话内容「赫萝……捡起短剑。」直接提及赫萝的名字，并描述其动作，符合赫萝的说话风格和行为特征。",
+    "上下文显示赫萝在本场景中持续活跃，包括吸血、与罗伦斯互动、制服叶勒等行为，表明她为当前说话人。",
+    "赫萝是本场景中主要角色之一，且是唯一明确提及名字并执行动作的角色。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

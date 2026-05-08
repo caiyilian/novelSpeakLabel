@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d000700",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "赫萝在前一段落中提到崔尼银币含银量的判断，当前对话延续了她对杰廉动机的分析。",
+    "赫萝的说话风格轻松幽默但略带威胁性，与当前台词的语气一致。",
+    "当前场景中赫萝与罗伦斯的互动频繁，且主导对话节奏。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

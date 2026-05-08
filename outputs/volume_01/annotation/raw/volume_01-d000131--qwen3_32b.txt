@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d000131",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    }
+  ],
+  "evidence": [
+    "赫萝在前一段中提到「咱啊，无论对方是人类还是动物，都不会看走眼。咱相信汝一定会遵守承诺的。」，使用了自称「咱」，与当前台词「就让汝看一些呗。不过，变全身太累人了，手臂就好，汝将就点呗。」的语气和自称一致。",
+    "当前段落的下一段提到「赫萝说完后，缓慢地把手臂朝货台角落的方向伸去。」，明确指出说话人是赫萝。",
+    "场景记忆中多次提到赫萝展示变身能力，与当前台词中提到「变全身太累人了，手臂就好」相吻合。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

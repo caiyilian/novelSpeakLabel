@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000213",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.02
+    }
+  ],
+  "evidence": [
+    "赫萝在前一段中刚刚套上外套并咯咯笑了起来，说话风格轻松幽默且略带嘲讽，符合当前台词的语气。",
+    "当前台词提到「被火灼伤所以要遮住脸」，呼应了赫萝在场景中伪装成人类并遮盖狼耳和尾巴的情节。",
+    "赫萝在后续段落中继续以「咱」自称，并提到「脸上的灼伤」，进一步确认说话人身份。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

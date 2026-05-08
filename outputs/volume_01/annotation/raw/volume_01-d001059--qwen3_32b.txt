@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d001059",
+  "speaker_entity_id": "mystery_volume_01_c006_s002_r004_教会成员",
+  "speaker_display": "教会成员",
+  "speaker_status": "mystery",
+  "confidence": 0.75,
+  "candidate_speakers": [
+    {
+      "entity_id": "mystery_volume_01_c006_s002_r004_教会成员",
+      "display": "教会成员",
+      "status": "mystery",
+      "score": 0.75
+    },
+    {
+      "entity_id": "char_0020",
+      "display": "列支敦·马贺特",
+      "status": "known",
+      "score": 0.25
+    }
+  ],
+  "evidence": [
+    "上下文提到「教会同样也会前往各个国家的各个城镇」，暗示说话人正在提及教会的行动。",
+    "当前段落「是教会吗？」是对前文「我们也有敌手」的回应，暗示说话人正在推测敌手身份。",
+    "后续段落中「是的，教会同样也会前往各个国家的各个城镇」进一步确认说话人提及的是教会相关人物。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d001039",
+  "speaker_entity_id": "char_0020",
+  "speaker_display": "列支敦·马贺特",
+  "speaker_status": "known",
+  "confidence": 0.92,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0020",
+      "display": "列支敦·马贺特",
+      "status": "known",
+      "score": 0.92
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.08
+    }
+  ],
+  "evidence": [
+    "场景中罗伦斯与米隆商行的马贺特讨论梅迪欧商行的威胁，马贺特是主要的对话对象。",
+    "当前段落为引号内的台词，且上下文显示这是对罗伦斯提问的回应，符合马贺特冷静理性的说话风格。",
+    "马贺特在场景中多次分析商业局势，表现出对罗伦斯提问的回应倾向。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

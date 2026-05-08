@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000038",
+  "speaker_entity_id": "char_0004",
+  "speaker_display": "叶勒",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0004",
+      "display": "叶勒",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "mystery_volume_01_c002_s002_r002_村民",
+      "display": "村民",
+      "status": "mystery",
+      "score": 0.1
+    }
+  ],
+  "evidence": [
+    "台词「是叶勒！叶勒！叶勒！」直接呼喊叶勒的名字，表明说话人是在回应或强调叶勒的存在。",
+    "场景记忆中提到叶勒是村民丰收祭典的中心人物，村民呼喊他的名字是合理的行为。",
+    "上下文显示村民围绕麦田中央高声叫喊，庆祝最后割下麦子的人，叶勒是这场活动的核心。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000802",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "mystery_volume_01_c005_s002_r005_熊",
+      "display": "熊",
+      "status": "mystery",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "赫萝在场景中因宿醉虚弱，说话轻松幽默但略带调侃语气，符合她的说话风格。",
+    "对话内容提及熊，但说话人明显是赫萝在描述熊的行为，而非熊本人说话。",
+    "上下文显示赫萝正在与罗伦斯讨论宿醉与动物的联系，语气符合她的性格。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d000826",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    }
+  ],
+  "evidence": [
+    "对话中提到「尾巴」，赫萝是已知拥有尾巴的角色。",
+    "场景记忆中明确提到赫萝与罗伦斯讨论「尾巴」和「梳子」的问题。",
+    "赫萝的说话风格轻松幽默且略带调侃，与台词语气一致。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

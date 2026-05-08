@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000859",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.98
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.02
+    }
+  ],
+  "evidence": [
+    "上下文显示罗伦斯在表达对米隆商行的愤怒和不满，语气激烈，符合罗伦斯冷静但情绪化的说话风格。",
+    "赫萝在前一段中只是吃面包和调侃，未表现出如此激烈的情绪。",
+    "后文明确指出这是罗伦斯的真心话，进一步确认说话人身份。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

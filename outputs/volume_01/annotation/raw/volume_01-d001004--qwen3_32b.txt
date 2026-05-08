@@ -1,0 +1,36 @@
+```json
+{
+  "dialogue_id": "volume_01-d001004",
+  "speaker_entity_id": "mystery_volume_01_c005_s008_r002_信件的发送者",
+  "speaker_display": "信件的发送者",
+  "speaker_status": "mystery",
+  "confidence": 0.7,
+  "candidate_speakers": [
+    {
+      "entity_id": "mystery_volume_01_c005_s008_r002_信件的发送者",
+      "display": "信件的发送者",
+      "status": "mystery",
+      "score": 0.7
+    },
+    {
+      "entity_id": "char_0020",
+      "display": "列支敦·马贺特",
+      "status": "known",
+      "score": 0.2
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.1
+    }
+  ],
+  "evidence": [
+    "台词出现在罗伦斯拆开的信件中，内容暗示赫萝被控制，与场景中提到的神秘信件相符。",
+    "信件内容与赫萝的身份有关，但说话人未在场景中出现，推测为信件的发送者。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

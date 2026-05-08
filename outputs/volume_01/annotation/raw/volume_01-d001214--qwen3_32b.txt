@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d001214",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "上下文显示罗伦斯处于意识模糊状态，而赫萝是唯一持续在他身边并呼喊他的人。",
+    "场景记忆中明确指出赫萝对罗伦斯表现出依赖和关心，尤其是在他体力不支时不断呼喊他。",
+    "该句台词出现在罗伦斯意识逐渐恢复的段落中，符合赫萝的说话风格和行为模式。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

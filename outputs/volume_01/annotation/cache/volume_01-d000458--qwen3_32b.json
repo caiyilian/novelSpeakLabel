@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000458",
+  "speaker_entity_id": "char_0016",
+  "speaker_display": "鉴定员",
+  "speaker_status": "known",
+  "confidence": 0.9,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0016",
+      "display": "鉴定员",
+      "status": "known",
+      "score": 0.9
+    },
+    {
+      "entity_id": "char_0013",
+      "display": "鉴定商品的采购人员",
+      "status": "known",
+      "score": 0.7
+    }
+  ],
+  "evidence": [
+    "对话内容「那时真是受您关照了。」语气礼貌，符合鉴定员的说话风格。",
+    "上下文显示该段对话是交易谈判的一部分，而鉴定员是主要对话者之一。",
+    "场景记忆中提到鉴定员态度专业且礼貌，符合此句台词的语气。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

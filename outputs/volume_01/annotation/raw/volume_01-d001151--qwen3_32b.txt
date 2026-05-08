@@ -1,0 +1,35 @@
+{
+  "dialogue_id": "volume_01-d001151",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.9,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.9
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.6
+    },
+    {
+      "entity_id": "char_0031",
+      "display": "马夫",
+      "status": "known",
+      "score": 0.4
+    }
+  ],
+  "evidence": [
+    "前一段提到赫萝恶作剧地说话，马夫回应后，接下来是罗伦斯挪开石板地并进入地下道。",
+    "罗伦斯在场景中是主导行动的角色，且在对话中通常以理性、冷静的语气回应。",
+    "当前对话「还是不要的好。」语气理性，符合罗伦斯的说话风格。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

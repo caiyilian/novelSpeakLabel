@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000598",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "前一段赫萝问「咱可爱吗？」，罗伦斯回应「真是不懂得玩笑的家伙」，接着本句「我生性认真。」符合罗伦斯一贯的理性、冷静语气。",
+    "场景记忆中提到罗伦斯对赫萝的调侃感到无奈，且说话风格理性、坚定，与本句台词风格一致。",
+    "赫萝的说话风格轻松幽默略带威胁，与本句台词不符。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

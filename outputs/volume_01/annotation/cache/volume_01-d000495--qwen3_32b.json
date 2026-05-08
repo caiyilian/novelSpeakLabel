@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000495",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0016",
+      "display": "鉴定员",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "赫萝在交易中主导谈判，使用轻松幽默但略带威胁性的语气，符合该句台词的风格。",
+    "场景中赫萝多次插嘴并主导气氛，而鉴定员态度专业但被动，不太可能主动提出价格询问。",
+    "该句台词出现在赫萝描述貂皮优势之后，是她引导交易流程的一部分。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

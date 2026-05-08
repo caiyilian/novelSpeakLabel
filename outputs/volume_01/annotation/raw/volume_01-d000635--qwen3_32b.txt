@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000635",
+  "speaker_entity_id": "char_0019",
+  "speaker_display": "怀兹",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0019",
+      "display": "怀兹",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "mystery_volume_01_c004_s007_r002_神秘女孩",
+      "display": "神秘女孩",
+      "status": "mystery",
+      "score": 0.1
+    }
+  ],
+  "evidence": [
+    "对话中称呼罗伦斯，并表示「好久不见」，与场景记忆中怀兹与罗伦斯的互动一致。",
+    "前一段落中提到「怀兹，好久不见啊！」，紧接着是怀兹的回应，符合说话人转换的逻辑。",
+    "场景记忆中明确指出怀兹是与罗伦斯关系亲密的兑换商，且在本场景中频繁互动。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

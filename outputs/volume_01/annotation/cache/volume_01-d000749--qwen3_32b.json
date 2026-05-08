@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000749",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "上下文显示罗伦斯正在试图找到合适的词语来形容赫萝，表现出他的语言能力和情绪。",
+    "该段对话出现在罗伦斯对赫萝感到焦急和不知所措的场景中，符合他的说话风格。",
+    "赫萝在后续对话中表现出情绪波动，而罗伦斯的道歉更符合他试图安抚的语气。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

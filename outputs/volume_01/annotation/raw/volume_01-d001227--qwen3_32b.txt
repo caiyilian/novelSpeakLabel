@@ -1,0 +1,32 @@
+```json
+{
+  "dialogue_id": "volume_01-d001227",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "前一段提到赫萝用力拉着罗伦斯的右臂催促他，罗伦斯也尽其所能跟上脚步。",
+    "当前段落是罗伦斯和赫萝在逃亡途中，罗伦斯身受重伤但仍努力思考下一步。",
+    "下一段提到赫萝的声音恢复活力，罗伦斯受到鼓舞继续前进，暗示说话人是罗伦斯。",
+    "场景记忆中罗伦斯和赫萝是主要角色，且罗伦斯在逃亡中表现出冷静和理性。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

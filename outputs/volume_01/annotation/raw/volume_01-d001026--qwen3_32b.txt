@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d001026",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.98
+    },
+    {
+      "entity_id": "char_0020",
+      "display": "列支敦·马贺特",
+      "status": "known",
+      "score": 0.02
+    }
+  ],
+  "evidence": [
+    "前一段提到罗伦斯「把身子向前倾，用低沉的声音说」，紧接着是该句台词，符合罗伦斯的策略性语气。",
+    "场景记忆中罗伦斯多次分析崔尼国王与商行的交易策略，语气冷静理性，与该句台词风格一致。",
+    "马贺特在场景中主要倾听罗伦斯的分析，未主动提出类似推测，因此该句更可能是罗伦斯所说。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

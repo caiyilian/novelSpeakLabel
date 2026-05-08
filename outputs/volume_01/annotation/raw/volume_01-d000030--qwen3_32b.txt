@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000030",
+  "speaker_entity_id": "char_0005",
+  "speaker_display": "农夫",
+  "speaker_status": "known",
+  "confidence": 0.9,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0005",
+      "display": "农夫",
+      "status": "known",
+      "score": 0.9
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.1
+    }
+  ],
+  "evidence": [
+    "对话内容提到「叶勒在那儿」、「叶勒今年都雇用年轻人来种田」，符合农夫对叶勒的描述。",
+    "上下文显示罗伦斯在与农夫交谈，而该段对话是农夫对罗伦斯的回应。",
+    "农夫的说话风格朴实、真诚，与该段对话语气一致。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d000857",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "对话中使用了「咱」这一自称，与赫萝的说话风格一致。",
+    "上下文对话中，赫萝对罗伦斯的开店计划和梦想进行评论，语气带有调侃和轻松幽默。",
+    "场景记忆中明确指出赫萝与罗伦斯在旅馆中讨论开店计划，且赫萝表现出调侃和互动。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

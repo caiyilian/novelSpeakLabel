@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000669",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0019",
+      "display": "怀兹",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "前一段提到赫萝开口说话，紧接着是这句「可以让咱瞧瞧吗？」，符合赫萝的说话风格。",
+    "赫萝的台词中常用「咱」自称，而这句话的语气和用词符合她的风格。",
+    "下一段提到怀兹把货币交给赫萝，说明说话人是在要求查看货币的人，而赫萝是唯一有动机和机会提出此要求的角色。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

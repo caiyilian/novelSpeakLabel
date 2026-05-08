@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000528",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "ambiguous",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "上下文显示罗伦斯正在与女店员交谈，并试图联络杰廉。",
+    "该句台词出现在罗伦斯表达担忧和行动意图的段落中，符合他的说话风格。",
+    "赫萝的台词风格通常更轻松幽默，略带威胁性，而此句语气冷静理性，更符合罗伦斯的表达方式。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

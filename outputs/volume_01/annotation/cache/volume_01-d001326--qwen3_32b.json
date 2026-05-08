@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d001326",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.9,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.9
+    },
+    {
+      "entity_id": "mystery_volume_01_c008_s002_r004_敲门者",
+      "display": "敲门者",
+      "status": "mystery",
+      "score": 0.1
+    }
+  ],
+  "evidence": [
+    "男孩对恶魔说的内容与赫萝在多个场景中表现出的神秘、自信和带有威胁性的说话风格相符。",
+    "赫萝在多个场景中被描述为拥有非人类特征的神秘少女，与文中提到的「见习修道士的瘦弱男孩」形成反差，暗示可能是她以不同身份出现。",
+    "赫萝在场景中常以神秘方式出现并发表带有哲理或挑衅意味的台词，与该段落中男孩对恶魔的回应风格一致。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

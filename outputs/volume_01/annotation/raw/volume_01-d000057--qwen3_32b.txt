@@ -1,0 +1,26 @@
+```json
+{
+  "dialogue_id": "volume_01-d000057",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    }
+  ],
+  "evidence": [
+    "对话中提到「在我的马车上睡觉」，暗示说话人是马车的主人，而赫萝在场景中被描述为在罗伦斯的马车上睡觉。",
+    "赫萝的说话风格轻松幽默但略带威胁性，与台词语气一致。",
+    "场景记忆中明确指出赫萝拥有狼耳和非人类特征，与台词中提到的「逃出来」的神秘感相符。",
+    "罗伦斯是怀疑者，而赫萝是主动提问的一方，符合当前对话的互动模式。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

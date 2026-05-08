@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000034",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.85,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.85
+    },
+    {
+      "entity_id": "mystery_volume_01_c002_s002_r002_村民",
+      "display": "村民",
+      "status": "npc",
+      "score": 0.15
+    }
+  ],
+  "evidence": [
+    "「最后一束了！」是村民在丰收祭典中呼喊的台词，但赫萝作为丰收之神的化身，也常以这种方式被提及。",
+    "赫萝是祭典的核心象征，村民的呼喊实际上是在呼应她的存在。",
+    "赫萝在场景中未直接说话，但通过村民的呼喊和描述可以推测其存在。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

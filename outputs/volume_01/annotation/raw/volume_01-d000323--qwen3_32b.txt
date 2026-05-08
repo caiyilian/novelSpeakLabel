@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000323",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "上下文显示罗伦斯在对话中提及「守护了好几百年的农夫们」，这与他冷静理性、关注商业和历史背景的说话风格一致。",
+    "赫萝的说话风格更偏向轻松幽默、略带威胁性，而该句语气较为理性且带有对历史的思考，更符合罗伦斯的表达方式。",
+    "前一句是「嗯，确实如此。不过，咱就没有这样的想法。」，语气明显是赫萝的自称「咱」，而当前句是罗伦斯的回应。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

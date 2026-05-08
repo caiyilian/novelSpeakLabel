@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000048",
+  "speaker_entity_id": "mystery_volume_01_c002_s002_r005_神秘女孩",
+  "speaker_display": "神秘女孩",
+  "speaker_status": "mystery",
+  "confidence": 0.85,
+  "candidate_speakers": [
+    {
+      "entity_id": "mystery_volume_01_c002_s002_r005_神秘女孩",
+      "display": "神秘女孩",
+      "status": "mystery",
+      "score": 0.85
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.15
+    }
+  ],
+  "evidence": [
+    "罗伦斯掀开麻布时发现了一个难以置信的景象，随后试图叫醒神秘女孩。",
+    "神秘女孩在罗伦斯的马车上睡觉，被发现时没有反应。",
+    "场景中提到神秘女孩拥有美丽外貌，与赫萝的描述有部分重叠，但未明确确认为同一人。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

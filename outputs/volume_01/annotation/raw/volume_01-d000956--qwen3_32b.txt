@@ -1,0 +1,29 @@
+```json
+{
+  "dialogue_id": "volume_01-d000956",
+  "speaker_entity_id": "char_0020",
+  "speaker_display": "列支敦·马贺特",
+  "speaker_status": "known",
+  "confidence": 0.9,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0020",
+      "display": "列支敦·马贺特",
+      "status": "known",
+      "score": 0.9
+    },
+    {
+      "entity_id": "mystery_volume_01_c005_s006_r006_梅迪欧商行的人",
+      "display": "梅迪欧商行的人",
+      "status": "mystery",
+      "score": 0.3
+    }
+  ],
+  "evidence": [
+    "上下文提到马贺特行长刚刚被吵醒并切入话题，表明他正在商行内与罗伦斯交谈。",
+    "对话内容提到梅迪欧商行，但并未直接表明是梅迪欧商行的人在说话。",
+    "当前段落是马贺特行长切入话题后的第一句，符合其角色在场景中的位置。"
+  ],
+  "needs_review": false
+}
+```

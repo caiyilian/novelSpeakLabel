@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000199",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "对话中提到「咱」，这是赫萝常用的自称。",
+    "对话内容提到「狼」、「毛发」等词汇，与赫萝的狼特征相符。",
+    "上下文显示赫萝在场景中活跃，而罗伦斯的发言风格更理性，与当前台词不符。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

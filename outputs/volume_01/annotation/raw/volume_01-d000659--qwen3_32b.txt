@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000659",
+  "speaker_entity_id": "char_0019",
+  "speaker_display": "怀兹",
+  "speaker_status": "known",
+  "confidence": 0.9,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0019",
+      "display": "怀兹",
+      "status": "known",
+      "score": 0.9
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.1
+    }
+  ],
+  "evidence": [
+    "前文提到怀兹是兑换商，且他与罗伦斯有长期合作关系，对话中提到「你有没有最近发行的崔尼银币？」，符合怀兹作为兑换商的专业语气。",
+    "「算是吧。」是回应怀兹的提问，语气轻松，符合怀兹的说话风格。",
+    "场景记忆中明确提到怀兹在本场景中与罗伦斯讨论崔尼银币，且对话内容与场景一致。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

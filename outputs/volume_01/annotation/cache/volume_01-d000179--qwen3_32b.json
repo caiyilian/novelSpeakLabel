@@ -1,0 +1,24 @@
+{
+  "dialogue_id": "volume_01-d000179",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    }
+  ],
+  "evidence": [
+    "对话中使用了「咱」自称，这是赫萝的典型说话风格。",
+    "前一段提到赫萝点头表示理解，当前段落是她的回应。",
+    "后一段提到赫萝的恶作剧笑容和行为，与当前台词风格一致。",
+    "赫萝在场景中多次表现出轻松幽默但略带威胁的语气，符合当前台词的语气。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

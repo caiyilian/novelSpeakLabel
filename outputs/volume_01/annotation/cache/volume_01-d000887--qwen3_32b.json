@@ -1,0 +1,28 @@
+{
+  "dialogue_id": "volume_01-d000887",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "上下文显示赫萝刚刚从罗伦斯的怀抱中起身，情绪逐渐稳定，随后说出「……抱歉。」",
+    "接下来的段落明确指出「赫萝红着眼睛及鼻子说道」，表明说话人是赫萝。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

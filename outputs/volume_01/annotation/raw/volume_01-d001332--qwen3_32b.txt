@@ -1,0 +1,35 @@
+```json
+{
+  "dialogue_id": "volume_01-d001332",
+  "speaker_entity_id": "mystery_volume_01_c008_s002_r004_敲门者",
+  "speaker_display": "敲门者",
+  "speaker_status": "mystery",
+  "confidence": 0.65,
+  "candidate_speakers": [
+    {
+      "entity_id": "mystery_volume_01_c008_s002_r004_敲门者",
+      "display": "敲门者",
+      "status": "mystery",
+      "score": 0.65
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.3
+    },
+    {
+      "entity_id": "char_0020",
+      "display": "列支敦·马贺特",
+      "status": "known",
+      "score": 0.2
+    }
+  ],
+  "evidence": [
+    "「是您的伙伴吗？」这句话出现在有人敲门之后，上下文未明确说话人，但场景中罗伦斯和马贺特都在房间内，敲门者可能是新出现的神秘人物。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": true
+}
+```

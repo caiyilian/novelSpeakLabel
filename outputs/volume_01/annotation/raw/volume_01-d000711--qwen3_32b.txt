@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d000711",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "对话内容与赫萝一贯的轻松幽默但略带威胁的语气相符。",
+    "场景记忆中赫萝多次对罗伦斯的商业判断提出质疑，并以调侃方式回应。",
+    "当前段落中罗伦斯的反应（如「脑袋变成一片空白」）与赫萝的发言风格和互动方式一致。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

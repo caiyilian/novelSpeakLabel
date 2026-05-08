@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d001024",
+  "speaker_entity_id": "char_0028",
+  "speaker_display": "梅迪欧商行",
+  "speaker_status": "known",
+  "confidence": 0.85,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0028",
+      "display": "梅迪欧商行",
+      "status": "known",
+      "score": 0.85
+    },
+    {
+      "entity_id": "mystery_volume_01_c006_s001_r005_梅迪欧商行的人",
+      "display": "梅迪欧商行的人",
+      "status": "mystery",
+      "score": 0.6
+    }
+  ],
+  "evidence": [
+    "对话内容提到「把我们想要的特权赏赐给我们」，这与梅迪欧商行试图通过回收银币换取特权的策略一致。",
+    "上下文提到梅迪欧商行准备大量崔尼银币与王族交涉，符合对话中「卖给您」的语气。",
+    "场景记忆中明确指出梅迪欧商行试图取得特权，与对话内容高度吻合。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

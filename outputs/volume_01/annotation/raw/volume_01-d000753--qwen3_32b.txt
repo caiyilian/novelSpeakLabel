@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000753",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "前一段提到赫萝翻过身来并坐起身子，对罗伦斯说了一句带有调侃的话，随后是「呃！」的回应，符合罗伦斯在语言表达上受挫后的反应。",
+    "场景记忆中显示罗伦斯在试图找到合适的词语来形容赫萝时屡屡受挫，这与「呃！」的短促、尴尬语气相符。",
+    "赫萝的上一段台词带有明显的情绪和调侃语气，而「呃！」更像是罗伦斯在语言表达受挫后的反应。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000484",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "mystery_volume_01_c004_s003_r006_神秘提问者",
+      "display": "神秘提问者",
+      "status": "mystery",
+      "score": 0.1
+    }
+  ],
+  "evidence": [
+    "赫萝在交易中频繁发言，表现出幽默和调侃的语气，与台词风格一致。",
+    "前一段对话中赫萝插嘴并影响气氛，显示她主导了当前对话。",
+    "赫萝的台词中使用了「咱」这一自称，符合她的说话风格。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

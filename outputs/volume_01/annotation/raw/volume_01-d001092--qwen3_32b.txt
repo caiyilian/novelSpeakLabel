@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d001092",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    }
+  ],
+  "evidence": [
+    "赫萝在场景中表现出强烈情绪，要求罗伦斯说出她的名字。",
+    "赫萝的说话风格为轻松幽默但略带威胁性，符合台词语气。",
+    "上下文显示赫萝刚刚表现出咬牙切齿的表情，随后说出这句台词，符合她的性格和情绪表达。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

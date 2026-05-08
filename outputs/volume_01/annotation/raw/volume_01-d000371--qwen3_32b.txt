@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000371",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "对话内容涉及对帕斯罗村的讨论，与罗伦斯对赫萝身份的怀疑和追问相关。",
+    "上下文显示罗伦斯在安抚赫萝的情绪，随后提出关于传说和外貌的问题。",
+    "赫萝在后续回应中提到「有传说」，表明她对问题的回应，而提问者应为罗伦斯。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

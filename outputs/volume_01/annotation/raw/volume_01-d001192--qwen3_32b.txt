@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d001192",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "上下文显示赫萝在场景中表现出不安，并对罗伦斯说话，而罗伦斯则试图安抚她。",
+    "台词「咱们好像被出卖了。」语气带有情绪波动，符合赫萝的说话风格。",
+    "赫萝是当前场景中唯一明确表达不安和情绪波动的角色。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

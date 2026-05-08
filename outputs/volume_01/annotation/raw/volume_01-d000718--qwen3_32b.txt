@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000718",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "上下文显示赫萝在调侃罗伦斯，语气轻松但略带威胁，符合她的说话风格。",
+    "场景记忆中赫萝主导对话节奏，对罗伦斯的情绪变化非常敏感。",
+    "当前段落是赫萝的提问，符合她对商业和交易细节感兴趣的特点。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

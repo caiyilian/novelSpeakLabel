@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000608",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.9,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.9
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.1
+    }
+  ],
+  "evidence": [
+    "上下文显示罗伦斯正在与赫萝讨论杰廉的诚实度，此句是罗伦斯对赫萝观点的回应。",
+    "赫萝在前一句中已表达观点，罗伦斯在此句中提出补充意见。",
+    "场景记忆中显示罗伦斯与赫萝是主要对话者，没有其他角色在此场景中发言。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d000123",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    }
+  ],
+  "evidence": [
+    "赫萝在前一段落中表达了对人类和动物反应的不满，强调自己不愿再被畏惧。",
+    "当前台词「我、我怎么可能害怕看到你的模样。」是赫萝对罗伦斯质疑的回应，语气符合她轻松幽默但略带威胁的风格。",
+    "场景记忆中明确指出赫萝是对话中的活跃角色，且与罗伦斯有频繁互动。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

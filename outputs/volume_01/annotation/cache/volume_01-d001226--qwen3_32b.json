@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d001226",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "赫萝拉着罗伦斯的手一边频频回头，一边说话",
+    "赫萝用近乎沙哑的声音小声催促着",
+    "当前台词「快点、快点。」符合赫萝在紧张和催促时的语气风格"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

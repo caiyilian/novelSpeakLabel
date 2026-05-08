@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d001303",
+  "speaker_entity_id": "char_0035",
+  "speaker_display": "御用商人",
+  "speaker_status": "known",
+  "confidence": 0.9,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0035",
+      "display": "御用商人",
+      "status": "known",
+      "score": 0.9
+    },
+    {
+      "entity_id": "char_0034",
+      "display": "国王",
+      "status": "known",
+      "score": 0.6
+    }
+  ],
+  "evidence": [
+    "对话中提到「这应该是国王的御用商人提出来的主意吧」，明确指出说话内容是御用商人的策略。",
+    "御用商人在场景记忆中被描述为提出利用银币交易损失赚回利益的策略，与对话内容一致。",
+    "国王未直接发言，但其策略通过御用商人体现，因此更可能是御用商人的台词。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

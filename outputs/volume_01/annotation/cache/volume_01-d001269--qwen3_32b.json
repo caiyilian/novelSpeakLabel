@@ -1,0 +1,35 @@
+{
+  "dialogue_id": "volume_01-d001269",
+  "speaker_entity_id": "char_0033",
+  "speaker_display": "巨大狼",
+  "speaker_status": "known",
+  "confidence": 0.85,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0033",
+      "display": "巨大狼",
+      "status": "known",
+      "score": 0.85
+    },
+    {
+      "entity_id": "mystery_volume_01_c007_s004_r004_士兵A",
+      "display": "士兵A",
+      "status": "mystery",
+      "score": 0.15
+    },
+    {
+      "entity_id": "mystery_volume_01_c007_s004_r004_士兵B",
+      "display": "士兵B",
+      "status": "mystery",
+      "score": 0.15
+    }
+  ],
+  "evidence": [
+    "「呜！」出现在描述巨大狼威胁场景的段落中，上下文提到两名士兵丢弃武器并被狼击败，暗示声音来自巨大狼。",
+    "巨大狼在场景中被描述为「神」，其行为和能力暗示其非人类身份，且是主要威胁来源。",
+    "该声音出现在巨大狼出现的场景中，且没有其他角色在此时发出类似简短的惊呼。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

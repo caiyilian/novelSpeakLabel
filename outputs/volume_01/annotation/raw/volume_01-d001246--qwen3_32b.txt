@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d001246",
+  "speaker_entity_id": "char_0004",
+  "speaker_display": "叶勒",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0004",
+      "display": "叶勒",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "对话内容「喔，罗伦斯。」出现在叶勒与罗伦斯互动的场景中。",
+    "场景记忆中提到叶勒试图说服罗伦斯参与麦子交易，且与罗伦斯有旧识。",
+    "上下文段落中提到「叶勒表情变得开朗，张开双手」，表明说话人是叶勒。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

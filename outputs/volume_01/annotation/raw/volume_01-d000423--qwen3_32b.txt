@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000423",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "上下文显示赫萝在场景中表现出对苹果的强烈兴趣，并使用夸张的比喻形容苹果的诱惑。",
+    "赫萝的说话风格轻松幽默但略带威胁性，符合台词中「苹果是恶魔的果实，充满诱惑咱们的香甜味道」的语气。",
+    "场景记忆中提到赫萝试图说服罗伦斯让她参与商业活动，台词中「诱惑咱们」的语气符合她试图影响罗伦斯的倾向。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

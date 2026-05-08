@@ -1,0 +1,32 @@
+```json
+{
+  "dialogue_id": "volume_01-d001291",
+  "speaker_entity_id": "char_0028",
+  "speaker_display": "梅迪欧商行",
+  "speaker_status": "known",
+  "confidence": 0.75,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0028",
+      "display": "梅迪欧商行",
+      "status": "known",
+      "score": 0.75
+    },
+    {
+      "entity_id": "char_0030",
+      "display": "米隆商行",
+      "status": "known",
+      "score": 0.25
+    }
+  ],
+  "evidence": [
+    "对话中提到「您的伙伴非常急性子」，暗示说话者是罗伦斯的商业对手，而非罗伦斯本人或赫萝。",
+    "上下文提到马贺特解释赫萝的行动，而此句提到赫萝前往市场为旅行整装，语气像是第三方在描述赫萝的行动，而非赫萝本人或罗伦斯。",
+    "梅迪欧商行在场景中是罗伦斯的商业对手，且在交易和策略上与罗伦斯存在竞争关系，符合说话者可能是商行代表的语境。",
+    "米隆商行虽然也与罗伦斯有交易，但此句语气更符合梅迪欧商行的立场，因为其与罗伦斯存在更直接的冲突。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

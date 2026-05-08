@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d001129",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    }
+  ],
+  "evidence": [
+    "对话中使用自称「咱」，这是赫萝的典型说话风格。",
+    "内容提及「丰收之神」，赫萝是已知的自称丰收之神的角色。",
+    "上下文显示赫萝在与罗伦斯讨论帕斯罗村的村民对她的态度，符合赫萝的说话主题和情绪表达。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

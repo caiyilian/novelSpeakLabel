@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000305",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.02
+    }
+  ],
+  "evidence": [
+    "上下文显示赫萝在评论教会地位的变化，语气轻松幽默但略带讽刺，符合她的说话风格。",
+    "场景记忆中提到赫萝在水井旁与罗伦斯互动，并评论教会地位，与当前台词一致。",
+    "赫萝的台词中常用「咱」自称，与当前台词「咱发现教会的地位还真是提高不少。」相符。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

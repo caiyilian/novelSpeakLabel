@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000576",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "前文赫萝提问「信赖度？」，罗伦斯解释货币种类与信赖度的关系，符合罗伦斯冷静理性、商业知识丰富的说话风格。",
+    "场景记忆中明确提到罗伦斯解释货币种类繁多且金银含量变化，因此每种货币都有其信赖度，与当前台词一致。",
+    "赫萝未参与此段对话，仅在后文回应，因此当前台词应为罗伦斯所说。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

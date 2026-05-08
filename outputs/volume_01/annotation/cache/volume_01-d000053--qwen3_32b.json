@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000053",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.98
+    },
+    {
+      "entity_id": "mystery_volume_01_c002_s002_r006_神秘女孩",
+      "display": "神秘女孩",
+      "status": "mystery",
+      "score": 0.02
+    }
+  ],
+  "evidence": [
+    "前一段提到罗伦斯试图叫醒神秘女孩，但女孩毫无反应。",
+    "当前段落中「喂！你擅自坐上别人的马车，想干什么？」是罗伦斯对神秘女孩的质问。",
+    "场景记忆中明确指出罗伦斯发现并试图与神秘女孩互动。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

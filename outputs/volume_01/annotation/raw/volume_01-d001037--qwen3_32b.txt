@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d001037",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.98
+    }
+  ],
+  "evidence": [
+    "对话内容为罗伦斯对梅迪欧商行策略的详细分析，符合其冷静理性、商业分析倾向的说话风格。",
+    "场景记忆中明确提到罗伦斯与马贺特讨论梅迪欧商行的威胁，且罗伦斯是主要发言者。",
+    "上下文显示罗伦斯在对话前正在解释梅迪欧商行的动机，马贺特在倾听，符合当前对话的延续性。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

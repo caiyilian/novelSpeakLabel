@@ -1,0 +1,23 @@
+{
+  "dialogue_id": "volume_01-d001078",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "上下文显示罗伦斯在地下道中等待营救赫萝的行动开始，随后听到赫萝的声音。",
+    "当前段落「赫萝！」是对赫萝的回应，符合罗伦斯的说话风格和上下文逻辑。",
+    "后续段落提到「看到赫萝的脸，罗伦斯不自觉叫了出来」，进一步确认说话人为罗伦斯。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

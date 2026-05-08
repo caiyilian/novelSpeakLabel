@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000035",
+  "speaker_entity_id": "mystery_volume_01_c002_s002_r002_村民",
+  "speaker_display": "村民",
+  "speaker_status": "mystery",
+  "confidence": 0.75,
+  "candidate_speakers": [
+    {
+      "entity_id": "mystery_volume_01_c002_s002_r002_村民",
+      "display": "村民",
+      "status": "mystery",
+      "score": 0.75
+    },
+    {
+      "entity_id": "char_0004",
+      "display": "叶勒",
+      "status": "known",
+      "score": 0.2
+    }
+  ],
+  "evidence": [
+    "上下文显示村民正在举行丰收祭典，集体呼喊和庆祝，台词风格符合村民的集体行为。",
+    "场景记忆中提到村民围绕麦田中央高声叫喊，台词「小心不要割过头！」可能是村民中某人发出的警告。",
+    "没有明确指向某个已知角色，如罗伦斯、赫萝或叶勒，因此更可能是村民中的一员。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

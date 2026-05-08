@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d000226",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    }
+  ],
+  "evidence": [
+    "台词中自称「咱是贤狼赫萝」，明确表明说话人身份。",
+    "场景记忆中赫萝的说话风格为轻松幽默、略带威胁性，与该台词一致。",
+    "上下文显示赫萝正在伪装成人类，但说话风格和内容符合她的个性。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

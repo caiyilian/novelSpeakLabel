@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d001184",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "场景记忆中提到罗伦斯在地下道中确认自己对路线的记忆，表现出对岔路和方向的不确定，但仍然坚持自己认得路。",
+    "当前对话「认得路吗？」与罗伦斯在场景中确认路线的语境相符，语气冷静理性，符合罗伦斯的说话风格。",
+    "赫萝在前一段对话中说「算吧。」，但未表现出对路线的确认，因此更可能是罗伦斯在回应问题。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

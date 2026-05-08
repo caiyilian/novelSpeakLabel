@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000207",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.02
+    }
+  ],
+  "evidence": [
+    "赫萝在前文中提到麦子与她的存在有关，并讨论如何保存麦子。",
+    "当前对话中提到「挂在脖子上」，与赫萝的尾巴和狼的特征相关，暗示她希望麦子随身携带。",
+    "下一段提到罗伦斯听到赫萝的回答后看向她的脖子，进一步确认说话人是赫萝。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

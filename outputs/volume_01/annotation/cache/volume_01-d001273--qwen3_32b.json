@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d001273",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "上下文显示罗伦斯在赫萝制服叶勒后，喊出她的名字，表现出关心和确认她的状态。",
+    "「赫萝……」是罗伦斯对赫萝的称呼，符合他冷静但略带情绪化的说话风格。",
+    "后续段落提到「罗伦斯喊了一声赫萝的名字，同时安心地呼了口气」，明确说话人为罗伦斯。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

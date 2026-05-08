@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d001085",
+  "speaker_entity_id": "char_0024",
+  "speaker_display": "梅迪欧商行的人",
+  "speaker_status": "known",
+  "confidence": 0.9,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0024",
+      "display": "梅迪欧商行的人",
+      "status": "known",
+      "score": 0.9
+    },
+    {
+      "entity_id": "char_0027",
+      "display": "米隆商行人员",
+      "status": "known",
+      "score": 0.6
+    }
+  ],
+  "evidence": [
+    "「做生意总是会有惊奇。」这句话出现在商行人员协助罗伦斯与赫萝撤离的场景中，语气符合商行人员的专业、冷静风格。",
+    "前一段提到「商行的人坐在马车里一边说」，暗示说话人是商行人员。",
+    "场景记忆中提到商行人员协助撤离，表现出高度组织效率和默契，符合说话人身份。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

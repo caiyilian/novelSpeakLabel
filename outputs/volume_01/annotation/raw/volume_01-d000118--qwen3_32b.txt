@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d000118",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    }
+  ],
+  "evidence": [
+    "赫萝在上下文中多次提到变身代价和狼的特征，说话风格轻松幽默但略带威胁性，与台词「怎么着，怕了啊？」的语气一致。",
+    "上下文提到赫萝展示尖牙和狼耳，暗示她对罗伦斯的反应感到不满，符合她挑衅的语气。",
+    "场景记忆中赫萝多次以轻松幽默但略带威胁的语气与罗伦斯互动，符合当前台词的说话风格。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

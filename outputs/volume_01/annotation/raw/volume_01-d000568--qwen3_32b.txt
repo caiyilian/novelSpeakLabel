@@ -1,0 +1,32 @@
+```json
+{
+  "dialogue_id": "volume_01-d000568",
+  "speaker_entity_id": "char_0009",
+  "speaker_display": "杰廉",
+  "speaker_status": "known",
+  "confidence": 0.9,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0009",
+      "display": "杰廉",
+      "status": "known",
+      "score": 0.9
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "ambiguous",
+      "score": 0.1
+    }
+  ],
+  "evidence": [
+    "对话中提到「结算日订在春天大市的三天前」，这是杰廉在谈判中提出的交易条件。",
+    "对话中使用「小的估计」，符合杰廉自称「小人物」的说话风格。",
+    "上下文显示罗伦斯与杰廉正在进行银币含银量情报交易的谈判，杰廉提出具体条件。",
+    "杰廉是本场景中提出交易的核心人物，而罗伦斯在赫萝的提醒下保持警惕，但未直接提出此建议。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

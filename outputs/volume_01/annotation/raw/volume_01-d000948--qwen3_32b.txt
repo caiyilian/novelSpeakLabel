@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000948",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "对话中提到「我的伙伴可能被捉了」，表明说话人正在为赫萝的安危担忧，这与罗伦斯在场景中对赫萝的保护行为一致。",
+    "前一段落中提到「谁叫我的伙伴是个不顾后果的冒失鬼呢。」，明显是罗伦斯的语气。",
+    "后一段落中老卸货工回应「我们可是来自异国的商行，遭到攻击或被纵火是稀松平常的事。老早就通知行长了。」，说明罗伦斯正在寻求帮助，符合他的说话风格。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

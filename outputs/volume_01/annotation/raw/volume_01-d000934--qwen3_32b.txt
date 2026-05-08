@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000934",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.02
+    }
+  ],
+  "evidence": [
+    "赫萝在场景中独自离开罗伦斯，并鼓励他相信自己的机智。",
+    "当前段落是赫萝继续说的内容，符合她的说话风格：轻松幽默但略带调侃和威胁。",
+    "赫萝在前一段中被描述为「赫萝继续说」，表明她正在发言。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

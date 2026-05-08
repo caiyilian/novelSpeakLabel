@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000128",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.02
+    }
+  ],
+  "evidence": [
+    "上下文显示赫萝正在与罗伦斯对话，并使用自称‘咱’，语气轻松幽默但略带威胁性，符合赫萝的说话风格。",
+    "赫萝在对话中提到“狼”和“教会”，与她之前展示狼耳和尾巴、自称丰收之神的情节一致。",
+    "罗伦斯的反应（如“刚才说的话？”）表明他是在回应赫萝的发言，而非主动发起对话。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

@@ -1,0 +1,23 @@
+{
+  "dialogue_id": "volume_01-d000200",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "赫萝在前一段落中提到貂皮的毛发，说话风格轻松幽默且略带调侃，与当前台词风格一致。",
+    "当前场景中赫萝和罗伦斯是唯一活跃角色，且赫萝的说话风格与台词相符。",
+    "赫萝在场景中表现出对貂皮和交易的兴趣，与「可以卖得好价钱吗？」的语境吻合。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

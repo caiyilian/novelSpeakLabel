@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000085",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "前一段对话中，女孩反问罗伦斯，而当前段落提到「我去过最北端的地方是亚罗西史托」，符合罗伦斯的行商经验背景。",
+    "场景记忆中提到罗伦斯的行商经验远及极北地区，与当前台词内容吻合。",
+    "下一段提到赫萝回应罗伦斯的发言，说明当前发言者应为罗伦斯。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

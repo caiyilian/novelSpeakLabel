@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d000414",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "赫萝在场景中频繁出现并表现出对罗伦斯的挑衅和自信，语气和台词风格与当前台词一致。",
+    "当前场景中赫萝表现出对金钱和商业的自信，台词「能够知道别人心里在想什么，那感觉真是爽快。」符合她狡诈、自信的说话风格。",
+    "赫萝是场景中唯一持续主导对话并表现出情绪波动的角色。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

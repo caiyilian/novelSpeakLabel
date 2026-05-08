@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000498",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0014",
+      "display": "商行代表",
+      "status": "known",
+      "score": 0.1
+    }
+  ],
+  "evidence": [
+    "赫萝在交易中主导抬价，说话风格轻松幽默但略带威胁性，符合该句台词的语气。",
+    "场景记忆中明确指出赫萝主导交易策略，影响鉴定员态度，而该句台词是她提出的抬价建议。",
+    "该句台词出现在赫萝与鉴定员和罗伦斯的交易谈判中，符合她的角色行为模式。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

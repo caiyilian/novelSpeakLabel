@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000750",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "上下文显示罗伦斯正在努力寻找合适的词语来形容赫萝，表现出他的语言障碍和情绪。",
+    "场景记忆中提到罗伦斯对赫萝的身份持怀疑态度，但仍然关心她，符合该台词的语气。",
+    "赫萝在前一段中没有动作，而罗伦斯是唯一有语言行为的角色。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

@@ -1,0 +1,30 @@
+```json
+{
+  "dialogue_id": "volume_01-d001281",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "「呜！」是罗伦斯在醒来后因疼痛发出的呻吟，与前文提到他左手臂受伤、试图坐起时的反应一致。",
+    "上下文显示罗伦斯刚刚从昏迷中醒来，回忆起被梅迪欧商行追杀和赫萝离去的场景，符合他此时的处境和情绪反应。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

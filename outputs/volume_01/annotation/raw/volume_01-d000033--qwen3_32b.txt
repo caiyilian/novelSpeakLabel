@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000033",
+  "speaker_entity_id": "mystery_volume_01_c002_s002_r002_村民",
+  "speaker_display": "村民",
+  "speaker_status": "mystery",
+  "confidence": 0.75,
+  "candidate_speakers": [
+    {
+      "entity_id": "mystery_volume_01_c002_s002_r002_村民",
+      "display": "村民",
+      "status": "mystery",
+      "score": 0.75
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.25
+    }
+  ],
+  "evidence": [
+    "村民在场景中集体呼喊和庆祝，台词风格符合群体性欢呼，而非个体角色。",
+    "台词内容「是谁？是谁？最后会是谁抓到狼呢？」与村民对丰收之神的仪式性呼喊一致。",
+    "赫萝虽然可能是狼的象征，但台词中并未直接以她为视角，更像是村民的集体反应。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

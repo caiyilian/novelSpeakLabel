@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000447",
+  "speaker_entity_id": "char_0012",
+  "speaker_display": "采购人员",
+  "speaker_status": "known",
+  "confidence": 0.9,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0012",
+      "display": "采购人员",
+      "status": "known",
+      "score": 0.9
+    },
+    {
+      "entity_id": "char_0016",
+      "display": "鉴定员",
+      "status": "known",
+      "score": 0.1
+    }
+  ],
+  "evidence": [
+    "「正是。」是对前文「您是克拉福•罗伦斯先生吧，我代替行长感谢您莅临本商行。」的回应，符合采购人员的礼貌、正式语气。",
+    "场景记忆中提到采购人员向罗伦斯确认身份并表达感谢，符合当前对话的语境。",
+    "采购人员是唯一在当前场景中被唤来与罗伦斯交谈的角色，符合说话人身份。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

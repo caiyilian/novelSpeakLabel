@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000788",
+  "speaker_entity_id": "char_0021",
+  "speaker_display": "店老板",
+  "speaker_status": "known",
+  "confidence": 0.9,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0021",
+      "display": "店老板",
+      "status": "known",
+      "score": 0.9
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.1
+    }
+  ],
+  "evidence": [
+    "场景中提到「来了！苹果汁还有两人份面包。」，语气像是提供服务的店老板在回应顾客的点单。",
+    "上下文显示罗伦斯和赫萝在店内休息，赫萝因宿醉虚弱，罗伦斯与店老板有互动，但未直接点餐。",
+    "店老板在场景中被描述为观察赫萝状态并提供果汁，符合说话风格和角色行为。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

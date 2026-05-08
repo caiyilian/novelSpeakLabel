@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d000111",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    }
+  ],
+  "evidence": [
+    "对话中使用了「咱」这一自称，与赫萝的说话风格一致。",
+    "提到「教会」，与赫萝对教会的敌意和过往经历相符。",
+    "上下文显示赫萝刚刚拒绝了罗伦斯让她变回狼形的要求，情绪上表现出厌恶和抗拒，与当前台词中的情绪一致。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

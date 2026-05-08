@@ -1,0 +1,32 @@
+```json
+{
+  "dialogue_id": "volume_01-d000851",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "对话中提到「画得这么详细」，呼应前文罗伦斯展示城镇蓝图的描述。",
+    "对话语气理性且略带调侃，符合罗伦斯的说话风格。",
+    "场景记忆中明确指出罗伦斯与赫萝讨论开店计划，罗伦斯是主要发言者。",
+    "赫萝在对话中表现出冷淡态度，不太可能说出这种理性评论。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

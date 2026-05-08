@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000941",
+  "speaker_entity_id": "char_0023",
+  "speaker_display": "米隆侯爵",
+  "speaker_status": "known",
+  "confidence": 0.85,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0023",
+      "display": "米隆侯爵",
+      "status": "known",
+      "score": 0.85
+    },
+    {
+      "entity_id": "char_0026",
+      "display": "老卸货工",
+      "status": "known",
+      "score": 0.15
+    }
+  ],
+  "evidence": [
+    "「大半夜的，这么大骚动到底是怎么回事？」这句话语气带有权威感，与米隆侯爵的「气势十足，带有权威感」的说话风格相符。",
+    "前文提到「说话气势十足的老卸货工最先开口说」，但此句并未提及老卸货工，而是独立的提问，更符合米隆侯爵的发言风格。",
+    "米隆侯爵在场景中曾对骚动发表意见，与本句内容相关。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

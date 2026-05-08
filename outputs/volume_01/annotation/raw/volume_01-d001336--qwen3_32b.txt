@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d001336",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.98
+    }
+  ],
+  "evidence": [
+    "上下文显示罗伦斯正在查看文件，且对话内容符合他冷静、理性、略带急切的语气。",
+    "场景记忆中，罗伦斯与马贺特的互动频繁，且罗伦斯是主要行动者。",
+    "候选角色中，罗伦斯是唯一符合当前语境和语气的说话人。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000252",
+  "speaker_entity_id": "char_0009",
+  "speaker_display": "杰廉",
+  "speaker_status": "known",
+  "confidence": 0.9,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0009",
+      "display": "杰廉",
+      "status": "known",
+      "score": 0.9
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.1
+    }
+  ],
+  "evidence": [
+    "对话中使用了「小的」自称，符合杰廉的说话风格。",
+    "对话内容试图接近「夫人」，暗示对赫萝的兴趣，与杰廉试图接近赫萝的行为一致。",
+    "场景记忆中明确提到杰廉试图接近赫萝并表现出厚颜无耻的态度。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d001174",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "赫萝在场景中多次发言，且此句台词符合她对危险的敏锐感知和直接表达的风格。",
+    "前一段提到赫萝突然停下脚步，暗示她察觉到异常，因此她最有可能说出关于猎犬的警告。",
+    "场景记忆中明确指出赫萝是罗伦斯的旅伴，并多次参与对话，且有非人类的感官能力。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

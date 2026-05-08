@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000497",
+  "speaker_entity_id": "char_0016",
+  "speaker_display": "鉴定员",
+  "speaker_status": "known",
+  "confidence": 0.9,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0016",
+      "display": "鉴定员",
+      "status": "known",
+      "score": 0.9
+    },
+    {
+      "entity_id": "char_0014",
+      "display": "商行代表",
+      "status": "known",
+      "score": 0.1
+    }
+  ],
+  "evidence": [
+    "「嗯……」是紧接在「崔尼银币两百枚，您意下如何？」之后的回应，符合鉴定员在赫萝抬价后思考的语气。",
+    "场景记忆中提到鉴定员在赫萝的言辞下表现出从困惑到认同的态度变化，符合当前语境。",
+    "当前段落前的段落提到「鉴定的男子」挺直背脊并计算，与「嗯……」的犹豫语气相符。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

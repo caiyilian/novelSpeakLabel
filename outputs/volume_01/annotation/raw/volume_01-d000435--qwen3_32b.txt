@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000435",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "前一段中赫萝说：「不过，咱说的绝对不限于卖貂皮的时候。汝毕竟是个商人，或许根本没有咱插嘴的机会。」，语气和风格与当前台词「真是难得啊。」一致。",
+    "当前场景中赫萝和罗伦斯是主要互动角色，且赫萝的台词风格轻松、略带调侃，符合「真是难得啊。」的语气。",
+    "赫萝在场景中频繁发言，而罗伦斯的台词通常更理性、正式，当前台词更符合赫萝的说话风格。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

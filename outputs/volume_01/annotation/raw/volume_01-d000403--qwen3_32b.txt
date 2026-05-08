@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000403",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "ambiguous",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "对话内容提到「坐船」、「出资金额多寡」、「风险」、「赚钱」等商业术语，符合罗伦斯的理性商业风格。",
+    "场景记忆中提到罗伦斯在本场景中与赫萝讨论商业策略，且罗伦斯是主要的商业分析者。",
+    "对话中提到「我曾经坐过两次船」，表明说话人有亲身经历，而赫萝在场景中未表现出类似经历。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d001154",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    },
+    {
+      "entity_id": "char_0031",
+      "display": "马夫",
+      "status": "known",
+      "score": 0.02
+    }
+  ],
+  "evidence": [
+    "上下文显示赫萝在黑暗的车厢中说话，符合她的行为模式。",
+    "赫萝的台词风格轻松幽默但略带威胁性，与她的角色设定一致。",
+    "场景记忆中提到赫萝在黑暗中调侃罗伦斯，与当前台词相符。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000242",
+  "speaker_entity_id": "char_0009",
+  "speaker_display": "杰廉",
+  "speaker_status": "known",
+  "confidence": 0.9,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0009",
+      "display": "杰廉",
+      "status": "known",
+      "score": 0.9
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.1
+    }
+  ],
+  "evidence": [
+    "前一段提到一名男子靠近罗伦斯搭话，且描述为「年轻商人」，与杰廉的特征吻合。",
+    "当前台词「我不过是个随处可见的旅行商人罢了。」语气谦卑但略带自信，符合杰廉的说话风格。",
+    "场景记忆中明确指出杰廉是新入行的同行商人，且试图接近罗伦斯获取情报。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

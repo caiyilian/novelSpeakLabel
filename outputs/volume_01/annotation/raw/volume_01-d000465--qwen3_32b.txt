@@ -1,0 +1,32 @@
+```json
+{
+  "dialogue_id": "volume_01-d000465",
+  "speaker_entity_id": "char_0016",
+  "speaker_display": "鉴定员",
+  "speaker_status": "known",
+  "confidence": 0.9,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0016",
+      "display": "鉴定员",
+      "status": "known",
+      "score": 0.9
+    },
+    {
+      "entity_id": "char_0015",
+      "display": "鉴定的男子",
+      "status": "known",
+      "score": 0.7
+    }
+  ],
+  "evidence": [
+    "「咱不懂行情，那价格如何？」",
+    "罗伦斯简短地回答后，露出营业用笑容回头看看鉴定的男子。",
+    "「那么，您愿意接受这个金额了吗？」",
+    "鉴定的男子展开笑颜说道，他似乎也察觉到洽谈已有了结论。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

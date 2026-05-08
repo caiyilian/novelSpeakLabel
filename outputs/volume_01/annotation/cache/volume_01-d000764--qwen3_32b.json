@@ -1,0 +1,28 @@
+{
+  "dialogue_id": "volume_01-d000764",
+  "speaker_entity_id": "mystery_volume_01_c005_s001_r004_帕斯罗村朋友",
+  "speaker_display": "帕斯罗村朋友",
+  "speaker_status": "mystery",
+  "confidence": 0.75,
+  "candidate_speakers": [
+    {
+      "entity_id": "mystery_volume_01_c005_s001_r004_帕斯罗村朋友",
+      "display": "帕斯罗村朋友",
+      "status": "mystery",
+      "score": 0.75
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.25
+    }
+  ],
+  "evidence": [
+    "赫萝在对话中提到「那家伙是帕斯罗村的村民」，随后这句话是对该村民的进一步描述，符合场景中赫萝提及的帕斯罗村朋友的特征。",
+    "场景记忆中明确指出赫萝提及的朋友是帕斯罗村的村民，性格开朗，对赫萝变身成狼也不感到惊讶。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

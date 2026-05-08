@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000461",
+  "speaker_entity_id": "char_0014",
+  "speaker_display": "商行代表",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0014",
+      "display": "商行代表",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0016",
+      "display": "鉴定员",
+      "status": "known",
+      "score": 0.6
+    }
+  ],
+  "evidence": [
+    "台词中提到「本商行也完全赞同您的想法」，表明说话者代表商行整体立场，而非个体。",
+    "上下文显示罗伦斯在与商行代表进行交易谈判，对方使用正式语气提出交易条件。",
+    "「看在今后彼此的密切关系上」表明说话者是商行代表，而非个体采购人员。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

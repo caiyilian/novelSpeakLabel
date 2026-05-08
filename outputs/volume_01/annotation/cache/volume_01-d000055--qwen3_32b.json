@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000055",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.9,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.9
+    },
+    {
+      "entity_id": "mystery_volume_01_c002_s003_r001_神秘女孩",
+      "display": "神秘女孩",
+      "status": "mystery",
+      "score": 0.1
+    }
+  ],
+  "evidence": [
+    "赫萝在场景中被描述为拥有狼耳和非人类特征的神秘少女，且在前一段中发出了狼嚎，与当前段落中「唰唰唰唰唰」的非人类声音相符。",
+    "罗伦斯感到恐惧，这与赫萝在场景中表现出的神秘和非人类特质一致。",
+    "赫萝的狼嚎和非人类特征在场景中多次被提及，暗示她可能是当前声音的来源。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000393",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "前一段赫萝拉了罗伦斯的衣服并指着摊贩，当前段描述赫萝的尾巴动作和眼神，显示她对苹果的兴趣。",
+    "当前段对话「喔，很漂亮的苹果。」符合赫萝轻松幽默但略带调侃的说话风格。",
+    "场景记忆中赫萝多次表现出对苹果和甜食的兴趣，与当前台词内容一致。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

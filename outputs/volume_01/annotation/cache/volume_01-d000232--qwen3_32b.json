@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000232",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.98
+    },
+    {
+      "entity_id": "char_0007",
+      "display": "佩连佐男子",
+      "status": "known",
+      "score": 0.02
+    }
+  ],
+  "evidence": [
+    "对话内容涉及商业交易和汇兑体制，与罗伦斯的理性、冷静、商业分析倾向的说话风格一致。",
+    "上下文显示这是罗伦斯向佩连佐男子解释汇兑体制的场景，符合罗伦斯的已知行为模式。",
+    "场景记忆中明确提到罗伦斯与佩连佐男子进行商业知识的交流。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

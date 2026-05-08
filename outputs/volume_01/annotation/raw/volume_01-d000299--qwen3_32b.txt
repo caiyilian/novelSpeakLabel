@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000299",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.85,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.85
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.15
+    }
+  ],
+  "evidence": [
+    "前一段对话中赫萝问罗伦斯：「如果是谎言，就表示有某人在计谋些什么。遇到这种情形，只要谨慎点不要被骗的话，大致上来说还是可以发到财。」",
+    "当前对话「嗯？」是对赫萝上一段话「嗯。那么，既然咱在，又跟汝说那是谎言，汝会？」的回应，语气更偏向罗伦斯的理性反应。",
+    "场景记忆中罗伦斯和赫萝的互动频繁，赫萝说话风格轻松幽默，而罗伦斯更理性、略带懊恼。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

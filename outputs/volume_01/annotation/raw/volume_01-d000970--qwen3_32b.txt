@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000970",
+  "speaker_entity_id": "char_0020",
+  "speaker_display": "列支敦·马贺特",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0020",
+      "display": "列支敦·马贺特",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "当前段落是对话形式，且上下文显示这是罗伦斯与马贺特之间的讨论，马贺特在前文中多次表达对局势的分析和冷静态度，符合此句语气。",
+    "马贺特在场景中是主要对话者，负责解释商行立场和分析梅迪欧商行的威胁，符合此句的理性语气。",
+    "罗伦斯在前文中表现出急切和困惑，而此句语气更偏向冷静分析，与罗伦斯的风格不符。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

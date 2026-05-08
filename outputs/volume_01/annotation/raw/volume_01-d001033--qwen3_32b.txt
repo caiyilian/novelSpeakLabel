@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d001033",
+  "speaker_entity_id": "char_0020",
+  "speaker_display": "列支敦·马贺特",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0020",
+      "display": "列支敦·马贺特",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "前一段提到「马贺特抬起头说」，紧接着是当前台词，符合说话人连续性",
+    "场景记忆中明确指出马贺特与罗伦斯讨论如何抢先梅迪欧商行一步",
+    "当前台词内容与场景中马贺特对梅迪欧商行的警惕态度一致"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

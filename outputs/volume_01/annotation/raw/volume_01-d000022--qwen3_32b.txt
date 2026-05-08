@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000022",
+  "speaker_entity_id": "char_0003",
+  "speaker_display": "骑士",
+  "speaker_status": "known",
+  "confidence": 0.9,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0003",
+      "display": "骑士",
+      "status": "known",
+      "score": 0.9
+    },
+    {
+      "entity_id": "mystery_volume_01_c002_s001_r002_修道院骑士2",
+      "display": "修道院骑士2",
+      "status": "mystery",
+      "score": 0.1
+    }
+  ],
+  "evidence": [
+    "对话内容提及「异教徒祭典」，与场景记忆中骑士的互动和提问一致。",
+    "上下文显示该对话是骑士对罗伦斯的提问，符合骑士角色的立场和行为模式。",
+    "场景记忆中明确指出骑士询问关于异教徒祭典的消息，与当前台词一致。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000315",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0009",
+      "display": "杰廉",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "对话内容「优伦朵吗？知道了。」是对前一段杰廉提到的联络地点的回应，语气简洁理性，符合罗伦斯的说话风格。",
+    "罗伦斯是当前场景中唯一明确在场并需要回应杰廉指示的角色。",
+    "杰廉在前一段已离开，因此不可能是当前说话人。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

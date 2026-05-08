@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000346",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "前一段提到「……生气了？」，下一段提到「赫萝沉默地抬头看着罗伦斯。罗伦斯斜眼看了赫萝一眼」，说明赫萝在观察罗伦斯的反应，而罗伦斯在回应问题。",
+    "「是在生气没错。」是罗伦斯对赫萝提问的直接回应，语气冷静理性，符合罗伦斯的说话风格。",
+    "场景记忆中，罗伦斯与赫萝的互动频繁，罗伦斯通常会理性回应赫萝的提问或挑衅。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

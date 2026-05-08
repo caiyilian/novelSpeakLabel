@@ -1,0 +1,32 @@
+```json
+{
+  "dialogue_id": "volume_01-d000325",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.02
+    }
+  ],
+  "evidence": [
+    "赫萝在场景中表现出自信、狡诈和调侃的说话风格，与台词中的语气一致。",
+    "赫萝在前一段中被描述为「不怀好意笑着」，与当前台词的挑衅语气相符。",
+    "赫萝在场景中专注于空气与人类的关系，台词内容延续了她的主题。",
+    "罗伦斯在前一段中刚说完「你守护了好几百年的农夫们，应该也对时间很在意吧。」，而赫萝的回应明显是对此的反驳。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

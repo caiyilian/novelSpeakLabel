@@ -1,0 +1,36 @@
+```json
+{
+  "dialogue_id": "volume_01-d000521",
+  "speaker_entity_id": "mystery_volume_01_c004_s004_r004_店老板",
+  "speaker_display": "店老板",
+  "speaker_status": "mystery",
+  "confidence": 0.65,
+  "candidate_speakers": [
+    {
+      "entity_id": "mystery_volume_01_c004_s004_r004_店老板",
+      "display": "店老板",
+      "status": "mystery",
+      "score": 0.65
+    },
+    {
+      "entity_id": "char_0018",
+      "display": "女店员",
+      "status": "known",
+      "score": 0.2
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.1
+    }
+  ],
+  "evidence": [
+    "对话中提到‘店老板’未出现，推测说话人是在寻找店老板的罗伦斯或赫萝，但更可能是提及店老板未出现的观察者（如女店员或罗伦斯）。",
+    "场景中提及店老板外出，但未直接出现，因此说话人可能是罗伦斯或女店员，但更倾向于罗伦斯的观察或推测。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

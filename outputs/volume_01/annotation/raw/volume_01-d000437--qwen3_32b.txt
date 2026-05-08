@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000437",
+  "speaker_entity_id": "char_0010",
+  "speaker_display": "店员",
+  "speaker_status": "known",
+  "confidence": 0.9,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0010",
+      "display": "店员",
+      "status": "known",
+      "score": 0.9
+    },
+    {
+      "entity_id": "char_0012",
+      "display": "采购人员",
+      "status": "known",
+      "score": 0.6
+    }
+  ],
+  "evidence": [
+    "「欢迎来到米隆商行！」是典型的店员迎接顾客的用语。",
+    "前一段提到「店员随即出来迎接」，暗示说话人是店员。",
+    "后续段落中提到「负责管理卸货场的店员」，进一步确认说话人身份。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

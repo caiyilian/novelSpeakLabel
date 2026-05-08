@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d001294",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.98
+    }
+  ],
+  "evidence": [
+    "对话中提到「我睡了一整天吗？」，表明说话人是刚刚醒来的人，而场景记忆中提到罗伦斯在米隆商行的房间中醒来。",
+    "上下文显示说话人是在回应马贺特的叙述，而罗伦斯是唯一在该场景中被明确提及的清醒角色。",
+    "罗伦斯在场景中表现出对交易和自身状态的关注，与该句台词的情绪和内容相符。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

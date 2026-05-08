@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000289",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0009",
+      "display": "杰廉",
+      "status": "mystery",
+      "score": 0.2
+    }
+  ],
+  "evidence": [
+    "前文提到罗伦斯在思考杰廉的谎言，当前对话延续了罗伦斯的理性分析语气。",
+    "当前对话内容与罗伦斯的商业经验相关，符合他的说话风格。",
+    "场景记忆中罗伦斯是主要对话者，赫萝并未在此段中发言。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

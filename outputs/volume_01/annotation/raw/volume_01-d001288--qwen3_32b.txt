@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d001288",
+  "speaker_entity_id": "char_0020",
+  "speaker_display": "列支敦·马贺特",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0020",
+      "display": "列支敦·马贺特",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "前一段提到「罗伦斯听了惊讶地反问说：」，接着是当前段落的提问，符合马贺特的说话风格和上下文逻辑。",
+    "当前段落是马贺特在解释赫萝的行动，符合他作为罗伦斯的商业伙伴和救援者的角色设定。",
+    "场景记忆中显示马贺特与罗伦斯有频繁对话，且当前段落是马贺特在陈述赫萝的行动，符合其角色行为。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

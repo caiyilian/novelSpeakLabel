@@ -1,0 +1,30 @@
+```json
+{
+  "dialogue_id": "volume_01-d000453",
+  "speaker_entity_id": "char_0016",
+  "speaker_display": "鉴定员",
+  "speaker_status": "known",
+  "confidence": 0.9,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0016",
+      "display": "鉴定员",
+      "status": "known",
+      "score": 0.9
+    },
+    {
+      "entity_id": "char_0015",
+      "display": "鉴定的男子",
+      "status": "known",
+      "score": 0.7
+    }
+  ],
+  "evidence": [
+    "对话内容与场景记忆中「鉴定员」的专业态度和对貂皮的评论相符。",
+    "上下文显示罗伦斯正在与鉴定员互动，而该句是对方对貂皮的进一步评价。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

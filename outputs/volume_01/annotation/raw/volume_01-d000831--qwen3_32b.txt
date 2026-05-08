@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000831",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "前一段赫萝趴在桌上仰头看着罗伦斯说话，罗伦斯反问后，接下来的对话是「你不是不需要梳子吗？」，语气符合罗伦斯冷静理性的风格。",
+    "场景记忆中，罗伦斯与赫萝讨论梳子和毛刷，罗伦斯表现出理性分析和关心，符合此句台词的语气。",
+    "赫萝的回应「咱没有说不要梳子。咱想要有梳子。」更符合她轻松幽默但略带威胁的风格，因此此句应为罗伦斯所说。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

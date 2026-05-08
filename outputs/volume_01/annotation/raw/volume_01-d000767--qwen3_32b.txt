@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d000767",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "赫萝在回忆中表现出开心和害羞的情绪，罗伦斯在一旁默默观察。",
+    "赫萝的言语暗示了她对朋友的怀念，而「朋友……啊。」是她回忆中的自然表达。",
+    "场景中只有赫萝和罗伦斯两人，且赫萝表现出情绪波动，符合说话人特征。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

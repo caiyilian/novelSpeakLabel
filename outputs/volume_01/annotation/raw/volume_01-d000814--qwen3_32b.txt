@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000814",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.02
+    }
+  ],
+  "evidence": [
+    "赫萝缓慢地抬起头坐正身子后，再度啜起没喝完的苹果汁。",
+    "虽然赫萝用已经成了惯例，就像打招呼一样的捉弄语气问道，但因为罗伦斯的本意即是如此，于是他直率地点点头。",
+    "赫萝的尾巴和耳朵暴露了她的情绪，暗示她并非完全能控制自己的狼性特征。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

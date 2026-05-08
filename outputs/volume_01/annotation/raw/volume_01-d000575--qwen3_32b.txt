@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d000575",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "前文提到赫萝在把玩银币，并对崔尼银币的信赖度表示好奇。",
+    "当前段落紧接着赫萝的提问，符合她对货币知识的提问风格。",
+    "后文明确提到赫萝抬头看着罗伦斯提问，进一步确认说话人是赫萝。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

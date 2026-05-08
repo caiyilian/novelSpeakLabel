@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000337",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.02
+    }
+  ],
+  "evidence": [
+    "赫萝在场景中以轻松幽默但略带威胁的语气说话，符合她的说话风格。",
+    "上下文显示赫萝刚刚对罗伦斯说了一句带有挑衅意味的话，接着又以类似风格提问。",
+    "场景记忆中赫萝多次以「汝」称呼罗伦斯，符合该台词的语气和风格。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

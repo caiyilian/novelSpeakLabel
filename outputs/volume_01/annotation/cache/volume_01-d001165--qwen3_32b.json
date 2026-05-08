@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d001165",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "赫萝在场景中四处张望并表现出对异常的感知，符合她敏锐的直觉和非人类特征。",
+    "对话内容「如果有胡子就可以知道得更清楚……」语气带有赫萝一贯的轻松幽默与调侃风格。",
+    "上下文显示赫萝对空气震动和声音的感知，暗示她说话的可能性远高于罗伦斯。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

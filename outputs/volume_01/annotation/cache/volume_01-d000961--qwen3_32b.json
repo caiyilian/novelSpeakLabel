@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000961",
+  "speaker_entity_id": "char_0027",
+  "speaker_display": "米隆商行人员",
+  "speaker_status": "known",
+  "confidence": 0.9,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0027",
+      "display": "米隆商行人员",
+      "status": "known",
+      "score": 0.9
+    },
+    {
+      "entity_id": "char_0020",
+      "display": "列支敦·马贺特",
+      "status": "known",
+      "score": 0.1
+    }
+  ],
+  "evidence": [
+    "对话内容提到「我们商行的人有尾随对方之后」，表明说话者是商行的工作人员，而非商行代表列支敦·马贺特本人。",
+    "场景记忆中提到「米隆商行人员」协助罗伦斯进行营救行动，使用暗号和地下通道进行秘密行动，符合此句台词的语境。",
+    "此句台词出现在罗伦斯与马贺特的对话中，但语气和内容更符合商行人员的汇报，而非马贺特的直接发言。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

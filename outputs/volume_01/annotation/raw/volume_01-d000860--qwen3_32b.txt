@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d000860",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    }
+  ],
+  "evidence": [
+    "「希望汝的梦想成真呐。」是赫萝对罗伦斯的回应，语气轻松幽默且略带调侃，符合赫萝的说话风格。",
+    "当前段落中明确提到「赫萝并没有嘲笑他，只是笑着说了句」，表明说话人是赫萝。",
+    "场景记忆中多次提到赫萝与罗伦斯的互动，且赫萝常用「汝」来称呼罗伦斯，符合该句台词的语气。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```
