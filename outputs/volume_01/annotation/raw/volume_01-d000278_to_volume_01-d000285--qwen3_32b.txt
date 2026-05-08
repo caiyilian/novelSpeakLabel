@@ -1,0 +1,191 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000278",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "台词中使用了「咱」自称，符合赫萝的说话风格。",
+        "提到「尾巴」，呼应赫萝的狼特征。",
+        "语气轻松调侃，符合赫萝对罗伦斯的态度。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000279",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "与上一句为同一说话人，符合赫萝连续发言的语气和风格。",
+        "使用「汝」称呼对方，符合赫萝的说话方式。",
+        "「至于信或不信，那就是汝的事了」，语气调侃，符合赫萝的风格。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000280",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "「我想问你一下」为罗伦斯的理性语气。",
+        "「你觉得刚刚那个小毛头说的话可信吗？」，符合罗伦斯对杰廉的怀疑态度。",
+        "上下文显示罗伦斯正在与赫萝对话，符合轮次交替。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000281",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "「小毛头？」为赫萝的反问语气。",
+        "回应罗伦斯的问题，符合对话轮次。",
+        "语气轻松，符合赫萝的说话风格。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000282",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "「那个在大厅里跟我们搭腔的家伙」，指代杰廉，符合赫萝的说话风格。",
+        "与上一句为同一说话人，符合对话轮次。",
+        "语气轻松调侃，符合赫萝的风格。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000283",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "「喔喔。呵呵，小毛头啊。」为罗伦斯的回应语气。",
+        "与上一句为不同说话人，符合对话轮次。",
+        "语气略带无奈，符合罗伦斯的理性风格。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000284",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "「有什么好奇怪的？」为赫萝的反问语气。",
+        "与上一句为不同说话人，符合对话轮次。",
+        "语气轻松调侃，符合赫萝的风格。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000285",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "「对咱来说，两个都是小毛头。」使用「咱」自称，符合赫萝的说话风格。",
+        "与上一句为同一说话人，符合对话轮次。",
+        "语气调侃，符合赫萝对罗伦斯和杰廉的态度。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，赫萝与罗伦斯交替发言，符合两人互动模式。赫萝多次使用「咱」自称，语气轻松调侃，罗伦斯语气理性略带无奈。"
+}
+```

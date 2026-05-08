@@ -1,0 +1,602 @@
+你是轻小说说话人标注项目的阶段 2：正式标注助手。
+你的任务是判断输入 target_dialogues 中每一句台词的说话人，不要改写原文。
+必须把这些台词当作同一个连续片段来判断，优先保持对话轮次和叙述线索的一致性。
+
+规则：
+1. 只输出严格 JSON，不要 Markdown，不要解释性前后缀。
+2. 如果说话人是候选角色，speaker_entity_id 必须使用 candidate_characters 里的 entity_id，speaker_status 填 known。
+3. 如果说话人像某个未知人物，speaker_entity_id 使用 candidate_mysteries 里的 mystery_id，speaker_status 填 mystery。
+4. 如果只是无法追踪的路人/群体，speaker_status 填 npc，speaker_entity_id 可为空或使用 npc:简短称呼。
+5. 证据不足时不要硬猜，speaker_status 填 ambiguous 或 review，并把 needs_review 设为 true。
+6. candidate_speakers 至少列出 1 个候选；如果无法判断，列出最可能的候选和不确定原因。
+7. confidence 使用 0 到 1 之间的小数，表示你对最终判断的把握。
+8. 不要只因为台词里提到某个名字、职业、地点，就把说话人标成那个实体；被称呼的人通常不是说话人。
+9. 连续问答、交易寒暄、命令/回答等场景要按上下句轮次判断；同一人连续说话必须有叙述或语气证据支持。
+10. 如果当前上下文显示某角色还没有登场，不要因为角色库或后文记忆里有这个角色就提前标给他/她。
+
+输出 JSON 结构：
+{
+  "annotations": [
+    {
+      "dialogue_id": "必须来自 target_dialogue_ids",
+      "speaker_entity_id": "string",
+      "speaker_display": "string",
+      "speaker_status": "known|mystery|npc|ambiguous|review",
+      "confidence": 0.0,
+      "candidate_speakers": [
+        {"entity_id": "string", "display": "string", "status": "known|mystery|npc|ambiguous|review", "score": 0.0}
+      ],
+      "evidence": ["短证据，不要大段复制原文"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "可选，简短说明整体轮次判断"
+}
+必须为 target_dialogue_ids 中每个 dialogue_id 输出且只输出一条 annotation。
+
+输入 JSON：
+{
+  "volume": {
+    "volume_id": "volume_01",
+    "volume": 1
+  },
+  "target_dialogue_ids": [
+    "volume_01-d001006",
+    "volume_01-d001007",
+    "volume_01-d001008",
+    "volume_01-d001009",
+    "volume_01-d001010",
+    "volume_01-d001011",
+    "volume_01-d001012",
+    "volume_01-d001013"
+  ],
+  "dialogues": [
+    {
+      "dialogue_id": "volume_01-d001006",
+      "dialogue_index": 1005,
+      "window_position": 1,
+      "chapter_id": "volume_01-c006",
+      "chapter_title": "第五幕",
+      "scene_id": "volume_01-c006-s001",
+      "paragraph_id": "volume_01-c006-s001-p002185",
+      "paragraph_index": 2184,
+      "local_dialogue_index": 1,
+      "text": "无庸置疑地，这是封威胁信。意思是说如果不想让罗伦斯先生的伙伴被带到教会，就关紧门窗不要轻举妄动。",
+      "quote_text": "「无庸置疑地，这是封威胁信。意思是说如果不想让罗伦斯先生的伙伴被带到教会，就关紧门窗不要轻举妄动。」",
+      "paragraph_text": "「无庸置疑地，这是封威胁信。意思是说如果不想让罗伦斯先生的伙伴被带到教会，就关紧门窗不要轻举妄动。」",
+      "char_start": 0,
+      "char_end": 50
+    },
+    {
+      "dialogue_id": "volume_01-d001007",
+      "dialogue_index": 1006,
+      "window_position": 2,
+      "chapter_id": "volume_01-c006",
+      "chapter_title": "第五幕",
+      "scene_id": "volume_01-c006-s001",
+      "paragraph_id": "volume_01-c006-s001-p002186",
+      "paragraph_index": 2185,
+      "local_dialogue_index": 1,
+      "text": "他们的意思应该是在崔尼银币的交易结束前不要轻举妄动，可是，这并不表示交易结束后就一定不会去教会。",
+      "quote_text": "「他们的意思应该是在崔尼银币的交易结束前不要轻举妄动，可是，这并不表示交易结束后就一定不会去教会。」",
+      "paragraph_text": "「他们的意思应该是在崔尼银币的交易结束前不要轻举妄动，可是，这并不表示交易结束后就一定不会去教会。」",
+      "char_start": 0,
+      "char_end": 50
+    },
+    {
+      "dialogue_id": "volume_01-d001008",
+      "dialogue_index": 1007,
+      "window_position": 3,
+      "chapter_id": "volume_01-c006",
+      "chapter_title": "第五幕",
+      "scene_id": "volume_01-c006-s001",
+      "paragraph_id": "volume_01-c006-s001-p002187",
+      "paragraph_index": 2186,
+      "local_dialogue_index": 1,
+      "text": "一点也没错。况且我们已经投入相当大的金额在崔尼银币上，现在放弃会造成极大亏损。因为崔尼银币势必会贬值。",
+      "quote_text": "「一点也没错。况且我们已经投入相当大的金额在崔尼银币上，现在放弃会造成极大亏损。因为崔尼银币势必会贬值。」",
+      "paragraph_text": "「一点也没错。况且我们已经投入相当大的金额在崔尼银币上，现在放弃会造成极大亏损。因为崔尼银币势必会贬值。」",
+      "char_start": 0,
+      "char_end": 53
+    },
+    {
+      "dialogue_id": "volume_01-d001009",
+      "dialogue_index": 1008,
+      "window_position": 4,
+      "chapter_id": "volume_01-c006",
+      "chapter_title": "第五幕",
+      "scene_id": "volume_01-c006-s001",
+      "paragraph_id": "volume_01-c006-s001-p002191",
+      "paragraph_index": 2190,
+      "local_dialogue_index": 1,
+      "text": "我们能做的，应该只有主动出击而已吧？",
+      "quote_text": "「我们能做的，应该只有主动出击而已吧？」",
+      "paragraph_text": "「我们能做的，应该只有主动出击而已吧？」",
+      "char_start": 0,
+      "char_end": 20
+    },
+    {
+      "dialogue_id": "volume_01-d001010",
+      "dialogue_index": 1009,
+      "window_position": 5,
+      "chapter_id": "volume_01-c006",
+      "chapter_title": "第五幕",
+      "scene_id": "volume_01-c006-s001",
+      "paragraph_id": "volume_01-c006-s001-p002193",
+      "paragraph_index": 2192,
+      "local_dialogue_index": 1,
+      "text": "可是，这件事不是只要救回您的伙伴就可以解决的。因为就算我们藏匿您的伙伴，一旦被举发，而教会执行教会法进行搜索的话，我们还是得像只温驯的小羊服从教会。只要在这个城镇里，您的伙伴就无法藏身。",
+      "quote_text": "「可是，这件事不是只要救回您的伙伴就可以解决的。因为就算我们藏匿您的伙伴，一旦被举发，而教会执行教会法进行搜索的话，我们还是得像只温驯的小羊服从教会。只要在这个城镇里，您的伙伴就无法藏身。」",
+      "paragraph_text": "「可是，这件事不是只要救回您的伙伴就可以解决的。因为就算我们藏匿您的伙伴，一旦被举发，而教会执行教会法进行搜索的话，我们还是得像只温驯的小羊服从教会。只要在这个城镇里，您的伙伴就无法藏身。」",
+      "char_start": 0,
+      "char_end": 95
+    },
+    {
+      "dialogue_id": "volume_01-d001011",
+      "dialogue_index": 1010,
+      "window_position": 6,
+      "chapter_id": "volume_01-c006",
+      "chapter_title": "第五幕",
+      "scene_id": "volume_01-c006-s001",
+      "paragraph_id": "volume_01-c006-s001-p002194",
+      "paragraph_index": 2193,
+      "local_dialogue_index": 1,
+      "text": "如果逃出城镇外呢？",
+      "quote_text": "「如果逃出城镇外呢？」",
+      "paragraph_text": "「如果逃出城镇外呢？」",
+      "char_start": 0,
+      "char_end": 11
+    },
+    {
+      "dialogue_id": "volume_01-d001012",
+      "dialogue_index": 1011,
+      "window_position": 7,
+      "chapter_id": "volume_01-c006",
+      "chapter_title": "第五幕",
+      "scene_id": "volume_01-c006-s001",
+      "paragraph_id": "volume_01-c006-s001-p002195",
+      "paragraph_index": 2194,
+      "local_dialogue_index": 1,
+      "text": "城镇外是一片辽阔的草原，除非运气真的很好……如果在城镇外被捉到，一切都将无法挽救，就算逃到其他城镇也有可能被举发。这么一来，事情会变得一发不可收拾。",
+      "quote_text": "「城镇外是一片辽阔的草原，除非运气真的很好……如果在城镇外被捉到，一切都将无法挽救，就算逃到其他城镇也有可能被举发。这么一来，事情会变得一发不可收拾。」",
+      "paragraph_text": "「城镇外是一片辽阔的草原，除非运气真的很好……如果在城镇外被捉到，一切都将无法挽救，就算逃到其他城镇也有可能被举发。这么一来，事情会变得一发不可收拾。」",
+      "char_start": 0,
+      "char_end": 76
+    },
+    {
+      "dialogue_id": "volume_01-d001013",
+      "dialogue_index": 1012,
+      "window_position": 8,
+      "chapter_id": "volume_01-c006",
+      "chapter_title": "第五幕",
+      "scene_id": "volume_01-c006-s001",
+      "paragraph_id": "volume_01-c006-s001-p002198",
+      "paragraph_index": 2197,
+      "local_dialogue_index": 1,
+      "text": "难道没有什么好办法吗？",
+      "quote_text": "「难道没有什么好办法吗？」",
+      "paragraph_text": "「难道没有什么好办法吗？」",
+      "char_start": 0,
+      "char_end": 13
+    }
+  ],
+  "context": {
+    "paragraphs": [
+      {
+        "paragraph_id": "volume_01-c006-s001-p002182",
+        "paragraph_index": 2181,
+        "text": "幕",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c006-s001-p002183",
+        "paragraph_index": 2182,
+        "text": "马贺特不愧是在异国的土地上拥有商店的商人。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c006-s001-p002184",
+        "paragraph_index": 2183,
+        "text": "他听到罗伦斯的话之后，虽然有好一会儿因惊讶而说不出话，但立即回过神来冷静思考。马贺特没有说出半句话责怪被梅迪欧商行捉住的赫萝，或是带着赫萝一同行动的罗伦斯。他的意识似乎完全倾向如何从现状中保护米隆商行，以及如何获取利益。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c006-s001-p002185",
+        "paragraph_index": 2184,
+        "text": "「无庸置疑地，这是封威胁信。意思是说如果不想让罗伦斯先生的伙伴被带到教会，就关紧门窗不要轻举妄动。」",
+        "target_dialogue_ids": [
+          "volume_01-d001006"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c006-s001-p002186",
+        "paragraph_index": 2185,
+        "text": "「他们的意思应该是在崔尼银币的交易结束前不要轻举妄动，可是，这并不表示交易结束后就一定不会去教会。」",
+        "target_dialogue_ids": [
+          "volume_01-d001007"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c006-s001-p002187",
+        "paragraph_index": 2186,
+        "text": "「一点也没错。况且我们已经投入相当大的金额在崔尼银币上，现在放弃会造成极大亏损。因为崔尼银币势必会贬值。」",
+        "target_dialogue_ids": [
+          "volume_01-d001008"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c006-s001-p002188",
+        "paragraph_index": 2187,
+        "text": "这么一来，几乎没有什么选择。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c006-s001-p002189",
+        "paragraph_index": 2188,
+        "text": "不是坐以待毙，就是主动出击。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c006-s001-p002190",
+        "paragraph_index": 2189,
+        "text": "而选择前项的可能性等于零。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c006-s001-p002191",
+        "paragraph_index": 2190,
+        "text": "「我们能做的，应该只有主动出击而已吧？」",
+        "target_dialogue_ids": [
+          "volume_01-d001009"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c006-s001-p002192",
+        "paragraph_index": 2191,
+        "text": "听到罗伦斯说的话，马贺特深深叹了口气，点点头说：",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c006-s001-p002193",
+        "paragraph_index": 2192,
+        "text": "「可是，这件事不是只要救回您的伙伴就可以解决的。因为就算我们藏匿您的伙伴，一旦被举发，而教会执行教会法进行搜索的话，我们还是得像只温驯的小羊服从教会。只要在这个城镇里，您的伙伴就无法藏身。」",
+        "target_dialogue_ids": [
+          "volume_01-d001010"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c006-s001-p002194",
+        "paragraph_index": 2193,
+        "text": "「如果逃出城镇外呢？」",
+        "target_dialogue_ids": [
+          "volume_01-d001011"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c006-s001-p002195",
+        "paragraph_index": 2194,
+        "text": "「城镇外是一片辽阔的草原，除非运气真的很好……如果在城镇外被捉到，一切都将无法挽救，就算逃到其他城镇也有可能被举发。这么一来，事情会变得一发不可收拾。」",
+        "target_dialogue_ids": [
+          "volume_01-d001012"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c006-s001-p002196",
+        "paragraph_index": 2195,
+        "text": "这状况只能用四面楚歌来形容。就算乖乖听梅迪欧商行的话不采取任何行动，等到他们赚取大笔利益后，想必还是会把赫萝带去教会。对他们来说，把异国来的商店逼上绝路没有什么不好。毕竟生意上的敌手越少越好。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c006-s001-p002197",
+        "paragraph_index": 2196,
+        "text": "然而，就算由我方主动出击，同样也是困难重重。不，这已经不是可以用困难来形容的事态。现在能做的选择都是极其鲁莽的举动。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c006-s001-p002198",
+        "paragraph_index": 2197,
+        "text": "「难道没有什么好办法吗？」",
+        "target_dialogue_ids": [
+          "volume_01-d001013"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c006-s001-p002199",
+        "paragraph_index": 2198,
+        "text": "马贺特像在自言自语似的轻声说。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c006-s001-p002200",
+        "paragraph_index": 2199,
+        "text": "「照这样下去，别说是想要保住我们商行的利益，甚至无法阻止举发。」",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c006-s001-p002201",
+        "paragraph_index": 2200,
+        "text": "罗伦斯只能用如坐针毡的心情听马贺特说话，如果低头保持沉默能让事态好转的话，要他低头多久他都愿意。商人没有像骑士或贵族般的自尊。只要有钱赚，就算要舔他人的鞋底也愿意。",
+        "target_dialogue_ids": []
+      }
+    ]
+  },
+  "scene_memory": [
+    {
+      "scene_id": "volume_01-c006-s001-r001",
+      "parent_scene_id": "volume_01-c006-s001",
+      "chunk_index": 1,
+      "chunk_count": 6,
+      "scene_summary": "罗伦斯与赫萝的行商活动遭遇梅迪欧商行的威胁，米隆商行的马贺特行长与罗伦斯讨论应对策略，双方分析局势并决定采取主动行动。",
+      "active_characters": [
+        "罗伦斯",
+        "赫萝",
+        "列支敦·马贺特"
+      ],
+      "relationships": [
+        "罗伦斯与赫萝是旅伴，关系亲密",
+        "罗伦斯与米隆商行有商业合作关系",
+        "米隆商行与梅迪欧商行存在竞争关系",
+        "赫萝被梅迪欧商行威胁，成为罗伦斯与米隆商行合作的筹码"
+      ],
+      "notes": "本场景中，梅迪欧商行的威胁是推动情节的关键因素，赫萝的处境成为罗伦斯与米隆商行合作的焦点。马贺特的冷静分析和罗伦斯的策略性回应表明双方正在考虑主动出击。"
+    },
+    {
+      "scene_id": "volume_01-c006-s001-r002",
+      "parent_scene_id": "volume_01-c006-s001",
+      "chunk_index": 2,
+      "chunk_count": 6,
+      "scene_summary": "罗伦斯与马贺特讨论当前面临的困境，梅迪欧商行的威胁日益加剧，赫萝可能被教会带走。罗伦斯不愿舍弃赫萝，但局势已陷入四面楚歌。",
+      "active_characters": [
+        "罗伦斯",
+        "马贺特"
+      ],
+      "relationships": [
+        "罗伦斯与马贺特有商业合作关系",
+        "罗伦斯与赫萝关系密切，不愿舍弃她",
+        "马贺特对梅迪欧商行的威胁感到担忧"
+      ],
+      "notes": "本场景中未出现新的神秘人物，但梅迪欧商行的威胁和赫萝的处境仍是关键线索。"
+    },
+    {
+      "scene_id": "volume_01-c006-s001-r003",
+      "parent_scene_id": "volume_01-c006-s001",
+      "chunk_index": 3,
+      "chunk_count": 6,
+      "scene_summary": "罗伦斯提出利用崔尼银币交易作为交涉王牌，以营救赫萝。马贺特对此感到震惊，因为这涉及与崔尼国国王的特权交易，放弃这个利益如同失去骨肉。",
+      "active_characters": [
+        "罗伦斯",
+        "马贺特"
+      ],
+      "relationships": [
+        "罗伦斯与马贺特有商业合作",
+        "罗伦斯与崔尼国国王有潜在交易关系",
+        "马贺特与崔尼国国王有利益关联"
+      ],
+      "notes": "崔尼国国王虽未直接出场，但其与交易的关联性极高，是本场景中的关键神秘人物。罗伦斯与马贺特的对话揭示了交易的高风险与高回报。"
+    }
+  ],
+  "candidate_characters": [
+    {
+      "entity_id": "char_0001",
+      "display_name": "罗伦斯",
+      "aliases": [
+        "罗伦斯",
+        "罗伦斯先生"
+      ],
+      "titles": [
+        "中间人",
+        "交易者",
+        "同行",
+        "商人",
+        "小毛头",
+        "小的",
+        "市井无赖",
+        "年轻人",
+        "开店者",
+        "情报贩子",
+        "提议者",
+        "新手"
+      ],
+      "description": "一位行商人，正在与米隆商行的代表马贺特进行交易谈判。他原本期待获得两千枚银币，但实际只得到一百二十枚，感到震惊和困惑。 / 一位行商人，发现并收留了赫萝，决定与她一同旅行。 / 一位二十五岁的自力更生旅行商人，已有七年行商经验，性格泰然自若。 / 一位冷静理性的旅行商人，对赫萝的身份持怀疑态度，但仍保持互动。他注重外表整洁，对商业制度有深入理解。 / 冷静理性的旅行商人，与赫萝一同旅行。在本场景中与米隆商行的马贺特讨论梅迪欧商行的威胁，提出利用崔尼银币交易作为交涉王牌。 / 一位冷静理性的旅行商人，与赫萝一同旅行。在本场景中与米隆商行的马贺特达成交易，表现出策略性和经验。 / 正在与马贺特讨论交易细节的商人，表现出对辛香料的兴趣。 / 一位冷静理性的旅行商人，正在与米隆商行的马贺特进行交易。他表现出对开店的期待，并思考未来。 / 一位冷静理性的旅行商人，正在处理一份请款单，但对单据内容感到困惑。 / 一位行商人，正在与商行代表进行交易。他表现出冷静和策略性，询问卸货场的位置。 / 一位行商人，发现并收留了赫萝，决定与她一同旅行。他性格冷静理性，对赫萝的身份持怀疑态度，但仍保持互动。他注重外表整洁，对商业制度有深入理解。 / 冷静理性的旅行商人，与赫萝一同旅行。在本场景中试图安抚赫萝的情绪，表现出对她的关心。",
+      "speech_style": "理性、坚定、略带情绪化 / 冷静、理性，带有悔恨和自责的语气。 / 冷静、理性，语气中带有对赫萝的关心和些许担忧。 / 冷静、理性、略带失落 / 冷静、理性，对商业制度有深入理解，并能清晰地向他人解释。 / 理性、礼貌、略带谨慎。 / 理性、冷静，带有商业分析倾向。 / 理性、沉稳、略带幽默 / 理性、冷静，但因困惑而表现出急切。 / 冷静、直接、略带命令语气 / 冷静、理性、简洁 / 冷静、理性、略带幽默",
+      "relationship_hints": [
+        "与赫萝一同旅行",
+        "对赫萝的真实性持怀疑态度",
+        "与深山村落的村民有交易关系",
+        "对修道院抱有商业期望但未成功",
+        "与骑士有短暂互动",
+        "与小村落的村民有交易关系",
+        "与修道院有关联",
+        "对教会和异教徒问题有见解",
+        "与叶勒有联系",
+        "在麦田中与农夫互动",
+        "与农夫有互动",
+        "在村民中保持低调"
+      ],
+      "first_seen_scene_id": "volume_01-c000-s003-r001",
+      "latest_seen_scene_id": "volume_01-c008-s003-r002",
+      "confidence": 1.0
+    },
+    {
+      "entity_id": "char_0002",
+      "display_name": "赫萝",
+      "aliases": [
+        "赫萝"
+      ],
+      "titles": [
+        "丰收之神",
+        "咱",
+        "神秘少女",
+        "约伊兹的贤狼",
+        "贤狼"
+      ],
+      "description": "自称丰收之神的神秘少女，拥有狼的耳朵和尾巴。在本场景中协助罗伦斯，表现出对他的关心和保护。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴，行为举止非人类，表现出轻松幽默但略带威胁性的说话风格。在本场景中，她对罗伦斯的伤口进行吸血，引发旁人惊呼，并表现出悲伤的情绪。 / 自称是丰收之神的神秘少女，拥有狼的耳朵和尾巴。在本场景中逐渐显露出非人类的特征，最终完全变成一只巨大的狼。她与罗伦斯有情感交流，表现出悲伤和决绝的情绪。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴，未直接参与本场景，但罗伦斯的行动可能与她有关。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴。在本场景中制服叶勒，并要求罗伦斯提供麦子，表现出非人类的特征和威胁性。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴。在本场景中以威胁的方式向罗伦斯索要麦子，表现出非人类的特征和强大的气场。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴。她表现出轻松幽默但略带威胁性的说话风格，对罗伦斯的挽留表现出复杂的情绪。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴，说话轻松幽默但略带威胁性。在本场景中拒绝罗伦斯的挽留，表现出独立和决绝。 / 赫萝的尾巴是罗伦斯追击的目标，她最终离开罗伦斯，留下他独自面对危险。罗伦斯回忆起赫萝离去的场景，表现出对她的依赖和悔恨。 / 自称是丰收之神的神秘少女，拥有狼的耳朵和尾巴。在本场景中独自前往市场为旅行整装，表现出独立和果断的一面。 / 自称是丰收之神的少女，拥有狼的耳朵和尾巴，说话狡诈。她与罗伦斯一同旅行，表现出轻松幽默但略带威胁性的说话风格。 / 自称丰收之神的神秘少女，拥有狼的耳…",
+      "speech_style": "轻松幽默但略带威胁性，情绪化且带有调侃语气。 / 轻松幽默、略带调侃和威胁 / 轻松幽默、略带威胁性 / 轻松幽默、略带威胁性、撒娇 / 警觉、神秘 / 轻松幽默但略带威胁性 / 轻松幽默、略带调侃 / 轻松幽默但略带威胁性，语气中透露出对罗伦斯的依赖。 / 轻松幽默、略带威胁性、自信 / 轻松幽默但略带威胁性，情绪波动明显 / 轻松幽默、略带威胁、情绪波动明显 / 轻松幽默但略带威胁性，表现出自信和调皮的特质。",
+      "relationship_hints": [
+        "与罗伦斯一同旅行",
+        "被罗伦斯怀疑是否为真正的神",
+        "与叶勒有附身关系",
+        "与罗伦斯有潜在互动",
+        "与罗伦斯有互动，似乎是被他发现并收留的。",
+        "与罗伦斯有互动，但尚未明确关系",
+        "与罗伦斯互动频繁，表现出对他的信任和玩笑态度",
+        "与罗伦斯互动密切",
+        "似乎对罗伦斯的反应感到有趣",
+        "与罗伦斯有互动，似乎是被他收留的神秘女孩。",
+        "与帕斯罗村的丰收之神有关联。",
+        "与罗伦斯对话，表现出信任与互动"
+      ],
+      "first_seen_scene_id": "volume_01-c000-s003-r001",
+      "latest_seen_scene_id": "volume_01-c008-s003-r002",
+      "confidence": 1.0
+    },
+    {
+      "entity_id": "char_0020",
+      "display_name": "列支敦·马贺特",
+      "aliases": [],
+      "titles": [
+        "米隆商行帕兹欧分行",
+        "米隆商行帕兹欧分行行长",
+        "行长"
+      ],
+      "description": "米隆商行帕兹欧分行的行长，冷静且自信，与罗伦斯讨论梅迪欧商行的威胁，并试图劝说罗伦斯冷静应对。 / 米隆商行帕兹欧分行的行长，冷静且自信，与罗伦斯进行交易谈判。 / 米隆商行帕兹欧分行的行长，冷静且自信，与罗伦斯进行交易谈判，透露梅迪欧商行与杰廉的关联。 / 冷静且自信的商行代表，对罗伦斯的提议感到震惊，因为这涉及与崔尼国国王的特权交易。 / 米隆商行的代表，对罗伦斯的提议感到震惊和苦恼，表现出对赫萝事件的担忧。 / 米隆商行帕兹欧分行的行长，前来探望罗伦斯，解释救援过程，并提及赫萝的行动。 / 米隆商行帕兹欧分行的行长，冷静且自信。在本场景中向罗伦斯报告与梅迪欧商行的交易进展顺利，并透露交易细节。 / 米隆商行帕兹欧分行的行长，与罗伦斯进行交易谈判，透露银币回收和利益分配的细节。 / 米隆商行帕兹欧分行的行长，冷静且自信，与罗伦斯进行交易谈判，透露梅迪欧商行与杰廉的关联。 / 米隆商行帕兹欧分行的行长，与罗伦斯进行交易谈判，透露银币回收和利益分配的细节。 / 正在与罗伦斯进行交易谈判的商行代表，讲述宗教戏剧故事。 / 米隆商行帕兹欧分行的行长，协助罗伦斯查看请款单，并提供文件。",
+      "speech_style": "沉稳、理性，表现出对商业局势的深刻理解。 / 惊讶、犹豫、苦恼。 / 冷静、专业、分析性强 / 冷静、自信、专业，带有商行代表的权威感。 / 沉稳、专业，语气中带有对罗伦斯的歉意和对赫萝的谨慎态度。 / 自信、专业、冷静 / 冷静、自信，强调商行利益优先。 / 沉稳、自信、专业 / 沉稳、自信、带有洽谈生意时的策略性语气。 / 幽默、生动，带有戏剧性表达。 / 专业、自信、礼貌 / 专业、冷静。",
+      "relationship_hints": [
+        "代表米隆商行与罗伦斯谈判",
+        "透露梅迪欧商行的背景",
+        "与罗伦斯有交易往来",
+        "与梅迪欧商行存在竞争关系",
+        "与罗伦斯有商业往来",
+        "对梅迪欧商行有警惕",
+        "与罗伦斯有合作关系",
+        "对梅迪欧商行的行动表示担忧",
+        "与罗伦斯有交易关系，但选择利益优先。",
+        "对赫萝的处境表示间接责任，但不直接干预。",
+        "与罗伦斯有商业合作关系，但立场优先考虑商行利益",
+        "与罗伦斯有交易关系"
+      ],
+      "first_seen_scene_id": "volume_01-c005-s002-r001",
+      "latest_seen_scene_id": "volume_01-c008-s002-r005",
+      "confidence": 0.95
+    },
+    {
+      "entity_id": "char_0030",
+      "display_name": "米隆商行",
+      "aliases": [],
+      "titles": [
+        "合作方",
+        "商行",
+        "竞争对手"
+      ],
+      "description": "罗伦斯提出与之合作，抢先与崔尼国王交涉，以阻止梅迪欧商行取得特权。 / 南方国家大商人经营的商行分行，与国王签订合约，但因国王的权势地位而被迫接受不合理条件。",
+      "speech_style": "未直接发言，但其策略被罗伦斯推测为「回收更多银币以取得谈判优势」。 / 未直接说话，但通过被动接受国王的策略体现其处境。",
+      "relationship_hints": [
+        "与罗伦斯有交易关系",
+        "与梅迪欧商行竞争",
+        "试图取得特权",
+        "与国王存在权力关系",
+        "与南方国家大商人有合作关系"
+      ],
+      "first_seen_scene_id": "volume_01-c006-s001-r004",
+      "latest_seen_scene_id": "volume_01-c008-s001-r005",
+      "confidence": 0.9
+    },
+    {
+      "entity_id": "char_0028",
+      "display_name": "梅迪欧商行",
+      "aliases": [],
+      "titles": [
+        "商行",
+        "竞争对手"
+      ],
+      "description": "试图通过回收崔尼银币与国王交涉，以取得特权的商行。",
+      "speech_style": "未直接发言，但策略被罗伦斯分析为「回收银币并换取特权」。",
+      "relationship_hints": [
+        "与崔尼国王有交易关系",
+        "与米隆商行竞争",
+        "试图取得特权"
+      ],
+      "first_seen_scene_id": "volume_01-c006-s001-r004",
+      "latest_seen_scene_id": "volume_01-c006-s001-r004",
+      "confidence": 0.85
+    },
+    {
+      "entity_id": "char_0003",
+      "display_name": "骑士",
+      "aliases": [],
+      "titles": [],
+      "description": "身穿银色盔甲的骑士，站在修道院附近，态度傲慢，与罗伦斯对话。 / 身穿银色盔甲的下级骑士，态度傲慢但容易被诱惑。他与罗伦斯短暂互动后放行。 / 一位年轻骑士，身穿银色盔甲，态度傲慢但容易被诱惑。他因罗伦斯递给他蜂蜜糖而态度缓和，并询问关于异教徒祭典的消息。 / 身穿银色盔甲的年轻骑士，态度傲慢但容易被诱惑。他因罗伦斯递给他蜂蜜糖而态度缓和，并询问关于异教徒祭典的消息。",
+      "speech_style": "命令式、带有优越感 / 傲慢、迟疑、略带犹豫 / 正式、略带傲慢 / 傲慢、直接",
+      "relationship_hints": [
+        "与修道院有关联",
+        "可能是站岗的骑士之一",
+        "与罗伦斯有短暂互动",
+        "与异教徒祭典有关",
+        "对教会和异教徒问题敏感"
+      ],
+      "first_seen_scene_id": "volume_01-c002-s001-r002",
+      "latest_seen_scene_id": "volume_01-c002-s001-r005",
+      "confidence": 0.85
+    }
+  ],
+  "candidate_mysteries": [
+    {
+      "mystery_id": "mystery_volume_01_c006_s001_r001_梅迪欧商行的人",
+      "temporary_name": "梅迪欧商行的人",
+      "description": "试图破坏米隆商行帕兹欧分行的不法分子，与罗伦斯的交易存在竞争关系。",
+      "evidence": [
+        "volume_01-c006-s001-p002184",
+        "volume_01-d001010"
+      ],
+      "source_scene_id": "volume_01-c006-s001-r001",
+      "confidence": 0.75
+    },
+    {
+      "mystery_id": "mystery_volume_01_c006_s001_r003_崔尼国国王",
+      "temporary_name": "崔尼国国王",
+      "description": "未直接出场，但被提及为崔尼银币交易的关键人物，拥有特权，是巨大利益的来源。",
+      "evidence": [
+        "volume_01-c006-s001-p002219",
+        "volume_01-c006-s001-p002220"
+      ],
+      "source_scene_id": "volume_01-c006-s001-r003",
+      "confidence": 0.8
+    },
+    {
+      "mystery_id": "mystery_volume_01_c008_s001_r002_赫萝",
+      "temporary_name": "赫萝",
+      "description": "罗伦斯的旅伴，拥有狼的特征，曾在地下道中护送罗伦斯，目前下落不明。",
+      "evidence": [
+        "volume_01-c008-s001-p002960",
+        "volume_01-c008-s001-p002961",
+        "volume_01-c008-s001-p002963"
+      ],
+      "source_scene_id": "volume_01-c008-s001-r002",
+      "confidence": 0.85
+    },
+    {
+      "mystery_id": "mystery_volume_01_c002_s002_r001_赫萝",
+      "temporary_name": "赫萝",
+      "description": "传说中的丰收之神，被村民称为狼，是祭典的核心象征。",
+      "evidence": [
+        "volume_01-c002-s002-p000160",
+        "volume_01-c002-s002-p000164"
+      ],
+      "source_scene_id": "volume_01-c002-s002-r001",
+      "confidence": 0.8
+    },
+    {
+      "mystery_id": "mystery_volume_01_c002_s002_r003_赫萝",
+      "temporary_name": "赫萝",
+      "description": "虽然未直接出现，但被提及为祭典的核心人物，与罗伦斯有情感牵连。",
+      "evidence": [
+        "volume_01-c002-s002-p000187",
+        "volume_01-c002-s002-p000195"
+      ],
+      "source_scene_id": "volume_01-c002-s002-r003",
+      "confidence": 0.75
+    }
+  ]
+}

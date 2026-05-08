@@ -1,0 +1,183 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000637",
+      "speaker_entity_id": "char_0019",
+      "speaker_display": "怀兹",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0019",
+          "display": "怀兹",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "对话发生在罗伦斯与怀兹重逢的场景中，怀兹是已知角色，且是对话的发起者。",
+        "对话内容为寒暄性质，符合怀兹与罗伦斯的互动风格。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000638",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "对话是罗伦斯对怀兹问候的回应，符合对话轮次。",
+        "罗伦斯是场景中的主要角色，对话内容简短且符合其性格。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000639",
+      "speaker_entity_id": "char_0019",
+      "speaker_display": "怀兹",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0019",
+          "display": "怀兹",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "怀兹在对话中表现出轻松幽默的语气，符合其性格。",
+        "对话内容提到“师父的口头禅”，暗示怀兹与师父有联系，符合其背景。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000640",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "对话是罗伦斯对怀兹的回应，符合对话轮次。",
+        "罗伦斯提到“换钱”，符合其作为商人与怀兹的互动场景。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000641",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "对话是罗伦斯对怀兹的进一步回应，符合对话轮次。",
+        "罗伦斯提到“有事想请你帮”，符合其与怀兹的互动风格。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000642",
+      "speaker_entity_id": "char_0019",
+      "speaker_display": "怀兹",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0019",
+          "display": "怀兹",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "怀兹对罗伦斯身旁的神秘女孩表现出好奇，符合其性格。",
+        "对话内容直接询问女孩身份，符合怀兹的互动方式。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000643",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "对话是罗伦斯对怀兹提问的回应，符合对话轮次。",
+        "罗伦斯提到“从帕斯罗村来这里的路上捡到的”，符合其叙述风格。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000644",
+      "speaker_entity_id": "char_0019",
+      "speaker_display": "怀兹",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0019",
+          "display": "怀兹",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "对话是怀兹对罗伦斯回答的进一步反应，符合对话轮次。",
+        "怀兹表现出惊讶和追问，符合其性格。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，罗伦斯与怀兹交替发言，符合两人对话的节奏。神秘女孩尚未说话，因此未被标注为说话人。"
+}
+```

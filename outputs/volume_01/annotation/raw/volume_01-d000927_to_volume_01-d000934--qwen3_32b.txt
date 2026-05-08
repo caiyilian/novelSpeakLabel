@@ -1,0 +1,191 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000927",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "对话中使用了「咱」自称，符合赫萝的说话风格。",
+        "提到「耳朵及尾巴」，这是赫萝的特征。",
+        "对话内容是劝说罗伦斯不要兵分两路，符合赫萝在场景中的主导角色。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000928",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "对话内容是对赫萝的劝阻，符合罗伦斯的立场。",
+        "提到「米隆商行」，这是罗伦斯的交易对象。",
+        "语气中带有担忧，符合罗伦斯对赫萝安全的关心。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000929",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "使用「咱」自称，符合赫萝的说话风格。",
+        "提到「耳朵及尾巴」，这是赫萝的特征。",
+        "对话内容是继续劝说罗伦斯，符合赫萝的主导角色。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000930",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "使用「咱」自称，符合赫萝的说话风格。",
+        "提到「耳朵及尾巴」，这是赫萝的特征。",
+        "提到「贤狼赫萝」，明确表明身份。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000931",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "使用「咱」自称，符合赫萝的说话风格。",
+        "提到「汝的梦想」，这是赫萝对罗伦斯的称呼。",
+        "对话内容是鼓励罗伦斯，符合赫萝的主导角色。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000932",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "对话内容是对赫萝的反驳，符合罗伦斯的立场。",
+        "提到「一旦被捉到，他们肯定会杀了你」，这是罗伦斯对赫萝安全的担忧。",
+        "语气中带有急切，符合罗伦斯的理性商人性格。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000933",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "使用「咱」自称，符合赫萝的说话风格。",
+        "提到「孤独可是要人命」，这是赫萝的典型表达。",
+        "对话内容是继续劝说罗伦斯，符合赫萝的主导角色。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000934",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "使用「咱」自称，符合赫萝的说话风格。",
+        "提到「汝脑筋转得快」，这是赫萝对罗伦斯的称呼。",
+        "对话内容是鼓励罗伦斯，符合赫萝的主导角色。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，赫萝和罗伦斯交替发言，符合场景中两人讨论策略的互动模式。"
+}
+```

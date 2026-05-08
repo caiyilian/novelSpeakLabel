@@ -1,0 +1,152 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000999",
+      "speaker_entity_id": "char_0027",
+      "speaker_display": "米隆商行人员",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0027",
+          "display": "米隆商行人员",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "上下文提到‘有个米隆商行的人走进房间’，紧接着该台词出现，符合说话人身份。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001000",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "罗伦斯是当前场景的主要角色之一，且上下文显示他正在与马贺特和商行人员互动，符合说话人身份。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001001",
+      "speaker_entity_id": "char_0027",
+      "speaker_display": "米隆商行人员",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0027",
+          "display": "米隆商行人员",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "该台词紧接在商行人员递出信件之后，符合其说话人身份。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001002",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "罗伦斯对信封内容表现出关注，该台词是对信封内容的反应，符合其说话人身份。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001003",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "罗伦斯请求查看信件，该台词是其请求的延续，符合其说话人身份。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001004",
+      "speaker_entity_id": "mystery_volume_01_c005_s008_r002_信件的发送者",
+      "speaker_display": "信件的发送者",
+      "speaker_status": "mystery",
+      "confidence": 0.7,
+      "candidate_speakers": [
+        {
+          "entity_id": "mystery_volume_01_c005_s008_r002_信件的发送者",
+          "display": "信件的发送者",
+          "status": "mystery",
+          "score": 0.7
+        }
+      ],
+      "evidence": [
+        "该台词是信件内容，而非现场人物所说，因此应归为信件发送者。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001005",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "罗伦斯在场景中明确说出赫萝的身份，该台词是其坦白的一部分，符合其说话人身份。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，主要由罗伦斯和米隆商行人员交替发言，信件内容为神秘发送者所写，罗伦斯最后坦白赫萝身份。"
+}

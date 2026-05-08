@@ -1,0 +1,183 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000958",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.98,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.98
+        }
+      ],
+      "evidence": [
+        "上下文显示罗伦斯正在向米隆商行的马贺特请求协助，符合说话人身份",
+        "台词中提到「我的伙伴」，与赫萝的称呼一致，而赫萝是罗伦斯的伙伴"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000959",
+      "speaker_entity_id": "char_0020",
+      "speaker_display": "列支敦·马贺特",
+      "speaker_status": "known",
+      "confidence": 0.99,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0020",
+          "display": "列支敦·马贺特",
+          "status": "known",
+          "score": 0.99
+        }
+      ],
+      "evidence": [
+        "上下文显示这是马贺特对罗伦斯的回应",
+        "对话轮次符合「提问-回应」结构，马贺特作为回应者合理"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000960",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.98,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.98
+        }
+      ],
+      "evidence": [
+        "对话轮次显示这是对马贺特提问的回应",
+        "罗伦斯是当前对话的主要发起者，符合说话人身份"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000961",
+      "speaker_entity_id": "char_0020",
+      "speaker_display": "列支敦·马贺特",
+      "speaker_status": "known",
+      "confidence": 0.99,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0020",
+          "display": "列支敦·马贺特",
+          "status": "known",
+          "score": 0.99
+        }
+      ],
+      "evidence": [
+        "上下文显示这是马贺特对罗伦斯的进一步回应",
+        "对话轮次符合「提问-回应」结构，马贺特作为回应者合理"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000962",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.98,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.98
+        }
+      ],
+      "evidence": [
+        "对话轮次显示这是对马贺特陈述的回应",
+        "罗伦斯是当前对话的主要发起者，符合说话人身份"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000963",
+      "speaker_entity_id": "char_0020",
+      "speaker_display": "列支敦·马贺特",
+      "speaker_status": "known",
+      "confidence": 0.99,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0020",
+          "display": "列支敦·马贺特",
+          "status": "known",
+          "score": 0.99
+        }
+      ],
+      "evidence": [
+        "上下文显示这是马贺特对罗伦斯的进一步回应",
+        "对话轮次符合「提问-回应」结构，马贺特作为回应者合理"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000964",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.98,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.98
+        }
+      ],
+      "evidence": [
+        "对话轮次显示这是对马贺特提问的回应",
+        "罗伦斯是当前对话的主要发起者，符合说话人身份"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000965",
+      "speaker_entity_id": "char_0020",
+      "speaker_display": "列支敦·马贺特",
+      "speaker_status": "known",
+      "confidence": 0.99,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0020",
+          "display": "列支敦·马贺特",
+          "status": "known",
+          "score": 0.99
+        }
+      ],
+      "evidence": [
+        "上下文显示这是马贺特对罗伦斯的进一步回应",
+        "对话轮次符合「提问-回应」结构，马贺特作为回应者合理"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，罗伦斯与马贺特交替发言，符合「请求-回应」的谈判结构。所有台词均符合两人对话的上下文逻辑。"
+}
+```

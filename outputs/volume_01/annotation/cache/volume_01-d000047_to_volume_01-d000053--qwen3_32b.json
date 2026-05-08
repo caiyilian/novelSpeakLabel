@@ -1,0 +1,152 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000047",
+      "speaker_entity_id": "mystery_volume_01_c002_s002_r004_神秘生物",
+      "speaker_display": "神秘生物",
+      "speaker_status": "mystery",
+      "confidence": 0.7,
+      "candidate_speakers": [
+        {
+          "entity_id": "mystery_volume_01_c002_s002_r004_神秘生物",
+          "display": "神秘生物",
+          "status": "mystery",
+          "score": 0.7
+        }
+      ],
+      "evidence": [
+        "对话前文提到掀开麻布时出现难以置信的景象，暗示非人类存在"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000048",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "罗伦斯是本场景中唯一已知的主动角色，且上下文显示他试图叫醒神秘女孩"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000049",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "连续对话，罗伦斯继续对神秘女孩说话，符合对话轮次"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000050",
+      "speaker_entity_id": "mystery_volume_01_c002_s002_r005_神秘女孩",
+      "speaker_display": "神秘女孩",
+      "speaker_status": "mystery",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {
+          "entity_id": "mystery_volume_01_c002_s002_r005_神秘女孩",
+          "display": "神秘女孩",
+          "status": "mystery",
+          "score": 0.8
+        }
+      ],
+      "evidence": [
+        "神秘女孩在罗伦斯的马车上睡觉，对话是她对罗伦斯的回应"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000051",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "罗伦斯继续对神秘女孩说话，符合对话轮次"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000052",
+      "speaker_entity_id": "mystery_volume_01_c002_s002_r006_神秘女孩",
+      "speaker_display": "神秘女孩",
+      "speaker_status": "mystery",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {
+          "entity_id": "mystery_volume_01_c002_s002_r006_神秘女孩",
+          "display": "神秘女孩",
+          "status": "mystery",
+          "score": 0.8
+        }
+      ],
+      "evidence": [
+        "神秘女孩继续回应罗伦斯，对话内容符合她逐渐清醒的状态"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000053",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "罗伦斯继续对神秘女孩说话，符合对话轮次"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，罗伦斯与神秘女孩交替对话，符合上下文逻辑。神秘女孩身份尚未明确，但已与赫萝的描述部分重合，需后续确认是否为同一角色。"
+}

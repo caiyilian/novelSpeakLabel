@@ -1,0 +1,185 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000481",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "罗伦斯是场景中已知的说话角色，且上下文显示他正在与赫萝和鉴定员互动。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000482",
+      "speaker_entity_id": "char_0016",
+      "speaker_display": "鉴定员",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0016",
+          "display": "鉴定员",
+          "status": "known",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "该台词出现在赫萝将貂皮交给鉴定员之后，符合鉴定员对皮草进行评价的语境。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000483",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "罗伦斯是场景中已知的说话角色，且上下文显示他正在与赫萝和鉴定员互动。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000484",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "赫萝在场景中主导了交易气氛，并以幽默方式评论貂皮，符合该台词的风格。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000485",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "赫萝在场景中主导了交易气氛，并以幽默方式评论貂皮，符合该台词的风格。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000486",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "赫萝在场景中主导了交易气氛，并以幽默方式评论貂皮，符合该台词的风格。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000487",
+      "speaker_entity_id": "mystery_volume_01_c004_s003_r006_神秘提问者",
+      "speaker_display": "神秘提问者",
+      "speaker_status": "mystery",
+      "confidence": 0.6,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0017",
+          "display": "男子",
+          "status": "known",
+          "score": 0.7
+        },
+        {
+          "entity_id": "mystery_volume_01_c004_s003_r006_神秘提问者",
+          "display": "神秘提问者",
+          "status": "mystery",
+          "score": 0.6
+        }
+      ],
+      "evidence": [
+        "该台词出现在男子嗅完貂皮之后，但未明确指出说话人，可能是男子本人，也可能是另一人。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    },
+    {
+      "dialogue_id": "volume_01-d000488",
+      "speaker_entity_id": "mystery_volume_01_c004_s003_r006_神秘回答者",
+      "speaker_display": "神秘回答者",
+      "speaker_status": "mystery",
+      "confidence": 0.6,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0017",
+          "display": "男子",
+          "status": "known",
+          "score": 0.7
+        },
+        {
+          "entity_id": "mystery_volume_01_c004_s003_r006_神秘回答者",
+          "display": "神秘回答者",
+          "status": "mystery",
+          "score": 0.6
+        }
+      ],
+      "evidence": [
+        "该台词出现在男子嗅完貂皮之后，但未明确指出说话人，可能是男子本人，也可能是另一人。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    }
+  ],
+  "window_notes": "对话轮次显示罗伦斯、赫萝和鉴定员交替发言，最后两句说话人不明确，可能是男子本人或另一人，需进一步确认。"
+}

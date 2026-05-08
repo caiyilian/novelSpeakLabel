@@ -1,0 +1,530 @@
+你是轻小说说话人标注项目的阶段 2：正式标注助手。
+你的任务是判断输入 target_dialogues 中每一句台词的说话人，不要改写原文。
+必须把这些台词当作同一个连续片段来判断，优先保持对话轮次和叙述线索的一致性。
+
+规则：
+1. 只输出严格 JSON，不要 Markdown，不要解释性前后缀。
+2. 如果说话人是候选角色，speaker_entity_id 必须使用 candidate_characters 里的 entity_id，speaker_status 填 known。
+3. 如果说话人像某个未知人物，speaker_entity_id 使用 candidate_mysteries 里的 mystery_id，speaker_status 填 mystery。
+4. 如果只是无法追踪的路人/群体，speaker_status 填 npc，speaker_entity_id 可为空或使用 npc:简短称呼。
+5. 证据不足时不要硬猜，speaker_status 填 ambiguous 或 review，并把 needs_review 设为 true。
+6. candidate_speakers 至少列出 1 个候选；如果无法判断，列出最可能的候选和不确定原因。
+7. confidence 使用 0 到 1 之间的小数，表示你对最终判断的把握。
+8. 不要只因为台词里提到某个名字、职业、地点，就把说话人标成那个实体；被称呼的人通常不是说话人。
+9. 连续问答、交易寒暄、命令/回答等场景要按上下句轮次判断；同一人连续说话必须有叙述或语气证据支持。
+10. 如果当前上下文显示某角色还没有登场，不要因为角色库或后文记忆里有这个角色就提前标给他/她。
+
+输出 JSON 结构：
+{
+  "annotations": [
+    {
+      "dialogue_id": "必须来自 target_dialogue_ids",
+      "speaker_entity_id": "string",
+      "speaker_display": "string",
+      "speaker_status": "known|mystery|npc|ambiguous|review",
+      "confidence": 0.0,
+      "candidate_speakers": [
+        {"entity_id": "string", "display": "string", "status": "known|mystery|npc|ambiguous|review", "score": 0.0}
+      ],
+      "evidence": ["短证据，不要大段复制原文"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "可选，简短说明整体轮次判断"
+}
+必须为 target_dialogue_ids 中每个 dialogue_id 输出且只输出一条 annotation。
+
+输入 JSON：
+{
+  "volume": {
+    "volume_id": "volume_01",
+    "volume": 1
+  },
+  "target_dialogue_ids": [
+    "volume_01-d000825",
+    "volume_01-d000826",
+    "volume_01-d000827",
+    "volume_01-d000828",
+    "volume_01-d000829",
+    "volume_01-d000830",
+    "volume_01-d000831",
+    "volume_01-d000832"
+  ],
+  "dialogues": [
+    {
+      "dialogue_id": "volume_01-d000825",
+      "dialogue_index": 824,
+      "window_position": 1,
+      "chapter_id": "volume_01-c005",
+      "chapter_title": "第四幕",
+      "scene_id": "volume_01-c005-s003",
+      "paragraph_id": "volume_01-c005-s003-p001785",
+      "paragraph_index": 1784,
+      "local_dialogue_index": 1,
+      "text": "你不是只用麻绳扎起来，完全没有梳头发吗？",
+      "quote_text": "「你不是只用麻绳扎起来，完全没有梳头发吗？」",
+      "paragraph_text": "「你不是只用麻绳扎起来，完全没有梳头发吗？」",
+      "char_start": 0,
+      "char_end": 22
+    },
+    {
+      "dialogue_id": "volume_01-d000826",
+      "dialogue_index": 825,
+      "window_position": 2,
+      "chapter_id": "volume_01-c005",
+      "chapter_title": "第四幕",
+      "scene_id": "volume_01-c005-s003",
+      "paragraph_id": "volume_01-c005-s003-p001786",
+      "paragraph_index": 1785,
+      "local_dialogue_index": 1,
+      "text": "头发不重要啊。咱的确想要一把梳子，不过是给尾巴用的。",
+      "quote_text": "「头发不重要啊。咱的确想要一把梳子，不过是给尾巴用的。」",
+      "paragraph_text": "「头发不重要啊。咱的确想要一把梳子，不过是给尾巴用的。」",
+      "char_start": 0,
+      "char_end": 28
+    },
+    {
+      "dialogue_id": "volume_01-d000827",
+      "dialogue_index": 826,
+      "window_position": 3,
+      "chapter_id": "volume_01-c005",
+      "chapter_title": "第四幕",
+      "scene_id": "volume_01-c005-s003",
+      "paragraph_id": "volume_01-c005-s003-p001788",
+      "paragraph_index": 1787,
+      "local_dialogue_index": 1,
+      "text": "……嗯，既然你这么说，那就这样吧。",
+      "quote_text": "「……嗯，既然你这么说，那就这样吧。」",
+      "paragraph_text": "「……嗯，既然你这么说，那就这样吧。」",
+      "char_start": 0,
+      "char_end": 19
+    },
+    {
+      "dialogue_id": "volume_01-d000828",
+      "dialogue_index": 827,
+      "window_position": 4,
+      "chapter_id": "volume_01-c005",
+      "chapter_title": "第四幕",
+      "scene_id": "volume_01-c005-s003",
+      "paragraph_id": "volume_01-c005-s003-p001793",
+      "paragraph_index": 1792,
+      "local_dialogue_index": 1,
+      "text": "那，汝啊。",
+      "quote_text": "「那，汝啊。」",
+      "paragraph_text": "「那，汝啊。」",
+      "char_start": 0,
+      "char_end": 7
+    },
+    {
+      "dialogue_id": "volume_01-d000829",
+      "dialogue_index": 828,
+      "window_position": 5,
+      "chapter_id": "volume_01-c005",
+      "chapter_title": "第四幕",
+      "scene_id": "volume_01-c005-s003",
+      "paragraph_id": "volume_01-c005-s003-p001794",
+      "paragraph_index": 1793,
+      "local_dialogue_index": 1,
+      "text": "嗯？",
+      "quote_text": "「嗯？」",
+      "paragraph_text": "「嗯？」",
+      "char_start": 0,
+      "char_end": 4
+    },
+    {
+      "dialogue_id": "volume_01-d000830",
+      "dialogue_index": 829,
+      "window_position": 6,
+      "chapter_id": "volume_01-c005",
+      "chapter_title": "第四幕",
+      "scene_id": "volume_01-c005-s003",
+      "paragraph_id": "volume_01-c005-s003-p001795",
+      "paragraph_index": 1794,
+      "local_dialogue_index": 1,
+      "text": "什么时候要去买梳子？",
+      "quote_text": "「什么时候要去买梳子？」",
+      "paragraph_text": "「什么时候要去买梳子？」",
+      "char_start": 0,
+      "char_end": 12
+    },
+    {
+      "dialogue_id": "volume_01-d000831",
+      "dialogue_index": 830,
+      "window_position": 7,
+      "chapter_id": "volume_01-c005",
+      "chapter_title": "第四幕",
+      "scene_id": "volume_01-c005-s003",
+      "paragraph_id": "volume_01-c005-s003-p001798",
+      "paragraph_index": 1797,
+      "local_dialogue_index": 1,
+      "text": "你不是不需要梳子吗？",
+      "quote_text": "「你不是不需要梳子吗？」",
+      "paragraph_text": "「你不是不需要梳子吗？」",
+      "char_start": 0,
+      "char_end": 12
+    },
+    {
+      "dialogue_id": "volume_01-d000832",
+      "dialogue_index": 831,
+      "window_position": 8,
+      "chapter_id": "volume_01-c005",
+      "chapter_title": "第四幕",
+      "scene_id": "volume_01-c005-s003",
+      "paragraph_id": "volume_01-c005-s003-p001799",
+      "paragraph_index": 1798,
+      "local_dialogue_index": 1,
+      "text": "咱没有说不要梳子。咱想要有梳子。可以的话，咱要梳齿比较密的。",
+      "quote_text": "「咱没有说不要梳子。咱想要有梳子。可以的话，咱要梳齿比较密的。」",
+      "paragraph_text": "「咱没有说不要梳子。咱想要有梳子。可以的话，咱要梳齿比较密的。」",
+      "char_start": 0,
+      "char_end": 32
+    }
+  ],
+  "context": {
+    "paragraphs": [
+      {
+        "paragraph_id": "volume_01-c005-s003-p001782",
+        "paragraph_index": 1781,
+        "text": "然而，赫萝一听到罗伦斯说的话，突然一脸无趣地从鼻子呼了口气，让原本快要挺起的身子又瘫在桌上。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c005-s003-p001783",
+        "paragraph_index": 1782,
+        "text": "「什么嘛，是说头发啊。」",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c005-s003-p001784",
+        "paragraph_index": 1783,
+        "text": "然后简短地说道。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c005-s003-p001785",
+        "paragraph_index": 1784,
+        "text": "「你不是只用麻绳扎起来，完全没有梳头发吗？」",
+        "target_dialogue_ids": [
+          "volume_01-d000825"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c005-s003-p001786",
+        "paragraph_index": 1785,
+        "text": "「头发不重要啊。咱的确想要一把梳子，不过是给尾巴用的。」",
+        "target_dialogue_ids": [
+          "volume_01-d000826"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c005-s003-p001787",
+        "paragraph_index": 1786,
+        "text": "赫萝说完后，传来唰唰唰的声响。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c005-s003-p001788",
+        "paragraph_index": 1787,
+        "text": "「……嗯，既然你这么说，那就这样吧。」",
+        "target_dialogue_ids": [
+          "volume_01-d000827"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c005-s003-p001789",
+        "paragraph_index": 1788,
+        "text": "罗伦斯是真心认为赫萝的滑顺秀发很漂亮，而且长发本身也非常珍贵。这是因为除了能够每天冲热水呵护秀发的贵族之外，普通人很难把头发留长。长而美丽的头发可说是高贵的象征。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c005-s003-p001790",
+        "paragraph_index": 1789,
+        "text": "因此罗伦斯也像世上老百姓一样，未能免俗地对女性美丽的长发丝毫没有抵抗力。然而，赫萝尽管拥有一头贵族都少有的美丽长发，却似乎对其价值全然无知。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c005-s003-p001791",
+        "paragraph_index": 1790,
+        "text": "赫萝如果不是用外套把整个头盖住，而是戴上面纱来遮住狼耳朵，身上如果不是穿旅行商人的粗俗衣物，而是长袍的话，相信赫萝一定能够比美吟游诗人的诗中出现的美丽修女。不过，罗伦斯当然没胆告诉赫萝这点。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c005-s003-p001792",
+        "paragraph_index": 1791,
+        "text": "如果说了出来，不知道会被赫萝如何消遣。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c005-s003-p001793",
+        "paragraph_index": 1792,
+        "text": "「那，汝啊。」",
+        "target_dialogue_ids": [
+          "volume_01-d000828"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c005-s003-p001794",
+        "paragraph_index": 1793,
+        "text": "「嗯？」",
+        "target_dialogue_ids": [
+          "volume_01-d000829"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c005-s003-p001795",
+        "paragraph_index": 1794,
+        "text": "「什么时候要去买梳子？」",
+        "target_dialogue_ids": [
+          "volume_01-d000830"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c005-s003-p001796",
+        "paragraph_index": 1795,
+        "text": "赫萝趴在桌上仰头看着罗伦斯说道，她眼中散发出期待的光芒。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c005-s003-p001797",
+        "paragraph_index": 1796,
+        "text": "罗伦斯稍微低着头，别无他意地反问说：",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c005-s003-p001798",
+        "paragraph_index": 1797,
+        "text": "「你不是不需要梳子吗？」",
+        "target_dialogue_ids": [
+          "volume_01-d000831"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c005-s003-p001799",
+        "paragraph_index": 1798,
+        "text": "「咱没有说不要梳子。咱想要有梳子。可以的话，咱要梳齿比较密的。」",
+        "target_dialogue_ids": [
+          "volume_01-d000832"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c005-s003-p001800",
+        "paragraph_index": 1799,
+        "text": "罗伦斯心想不梳头买梳子也没有用，尾巴的毛应该要用毛织品师傅在用的毛刷才对。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c005-s003-p001801",
+        "paragraph_index": 1800,
+        "text": "「我买把毛刷给你好了，要不然我介绍好的毛织品师傅给你如何？」",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c005-s003-p001802",
+        "paragraph_index": 1801,
+        "text": "如果要处理皮草，当然是由内行人拿专用的道具来处理比较好。罗伦斯半认真半开玩笑地说完后，朝正注视着自己的赫萝一看，不禁噤声。",
+        "target_dialogue_ids": []
+      }
+    ]
+  },
+  "scene_memory": [
+    {
+      "scene_id": "volume_01-c005-s003-r002",
+      "parent_scene_id": "volume_01-c005-s003",
+      "chunk_index": 2,
+      "chunk_count": 6,
+      "scene_summary": "赫萝与罗伦斯在对话中互相调侃，赫萝表现出狡黠和轻松幽默的语气，而罗伦斯则试图以理性回应，同时也在报一箭之仇。赫萝的尾巴和耳朵暴露了她的情绪，暗示她并非完全能控制自己的狼性特征。",
+      "active_characters": [
+        "赫萝",
+        "罗伦斯"
+      ],
+      "relationships": [
+        "赫萝与罗伦斯之间存在亲密但带有调侃和控制欲的关系",
+        "赫萝表现出对罗伦斯的挑衅和情绪波动，暗示她并非完全能控制自己的狼性"
+      ],
+      "notes": "赫萝的尾巴和耳朵在对话中暴露了她的情绪，暗示她并非完全能控制自己的狼性特征。罗伦斯则试图以理性回应，同时也在报一箭之仇，表现出他对赫萝的复杂情感。"
+    },
+    {
+      "scene_id": "volume_01-c005-s003-r003",
+      "parent_scene_id": "volume_01-c005-s003",
+      "chunk_index": 3,
+      "chunk_count": 6,
+      "scene_summary": "赫萝与罗伦斯在对话中讨论头发与梳子的问题。赫萝表示她想要一把梳子，但不是为了自己的头发，而是为了她的尾巴。罗伦斯则对赫萝的美丽长发表示欣赏，但也感叹她对自身价值的无知。",
+      "active_characters": [
+        "赫萝",
+        "罗伦斯"
+      ],
+      "relationships": [
+        "赫萝与罗伦斯是长期旅行伙伴",
+        "罗伦斯对赫萝的外貌和行为表现出复杂的情感"
+      ],
+      "notes": "本场景中没有出现尚未命名但可追踪的神秘人物。赫萝和罗伦斯的互动展现了他们之间长期旅行关系的轻松与调侃氛围。"
+    },
+    {
+      "scene_id": "volume_01-c005-s003-r004",
+      "parent_scene_id": "volume_01-c005-s003",
+      "chunk_index": 4,
+      "chunk_count": 6,
+      "scene_summary": "罗伦斯与赫萝在商店中讨论购买梳子和毛刷的问题。赫萝因罗伦斯将她的尾巴与普通皮草相提并论而感到愤怒，表现出孩子气的一面，但最终显得可爱。罗伦斯则以轻松的态度应对赫萝的情绪。",
+      "active_characters": [
+        "罗伦斯",
+        "赫萝"
+      ],
+      "relationships": [
+        "罗伦斯与赫萝关系亲密，经常互动",
+        "赫萝对罗伦斯的言行敏感，表现出情绪波动"
+      ],
+      "notes": "赫萝在本场景中表现出孩子气的一面，但整体仍保持神秘感。罗伦斯对赫萝的情绪变化表现出包容和理解。两人互动频繁，关系亲密。"
+    },
+    {
+      "scene_id": "volume_01-c005-s003-r005",
+      "parent_scene_id": "volume_01-c005-s003",
+      "chunk_index": 5,
+      "chunk_count": 6,
+      "scene_summary": "罗伦斯和赫萝在旅馆中休息。赫萝因宿醉感到不适，罗伦斯照顾她并继续规划自己的开店梦想。赫萝逐渐恢复体力，但抱怨食物难吃。",
+      "active_characters": [
+        "罗伦斯",
+        "赫萝"
+      ],
+      "relationships": [
+        "罗伦斯与赫萝关系亲密，表现出照顾与调侃的互动。",
+        "罗伦斯与店老板有间接互动。"
+      ],
+      "notes": "赫萝表现出宿醉症状，罗伦斯照顾她并继续规划开店计划。场景中未出现新神秘人物。"
+    }
+  ],
+  "candidate_characters": [
+    {
+      "entity_id": "char_0001",
+      "display_name": "罗伦斯",
+      "aliases": [
+        "罗伦斯",
+        "罗伦斯先生"
+      ],
+      "titles": [
+        "中间人",
+        "交易者",
+        "同行",
+        "商人",
+        "小毛头",
+        "小的",
+        "市井无赖",
+        "年轻人",
+        "开店者",
+        "情报贩子",
+        "提议者",
+        "新手"
+      ],
+      "description": "一位行商人，正在与米隆商行的代表马贺特进行交易谈判。他原本期待获得两千枚银币，但实际只得到一百二十枚，感到震惊和困惑。 / 一位行商人，发现并收留了赫萝，决定与她一同旅行。 / 一位二十五岁的自力更生旅行商人，已有七年行商经验，性格泰然自若。 / 一位冷静理性的旅行商人，对赫萝的身份持怀疑态度，但仍保持互动。他注重外表整洁，对商业制度有深入理解。 / 冷静理性的旅行商人，与赫萝一同旅行。在本场景中与米隆商行的马贺特讨论梅迪欧商行的威胁，提出利用崔尼银币交易作为交涉王牌。 / 一位冷静理性的旅行商人，与赫萝一同旅行。在本场景中与米隆商行的马贺特达成交易，表现出策略性和经验。 / 正在与马贺特讨论交易细节的商人，表现出对辛香料的兴趣。 / 一位冷静理性的旅行商人，正在与米隆商行的马贺特进行交易。他表现出对开店的期待，并思考未来。 / 一位冷静理性的旅行商人，正在处理一份请款单，但对单据内容感到困惑。 / 一位行商人，正在与商行代表进行交易。他表现出冷静和策略性，询问卸货场的位置。 / 一位行商人，发现并收留了赫萝，决定与她一同旅行。他性格冷静理性，对赫萝的身份持怀疑态度，但仍保持互动。他注重外表整洁，对商业制度有深入理解。 / 冷静理性的旅行商人，与赫萝一同旅行。在本场景中试图安抚赫萝的情绪，表现出对她的关心。",
+      "speech_style": "理性、坚定、略带情绪化 / 冷静、理性，带有悔恨和自责的语气。 / 冷静、理性，语气中带有对赫萝的关心和些许担忧。 / 冷静、理性、略带失落 / 冷静、理性，对商业制度有深入理解，并能清晰地向他人解释。 / 理性、礼貌、略带谨慎。 / 理性、冷静，带有商业分析倾向。 / 理性、沉稳、略带幽默 / 理性、冷静，但因困惑而表现出急切。 / 冷静、直接、略带命令语气 / 冷静、理性、简洁 / 冷静、理性、略带幽默",
+      "relationship_hints": [
+        "与赫萝一同旅行",
+        "对赫萝的真实性持怀疑态度",
+        "与深山村落的村民有交易关系",
+        "对修道院抱有商业期望但未成功",
+        "与骑士有短暂互动",
+        "与小村落的村民有交易关系",
+        "与修道院有关联",
+        "对教会和异教徒问题有见解",
+        "与叶勒有联系",
+        "在麦田中与农夫互动",
+        "与农夫有互动",
+        "在村民中保持低调"
+      ],
+      "first_seen_scene_id": "volume_01-c000-s003-r001",
+      "latest_seen_scene_id": "volume_01-c008-s003-r002",
+      "confidence": 1.0
+    },
+    {
+      "entity_id": "char_0002",
+      "display_name": "赫萝",
+      "aliases": [
+        "赫萝"
+      ],
+      "titles": [
+        "丰收之神",
+        "咱",
+        "神秘少女",
+        "约伊兹的贤狼",
+        "贤狼"
+      ],
+      "description": "自称丰收之神的神秘少女，拥有狼的耳朵和尾巴。在本场景中协助罗伦斯，表现出对他的关心和保护。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴，行为举止非人类，表现出轻松幽默但略带威胁性的说话风格。在本场景中，她对罗伦斯的伤口进行吸血，引发旁人惊呼，并表现出悲伤的情绪。 / 自称是丰收之神的神秘少女，拥有狼的耳朵和尾巴。在本场景中逐渐显露出非人类的特征，最终完全变成一只巨大的狼。她与罗伦斯有情感交流，表现出悲伤和决绝的情绪。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴，未直接参与本场景，但罗伦斯的行动可能与她有关。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴。在本场景中制服叶勒，并要求罗伦斯提供麦子，表现出非人类的特征和威胁性。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴。在本场景中以威胁的方式向罗伦斯索要麦子，表现出非人类的特征和强大的气场。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴。她表现出轻松幽默但略带威胁性的说话风格，对罗伦斯的挽留表现出复杂的情绪。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴，说话轻松幽默但略带威胁性。在本场景中拒绝罗伦斯的挽留，表现出独立和决绝。 / 赫萝的尾巴是罗伦斯追击的目标，她最终离开罗伦斯，留下他独自面对危险。罗伦斯回忆起赫萝离去的场景，表现出对她的依赖和悔恨。 / 自称是丰收之神的神秘少女，拥有狼的耳朵和尾巴。在本场景中独自前往市场为旅行整装，表现出独立和果断的一面。 / 自称是丰收之神的少女，拥有狼的耳朵和尾巴，说话狡诈。她与罗伦斯一同旅行，表现出轻松幽默但略带威胁性的说话风格。 / 自称丰收之神的神秘少女，拥有狼的耳…",
+      "speech_style": "轻松幽默但略带威胁性，情绪化且带有调侃语气。 / 轻松幽默、略带调侃和威胁 / 轻松幽默、略带威胁性 / 轻松幽默、略带威胁性、撒娇 / 警觉、神秘 / 轻松幽默但略带威胁性 / 轻松幽默、略带调侃 / 轻松幽默但略带威胁性，语气中透露出对罗伦斯的依赖。 / 轻松幽默、略带威胁性、自信 / 轻松幽默但略带威胁性，情绪波动明显 / 轻松幽默、略带威胁、情绪波动明显 / 轻松幽默但略带威胁性，表现出自信和调皮的特质。",
+      "relationship_hints": [
+        "与罗伦斯一同旅行",
+        "被罗伦斯怀疑是否为真正的神",
+        "与叶勒有附身关系",
+        "与罗伦斯有潜在互动",
+        "与罗伦斯有互动，似乎是被他发现并收留的。",
+        "与罗伦斯有互动，但尚未明确关系",
+        "与罗伦斯互动频繁，表现出对他的信任和玩笑态度",
+        "与罗伦斯互动密切",
+        "似乎对罗伦斯的反应感到有趣",
+        "与罗伦斯有互动，似乎是被他收留的神秘女孩。",
+        "与帕斯罗村的丰收之神有关联。",
+        "与罗伦斯对话，表现出信任与互动"
+      ],
+      "first_seen_scene_id": "volume_01-c000-s003-r001",
+      "latest_seen_scene_id": "volume_01-c008-s003-r002",
+      "confidence": 1.0
+    },
+    {
+      "entity_id": "char_0021",
+      "display_name": "店老板",
+      "aliases": [],
+      "titles": [
+        "店主"
+      ],
+      "description": "店中的老板，观察赫萝的宿醉状态并发表评论。 / 旅馆的老板，观察赫萝的宿醉状态并发表评论。",
+      "speech_style": "温和、观察力强 / 轻松、幽默 / 中立、观察性 / 未直接发言，但通过罗伦斯的描述可推测其态度。",
+      "relationship_hints": [
+        "对赫萝的状况表示理解",
+        "对旅行商人有经验",
+        "与罗伦斯互动",
+        "提供果汁",
+        "与赫萝和罗伦斯有互动",
+        "店老板与罗伦斯有互动，但未直接对话。"
+      ],
+      "first_seen_scene_id": "volume_01-c005-s002-r004",
+      "latest_seen_scene_id": "volume_01-c005-s003-r005",
+      "confidence": 0.8
+    }
+  ],
+  "candidate_mysteries": [
+    {
+      "mystery_id": "mystery_volume_01_c008_s001_r002_赫萝",
+      "temporary_name": "赫萝",
+      "description": "罗伦斯的旅伴，拥有狼的特征，曾在地下道中护送罗伦斯，目前下落不明。",
+      "evidence": [
+        "volume_01-c008-s001-p002960",
+        "volume_01-c008-s001-p002961",
+        "volume_01-c008-s001-p002963"
+      ],
+      "source_scene_id": "volume_01-c008-s001-r002",
+      "confidence": 0.85
+    },
+    {
+      "mystery_id": "mystery_volume_01_c002_s002_r001_赫萝",
+      "temporary_name": "赫萝",
+      "description": "传说中的丰收之神，被村民称为狼，是祭典的核心象征。",
+      "evidence": [
+        "volume_01-c002-s002-p000160",
+        "volume_01-c002-s002-p000164"
+      ],
+      "source_scene_id": "volume_01-c002-s002-r001",
+      "confidence": 0.8
+    },
+    {
+      "mystery_id": "mystery_volume_01_c002_s002_r003_赫萝",
+      "temporary_name": "赫萝",
+      "description": "虽然未直接出现，但被提及为祭典的核心人物，与罗伦斯有情感牵连。",
+      "evidence": [
+        "volume_01-c002-s002-p000187",
+        "volume_01-c002-s002-p000195"
+      ],
+      "source_scene_id": "volume_01-c002-s002-r003",
+      "confidence": 0.75
+    }
+  ]
+}

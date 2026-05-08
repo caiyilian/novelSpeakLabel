@@ -1,0 +1,602 @@
+你是轻小说说话人标注项目的阶段 2：正式标注助手。
+你的任务是判断输入 target_dialogues 中每一句台词的说话人，不要改写原文。
+必须把这些台词当作同一个连续片段来判断，优先保持对话轮次和叙述线索的一致性。
+
+规则：
+1. 只输出严格 JSON，不要 Markdown，不要解释性前后缀。
+2. 如果说话人是候选角色，speaker_entity_id 必须使用 candidate_characters 里的 entity_id，speaker_status 填 known。
+3. 如果说话人像某个未知人物，speaker_entity_id 使用 candidate_mysteries 里的 mystery_id，speaker_status 填 mystery。
+4. 如果只是无法追踪的路人/群体，speaker_status 填 npc，speaker_entity_id 可为空或使用 npc:简短称呼。
+5. 证据不足时不要硬猜，speaker_status 填 ambiguous 或 review，并把 needs_review 设为 true。
+6. candidate_speakers 至少列出 1 个候选；如果无法判断，列出最可能的候选和不确定原因。
+7. confidence 使用 0 到 1 之间的小数，表示你对最终判断的把握。
+8. 不要只因为台词里提到某个名字、职业、地点，就把说话人标成那个实体；被称呼的人通常不是说话人。
+9. 连续问答、交易寒暄、命令/回答等场景要按上下句轮次判断；同一人连续说话必须有叙述或语气证据支持。
+10. 如果当前上下文显示某角色还没有登场，不要因为角色库或后文记忆里有这个角色就提前标给他/她。
+
+输出 JSON 结构：
+{
+  "annotations": [
+    {
+      "dialogue_id": "必须来自 target_dialogue_ids",
+      "speaker_entity_id": "string",
+      "speaker_display": "string",
+      "speaker_status": "known|mystery|npc|ambiguous|review",
+      "confidence": 0.0,
+      "candidate_speakers": [
+        {"entity_id": "string", "display": "string", "status": "known|mystery|npc|ambiguous|review", "score": 0.0}
+      ],
+      "evidence": ["短证据，不要大段复制原文"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "可选，简短说明整体轮次判断"
+}
+必须为 target_dialogue_ids 中每个 dialogue_id 输出且只输出一条 annotation。
+
+输入 JSON：
+{
+  "volume": {
+    "volume_id": "volume_01",
+    "volume": 1
+  },
+  "target_dialogue_ids": [
+    "volume_01-d000054",
+    "volume_01-d000055",
+    "volume_01-d000056",
+    "volume_01-d000057",
+    "volume_01-d000058",
+    "volume_01-d000059",
+    "volume_01-d000060",
+    "volume_01-d000061"
+  ],
+  "dialogues": [
+    {
+      "dialogue_id": "volume_01-d000054",
+      "dialogue_index": 53,
+      "window_position": 1,
+      "chapter_id": "volume_01-c002",
+      "chapter_title": "第一幕",
+      "scene_id": "volume_01-c002-s003",
+      "paragraph_id": "volume_01-c002-s003-p000242",
+      "paragraph_index": 241,
+      "local_dialogue_index": 1,
+      "text": "嗷呜～～～～～～～",
+      "quote_text": "「嗷呜～～～～～～～」",
+      "paragraph_text": "「嗷呜～～～～～～～」",
+      "char_start": 0,
+      "char_end": 11
+    },
+    {
+      "dialogue_id": "volume_01-d000055",
+      "dialogue_index": 54,
+      "window_position": 2,
+      "chapter_id": "volume_01-c002",
+      "chapter_title": "第一幕",
+      "scene_id": "volume_01-c002-s003",
+      "paragraph_id": "volume_01-c002-s003-p000243",
+      "paragraph_index": 242,
+      "local_dialogue_index": 1,
+      "text": "唰唰唰唰唰",
+      "quote_text": "「唰唰唰唰唰」",
+      "paragraph_text": "莫大的恐惧袭上罗伦斯心头，仿佛突来的冷风「唰唰唰唰唰」窜入身体般。",
+      "char_start": 20,
+      "char_end": 27
+    },
+    {
+      "dialogue_id": "volume_01-d000056",
+      "dialogue_index": 55,
+      "window_position": 3,
+      "chapter_id": "volume_01-c002",
+      "chapter_title": "第一幕",
+      "scene_id": "volume_01-c002-s003",
+      "paragraph_id": "volume_01-c002-s003-p000248",
+      "paragraph_index": 247,
+      "local_dialogue_index": 1,
+      "text": "……呼，真是好月色，有没有酒啊？",
+      "quote_text": "「……呼，真是好月色，有没有酒啊？」",
+      "paragraph_text": "「……呼，真是好月色，有没有酒啊？」",
+      "char_start": 0,
+      "char_end": 18
+    },
+    {
+      "dialogue_id": "volume_01-d000057",
+      "dialogue_index": 56,
+      "window_position": 4,
+      "chapter_id": "volume_01-c002",
+      "chapter_title": "第一幕",
+      "scene_id": "volume_01-c002-s003",
+      "paragraph_id": "volume_01-c002-s003-p000251",
+      "paragraph_index": 250,
+      "local_dialogue_index": 1,
+      "text": "没有。话说你究竟是谁？为何在我的马车上睡觉？该不会是因为不想被卖到城里，所以逃了出来吧？",
+      "quote_text": "「没有。话说你究竟是谁？为何在我的马车上睡觉？该不会是因为不想被卖到城里，所以逃了出来吧？」",
+      "paragraph_text": "「没有。话说你究竟是谁？为何在我的马车上睡觉？该不会是因为不想被卖到城里，所以逃了出来吧？」",
+      "char_start": 0,
+      "char_end": 46
+    },
+    {
+      "dialogue_id": "volume_01-d000058",
+      "dialogue_index": 57,
+      "window_position": 5,
+      "chapter_id": "volume_01-c002",
+      "chapter_title": "第一幕",
+      "scene_id": "volume_01-c002-s003",
+      "paragraph_id": "volume_01-c002-s003-p000253",
+      "paragraph_index": 252,
+      "local_dialogue_index": 1,
+      "text": "搞什么，没酒啊。那食物……哦哟，真浪费。",
+      "quote_text": "「搞什么，没酒啊。那食物……哦哟，真浪费。」",
+      "paragraph_text": "「搞什么，没酒啊。那食物……哦哟，真浪费。」",
+      "char_start": 0,
+      "char_end": 22
+    },
+    {
+      "dialogue_id": "volume_01-d000059",
+      "dialogue_index": 58,
+      "window_position": 6,
+      "chapter_id": "volume_01-c002",
+      "chapter_title": "第一幕",
+      "scene_id": "volume_01-c002-s003",
+      "paragraph_id": "volume_01-c002-s003-p000256",
+      "paragraph_index": 255,
+      "local_dialogue_index": 1,
+      "text": "你该不会是被恶魔附身的妖怪吧。",
+      "quote_text": "「你该不会是被恶魔附身的妖怪吧。」",
+      "paragraph_text": "「你该不会是被恶魔附身的妖怪吧。」",
+      "char_start": 0,
+      "char_end": 17
+    },
+    {
+      "dialogue_id": "volume_01-d000060",
+      "dialogue_index": 59,
+      "window_position": 7,
+      "chapter_id": "volume_01-c002",
+      "chapter_title": "第一幕",
+      "scene_id": "volume_01-c002-s003",
+      "paragraph_id": "volume_01-c002-s003-p000260",
+      "paragraph_index": 259,
+      "local_dialogue_index": 1,
+      "text": "哈哈哈哈哈，咱是恶魔？",
+      "quote_text": "「哈哈哈哈哈，咱是恶魔？」",
+      "paragraph_text": "「哈哈哈哈哈，咱是恶魔？」",
+      "char_start": 0,
+      "char_end": 13
+    },
+    {
+      "dialogue_id": "volume_01-d000061",
+      "dialogue_index": 60,
+      "window_position": 8,
+      "chapter_id": "volume_01-c002",
+      "chapter_title": "第一幕",
+      "scene_id": "volume_01-c002-s003",
+      "paragraph_id": "volume_01-c002-s003-p000263",
+      "paragraph_index": 262,
+      "local_dialogue_index": 1,
+      "text": "喂！有什么好笑的？",
+      "quote_text": "「喂！有什么好笑的？」",
+      "paragraph_text": "「喂！有什么好笑的？」",
+      "char_start": 0,
+      "char_end": 11
+    }
+  ],
+  "context": {
+    "paragraphs": [
+      {
+        "paragraph_id": "volume_01-c002-s003-p000239",
+        "paragraph_index": 238,
+        "text": "完美如无机物质的美丽身躯中间，露出一对不算大的乳房，散发着一股奇妙的动物腥味，教人不寒而栗的魅力中蕴含着温暖。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000240",
+        "paragraph_index": 239,
+        "text": "然而，如此引人垂涎的光景，却霎时转为令人双眉紧蹙的诡异模样。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000241",
+        "paragraph_index": 240,
+        "text": "女孩缓缓张开嘴巴，闭起双眼朝天空发出长嚎声：",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000242",
+        "paragraph_index": 241,
+        "text": "「嗷呜～～～～～～～」",
+        "target_dialogue_ids": [
+          "volume_01-d000054"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000243",
+        "paragraph_index": 242,
+        "text": "莫大的恐惧袭上罗伦斯心头，仿佛突来的冷风「唰唰唰唰唰」窜入身体般。",
+        "target_dialogue_ids": [
+          "volume_01-d000055"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000244",
+        "paragraph_index": 243,
+        "text": "长嚎是狼群或狗儿呼唤同伴，准备攻击人类的前奏曲。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000245",
+        "paragraph_index": 244,
+        "text": "罗伦斯惊觉那不像叶勒发出的模仿狼嚎声，而是真正的狼嚎。他吓得掉落口中的肉干，马儿也因惊吓而跳了起来。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000246",
+        "paragraph_index": 245,
+        "text": "然后才猛然惊觉。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000247",
+        "paragraph_index": 246,
+        "text": "笼罩在月光下的女孩身影，女孩头上的耳朵，那对动物的耳朵。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000248",
+        "paragraph_index": 247,
+        "text": "「……呼，真是好月色，有没有酒啊？」",
+        "target_dialogue_ids": [
+          "volume_01-d000056"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000249",
+        "paragraph_index": 248,
+        "text": "女孩把狼嚎余音慢慢收回闭起的口中，压低下腭微笑着说。女孩的声音让罗伦斯回过神来。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000250",
+        "paragraph_index": 249,
+        "text": "眼前看到的既不是狼，也不是狗，只是有着类似他们耳朵的美丽女孩。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000251",
+        "paragraph_index": 250,
+        "text": "「没有。话说你究竟是谁？为何在我的马车上睡觉？该不会是因为不想被卖到城里，所以逃了出来吧？」",
+        "target_dialogue_ids": [
+          "volume_01-d000057"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000252",
+        "paragraph_index": 251,
+        "text": "罗伦斯试图努力表现得咄咄逼人，然而女孩却全然不为所动。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000253",
+        "paragraph_index": 252,
+        "text": "「搞什么，没酒啊。那食物……哦哟，真浪费。」",
+        "target_dialogue_ids": [
+          "volume_01-d000058"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000254",
+        "paragraph_index": 253,
+        "text": "女孩懒洋洋地说着，皱起小鼻子嗅了嗅，似乎发现刚刚罗伦斯咬在口中的肉干，她捡起掉落在货台上的肉干往嘴里放。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000255",
+        "paragraph_index": 254,
+        "text": "在女孩咬肉干的时候，罗伦斯没漏看女孩嘴唇内侧的两根锐利尖牙。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000256",
+        "paragraph_index": 255,
+        "text": "「你该不会是被恶魔附身的妖怪吧。」",
+        "target_dialogue_ids": [
+          "volume_01-d000059"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000257",
+        "paragraph_index": 256,
+        "text": "罗伦斯一边说，一边把手摸向绑在腰际的短剑上。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000258",
+        "paragraph_index": 257,
+        "text": "因为货币价值的变动太大，所以旅行商人会把赚来的钱换成物品携带在身，银短剑就是此类物品之一。银是属于神的金属，能够打倒所有妖魔鬼怪。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000259",
+        "paragraph_index": 258,
+        "text": "听见罗伦斯说的话，女孩先是愣住，然后突然笑了出来：",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000260",
+        "paragraph_index": 259,
+        "text": "「哈哈哈哈哈，咱是恶魔？」",
+        "target_dialogue_ids": [
+          "volume_01-d000060"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000261",
+        "paragraph_index": 260,
+        "text": "女孩口中的肉干都快掉下来了，她咧嘴大笑的模样可爱得教人有些招架不住。两根锐利的尖牙在此刻反而显得迷人。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000262",
+        "paragraph_index": 261,
+        "text": "然而，正因为女孩的模样迷人，所以感觉像被取笑似地令人生气。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000263",
+        "paragraph_index": 262,
+        "text": "「喂！有什么好笑的？」",
+        "target_dialogue_ids": [
+          "volume_01-d000061"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000264",
+        "paragraph_index": 263,
+        "text": "「当然好笑啊，咱还是第一次被说是恶魔呢。」",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000265",
+        "paragraph_index": 264,
+        "text": "女孩一边继续笑，一边捡起掉落的肉干再咬了一口。她果然有着锐利尖牙，接着看看她的耳朵，可以知道这女孩绝对不是正常人类。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000266",
+        "paragraph_index": 265,
+        "text": "「你是谁？」",
+        "target_dialogue_ids": []
+      }
+    ]
+  },
+  "scene_memory": [
+    {
+      "scene_id": "volume_01-c002-s003-r001",
+      "parent_scene_id": "volume_01-c002-s003",
+      "chunk_index": 1,
+      "chunk_count": 6,
+      "scene_summary": "罗伦斯在月光下遇到一名赤裸的神秘女孩，女孩发出狼嚎，令他感到恐惧。随后女孩恢复平静，询问是否有酒。",
+      "active_characters": [
+        "罗伦斯",
+        "赫萝"
+      ],
+      "relationships": [
+        "罗伦斯与赫萝有互动，但关系尚未明确"
+      ],
+      "notes": "赫萝的动物耳朵和狼嚎暗示她可能与狼有关联，但具体身份尚不明确。"
+    },
+    {
+      "scene_id": "volume_01-c002-s003-r002",
+      "parent_scene_id": "volume_01-c002-s003",
+      "chunk_index": 2,
+      "chunk_count": 6,
+      "scene_summary": "罗伦斯在马车上发现了一位拥有狼耳的神秘女孩，两人展开对话。罗伦斯怀疑她是妖怪，而女孩则表现出轻松幽默的态度。",
+      "active_characters": [
+        "罗伦斯",
+        "赫萝"
+      ],
+      "relationships": [
+        "罗伦斯与赫萝初次相遇，关系尚处于试探阶段"
+      ],
+      "notes": "赫萝的狼耳和尖牙暗示她可能具有非人类的特质，但她的行为和反应又显得非常人性化。罗伦斯的怀疑和警惕为两人关系的后续发展埋下伏笔。"
+    },
+    {
+      "scene_id": "volume_01-c002-s003-r003",
+      "parent_scene_id": "volume_01-c002-s003",
+      "chunk_index": 3,
+      "chunk_count": 6,
+      "scene_summary": "罗伦斯在马车上发现并试图叫醒一名神秘女孩。女孩自称赫萝，拥有狼耳和尖牙，表现出非人类的特征。她与罗伦斯展开对话，态度轻松幽默，但言语中透露出神秘感。",
+      "active_characters": [
+        "罗伦斯",
+        "赫萝"
+      ],
+      "relationships": [
+        "罗伦斯与赫萝之间存在互动和对话",
+        "赫萝表现出对罗伦斯的轻松态度，但隐藏着神秘感"
+      ],
+      "notes": "赫萝的非人类特征和轻松幽默的说话风格是识别她的关键线索。罗伦斯的理性与逐渐的不安也提供了角色特征。神秘马匹虽未出现，但被提及，可能在后文有重要角色。"
+    },
+    {
+      "scene_id": "volume_01-c002-s003-r004",
+      "parent_scene_id": "volume_01-c002-s003",
+      "chunk_index": 4,
+      "chunk_count": 6,
+      "scene_summary": "罗伦斯与赫萝在对话中探讨赫萝的身份，赫萝自称是丰收之神，但罗伦斯怀疑她可能是帕斯罗村中因外貌异常而被藏匿的村民女孩。赫萝的说话风格轻松幽默，表现出非人类的特征。",
+      "active_characters": [
+        "罗伦斯",
+        "赫萝"
+      ],
+      "relationships": [
+        "罗伦斯与赫萝之间存在发现与收留的关系。",
+        "赫萝自称是丰收之神，与帕斯罗村的丰收之神存在潜在关联。"
+      ],
+      "notes": "赫萝的说话风格和外貌特征表明她可能不是人类，但她的身份仍需进一步确认。罗伦斯的推理表明他怀疑赫萝是帕斯罗村的异常儿童。"
+    }
+  ],
+  "candidate_characters": [
+    {
+      "entity_id": "char_0001",
+      "display_name": "罗伦斯",
+      "aliases": [
+        "罗伦斯",
+        "罗伦斯先生"
+      ],
+      "titles": [
+        "中间人",
+        "交易者",
+        "同行",
+        "商人",
+        "小毛头",
+        "小的",
+        "市井无赖",
+        "年轻人",
+        "开店者",
+        "情报贩子",
+        "提议者",
+        "新手"
+      ],
+      "description": "一位行商人，正在与米隆商行的代表马贺特进行交易谈判。他原本期待获得两千枚银币，但实际只得到一百二十枚，感到震惊和困惑。 / 一位行商人，发现并收留了赫萝，决定与她一同旅行。 / 一位二十五岁的自力更生旅行商人，已有七年行商经验，性格泰然自若。 / 一位冷静理性的旅行商人，对赫萝的身份持怀疑态度，但仍保持互动。他注重外表整洁，对商业制度有深入理解。 / 冷静理性的旅行商人，与赫萝一同旅行。在本场景中与米隆商行的马贺特讨论梅迪欧商行的威胁，提出利用崔尼银币交易作为交涉王牌。 / 一位冷静理性的旅行商人，与赫萝一同旅行。在本场景中与米隆商行的马贺特达成交易，表现出策略性和经验。 / 正在与马贺特讨论交易细节的商人，表现出对辛香料的兴趣。 / 一位冷静理性的旅行商人，正在与米隆商行的马贺特进行交易。他表现出对开店的期待，并思考未来。 / 一位冷静理性的旅行商人，正在处理一份请款单，但对单据内容感到困惑。 / 一位行商人，正在与商行代表进行交易。他表现出冷静和策略性，询问卸货场的位置。 / 一位行商人，发现并收留了赫萝，决定与她一同旅行。他性格冷静理性，对赫萝的身份持怀疑态度，但仍保持互动。他注重外表整洁，对商业制度有深入理解。 / 冷静理性的旅行商人，与赫萝一同旅行。在本场景中试图安抚赫萝的情绪，表现出对她的关心。",
+      "speech_style": "理性、坚定、略带情绪化 / 冷静、理性，带有悔恨和自责的语气。 / 冷静、理性，语气中带有对赫萝的关心和些许担忧。 / 冷静、理性、略带失落 / 冷静、理性，对商业制度有深入理解，并能清晰地向他人解释。 / 理性、礼貌、略带谨慎。 / 理性、冷静，带有商业分析倾向。 / 理性、沉稳、略带幽默 / 理性、冷静，但因困惑而表现出急切。 / 冷静、直接、略带命令语气 / 冷静、理性、简洁 / 冷静、理性、略带幽默",
+      "relationship_hints": [
+        "与赫萝一同旅行",
+        "对赫萝的真实性持怀疑态度",
+        "与深山村落的村民有交易关系",
+        "对修道院抱有商业期望但未成功",
+        "与骑士有短暂互动",
+        "与小村落的村民有交易关系",
+        "与修道院有关联",
+        "对教会和异教徒问题有见解",
+        "与叶勒有联系",
+        "在麦田中与农夫互动",
+        "与农夫有互动",
+        "在村民中保持低调"
+      ],
+      "first_seen_scene_id": "volume_01-c000-s003-r001",
+      "latest_seen_scene_id": "volume_01-c008-s003-r002",
+      "confidence": 1.0
+    },
+    {
+      "entity_id": "char_0004",
+      "display_name": "叶勒",
+      "aliases": [
+        "叶勒"
+      ],
+      "titles": [
+        "帕斯罗村农夫",
+        "村民代表"
+      ],
+      "description": "帕斯罗村的农夫，今年雇用年轻人种田。 / 帕斯罗村的农夫，今年雇用年轻人种田，是村民丰收祭典的中心人物。 / 帕斯罗村的农夫，今年雇用年轻人种田，是村民丰收祭典的中心人物。他被村民认为是丰收之神附身的载体。 / 帕斯罗村的农夫，曾与罗伦斯交易麦子，对罗伦斯怀有感恩之心。 / 赫萝提及的愤怒对象，可能是帕斯罗村的农夫，曾被认为是丰收之神附身的载体。 / 帕斯罗村的农夫，被认为是丰收之神附身的载体。 / 帕斯罗村的农夫，被认为是丰收之神附身的载体。在本场景中突然出现，与罗伦斯有旧识，并提及帕斯罗村的银币交易计划。 / 帕斯罗村的农夫，被认为是丰收之神附身的载体。他与罗伦斯有旧识，并试图说服罗伦斯参与一项涉及麦子交易和撤销关税的计划。 / 帕斯罗村的农夫，被认为是丰收之神附身的载体。在本场景中试图说服罗伦斯参与一项涉及麦子交易和撤销关税的计划。 / 帕斯罗村的农夫，被认为是丰收之神附身的载体。在本场景中与罗伦斯对峙，试图说服他参与计划。 / 帕斯罗村的农夫，被认为是丰收之神附身的载体。在本场景中指挥手下行动，试图控制赫萝。 / 帕斯罗村的农夫，被认为是丰收之神附身的载体。在本场景中被赫萝制服，失去意识。",
+      "speech_style": "未直接说话，通过他人描述 / 未直接说话，但被村民高声呼喊 / 热情、激动，带有仪式感。 / 未直接说话，但通过他人叙述体现其性格 / 未直接说话 / 未直接发言，但被提及。 / 略带悲伤但坚定 / 理性、策略性、带有说服力 / 热情、说服性强 / 坚定、略带威胁 / 命令式 / 情绪化、不讲理",
+      "relationship_hints": [
+        "与罗伦斯有互动",
+        "雇用年轻人",
+        "是村民活动的组织者",
+        "与农夫有联系",
+        "与罗伦斯有交谈的意图",
+        "被村民追逐",
+        "与罗伦斯有商业交易关系",
+        "被村民视为丰收之神附身的载体",
+        "赫萝对其怀有强烈愤怒",
+        "与赫萝有互动，可能是她愤怒的来源",
+        "与罗伦斯有旧识",
+        "与帕斯罗村的银币交易有关"
+      ],
+      "first_seen_scene_id": "volume_01-c002-s001-r006",
+      "latest_seen_scene_id": "volume_01-c007-s004-r005",
+      "confidence": 0.95
+    },
+    {
+      "entity_id": "char_0002",
+      "display_name": "赫萝",
+      "aliases": [
+        "赫萝"
+      ],
+      "titles": [
+        "丰收之神",
+        "咱",
+        "神秘少女",
+        "约伊兹的贤狼",
+        "贤狼"
+      ],
+      "description": "自称丰收之神的神秘少女，拥有狼的耳朵和尾巴。在本场景中协助罗伦斯，表现出对他的关心和保护。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴，行为举止非人类，表现出轻松幽默但略带威胁性的说话风格。在本场景中，她对罗伦斯的伤口进行吸血，引发旁人惊呼，并表现出悲伤的情绪。 / 自称是丰收之神的神秘少女，拥有狼的耳朵和尾巴。在本场景中逐渐显露出非人类的特征，最终完全变成一只巨大的狼。她与罗伦斯有情感交流，表现出悲伤和决绝的情绪。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴，未直接参与本场景，但罗伦斯的行动可能与她有关。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴。在本场景中制服叶勒，并要求罗伦斯提供麦子，表现出非人类的特征和威胁性。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴。在本场景中以威胁的方式向罗伦斯索要麦子，表现出非人类的特征和强大的气场。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴。她表现出轻松幽默但略带威胁性的说话风格，对罗伦斯的挽留表现出复杂的情绪。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴，说话轻松幽默但略带威胁性。在本场景中拒绝罗伦斯的挽留，表现出独立和决绝。 / 赫萝的尾巴是罗伦斯追击的目标，她最终离开罗伦斯，留下他独自面对危险。罗伦斯回忆起赫萝离去的场景，表现出对她的依赖和悔恨。 / 自称是丰收之神的神秘少女，拥有狼的耳朵和尾巴。在本场景中独自前往市场为旅行整装，表现出独立和果断的一面。 / 自称是丰收之神的少女，拥有狼的耳朵和尾巴，说话狡诈。她与罗伦斯一同旅行，表现出轻松幽默但略带威胁性的说话风格。 / 自称丰收之神的神秘少女，拥有狼的耳…",
+      "speech_style": "轻松幽默但略带威胁性，情绪化且带有调侃语气。 / 轻松幽默、略带调侃和威胁 / 轻松幽默、略带威胁性 / 轻松幽默、略带威胁性、撒娇 / 警觉、神秘 / 轻松幽默但略带威胁性 / 轻松幽默、略带调侃 / 轻松幽默但略带威胁性，语气中透露出对罗伦斯的依赖。 / 轻松幽默、略带威胁性、自信 / 轻松幽默但略带威胁性，情绪波动明显 / 轻松幽默、略带威胁、情绪波动明显 / 轻松幽默但略带威胁性，表现出自信和调皮的特质。",
+      "relationship_hints": [
+        "与罗伦斯一同旅行",
+        "被罗伦斯怀疑是否为真正的神",
+        "与叶勒有附身关系",
+        "与罗伦斯有潜在互动",
+        "与罗伦斯有互动，似乎是被他发现并收留的。",
+        "与罗伦斯有互动，但尚未明确关系",
+        "与罗伦斯互动频繁，表现出对他的信任和玩笑态度",
+        "与罗伦斯互动密切",
+        "似乎对罗伦斯的反应感到有趣",
+        "与罗伦斯有互动，似乎是被他收留的神秘女孩。",
+        "与帕斯罗村的丰收之神有关联。",
+        "与罗伦斯对话，表现出信任与互动"
+      ],
+      "first_seen_scene_id": "volume_01-c000-s003-r001",
+      "latest_seen_scene_id": "volume_01-c008-s003-r002",
+      "confidence": 1.0
+    }
+  ],
+  "candidate_mysteries": [
+    {
+      "mystery_id": "mystery_volume_01_c002_s003_r001_神秘女孩",
+      "temporary_name": "神秘女孩",
+      "description": "赤裸的神秘女孩，拥有动物耳朵，能发出狼嚎，外表美丽但带有诡异气质。",
+      "evidence": [
+        "volume_01-c002-s003-p000237",
+        "volume_01-c002-s003-p000238",
+        "volume_01-c002-s003-p000239",
+        "volume_01-c002-s003-p000241",
+        "volume_01-c002-s003-p000248"
+      ],
+      "source_scene_id": "volume_01-c002-s003-r001",
+      "confidence": 0.85
+    },
+    {
+      "mystery_id": "mystery_volume_01_c002_s003_r004_帕斯罗村丰收之神",
+      "temporary_name": "帕斯罗村丰收之神",
+      "description": "赫萝声称自己是帕斯罗村的丰收之神，但其真实身份尚不明确。",
+      "evidence": [
+        "volume_01-c002-s003-p000283",
+        "volume_01-c002-s003-p000290"
+      ],
+      "source_scene_id": "volume_01-c002-s003-r004",
+      "confidence": 0.75
+    },
+    {
+      "mystery_id": "mystery_volume_01_c002_s003_r003_神秘马匹",
+      "temporary_name": "神秘马匹",
+      "description": "被提及但未出现的马匹，可能是场景中的潜在角色。",
+      "evidence": [
+        "volume_01-c002-s003-p000269"
+      ],
+      "source_scene_id": "volume_01-c002-s003-r003",
+      "confidence": 0.6
+    },
+    {
+      "mystery_id": "mystery_volume_01_c002_s005_r004_叶勒",
+      "temporary_name": "叶勒",
+      "description": "帕斯罗村的农夫，曾被认为是丰收之神附身的载体。赫萝提到自己曾进入他的身体。",
+      "evidence": [
+        "volume_01-c002-s005-p000443"
+      ],
+      "source_scene_id": "volume_01-c002-s005-r004",
+      "confidence": 0.85
+    },
+    {
+      "mystery_id": "mystery_volume_01_c006_s004_r005_叶勒",
+      "temporary_name": "叶勒",
+      "description": "帕斯罗村的农夫，被认为是丰收之神附身的载体。他对赫萝的态度引发她的愤怒和悲伤。",
+      "evidence": [
+        "volume_01-c006-s004-p002480",
+        "volume_01-c006-s004-p002482",
+        "volume_01-c006-s004-p002484"
+      ],
+      "source_scene_id": "volume_01-c006-s004-r005",
+      "confidence": 0.85
+    }
+  ]
+}

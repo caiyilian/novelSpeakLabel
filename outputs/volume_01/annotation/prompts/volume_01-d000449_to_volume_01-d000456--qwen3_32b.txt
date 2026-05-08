@@ -1,0 +1,701 @@
+你是轻小说说话人标注项目的阶段 2：正式标注助手。
+你的任务是判断输入 target_dialogues 中每一句台词的说话人，不要改写原文。
+必须把这些台词当作同一个连续片段来判断，优先保持对话轮次和叙述线索的一致性。
+
+规则：
+1. 只输出严格 JSON，不要 Markdown，不要解释性前后缀。
+2. 如果说话人是候选角色，speaker_entity_id 必须使用 candidate_characters 里的 entity_id，speaker_status 填 known。
+3. 如果说话人像某个未知人物，speaker_entity_id 使用 candidate_mysteries 里的 mystery_id，speaker_status 填 mystery。
+4. 如果只是无法追踪的路人/群体，speaker_status 填 npc，speaker_entity_id 可为空或使用 npc:简短称呼。
+5. 证据不足时不要硬猜，speaker_status 填 ambiguous 或 review，并把 needs_review 设为 true。
+6. candidate_speakers 至少列出 1 个候选；如果无法判断，列出最可能的候选和不确定原因。
+7. confidence 使用 0 到 1 之间的小数，表示你对最终判断的把握。
+8. 不要只因为台词里提到某个名字、职业、地点，就把说话人标成那个实体；被称呼的人通常不是说话人。
+9. 连续问答、交易寒暄、命令/回答等场景要按上下句轮次判断；同一人连续说话必须有叙述或语气证据支持。
+10. 如果当前上下文显示某角色还没有登场，不要因为角色库或后文记忆里有这个角色就提前标给他/她。
+
+输出 JSON 结构：
+{
+  "annotations": [
+    {
+      "dialogue_id": "必须来自 target_dialogue_ids",
+      "speaker_entity_id": "string",
+      "speaker_display": "string",
+      "speaker_status": "known|mystery|npc|ambiguous|review",
+      "confidence": 0.0,
+      "candidate_speakers": [
+        {"entity_id": "string", "display": "string", "status": "known|mystery|npc|ambiguous|review", "score": 0.0}
+      ],
+      "evidence": ["短证据，不要大段复制原文"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "可选，简短说明整体轮次判断"
+}
+必须为 target_dialogue_ids 中每个 dialogue_id 输出且只输出一条 annotation。
+
+输入 JSON：
+{
+  "volume": {
+    "volume_id": "volume_01",
+    "volume": 1
+  },
+  "target_dialogue_ids": [
+    "volume_01-d000449",
+    "volume_01-d000450",
+    "volume_01-d000451",
+    "volume_01-d000452",
+    "volume_01-d000453",
+    "volume_01-d000454",
+    "volume_01-d000455",
+    "volume_01-d000456"
+  ],
+  "dialogues": [
+    {
+      "dialogue_id": "volume_01-d000449",
+      "dialogue_index": 448,
+      "window_position": 1,
+      "chapter_id": "volume_01-c004",
+      "chapter_title": "第三幕",
+      "scene_id": "volume_01-c004-s003",
+      "paragraph_id": "volume_01-c004-s003-p001080",
+      "paragraph_index": 1079,
+      "local_dialogue_index": 1,
+      "text": "听说您今天大驾光临，是希望把皮草卖给本商行。",
+      "quote_text": "「听说您今天大驾光临，是希望把皮草卖给本商行。」",
+      "paragraph_text": "「听说您今天大驾光临，是希望把皮草卖给本商行。」",
+      "char_start": 0,
+      "char_end": 24
+    },
+    {
+      "dialogue_id": "volume_01-d000450",
+      "dialogue_index": 449,
+      "window_position": 2,
+      "chapter_id": "volume_01-c004",
+      "chapter_title": "第三幕",
+      "scene_id": "volume_01-c004-s003",
+      "paragraph_id": "volume_01-c004-s003-p001082",
+      "paragraph_index": 1081,
+      "local_dialogue_index": 1,
+      "text": "是的。我身后的商品正是皮草，总共有七十件。",
+      "quote_text": "「是的。我身后的商品正是皮草，总共有七十件。」",
+      "paragraph_text": "「是的。我身后的商品正是皮草，总共有七十件。」",
+      "char_start": 0,
+      "char_end": 23
+    },
+    {
+      "dialogue_id": "volume_01-d000451",
+      "dialogue_index": 450,
+      "window_position": 3,
+      "chapter_id": "volume_01-c004",
+      "chapter_title": "第三幕",
+      "scene_id": "volume_01-c004-s003",
+      "paragraph_id": "volume_01-c004-s003-p001084",
+      "paragraph_index": 1083,
+      "local_dialogue_index": 1,
+      "text": "喔，这是不错的貂皮。今年不管什么农作物都大丰收，所以貂皮的进货量非常少。",
+      "quote_text": "「喔，这是不错的貂皮。今年不管什么农作物都大丰收，所以貂皮的进货量非常少。」",
+      "paragraph_text": "「喔，这是不错的貂皮。今年不管什么农作物都大丰收，所以貂皮的进货量非常少。」",
+      "char_start": 0,
+      "char_end": 38
+    },
+    {
+      "dialogue_id": "volume_01-d000452",
+      "dialogue_index": 451,
+      "window_position": 4,
+      "chapter_id": "volume_01-c004",
+      "chapter_title": "第三幕",
+      "scene_id": "volume_01-c004-s003",
+      "paragraph_id": "volume_01-c004-s003-p001086",
+      "paragraph_index": 1085,
+      "local_dialogue_index": 1,
+      "text": "如此优质的皮草是多年难得一见的珍品。虽然在半路上被雨水淋湿过，不过这貂皮完全没有失去光泽，请您务必亲眼瞧瞧。",
+      "quote_text": "「如此优质的皮草是多年难得一见的珍品。虽然在半路上被雨水淋湿过，不过这貂皮完全没有失去光泽，请您务必亲眼瞧瞧。」",
+      "paragraph_text": "「如此优质的皮草是多年难得一见的珍品。虽然在半路上被雨水淋湿过，不过这貂皮完全没有失去光泽，请您务必亲眼瞧瞧。」",
+      "char_start": 0,
+      "char_end": 56
+    },
+    {
+      "dialogue_id": "volume_01-d000453",
+      "dialogue_index": 452,
+      "window_position": 5,
+      "chapter_id": "volume_01-c004",
+      "chapter_title": "第三幕",
+      "scene_id": "volume_01-c004-s003",
+      "paragraph_id": "volume_01-c004-s003-p001087",
+      "paragraph_index": 1086,
+      "local_dialogue_index": 1,
+      "text": "喔喔，确实非常有光泽，毛发也相当整齐。这大小如何呢？",
+      "quote_text": "「喔喔，确实非常有光泽，毛发也相当整齐。这大小如何呢？」",
+      "paragraph_text": "「喔喔，确实非常有光泽，毛发也相当整齐。这大小如何呢？」",
+      "char_start": 0,
+      "char_end": 28
+    },
+    {
+      "dialogue_id": "volume_01-d000454",
+      "dialogue_index": 453,
+      "window_position": 6,
+      "chapter_id": "volume_01-c004",
+      "chapter_title": "第三幕",
+      "scene_id": "volume_01-c004-s003",
+      "paragraph_id": "volume_01-c004-s003-p001089",
+      "paragraph_index": 1088,
+      "local_dialogue_index": 1,
+      "text": "喔喔……这大小真是没得挑剔。呃——这里总共是七十件吧？",
+      "quote_text": "「喔喔……这大小真是没得挑剔。呃——这里总共是七十件吧？」",
+      "paragraph_text": "「喔喔……这大小真是没得挑剔。呃——这里总共是七十件吧？」",
+      "char_start": 0,
+      "char_end": 29
+    },
+    {
+      "dialogue_id": "volume_01-d000455",
+      "dialogue_index": 454,
+      "window_position": 7,
+      "chapter_id": "volume_01-c004",
+      "chapter_title": "第三幕",
+      "scene_id": "volume_01-c004-s003",
+      "paragraph_id": "volume_01-c004-s003-p001092",
+      "paragraph_index": 1091,
+      "local_dialogue_index": 1,
+      "text": "那么……罗伦兹先生，啊！不好意思，罗伦斯先生曾经与本商行做过麦子交易，承蒙您平日关照，这个金额您意下如何？",
+      "quote_text": "「那么……罗伦兹先生，啊！不好意思，罗伦斯先生曾经与本商行做过麦子交易，承蒙您平日关照，这个金额您意下如何？」",
+      "paragraph_text": "「那么……罗伦兹先生，啊！不好意思，罗伦斯先生曾经与本商行做过麦子交易，承蒙您平日关照，这个金额您意下如何？」",
+      "char_start": 0,
+      "char_end": 55
+    },
+    {
+      "dialogue_id": "volume_01-d000456",
+      "dialogue_index": 455,
+      "window_position": 8,
+      "chapter_id": "volume_01-c004",
+      "chapter_title": "第三幕",
+      "scene_id": "volume_01-c004-s003",
+      "paragraph_id": "volume_01-c004-s003-p001094",
+      "paragraph_index": 1093,
+      "local_dialogue_index": 1,
+      "text": "我建议的金额是一百三十二枚崔尼银币。",
+      "quote_text": "「我建议的金额是一百三十二枚崔尼银币。」",
+      "paragraph_text": "「我建议的金额是一百三十二枚崔尼银币。」",
+      "char_start": 0,
+      "char_end": 20
+    }
+  ],
+  "context": {
+    "paragraphs": [
+      {
+        "paragraph_id": "volume_01-c004-s002-p001077",
+        "paragraph_index": 1076,
+        "text": "被唤来的是一名比起拿稻草，更适合拿羽毛笔的男子，想必是负责鉴定商品的采购人员。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s002-p001078",
+        "paragraph_index": 1077,
+        "text": "「您是克拉福•罗伦斯先生吧，我代替行长感谢您莅临本商行。」",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s003-p001079",
+        "paragraph_index": 1078,
+        "text": "恭敬有礼的打招呼方式对罗伦斯来说，已是习以为常的事。但是，在道出姓名之前，对方已知道自己的名字，让他有些失措。上次来到这家商行，是三年前的冬天拿麦子来卖，或许是门口向他搭腔的男子还记得罗伦斯的脸。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s003-p001080",
+        "paragraph_index": 1079,
+        "text": "「听说您今天大驾光临，是希望把皮草卖给本商行。」",
+        "target_dialogue_ids": [
+          "volume_01-d000449"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c004-s003-p001081",
+        "paragraph_index": 1080,
+        "text": "有别于先谈起天气话题再切入正题的当地业者，这里的作风单刀直入。罗伦斯轻轻咳了一下，把心情转换成谈生意用的情绪。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s003-p001082",
+        "paragraph_index": 1081,
+        "text": "「是的。我身后的商品正是皮草，总共有七十件。」",
+        "target_dialogue_ids": [
+          "volume_01-d000450"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c004-s003-p001083",
+        "paragraph_index": 1082,
+        "text": "罗伦斯轻快地从驾座上跳下来，并邀请负责鉴定的男子一同走近货台。坐在旁边的赫萝也慢一步从驾座走下来。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s003-p001084",
+        "paragraph_index": 1083,
+        "text": "「喔，这是不错的貂皮。今年不管什么农作物都大丰收，所以貂皮的进货量非常少。」",
+        "target_dialogue_ids": [
+          "volume_01-d000451"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c004-s003-p001085",
+        "paragraph_index": 1084,
+        "text": "出现在市场上的貂皮有将近一半的量，是农夫们利用农务闲暇之余，上山狩猎来的。因此，当农夫因为农作物丰收而忙于农务时，貂皮的供应量就会减少。罗伦斯决定态度表现得强硬一些，他开口说：",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s003-p001086",
+        "paragraph_index": 1085,
+        "text": "「如此优质的皮草是多年难得一见的珍品。虽然在半路上被雨水淋湿过，不过这貂皮完全没有失去光泽，请您务必亲眼瞧瞧。」",
+        "target_dialogue_ids": [
+          "volume_01-d000452"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c004-s003-p001087",
+        "paragraph_index": 1086,
+        "text": "「喔喔，确实非常有光泽，毛发也相当整齐。这大小如何呢？」",
+        "target_dialogue_ids": [
+          "volume_01-d000453"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c004-s003-p001088",
+        "paragraph_index": 1087,
+        "text": "罗伦斯从货台上即时挑出一件看来宽大的貂皮，然后亲手交给鉴定的男子。除了拥有者之外，直接碰触商人的商品是不被允许的事。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s003-p001089",
+        "paragraph_index": 1088,
+        "text": "「喔喔……这大小真是没得挑剔。呃——这里总共是七十件吧？」",
+        "target_dialogue_ids": [
+          "volume_01-d000454"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c004-s003-p001090",
+        "paragraph_index": 1089,
+        "text": "鉴定的男子并不会要求检查其他貂皮的大小，如此不通人情的做法只会让生意更难谈成；这就是买取商品的关键。没有一个买方会不想检查所有的商品，但是也没有一个卖方会愿意所有商品被检查。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s003-p001091",
+        "paragraph_index": 1090,
+        "text": "这里是虚荣、礼仪及欲望的十字路口。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s003-p001092",
+        "paragraph_index": 1091,
+        "text": "「那么……罗伦兹先生，啊！不好意思，罗伦斯先生曾经与本商行做过麦子交易，承蒙您平日关照，这个金额您意下如何？」",
+        "target_dialogue_ids": [
+          "volume_01-d000455"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c004-s003-p001093",
+        "paragraph_index": 1092,
+        "text": "同样的名字在不同的国家会有不同发音，罗伦斯也经常犯下同样的错误。他笑着原谅男子的无心之过，并低头看看男子从怀里取出的算盘。依国家或地区不同，数字的写法也大有不同，为了避免看不懂数字，商人洽商时几乎不会把数字写在纸上。算盘上的木珠数量能够让人一眼就看懂金额多寡，只不过必须注意是以哪种货币计算的金额。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s003-p001094",
+        "paragraph_index": 1093,
+        "text": "「我建议的金额是一百三十二枚崔尼银币。」",
+        "target_dialogue_ids": [
+          "volume_01-d000456"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c004-s003-p001095",
+        "paragraph_index": 1094,
+        "text": "罗伦斯瞬间露出困惑的表情说：",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s003-p001096",
+        "paragraph_index": 1095,
+        "text": "「这些貂皮是难能可贵、品质均一的皮草。我是因为之前麦子的交易受到贵行的照顾，所以今天才会把貂皮带来这里。」",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s003-p001097",
+        "paragraph_index": 1096,
+        "text": "「那时真是受您关照了。」",
+        "target_dialogue_ids": []
+      }
+    ]
+  },
+  "scene_memory": [
+    {
+      "scene_id": "volume_01-c004-s003-r001",
+      "parent_scene_id": "volume_01-c004-s003",
+      "chunk_index": 1,
+      "chunk_count": 6,
+      "scene_summary": "罗伦斯来到米隆商行，与负责鉴定商品的男子进行皮草交易。赫萝随行在旁。商行作风直接，双方迅速进入交易谈判。罗伦斯展示皮草并强调其品质，对方则表现出专业且谨慎的态度。",
+      "active_characters": [
+        "罗伦斯",
+        "赫萝",
+        "鉴定商品的采购人员"
+      ],
+      "relationships": [
+        "罗伦斯与赫萝一同旅行",
+        "罗伦斯与鉴定商品的采购人员进行交易",
+        "罗伦斯曾与鉴定商品的采购人员交易麦子"
+      ],
+      "notes": "本场景中，罗伦斯与商行采购人员的互动显示出其作为经验丰富的商人的特质。赫萝虽未发言，但其存在和行为暗示了她与罗伦斯的密切关系。采购人员的直接作风与罗伦斯的策略性回应形成对比，为后续谈判埋下伏笔。"
+    },
+    {
+      "scene_id": "volume_01-c004-s003-r002",
+      "parent_scene_id": "volume_01-c004-s003",
+      "chunk_index": 2,
+      "chunk_count": 6,
+      "scene_summary": "罗伦斯与商行代表就貂皮交易进行谈判，赫萝在一旁观察并提出问题，显示出对交易细节的关注。",
+      "active_characters": [
+        "罗伦斯",
+        "赫萝",
+        "商行代表"
+      ],
+      "relationships": [
+        "罗伦斯与赫萝同行",
+        "罗伦斯与商行代表进行商业谈判",
+        "赫萝对罗伦斯的交易提出疑问"
+      ],
+      "notes": "赫萝在交易中表现出对价格的关注，暗示她可能对商业有更深的理解或隐藏的动机。商行代表的回应显示交易已接近达成。"
+    },
+    {
+      "scene_id": "volume_01-c004-s003-r003",
+      "parent_scene_id": "volume_01-c004-s003",
+      "chunk_index": 3,
+      "chunk_count": 6,
+      "scene_summary": "罗伦斯与鉴定员进行交易洽谈，赫萝突然插嘴，质疑交易金额，引起罗伦斯和鉴定员的惊讶。",
+      "active_characters": [
+        "罗伦斯",
+        "赫萝",
+        "鉴定的男子"
+      ],
+      "relationships": [
+        "罗伦斯与赫萝一同旅行",
+        "罗伦斯与鉴定的男子进行交易洽谈",
+        "赫萝打断罗伦斯与鉴定的男子的对话"
+      ],
+      "notes": "赫萝在交易中表现出对商业的敏锐度，暗示她可能具备商人特质。鉴定的男子对赫萝的突然插嘴感到困惑，显示其对女性参与商业活动的不习惯。"
+    }
+  ],
+  "candidate_characters": [
+    {
+      "entity_id": "char_0001",
+      "display_name": "罗伦斯",
+      "aliases": [
+        "罗伦斯",
+        "罗伦斯先生"
+      ],
+      "titles": [
+        "中间人",
+        "交易者",
+        "同行",
+        "商人",
+        "小毛头",
+        "小的",
+        "市井无赖",
+        "年轻人",
+        "开店者",
+        "情报贩子",
+        "提议者",
+        "新手"
+      ],
+      "description": "一位行商人，正在与米隆商行的代表马贺特进行交易谈判。他原本期待获得两千枚银币，但实际只得到一百二十枚，感到震惊和困惑。 / 一位行商人，发现并收留了赫萝，决定与她一同旅行。 / 一位二十五岁的自力更生旅行商人，已有七年行商经验，性格泰然自若。 / 一位冷静理性的旅行商人，对赫萝的身份持怀疑态度，但仍保持互动。他注重外表整洁，对商业制度有深入理解。 / 冷静理性的旅行商人，与赫萝一同旅行。在本场景中与米隆商行的马贺特讨论梅迪欧商行的威胁，提出利用崔尼银币交易作为交涉王牌。 / 一位冷静理性的旅行商人，与赫萝一同旅行。在本场景中与米隆商行的马贺特达成交易，表现出策略性和经验。 / 正在与马贺特讨论交易细节的商人，表现出对辛香料的兴趣。 / 一位冷静理性的旅行商人，正在与米隆商行的马贺特进行交易。他表现出对开店的期待，并思考未来。 / 一位冷静理性的旅行商人，正在处理一份请款单，但对单据内容感到困惑。 / 一位行商人，正在与商行代表进行交易。他表现出冷静和策略性，询问卸货场的位置。 / 一位行商人，发现并收留了赫萝，决定与她一同旅行。他性格冷静理性，对赫萝的身份持怀疑态度，但仍保持互动。他注重外表整洁，对商业制度有深入理解。 / 冷静理性的旅行商人，与赫萝一同旅行。在本场景中试图安抚赫萝的情绪，表现出对她的关心。",
+      "speech_style": "理性、坚定、略带情绪化 / 冷静、理性，带有悔恨和自责的语气。 / 冷静、理性，语气中带有对赫萝的关心和些许担忧。 / 冷静、理性、略带失落 / 冷静、理性，对商业制度有深入理解，并能清晰地向他人解释。 / 理性、礼貌、略带谨慎。 / 理性、冷静，带有商业分析倾向。 / 理性、沉稳、略带幽默 / 理性、冷静，但因困惑而表现出急切。 / 冷静、直接、略带命令语气 / 冷静、理性、简洁 / 冷静、理性、略带幽默",
+      "relationship_hints": [
+        "与赫萝一同旅行",
+        "对赫萝的真实性持怀疑态度",
+        "与深山村落的村民有交易关系",
+        "对修道院抱有商业期望但未成功",
+        "与骑士有短暂互动",
+        "与小村落的村民有交易关系",
+        "与修道院有关联",
+        "对教会和异教徒问题有见解",
+        "与叶勒有联系",
+        "在麦田中与农夫互动",
+        "与农夫有互动",
+        "在村民中保持低调"
+      ],
+      "first_seen_scene_id": "volume_01-c000-s003-r001",
+      "latest_seen_scene_id": "volume_01-c008-s003-r002",
+      "confidence": 1.0
+    },
+    {
+      "entity_id": "char_0002",
+      "display_name": "赫萝",
+      "aliases": [
+        "赫萝"
+      ],
+      "titles": [
+        "丰收之神",
+        "咱",
+        "神秘少女",
+        "约伊兹的贤狼",
+        "贤狼"
+      ],
+      "description": "自称丰收之神的神秘少女，拥有狼的耳朵和尾巴。在本场景中协助罗伦斯，表现出对他的关心和保护。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴，行为举止非人类，表现出轻松幽默但略带威胁性的说话风格。在本场景中，她对罗伦斯的伤口进行吸血，引发旁人惊呼，并表现出悲伤的情绪。 / 自称是丰收之神的神秘少女，拥有狼的耳朵和尾巴。在本场景中逐渐显露出非人类的特征，最终完全变成一只巨大的狼。她与罗伦斯有情感交流，表现出悲伤和决绝的情绪。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴，未直接参与本场景，但罗伦斯的行动可能与她有关。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴。在本场景中制服叶勒，并要求罗伦斯提供麦子，表现出非人类的特征和威胁性。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴。在本场景中以威胁的方式向罗伦斯索要麦子，表现出非人类的特征和强大的气场。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴。她表现出轻松幽默但略带威胁性的说话风格，对罗伦斯的挽留表现出复杂的情绪。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴，说话轻松幽默但略带威胁性。在本场景中拒绝罗伦斯的挽留，表现出独立和决绝。 / 赫萝的尾巴是罗伦斯追击的目标，她最终离开罗伦斯，留下他独自面对危险。罗伦斯回忆起赫萝离去的场景，表现出对她的依赖和悔恨。 / 自称是丰收之神的神秘少女，拥有狼的耳朵和尾巴。在本场景中独自前往市场为旅行整装，表现出独立和果断的一面。 / 自称是丰收之神的少女，拥有狼的耳朵和尾巴，说话狡诈。她与罗伦斯一同旅行，表现出轻松幽默但略带威胁性的说话风格。 / 自称丰收之神的神秘少女，拥有狼的耳…",
+      "speech_style": "轻松幽默但略带威胁性，情绪化且带有调侃语气。 / 轻松幽默、略带调侃和威胁 / 轻松幽默、略带威胁性 / 轻松幽默、略带威胁性、撒娇 / 警觉、神秘 / 轻松幽默但略带威胁性 / 轻松幽默、略带调侃 / 轻松幽默但略带威胁性，语气中透露出对罗伦斯的依赖。 / 轻松幽默、略带威胁性、自信 / 轻松幽默但略带威胁性，情绪波动明显 / 轻松幽默、略带威胁、情绪波动明显 / 轻松幽默但略带威胁性，表现出自信和调皮的特质。",
+      "relationship_hints": [
+        "与罗伦斯一同旅行",
+        "被罗伦斯怀疑是否为真正的神",
+        "与叶勒有附身关系",
+        "与罗伦斯有潜在互动",
+        "与罗伦斯有互动，似乎是被他发现并收留的。",
+        "与罗伦斯有互动，但尚未明确关系",
+        "与罗伦斯互动频繁，表现出对他的信任和玩笑态度",
+        "与罗伦斯互动密切",
+        "似乎对罗伦斯的反应感到有趣",
+        "与罗伦斯有互动，似乎是被他收留的神秘女孩。",
+        "与帕斯罗村的丰收之神有关联。",
+        "与罗伦斯对话，表现出信任与互动"
+      ],
+      "first_seen_scene_id": "volume_01-c000-s003-r001",
+      "latest_seen_scene_id": "volume_01-c008-s003-r002",
+      "confidence": 1.0
+    },
+    {
+      "entity_id": "char_0013",
+      "display_name": "鉴定商品的采购人员",
+      "aliases": [],
+      "titles": [
+        "米隆商行店员",
+        "鉴定商品的采购人员"
+      ],
+      "description": "负责鉴定罗伦斯带来的皮草，作风直接且专业。",
+      "speech_style": "直接、务实、专业，注重商品质量。",
+      "relationship_hints": [
+        "与罗伦斯进行交易",
+        "三年前曾与罗伦斯交易麦子"
+      ],
+      "first_seen_scene_id": "volume_01-c004-s003-r001",
+      "latest_seen_scene_id": "volume_01-c004-s003-r001",
+      "confidence": 0.85
+    },
+    {
+      "entity_id": "char_0015",
+      "display_name": "鉴定的男子",
+      "aliases": [],
+      "titles": [
+        "采购人员",
+        "鉴定员"
+      ],
+      "description": "与罗伦斯进行交易洽谈的男子，态度礼貌但对赫萝的插嘴感到困惑。",
+      "speech_style": "礼貌、谨慎",
+      "relationship_hints": [
+        "与罗伦斯进行交易",
+        "对赫萝的突然插嘴感到惊讶"
+      ],
+      "first_seen_scene_id": "volume_01-c004-s003-r003",
+      "latest_seen_scene_id": "volume_01-c004-s003-r003",
+      "confidence": 0.85
+    },
+    {
+      "entity_id": "char_0014",
+      "display_name": "商行代表",
+      "aliases": [],
+      "titles": [
+        "本商行"
+      ],
+      "description": "与罗伦斯进行貂皮交易谈判的商行代表，表现出专业和合作态度。",
+      "speech_style": "正式、礼貌、商业性 / 礼貌、专业",
+      "relationship_hints": [
+        "与罗伦斯进行商业谈判",
+        "与罗伦斯进行交易",
+        "被赫萝影响"
+      ],
+      "first_seen_scene_id": "volume_01-c004-s003-r002",
+      "latest_seen_scene_id": "volume_01-c004-s004-r002",
+      "confidence": 0.85
+    },
+    {
+      "entity_id": "char_0012",
+      "display_name": "采购人员",
+      "aliases": [],
+      "titles": [
+        "米隆商行店员",
+        "鉴定商品的采购人员"
+      ],
+      "description": "负责鉴定商品的男子，被唤来协助罗伦斯，态度专业。",
+      "speech_style": "礼貌、正式。",
+      "relationship_hints": [
+        "与罗伦斯有商业关系"
+      ],
+      "first_seen_scene_id": "volume_01-c004-s002-r006",
+      "latest_seen_scene_id": "volume_01-c004-s002-r006",
+      "confidence": 0.85
+    },
+    {
+      "entity_id": "char_0005",
+      "display_name": "农夫",
+      "aliases": [],
+      "titles": [],
+      "description": "一位晒得黝黑的农夫，与罗伦斯有互动，笑容真诚。",
+      "speech_style": "朴实、真诚",
+      "relationship_hints": [
+        "与罗伦斯有互动",
+        "与叶勒有联系"
+      ],
+      "first_seen_scene_id": "volume_01-c002-s002-r001",
+      "latest_seen_scene_id": "volume_01-c002-s002-r001",
+      "confidence": 0.85
+    },
+    {
+      "entity_id": "char_0017",
+      "display_name": "男子",
+      "aliases": [],
+      "titles": [],
+      "description": "一名未命名的男子，正在嗅闻貂皮的气味，表现出从困惑到惊讶的情绪变化。",
+      "speech_style": "未直接说话，但通过行为表现出惊讶",
+      "relationship_hints": [
+        "与罗伦斯互动",
+        "对貂皮的气味有反应"
+      ],
+      "first_seen_scene_id": "volume_01-c004-s003-r006",
+      "latest_seen_scene_id": "volume_01-c004-s003-r006",
+      "confidence": 0.7
+    },
+    {
+      "entity_id": "char_0010",
+      "display_name": "店员",
+      "aliases": [],
+      "titles": [
+        "米隆商行店员",
+        "采购人员",
+        "鉴定员",
+        "鉴定商品的采购人员"
+      ],
+      "description": "在卸货场迎接罗伦斯的店员，穿着整洁，态度专业。 / 商行的店员，负责接待罗伦斯并指引卸货场的位置。",
+      "speech_style": "礼貌、热情、简洁 / 礼貌、略显紧张",
+      "relationship_hints": [
+        "与罗伦斯互动",
+        "引导罗伦斯前往左手边人员",
+        "与罗伦斯有互动",
+        "提供卸货场指引"
+      ],
+      "first_seen_scene_id": "volume_01-c004-s002-r005",
+      "latest_seen_scene_id": "volume_01-c008-s002-r006",
+      "confidence": 0.85
+    },
+    {
+      "entity_id": "char_0016",
+      "display_name": "鉴定员",
+      "aliases": [],
+      "titles": [
+        "采购人员",
+        "鉴定商品的采购人员"
+      ],
+      "description": "阅历丰富的商人，负责鉴定罗伦斯带来的商品。在赫萝的言辞下表现出真诚的歉意。 / 负责鉴定罗伦斯带来的貂皮，态度专业但对赫萝的插嘴感到困惑。 / 负责鉴定罗伦斯带来的貂皮，态度专业但对赫萝的插嘴感到困惑。在赫萝的言辞下表现出真诚的歉意。",
+      "speech_style": "礼貌、诚恳、略带紧张 / 礼貌、专业、略显困惑 / 礼貌、专业，语气中带有从困惑到认同的变化。",
+      "relationship_hints": [
+        "与罗伦斯进行交易洽谈",
+        "对赫萝的言辞感到惊讶",
+        "被赫萝影响气氛",
+        "被赫萝影响态度"
+      ],
+      "first_seen_scene_id": "volume_01-c004-s003-r004",
+      "latest_seen_scene_id": "volume_01-c004-s004-r001",
+      "confidence": 0.85
+    },
+    {
+      "entity_id": "char_0022",
+      "display_name": "米隆商行店员",
+      "aliases": [],
+      "titles": [
+        "米隆商行店员",
+        "采购人员",
+        "鉴定员",
+        "鉴定商品的采购人员"
+      ],
+      "description": "在卸货场迎接罗伦斯的店员，穿着整洁，态度专业。",
+      "speech_style": "礼貌、专业。",
+      "relationship_hints": [
+        "与罗伦斯有交易关系。"
+      ],
+      "first_seen_scene_id": "volume_01-c005-s006-r003",
+      "latest_seen_scene_id": "volume_01-c005-s006-r003",
+      "confidence": 0.8
+    },
+    {
+      "entity_id": "char_0020",
+      "display_name": "列支敦·马贺特",
+      "aliases": [],
+      "titles": [
+        "米隆商行帕兹欧分行",
+        "米隆商行帕兹欧分行行长",
+        "行长"
+      ],
+      "description": "米隆商行帕兹欧分行的行长，冷静且自信，与罗伦斯讨论梅迪欧商行的威胁，并试图劝说罗伦斯冷静应对。 / 米隆商行帕兹欧分行的行长，冷静且自信，与罗伦斯进行交易谈判。 / 米隆商行帕兹欧分行的行长，冷静且自信，与罗伦斯进行交易谈判，透露梅迪欧商行与杰廉的关联。 / 冷静且自信的商行代表，对罗伦斯的提议感到震惊，因为这涉及与崔尼国国王的特权交易。 / 米隆商行的代表，对罗伦斯的提议感到震惊和苦恼，表现出对赫萝事件的担忧。 / 米隆商行帕兹欧分行的行长，前来探望罗伦斯，解释救援过程，并提及赫萝的行动。 / 米隆商行帕兹欧分行的行长，冷静且自信。在本场景中向罗伦斯报告与梅迪欧商行的交易进展顺利，并透露交易细节。 / 米隆商行帕兹欧分行的行长，与罗伦斯进行交易谈判，透露银币回收和利益分配的细节。 / 米隆商行帕兹欧分行的行长，冷静且自信，与罗伦斯进行交易谈判，透露梅迪欧商行与杰廉的关联。 / 米隆商行帕兹欧分行的行长，与罗伦斯进行交易谈判，透露银币回收和利益分配的细节。 / 正在与罗伦斯进行交易谈判的商行代表，讲述宗教戏剧故事。 / 米隆商行帕兹欧分行的行长，协助罗伦斯查看请款单，并提供文件。",
+      "speech_style": "沉稳、理性，表现出对商业局势的深刻理解。 / 惊讶、犹豫、苦恼。 / 冷静、专业、分析性强 / 冷静、自信、专业，带有商行代表的权威感。 / 沉稳、专业，语气中带有对罗伦斯的歉意和对赫萝的谨慎态度。 / 自信、专业、冷静 / 冷静、自信，强调商行利益优先。 / 沉稳、自信、专业 / 沉稳、自信、带有洽谈生意时的策略性语气。 / 幽默、生动，带有戏剧性表达。 / 专业、自信、礼貌 / 专业、冷静。",
+      "relationship_hints": [
+        "代表米隆商行与罗伦斯谈判",
+        "透露梅迪欧商行的背景",
+        "与罗伦斯有交易往来",
+        "与梅迪欧商行存在竞争关系",
+        "与罗伦斯有商业往来",
+        "对梅迪欧商行有警惕",
+        "与罗伦斯有合作关系",
+        "对梅迪欧商行的行动表示担忧",
+        "与罗伦斯有交易关系，但选择利益优先。",
+        "对赫萝的处境表示间接责任，但不直接干预。",
+        "与罗伦斯有商业合作关系，但立场优先考虑商行利益",
+        "与罗伦斯有交易关系"
+      ],
+      "first_seen_scene_id": "volume_01-c005-s002-r001",
+      "latest_seen_scene_id": "volume_01-c008-s002-r005",
+      "confidence": 0.95
+    }
+  ],
+  "candidate_mysteries": [
+    {
+      "mystery_id": "mystery_volume_01_c004_s003_r002_赫萝的神秘身份",
+      "temporary_name": "赫萝的神秘身份",
+      "description": "赫萝自称丰收之神，但其真实身份和背景仍不明，可能涉及神祇或异界存在。",
+      "evidence": [
+        "volume_01-c004-s003-p001107",
+        "volume_01-c004-s003-p001108"
+      ],
+      "source_scene_id": "volume_01-c004-s003-r002",
+      "confidence": 0.7
+    },
+    {
+      "mystery_id": "mystery_volume_01_c008_s001_r002_赫萝",
+      "temporary_name": "赫萝",
+      "description": "罗伦斯的旅伴，拥有狼的特征，曾在地下道中护送罗伦斯，目前下落不明。",
+      "evidence": [
+        "volume_01-c008-s001-p002960",
+        "volume_01-c008-s001-p002961",
+        "volume_01-c008-s001-p002963"
+      ],
+      "source_scene_id": "volume_01-c008-s001-r002",
+      "confidence": 0.85
+    },
+    {
+      "mystery_id": "mystery_volume_01_c002_s002_r001_赫萝",
+      "temporary_name": "赫萝",
+      "description": "传说中的丰收之神，被村民称为狼，是祭典的核心象征。",
+      "evidence": [
+        "volume_01-c002-s002-p000160",
+        "volume_01-c002-s002-p000164"
+      ],
+      "source_scene_id": "volume_01-c002-s002-r001",
+      "confidence": 0.8
+    },
+    {
+      "mystery_id": "mystery_volume_01_c002_s002_r003_赫萝",
+      "temporary_name": "赫萝",
+      "description": "虽然未直接出现，但被提及为祭典的核心人物，与罗伦斯有情感牵连。",
+      "evidence": [
+        "volume_01-c002-s002-p000187",
+        "volume_01-c002-s002-p000195"
+      ],
+      "source_scene_id": "volume_01-c002-s002-r003",
+      "confidence": 0.75
+    }
+  ]
+}

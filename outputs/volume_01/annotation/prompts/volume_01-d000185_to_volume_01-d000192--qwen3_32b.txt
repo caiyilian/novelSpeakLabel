@@ -1,0 +1,506 @@
+你是轻小说说话人标注项目的阶段 2：正式标注助手。
+你的任务是判断输入 target_dialogues 中每一句台词的说话人，不要改写原文。
+必须把这些台词当作同一个连续片段来判断，优先保持对话轮次和叙述线索的一致性。
+
+规则：
+1. 只输出严格 JSON，不要 Markdown，不要解释性前后缀。
+2. 如果说话人是候选角色，speaker_entity_id 必须使用 candidate_characters 里的 entity_id，speaker_status 填 known。
+3. 如果说话人像某个未知人物，speaker_entity_id 使用 candidate_mysteries 里的 mystery_id，speaker_status 填 mystery。
+4. 如果只是无法追踪的路人/群体，speaker_status 填 npc，speaker_entity_id 可为空或使用 npc:简短称呼。
+5. 证据不足时不要硬猜，speaker_status 填 ambiguous 或 review，并把 needs_review 设为 true。
+6. candidate_speakers 至少列出 1 个候选；如果无法判断，列出最可能的候选和不确定原因。
+7. confidence 使用 0 到 1 之间的小数，表示你对最终判断的把握。
+8. 不要只因为台词里提到某个名字、职业、地点，就把说话人标成那个实体；被称呼的人通常不是说话人。
+9. 连续问答、交易寒暄、命令/回答等场景要按上下句轮次判断；同一人连续说话必须有叙述或语气证据支持。
+10. 如果当前上下文显示某角色还没有登场，不要因为角色库或后文记忆里有这个角色就提前标给他/她。
+
+输出 JSON 结构：
+{
+  "annotations": [
+    {
+      "dialogue_id": "必须来自 target_dialogue_ids",
+      "speaker_entity_id": "string",
+      "speaker_display": "string",
+      "speaker_status": "known|mystery|npc|ambiguous|review",
+      "confidence": 0.0,
+      "candidate_speakers": [
+        {"entity_id": "string", "display": "string", "status": "known|mystery|npc|ambiguous|review", "score": 0.0}
+      ],
+      "evidence": ["短证据，不要大段复制原文"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "可选，简短说明整体轮次判断"
+}
+必须为 target_dialogue_ids 中每个 dialogue_id 输出且只输出一条 annotation。
+
+输入 JSON：
+{
+  "volume": {
+    "volume_id": "volume_01",
+    "volume": 1
+  },
+  "target_dialogue_ids": [
+    "volume_01-d000185",
+    "volume_01-d000186",
+    "volume_01-d000187",
+    "volume_01-d000188",
+    "volume_01-d000189",
+    "volume_01-d000190",
+    "volume_01-d000191",
+    "volume_01-d000192"
+  ],
+  "dialogues": [
+    {
+      "dialogue_id": "volume_01-d000185",
+      "dialogue_index": 184,
+      "window_position": 1,
+      "chapter_id": "volume_01-c002",
+      "chapter_title": "第一幕",
+      "scene_id": "volume_01-c002-s007",
+      "paragraph_id": "volume_01-c002-s007-p000555",
+      "paragraph_index": 554,
+      "local_dialogue_index": 1,
+      "text": "看来汝天生就是做商人的料，汝清楚知道自己脸上的表情能够带来什么样的效果。",
+      "quote_text": "「看来汝天生就是做商人的料，汝清楚知道自己脸上的表情能够带来什么样的效果。」",
+      "paragraph_text": "「看来汝天生就是做商人的料，汝清楚知道自己脸上的表情能够带来什么样的效果。」",
+      "char_start": 0,
+      "char_end": 38
+    },
+    {
+      "dialogue_id": "volume_01-d000186",
+      "dialogue_index": 185,
+      "window_position": 2,
+      "chapter_id": "volume_01-c002",
+      "chapter_title": "第一幕",
+      "scene_id": "volume_01-c002-s007",
+      "paragraph_id": "volume_01-c002-s007-p000559",
+      "paragraph_index": 558,
+      "local_dialogue_index": 1,
+      "text": "咱不会逃跑的，咱要逃的话早就溜了。",
+      "quote_text": "「咱不会逃跑的，咱要逃的话早就溜了。」",
+      "paragraph_text": "「咱不会逃跑的，咱要逃的话早就溜了。」",
+      "char_start": 0,
+      "char_end": 19
+    },
+    {
+      "dialogue_id": "volume_01-d000187",
+      "dialogue_index": 186,
+      "window_position": 3,
+      "chapter_id": "volume_01-c002",
+      "chapter_title": "第一幕",
+      "scene_id": "volume_01-c002-s007",
+      "paragraph_id": "volume_01-c002-s007-p000562",
+      "paragraph_index": 561,
+      "local_dialogue_index": 1,
+      "text": "咱想要和汝一起旅行，行吗？",
+      "quote_text": "「咱想要和汝一起旅行，行吗？」",
+      "paragraph_text": "「咱想要和汝一起旅行，行吗？」",
+      "char_start": 0,
+      "char_end": 15
+    },
+    {
+      "dialogue_id": "volume_01-d000188",
+      "dialogue_index": 187,
+      "window_position": 4,
+      "chapter_id": "volume_01-c002",
+      "chapter_title": "第一幕",
+      "scene_id": "volume_01-c002-s007",
+      "paragraph_id": "volume_01-c002-s007-p000566",
+      "paragraph_index": 565,
+      "local_dialogue_index": 1,
+      "text": "我想这也算是一种缘分，就让你同行吧。",
+      "quote_text": "「我想这也算是一种缘分，就让你同行吧。」",
+      "paragraph_text": "「我想这也算是一种缘分，就让你同行吧。」",
+      "char_start": 0,
+      "char_end": 20
+    },
+    {
+      "dialogue_id": "volume_01-d000189",
+      "dialogue_index": 188,
+      "window_position": 5,
+      "chapter_id": "volume_01-c002",
+      "chapter_title": "第一幕",
+      "scene_id": "volume_01-c002-s007",
+      "paragraph_id": "volume_01-c002-s007-p000568",
+      "paragraph_index": 567,
+      "local_dialogue_index": 1,
+      "text": "不过，我只不过是个辛苦做生意的商人，你要负责打点自己的餐费啊！就算你是丰收之神，也不可能让我的钱包丰收吧？",
+      "quote_text": "「不过，我只不过是个辛苦做生意的商人，你要负责打点自己的餐费啊！就算你是丰收之神，也不可能让我的钱包丰收吧？」",
+      "paragraph_text": "「不过，我只不过是个辛苦做生意的商人，你要负责打点自己的餐费啊！就算你是丰收之神，也不可能让我的钱包丰收吧？」",
+      "char_start": 0,
+      "char_end": 55
+    },
+    {
+      "dialogue_id": "volume_01-d000190",
+      "dialogue_index": 189,
+      "window_position": 6,
+      "chapter_id": "volume_01-c002",
+      "chapter_title": "第一幕",
+      "scene_id": "volume_01-c002-s007",
+      "paragraph_id": "volume_01-c002-s007-p000569",
+      "paragraph_index": 568,
+      "local_dialogue_index": 1,
+      "text": "咱的脸皮没有厚到拿人好处，还可以表现得若无其事。咱可是贤狼赫萝，尊贵的狼啊。",
+      "quote_text": "「咱的脸皮没有厚到拿人好处，还可以表现得若无其事。咱可是贤狼赫萝，尊贵的狼啊。」",
+      "paragraph_text": "「咱的脸皮没有厚到拿人好处，还可以表现得若无其事。咱可是贤狼赫萝，尊贵的狼啊。」",
+      "char_start": 0,
+      "char_end": 40
+    },
+    {
+      "dialogue_id": "volume_01-d000191",
+      "dialogue_index": 190,
+      "window_position": 7,
+      "chapter_id": "volume_01-c002",
+      "chapter_title": "第一幕",
+      "scene_id": "volume_01-c002-s007",
+      "paragraph_id": "volume_01-c002-s007-p000572",
+      "paragraph_index": 571,
+      "local_dialogue_index": 1,
+      "text": "不过，尊贵的狼昨天还露出那样的丑态，实在不怎么好笑呐。",
+      "quote_text": "「不过，尊贵的狼昨天还露出那样的丑态，实在不怎么好笑呐。」",
+      "paragraph_text": "「不过，尊贵的狼昨天还露出那样的丑态，实在不怎么好笑呐。」",
+      "char_start": 0,
+      "char_end": 29
+    },
+    {
+      "dialogue_id": "volume_01-d000192",
+      "dialogue_index": 191,
+      "window_position": 8,
+      "chapter_id": "volume_01-c002",
+      "chapter_title": "第一幕",
+      "scene_id": "volume_01-c002-s007",
+      "paragraph_id": "volume_01-c002-s007-p000574",
+      "paragraph_index": 573,
+      "local_dialogue_index": 1,
+      "text": "总之，多多指教了……呃——",
+      "quote_text": "「总之，多多指教了……呃——」",
+      "paragraph_text": "「总之，多多指教了……呃——」",
+      "char_start": 0,
+      "char_end": 15
+    }
+  ],
+  "context": {
+    "paragraphs": [
+      {
+        "paragraph_id": "volume_01-c002-s006-p000552",
+        "paragraph_index": 551,
+        "text": "虽然赫萝说得轻松，但这条长裤是罗伦斯在百般苦求下，老手织工师傅才肯为他做的裤子。如果在长裤上剪个洞，恐怕就永远无法复原了。罗伦斯以非常坚决的态度用力摇头。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s006-p000553",
+        "paragraph_index": 552,
+        "text": "「唔。也罢，幸好裤子很大，总有办法穿的。」",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s006-p000554",
+        "paragraph_index": 553,
+        "text": "罗伦斯看着赫萝一副确信自己不会要她脱下所有衣物的模样，一边坐起身子注视着赫萝，一边担心她该不会穿着这身衣服拔腿就跑吧？如果把整套衣服拿去城里变卖，相信可以卖到一笔不小的金额。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s007-p000555",
+        "paragraph_index": 554,
+        "text": "「看来汝天生就是做商人的料，汝清楚知道自己脸上的表情能够带来什么样的效果。」",
+        "target_dialogue_ids": [
+          "volume_01-d000185"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c002-s007-p000556",
+        "paragraph_index": 555,
+        "text": "赫萝笑着说完，便轻快地从货台往下一跳。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s007-p000557",
+        "paragraph_index": 556,
+        "text": "赫萝的动作过于自然，让罗伦斯一时没能反应。如果赫萝顺势逃跑，恐怕追不到吧。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s007-p000558",
+        "paragraph_index": 557,
+        "text": "罗伦斯之所以没有采取行动，或许是因为他在内心某处确信赫萝不会逃跑。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s007-p000559",
+        "paragraph_index": 558,
+        "text": "「咱不会逃跑的，咱要逃的话早就溜了。」",
+        "target_dialogue_ids": [
+          "volume_01-d000186"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c002-s007-p000560",
+        "paragraph_index": 559,
+        "text": "罗伦斯先看了货台上的麦子一眼，再把视线移向笑着说话的赫萝。他发现赫萝正把熊皮外套脱下，往货台上丢。看来对赫萝来说，配合罗伦斯体型订做的外套大概太长了。昨晚在月光下没能看得清楚，赫萝的体型似乎比罗伦斯想像的还要娇小。身材算是高大的罗伦斯，足足比赫萝高出了两个头。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s007-p000561",
+        "paragraph_index": 560,
+        "text": "然后，赫萝确认衣服状况之后，顺便开口问道：",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s007-p000562",
+        "paragraph_index": 561,
+        "text": "「咱想要和汝一起旅行，行吗？」",
+        "target_dialogue_ids": [
+          "volume_01-d000187"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c002-s007-p000563",
+        "paragraph_index": 562,
+        "text": "赫萝露出一点也不谄媚的笑容。如果她表现出谄媚的姿态，罗伦斯自觉还有办法拒绝她。然而，赫萝笑得却如此开心。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s007-p000564",
+        "paragraph_index": 563,
+        "text": "罗伦斯轻轻叹了口气。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s007-p000565",
+        "paragraph_index": 564,
+        "text": "他心想虽然现在还不能掉以轻心，但至少知道赫萝不像会偷东西的人，与她一同旅行应该无妨。再说，如果现在与赫萝分开，回到一人孤单的旅行，那感觉可能会比以往来得更孤独。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s007-p000566",
+        "paragraph_index": 565,
+        "text": "「我想这也算是一种缘分，就让你同行吧。」",
+        "target_dialogue_ids": [
+          "volume_01-d000188"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c002-s007-p000567",
+        "paragraph_index": 566,
+        "text": "听到罗伦斯这么说，赫萝果然没有露出喜出望外的表情，她只是单纯笑笑。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s007-p000568",
+        "paragraph_index": 567,
+        "text": "「不过，我只不过是个辛苦做生意的商人，你要负责打点自己的餐费啊！就算你是丰收之神，也不可能让我的钱包丰收吧？」",
+        "target_dialogue_ids": [
+          "volume_01-d000189"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c002-s007-p000569",
+        "paragraph_index": 568,
+        "text": "「咱的脸皮没有厚到拿人好处，还可以表现得若无其事。咱可是贤狼赫萝，尊贵的狼啊。」",
+        "target_dialogue_ids": [
+          "volume_01-d000190"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c002-s007-p000570",
+        "paragraph_index": 569,
+        "text": "赫萝鼓着脸，有些生气地说道，那模样看起来就像个孩子。但罗伦斯并没有被赫萝的演技所骗，他明白赫萝是故意假装生气。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s007-p000571",
+        "paragraph_index": 570,
+        "text": "罗伦斯猜得没错，过不久后，赫萝果然咯咯笑了出来。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s007-p000572",
+        "paragraph_index": 571,
+        "text": "「不过，尊贵的狼昨天还露出那样的丑态，实在不怎么好笑呐。」",
+        "target_dialogue_ids": [
+          "volume_01-d000191"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c002-s007-p000573",
+        "paragraph_index": 572,
+        "text": "赫萝自嘲似地笑着说道。如此听来，她昨天失去冷静的表现似乎是发自内心的真实心情。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s007-p000574",
+        "paragraph_index": 573,
+        "text": "「总之，多多指教了……呃——」",
+        "target_dialogue_ids": [
+          "volume_01-d000192"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c002-s007-p000575",
+        "paragraph_index": 574,
+        "text": "「我叫罗伦斯。克拉福•罗伦斯，工作上我都以罗伦斯自称。」",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s007-p000576",
+        "paragraph_index": 575,
+        "text": "「嗯，罗伦斯。咱会一直传述汝的故事，让汝的名字成为美谈永远流传下去。」",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s007-p000577",
+        "paragraph_index": 576,
+        "text": "狼耳朵在抬头挺胸说道的赫萝头上得意地摇动，赫萝的话或许是发自真心的吧。看着她的模样，实在难以判断她究竟是幼稚、还是老奸巨猾，她的情绪就像天上的云一样，总是变化无常。",
+        "target_dialogue_ids": []
+      }
+    ]
+  },
+  "scene_memory": [
+    {
+      "scene_id": "volume_01-c002-s007-r001",
+      "parent_scene_id": "volume_01-c002-s007",
+      "chunk_index": 1,
+      "chunk_count": 2,
+      "scene_summary": "罗伦斯与赫萝在交易后展开对话，赫萝表明希望与罗伦斯一同旅行，罗伦斯最终同意。赫萝展现出自信与轻松的态度，而罗伦斯则表现出理性与谨慎。",
+      "active_characters": [
+        "罗伦斯",
+        "赫萝"
+      ],
+      "relationships": [
+        "罗伦斯与赫萝之间建立初步信任",
+        "赫萝请求与罗伦斯同行"
+      ],
+      "notes": "赫萝表现出自信和轻松的态度，罗伦斯则理性且谨慎。两人之间建立了初步的信任关系。"
+    },
+    {
+      "scene_id": "volume_01-c002-s007-r002",
+      "parent_scene_id": "volume_01-c002-s007",
+      "chunk_index": 2,
+      "chunk_count": 2,
+      "scene_summary": "赫萝与罗伦斯在准备出发前互动，赫萝表现出情绪多变的特质，罗伦斯则保持理性并逐渐接受赫萝的存在。两人之间有轻松幽默的对话，同时暗示了赫萝的神秘身份。",
+      "active_characters": [
+        "赫萝",
+        "罗伦斯"
+      ],
+      "relationships": [
+        "赫萝与罗伦斯之间存在互动和依赖关系，赫萝表现出试探与依赖，罗伦斯则表现出理性与逐渐接受的态度。"
+      ],
+      "notes": "赫萝的情绪变化和说话风格提供了其性格线索，罗伦斯的理性态度和行为表明他正在逐步接受赫萝的存在。场景中未出现新的神秘人物。"
+    }
+  ],
+  "candidate_characters": [
+    {
+      "entity_id": "char_0002",
+      "display_name": "赫萝",
+      "aliases": [
+        "赫萝"
+      ],
+      "titles": [
+        "丰收之神",
+        "咱",
+        "神秘少女",
+        "约伊兹的贤狼",
+        "贤狼"
+      ],
+      "description": "自称丰收之神的神秘少女，拥有狼的耳朵和尾巴。在本场景中协助罗伦斯，表现出对他的关心和保护。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴，行为举止非人类，表现出轻松幽默但略带威胁性的说话风格。在本场景中，她对罗伦斯的伤口进行吸血，引发旁人惊呼，并表现出悲伤的情绪。 / 自称是丰收之神的神秘少女，拥有狼的耳朵和尾巴。在本场景中逐渐显露出非人类的特征，最终完全变成一只巨大的狼。她与罗伦斯有情感交流，表现出悲伤和决绝的情绪。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴，未直接参与本场景，但罗伦斯的行动可能与她有关。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴。在本场景中制服叶勒，并要求罗伦斯提供麦子，表现出非人类的特征和威胁性。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴。在本场景中以威胁的方式向罗伦斯索要麦子，表现出非人类的特征和强大的气场。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴。她表现出轻松幽默但略带威胁性的说话风格，对罗伦斯的挽留表现出复杂的情绪。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴，说话轻松幽默但略带威胁性。在本场景中拒绝罗伦斯的挽留，表现出独立和决绝。 / 赫萝的尾巴是罗伦斯追击的目标，她最终离开罗伦斯，留下他独自面对危险。罗伦斯回忆起赫萝离去的场景，表现出对她的依赖和悔恨。 / 自称是丰收之神的神秘少女，拥有狼的耳朵和尾巴。在本场景中独自前往市场为旅行整装，表现出独立和果断的一面。 / 自称是丰收之神的少女，拥有狼的耳朵和尾巴，说话狡诈。她与罗伦斯一同旅行，表现出轻松幽默但略带威胁性的说话风格。 / 自称丰收之神的神秘少女，拥有狼的耳…",
+      "speech_style": "轻松幽默但略带威胁性，情绪化且带有调侃语气。 / 轻松幽默、略带调侃和威胁 / 轻松幽默、略带威胁性 / 轻松幽默、略带威胁性、撒娇 / 警觉、神秘 / 轻松幽默但略带威胁性 / 轻松幽默、略带调侃 / 轻松幽默但略带威胁性，语气中透露出对罗伦斯的依赖。 / 轻松幽默、略带威胁性、自信 / 轻松幽默但略带威胁性，情绪波动明显 / 轻松幽默、略带威胁、情绪波动明显 / 轻松幽默但略带威胁性，表现出自信和调皮的特质。",
+      "relationship_hints": [
+        "与罗伦斯一同旅行",
+        "被罗伦斯怀疑是否为真正的神",
+        "与叶勒有附身关系",
+        "与罗伦斯有潜在互动",
+        "与罗伦斯有互动，似乎是被他发现并收留的。",
+        "与罗伦斯有互动，但尚未明确关系",
+        "与罗伦斯互动频繁，表现出对他的信任和玩笑态度",
+        "与罗伦斯互动密切",
+        "似乎对罗伦斯的反应感到有趣",
+        "与罗伦斯有互动，似乎是被他收留的神秘女孩。",
+        "与帕斯罗村的丰收之神有关联。",
+        "与罗伦斯对话，表现出信任与互动"
+      ],
+      "first_seen_scene_id": "volume_01-c000-s003-r001",
+      "latest_seen_scene_id": "volume_01-c008-s003-r002",
+      "confidence": 1.0
+    },
+    {
+      "entity_id": "char_0001",
+      "display_name": "罗伦斯",
+      "aliases": [
+        "罗伦斯",
+        "罗伦斯先生"
+      ],
+      "titles": [
+        "中间人",
+        "交易者",
+        "同行",
+        "商人",
+        "小毛头",
+        "小的",
+        "市井无赖",
+        "年轻人",
+        "开店者",
+        "情报贩子",
+        "提议者",
+        "新手"
+      ],
+      "description": "一位行商人，正在与米隆商行的代表马贺特进行交易谈判。他原本期待获得两千枚银币，但实际只得到一百二十枚，感到震惊和困惑。 / 一位行商人，发现并收留了赫萝，决定与她一同旅行。 / 一位二十五岁的自力更生旅行商人，已有七年行商经验，性格泰然自若。 / 一位冷静理性的旅行商人，对赫萝的身份持怀疑态度，但仍保持互动。他注重外表整洁，对商业制度有深入理解。 / 冷静理性的旅行商人，与赫萝一同旅行。在本场景中与米隆商行的马贺特讨论梅迪欧商行的威胁，提出利用崔尼银币交易作为交涉王牌。 / 一位冷静理性的旅行商人，与赫萝一同旅行。在本场景中与米隆商行的马贺特达成交易，表现出策略性和经验。 / 正在与马贺特讨论交易细节的商人，表现出对辛香料的兴趣。 / 一位冷静理性的旅行商人，正在与米隆商行的马贺特进行交易。他表现出对开店的期待，并思考未来。 / 一位冷静理性的旅行商人，正在处理一份请款单，但对单据内容感到困惑。 / 一位行商人，正在与商行代表进行交易。他表现出冷静和策略性，询问卸货场的位置。 / 一位行商人，发现并收留了赫萝，决定与她一同旅行。他性格冷静理性，对赫萝的身份持怀疑态度，但仍保持互动。他注重外表整洁，对商业制度有深入理解。 / 冷静理性的旅行商人，与赫萝一同旅行。在本场景中试图安抚赫萝的情绪，表现出对她的关心。",
+      "speech_style": "理性、坚定、略带情绪化 / 冷静、理性，带有悔恨和自责的语气。 / 冷静、理性，语气中带有对赫萝的关心和些许担忧。 / 冷静、理性、略带失落 / 冷静、理性，对商业制度有深入理解，并能清晰地向他人解释。 / 理性、礼貌、略带谨慎。 / 理性、冷静，带有商业分析倾向。 / 理性、沉稳、略带幽默 / 理性、冷静，但因困惑而表现出急切。 / 冷静、直接、略带命令语气 / 冷静、理性、简洁 / 冷静、理性、略带幽默",
+      "relationship_hints": [
+        "与赫萝一同旅行",
+        "对赫萝的真实性持怀疑态度",
+        "与深山村落的村民有交易关系",
+        "对修道院抱有商业期望但未成功",
+        "与骑士有短暂互动",
+        "与小村落的村民有交易关系",
+        "与修道院有关联",
+        "对教会和异教徒问题有见解",
+        "与叶勒有联系",
+        "在麦田中与农夫互动",
+        "与农夫有互动",
+        "在村民中保持低调"
+      ],
+      "first_seen_scene_id": "volume_01-c000-s003-r001",
+      "latest_seen_scene_id": "volume_01-c008-s003-r002",
+      "confidence": 1.0
+    }
+  ],
+  "candidate_mysteries": [
+    {
+      "mystery_id": "mystery_volume_01_c008_s001_r002_赫萝",
+      "temporary_name": "赫萝",
+      "description": "罗伦斯的旅伴，拥有狼的特征，曾在地下道中护送罗伦斯，目前下落不明。",
+      "evidence": [
+        "volume_01-c008-s001-p002960",
+        "volume_01-c008-s001-p002961",
+        "volume_01-c008-s001-p002963"
+      ],
+      "source_scene_id": "volume_01-c008-s001-r002",
+      "confidence": 0.85
+    },
+    {
+      "mystery_id": "mystery_volume_01_c002_s002_r001_赫萝",
+      "temporary_name": "赫萝",
+      "description": "传说中的丰收之神，被村民称为狼，是祭典的核心象征。",
+      "evidence": [
+        "volume_01-c002-s002-p000160",
+        "volume_01-c002-s002-p000164"
+      ],
+      "source_scene_id": "volume_01-c002-s002-r001",
+      "confidence": 0.8
+    },
+    {
+      "mystery_id": "mystery_volume_01_c002_s002_r003_赫萝",
+      "temporary_name": "赫萝",
+      "description": "虽然未直接出现，但被提及为祭典的核心人物，与罗伦斯有情感牵连。",
+      "evidence": [
+        "volume_01-c002-s002-p000187",
+        "volume_01-c002-s002-p000195"
+      ],
+      "source_scene_id": "volume_01-c002-s002-r003",
+      "confidence": 0.75
+    }
+  ]
+}

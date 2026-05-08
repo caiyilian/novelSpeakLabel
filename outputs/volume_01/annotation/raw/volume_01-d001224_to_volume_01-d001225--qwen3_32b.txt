@@ -1,0 +1,52 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001224",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "前一句是赫萝说的「咱撕下袖子当纱布。汝连这都不知道啊？」，接下来是罗伦斯回应「没有，我知道，没事的。」，符合对话轮次。",
+        "场景记忆中提到罗伦斯和赫萝是主要角色，且罗伦斯在恢复意识后表现出轻松但略带担忧的态度。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001225",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "前一句是罗伦斯说的「没有，我知道，没事的。」，接下来是赫萝说「再一下就到了。走到那条通道的尽头，再往右转……」，符合对话轮次。",
+        "场景记忆中提到赫萝走在前头，主导方向指引，符合该句台词内容。",
+        "赫萝的台词风格轻松幽默但略带威胁性，符合该句语气。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，罗伦斯回应赫萝后，赫萝继续指引方向，符合两人互动模式。"
+}
+```

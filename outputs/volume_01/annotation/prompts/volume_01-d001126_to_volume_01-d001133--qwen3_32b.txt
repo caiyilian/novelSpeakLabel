@@ -1,0 +1,613 @@
+你是轻小说说话人标注项目的阶段 2：正式标注助手。
+你的任务是判断输入 target_dialogues 中每一句台词的说话人，不要改写原文。
+必须把这些台词当作同一个连续片段来判断，优先保持对话轮次和叙述线索的一致性。
+
+规则：
+1. 只输出严格 JSON，不要 Markdown，不要解释性前后缀。
+2. 如果说话人是候选角色，speaker_entity_id 必须使用 candidate_characters 里的 entity_id，speaker_status 填 known。
+3. 如果说话人像某个未知人物，speaker_entity_id 使用 candidate_mysteries 里的 mystery_id，speaker_status 填 mystery。
+4. 如果只是无法追踪的路人/群体，speaker_status 填 npc，speaker_entity_id 可为空或使用 npc:简短称呼。
+5. 证据不足时不要硬猜，speaker_status 填 ambiguous 或 review，并把 needs_review 设为 true。
+6. candidate_speakers 至少列出 1 个候选；如果无法判断，列出最可能的候选和不确定原因。
+7. confidence 使用 0 到 1 之间的小数，表示你对最终判断的把握。
+8. 不要只因为台词里提到某个名字、职业、地点，就把说话人标成那个实体；被称呼的人通常不是说话人。
+9. 连续问答、交易寒暄、命令/回答等场景要按上下句轮次判断；同一人连续说话必须有叙述或语气证据支持。
+10. 如果当前上下文显示某角色还没有登场，不要因为角色库或后文记忆里有这个角色就提前标给他/她。
+
+输出 JSON 结构：
+{
+  "annotations": [
+    {
+      "dialogue_id": "必须来自 target_dialogue_ids",
+      "speaker_entity_id": "string",
+      "speaker_display": "string",
+      "speaker_status": "known|mystery|npc|ambiguous|review",
+      "confidence": 0.0,
+      "candidate_speakers": [
+        {"entity_id": "string", "display": "string", "status": "known|mystery|npc|ambiguous|review", "score": 0.0}
+      ],
+      "evidence": ["短证据，不要大段复制原文"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "可选，简短说明整体轮次判断"
+}
+必须为 target_dialogue_ids 中每个 dialogue_id 输出且只输出一条 annotation。
+
+输入 JSON：
+{
+  "volume": {
+    "volume_id": "volume_01",
+    "volume": 1
+  },
+  "target_dialogue_ids": [
+    "volume_01-d001126",
+    "volume_01-d001127",
+    "volume_01-d001128",
+    "volume_01-d001129",
+    "volume_01-d001130",
+    "volume_01-d001131",
+    "volume_01-d001132",
+    "volume_01-d001133"
+  ],
+  "dialogues": [
+    {
+      "dialogue_id": "volume_01-d001126",
+      "dialogue_index": 1125,
+      "window_position": 1,
+      "chapter_id": "volume_01-c006",
+      "chapter_title": "第五幕",
+      "scene_id": "volume_01-c006-s004",
+      "paragraph_id": "volume_01-c006-s004-p002469",
+      "paragraph_index": 2468,
+      "local_dialogue_index": 1,
+      "text": "咱不知道在那块土地待了多长的岁月，或许有咱尾巴毛的数量那么多年。",
+      "quote_text": "「咱不知道在那块土地待了多长的岁月，或许有咱尾巴毛的数量那么多年。」",
+      "paragraph_text": "「咱不知道在那块土地待了多长的岁月，或许有咱尾巴毛的数量那么多年。」",
+      "char_start": 0,
+      "char_end": 34
+    },
+    {
+      "dialogue_id": "volume_01-d001127",
+      "dialogue_index": 1126,
+      "window_position": 2,
+      "chapter_id": "volume_01-c006",
+      "chapter_title": "第五幕",
+      "scene_id": "volume_01-c006-s004",
+      "paragraph_id": "volume_01-c006-s004-p002470",
+      "paragraph_index": 2469,
+      "local_dialogue_index": 1,
+      "text": "啪唰",
+      "quote_text": "「啪唰」",
+      "paragraph_text": "外套底下的尾巴发出「啪唰」声。",
+      "char_start": 9,
+      "char_end": 13
+    },
+    {
+      "dialogue_id": "volume_01-d001128",
+      "dialogue_index": 1127,
+      "window_position": 3,
+      "chapter_id": "volume_01-c006",
+      "chapter_title": "第五幕",
+      "scene_id": "volume_01-c006-s004",
+      "paragraph_id": "volume_01-c006-s004-p002471",
+      "paragraph_index": 2470,
+      "local_dialogue_index": 1,
+      "text": "咱是贤狼赫萝呐。为了尽量让麦田年年丰收，咱时而会让麦田休养，所以有收成不好的时候。尽管如此，咱相信在咱的管理下，村里的麦田应该能比起其他土地产出更硕大的麦子。",
+      "quote_text": "「咱是贤狼赫萝呐。为了尽量让麦田年年丰收，咱时而会让麦田休养，所以有收成不好的时候。尽管如此，咱相信在咱的管理下，村里的麦田应该能比起其他土地产出更硕大的麦子。」",
+      "paragraph_text": "「咱是贤狼赫萝呐。为了尽量让麦田年年丰收，咱时而会让麦田休养，所以有收成不好的时候。尽管如此，咱相信在咱的管理下，村里的麦田应该能比起其他土地产出更硕大的麦子。」",
+      "char_start": 0,
+      "char_end": 81
+    },
+    {
+      "dialogue_id": "volume_01-d001129",
+      "dialogue_index": 1128,
+      "window_position": 4,
+      "chapter_id": "volume_01-c006",
+      "chapter_title": "第五幕",
+      "scene_id": "volume_01-c006-s004",
+      "paragraph_id": "volume_01-c006-s004-p002473",
+      "paragraph_index": 2472,
+      "local_dialogue_index": 1,
+      "text": "那里的村民的确把咱当成丰收之神看待，只不过与其说受到敬仰，不如说被村民拘留比较贴切。割下最后一束麦子的人不是会被追捕吗？抓到后还会用绳子捆绑起来。",
+      "quote_text": "「那里的村民的确把咱当成丰收之神看待，只不过与其说受到敬仰，不如说被村民拘留比较贴切。割下最后一束麦子的人不是会被追捕吗？抓到后还会用绳子捆绑起来。」",
+      "paragraph_text": "「那里的村民的确把咱当成丰收之神看待，只不过与其说受到敬仰，不如说被村民拘留比较贴切。割下最后一束麦子的人不是会被追捕吗？抓到后还会用绳子捆绑起来。」",
+      "char_start": 0,
+      "char_end": 75
+    },
+    {
+      "dialogue_id": "volume_01-d001130",
+      "dialogue_index": 1129,
+      "window_position": 5,
+      "chapter_id": "volume_01-c006",
+      "chapter_title": "第五幕",
+      "scene_id": "volume_01-c006-s004",
+      "paragraph_id": "volume_01-c006-s004-p002474",
+      "paragraph_index": 2473,
+      "local_dialogue_index": 1,
+      "text": "听说那个人会连同佳肴、及明年用的种籽，一块儿被关在谷仓一星期左右。",
+      "quote_text": "「听说那个人会连同佳肴、及明年用的种籽，一块儿被关在谷仓一星期左右。」",
+      "paragraph_text": "「听说那个人会连同佳肴、及明年用的种籽，一块儿被关在谷仓一星期左右。」",
+      "char_start": 0,
+      "char_end": 35
+    },
+    {
+      "dialogue_id": "volume_01-d001131",
+      "dialogue_index": 1130,
+      "window_position": 6,
+      "chapter_id": "volume_01-c006",
+      "chapter_title": "第五幕",
+      "scene_id": "volume_01-c006-s004",
+      "paragraph_id": "volume_01-c006-s004-p002475",
+      "paragraph_index": 2474,
+      "local_dialogue_index": 1,
+      "text": "那些猪肉和鸭肉确实挺好吃的。",
+      "quote_text": "「那些猪肉和鸭肉确实挺好吃的。」",
+      "paragraph_text": "「那些猪肉和鸭肉确实挺好吃的。」",
+      "char_start": 0,
+      "char_end": 16
+    },
+    {
+      "dialogue_id": "volume_01-d001132",
+      "dialogue_index": 1131,
+      "window_position": 7,
+      "chapter_id": "volume_01-c006",
+      "chapter_title": "第五幕",
+      "scene_id": "volume_01-c006-s004",
+      "paragraph_id": "volume_01-c006-s004-p002478",
+      "paragraph_index": 2477,
+      "local_dialogue_index": 1,
+      "text": "可是呐。",
+      "quote_text": "「可是呐。」",
+      "paragraph_text": "「可是呐。」",
+      "char_start": 0,
+      "char_end": 6
+    },
+    {
+      "dialogue_id": "volume_01-d001133",
+      "dialogue_index": 1132,
+      "window_position": 8,
+      "chapter_id": "volume_01-c006",
+      "chapter_title": "第五幕",
+      "scene_id": "volume_01-c006-s004",
+      "paragraph_id": "volume_01-c006-s004-p002480",
+      "paragraph_index": 2479,
+      "local_dialogue_index": 1,
+      "text": "汝知道叶勒那家伙对咱说了什么吗？",
+      "quote_text": "「汝知道叶勒那家伙对咱说了什么吗？」",
+      "paragraph_text": "「汝知道叶勒那家伙对咱说了什么吗？」",
+      "char_start": 0,
+      "char_end": 18
+    }
+  ],
+  "context": {
+    "paragraphs": [
+      {
+        "paragraph_id": "volume_01-c006-s004-p002466",
+        "paragraph_index": 2465,
+        "text": "赫萝说完后叹了口气，怒气也跟着呼出来。或许是想起与叶勒的对话，再度勾起她的愤怒。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c006-s004-p002467",
+        "paragraph_index": 2466,
+        "text": "罗伦斯思考叶勒会对赫萝说些什么。他认为赫萝确实对村民怀有怨恨，但既然都决定离开村落，应该不至于如此忿忿不平。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c006-s004-p002468",
+        "paragraph_index": 2467,
+        "text": "就在罗伦斯想着这些事情时，赫萝开口说：",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c006-s004-p002469",
+        "paragraph_index": 2468,
+        "text": "「咱不知道在那块土地待了多长的岁月，或许有咱尾巴毛的数量那么多年。」",
+        "target_dialogue_ids": [
+          "volume_01-d001126"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c006-s004-p002470",
+        "paragraph_index": 2469,
+        "text": "外套底下的尾巴发出「啪唰」声。",
+        "target_dialogue_ids": [
+          "volume_01-d001127"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c006-s004-p002471",
+        "paragraph_index": 2470,
+        "text": "「咱是贤狼赫萝呐。为了尽量让麦田年年丰收，咱时而会让麦田休养，所以有收成不好的时候。尽管如此，咱相信在咱的管理下，村里的麦田应该能比起其他土地产出更硕大的麦子。」",
+        "target_dialogue_ids": [
+          "volume_01-d001128"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c006-s004-p002472",
+        "paragraph_index": 2471,
+        "text": "虽然罗伦斯已听过同样的话，但他直率地点点头，催促赫萝继续说话。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c006-s004-p002473",
+        "paragraph_index": 2472,
+        "text": "「那里的村民的确把咱当成丰收之神看待，只不过与其说受到敬仰，不如说被村民拘留比较贴切。割下最后一束麦子的人不是会被追捕吗？抓到后还会用绳子捆绑起来。」",
+        "target_dialogue_ids": [
+          "volume_01-d001129"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c006-s004-p002474",
+        "paragraph_index": 2473,
+        "text": "「听说那个人会连同佳肴、及明年用的种籽，一块儿被关在谷仓一星期左右。」",
+        "target_dialogue_ids": [
+          "volume_01-d001130"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c006-s004-p002475",
+        "paragraph_index": 2474,
+        "text": "「那些猪肉和鸭肉确实挺好吃的。」",
+        "target_dialogue_ids": [
+          "volume_01-d001131"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c006-s004-p002476",
+        "paragraph_index": 2475,
+        "text": "赫萝的感言让罗伦斯觉得好笑。他心想，看来被关进谷仓的人不记得有吃过的东西，也凭空消失的事件是真有其事，而那个犯人就在他的眼前，所以才让人觉得好笑。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c006-s004-p002477",
+        "paragraph_index": 2476,
+        "text": "原本跟随这暧昧传闻而来的恐惧感，现在摇身一变，成了大口咬住猪肉或鸭肉的狼形赫萝。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c006-s004-p002478",
+        "paragraph_index": 2477,
+        "text": "「可是呐。」",
+        "target_dialogue_ids": [
+          "volume_01-d001132"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c006-s004-p002479",
+        "paragraph_index": 2478,
+        "text": "赫萝加重语气说，罗伦斯不禁肃立起身子。导致愤怒的主因从赫萝的口中说出：",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c006-s004-p002480",
+        "paragraph_index": 2479,
+        "text": "「汝知道叶勒那家伙对咱说了什么吗？」",
+        "target_dialogue_ids": [
+          "volume_01-d001133"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c006-s004-p002481",
+        "paragraph_index": 2480,
+        "text": "赫萝咬着下唇，说话有些停顿，她用手背擦了一下眼角说：",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c006-s004-p002482",
+        "paragraph_index": 2481,
+        "text": "「那家伙说他从杰廉口中听到咱的名字时，就想到该不会是咱了吧。咱啊，咱虽然觉得没出息，但那时听了真的觉得很开心……」",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c006-s004-p002483",
+        "paragraph_index": 2482,
+        "text": "虽然口中这么说，但赫萝却低着头，眼泪不停从她脸上滑落。",
+        "target_dialogue_ids": []
+      }
+    ]
+  },
+  "scene_memory": [
+    {
+      "scene_id": "volume_01-c006-s004-r003",
+      "parent_scene_id": "volume_01-c006-s004",
+      "chunk_index": 3,
+      "chunk_count": 6,
+      "scene_summary": "罗伦斯与赫萝在对话中讨论叶勒的异常行为，赫萝表现出情绪波动，但最终恢复平静。罗伦斯试图解释并道歉，赫萝则以简短回应回应。赫萝提到叶勒与年轻商人杰廉的联系，并指出叶勒的异常着装。",
+      "active_characters": [
+        "罗伦斯",
+        "赫萝"
+      ],
+      "relationships": [
+        "罗伦斯与赫萝是长期旅行伙伴",
+        "赫萝与叶勒有某种联系，可能是宗教或社会背景上的关联",
+        "叶勒与杰廉有商业或信息上的联系"
+      ],
+      "notes": "赫萝的情绪变化和简短回应表明她可能在隐藏某些信息或情绪。叶勒的异常行为和着装可能暗示他与村庄之外的势力有联系。杰廉作为年轻商人被提及，可能是后续情节的关键人物。"
+    },
+    {
+      "scene_id": "volume_01-c006-s004-r004",
+      "parent_scene_id": "volume_01-c006-s004",
+      "chunk_index": 4,
+      "chunk_count": 6,
+      "scene_summary": "赫萝与罗伦斯在对话中回忆帕斯罗村的经历，提及村民对她的态度以及她作为丰收之神的职责。赫萝表现出对村民的愤怒与不满，同时透露出她对麦田管理的自信。",
+      "active_characters": [
+        "罗伦斯",
+        "赫萝"
+      ],
+      "relationships": [
+        "罗伦斯与赫萝一同旅行，表现出信任与依赖",
+        "赫萝对帕斯罗村村民怀有怨恨，尤其是叶勒"
+      ],
+      "notes": "赫萝表现出对帕斯罗村的复杂情绪，既有愤怒也有怀念。罗伦斯试图理解她的立场，但保持理性分析。叶勒作为村民代表被提及，可能是赫萝情绪的触发点。"
+    },
+    {
+      "scene_id": "volume_01-c006-s004-r005",
+      "parent_scene_id": "volume_01-c006-s004",
+      "chunk_index": 5,
+      "chunk_count": 6,
+      "scene_summary": "赫萝因叶勒对她的态度感到愤怒和悲伤，流露出内心的孤独与被误解的痛苦。罗伦斯则在旁倾听，思考着丰收之神与人类信仰之间的关系。",
+      "active_characters": [
+        "赫萝",
+        "罗伦斯"
+      ],
+      "relationships": [
+        "赫萝与罗伦斯有亲密关系",
+        "赫萝与叶勒有冲突",
+        "罗伦斯与帕斯罗村有互动"
+      ],
+      "notes": "赫萝在本场景中表现出强烈的情感波动，暗示她与帕斯罗村及叶勒之间存在复杂的历史。罗伦斯则表现出理性与关怀的双重态度。叶勒虽未直接出现，但其言行对赫萝情绪有显著影响，值得后续追踪。"
+    },
+    {
+      "scene_id": "volume_01-c006-s004-r006",
+      "parent_scene_id": "volume_01-c006-s004",
+      "chunk_index": 6,
+      "chunk_count": 6,
+      "scene_summary": "罗伦斯试图安抚哭泣的赫萝，强调商人应以赚钱为重，情绪应随商业状况而定。赫萝虽然停止哭泣，但仍表现出情绪波动。",
+      "active_characters": [
+        "罗伦斯",
+        "赫萝"
+      ],
+      "relationships": [
+        "罗伦斯与赫萝之间存在亲密互动和情绪依赖",
+        "罗伦斯试图通过理性话语安抚赫萝的情绪"
+      ],
+      "notes": "本场景中未出现新的神秘人物，主要聚焦于罗伦斯与赫萝的互动。赫萝的情绪波动和罗伦斯的安抚行为是关键线索。"
+    }
+  ],
+  "candidate_characters": [
+    {
+      "entity_id": "char_0002",
+      "display_name": "赫萝",
+      "aliases": [
+        "赫萝"
+      ],
+      "titles": [
+        "丰收之神",
+        "咱",
+        "神秘少女",
+        "约伊兹的贤狼",
+        "贤狼"
+      ],
+      "description": "自称丰收之神的神秘少女，拥有狼的耳朵和尾巴。在本场景中协助罗伦斯，表现出对他的关心和保护。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴，行为举止非人类，表现出轻松幽默但略带威胁性的说话风格。在本场景中，她对罗伦斯的伤口进行吸血，引发旁人惊呼，并表现出悲伤的情绪。 / 自称是丰收之神的神秘少女，拥有狼的耳朵和尾巴。在本场景中逐渐显露出非人类的特征，最终完全变成一只巨大的狼。她与罗伦斯有情感交流，表现出悲伤和决绝的情绪。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴，未直接参与本场景，但罗伦斯的行动可能与她有关。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴。在本场景中制服叶勒，并要求罗伦斯提供麦子，表现出非人类的特征和威胁性。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴。在本场景中以威胁的方式向罗伦斯索要麦子，表现出非人类的特征和强大的气场。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴。她表现出轻松幽默但略带威胁性的说话风格，对罗伦斯的挽留表现出复杂的情绪。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴，说话轻松幽默但略带威胁性。在本场景中拒绝罗伦斯的挽留，表现出独立和决绝。 / 赫萝的尾巴是罗伦斯追击的目标，她最终离开罗伦斯，留下他独自面对危险。罗伦斯回忆起赫萝离去的场景，表现出对她的依赖和悔恨。 / 自称是丰收之神的神秘少女，拥有狼的耳朵和尾巴。在本场景中独自前往市场为旅行整装，表现出独立和果断的一面。 / 自称是丰收之神的少女，拥有狼的耳朵和尾巴，说话狡诈。她与罗伦斯一同旅行，表现出轻松幽默但略带威胁性的说话风格。 / 自称丰收之神的神秘少女，拥有狼的耳…",
+      "speech_style": "轻松幽默但略带威胁性，情绪化且带有调侃语气。 / 轻松幽默、略带调侃和威胁 / 轻松幽默、略带威胁性 / 轻松幽默、略带威胁性、撒娇 / 警觉、神秘 / 轻松幽默但略带威胁性 / 轻松幽默、略带调侃 / 轻松幽默但略带威胁性，语气中透露出对罗伦斯的依赖。 / 轻松幽默、略带威胁性、自信 / 轻松幽默但略带威胁性，情绪波动明显 / 轻松幽默、略带威胁、情绪波动明显 / 轻松幽默但略带威胁性，表现出自信和调皮的特质。",
+      "relationship_hints": [
+        "与罗伦斯一同旅行",
+        "被罗伦斯怀疑是否为真正的神",
+        "与叶勒有附身关系",
+        "与罗伦斯有潜在互动",
+        "与罗伦斯有互动，似乎是被他发现并收留的。",
+        "与罗伦斯有互动，但尚未明确关系",
+        "与罗伦斯互动频繁，表现出对他的信任和玩笑态度",
+        "与罗伦斯互动密切",
+        "似乎对罗伦斯的反应感到有趣",
+        "与罗伦斯有互动，似乎是被他收留的神秘女孩。",
+        "与帕斯罗村的丰收之神有关联。",
+        "与罗伦斯对话，表现出信任与互动"
+      ],
+      "first_seen_scene_id": "volume_01-c000-s003-r001",
+      "latest_seen_scene_id": "volume_01-c008-s003-r002",
+      "confidence": 1.0
+    },
+    {
+      "entity_id": "char_0001",
+      "display_name": "罗伦斯",
+      "aliases": [
+        "罗伦斯",
+        "罗伦斯先生"
+      ],
+      "titles": [
+        "中间人",
+        "交易者",
+        "同行",
+        "商人",
+        "小毛头",
+        "小的",
+        "市井无赖",
+        "年轻人",
+        "开店者",
+        "情报贩子",
+        "提议者",
+        "新手"
+      ],
+      "description": "一位行商人，正在与米隆商行的代表马贺特进行交易谈判。他原本期待获得两千枚银币，但实际只得到一百二十枚，感到震惊和困惑。 / 一位行商人，发现并收留了赫萝，决定与她一同旅行。 / 一位二十五岁的自力更生旅行商人，已有七年行商经验，性格泰然自若。 / 一位冷静理性的旅行商人，对赫萝的身份持怀疑态度，但仍保持互动。他注重外表整洁，对商业制度有深入理解。 / 冷静理性的旅行商人，与赫萝一同旅行。在本场景中与米隆商行的马贺特讨论梅迪欧商行的威胁，提出利用崔尼银币交易作为交涉王牌。 / 一位冷静理性的旅行商人，与赫萝一同旅行。在本场景中与米隆商行的马贺特达成交易，表现出策略性和经验。 / 正在与马贺特讨论交易细节的商人，表现出对辛香料的兴趣。 / 一位冷静理性的旅行商人，正在与米隆商行的马贺特进行交易。他表现出对开店的期待，并思考未来。 / 一位冷静理性的旅行商人，正在处理一份请款单，但对单据内容感到困惑。 / 一位行商人，正在与商行代表进行交易。他表现出冷静和策略性，询问卸货场的位置。 / 一位行商人，发现并收留了赫萝，决定与她一同旅行。他性格冷静理性，对赫萝的身份持怀疑态度，但仍保持互动。他注重外表整洁，对商业制度有深入理解。 / 冷静理性的旅行商人，与赫萝一同旅行。在本场景中试图安抚赫萝的情绪，表现出对她的关心。",
+      "speech_style": "理性、坚定、略带情绪化 / 冷静、理性，带有悔恨和自责的语气。 / 冷静、理性，语气中带有对赫萝的关心和些许担忧。 / 冷静、理性、略带失落 / 冷静、理性，对商业制度有深入理解，并能清晰地向他人解释。 / 理性、礼貌、略带谨慎。 / 理性、冷静，带有商业分析倾向。 / 理性、沉稳、略带幽默 / 理性、冷静，但因困惑而表现出急切。 / 冷静、直接、略带命令语气 / 冷静、理性、简洁 / 冷静、理性、略带幽默",
+      "relationship_hints": [
+        "与赫萝一同旅行",
+        "对赫萝的真实性持怀疑态度",
+        "与深山村落的村民有交易关系",
+        "对修道院抱有商业期望但未成功",
+        "与骑士有短暂互动",
+        "与小村落的村民有交易关系",
+        "与修道院有关联",
+        "对教会和异教徒问题有见解",
+        "与叶勒有联系",
+        "在麦田中与农夫互动",
+        "与农夫有互动",
+        "在村民中保持低调"
+      ],
+      "first_seen_scene_id": "volume_01-c000-s003-r001",
+      "latest_seen_scene_id": "volume_01-c008-s003-r002",
+      "confidence": 1.0
+    },
+    {
+      "entity_id": "char_0004",
+      "display_name": "叶勒",
+      "aliases": [
+        "叶勒"
+      ],
+      "titles": [
+        "帕斯罗村农夫",
+        "村民代表"
+      ],
+      "description": "帕斯罗村的农夫，今年雇用年轻人种田。 / 帕斯罗村的农夫，今年雇用年轻人种田，是村民丰收祭典的中心人物。 / 帕斯罗村的农夫，今年雇用年轻人种田，是村民丰收祭典的中心人物。他被村民认为是丰收之神附身的载体。 / 帕斯罗村的农夫，曾与罗伦斯交易麦子，对罗伦斯怀有感恩之心。 / 赫萝提及的愤怒对象，可能是帕斯罗村的农夫，曾被认为是丰收之神附身的载体。 / 帕斯罗村的农夫，被认为是丰收之神附身的载体。 / 帕斯罗村的农夫，被认为是丰收之神附身的载体。在本场景中突然出现，与罗伦斯有旧识，并提及帕斯罗村的银币交易计划。 / 帕斯罗村的农夫，被认为是丰收之神附身的载体。他与罗伦斯有旧识，并试图说服罗伦斯参与一项涉及麦子交易和撤销关税的计划。 / 帕斯罗村的农夫，被认为是丰收之神附身的载体。在本场景中试图说服罗伦斯参与一项涉及麦子交易和撤销关税的计划。 / 帕斯罗村的农夫，被认为是丰收之神附身的载体。在本场景中与罗伦斯对峙，试图说服他参与计划。 / 帕斯罗村的农夫，被认为是丰收之神附身的载体。在本场景中指挥手下行动，试图控制赫萝。 / 帕斯罗村的农夫，被认为是丰收之神附身的载体。在本场景中被赫萝制服，失去意识。",
+      "speech_style": "未直接说话，通过他人描述 / 未直接说话，但被村民高声呼喊 / 热情、激动，带有仪式感。 / 未直接说话，但通过他人叙述体现其性格 / 未直接说话 / 未直接发言，但被提及。 / 略带悲伤但坚定 / 理性、策略性、带有说服力 / 热情、说服性强 / 坚定、略带威胁 / 命令式 / 情绪化、不讲理",
+      "relationship_hints": [
+        "与罗伦斯有互动",
+        "雇用年轻人",
+        "是村民活动的组织者",
+        "与农夫有联系",
+        "与罗伦斯有交谈的意图",
+        "被村民追逐",
+        "与罗伦斯有商业交易关系",
+        "被村民视为丰收之神附身的载体",
+        "赫萝对其怀有强烈愤怒",
+        "与赫萝有互动，可能是她愤怒的来源",
+        "与罗伦斯有旧识",
+        "与帕斯罗村的银币交易有关"
+      ],
+      "first_seen_scene_id": "volume_01-c002-s001-r006",
+      "latest_seen_scene_id": "volume_01-c007-s004-r005",
+      "confidence": 0.95
+    },
+    {
+      "entity_id": "char_0009",
+      "display_name": "杰廉",
+      "aliases": [],
+      "titles": [
+        "中间人",
+        "交易者",
+        "同行",
+        "商人",
+        "小毛头",
+        "小的",
+        "市井无赖",
+        "年轻人",
+        "情报贩子",
+        "提议者",
+        "新手",
+        "旅行商人"
+      ],
+      "description": "一位能言善道的市井无赖，试图接近赫萝并表现出厚颜无耻的态度。 / 提供货币投机情报的商人，被罗伦斯怀疑其动机。 / 与罗伦斯达成交易的中间人，提供情报服务，自称小人物，但行为谨慎。 / 与罗伦斯和赫萝同行的旅人，已离开队伍。他的离开引发了赫萝和罗伦斯的讨论。 / 提出交易提议的人物，未直接出现，但被赫萝提及。 / 被罗伦斯寻找的男子，据称会在日落后出现。 / 据称会在日落后出现的男子，被罗伦斯和赫萝推测会如女店员所说出现。 / 与罗伦斯和赫萝互动的商人，对皮草交易表现出兴趣。 / 提供银币含银量情报的中间人，表现出谨慎和不自信。 / 提出银币含银量情报交易的男子，自称小人物，行为谨慎，试图说服罗伦斯接受交易。 / 与罗伦斯进行情报交易的男子，行为谨慎，自称小人物。 / 提出交易的年轻男子，动机不明，但显然有其利益考量。",
+      "speech_style": "厚颜无耻、能言善道、带有谄媚语气 / 未直接说话，但被罗伦斯和赫萝评价为「小毛头」和「说谎者」 / 谦卑但自信，带有职业性的谨慎语气。 / 未直接发言，但被提及。 / 未知 / 未直接出现 / 直接、略带调侃 / 谦卑、谨慎、略带紧张 / 谦卑、谨慎、带有讨好语气 / 谨慎、不自信 / 未直接说话，但被罗伦斯提及 / 未直接说话，但通过罗伦斯和赫萝的对话间接体现其狡猾和策略性",
+      "relationship_hints": [
+        "对罗伦斯表示敬佩",
+        "试图获取情报",
+        "与罗伦斯和赫萝互动",
+        "与罗伦斯有亲戚关系",
+        "试图接近赫萝",
+        "向罗伦斯提供情报，但罗伦斯怀疑其真实性",
+        "可能向其他商人提供相同情报",
+        "与罗伦斯有商业合作关系",
+        "提供情报服务",
+        "与罗伦斯有互动",
+        "与赫萝有互动",
+        "与罗伦斯有交易关系"
+      ],
+      "first_seen_scene_id": "volume_01-c003-s002-r002",
+      "latest_seen_scene_id": "volume_01-c004-s008-r005",
+      "confidence": 0.9
+    }
+  ],
+  "candidate_mysteries": [
+    {
+      "mystery_id": "mystery_volume_01_c006_s004_r005_叶勒",
+      "temporary_name": "叶勒",
+      "description": "帕斯罗村的农夫，被认为是丰收之神附身的载体。他对赫萝的态度引发她的愤怒和悲伤。",
+      "evidence": [
+        "volume_01-c006-s004-p002480",
+        "volume_01-c006-s004-p002482",
+        "volume_01-c006-s004-p002484"
+      ],
+      "source_scene_id": "volume_01-c006-s004-r005",
+      "confidence": 0.85
+    },
+    {
+      "mystery_id": "mystery_volume_01_c006_s004_r003_杰廉",
+      "temporary_name": "杰廉",
+      "description": "年轻商人，与叶勒有联系，被赫萝提及。可能是叶勒获取赫萝名字的来源。",
+      "evidence": [
+        "volume_01-c006-s004-p002463"
+      ],
+      "source_scene_id": "volume_01-c006-s004-r003",
+      "confidence": 0.7
+    },
+    {
+      "mystery_id": "mystery_volume_01_c002_s005_r004_叶勒",
+      "temporary_name": "叶勒",
+      "description": "帕斯罗村的农夫，曾被认为是丰收之神附身的载体。赫萝提到自己曾进入他的身体。",
+      "evidence": [
+        "volume_01-c002-s005-p000443"
+      ],
+      "source_scene_id": "volume_01-c002-s005-r004",
+      "confidence": 0.85
+    },
+    {
+      "mystery_id": "mystery_volume_01_c008_s001_r002_赫萝",
+      "temporary_name": "赫萝",
+      "description": "罗伦斯的旅伴，拥有狼的特征，曾在地下道中护送罗伦斯，目前下落不明。",
+      "evidence": [
+        "volume_01-c008-s001-p002960",
+        "volume_01-c008-s001-p002961",
+        "volume_01-c008-s001-p002963"
+      ],
+      "source_scene_id": "volume_01-c008-s001-r002",
+      "confidence": 0.85
+    },
+    {
+      "mystery_id": "mystery_volume_01_c002_s002_r001_赫萝",
+      "temporary_name": "赫萝",
+      "description": "传说中的丰收之神，被村民称为狼，是祭典的核心象征。",
+      "evidence": [
+        "volume_01-c002-s002-p000160",
+        "volume_01-c002-s002-p000164"
+      ],
+      "source_scene_id": "volume_01-c002-s002-r001",
+      "confidence": 0.8
+    },
+    {
+      "mystery_id": "mystery_volume_01_c002_s002_r003_赫萝",
+      "temporary_name": "赫萝",
+      "description": "虽然未直接出现，但被提及为祭典的核心人物，与罗伦斯有情感牵连。",
+      "evidence": [
+        "volume_01-c002-s002-p000187",
+        "volume_01-c002-s002-p000195"
+      ],
+      "source_scene_id": "volume_01-c002-s002-r003",
+      "confidence": 0.75
+    },
+    {
+      "mystery_id": "mystery_volume_01_c003_s003_r001_杰廉",
+      "temporary_name": "杰廉",
+      "description": "在大厅里与罗伦斯搭腔的年轻旅行商人，自称提供发财机会。",
+      "evidence": [
+        "volume_01-c003-s003-p000764"
+      ],
+      "source_scene_id": "volume_01-c003-s003-r001",
+      "confidence": 0.75
+    },
+    {
+      "mystery_id": "mystery_volume_01_c004_s002_r004_杰廉",
+      "temporary_name": "杰廉",
+      "description": "年轻旅行商人，罗伦斯希望在米隆商行获取关于他的情报。",
+      "evidence": [
+        "volume_01-c004-s002-p001056"
+      ],
+      "source_scene_id": "volume_01-c004-s002-r004",
+      "confidence": 0.75
+    }
+  ]
+}

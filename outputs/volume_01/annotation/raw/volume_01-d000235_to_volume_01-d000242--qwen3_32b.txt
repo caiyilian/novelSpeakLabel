@@ -1,0 +1,183 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000235",
+      "speaker_entity_id": "char_0007",
+      "speaker_display": "佩连佐男子",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0007",
+          "display": "佩连佐男子",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "对话内容涉及葡萄园和葡萄酒商，符合佩连佐男子作为葡萄园领主的身份",
+        "上下文显示这是他与罗伦斯的对话，且他未透露姓名，符合贵族习惯"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000236",
+      "speaker_entity_id": "char_0007",
+      "speaker_display": "佩连佐男子",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0007",
+          "display": "佩连佐男子",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "这是对前一句的回应，符合同一人连续对话的逻辑",
+        "内容提到与酒商争论，符合佩连佐男子作为葡萄园领主的身份"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000237",
+      "speaker_entity_id": "char_0007",
+      "speaker_display": "佩连佐男子",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0007",
+          "display": "佩连佐男子",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "对话中提到「你说你是罗伦斯先生吧」，表明这是对罗伦斯的回应",
+        "上下文显示这是佩连佐男子的连续对话，符合贵族的礼貌和习惯"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000238",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "这是对佩连佐男子邀请的回应，符合罗伦斯的礼貌回应风格",
+        "上下文显示这是罗伦斯的对话，且他已与佩连佐男子交谈"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000239",
+      "speaker_entity_id": "char_0007",
+      "speaker_display": "佩连佐男子",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0007",
+          "display": "佩连佐男子",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "这是佩连佐男子与妻子的告别语，符合贵族夫妻的礼仪",
+        "上下文显示这是他与罗伦斯对话的延续"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000240",
+      "speaker_entity_id": "char_0007",
+      "speaker_display": "佩连佐男子",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0007",
+          "display": "佩连佐男子",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "这是佩连佐男子的告别语，符合贵族的表达方式",
+        "上下文显示这是他与罗伦斯对话的延续"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000241",
+      "speaker_entity_id": "char_0009",
+      "speaker_display": "杰廉",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0009",
+          "display": "杰廉",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "对话中称呼罗伦斯为「老板」，符合杰廉对罗伦斯的敬佩态度",
+        "上下文显示这是杰廉接近罗伦斯的对话"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000242",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "这是对杰廉的回应，符合罗伦斯的谦逊和冷静风格",
+        "上下文显示这是罗伦斯与杰廉的对话"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，佩连佐男子与罗伦斯的对话连贯，随后杰廉加入对话，与罗伦斯互动。对话顺序和语气符合角色设定。"
+}
+```

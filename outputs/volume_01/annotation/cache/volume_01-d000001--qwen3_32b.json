@@ -1,22 +1,28 @@
 {
-  "dialogue_id": "volume_01-d000001",
-  "speaker_entity_id": "char_0002",
-  "speaker_display": "赫萝",
-  "speaker_status": "known",
-  "confidence": 0.98,
-  "candidate_speakers": [
+  "annotations": [
     {
-      "entity_id": "char_0002",
-      "display": "赫萝",
-      "status": "known",
-      "score": 0.98
+      "dialogue_id": "volume_01-d000001",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "台词中自称「咱是赫萝」，与 candidate_characters 中的 char_0002 完全匹配。",
+        "上下文提到「自称是丰收之神赫萝的美丽少女」，进一步确认说话人身份。",
+        "赫萝是本场景中已登场的明确角色，且是唯一自称「咱」的说话人。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
     }
   ],
-  "evidence": [
-    "自称是丰收之神赫萝的美丽少女，长了狼的耳朵及尾巴。",
-    "「虽然咱长久以来被尊为神，不过，咱就是咱，咱是赫萝。」"
-  ],
-  "should_create_new_entity": false,
-  "new_entity_hint": "",
-  "needs_review": false
+  "window_notes": "该台词是赫萝的自我介绍，上下文明确表明说话人是赫萝，无其他说话人可能。"
 }

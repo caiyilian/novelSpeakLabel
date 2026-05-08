@@ -1,5 +1,6 @@
 你是轻小说说话人标注项目的阶段 2：正式标注助手。
-你的任务只判断输入 dialogue 这一句台词的说话人，不要改写原文。
+你的任务是判断输入 target_dialogues 中每一句台词的说话人，不要改写原文。
+必须把这些台词当作同一个连续片段来判断，优先保持对话轮次和叙述线索的一致性。
 
 规则：
 1. 只输出严格 JSON，不要 Markdown，不要解释性前后缀。
@@ -9,22 +10,31 @@
 5. 证据不足时不要硬猜，speaker_status 填 ambiguous 或 review，并把 needs_review 设为 true。
 6. candidate_speakers 至少列出 1 个候选；如果无法判断，列出最可能的候选和不确定原因。
 7. confidence 使用 0 到 1 之间的小数，表示你对最终判断的把握。
+8. 不要只因为台词里提到某个名字、职业、地点，就把说话人标成那个实体；被称呼的人通常不是说话人。
+9. 连续问答、交易寒暄、命令/回答等场景要按上下句轮次判断；同一人连续说话必须有叙述或语气证据支持。
+10. 如果当前上下文显示某角色还没有登场，不要因为角色库或后文记忆里有这个角色就提前标给他/她。
 
 输出 JSON 结构：
 {
-  "dialogue_id": "string",
-  "speaker_entity_id": "string",
-  "speaker_display": "string",
-  "speaker_status": "known|mystery|npc|ambiguous|review",
-  "confidence": 0.0,
-  "candidate_speakers": [
-    {"entity_id": "string", "display": "string", "status": "known|mystery|npc|ambiguous|review", "score": 0.0}
+  "annotations": [
+    {
+      "dialogue_id": "必须来自 target_dialogue_ids",
+      "speaker_entity_id": "string",
+      "speaker_display": "string",
+      "speaker_status": "known|mystery|npc|ambiguous|review",
+      "confidence": 0.0,
+      "candidate_speakers": [
+        {"entity_id": "string", "display": "string", "status": "known|mystery|npc|ambiguous|review", "score": 0.0}
+      ],
+      "evidence": ["短证据，不要大段复制原文"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
   ],
-  "evidence": ["短证据，不要大段复制原文"],
-  "should_create_new_entity": false,
-  "new_entity_hint": "",
-  "needs_review": false
+  "window_notes": "可选，简短说明整体轮次判断"
 }
+必须为 target_dialogue_ids 中每个 dialogue_id 输出且只输出一条 annotation。
 
 输入 JSON：
 {
@@ -32,117 +42,76 @@
     "volume_id": "volume_01",
     "volume": 1
   },
-  "dialogue": {
-    "dialogue_id": "volume_01-d000918",
-    "dialogue_index": 917,
-    "chapter_id": "volume_01-c005",
-    "chapter_title": "第四幕",
-    "scene_id": "volume_01-c005-s005",
-    "paragraph_id": "volume_01-c005-s005-p001992",
-    "text": "现在不是说风凉话的时候吧！没办法，只好绕远路了。",
-    "quote_text": "「现在不是说风凉话的时候吧！没办法，只好绕远路了。」",
-    "paragraph_text": "「现在不是说风凉话的时候吧！没办法，只好绕远路了。」"
-  },
+  "target_dialogue_ids": [
+    "volume_01-d000918"
+  ],
+  "dialogues": [
+    {
+      "dialogue_id": "volume_01-d000918",
+      "dialogue_index": 917,
+      "window_position": 1,
+      "chapter_id": "volume_01-c005",
+      "chapter_title": "第四幕",
+      "scene_id": "volume_01-c005-s005",
+      "paragraph_id": "volume_01-c005-s005-p001992",
+      "paragraph_index": 1991,
+      "local_dialogue_index": 1,
+      "text": "现在不是说风凉话的时候吧！没办法，只好绕远路了。",
+      "quote_text": "「现在不是说风凉话的时候吧！没办法，只好绕远路了。」",
+      "paragraph_text": "「现在不是说风凉话的时候吧！没办法，只好绕远路了。」",
+      "char_start": 0,
+      "char_end": 26
+    }
+  ],
   "context": {
-    "previous_paragraphs": [
+    "paragraphs": [
       {
         "paragraph_id": "volume_01-c005-s005-p001989",
-        "text": "只要在这个转角右转，直直前进到路底的大路再左转，往前过了四个区段就可以看到米隆商行。规模这么大的商行，应该至少会有负责搬运货物的卸货工在商行里。只要冲进商行，暴徒们就无法下手。在商业城市里，商店的招牌能够让人联想到的财力越是雄厚，就越具警卫的效果。"
+        "paragraph_index": 1988,
+        "text": "只要在这个转角右转，直直前进到路底的大路再左转，往前过了四个区段就可以看到米隆商行。规模这么大的商行，应该至少会有负责搬运货物的卸货工在商行里。只要冲进商行，暴徒们就无法下手。在商业城市里，商店的招牌能够让人联想到的财力越是雄厚，就越具警卫的效果。",
+        "target_dialogue_ids": []
       },
       {
         "paragraph_id": "volume_01-c005-s005-p001990",
-        "text": "「啧，还差一步就到了。」"
+        "paragraph_index": 1989,
+        "text": "「啧，还差一步就到了。」",
+        "target_dialogue_ids": []
       },
       {
         "paragraph_id": "volume_01-c005-s005-p001991",
-        "text": "「呵呵。虽然咱很久没有狩猎了，不过，咱倒是头一次被狩猎。」"
-      }
-    ],
-    "current_paragraph": {
-      "paragraph_id": "volume_01-c005-s005-p001992",
-      "text": "「现在不是说风凉话的时候吧！没办法，只好绕远路了。」"
-    },
-    "next_paragraphs": [
+        "paragraph_index": 1990,
+        "text": "「呵呵。虽然咱很久没有狩猎了，不过，咱倒是头一次被狩猎。」",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c005-s005-p001992",
+        "paragraph_index": 1991,
+        "text": "「现在不是说风凉话的时候吧！没办法，只好绕远路了。」",
+        "target_dialogue_ids": [
+          "volume_01-d000918"
+        ]
+      },
       {
         "paragraph_id": "volume_01-c005-s005-p001993",
-        "text": "罗伦斯折回原路，并在途中右转。他打算先进到另一个区段的小巷子，绕一段远路后再往米隆商行的方向前进。"
+        "paragraph_index": 1992,
+        "text": "罗伦斯折回原路，并在途中右转。他打算先进到另一个区段的小巷子，绕一段远路后再往米隆商行的方向前进。",
+        "target_dialogue_ids": []
       },
       {
         "paragraph_id": "volume_01-c005-s006-p001994",
-        "text": "然而，罗伦斯右转后却停下脚步。"
+        "paragraph_index": 1993,
+        "text": "然而，罗伦斯右转后却停下脚步。",
+        "target_dialogue_ids": []
       },
       {
         "paragraph_id": "volume_01-c005-s006-p001995",
-        "text": "那是因为赫萝拉住罗伦斯的衣服，把他压在墙上。"
+        "paragraph_index": 1994,
+        "text": "那是因为赫萝拉住罗伦斯的衣服，把他压在墙上。",
+        "target_dialogue_ids": []
       }
     ]
   },
   "scene_memory": [
-    {
-      "scene_id": "volume_01-c005-s005-r001",
-      "parent_scene_id": "volume_01-c005-s005",
-      "chunk_index": 1,
-      "chunk_count": 6,
-      "scene_summary": "罗伦斯安抚情绪低落的赫萝，帮助她稳定情绪，并递纸让她擤鼻涕。赫萝恢复平静后，两人之间有微妙的互动，罗伦斯克制了想要再次拥抱她的冲动。",
-      "active_characters": [
-        "罗伦斯",
-        "赫萝"
-      ],
-      "relationships": [
-        "罗伦斯与赫萝之间有亲密的情感联系，罗伦斯照顾赫萝的情绪，赫萝对罗伦斯表现出依赖和感激"
-      ],
-      "notes": "本场景中没有出现未命名但可追踪的神秘人物。罗伦斯和赫萝的互动进一步确认了他们之间的亲密关系。"
-    },
-    {
-      "scene_id": "volume_01-c005-s005-r002",
-      "parent_scene_id": "volume_01-c005-s005",
-      "chunk_index": 2,
-      "chunk_count": 6,
-      "scene_summary": "罗伦斯和赫萝在房间中准备休息。赫萝表现出疲倦，主动靠近罗伦斯，两人之间有亲密互动。场景描写细致，强调黑暗和两人之间的身体接触。",
-      "active_characters": [
-        "罗伦斯",
-        "赫萝"
-      ],
-      "relationships": [
-        "罗伦斯与赫萝之间存在亲密关系",
-        "罗伦斯对赫萝的身份持怀疑态度但保持互动",
-        "赫萝表现出对罗伦斯的依赖和调侃"
-      ],
-      "notes": "本场景中没有出现未命名但可追踪的神秘人物。罗伦斯和赫萝的互动表现出亲密和依赖，但罗伦斯仍对赫萝的真实身份保持理性怀疑。"
-    },
-    {
-      "scene_id": "volume_01-c005-s005-r003",
-      "parent_scene_id": "volume_01-c005-s005",
-      "chunk_index": 3,
-      "chunk_count": 6,
-      "scene_summary": "罗伦斯与赫萝在房间内亲密互动，赫萝提醒罗伦斯注意门外的不速之客。两人迅速准备应对可能的闯入者，气氛紧张但带有暧昧。",
-      "active_characters": [
-        "罗伦斯",
-        "赫萝"
-      ],
-      "relationships": [
-        "罗伦斯与赫萝关系亲密，有身体接触和情感互动",
-        "赫萝对罗伦斯的情绪变化敏感，表现出调侃和威胁的语气"
-      ],
-      "notes": "场景中未出现新角色，但赫萝提到门外有三人，可能是后文的重要线索。罗伦斯和赫萝的互动显示出亲密关系，但赫萝的语气中带有策略性和威胁性。"
-    },
-    {
-      "scene_id": "volume_01-c005-s005-r004",
-      "parent_scene_id": "volume_01-c005-s005",
-      "chunk_index": 4,
-      "chunk_count": 6,
-      "scene_summary": "罗伦斯和赫萝从窗户跳下逃离危险，罗伦斯虽然摔倒但仍听从赫萝的建议放弃马车。赫萝取出皮袋中的物品分给罗伦斯，两人准备继续行动。",
-      "active_characters": [
-        "罗伦斯",
-        "赫萝"
-      ],
-      "relationships": [
-        "罗伦斯听从赫萝的建议",
-        "赫萝主动帮助罗伦斯",
-        "两人共同行动"
-      ],
-      "notes": "本场景中没有出现尚未命名但可追踪的神秘人物。罗伦斯和赫萝的互动进一步确认了他们的关系和性格特征。"
-    },
     {
       "scene_id": "volume_01-c005-s005-r005",
       "parent_scene_id": "volume_01-c005-s005",
@@ -274,44 +243,6 @@
       "confidence": 0.9
     },
     {
-      "entity_id": "char_0009",
-      "display_name": "杰廉",
-      "aliases": [],
-      "titles": [
-        "中间人",
-        "交易者",
-        "同行",
-        "商人",
-        "小毛头",
-        "小的",
-        "市井无赖",
-        "年轻人",
-        "情报贩子",
-        "提议者",
-        "新手",
-        "旅行商人"
-      ],
-      "description": "一位能言善道的市井无赖，试图接近赫萝并表现出厚颜无耻的态度。 / 提供货币投机情报的商人，被罗伦斯怀疑其动机。 / 与罗伦斯达成交易的中间人，提供情报服务，自称小人物，但行为谨慎。 / 与罗伦斯和赫萝同行的旅人，已离开队伍。他的离开引发了赫萝和罗伦斯的讨论。 / 提出交易提议的人物，未直接出现，但被赫萝提及。 / 被罗伦斯寻找的男子，据称会在日落后出现。 / 据称会在日落后出现的男子，被罗伦斯和赫萝推测会如女店员所说出现。 / 与罗伦斯和赫萝互动的商人，对皮草交易表现出兴趣。 / 提供银币含银量情报的中间人，表现出谨慎和不自信。 / 提出银币含银量情报交易的男子，自称小人物，行为谨慎，试图说服罗伦斯接受交易。 / 与罗伦斯进行情报交易的男子，行为谨慎，自称小人物。 / 提出交易的年轻男子，动机不明，但显然有其利益考量。",
-      "speech_style": "厚颜无耻、能言善道、带有谄媚语气 / 未直接说话，但被罗伦斯和赫萝评价为「小毛头」和「说谎者」 / 谦卑但自信，带有职业性的谨慎语气。 / 未直接发言，但被提及。 / 未知 / 未直接出现 / 直接、略带调侃 / 谦卑、谨慎、略带紧张 / 谦卑、谨慎、带有讨好语气 / 谨慎、不自信 / 未直接说话，但被罗伦斯提及 / 未直接说话，但通过罗伦斯和赫萝的对话间接体现其狡猾和策略性",
-      "relationship_hints": [
-        "对罗伦斯表示敬佩",
-        "试图获取情报",
-        "与罗伦斯和赫萝互动",
-        "与罗伦斯有亲戚关系",
-        "试图接近赫萝",
-        "向罗伦斯提供情报，但罗伦斯怀疑其真实性",
-        "可能向其他商人提供相同情报",
-        "与罗伦斯有商业合作关系",
-        "提供情报服务",
-        "与罗伦斯有互动",
-        "与赫萝有互动",
-        "与罗伦斯有交易关系"
-      ],
-      "first_seen_scene_id": "volume_01-c003-s002-r002",
-      "latest_seen_scene_id": "volume_01-c004-s008-r005",
-      "confidence": 0.9
-    },
-    {
       "entity_id": "char_0028",
       "display_name": "梅迪欧商行",
       "aliases": [],
@@ -329,166 +260,6 @@
       "first_seen_scene_id": "volume_01-c006-s001-r004",
       "latest_seen_scene_id": "volume_01-c006-s001-r004",
       "confidence": 0.85
-    },
-    {
-      "entity_id": "char_0008",
-      "display_name": "年轻商人",
-      "aliases": [],
-      "titles": [
-        "同行"
-      ],
-      "description": "一名年轻商人，装扮和举止显示他是刚入行的同行，对罗伦斯表示钦佩。",
-      "speech_style": "热情、带有敬意，语气轻松。",
-      "relationship_hints": [
-        "与罗伦斯是同行",
-        "对罗伦斯表示钦佩"
-      ],
-      "first_seen_scene_id": "volume_01-c003-s002-r001",
-      "latest_seen_scene_id": "volume_01-c003-s002-r001",
-      "confidence": 0.7
-    },
-    {
-      "entity_id": "char_0004",
-      "display_name": "叶勒",
-      "aliases": [
-        "叶勒"
-      ],
-      "titles": [
-        "帕斯罗村农夫",
-        "村民代表"
-      ],
-      "description": "帕斯罗村的农夫，今年雇用年轻人种田。 / 帕斯罗村的农夫，今年雇用年轻人种田，是村民丰收祭典的中心人物。 / 帕斯罗村的农夫，今年雇用年轻人种田，是村民丰收祭典的中心人物。他被村民认为是丰收之神附身的载体。 / 帕斯罗村的农夫，曾与罗伦斯交易麦子，对罗伦斯怀有感恩之心。 / 赫萝提及的愤怒对象，可能是帕斯罗村的农夫，曾被认为是丰收之神附身的载体。 / 帕斯罗村的农夫，被认为是丰收之神附身的载体。 / 帕斯罗村的农夫，被认为是丰收之神附身的载体。在本场景中突然出现，与罗伦斯有旧识，并提及帕斯罗村的银币交易计划。 / 帕斯罗村的农夫，被认为是丰收之神附身的载体。他与罗伦斯有旧识，并试图说服罗伦斯参与一项涉及麦子交易和撤销关税的计划。 / 帕斯罗村的农夫，被认为是丰收之神附身的载体。在本场景中试图说服罗伦斯参与一项涉及麦子交易和撤销关税的计划。 / 帕斯罗村的农夫，被认为是丰收之神附身的载体。在本场景中与罗伦斯对峙，试图说服他参与计划。 / 帕斯罗村的农夫，被认为是丰收之神附身的载体。在本场景中指挥手下行动，试图控制赫萝。 / 帕斯罗村的农夫，被认为是丰收之神附身的载体。在本场景中被赫萝制服，失去意识。",
-      "speech_style": "未直接说话，通过他人描述 / 未直接说话，但被村民高声呼喊 / 热情、激动，带有仪式感。 / 未直接说话，但通过他人叙述体现其性格 / 未直接说话 / 未直接发言，但被提及。 / 略带悲伤但坚定 / 理性、策略性、带有说服力 / 热情、说服性强 / 坚定、略带威胁 / 命令式 / 情绪化、不讲理",
-      "relationship_hints": [
-        "与罗伦斯有互动",
-        "雇用年轻人",
-        "是村民活动的组织者",
-        "与农夫有联系",
-        "与罗伦斯有交谈的意图",
-        "被村民追逐",
-        "与罗伦斯有商业交易关系",
-        "被村民视为丰收之神附身的载体",
-        "赫萝对其怀有强烈愤怒",
-        "与赫萝有互动，可能是她愤怒的来源",
-        "与罗伦斯有旧识",
-        "与帕斯罗村的银币交易有关"
-      ],
-      "first_seen_scene_id": "volume_01-c002-s001-r006",
-      "latest_seen_scene_id": "volume_01-c007-s004-r005",
-      "confidence": 0.95
-    },
-    {
-      "entity_id": "char_0020",
-      "display_name": "列支敦·马贺特",
-      "aliases": [],
-      "titles": [
-        "米隆商行帕兹欧分行",
-        "米隆商行帕兹欧分行行长",
-        "行长"
-      ],
-      "description": "米隆商行帕兹欧分行的行长，冷静且自信，与罗伦斯讨论梅迪欧商行的威胁，并试图劝说罗伦斯冷静应对。 / 米隆商行帕兹欧分行的行长，冷静且自信，与罗伦斯进行交易谈判。 / 米隆商行帕兹欧分行的行长，冷静且自信，与罗伦斯进行交易谈判，透露梅迪欧商行与杰廉的关联。 / 冷静且自信的商行代表，对罗伦斯的提议感到震惊，因为这涉及与崔尼国国王的特权交易。 / 米隆商行的代表，对罗伦斯的提议感到震惊和苦恼，表现出对赫萝事件的担忧。 / 米隆商行帕兹欧分行的行长，前来探望罗伦斯，解释救援过程，并提及赫萝的行动。 / 米隆商行帕兹欧分行的行长，冷静且自信。在本场景中向罗伦斯报告与梅迪欧商行的交易进展顺利，并透露交易细节。 / 米隆商行帕兹欧分行的行长，与罗伦斯进行交易谈判，透露银币回收和利益分配的细节。 / 米隆商行帕兹欧分行的行长，冷静且自信，与罗伦斯进行交易谈判，透露梅迪欧商行与杰廉的关联。 / 米隆商行帕兹欧分行的行长，与罗伦斯进行交易谈判，透露银币回收和利益分配的细节。 / 正在与罗伦斯进行交易谈判的商行代表，讲述宗教戏剧故事。 / 米隆商行帕兹欧分行的行长，协助罗伦斯查看请款单，并提供文件。",
-      "speech_style": "沉稳、理性，表现出对商业局势的深刻理解。 / 惊讶、犹豫、苦恼。 / 冷静、专业、分析性强 / 冷静、自信、专业，带有商行代表的权威感。 / 沉稳、专业，语气中带有对罗伦斯的歉意和对赫萝的谨慎态度。 / 自信、专业、冷静 / 冷静、自信，强调商行利益优先。 / 沉稳、自信、专业 / 沉稳、自信、带有洽谈生意时的策略性语气。 / 幽默、生动，带有戏剧性表达。 / 专业、自信、礼貌 / 专业、冷静。",
-      "relationship_hints": [
-        "代表米隆商行与罗伦斯谈判",
-        "透露梅迪欧商行的背景",
-        "与罗伦斯有交易往来",
-        "与梅迪欧商行存在竞争关系",
-        "与罗伦斯有商业往来",
-        "对梅迪欧商行有警惕",
-        "与罗伦斯有合作关系",
-        "对梅迪欧商行的行动表示担忧",
-        "与罗伦斯有交易关系，但选择利益优先。",
-        "对赫萝的处境表示间接责任，但不直接干预。",
-        "与罗伦斯有商业合作关系，但立场优先考虑商行利益",
-        "与罗伦斯有交易关系"
-      ],
-      "first_seen_scene_id": "volume_01-c005-s002-r001",
-      "latest_seen_scene_id": "volume_01-c008-s002-r005",
-      "confidence": 0.95
-    },
-    {
-      "entity_id": "char_0034",
-      "display_name": "国王",
-      "aliases": [],
-      "titles": [
-        "国王",
-        "王族"
-      ],
-      "description": "崔尼国的统治者，正面临财务危机，通过复杂的费用和合约条款从米隆商行榨取利益。",
-      "speech_style": "未直接说话，但通过策略和制度体现其权威与计谋。",
-      "relationship_hints": [
-        "与米隆商行存在权力关系",
-        "与御用商人合作"
-      ],
-      "first_seen_scene_id": "volume_01-c008-s001-r005",
-      "latest_seen_scene_id": "volume_01-c008-s001-r005",
-      "confidence": 0.95
-    },
-    {
-      "entity_id": "char_0007",
-      "display_name": "佩连佐男子",
-      "aliases": [],
-      "titles": [
-        "葡萄园主人",
-        "贵族"
-      ],
-      "description": "来自佩连佐的男子，对罗伦斯提到的汇兑体制感到惊讶，并询问是否适用于他的葡萄园。 / 来自佩连佐的男子，是葡萄园的领主，与罗伦斯交谈，未透露姓名，表现出贵族的傲慢与习惯。",
-      "speech_style": "惊讶、好奇、略带困惑 / 礼貌但带有贵族的傲慢，语气沉稳。",
-      "relationship_hints": [
-        "与罗伦斯进行商业知识的交流",
-        "与罗伦斯有短暂互动",
-        "与教会环境有关联"
-      ],
-      "first_seen_scene_id": "volume_01-c003-s001-r006",
-      "latest_seen_scene_id": "volume_01-c003-s002-r001",
-      "confidence": 0.9
-    },
-    {
-      "entity_id": "char_0019",
-      "display_name": "怀兹",
-      "aliases": [
-        "怀兹"
-      ],
-      "titles": [
-        "兑换商"
-      ],
-      "description": "与罗伦斯有长期合作关系的年轻兑换商，金发，工作认真。 / 与罗伦斯有长期合作关系的年轻兑换商，金发，工作认真。他与罗伦斯关系亲密，像朋友一样。 / 与罗伦斯有长期合作关系的年轻兑换商，金发，工作认真。他试图追求赫萝，表现出厚脸皮和直接的态度。",
-      "speech_style": "尚未直接说话，但被罗伦斯称呼，推测为专业且友好 / 轻松、调侃、略带幽默 / 直接、不掩饰情绪，略带挑衅 / 专业、谨慎、略带调侃 / 轻松、幽默、略带谄媚 / 轻松、略带嘲讽 / 热情、直接、略带献媚",
-      "relationship_hints": [
-        "与罗伦斯有长期合作关系",
-        "与罗伦斯是朋友，关系亲密",
-        "对罗伦斯的神秘女孩表现出好奇",
-        "与罗伦斯有竞争关系",
-        "追求赫萝",
-        "与罗伦斯关系亲密",
-        "试图追求赫萝",
-        "对赫萝表现出迷恋",
-        "对赫萝有好感"
-      ],
-      "first_seen_scene_id": "volume_01-c004-s007-r001",
-      "latest_seen_scene_id": "volume_01-c004-s008-r001",
-      "confidence": 0.9
-    },
-    {
-      "entity_id": "char_0023",
-      "display_name": "米隆侯爵",
-      "aliases": [
-        "大米隆侯爵",
-        "拉翁迪尔公国三十三世"
-      ],
-      "titles": [
-        "侯爵",
-        "米隆商行帕兹欧分行所有者"
-      ],
-      "description": "拉翁迪尔公国三十三世的贵族，经营米隆商行帕兹欧分行，拥有高地位和影响力。",
-      "speech_style": "气势十足，带有权威感",
-      "relationship_hints": [
-        "与米隆商行帕兹欧分行有关联",
-        "受到拉翁迪尔大公的庇护"
-      ],
-      "first_seen_scene_id": "volume_01-c005-s006-r004",
-      "latest_seen_scene_id": "volume_01-c005-s006-r004",
-      "confidence": 0.9
     }
   ],
   "candidate_mysteries": [
@@ -500,16 +271,6 @@
         "volume_01-c005-s005-p001981"
       ],
       "source_scene_id": "volume_01-c005-s005-r005",
-      "confidence": 0.7
-    },
-    {
-      "mystery_id": "mystery_volume_01_c005_s005_r003_门外三人",
-      "temporary_name": "门外三人",
-      "description": "赫萝提到的门外不速之客，尚未明确身份，但可能对罗伦斯和赫萝构成威胁。",
-      "evidence": [
-        "volume_01-c005-s005-p001954"
-      ],
-      "source_scene_id": "volume_01-c005-s005-r003",
       "confidence": 0.7
     },
     {
@@ -545,44 +306,6 @@
       ],
       "source_scene_id": "volume_01-c002-s002-r003",
       "confidence": 0.75
-    },
-    {
-      "mystery_id": "mystery_volume_01_c004_s009_r002_神秘人物",
-      "temporary_name": "神秘人物",
-      "description": "在罗伦斯思考时突然出现并说话的神秘人物，语气带有调侃意味。",
-      "evidence": [
-        "volume_01-d000730"
-      ],
-      "source_scene_id": "volume_01-c004-s009-r002",
-      "confidence": 0.7
-    },
-    {
-      "mystery_id": "mystery_volume_01_c002_s002_r005_神秘女孩",
-      "temporary_name": "神秘女孩",
-      "description": "一名在罗伦斯的马车上睡觉的陌生女孩，拥有美丽外貌和甜美声音，身份不明。",
-      "evidence": [
-        "volume_01-c002-s002-p000218",
-        "volume_01-c002-s002-p000219",
-        "volume_01-c002-s002-p000223",
-        "volume_01-c002-s002-p000224",
-        "volume_01-c002-s002-p000228"
-      ],
-      "source_scene_id": "volume_01-c002-s002-r005",
-      "confidence": 0.85
-    },
-    {
-      "mystery_id": "mystery_volume_01_c002_s003_r001_神秘女孩",
-      "temporary_name": "神秘女孩",
-      "description": "赤裸的神秘女孩，拥有动物耳朵，能发出狼嚎，外表美丽但带有诡异气质。",
-      "evidence": [
-        "volume_01-c002-s003-p000237",
-        "volume_01-c002-s003-p000238",
-        "volume_01-c002-s003-p000239",
-        "volume_01-c002-s003-p000241",
-        "volume_01-c002-s003-p000248"
-      ],
-      "source_scene_id": "volume_01-c002-s003-r001",
-      "confidence": 0.85
     }
   ]
 }

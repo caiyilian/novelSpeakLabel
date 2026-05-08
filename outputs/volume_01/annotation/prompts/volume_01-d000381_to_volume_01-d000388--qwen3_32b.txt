@@ -1,0 +1,503 @@
+你是轻小说说话人标注项目的阶段 2：正式标注助手。
+你的任务是判断输入 target_dialogues 中每一句台词的说话人，不要改写原文。
+必须把这些台词当作同一个连续片段来判断，优先保持对话轮次和叙述线索的一致性。
+
+规则：
+1. 只输出严格 JSON，不要 Markdown，不要解释性前后缀。
+2. 如果说话人是候选角色，speaker_entity_id 必须使用 candidate_characters 里的 entity_id，speaker_status 填 known。
+3. 如果说话人像某个未知人物，speaker_entity_id 使用 candidate_mysteries 里的 mystery_id，speaker_status 填 mystery。
+4. 如果只是无法追踪的路人/群体，speaker_status 填 npc，speaker_entity_id 可为空或使用 npc:简短称呼。
+5. 证据不足时不要硬猜，speaker_status 填 ambiguous 或 review，并把 needs_review 设为 true。
+6. candidate_speakers 至少列出 1 个候选；如果无法判断，列出最可能的候选和不确定原因。
+7. confidence 使用 0 到 1 之间的小数，表示你对最终判断的把握。
+8. 不要只因为台词里提到某个名字、职业、地点，就把说话人标成那个实体；被称呼的人通常不是说话人。
+9. 连续问答、交易寒暄、命令/回答等场景要按上下句轮次判断；同一人连续说话必须有叙述或语气证据支持。
+10. 如果当前上下文显示某角色还没有登场，不要因为角色库或后文记忆里有这个角色就提前标给他/她。
+
+输出 JSON 结构：
+{
+  "annotations": [
+    {
+      "dialogue_id": "必须来自 target_dialogue_ids",
+      "speaker_entity_id": "string",
+      "speaker_display": "string",
+      "speaker_status": "known|mystery|npc|ambiguous|review",
+      "confidence": 0.0,
+      "candidate_speakers": [
+        {"entity_id": "string", "display": "string", "status": "known|mystery|npc|ambiguous|review", "score": 0.0}
+      ],
+      "evidence": ["短证据，不要大段复制原文"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "可选，简短说明整体轮次判断"
+}
+必须为 target_dialogue_ids 中每个 dialogue_id 输出且只输出一条 annotation。
+
+输入 JSON：
+{
+  "volume": {
+    "volume_id": "volume_01",
+    "volume": 1
+  },
+  "target_dialogue_ids": [
+    "volume_01-d000381",
+    "volume_01-d000382",
+    "volume_01-d000383",
+    "volume_01-d000384",
+    "volume_01-d000385",
+    "volume_01-d000386",
+    "volume_01-d000387",
+    "volume_01-d000388"
+  ],
+  "dialogues": [
+    {
+      "dialogue_id": "volume_01-d000381",
+      "dialogue_index": 380,
+      "window_position": 1,
+      "chapter_id": "volume_01-c004",
+      "chapter_title": "第三幕",
+      "scene_id": "volume_01-c004-s001",
+      "paragraph_id": "volume_01-c004-s001-p000970",
+      "paragraph_index": 969,
+      "local_dialogue_index": 1,
+      "text": "我当然是希望他们不会察觉了。",
+      "quote_text": "「我当然是希望他们不会察觉了。」",
+      "paragraph_text": "「我当然是希望他们不会察觉了。」",
+      "char_start": 0,
+      "char_end": 16
+    },
+    {
+      "dialogue_id": "volume_01-d000382",
+      "dialogue_index": 381,
+      "window_position": 2,
+      "chapter_id": "volume_01-c004",
+      "chapter_title": "第三幕",
+      "scene_id": "volume_01-c004-s001",
+      "paragraph_id": "volume_01-c004-s001-p000971",
+      "paragraph_index": 970,
+      "local_dialogue_index": 1,
+      "text": "哎，没什么好担心的。",
+      "quote_text": "「哎，没什么好担心的。」",
+      "paragraph_text": "赫萝自嘲似的轻轻笑了笑，然后回答：「哎，没什么好担心的。」",
+      "char_start": 17,
+      "char_end": 29
+    },
+    {
+      "dialogue_id": "volume_01-d000383",
+      "dialogue_index": 382,
+      "window_position": 3,
+      "chapter_id": "volume_01-c004",
+      "chapter_title": "第三幕",
+      "scene_id": "volume_01-c004-s001",
+      "paragraph_id": "volume_01-c004-s001-p000975",
+      "paragraph_index": 974,
+      "local_dialogue_index": 1,
+      "text": "有很多水果呐，这些水果都是附近采摘的吗？",
+      "quote_text": "「有很多水果呐，这些水果都是附近采摘的吗？」",
+      "paragraph_text": "「有很多水果呐，这些水果都是附近采摘的吗？」",
+      "char_start": 0,
+      "char_end": 22
+    },
+    {
+      "dialogue_id": "volume_01-d000384",
+      "dialogue_index": 383,
+      "window_position": 4,
+      "chapter_id": "volume_01-c004",
+      "chapter_title": "第三幕",
+      "scene_id": "volume_01-c004-s001",
+      "paragraph_id": "volume_01-c004-s001-p000976",
+      "paragraph_index": 975,
+      "local_dialogue_index": 1,
+      "text": "这里是到南方的中继站，季节对的时候，还可以看到平时很难前往的南方国家水果。",
+      "quote_text": "「这里是到南方的中继站，季节对的时候，还可以看到平时很难前往的南方国家水果。」",
+      "paragraph_text": "「这里是到南方的中继站，季节对的时候，还可以看到平时很难前往的南方国家水果。」",
+      "char_start": 0,
+      "char_end": 39
+    },
+    {
+      "dialogue_id": "volume_01-d000385",
+      "dialogue_index": 384,
+      "window_position": 5,
+      "chapter_id": "volume_01-c004",
+      "chapter_title": "第三幕",
+      "scene_id": "volume_01-c004-s001",
+      "paragraph_id": "volume_01-c004-s001-p000977",
+      "paragraph_index": 976,
+      "local_dialogue_index": 1,
+      "text": "南方的水果种类多，真是好呐。",
+      "quote_text": "「南方的水果种类多，真是好呐。」",
+      "paragraph_text": "「南方的水果种类多，真是好呐。」",
+      "char_start": 0,
+      "char_end": 16
+    },
+    {
+      "dialogue_id": "volume_01-d000386",
+      "dialogue_index": 385,
+      "window_position": 6,
+      "chapter_id": "volume_01-c004",
+      "chapter_title": "第三幕",
+      "scene_id": "volume_01-c004-s001",
+      "paragraph_id": "volume_01-c004-s001-p000978",
+      "paragraph_index": 977,
+      "local_dialogue_index": 1,
+      "text": "北方多少也有水果吧？",
+      "quote_text": "「北方多少也有水果吧？」",
+      "paragraph_text": "「北方多少也有水果吧？」",
+      "char_start": 0,
+      "char_end": 12
+    },
+    {
+      "dialogue_id": "volume_01-d000387",
+      "dialogue_index": 386,
+      "window_position": 7,
+      "chapter_id": "volume_01-c004",
+      "chapter_title": "第三幕",
+      "scene_id": "volume_01-c004-s001",
+      "paragraph_id": "volume_01-c004-s001-p000979",
+      "paragraph_index": 978,
+      "local_dialogue_index": 1,
+      "text": "都是一些又硬又苦涩的水果。不把水果晒干或放久一点，根本不会变甜。这些工作都不是咱们狼做得来的事，所以咱们只能到村里去借。",
+      "quote_text": "「都是一些又硬又苦涩的水果。不把水果晒干或放久一点，根本不会变甜。这些工作都不是咱们狼做得来的事，所以咱们只能到村里去借。」",
+      "paragraph_text": "「都是一些又硬又苦涩的水果。不把水果晒干或放久一点，根本不会变甜。这些工作都不是咱们狼做得来的事，所以咱们只能到村里去借。」",
+      "char_start": 0,
+      "char_end": 62
+    },
+    {
+      "dialogue_id": "volume_01-d000388",
+      "dialogue_index": 387,
+      "window_position": 8,
+      "chapter_id": "volume_01-c004",
+      "chapter_title": "第三幕",
+      "scene_id": "volume_01-c004-s001",
+      "paragraph_id": "volume_01-c004-s001-p000981",
+      "paragraph_index": 980,
+      "local_dialogue_index": 1,
+      "text": "狼给人的感觉是爱吃辛辣的食物，说到爱吃甜食会让人联想到熊。",
+      "quote_text": "「狼给人的感觉是爱吃辛辣的食物，说到爱吃甜食会让人联想到熊。」",
+      "paragraph_text": "「狼给人的感觉是爱吃辛辣的食物，说到爱吃甜食会让人联想到熊。」",
+      "char_start": 0,
+      "char_end": 31
+    }
+  ],
+  "context": {
+    "paragraphs": [
+      {
+        "paragraph_id": "volume_01-c004-s001-p000967",
+        "paragraph_index": 966,
+        "text": "「就算那些家伙……看到咱也不会察觉，是呗？」",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s001-p000968",
+        "paragraph_index": 967,
+        "text": "赫萝的感觉与先前完全不同，她的神情仿佛诉说着希望自己被察觉。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s001-p000969",
+        "paragraph_index": 968,
+        "text": "当然，罗伦斯并不笨。他努力让自己面无表情，然后把视线放在马儿的屁股上说：",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s001-p000970",
+        "paragraph_index": 969,
+        "text": "「我当然是希望他们不会察觉了。」",
+        "target_dialogue_ids": [
+          "volume_01-d000381"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c004-s001-p000971",
+        "paragraph_index": 970,
+        "text": "赫萝自嘲似的轻轻笑了笑，然后回答：「哎，没什么好担心的。」",
+        "target_dialogue_ids": [
+          "volume_01-d000382"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c004-s001-p000972",
+        "paragraph_index": 971,
+        "text": "当赫萝再次坐在马车上一边看着摊贩，一边发出惊叹声时，罗伦斯才发现赫萝刚刚那句话不仅是说给他听，其实也是说给赫萝自己听。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s001-p000973",
+        "paragraph_index": 972,
+        "text": "不过，罗伦斯当然没有向赫萝确认这件事，毕竟她看起来如此顽固。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s001-p000974",
+        "paragraph_index": 973,
+        "text": "看着转眼间已完全恢复平静心情，一看到好吃的水果或食物便兴奋不已的赫萝，罗伦斯只能淡淡地苦笑。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s001-p000975",
+        "paragraph_index": 974,
+        "text": "「有很多水果呐，这些水果都是附近采摘的吗？」",
+        "target_dialogue_ids": [
+          "volume_01-d000383"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c004-s001-p000976",
+        "paragraph_index": 975,
+        "text": "「这里是到南方的中继站，季节对的时候，还可以看到平时很难前往的南方国家水果。」",
+        "target_dialogue_ids": [
+          "volume_01-d000384"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c004-s001-p000977",
+        "paragraph_index": 976,
+        "text": "「南方的水果种类多，真是好呐。」",
+        "target_dialogue_ids": [
+          "volume_01-d000385"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c004-s001-p000978",
+        "paragraph_index": 977,
+        "text": "「北方多少也有水果吧？」",
+        "target_dialogue_ids": [
+          "volume_01-d000386"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c004-s001-p000979",
+        "paragraph_index": 978,
+        "text": "「都是一些又硬又苦涩的水果。不把水果晒干或放久一点，根本不会变甜。这些工作都不是咱们狼做得来的事，所以咱们只能到村里去借。」",
+        "target_dialogue_ids": [
+          "volume_01-d000387"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c004-s001-p000980",
+        "paragraph_index": 979,
+        "text": "说到狼会借的东西，脑海里只会浮现出小鸟、马儿或绵羊，实在很难想像狼会因为很想吃甜食而跑到村里来。就算会来也应该是熊才对，挂在屋檐上装满葡萄的皮袋就经常被熊拿走。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s001-p000981",
+        "paragraph_index": 980,
+        "text": "「狼给人的感觉是爱吃辛辣的食物，说到爱吃甜食会让人联想到熊。」",
+        "target_dialogue_ids": [
+          "volume_01-d000388"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c004-s001-p000982",
+        "paragraph_index": 981,
+        "text": "「狼不爱吃辣。有一次咱们找到遇难船只上的货物，吃了长得像尖牙的红色果实，下场是翻天覆地呐。」",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s001-p000983",
+        "paragraph_index": 982,
+        "text": "「哈哈，那是红辣椒，高级品呢！」",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s001-p000984",
+        "paragraph_index": 983,
+        "text": "「那次大伙儿把整个脸栽进河水里好久好久，还直感叹着人类真恐怖。」",
+        "target_dialogue_ids": []
+      }
+    ]
+  },
+  "scene_memory": [
+    {
+      "scene_id": "volume_01-c004-s001-r003",
+      "parent_scene_id": "volume_01-c004-s001",
+      "chunk_index": 3,
+      "chunk_count": 6,
+      "scene_summary": "罗伦斯与赫萝在旅途中讨论赫萝的传说与外貌特征。赫萝表现出对帕斯罗村的复杂情绪，并试图安抚罗伦斯的疑虑。",
+      "active_characters": [
+        "罗伦斯",
+        "赫萝"
+      ],
+      "relationships": [
+        "罗伦斯与赫萝一同旅行",
+        "罗伦斯对赫萝的身份持怀疑态度",
+        "赫萝对帕斯罗村有复杂情绪"
+      ],
+      "notes": "赫萝表现出对帕斯罗村的复杂情绪，暗示她与该村有深层联系。罗伦斯试图安抚她，但内心仍有疑虑。"
+    },
+    {
+      "scene_id": "volume_01-c004-s001-r004",
+      "parent_scene_id": "volume_01-c004-s001",
+      "chunk_index": 4,
+      "chunk_count": 6,
+      "scene_summary": "罗伦斯与赫萝在旅途中讨论赫萝是否会被他人察觉其非人类的身份。赫萝表现出矛盾的情绪，一方面希望被察觉，另一方面又试图维持伪装。两人随后讨论起水果的来源与种类，气氛逐渐轻松。",
+      "active_characters": [
+        "罗伦斯",
+        "赫萝"
+      ],
+      "relationships": [
+        "罗伦斯与赫萝一同旅行",
+        "罗伦斯对赫萝的身份持怀疑态度",
+        "赫萝表现出对罗伦斯的依赖与不满"
+      ],
+      "notes": "赫萝在本场景中表现出复杂的情绪，暗示她对自身身份的矛盾态度。罗伦斯则试图维持理性，但对赫萝的反应也显示出一定的困扰。"
+    },
+    {
+      "scene_id": "volume_01-c004-s001-r005",
+      "parent_scene_id": "volume_01-c004-s001",
+      "chunk_index": 5,
+      "chunk_count": 6,
+      "scene_summary": "赫萝与罗伦斯在集市上讨论食物偏好，特别是水果和苹果。赫萝表现出对甜食的兴趣，并回忆起过去因误食辣椒而引发的不愉快经历。",
+      "active_characters": [
+        "赫萝",
+        "罗伦斯"
+      ],
+      "relationships": [
+        "赫萝与罗伦斯一同旅行",
+        "赫萝表现出对罗伦斯的依赖和互动",
+        "罗伦斯对赫萝的身份持怀疑态度，但仍保持理性"
+      ],
+      "notes": "赫萝表现出对甜食的兴趣，特别是苹果，暗示她可能有特定的饮食偏好。罗伦斯虽然怀疑赫萝的身份，但仍然与她互动，表现出一定的信任。"
+    },
+    {
+      "scene_id": "volume_01-c004-s001-r006",
+      "parent_scene_id": "volume_01-c004-s001",
+      "chunk_index": 6,
+      "chunk_count": 6,
+      "scene_summary": "罗伦斯和赫萝在对话中讨论苹果期货，赫萝试图转移话题，但罗伦斯继续谈论此事。",
+      "active_characters": [
+        "罗伦斯",
+        "赫萝"
+      ],
+      "relationships": [
+        "罗伦斯与赫萝有长期互动，彼此熟悉"
+      ],
+      "notes": "本场景中未出现新的神秘人物，对话主要围绕苹果期货展开，赫萝试图转移话题，罗伦斯则继续谈论此事。"
+    }
+  ],
+  "candidate_characters": [
+    {
+      "entity_id": "char_0001",
+      "display_name": "罗伦斯",
+      "aliases": [
+        "罗伦斯",
+        "罗伦斯先生"
+      ],
+      "titles": [
+        "中间人",
+        "交易者",
+        "同行",
+        "商人",
+        "小毛头",
+        "小的",
+        "市井无赖",
+        "年轻人",
+        "开店者",
+        "情报贩子",
+        "提议者",
+        "新手"
+      ],
+      "description": "一位行商人，正在与米隆商行的代表马贺特进行交易谈判。他原本期待获得两千枚银币，但实际只得到一百二十枚，感到震惊和困惑。 / 一位行商人，发现并收留了赫萝，决定与她一同旅行。 / 一位二十五岁的自力更生旅行商人，已有七年行商经验，性格泰然自若。 / 一位冷静理性的旅行商人，对赫萝的身份持怀疑态度，但仍保持互动。他注重外表整洁，对商业制度有深入理解。 / 冷静理性的旅行商人，与赫萝一同旅行。在本场景中与米隆商行的马贺特讨论梅迪欧商行的威胁，提出利用崔尼银币交易作为交涉王牌。 / 一位冷静理性的旅行商人，与赫萝一同旅行。在本场景中与米隆商行的马贺特达成交易，表现出策略性和经验。 / 正在与马贺特讨论交易细节的商人，表现出对辛香料的兴趣。 / 一位冷静理性的旅行商人，正在与米隆商行的马贺特进行交易。他表现出对开店的期待，并思考未来。 / 一位冷静理性的旅行商人，正在处理一份请款单，但对单据内容感到困惑。 / 一位行商人，正在与商行代表进行交易。他表现出冷静和策略性，询问卸货场的位置。 / 一位行商人，发现并收留了赫萝，决定与她一同旅行。他性格冷静理性，对赫萝的身份持怀疑态度，但仍保持互动。他注重外表整洁，对商业制度有深入理解。 / 冷静理性的旅行商人，与赫萝一同旅行。在本场景中试图安抚赫萝的情绪，表现出对她的关心。",
+      "speech_style": "理性、坚定、略带情绪化 / 冷静、理性，带有悔恨和自责的语气。 / 冷静、理性，语气中带有对赫萝的关心和些许担忧。 / 冷静、理性、略带失落 / 冷静、理性，对商业制度有深入理解，并能清晰地向他人解释。 / 理性、礼貌、略带谨慎。 / 理性、冷静，带有商业分析倾向。 / 理性、沉稳、略带幽默 / 理性、冷静，但因困惑而表现出急切。 / 冷静、直接、略带命令语气 / 冷静、理性、简洁 / 冷静、理性、略带幽默",
+      "relationship_hints": [
+        "与赫萝一同旅行",
+        "对赫萝的真实性持怀疑态度",
+        "与深山村落的村民有交易关系",
+        "对修道院抱有商业期望但未成功",
+        "与骑士有短暂互动",
+        "与小村落的村民有交易关系",
+        "与修道院有关联",
+        "对教会和异教徒问题有见解",
+        "与叶勒有联系",
+        "在麦田中与农夫互动",
+        "与农夫有互动",
+        "在村民中保持低调"
+      ],
+      "first_seen_scene_id": "volume_01-c000-s003-r001",
+      "latest_seen_scene_id": "volume_01-c008-s003-r002",
+      "confidence": 1.0
+    },
+    {
+      "entity_id": "char_0002",
+      "display_name": "赫萝",
+      "aliases": [
+        "赫萝"
+      ],
+      "titles": [
+        "丰收之神",
+        "咱",
+        "神秘少女",
+        "约伊兹的贤狼",
+        "贤狼"
+      ],
+      "description": "自称丰收之神的神秘少女，拥有狼的耳朵和尾巴。在本场景中协助罗伦斯，表现出对他的关心和保护。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴，行为举止非人类，表现出轻松幽默但略带威胁性的说话风格。在本场景中，她对罗伦斯的伤口进行吸血，引发旁人惊呼，并表现出悲伤的情绪。 / 自称是丰收之神的神秘少女，拥有狼的耳朵和尾巴。在本场景中逐渐显露出非人类的特征，最终完全变成一只巨大的狼。她与罗伦斯有情感交流，表现出悲伤和决绝的情绪。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴，未直接参与本场景，但罗伦斯的行动可能与她有关。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴。在本场景中制服叶勒，并要求罗伦斯提供麦子，表现出非人类的特征和威胁性。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴。在本场景中以威胁的方式向罗伦斯索要麦子，表现出非人类的特征和强大的气场。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴。她表现出轻松幽默但略带威胁性的说话风格，对罗伦斯的挽留表现出复杂的情绪。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴，说话轻松幽默但略带威胁性。在本场景中拒绝罗伦斯的挽留，表现出独立和决绝。 / 赫萝的尾巴是罗伦斯追击的目标，她最终离开罗伦斯，留下他独自面对危险。罗伦斯回忆起赫萝离去的场景，表现出对她的依赖和悔恨。 / 自称是丰收之神的神秘少女，拥有狼的耳朵和尾巴。在本场景中独自前往市场为旅行整装，表现出独立和果断的一面。 / 自称是丰收之神的少女，拥有狼的耳朵和尾巴，说话狡诈。她与罗伦斯一同旅行，表现出轻松幽默但略带威胁性的说话风格。 / 自称丰收之神的神秘少女，拥有狼的耳…",
+      "speech_style": "轻松幽默但略带威胁性，情绪化且带有调侃语气。 / 轻松幽默、略带调侃和威胁 / 轻松幽默、略带威胁性 / 轻松幽默、略带威胁性、撒娇 / 警觉、神秘 / 轻松幽默但略带威胁性 / 轻松幽默、略带调侃 / 轻松幽默但略带威胁性，语气中透露出对罗伦斯的依赖。 / 轻松幽默、略带威胁性、自信 / 轻松幽默但略带威胁性，情绪波动明显 / 轻松幽默、略带威胁、情绪波动明显 / 轻松幽默但略带威胁性，表现出自信和调皮的特质。",
+      "relationship_hints": [
+        "与罗伦斯一同旅行",
+        "被罗伦斯怀疑是否为真正的神",
+        "与叶勒有附身关系",
+        "与罗伦斯有潜在互动",
+        "与罗伦斯有互动，似乎是被他发现并收留的。",
+        "与罗伦斯有互动，但尚未明确关系",
+        "与罗伦斯互动频繁，表现出对他的信任和玩笑态度",
+        "与罗伦斯互动密切",
+        "似乎对罗伦斯的反应感到有趣",
+        "与罗伦斯有互动，似乎是被他收留的神秘女孩。",
+        "与帕斯罗村的丰收之神有关联。",
+        "与罗伦斯对话，表现出信任与互动"
+      ],
+      "first_seen_scene_id": "volume_01-c000-s003-r001",
+      "latest_seen_scene_id": "volume_01-c008-s003-r002",
+      "confidence": 1.0
+    }
+  ],
+  "candidate_mysteries": [
+    {
+      "mystery_id": "mystery_volume_01_c008_s001_r002_赫萝",
+      "temporary_name": "赫萝",
+      "description": "罗伦斯的旅伴，拥有狼的特征，曾在地下道中护送罗伦斯，目前下落不明。",
+      "evidence": [
+        "volume_01-c008-s001-p002960",
+        "volume_01-c008-s001-p002961",
+        "volume_01-c008-s001-p002963"
+      ],
+      "source_scene_id": "volume_01-c008-s001-r002",
+      "confidence": 0.85
+    },
+    {
+      "mystery_id": "mystery_volume_01_c002_s002_r001_赫萝",
+      "temporary_name": "赫萝",
+      "description": "传说中的丰收之神，被村民称为狼，是祭典的核心象征。",
+      "evidence": [
+        "volume_01-c002-s002-p000160",
+        "volume_01-c002-s002-p000164"
+      ],
+      "source_scene_id": "volume_01-c002-s002-r001",
+      "confidence": 0.8
+    },
+    {
+      "mystery_id": "mystery_volume_01_c002_s006_r002_北方",
+      "temporary_name": "北方",
+      "description": "赫萝提到的故乡，可能是她身份和背景的关键线索。",
+      "evidence": [
+        "volume_01-c002-s006-p000504"
+      ],
+      "source_scene_id": "volume_01-c002-s006-r002",
+      "confidence": 0.8
+    },
+    {
+      "mystery_id": "mystery_volume_01_c002_s002_r003_赫萝",
+      "temporary_name": "赫萝",
+      "description": "虽然未直接出现，但被提及为祭典的核心人物，与罗伦斯有情感牵连。",
+      "evidence": [
+        "volume_01-c002-s002-p000187",
+        "volume_01-c002-s002-p000195"
+      ],
+      "source_scene_id": "volume_01-c002-s002-r003",
+      "confidence": 0.75
+    }
+  ]
+}

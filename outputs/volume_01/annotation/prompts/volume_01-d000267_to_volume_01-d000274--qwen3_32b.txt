@@ -1,0 +1,474 @@
+你是轻小说说话人标注项目的阶段 2：正式标注助手。
+你的任务是判断输入 target_dialogues 中每一句台词的说话人，不要改写原文。
+必须把这些台词当作同一个连续片段来判断，优先保持对话轮次和叙述线索的一致性。
+
+规则：
+1. 只输出严格 JSON，不要 Markdown，不要解释性前后缀。
+2. 如果说话人是候选角色，speaker_entity_id 必须使用 candidate_characters 里的 entity_id，speaker_status 填 known。
+3. 如果说话人像某个未知人物，speaker_entity_id 使用 candidate_mysteries 里的 mystery_id，speaker_status 填 mystery。
+4. 如果只是无法追踪的路人/群体，speaker_status 填 npc，speaker_entity_id 可为空或使用 npc:简短称呼。
+5. 证据不足时不要硬猜，speaker_status 填 ambiguous 或 review，并把 needs_review 设为 true。
+6. candidate_speakers 至少列出 1 个候选；如果无法判断，列出最可能的候选和不确定原因。
+7. confidence 使用 0 到 1 之间的小数，表示你对最终判断的把握。
+8. 不要只因为台词里提到某个名字、职业、地点，就把说话人标成那个实体；被称呼的人通常不是说话人。
+9. 连续问答、交易寒暄、命令/回答等场景要按上下句轮次判断；同一人连续说话必须有叙述或语气证据支持。
+10. 如果当前上下文显示某角色还没有登场，不要因为角色库或后文记忆里有这个角色就提前标给他/她。
+
+输出 JSON 结构：
+{
+  "annotations": [
+    {
+      "dialogue_id": "必须来自 target_dialogue_ids",
+      "speaker_entity_id": "string",
+      "speaker_display": "string",
+      "speaker_status": "known|mystery|npc|ambiguous|review",
+      "confidence": 0.0,
+      "candidate_speakers": [
+        {"entity_id": "string", "display": "string", "status": "known|mystery|npc|ambiguous|review", "score": 0.0}
+      ],
+      "evidence": ["短证据，不要大段复制原文"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "可选，简短说明整体轮次判断"
+}
+必须为 target_dialogue_ids 中每个 dialogue_id 输出且只输出一条 annotation。
+
+输入 JSON：
+{
+  "volume": {
+    "volume_id": "volume_01",
+    "volume": 1
+  },
+  "target_dialogue_ids": [
+    "volume_01-d000267",
+    "volume_01-d000268",
+    "volume_01-d000269",
+    "volume_01-d000270",
+    "volume_01-d000271",
+    "volume_01-d000272",
+    "volume_01-d000273",
+    "volume_01-d000274"
+  ],
+  "dialogues": [
+    {
+      "dialogue_id": "volume_01-d000267",
+      "dialogue_index": 266,
+      "window_position": 1,
+      "chapter_id": "volume_01-c003",
+      "chapter_title": "第二幕",
+      "scene_id": "volume_01-c003-s002",
+      "paragraph_id": "volume_01-c003-s002-p000733",
+      "paragraph_index": 732,
+      "local_dialogue_index": 1,
+      "text": "喔。",
+      "quote_text": "「喔。」",
+      "paragraph_text": "「喔。」",
+      "char_start": 0,
+      "char_end": 4
+    },
+    {
+      "dialogue_id": "volume_01-d000268",
+      "dialogue_index": 267,
+      "window_position": 2,
+      "chapter_id": "volume_01-c003",
+      "chapter_title": "第二幕",
+      "scene_id": "volume_01-c003-s002",
+      "paragraph_id": "volume_01-c003-s002-p000734",
+      "paragraph_index": 733,
+      "local_dialogue_index": 1,
+      "text": "或许咱天生跟马铃薯不合呗。",
+      "quote_text": "「或许咱天生跟马铃薯不合呗。」",
+      "paragraph_text": "「或许咱天生跟马铃薯不合呗。」",
+      "char_start": 0,
+      "char_end": 15
+    },
+    {
+      "dialogue_id": "volume_01-d000269",
+      "dialogue_index": 268,
+      "window_position": 3,
+      "chapter_id": "volume_01-c003",
+      "chapter_title": "第二幕",
+      "scene_id": "volume_01-c003-s002",
+      "paragraph_id": "volume_01-c003-s002-p000736",
+      "paragraph_index": 735,
+      "local_dialogue_index": 1,
+      "text": "话说。",
+      "quote_text": "「话说。」",
+      "paragraph_text": "「话说。」",
+      "char_start": 0,
+      "char_end": 5
+    },
+    {
+      "dialogue_id": "volume_01-d000270",
+      "dialogue_index": 269,
+      "window_position": 4,
+      "chapter_id": "volume_01-c003",
+      "chapter_title": "第二幕",
+      "scene_id": "volume_01-c003-s002",
+      "paragraph_id": "volume_01-c003-s002-p000738",
+      "paragraph_index": 737,
+      "local_dialogue_index": 1,
+      "text": "你不是有说过可以识破谎言之类的话？",
+      "quote_text": "「你不是有说过可以识破谎言之类的话？」",
+      "paragraph_text": "「你不是有说过可以识破谎言之类的话？」",
+      "char_start": 0,
+      "char_end": 19
+    },
+    {
+      "dialogue_id": "volume_01-d000271",
+      "dialogue_index": 270,
+      "window_position": 5,
+      "chapter_id": "volume_01-c003",
+      "chapter_title": "第二幕",
+      "scene_id": "volume_01-c003-s002",
+      "paragraph_id": "volume_01-c003-s002-p000740",
+      "paragraph_index": 739,
+      "local_dialogue_index": 1,
+      "text": "怎么了",
+      "quote_text": "「怎么了」",
+      "paragraph_text": "在罗伦斯还来不及问出「怎么了」的转瞬间，赫萝的手便像是抓住什么般停在半空中。",
+      "char_start": 10,
+      "char_end": 15
+    },
+    {
+      "dialogue_id": "volume_01-d000272",
+      "dialogue_index": 271,
+      "window_position": 6,
+      "chapter_id": "volume_01-c003",
+      "chapter_title": "第二幕",
+      "scene_id": "volume_01-c003-s002",
+      "paragraph_id": "volume_01-c003-s002-p000741",
+      "paragraph_index": 740,
+      "local_dialogue_index": 1,
+      "text": "竟然还有跳蚤。",
+      "quote_text": "「竟然还有跳蚤。」",
+      "paragraph_text": "「竟然还有跳蚤。」",
+      "char_start": 0,
+      "char_end": 9
+    },
+    {
+      "dialogue_id": "volume_01-d000273",
+      "dialogue_index": 272,
+      "window_position": 7,
+      "chapter_id": "volume_01-c003",
+      "chapter_title": "第二幕",
+      "scene_id": "volume_01-c003-s002",
+      "paragraph_id": "volume_01-c003-s002-p000742",
+      "paragraph_index": 741,
+      "local_dialogue_index": 1,
+      "text": "你那么整齐的长毛，当然是跳蚤的最佳温床。",
+      "quote_text": "「你那么整齐的长毛，当然是跳蚤的最佳温床。」",
+      "paragraph_text": "「你那么整齐的长毛，当然是跳蚤的最佳温床。」",
+      "char_start": 0,
+      "char_end": 22
+    },
+    {
+      "dialogue_id": "volume_01-d000274",
+      "dialogue_index": 273,
+      "window_position": 8,
+      "chapter_id": "volume_01-c003",
+      "chapter_title": "第二幕",
+      "scene_id": "volume_01-c003-s002",
+      "paragraph_id": "volume_01-c003-s002-p000744",
+      "paragraph_index": 743,
+      "local_dialogue_index": 1,
+      "text": "汝也知道咱的尾巴漂亮，挺有眼光的。",
+      "quote_text": "「汝也知道咱的尾巴漂亮，挺有眼光的。」",
+      "paragraph_text": "「汝也知道咱的尾巴漂亮，挺有眼光的。」",
+      "char_start": 0,
+      "char_end": 19
+    }
+  ],
+  "context": {
+    "paragraphs": [
+      {
+        "paragraph_id": "volume_01-c003-s002-p000730",
+        "paragraph_index": 729,
+        "text": "「嗯。汝瞧，那是因为狼没有这东西，所以没法儿慢慢咀嚼。」",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c003-s002-p000731",
+        "paragraph_index": 730,
+        "text": "赫萝用手指勾着嘴角往外拉，她指的应该是脸颊吧。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c003-s002-p000732",
+        "paragraph_index": 731,
+        "text": "「不过，咱以前也曾经因为吞下马铃薯而被噎着。」",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c003-s002-p000733",
+        "paragraph_index": 732,
+        "text": "「喔。」",
+        "target_dialogue_ids": [
+          "volume_01-d000267"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c003-s002-p000734",
+        "paragraph_index": 733,
+        "text": "「或许咱天生跟马铃薯不合呗。」",
+        "target_dialogue_ids": [
+          "volume_01-d000268"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c003-s002-p000735",
+        "paragraph_index": 734,
+        "text": "罗伦斯心想：单纯只是你吃得太猴急了！但没有说出口。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c003-s002-p000736",
+        "paragraph_index": 735,
+        "text": "「话说。」",
+        "target_dialogue_ids": [
+          "volume_01-d000269"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c003-s002-p000737",
+        "paragraph_index": 736,
+        "text": "罗伦斯开口道：",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c003-s002-p000738",
+        "paragraph_index": 737,
+        "text": "「你不是有说过可以识破谎言之类的话？」",
+        "target_dialogue_ids": [
+          "volume_01-d000270"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c003-s002-p000739",
+        "paragraph_index": 738,
+        "text": "听到罗伦斯这么询问，赫萝一边咬着乳酪，一边回过头来。赫萝正要开口说话，下一瞬间却猛地把视线移到另一个地方，顿了半秒之后伸出手。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c003-s002-p000740",
+        "paragraph_index": 739,
+        "text": "在罗伦斯还来不及问出「怎么了」的转瞬间，赫萝的手便像是抓住什么般停在半空中。",
+        "target_dialogue_ids": [
+          "volume_01-d000271"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c003-s002-p000741",
+        "paragraph_index": 740,
+        "text": "「竟然还有跳蚤。」",
+        "target_dialogue_ids": [
+          "volume_01-d000272"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c003-s002-p000742",
+        "paragraph_index": 741,
+        "text": "「你那么整齐的长毛，当然是跳蚤的最佳温床。」",
+        "target_dialogue_ids": [
+          "volume_01-d000273"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c003-s002-p000743",
+        "paragraph_index": 742,
+        "text": "在运送毛织物或毛发较长的皮草时，有时会因季节不同而涌出大量跳蚤，必须靠烟熏才能够消灭；罗伦斯是因为想起这样的经验才说出这种话，但赫萝听了是先露出惊讶的表情，随后又立即挺起胸膛，一脸得意地说：",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c003-s002-p000744",
+        "paragraph_index": 743,
+        "text": "「汝也知道咱的尾巴漂亮，挺有眼光的。」",
+        "target_dialogue_ids": [
+          "volume_01-d000274"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c003-s002-p000745",
+        "paragraph_index": 744,
+        "text": "看见赫萝像个孩子似的得意模样，罗伦斯决定还是不要把自己联想到的事情说出来。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c003-s002-p000746",
+        "paragraph_index": 745,
+        "text": "「你说可以分辨别人有没有说谎，那是真的吗？」",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c003-s002-p000747",
+        "paragraph_index": 746,
+        "text": "「嗯？喔，多多少少可以。」",
+        "target_dialogue_ids": []
+      }
+    ]
+  },
+  "scene_memory": [
+    {
+      "scene_id": "volume_01-c003-s002-r004",
+      "parent_scene_id": "volume_01-c003-s002",
+      "chunk_index": 4,
+      "chunk_count": 6,
+      "scene_summary": "罗伦斯与赫萝在房间中互动，赫萝表现出对食物的强烈兴趣，尤其是马铃薯和麦子。两人之间的对话轻松幽默，赫萝展现出狼的特征和非人类的特质。",
+      "active_characters": [
+        "罗伦斯",
+        "赫萝"
+      ],
+      "relationships": [
+        "罗伦斯与赫萝之间有亲密互动，罗伦斯提供食物和物品，赫萝接受并表现出依赖",
+        "赫萝表现出对食物的强烈兴趣，暗示其非人类的特征"
+      ],
+      "notes": "赫萝表现出狼的特征和非人类的特质，但未提及新的神秘人物。场景中没有出现未命名但可追踪的神秘人物。"
+    },
+    {
+      "scene_id": "volume_01-c003-s002-r005",
+      "parent_scene_id": "volume_01-c003-s002",
+      "chunk_index": 5,
+      "chunk_count": 6,
+      "scene_summary": "罗伦斯与赫萝在旅途中交谈，赫萝谈论咀嚼与马铃薯的经历，并提到跳蚤的问题，表现出轻松幽默但略带威胁的说话风格。",
+      "active_characters": [
+        "罗伦斯",
+        "赫萝"
+      ],
+      "relationships": [
+        "罗伦斯与赫萝一同旅行",
+        "罗伦斯对赫萝的身份持怀疑态度"
+      ],
+      "notes": "赫萝表现出轻松幽默但略带威胁的说话风格，罗伦斯则保持理性与怀疑态度。两人之间存在互动与信任的微妙平衡。"
+    },
+    {
+      "scene_id": "volume_01-c003-s002-r006",
+      "parent_scene_id": "volume_01-c003-s002",
+      "chunk_index": 6,
+      "chunk_count": 6,
+      "scene_summary": "罗伦斯与赫萝在对话中，赫萝表现出得意和轻松幽默的态度，罗伦斯则保持理性与怀疑。",
+      "active_characters": [
+        "罗伦斯",
+        "赫萝"
+      ],
+      "relationships": [
+        "罗伦斯与赫萝之间存在互动和信任的初步建立，但罗伦斯仍对其身份持怀疑态度"
+      ],
+      "notes": "本场景中未出现新的神秘人物，赫萝和罗伦斯的互动进一步揭示了他们的性格和关系线索。"
+    }
+  ],
+  "candidate_characters": [
+    {
+      "entity_id": "char_0001",
+      "display_name": "罗伦斯",
+      "aliases": [
+        "罗伦斯",
+        "罗伦斯先生"
+      ],
+      "titles": [
+        "中间人",
+        "交易者",
+        "同行",
+        "商人",
+        "小毛头",
+        "小的",
+        "市井无赖",
+        "年轻人",
+        "开店者",
+        "情报贩子",
+        "提议者",
+        "新手"
+      ],
+      "description": "一位行商人，正在与米隆商行的代表马贺特进行交易谈判。他原本期待获得两千枚银币，但实际只得到一百二十枚，感到震惊和困惑。 / 一位行商人，发现并收留了赫萝，决定与她一同旅行。 / 一位二十五岁的自力更生旅行商人，已有七年行商经验，性格泰然自若。 / 一位冷静理性的旅行商人，对赫萝的身份持怀疑态度，但仍保持互动。他注重外表整洁，对商业制度有深入理解。 / 冷静理性的旅行商人，与赫萝一同旅行。在本场景中与米隆商行的马贺特讨论梅迪欧商行的威胁，提出利用崔尼银币交易作为交涉王牌。 / 一位冷静理性的旅行商人，与赫萝一同旅行。在本场景中与米隆商行的马贺特达成交易，表现出策略性和经验。 / 正在与马贺特讨论交易细节的商人，表现出对辛香料的兴趣。 / 一位冷静理性的旅行商人，正在与米隆商行的马贺特进行交易。他表现出对开店的期待，并思考未来。 / 一位冷静理性的旅行商人，正在处理一份请款单，但对单据内容感到困惑。 / 一位行商人，正在与商行代表进行交易。他表现出冷静和策略性，询问卸货场的位置。 / 一位行商人，发现并收留了赫萝，决定与她一同旅行。他性格冷静理性，对赫萝的身份持怀疑态度，但仍保持互动。他注重外表整洁，对商业制度有深入理解。 / 冷静理性的旅行商人，与赫萝一同旅行。在本场景中试图安抚赫萝的情绪，表现出对她的关心。",
+      "speech_style": "理性、坚定、略带情绪化 / 冷静、理性，带有悔恨和自责的语气。 / 冷静、理性，语气中带有对赫萝的关心和些许担忧。 / 冷静、理性、略带失落 / 冷静、理性，对商业制度有深入理解，并能清晰地向他人解释。 / 理性、礼貌、略带谨慎。 / 理性、冷静，带有商业分析倾向。 / 理性、沉稳、略带幽默 / 理性、冷静，但因困惑而表现出急切。 / 冷静、直接、略带命令语气 / 冷静、理性、简洁 / 冷静、理性、略带幽默",
+      "relationship_hints": [
+        "与赫萝一同旅行",
+        "对赫萝的真实性持怀疑态度",
+        "与深山村落的村民有交易关系",
+        "对修道院抱有商业期望但未成功",
+        "与骑士有短暂互动",
+        "与小村落的村民有交易关系",
+        "与修道院有关联",
+        "对教会和异教徒问题有见解",
+        "与叶勒有联系",
+        "在麦田中与农夫互动",
+        "与农夫有互动",
+        "在村民中保持低调"
+      ],
+      "first_seen_scene_id": "volume_01-c000-s003-r001",
+      "latest_seen_scene_id": "volume_01-c008-s003-r002",
+      "confidence": 1.0
+    },
+    {
+      "entity_id": "char_0002",
+      "display_name": "赫萝",
+      "aliases": [
+        "赫萝"
+      ],
+      "titles": [
+        "丰收之神",
+        "咱",
+        "神秘少女",
+        "约伊兹的贤狼",
+        "贤狼"
+      ],
+      "description": "自称丰收之神的神秘少女，拥有狼的耳朵和尾巴。在本场景中协助罗伦斯，表现出对他的关心和保护。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴，行为举止非人类，表现出轻松幽默但略带威胁性的说话风格。在本场景中，她对罗伦斯的伤口进行吸血，引发旁人惊呼，并表现出悲伤的情绪。 / 自称是丰收之神的神秘少女，拥有狼的耳朵和尾巴。在本场景中逐渐显露出非人类的特征，最终完全变成一只巨大的狼。她与罗伦斯有情感交流，表现出悲伤和决绝的情绪。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴，未直接参与本场景，但罗伦斯的行动可能与她有关。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴。在本场景中制服叶勒，并要求罗伦斯提供麦子，表现出非人类的特征和威胁性。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴。在本场景中以威胁的方式向罗伦斯索要麦子，表现出非人类的特征和强大的气场。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴。她表现出轻松幽默但略带威胁性的说话风格，对罗伦斯的挽留表现出复杂的情绪。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴，说话轻松幽默但略带威胁性。在本场景中拒绝罗伦斯的挽留，表现出独立和决绝。 / 赫萝的尾巴是罗伦斯追击的目标，她最终离开罗伦斯，留下他独自面对危险。罗伦斯回忆起赫萝离去的场景，表现出对她的依赖和悔恨。 / 自称是丰收之神的神秘少女，拥有狼的耳朵和尾巴。在本场景中独自前往市场为旅行整装，表现出独立和果断的一面。 / 自称是丰收之神的少女，拥有狼的耳朵和尾巴，说话狡诈。她与罗伦斯一同旅行，表现出轻松幽默但略带威胁性的说话风格。 / 自称丰收之神的神秘少女，拥有狼的耳…",
+      "speech_style": "轻松幽默但略带威胁性，情绪化且带有调侃语气。 / 轻松幽默、略带调侃和威胁 / 轻松幽默、略带威胁性 / 轻松幽默、略带威胁性、撒娇 / 警觉、神秘 / 轻松幽默但略带威胁性 / 轻松幽默、略带调侃 / 轻松幽默但略带威胁性，语气中透露出对罗伦斯的依赖。 / 轻松幽默、略带威胁性、自信 / 轻松幽默但略带威胁性，情绪波动明显 / 轻松幽默、略带威胁、情绪波动明显 / 轻松幽默但略带威胁性，表现出自信和调皮的特质。",
+      "relationship_hints": [
+        "与罗伦斯一同旅行",
+        "被罗伦斯怀疑是否为真正的神",
+        "与叶勒有附身关系",
+        "与罗伦斯有潜在互动",
+        "与罗伦斯有互动，似乎是被他发现并收留的。",
+        "与罗伦斯有互动，但尚未明确关系",
+        "与罗伦斯互动频繁，表现出对他的信任和玩笑态度",
+        "与罗伦斯互动密切",
+        "似乎对罗伦斯的反应感到有趣",
+        "与罗伦斯有互动，似乎是被他收留的神秘女孩。",
+        "与帕斯罗村的丰收之神有关联。",
+        "与罗伦斯对话，表现出信任与互动"
+      ],
+      "first_seen_scene_id": "volume_01-c000-s003-r001",
+      "latest_seen_scene_id": "volume_01-c008-s003-r002",
+      "confidence": 1.0
+    }
+  ],
+  "candidate_mysteries": [
+    {
+      "mystery_id": "mystery_volume_01_c008_s001_r002_赫萝",
+      "temporary_name": "赫萝",
+      "description": "罗伦斯的旅伴，拥有狼的特征，曾在地下道中护送罗伦斯，目前下落不明。",
+      "evidence": [
+        "volume_01-c008-s001-p002960",
+        "volume_01-c008-s001-p002961",
+        "volume_01-c008-s001-p002963"
+      ],
+      "source_scene_id": "volume_01-c008-s001-r002",
+      "confidence": 0.85
+    },
+    {
+      "mystery_id": "mystery_volume_01_c002_s002_r001_赫萝",
+      "temporary_name": "赫萝",
+      "description": "传说中的丰收之神，被村民称为狼，是祭典的核心象征。",
+      "evidence": [
+        "volume_01-c002-s002-p000160",
+        "volume_01-c002-s002-p000164"
+      ],
+      "source_scene_id": "volume_01-c002-s002-r001",
+      "confidence": 0.8
+    },
+    {
+      "mystery_id": "mystery_volume_01_c002_s002_r003_赫萝",
+      "temporary_name": "赫萝",
+      "description": "虽然未直接出现，但被提及为祭典的核心人物，与罗伦斯有情感牵连。",
+      "evidence": [
+        "volume_01-c002-s002-p000187",
+        "volume_01-c002-s002-p000195"
+      ],
+      "source_scene_id": "volume_01-c002-s002-r003",
+      "confidence": 0.75
+    }
+  ]
+}

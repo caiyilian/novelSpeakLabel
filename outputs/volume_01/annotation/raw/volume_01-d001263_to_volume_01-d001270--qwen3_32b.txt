@@ -1,0 +1,177 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001263",
+      "speaker_entity_id": "char_0032",
+      "speaker_display": "梅迪欧商行手下",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0032",
+          "display": "梅迪欧商行手下",
+          "status": "known",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "上下文提到叶勒命令手下行动，此句为命令式台词，符合商行手下执行命令的语境。"
+      ],
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001264",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "上下文明确指出赫萝在说话，台词风格与赫萝一致，且与罗伦斯有情感交流。"
+      ],
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001265",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "上下文显示赫萝在说话，台词风格与赫萝一致，且与罗伦斯有情感交流。"
+      ],
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001266",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "上下文显示赫萝在说话，台词风格与赫萝一致，且与罗伦斯有情感交流。"
+      ],
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001267",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "上下文显示赫萝在说话，台词风格与赫萝一致，且与罗伦斯有情感交流。"
+      ],
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001268",
+      "speaker_entity_id": "mystery_volume_01_c007_s004_r004_士兵A",
+      "speaker_display": "士兵A",
+      "speaker_status": "mystery",
+      "confidence": 0.7,
+      "candidate_speakers": [
+        {
+          "entity_id": "mystery_volume_01_c007_s004_r004_士兵A",
+          "display": "士兵A",
+          "status": "mystery",
+          "score": 0.7
+        },
+        {
+          "entity_id": "mystery_volume_01_c007_s004_r004_士兵B",
+          "display": "士兵B",
+          "status": "mystery",
+          "score": 0.6
+        }
+      ],
+      "evidence": [
+        "上下文提到某人因惊恐大叫，随后两人丢弃武器，此句为大叫的台词，符合士兵A的描述。"
+      ],
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001269",
+      "speaker_entity_id": "mystery_volume_01_c007_s004_r004_士兵A",
+      "speaker_display": "士兵A",
+      "speaker_status": "mystery",
+      "confidence": 0.7,
+      "candidate_speakers": [
+        {
+          "entity_id": "mystery_volume_01_c007_s004_r004_士兵A",
+          "display": "士兵A",
+          "status": "mystery",
+          "score": 0.7
+        },
+        {
+          "entity_id": "mystery_volume_01_c007_s004_r004_士兵B",
+          "display": "士兵B",
+          "status": "mystery",
+          "score": 0.6
+        }
+      ],
+      "evidence": [
+        "上下文提到两人发出简短声音，此句为简短声音之一，符合士兵A的描述。"
+      ],
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001270",
+      "speaker_entity_id": "mystery_volume_01_c007_s004_r004_士兵B",
+      "speaker_display": "士兵B",
+      "speaker_status": "mystery",
+      "confidence": 0.7,
+      "candidate_speakers": [
+        {
+          "entity_id": "mystery_volume_01_c007_s004_r004_士兵B",
+          "display": "士兵B",
+          "status": "mystery",
+          "score": 0.7
+        },
+        {
+          "entity_id": "mystery_volume_01_c007_s004_r004_士兵A",
+          "display": "士兵A",
+          "status": "mystery",
+          "score": 0.6
+        }
+      ],
+      "evidence": [
+        "上下文提到两人发出简短声音，此句为简短声音之一，符合士兵B的描述。"
+      ],
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，赫萝连续发言，士兵A和B在最后部分交替发言。"
+}
+```

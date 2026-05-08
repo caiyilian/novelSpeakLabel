@@ -1,0 +1,159 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001022",
+      "speaker_entity_id": "char_0020",
+      "speaker_display": "列支敦·马贺特",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0020",
+          "display": "列支敦·马贺特",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "对话发生在罗伦斯与马贺特的谈判场景中，马贺特是米隆商行帕兹欧分行的行长，且是主要对话对象。"
+      ],
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001023",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "罗伦斯是场景中的主要策略提出者，且上下文显示这是他回应马贺特的提问。"
+      ],
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001024",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "罗伦斯继续提出交易策略，且上下文显示这是他与马贺特的连续对话。"
+      ],
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001025",
+      "speaker_entity_id": "char_0020",
+      "speaker_display": "列支敦·马贺特",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0020",
+          "display": "列支敦·马贺特",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "马贺特对罗伦斯的提议提出质疑，符合对话轮次的交替模式。"
+      ],
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001026",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "罗伦斯继续回应马贺特的质疑，保持对话轮次的一致性。"
+      ],
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001027",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "罗伦斯进一步解释策略，延续了他与马贺特的对话逻辑。"
+      ],
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001028",
+      "speaker_entity_id": "char_0020",
+      "speaker_display": "列支敦·马贺特",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0020",
+          "display": "列支敦·马贺特",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "马贺特回应罗伦斯的解释，符合对话轮次的交替模式。"
+      ],
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001029",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "罗伦斯简短回应马贺特，保持对话轮次的一致性。"
+      ],
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，罗伦斯与马贺特交替发言，符合商业谈判场景的对话模式。"
+}
+```

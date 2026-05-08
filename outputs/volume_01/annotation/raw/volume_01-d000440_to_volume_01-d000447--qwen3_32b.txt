@@ -1,0 +1,183 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000440",
+      "speaker_entity_id": "char_0011",
+      "speaker_display": "彪形大汉",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0011",
+          "display": "彪形大汉",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "对话发生在卸货场，彪形大汉是唯一在门口与罗伦斯搭腔的人物。",
+        "对话内容为对罗伦斯的询问，符合彪形大汉作为搬运工的职责范围。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000441",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "赫萝在场景中明确出现在罗伦斯身旁，并对彪形大汉的体格做出评论。",
+        "对话内容为赫萝的观察和疑问，语气符合她的轻松幽默风格。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000442",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "罗伦斯是场景中的主要角色，正在与店员和搬运工互动。",
+        "对话内容为罗伦斯对店员指示的回应，符合他的冷静理性风格。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000443",
+      "speaker_entity_id": "char_0011",
+      "speaker_display": "彪形大汉",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0011",
+          "display": "彪形大汉",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "彪形大汉负责接待罗伦斯的马车，对话内容为他主动提出寄放服务。",
+        "对话语气热情直接，符合彪形大汉的说话风格。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000444",
+      "speaker_entity_id": "char_0011",
+      "speaker_display": "彪形大汉",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0011",
+          "display": "彪形大汉",
+          "status": "known",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "彪形大汉在接待马车后继续与罗伦斯互动，对话内容为对马的赞美。",
+        "语气热情，符合搬运工对货物的观察习惯。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000445",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "罗伦斯是场景中的主要角色，对话内容为对马的评价，符合他的理性风格。",
+        "对话是对彪形大汉评论的回应，符合对话轮次。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000446",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.8
+        }
+      ],
+      "evidence": [
+        "赫萝在场景中活跃，对话内容为幽默讽刺，符合她的说话风格。",
+        "对话是对罗伦斯评论的回应，符合对话轮次。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000447",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "罗伦斯是场景中的主要角色，对话内容为对赫萝评论的回应，符合他的理性风格。",
+        "对话轮次合理，符合罗伦斯的冷静回应习惯。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，罗伦斯、赫萝和彪形大汉交替发言，符合场景中三人互动的逻辑。"
+}
+```

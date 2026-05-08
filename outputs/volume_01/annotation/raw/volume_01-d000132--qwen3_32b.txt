@@ -1,31 +1,36 @@
 ```json
 {
-  "dialogue_id": "volume_01-d000132",
-  "speaker_entity_id": "char_0001",
-  "speaker_display": "罗伦斯",
-  "speaker_status": "known",
-  "confidence": 0.95,
-  "candidate_speakers": [
+  "annotations": [
     {
-      "entity_id": "char_0001",
-      "display": "罗伦斯",
-      "status": "known",
-      "score": 0.95
-    },
-    {
-      "entity_id": "char_0002",
-      "display": "赫萝",
-      "status": "known",
-      "score": 0.05
+      "dialogue_id": "volume_01-d000132",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        },
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.05
+        }
+      ],
+      "evidence": [
+        "前一段描述中提到罗伦斯不自觉地发问，紧接着就是这句台词，符合说话人轮次。",
+        "赫萝在前文刚刚摘下麦穗并吞下，不太可能紧接着发问。",
+        "罗伦斯表现出理性与怀疑，符合提问的语气和语境。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
     }
   ],
-  "evidence": [
-    "上下文显示赫萝刚刚摘下麦穗，而罗伦斯对此提出疑问，符合罗伦斯冷静理性、对异常现象感到疑惑的说话风格。",
-    "赫萝在前一段中已经行动，而当前台词是对她行为的回应，符合罗伦斯的视角和反应。",
-    "赫萝在场景中表现出轻松幽默的风格，不太可能提出这种直接的疑问。"
-  ],
-  "should_create_new_entity": false,
-  "new_entity_hint": "",
-  "needs_review": false
+  "window_notes": "该句台词是罗伦斯对赫萝行为的反应，符合对话轮次，上下文明确指向罗伦斯提问。"
 }
 ```

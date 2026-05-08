@@ -1,0 +1,175 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001289",
+      "speaker_entity_id": "char_0030",
+      "speaker_display": "米隆商行",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0030",
+          "display": "米隆商行",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "对话中提到「急忙赶到地下道救援的手下」，符合米隆商行代表马贺特的叙述视角。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001290",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "这是罗伦斯对赫萝下落的直接提问，符合其角色性格和当前场景中的情绪状态。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001291",
+      "speaker_entity_id": "char_0030",
+      "speaker_display": "米隆商行",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0030",
+          "display": "米隆商行",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "这是马贺特对罗伦斯问题的回答，延续了前一句的对话轮次。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001292",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "这是罗伦斯对市场与交易之间关系的进一步追问，符合其商人身份和对话逻辑。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001293",
+      "speaker_entity_id": "char_0030",
+      "speaker_display": "米隆商行",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0030",
+          "display": "米隆商行",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "这是马贺特对罗伦斯问题的详细回答，延续了对话轮次。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001294",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "这是罗伦斯对当前状况的回应，符合其角色和对话逻辑。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001295",
+      "speaker_entity_id": "char_0030",
+      "speaker_display": "米隆商行",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0030",
+          "display": "米隆商行",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "这是马贺特对罗伦斯用餐问题的回应，延续了对话轮次。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001296",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "这是罗伦斯对交易细节的进一步追问，符合其商人身份和对话逻辑。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，罗伦斯与米隆商行代表马贺特交替发言，符合商人与下属的互动模式。没有出现新角色或神秘人物，所有台词均可明确归属。"
+}
+```
