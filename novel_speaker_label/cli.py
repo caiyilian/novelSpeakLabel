@@ -129,6 +129,30 @@ def main(argv: list[str] | None = None) -> int:
     annotate_parser.add_argument("--max-mysteries", type=int, default=8)
     annotate_parser.add_argument("--max-scene-summaries", type=int, default=6)
     annotate_parser.add_argument(
+        "--annotation-window-size",
+        type=int,
+        default=8,
+        help="Number of same-scene dialogue lines sent in one annotation request.",
+    )
+    annotate_parser.add_argument(
+        "--context-paragraph-radius",
+        type=int,
+        default=3,
+        help="Paragraphs before/after each dialogue window sent as local context.",
+    )
+    annotate_parser.add_argument(
+        "--max-window-paragraphs",
+        type=int,
+        default=48,
+        help="Maximum context paragraphs included in one annotation request.",
+    )
+    annotate_parser.add_argument(
+        "--scene-summary-radius",
+        type=int,
+        default=1,
+        help="Nearby stage-1 scene-memory chunks to include around the dialogue window.",
+    )
+    annotate_parser.add_argument(
         "--start-dialogue-index",
         type=int,
         default=0,
@@ -140,7 +164,7 @@ def main(argv: list[str] | None = None) -> int:
         default=None,
         help="Maximum number of dialogues to process.",
     )
-    annotate_parser.add_argument("--min-confidence", type=float, default=0.55)
+    annotate_parser.add_argument("--min-confidence", type=float, default=0.75)
     annotate_parser.add_argument("--min-agreement", type=float, default=0.65)
     annotate_parser.add_argument("--min-margin", type=float, default=0.20)
     annotate_parser.add_argument("--min-support-models", type=int, default=2)
@@ -245,6 +269,10 @@ def main(argv: list[str] | None = None) -> int:
                 max_characters=args.max_characters,
                 max_mysteries=args.max_mysteries,
                 max_scene_summaries=args.max_scene_summaries,
+                annotation_window_size=args.annotation_window_size,
+                context_paragraph_radius=args.context_paragraph_radius,
+                max_window_paragraphs=args.max_window_paragraphs,
+                scene_summary_radius=args.scene_summary_radius,
                 start_dialogue_index=args.start_dialogue_index,
                 dialogue_limit=args.dialogue_limit,
                 min_confidence=args.min_confidence,

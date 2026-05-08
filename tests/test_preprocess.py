@@ -7,6 +7,9 @@ from pathlib import Path
 from novel_speaker_label.annotation import (
     AnnotationConfig,
     _aggregate_votes,
+    _dialogue_windows,
+    _extract_parsed_votes,
+    _parse_json_response,
     _render_labeled_text,
     annotate_volume,
 )
@@ -180,6 +183,35 @@ class AnnotationTests(unittest.TestCase):
         self.assertEqual(annotation["speaker_entity_id"], "char_0001")
         self.assertEqual(annotation["speaker_status"], "known")
 
+    def test_dialogue_windows_do_not_cross_scenes(self) -> None:
+        dialogues = [
+            {"dialogue_id": "d1", "scene_id": "s1"},
+            {"dialogue_id": "d2", "scene_id": "s1"},
+            {"dialogue_id": "d3", "scene_id": "s1"},
+            {"dialogue_id": "d4", "scene_id": "s2"},
+        ]
+
+        windows = _dialogue_windows(dialogues, window_size=2)
+
+        self.assertEqual(
+            [[row["dialogue_id"] for row in window] for window in windows],
+            [["d1", "d2"], ["d3"], ["d4"]],
+        )
+
+    def test_extract_parsed_votes_reads_batch_response(self) -> None:
+        parsed = _parse_json_response(
+            '{"annotations":[{"dialogue_id":"d1","speaker_status":"known"},'
+            '{"dialogue_id":"d2","speaker_status":"npc"}]}'
+        )
+
+        votes = _extract_parsed_votes(
+            parsed,
+            [{"dialogue_id": "d1"}, {"dialogue_id": "d2"}],
+        )
+
+        self.assertEqual(votes["d1"]["speaker_status"], "known")
+        self.assertEqual(votes["d2"]["speaker_status"], "npc")
+
     def test_render_labeled_text_inserts_review_label(self) -> None:
         paragraphs = [{"paragraph_id": "p1", "text": "「你好」「嗯」"}]
         annotations = [
@@ -286,6 +318,116 @@ class AnnotationTests(unittest.TestCase):
             self.assertTrue(
                 (output_dir / "annotation" / "prompts" / "volume_01-d000001--fake_model.txt").exists()
             )
+            prompt = (
+                output_dir
+                / "annotation"
+                / "prompts"
+                / "volume_01-d000001--fake_model.txt"
+            ).read_text(encoding="utf-8")
+            self.assertIn('"target_dialogue_ids"', prompt)
+            self.assertIn('"annotations"', prompt)
+
+    def test_annotate_cache_only_reads_batch_cache(self) -> None:
+        with tempfile.TemporaryDirectory(dir=Path.cwd()) as tmp:
+            output_dir = Path(tmp) / "outputs" / "volume_01"
+            write_json(
+                output_dir / "volume.json",
+                {"volume_id": "volume_01", "volume": 1},
+            )
+            write_jsonl(
+                output_dir / "preprocess" / "paragraphs.jsonl",
+                [
+                    {"paragraph_id": "p1", "paragraph_index": 0, "text": "「你好。」"},
+                    {"paragraph_id": "p2", "paragraph_index": 1, "text": "「嗯。」"},
+                ],
+            )
+            base_dialogue = {
+                "volume_id": "volume_01",
+                "chapter_id": "volume_01-c001",
+                "chapter_index": 1,
+                "chapter_title": "第一幕",
+                "scene_id": "volume_01-c001-s001",
+                "scene_index": 1,
+                "local_dialogue_index": 1,
+                "char_start": 0,
+                "char_end": 5,
+                "prev_context": [],
+                "next_context": [],
+            }
+            write_jsonl(
+                output_dir / "preprocess" / "dialogues.jsonl",
+                [
+                    {
+                        **base_dialogue,
+                        "dialogue_id": "volume_01-d000001",
+                        "dialogue_index": 0,
+                        "paragraph_id": "p1",
+                        "paragraph_index": 0,
+                        "text": "你好。",
+                        "quote_text": "「你好。」",
+                        "paragraph_text": "「你好。」",
+                    },
+                    {
+                        **base_dialogue,
+                        "dialogue_id": "volume_01-d000002",
+                        "dialogue_index": 1,
+                        "paragraph_id": "p2",
+                        "paragraph_index": 1,
+                        "text": "嗯。",
+                        "quote_text": "「嗯。」",
+                        "paragraph_text": "「嗯。」",
+                    },
+                ],
+            )
+            write_jsonl(
+                output_dir / "preprocess" / "scenes.jsonl",
+                [
+                    {
+                        "scene_id": "volume_01-c001-s001",
+                        "start_paragraph_index": 0,
+                        "end_paragraph_index": 1,
+                    }
+                ],
+            )
+            write_json(
+                output_dir
+                / "annotation"
+                / "cache"
+                / "volume_01-d000001_to_volume_01-d000002--fake_model.json",
+                {
+                    "annotations": [
+                        {
+                            "dialogue_id": "volume_01-d000001",
+                            "speaker_entity_id": "char_0001",
+                            "speaker_display": "罗伦斯",
+                            "speaker_status": "known",
+                            "confidence": 0.9,
+                        },
+                        {
+                            "dialogue_id": "volume_01-d000002",
+                            "speaker_entity_id": "char_0002",
+                            "speaker_display": "赫萝",
+                            "speaker_status": "known",
+                            "confidence": 0.9,
+                        },
+                    ]
+                },
+            )
+
+            summary = annotate_volume(
+                AnnotationConfig(
+                    output_dir=output_dir,
+                    models=("fake-model",),
+                    cache_only=True,
+                    write_prompts=False,
+                    annotation_window_size=2,
+                )
+            )
+
+            annotations = list(read_jsonl(output_dir / "annotation" / "annotations.jsonl"))
+            self.assertEqual(summary["request_count"], 1)
+            self.assertEqual(summary["vote_count"], 2)
+            self.assertEqual([row["speaker_display"] for row in annotations], ["罗伦斯", "赫萝"])
 
 
 if __name__ == "__main__":

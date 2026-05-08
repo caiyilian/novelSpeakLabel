@@ -12,6 +12,25 @@ from .ollama_client import OllamaClient, OllamaConfig
 SPEAKER_STATUSES = {"known", "mystery", "npc", "ambiguous", "review"}
 REVIEW_LABEL = "待复核"
 LOW_SIGNAL_NAMES = {"咱", "汝", "你", "我", "他", "她", "它", "我们", "他们", "她们"}
+LOW_SIGNAL_TITLES = {
+    "中间人",
+    "交易者",
+    "同行",
+    "商人",
+    "小毛头",
+    "小的",
+    "市井无赖",
+    "年轻人",
+    "开店者",
+    "情报贩子",
+    "提议者",
+    "新手",
+    "旅行商人",
+    "旅行商人亲戚",
+    "行商人",
+    "老板",
+    "贵族",
+}
 
 
 @dataclass(frozen=True)
@@ -30,9 +49,13 @@ class AnnotationConfig:
     max_characters: int = 12
     max_mysteries: int = 8
     max_scene_summaries: int = 6
+    annotation_window_size: int = 8
+    context_paragraph_radius: int = 3
+    max_window_paragraphs: int = 48
+    scene_summary_radius: int = 1
     start_dialogue_index: int = 0
     dialogue_limit: int | None = None
-    min_confidence: float = 0.55
+    min_confidence: float = 0.75
     min_agreement: float = 0.65
     min_margin: float = 0.20
     min_support_models: int = 2
@@ -50,11 +73,17 @@ def annotate_volume(config: AnnotationConfig) -> dict:
         limit=config.dialogue_limit,
     )
     paragraphs_by_id = {row["paragraph_id"]: row for row in paragraphs}
+    scenes_by_id = {
+        row["scene_id"]: row
+        for row in _read_optional_jsonl(preprocess_dir / "scenes.jsonl")
+        if row.get("scene_id")
+    }
 
     characters = _read_optional_jsonl(memory_dir / "semantic" / "characters.jsonl")
     mysteries = _read_optional_jsonl(memory_dir / "mystery_entities.jsonl")
     scene_memories = _read_optional_jsonl(memory_dir / "episodic" / "scenes.jsonl")
     scene_memories_by_parent = _group_scene_memories(scene_memories)
+    dialogue_windows = _dialogue_windows(dialogues, config.annotation_window_size)
 
     annotation_dir = config.output_dir / "annotation"
     cache_dir = annotation_dir / "cache"
@@ -82,26 +111,33 @@ def annotate_volume(config: AnnotationConfig) -> dict:
     failed_requests: list[dict] = []
     prompt_count = 0
 
-    for request_number, dialogue in enumerate(dialogues, start=1):
+    for request_number, dialogue_window in enumerate(dialogue_windows, start=1):
+        first_dialogue = dialogue_window[0]
+        last_dialogue = dialogue_window[-1]
         print(
             "[annotate] "
-            f"{request_number}/{len(dialogues)} {dialogue['dialogue_id']} "
-            f"scene={dialogue['scene_id']}",
+            f"{request_number}/{len(dialogue_windows)} "
+            f"{first_dialogue['dialogue_id']}..{last_dialogue['dialogue_id']} "
+            f"scene={first_dialogue['scene_id']}",
             flush=True,
         )
         payload = _build_annotation_payload(
-            dialogue=dialogue,
+            dialogues=dialogue_window,
+            paragraphs=paragraphs,
             paragraphs_by_id=paragraphs_by_id,
+            scenes_by_id=scenes_by_id,
             scene_memories_by_parent=scene_memories_by_parent,
             characters=characters,
             mysteries=mysteries,
             volume_meta=volume_meta,
             config=config,
         )
-        dialogue_votes: list[dict] = []
+        dialogue_votes_by_id: dict[str, list[dict]] = {
+            dialogue["dialogue_id"]: [] for dialogue in dialogue_window
+        }
 
         for model in config.models:
-            request_id = f"{dialogue['dialogue_id']}--{_safe_model_name(model)}"
+            request_id = f"{_dialogue_window_id(dialogue_window)}--{_safe_model_name(model)}"
             prompt_path = prompt_dir / f"{request_id}.txt"
             prompt = ""
             if config.write_prompts or config.dry_run:
@@ -115,8 +151,8 @@ def annotate_volume(config: AnnotationConfig) -> dict:
 
             try:
                 if cached_path.exists() and not config.overwrite_cache:
-                    parsed_vote = read_json(cached_path)
-                    response_text = json.dumps(parsed_vote, ensure_ascii=False)
+                    parsed_response = read_json(cached_path)
+                    response_text = json.dumps(parsed_response, ensure_ascii=False)
                 elif config.cache_only:
                     raise FileNotFoundError(f"Cached annotation vote not found: {cached_path}")
                 else:
@@ -126,12 +162,12 @@ def annotate_volume(config: AnnotationConfig) -> dict:
                     (raw_dir / f"{request_id}.txt").write_text(
                         response_text, encoding="utf-8", newline="\n"
                     )
-                    parsed_vote = _parse_json_response(response_text)
-                    write_json(cached_path, parsed_vote)
+                    parsed_response = _parse_json_response(response_text)
+                    write_json(cached_path, parsed_response)
             except Exception as exc:
                 failure = {
                     "request_id": request_id,
-                    "dialogue_id": dialogue["dialogue_id"],
+                    "dialogue_ids": [row["dialogue_id"] for row in dialogue_window],
                     "model": model,
                     "error_type": exc.__class__.__name__,
                     "error": str(exc),
@@ -151,17 +187,29 @@ def annotate_volume(config: AnnotationConfig) -> dict:
                     ) from exc
                 continue
 
-            vote = _normalize_vote(
-                parsed_vote=parsed_vote,
-                dialogue=dialogue,
-                model=model,
-                weight=config.model_weights.get(model, 1.0),
-            )
-            votes.append(vote)
-            dialogue_votes.append(vote)
+            parsed_votes = _extract_parsed_votes(parsed_response, dialogue_window)
+            for dialogue in dialogue_window:
+                parsed_vote = parsed_votes.get(dialogue["dialogue_id"])
+                if parsed_vote is None:
+                    parsed_vote = _missing_dialogue_vote(dialogue, request_id)
+                vote = _normalize_vote(
+                    parsed_vote=parsed_vote,
+                    dialogue=dialogue,
+                    model=model,
+                    weight=config.model_weights.get(model, 1.0),
+                )
+                votes.append(vote)
+                dialogue_votes_by_id[dialogue["dialogue_id"]].append(vote)
 
         if not config.dry_run:
-            annotations.append(_aggregate_votes(dialogue, dialogue_votes, config))
+            for dialogue in dialogue_window:
+                annotations.append(
+                    _aggregate_votes(
+                        dialogue,
+                        dialogue_votes_by_id[dialogue["dialogue_id"]],
+                        config,
+                    )
+                )
 
     if config.dry_run:
         write_json(
@@ -170,6 +218,8 @@ def annotate_volume(config: AnnotationConfig) -> dict:
                 "volume_id": volume_meta["volume_id"],
                 "models": list(config.models),
                 "dialogue_count": len(dialogues),
+                "window_count": len(dialogue_windows),
+                "annotation_window_size": max(1, config.annotation_window_size),
                 "prompt_count": prompt_count,
                 "message": "Prompts were generated; no Ollama requests were made.",
             },
@@ -195,6 +245,9 @@ def annotate_volume(config: AnnotationConfig) -> dict:
         "dry_run": config.dry_run,
         "cache_only": config.cache_only,
         "dialogue_count": len(dialogues),
+        "window_count": len(dialogue_windows),
+        "annotation_window_size": max(1, config.annotation_window_size),
+        "request_count": prompt_count,
         "prompt_count": prompt_count,
         "vote_count": len(votes),
         "annotation_count": len(annotations),
@@ -225,6 +278,29 @@ def _select_dialogues(
     return selected
 
 
+def _dialogue_windows(dialogues: list[dict], window_size: int) -> list[list[dict]]:
+    max_size = max(1, int(window_size))
+    windows: list[list[dict]] = []
+    current: list[dict] = []
+    current_scene_id = ""
+    for dialogue in dialogues:
+        scene_id = _clean_text(dialogue.get("scene_id"))
+        if current and (scene_id != current_scene_id or len(current) >= max_size):
+            windows.append(current)
+            current = []
+        current.append(dialogue)
+        current_scene_id = scene_id
+    if current:
+        windows.append(current)
+    return windows
+
+
+def _dialogue_window_id(dialogues: list[dict]) -> str:
+    if len(dialogues) == 1:
+        return dialogues[0]["dialogue_id"]
+    return f"{dialogues[0]['dialogue_id']}_to_{dialogues[-1]['dialogue_id']}"
+
+
 def _read_optional_jsonl(path: Path) -> list[dict]:
     if not path.exists():
         return []
@@ -244,47 +320,49 @@ def _group_scene_memories(rows: list[dict]) -> dict[str, list[dict]]:
 
 
 def _build_annotation_payload(
-    dialogue: dict,
+    dialogues: list[dict],
+    paragraphs: list[dict],
     paragraphs_by_id: dict[str, dict],
+    scenes_by_id: dict[str, dict],
     scene_memories_by_parent: dict[str, list[dict]],
     characters: list[dict],
     mysteries: list[dict],
     volume_meta: dict,
     config: AnnotationConfig,
 ) -> dict:
-    current_paragraph = paragraphs_by_id.get(dialogue["paragraph_id"], {})
-    context_rows = _dialogue_context_rows(dialogue, current_paragraph)
-    scene_memories = scene_memories_by_parent.get(dialogue["scene_id"], [])[
-        : config.max_scene_summaries
-    ]
+    scene_id = dialogues[0]["scene_id"]
+    context_rows = _window_context_rows(
+        dialogues=dialogues,
+        paragraphs=paragraphs,
+        paragraphs_by_id=paragraphs_by_id,
+        config=config,
+    )
+    scene_memories = _select_scene_memories_for_window(
+        dialogues=dialogues,
+        scene_meta=scenes_by_id.get(scene_id, {}),
+        scene_memories=scene_memories_by_parent.get(scene_id, []),
+        config=config,
+    )
     active_names = _active_names(scene_memories)
-    context_text = _context_text(dialogue, context_rows, scene_memories)
+    context_text = _window_context_text(dialogues, context_rows, scene_memories)
     context_ids = {row.get("paragraph_id") for row in context_rows if row.get("paragraph_id")}
-    context_ids.add(dialogue["dialogue_id"])
+    context_ids.update(dialogue["dialogue_id"] for dialogue in dialogues)
+    scene_memory_ids = {
+        _clean_text(row.get("scene_id")) for row in scene_memories if row.get("scene_id")
+    }
 
     return {
         "volume": {
             "volume_id": volume_meta["volume_id"],
             "volume": volume_meta.get("volume"),
         },
-        "dialogue": {
-            "dialogue_id": dialogue["dialogue_id"],
-            "dialogue_index": dialogue["dialogue_index"],
-            "chapter_id": dialogue["chapter_id"],
-            "chapter_title": dialogue["chapter_title"],
-            "scene_id": dialogue["scene_id"],
-            "paragraph_id": dialogue["paragraph_id"],
-            "text": dialogue["text"],
-            "quote_text": dialogue["quote_text"],
-            "paragraph_text": dialogue["paragraph_text"],
-        },
+        "target_dialogue_ids": [dialogue["dialogue_id"] for dialogue in dialogues],
+        "dialogues": [
+            _dialogue_card(dialogue, window_position=index + 1)
+            for index, dialogue in enumerate(dialogues)
+        ],
         "context": {
-            "previous_paragraphs": _context_from_dialogue(dialogue, "prev_context"),
-            "current_paragraph": {
-                "paragraph_id": current_paragraph.get("paragraph_id"),
-                "text": current_paragraph.get("text", dialogue.get("paragraph_text", "")),
-            },
-            "next_paragraphs": _context_from_dialogue(dialogue, "next_context"),
+            "paragraphs": _paragraph_context_cards(context_rows, dialogues),
         },
         "scene_memory": [_scene_card(row) for row in scene_memories],
         "candidate_characters": [
@@ -293,7 +371,8 @@ def _build_annotation_payload(
                 characters=characters,
                 active_names=active_names,
                 context_text=context_text,
-                scene_id=dialogue["scene_id"],
+                scene_id=scene_id,
+                scene_memory_ids=scene_memory_ids,
                 limit=config.max_characters,
             )
         ],
@@ -303,11 +382,139 @@ def _build_annotation_payload(
                 mysteries=mysteries,
                 context_ids=context_ids,
                 context_text=context_text,
-                scene_id=dialogue["scene_id"],
+                scene_id=scene_id,
+                scene_memory_ids=scene_memory_ids,
                 limit=config.max_mysteries,
             )
         ],
     }
+
+
+def _dialogue_card(dialogue: dict, window_position: int) -> dict:
+    return {
+        "dialogue_id": dialogue["dialogue_id"],
+        "dialogue_index": dialogue["dialogue_index"],
+        "window_position": window_position,
+        "chapter_id": dialogue["chapter_id"],
+        "chapter_title": dialogue["chapter_title"],
+        "scene_id": dialogue["scene_id"],
+        "paragraph_id": dialogue["paragraph_id"],
+        "paragraph_index": dialogue["paragraph_index"],
+        "local_dialogue_index": dialogue["local_dialogue_index"],
+        "text": dialogue["text"],
+        "quote_text": dialogue["quote_text"],
+        "paragraph_text": dialogue["paragraph_text"],
+        "char_start": dialogue["char_start"],
+        "char_end": dialogue["char_end"],
+    }
+
+
+def _window_context_rows(
+    dialogues: list[dict],
+    paragraphs: list[dict],
+    paragraphs_by_id: dict[str, dict],
+    config: AnnotationConfig,
+) -> list[dict]:
+    if not dialogues:
+        return []
+    paragraph_indexes = [
+        int(dialogue.get("paragraph_index", 0))
+        for dialogue in dialogues
+        if dialogue.get("paragraph_index") is not None
+    ]
+    if not paragraph_indexes:
+        return _dedupe_context_rows(
+            _dialogue_context_rows(dialogue, paragraphs_by_id.get(dialogue["paragraph_id"], {}))
+            for dialogue in dialogues
+        )
+
+    start = max(0, min(paragraph_indexes) - max(0, config.context_paragraph_radius))
+    end = min(
+        len(paragraphs) - 1,
+        max(paragraph_indexes) + max(0, config.context_paragraph_radius),
+    )
+    if end >= start and end - start + 1 <= max(1, config.max_window_paragraphs):
+        return [paragraphs[index] for index in range(start, end + 1)]
+
+    return _dedupe_context_rows(
+        _dialogue_context_rows(dialogue, paragraphs_by_id.get(dialogue["paragraph_id"], {}))
+        for dialogue in dialogues
+    )[: max(1, config.max_window_paragraphs)]
+
+
+def _dedupe_context_rows(row_groups: Any) -> list[dict]:
+    rows: dict[str, dict] = {}
+    for group in row_groups:
+        for row in group:
+            paragraph_id = _clean_text(row.get("paragraph_id"))
+            if not paragraph_id or paragraph_id in rows:
+                continue
+            rows[paragraph_id] = row
+    return sorted(rows.values(), key=lambda row: int(row.get("paragraph_index", 0)))
+
+
+def _paragraph_context_cards(rows: list[dict], dialogues: list[dict]) -> list[dict]:
+    dialogue_ids_by_paragraph: dict[str, list[str]] = {}
+    for dialogue in dialogues:
+        dialogue_ids_by_paragraph.setdefault(dialogue["paragraph_id"], []).append(
+            dialogue["dialogue_id"]
+        )
+    return [
+        {
+            "paragraph_id": row.get("paragraph_id"),
+            "paragraph_index": row.get("paragraph_index"),
+            "text": row.get("text", ""),
+            "target_dialogue_ids": dialogue_ids_by_paragraph.get(
+                row.get("paragraph_id"), []
+            ),
+        }
+        for row in rows
+    ]
+
+
+def _select_scene_memories_for_window(
+    dialogues: list[dict],
+    scene_meta: dict,
+    scene_memories: list[dict],
+    config: AnnotationConfig,
+) -> list[dict]:
+    if not scene_memories:
+        return []
+    chunk_count = max(
+        [int(row.get("chunk_count", 0) or 0) for row in scene_memories] or [0]
+    )
+    if not scene_meta or chunk_count <= 1:
+        return scene_memories[: max(1, config.max_scene_summaries)]
+
+    target_chunks = {
+        _estimate_scene_chunk(dialogue, scene_meta, chunk_count)
+        for dialogue in dialogues
+    }
+    radius = max(0, config.scene_summary_radius)
+    ranked: list[tuple[int, int, dict]] = []
+    for index, memory in enumerate(scene_memories):
+        chunk_index = int(memory.get("chunk_index", 0) or 0)
+        distance = min(abs(chunk_index - chunk) for chunk in target_chunks)
+        if distance <= radius:
+            ranked.append((distance, index, memory))
+    if not ranked:
+        ranked = [
+            (0, index, memory)
+            for index, memory in enumerate(scene_memories[: max(1, config.max_scene_summaries)])
+        ]
+    ranked.sort(key=lambda item: (item[0], item[1]))
+    selected = [row for _, _, row in ranked[: max(1, config.max_scene_summaries)]]
+    return sorted(selected, key=lambda row: int(row.get("chunk_index", 0) or 0))
+
+
+def _estimate_scene_chunk(dialogue: dict, scene_meta: dict, chunk_count: int) -> int:
+    start = int(scene_meta.get("start_paragraph_index", dialogue.get("paragraph_index", 0)))
+    end = int(scene_meta.get("end_paragraph_index", start))
+    paragraph_index = int(dialogue.get("paragraph_index", start))
+    total = max(1, end - start + 1)
+    offset = min(max(paragraph_index - start, 0), total - 1)
+    estimated = int(offset * max(1, chunk_count) / total) + 1
+    return min(max(estimated, 1), max(1, chunk_count))
 
 
 def _dialogue_context_rows(dialogue: dict, current_paragraph: dict) -> list[dict]:
@@ -358,23 +565,50 @@ def _context_text(dialogue: dict, context_rows: list[dict], scene_memories: list
     return "\n".join(str(part) for part in parts if part)
 
 
+def _window_context_text(
+    dialogues: list[dict], context_rows: list[dict], scene_memories: list[dict]
+) -> str:
+    parts: list[Any] = []
+    for dialogue in dialogues:
+        parts.append(dialogue.get("text", ""))
+        parts.append(dialogue.get("paragraph_text", ""))
+    parts.extend(row.get("text", "") for row in context_rows)
+    return "\n".join(str(part) for part in parts if part)
+
+
 def _select_character_candidates(
     characters: list[dict],
     active_names: set[str],
     context_text: str,
     scene_id: str,
+    scene_memory_ids: set[str],
     limit: int,
 ) -> list[dict]:
     scored = [
-        (_score_character(row, active_names, context_text, scene_id), index, row)
+        (
+            _score_character(
+                row,
+                active_names=active_names,
+                context_text=context_text,
+                scene_id=scene_id,
+                scene_memory_ids=scene_memory_ids,
+            ),
+            index,
+            row,
+        )
         for index, row in enumerate(characters)
     ]
+    scored = [item for item in scored if item[0] > 0.5]
     scored.sort(key=lambda item: (-item[0], item[1]))
-    return [row for _, _, row in scored[: max(1, limit)]]
+    return [row for _, _, row in scored[: max(0, limit)]]
 
 
 def _score_character(
-    character: dict, active_names: set[str], context_text: str, scene_id: str
+    character: dict,
+    active_names: set[str],
+    context_text: str,
+    scene_id: str,
+    scene_memory_ids: set[str],
 ) -> float:
     score = _safe_float(character.get("confidence"), 0.5) * 0.1
     display_name = _clean_text(character.get("display_name"))
@@ -386,11 +620,14 @@ def _score_character(
         if _name_appears(_clean_text(alias), context_text):
             score += 6.0
     for title in _as_list(character.get("titles")):
-        if _name_appears(_clean_text(title), context_text):
+        cleaned_title = _clean_text(title)
+        if cleaned_title in LOW_SIGNAL_TITLES:
+            continue
+        if _name_appears(cleaned_title, context_text):
             score += 2.0
-    if str(character.get("first_seen_scene_id", "")).startswith(scene_id):
+    if _clean_text(character.get("first_seen_scene_id")) in scene_memory_ids:
         score += 1.0
-    if str(character.get("latest_seen_scene_id", "")).startswith(scene_id):
+    if _clean_text(character.get("latest_seen_scene_id")) in scene_memory_ids:
         score += 1.5
     return score
 
@@ -408,29 +645,60 @@ def _select_mystery_candidates(
     context_ids: set[str],
     context_text: str,
     scene_id: str,
+    scene_memory_ids: set[str],
     limit: int,
 ) -> list[dict]:
     scored = [
-        (_score_mystery(row, context_ids, context_text, scene_id), index, row)
+        (
+            _score_mystery(
+                row,
+                context_ids=context_ids,
+                context_text=context_text,
+                scene_id=scene_id,
+                scene_memory_ids=scene_memory_ids,
+            ),
+            index,
+            row,
+        )
         for index, row in enumerate(mysteries)
     ]
+    scored = [item for item in scored if item[0] >= 0]
     scored.sort(key=lambda item: (-item[0], item[1]))
     return [row for _, _, row in scored[: max(1, limit)]]
 
 
 def _score_mystery(
-    mystery: dict, context_ids: set[str], context_text: str, scene_id: str
+    mystery: dict,
+    context_ids: set[str],
+    context_text: str,
+    scene_id: str,
+    scene_memory_ids: set[str],
 ) -> float:
     score = _safe_float(mystery.get("confidence"), 0.5) * 0.1
-    if str(mystery.get("source_scene_id", "")).startswith(scene_id):
-        score += 6.0
-    for evidence in _as_list(mystery.get("evidence")):
-        if evidence in context_ids:
-            score += 8.0
+    source_scene_id = _clean_text(mystery.get("source_scene_id"))
+    source_parent_id = _parent_scene_id(source_scene_id)
+    direct_evidence = any(evidence in context_ids for evidence in _as_list(mystery.get("evidence")))
     temporary_name = _clean_text(mystery.get("temporary_name"))
-    if _name_appears(temporary_name, context_text):
+    if temporary_name in LOW_SIGNAL_TITLES:
+        return -1.0
+    direct_name = _name_appears(temporary_name, context_text)
+
+    if source_scene_id in scene_memory_ids:
+        score += 6.0
+    elif source_parent_id == scene_id and not (direct_evidence or direct_name):
+        return -1.0
+    elif source_parent_id != scene_id and not (direct_evidence or direct_name):
+        return -1.0
+
+    if direct_evidence:
+        score += 8.0
+    if direct_name:
         score += 4.0
     return score
+
+
+def _parent_scene_id(scene_id: str) -> str:
+    return re.sub(r"-r\d+$", "", _clean_text(scene_id))
 
 
 def _scene_card(row: dict) -> dict:
@@ -483,7 +751,8 @@ def _mystery_id(row: dict) -> str:
 def _build_annotation_prompt(payload: dict) -> str:
     return (
         "你是轻小说说话人标注项目的阶段 2：正式标注助手。\n"
-        "你的任务只判断输入 dialogue 这一句台词的说话人，不要改写原文。\n\n"
+        "你的任务是判断输入 target_dialogues 中每一句台词的说话人，不要改写原文。\n"
+        "必须把这些台词当作同一个连续片段来判断，优先保持对话轮次和叙述线索的一致性。\n\n"
         "规则：\n"
         "1. 只输出严格 JSON，不要 Markdown，不要解释性前后缀。\n"
         "2. 如果说话人是候选角色，speaker_entity_id 必须使用 candidate_characters 里的 entity_id，speaker_status 填 known。\n"
@@ -491,28 +760,37 @@ def _build_annotation_prompt(payload: dict) -> str:
         "4. 如果只是无法追踪的路人/群体，speaker_status 填 npc，speaker_entity_id 可为空或使用 npc:简短称呼。\n"
         "5. 证据不足时不要硬猜，speaker_status 填 ambiguous 或 review，并把 needs_review 设为 true。\n"
         "6. candidate_speakers 至少列出 1 个候选；如果无法判断，列出最可能的候选和不确定原因。\n"
-        "7. confidence 使用 0 到 1 之间的小数，表示你对最终判断的把握。\n\n"
+        "7. confidence 使用 0 到 1 之间的小数，表示你对最终判断的把握。\n"
+        "8. 不要只因为台词里提到某个名字、职业、地点，就把说话人标成那个实体；被称呼的人通常不是说话人。\n"
+        "9. 连续问答、交易寒暄、命令/回答等场景要按上下句轮次判断；同一人连续说话必须有叙述或语气证据支持。\n"
+        "10. 如果当前上下文显示某角色还没有登场，不要因为角色库或后文记忆里有这个角色就提前标给他/她。\n\n"
         "输出 JSON 结构：\n"
         "{\n"
-        '  "dialogue_id": "string",\n'
-        '  "speaker_entity_id": "string",\n'
-        '  "speaker_display": "string",\n'
-        '  "speaker_status": "known|mystery|npc|ambiguous|review",\n'
-        '  "confidence": 0.0,\n'
-        '  "candidate_speakers": [\n'
-        '    {"entity_id": "string", "display": "string", "status": "known|mystery|npc|ambiguous|review", "score": 0.0}\n'
+        '  "annotations": [\n'
+        "    {\n"
+        '      "dialogue_id": "必须来自 target_dialogue_ids",\n'
+        '      "speaker_entity_id": "string",\n'
+        '      "speaker_display": "string",\n'
+        '      "speaker_status": "known|mystery|npc|ambiguous|review",\n'
+        '      "confidence": 0.0,\n'
+        '      "candidate_speakers": [\n'
+        '        {"entity_id": "string", "display": "string", "status": "known|mystery|npc|ambiguous|review", "score": 0.0}\n'
+        "      ],\n"
+        '      "evidence": ["短证据，不要大段复制原文"],\n'
+        '      "should_create_new_entity": false,\n'
+        '      "new_entity_hint": "",\n'
+        '      "needs_review": false\n'
+        "    }\n"
         "  ],\n"
-        '  "evidence": ["短证据，不要大段复制原文"],\n'
-        '  "should_create_new_entity": false,\n'
-        '  "new_entity_hint": "",\n'
-        '  "needs_review": false\n'
-        "}\n\n"
+        '  "window_notes": "可选，简短说明整体轮次判断"\n'
+        "}\n"
+        "必须为 target_dialogue_ids 中每个 dialogue_id 输出且只输出一条 annotation。\n\n"
         "输入 JSON：\n"
         f"{json.dumps(payload, ensure_ascii=False, indent=2)}\n"
     )
 
 
-def _parse_json_response(response_text: str) -> dict:
+def _parse_json_response(response_text: str) -> Any:
     stripped = response_text.strip()
     if stripped.startswith("```"):
         stripped = re.sub(r"^```(?:json)?\s*", "", stripped)
@@ -524,6 +802,58 @@ def _parse_json_response(response_text: str) -> dict:
         if not match:
             raise
         return json.loads(match.group(0))
+
+
+def _extract_parsed_votes(parsed_response: Any, dialogues: list[dict]) -> dict[str, dict]:
+    if isinstance(parsed_response, list):
+        rows = parsed_response
+    elif isinstance(parsed_response, dict):
+        rows = _first_list_value(
+            parsed_response,
+            ("annotations", "dialogues", "results", "items", "votes"),
+        )
+        if rows is None and parsed_response.get("dialogue_id"):
+            rows = [parsed_response]
+    else:
+        rows = None
+
+    if rows is None:
+        rows = []
+
+    by_id: dict[str, dict] = {}
+    for row in rows:
+        if not isinstance(row, dict):
+            continue
+        dialogue_id = _clean_text(row.get("dialogue_id"))
+        if dialogue_id:
+            by_id[dialogue_id] = row
+
+    if not by_id and len(dialogues) == 1 and isinstance(parsed_response, dict):
+        by_id[dialogues[0]["dialogue_id"]] = parsed_response
+    return by_id
+
+
+def _first_list_value(row: dict, keys: tuple[str, ...]) -> list | None:
+    for key in keys:
+        value = row.get(key)
+        if isinstance(value, list):
+            return value
+    return None
+
+
+def _missing_dialogue_vote(dialogue: dict, request_id: str) -> dict:
+    return {
+        "dialogue_id": dialogue["dialogue_id"],
+        "speaker_entity_id": "review:missing_from_response",
+        "speaker_display": REVIEW_LABEL,
+        "speaker_status": "review",
+        "confidence": 0.0,
+        "candidate_speakers": [],
+        "evidence": [f"模型响应 {request_id} 未包含该 dialogue_id"],
+        "should_create_new_entity": False,
+        "new_entity_hint": "",
+        "needs_review": True,
+    }
 
 
 def _normalize_vote(

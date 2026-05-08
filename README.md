@@ -73,6 +73,17 @@ outputs/volume_01/
 python -m novel_speaker_label annotate --volume 1 --model qwen3:32b
 ```
 
+阶段 2 默认会把同一场景内相邻的多句台词放在一个窗口里一起判断，而不是逐句独立判断。这样模型能看到交易寒暄、问答、命令/回应等连续轮次，减少相邻说话人串错。默认窗口大小是 8 句，可以调整：
+
+```bash
+python -m novel_speaker_label annotate \
+  --volume 1 \
+  --model qwen3:32b \
+  --annotation-window-size 8 \
+  --context-paragraph-radius 3 \
+  --scene-summary-radius 1
+```
+
 如果只想检查阶段 2 prompt，不调用 Ollama：
 
 ```bash
@@ -97,6 +108,7 @@ outputs/volume_01/
 ```
 
 `final_labeled.txt` 是新文件，原文不会被原地修改。`review_queue.jsonl` 中的对话需要人工或后续阶段 3 回填修正。
+单模型运行时默认要求 `confidence >= 0.75` 才直接接受，否则进入 `review_queue.jsonl`；想更激进或更保守可以调 `--min-confidence`。
 
 也可以一步跑完：
 
@@ -166,6 +178,16 @@ python -m novel_speaker_label rebuild-memory \
 
 ```bash
 python -m novel_speaker_label annotate --volume 1 --model qwen3:32b --cache-only
+```
+
+窗口级标注会生成新的 cache 文件名。若需要复用旧版逐句标注 cache，请显式使用单句窗口：
+
+```bash
+python -m novel_speaker_label annotate \
+  --volume 1 \
+  --model qwen3:32b \
+  --cache-only \
+  --annotation-window-size 1
 ```
 
 多模型投票可以重复传 `--model`，并可按模型设置聚合权重：
