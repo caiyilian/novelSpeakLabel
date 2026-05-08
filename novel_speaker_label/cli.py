@@ -135,6 +135,12 @@ def main(argv: list[str] | None = None) -> int:
         help="Number of same-scene dialogue lines sent in one annotation request.",
     )
     annotate_parser.add_argument(
+        "--max-dialogue-paragraph-gap",
+        type=int,
+        default=4,
+        help="Split annotation windows when neighboring dialogues are farther apart.",
+    )
+    annotate_parser.add_argument(
         "--context-paragraph-radius",
         type=int,
         default=3,
@@ -149,7 +155,7 @@ def main(argv: list[str] | None = None) -> int:
     annotate_parser.add_argument(
         "--scene-summary-radius",
         type=int,
-        default=1,
+        default=0,
         help="Nearby stage-1 scene-memory chunks to include around the dialogue window.",
     )
     annotate_parser.add_argument(
@@ -270,6 +276,7 @@ def main(argv: list[str] | None = None) -> int:
                 max_mysteries=args.max_mysteries,
                 max_scene_summaries=args.max_scene_summaries,
                 annotation_window_size=args.annotation_window_size,
+                max_dialogue_paragraph_gap=args.max_dialogue_paragraph_gap,
                 context_paragraph_radius=args.context_paragraph_radius,
                 max_window_paragraphs=args.max_window_paragraphs,
                 scene_summary_radius=args.scene_summary_radius,

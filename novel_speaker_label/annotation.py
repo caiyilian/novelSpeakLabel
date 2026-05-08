@@ -31,6 +31,21 @@ LOW_SIGNAL_TITLES = {
     "老板",
     "贵族",
 }
+SPEECH_VERBS = (
+    "说",
+    "说道",
+    "问",
+    "询问",
+    "回答",
+    "答道",
+    "喊",
+    "大喊",
+    "叫",
+    "嚷",
+    "喃喃",
+    "发出声音",
+)
+SELF_INTRO_MARKERS = ("我是", "我叫", "在下是", "本人是", "名字是")
 
 
 @dataclass(frozen=True)
@@ -50,9 +65,10 @@ class AnnotationConfig:
     max_mysteries: int = 8
     max_scene_summaries: int = 6
     annotation_window_size: int = 8
+    max_dialogue_paragraph_gap: int = 4
     context_paragraph_radius: int = 3
     max_window_paragraphs: int = 48
-    scene_summary_radius: int = 1
+    scene_summary_radius: int = 0
     start_dialogue_index: int = 0
     dialogue_limit: int | None = None
     min_confidence: float = 0.75
@@ -83,7 +99,11 @@ def annotate_volume(config: AnnotationConfig) -> dict:
     mysteries = _read_optional_jsonl(memory_dir / "mystery_entities.jsonl")
     scene_memories = _read_optional_jsonl(memory_dir / "episodic" / "scenes.jsonl")
     scene_memories_by_parent = _group_scene_memories(scene_memories)
-    dialogue_windows = _dialogue_windows(dialogues, config.annotation_window_size)
+    dialogue_windows = _dialogue_windows(
+        dialogues,
+        config.annotation_window_size,
+        max_paragraph_gap=config.max_dialogue_paragraph_gap,
+    )
 
     annotation_dir = config.output_dir / "annotation"
     cache_dir = annotation_dir / "cache"
@@ -220,6 +240,7 @@ def annotate_volume(config: AnnotationConfig) -> dict:
                 "dialogue_count": len(dialogues),
                 "window_count": len(dialogue_windows),
                 "annotation_window_size": max(1, config.annotation_window_size),
+                "max_dialogue_paragraph_gap": max(0, config.max_dialogue_paragraph_gap),
                 "prompt_count": prompt_count,
                 "message": "Prompts were generated; no Ollama requests were made.",
             },
@@ -247,6 +268,7 @@ def annotate_volume(config: AnnotationConfig) -> dict:
         "dialogue_count": len(dialogues),
         "window_count": len(dialogue_windows),
         "annotation_window_size": max(1, config.annotation_window_size),
+        "max_dialogue_paragraph_gap": max(0, config.max_dialogue_paragraph_gap),
         "request_count": prompt_count,
         "prompt_count": prompt_count,
         "vote_count": len(votes),
@@ -278,14 +300,21 @@ def _select_dialogues(
     return selected
 
 
-def _dialogue_windows(dialogues: list[dict], window_size: int) -> list[list[dict]]:
+def _dialogue_windows(
+    dialogues: list[dict], window_size: int, max_paragraph_gap: int = 4
+) -> list[list[dict]]:
     max_size = max(1, int(window_size))
+    max_gap = max(0, int(max_paragraph_gap))
     windows: list[list[dict]] = []
     current: list[dict] = []
     current_scene_id = ""
     for dialogue in dialogues:
         scene_id = _clean_text(dialogue.get("scene_id"))
-        if current and (scene_id != current_scene_id or len(current) >= max_size):
+        if current and (
+            scene_id != current_scene_id
+            or len(current) >= max_size
+            or _dialogue_gap_exceeds(current[-1], dialogue, max_gap)
+        ):
             windows.append(current)
             current = []
         current.append(dialogue)
@@ -293,6 +322,17 @@ def _dialogue_windows(dialogues: list[dict], window_size: int) -> list[list[dict
     if current:
         windows.append(current)
     return windows
+
+
+def _dialogue_gap_exceeds(previous: dict, current: dict, max_gap: int) -> bool:
+    if max_gap <= 0:
+        return False
+    try:
+        previous_index = int(previous.get("paragraph_index"))
+        current_index = int(current.get("paragraph_index"))
+    except (TypeError, ValueError):
+        return False
+    return current_index - previous_index > max_gap
 
 
 def _dialogue_window_id(dialogues: list[dict]) -> str:
@@ -404,9 +444,34 @@ def _dialogue_card(dialogue: dict, window_position: int) -> dict:
         "text": dialogue["text"],
         "quote_text": dialogue["quote_text"],
         "paragraph_text": dialogue["paragraph_text"],
+        "dialogue_kind": _dialogue_kind(dialogue),
+        "outside_quote_text": _outside_quote_text(dialogue),
         "char_start": dialogue["char_start"],
         "char_end": dialogue["char_end"],
     }
+
+
+def _dialogue_kind(dialogue: dict) -> str:
+    kind = _clean_text(dialogue.get("dialogue_kind"))
+    if kind:
+        return kind
+    return "inline" if _outside_quote_text(dialogue) else "standalone"
+
+
+def _outside_quote_text(dialogue: dict) -> str:
+    paragraph_text = (
+        "" if dialogue.get("paragraph_text") is None else str(dialogue.get("paragraph_text"))
+    )
+    if not paragraph_text:
+        return ""
+    try:
+        char_start = int(dialogue.get("char_start", 0))
+        char_end = int(dialogue.get("char_end", char_start))
+    except (TypeError, ValueError):
+        return ""
+    char_start = max(0, min(char_start, len(paragraph_text)))
+    char_end = max(char_start, min(char_end, len(paragraph_text)))
+    return _clean_text(paragraph_text[:char_start] + paragraph_text[char_end:])
 
 
 def _window_context_rows(
@@ -463,7 +528,7 @@ def _paragraph_context_cards(rows: list[dict], dialogues: list[dict]) -> list[di
         {
             "paragraph_id": row.get("paragraph_id"),
             "paragraph_index": row.get("paragraph_index"),
-            "text": row.get("text", ""),
+            "text": _truncate(row.get("text", ""), 360),
             "target_dialogue_ids": dialogue_ids_by_paragraph.get(
                 row.get("paragraph_id"), []
             ),
@@ -677,24 +742,34 @@ def _score_mystery(
     score = _safe_float(mystery.get("confidence"), 0.5) * 0.1
     source_scene_id = _clean_text(mystery.get("source_scene_id"))
     source_parent_id = _parent_scene_id(source_scene_id)
-    direct_evidence = any(evidence in context_ids for evidence in _as_list(mystery.get("evidence")))
+    direct_evidence = any(
+        _evidence_id(evidence) in context_ids for evidence in _as_list(mystery.get("evidence"))
+    )
     temporary_name = _clean_text(mystery.get("temporary_name"))
     if temporary_name in LOW_SIGNAL_TITLES:
         return -1.0
     direct_name = _name_appears(temporary_name, context_text)
 
-    if source_scene_id in scene_memory_ids:
-        score += 6.0
-    elif source_parent_id == scene_id and not (direct_evidence or direct_name):
+    if not (direct_evidence or direct_name):
         return -1.0
-    elif source_parent_id != scene_id and not (direct_evidence or direct_name):
+    if source_parent_id != scene_id and not direct_evidence:
         return -1.0
 
+    if source_scene_id in scene_memory_ids:
+        score += 2.0
     if direct_evidence:
         score += 8.0
     if direct_name:
         score += 4.0
     return score
+
+
+def _evidence_id(value: Any) -> str:
+    if isinstance(value, dict):
+        return _clean_text(
+            value.get("text") or value.get("paragraph_id") or value.get("dialogue_id")
+        )
+    return _clean_text(value)
 
 
 def _parent_scene_id(scene_id: str) -> str:
@@ -707,10 +782,10 @@ def _scene_card(row: dict) -> dict:
         "parent_scene_id": row.get("parent_scene_id"),
         "chunk_index": row.get("chunk_index"),
         "chunk_count": row.get("chunk_count"),
-        "scene_summary": _truncate(row.get("scene_summary", ""), 500),
-        "active_characters": _unique_strings(_as_list(row.get("active_characters")), 20),
-        "relationships": _unique_strings(_as_list(row.get("relationships")), 12),
-        "notes": _truncate(row.get("notes", ""), 240),
+        "scene_summary": _truncate(row.get("scene_summary", ""), 260),
+        "active_characters": _unique_strings(_as_list(row.get("active_characters")), 12),
+        "relationships": _unique_strings(_as_list(row.get("relationships")), 6),
+        "notes": _truncate(row.get("notes", ""), 160),
     }
 
 
@@ -718,12 +793,12 @@ def _character_card(row: dict) -> dict:
     return {
         "entity_id": row.get("entity_id"),
         "display_name": row.get("display_name"),
-        "aliases": _unique_strings(_as_list(row.get("aliases")), 12),
-        "titles": _unique_strings(_as_list(row.get("titles")), 12),
-        "description": _truncate(row.get("description", ""), 700),
-        "speech_style": _truncate(row.get("speech_style", ""), 240),
+        "aliases": _unique_strings(_as_list(row.get("aliases")), 8),
+        "titles": _unique_strings(_as_list(row.get("titles")), 8),
+        "description": _truncate(row.get("description", ""), 260),
+        "speech_style": _truncate(row.get("speech_style", ""), 160),
         "relationship_hints": _unique_strings(
-            _as_list(row.get("relationship_hints")), 12
+            _as_list(row.get("relationship_hints")), 8
         ),
         "first_seen_scene_id": row.get("first_seen_scene_id"),
         "latest_seen_scene_id": row.get("latest_seen_scene_id"),
@@ -735,7 +810,7 @@ def _mystery_card(row: dict) -> dict:
     return {
         "mystery_id": _mystery_id(row),
         "temporary_name": row.get("temporary_name"),
-        "description": _truncate(row.get("description", ""), 400),
+        "description": _truncate(row.get("description", ""), 240),
         "evidence": _unique_strings(_as_list(row.get("evidence")), 8),
         "source_scene_id": row.get("source_scene_id"),
         "confidence": _safe_float(row.get("confidence"), 0.5),
@@ -764,6 +839,9 @@ def _build_annotation_prompt(payload: dict) -> str:
         "8. 不要只因为台词里提到某个名字、职业、地点，就把说话人标成那个实体；被称呼的人通常不是说话人。\n"
         "9. 连续问答、交易寒暄、命令/回答等场景要按上下句轮次判断；同一人连续说话必须有叙述或语气证据支持。\n"
         "10. 如果当前上下文显示某角色还没有登场，不要因为角色库或后文记忆里有这个角色就提前标给他/她。\n\n"
+        "11. target_dialogues 中 dialogue_kind=inline 的项目是正文内嵌引号，不要当作独立对白；标为 review，needs_review=true。\n"
+        "12. candidate_mysteries 只是可选候选；如果候选名称和当前段落地点/人物不一致，必须改用 npc 或 review。\n"
+        "13. 如果只有轮次推断、没有叙述锚点或自我介绍，请降低 confidence，并在 evidence 里说明轮次依据。\n\n"
         "输出 JSON 结构：\n"
         "{\n"
         '  "annotations": [\n'
@@ -926,6 +1004,7 @@ def _aggregate_votes(dialogue: dict, votes: list[dict], config: AnnotationConfig
         "local_dialogue_index": dialogue["local_dialogue_index"],
         "text": dialogue["text"],
         "quote_text": dialogue["quote_text"],
+        "dialogue_kind": _dialogue_kind(dialogue),
         "char_start": dialogue["char_start"],
         "char_end": dialogue["char_end"],
     }
@@ -976,8 +1055,11 @@ def _aggregate_votes(dialogue: dict, votes: list[dict], config: AnnotationConfig
     support_count = len(top["models"])
     participating_model_count = len({vote["model"] for vote in votes})
     required_support = min(config.min_support_models, max(1, participating_model_count))
+    forced_review_reason = _forced_review_reason(dialogue, top, participating_model_count)
 
-    if participating_model_count <= 1:
+    if forced_review_reason:
+        accepted = False
+    elif participating_model_count <= 1:
         accepted = (
             not top["needs_review"]
             and top["speaker_status"] in {"known", "mystery", "npc"}
@@ -1012,10 +1094,85 @@ def _aggregate_votes(dialogue: dict, votes: list[dict], config: AnnotationConfig
         "candidate_speakers": candidate_speakers,
         "evidence": _unique_strings(top["evidence"], 8),
         "needs_review": not accepted,
-        "review_reason": "" if accepted else _review_reason(top, agreement, margin, support_count),
+        "review_reason": ""
+        if accepted
+        else _review_reason(
+            top,
+            agreement,
+            margin,
+            support_count,
+            forced_review_reason=forced_review_reason,
+        ),
         "vote_count": len(votes),
         "models": sorted({vote["model"] for vote in votes}),
     }
+
+
+def _forced_review_reason(
+    dialogue: dict, top: dict, participating_model_count: int
+) -> str:
+    if _dialogue_kind(dialogue) != "standalone":
+        return "non_standalone_quote"
+    if participating_model_count > 1:
+        return ""
+    status = _clean_status(top.get("speaker_status"))
+    if status == "mystery":
+        return "single_model_mystery_candidate"
+    if status == "known" and not _has_speaker_anchor(dialogue, top):
+        return "single_model_without_anchor"
+    return ""
+
+
+def _has_speaker_anchor(dialogue: dict, top: dict) -> bool:
+    display = _clean_text(top.get("speaker_display"))
+    if not display:
+        return False
+    if _self_intro_mentions(dialogue.get("text", ""), display):
+        return True
+    return _context_attributes_speech_to(
+        dialogue=dialogue,
+        display=display,
+    )
+
+
+def _self_intro_mentions(text: Any, display: str) -> bool:
+    cleaned = _clean_text(text)
+    if not cleaned or display not in cleaned:
+        return False
+    text_until_display = cleaned[: cleaned.find(display) + len(display)]
+    return any(marker in text_until_display for marker in SELF_INTRO_MARKERS)
+
+
+def _context_attributes_speech_to(dialogue: dict, display: str) -> bool:
+    context_parts = [_outside_quote_text(dialogue)]
+    context_parts.extend(
+        row.get("text", "")
+        for row in _as_list(dialogue.get("prev_context"))
+        if isinstance(row, dict)
+    )
+    context_parts.extend(
+        row.get("text", "")
+        for row in _as_list(dialogue.get("next_context"))
+        if isinstance(row, dict)
+    )
+    for text in context_parts:
+        cleaned = _clean_text(text)
+        if not cleaned:
+            continue
+        if _speech_verb_near_name(cleaned, display):
+            return True
+    return False
+
+
+def _speech_verb_near_name(text: str, display: str) -> bool:
+    if display not in text:
+        return False
+    for verb in SPEECH_VERBS:
+        if re.search(f"{re.escape(display)}.{{0,30}}{re.escape(verb)}", text):
+            return True
+        if re.search(f"{re.escape(verb)}.{{0,30}}{re.escape(display)}", text):
+            return True
+    return False
 
 
 def _vote_group_key(vote: dict) -> str:
@@ -1028,8 +1185,14 @@ def _vote_group_key(vote: dict) -> str:
 
 
 def _review_reason(
-    top: dict, agreement: float, margin: float, support_count: int
+    top: dict,
+    agreement: float,
+    margin: float,
+    support_count: int,
+    forced_review_reason: str = "",
 ) -> str:
+    if forced_review_reason:
+        return forced_review_reason
     if top["needs_review"]:
         return "model_requested_review"
     if top["speaker_status"] not in {"known", "mystery", "npc"}:
@@ -1072,6 +1235,8 @@ def _render_labeled_text(paragraphs: list[dict], annotations: list[dict]) -> str
 
 
 def _label_for_annotation(annotation: dict) -> str:
+    if _dialogue_kind(annotation) != "standalone":
+        return ""
     if annotation.get("needs_review"):
         return REVIEW_LABEL
     status = _clean_status(annotation.get("speaker_status"))
