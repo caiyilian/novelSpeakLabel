@@ -4,8 +4,14 @@ import tempfile
 import unittest
 from pathlib import Path
 
+from novel_speaker_label.annotation import (
+    AnnotationConfig,
+    _aggregate_votes,
+    _render_labeled_text,
+    annotate_volume,
+)
 from novel_speaker_label.discovery import CharacterStore, _split_scene_into_requests
-from novel_speaker_label.jsonl import read_jsonl
+from novel_speaker_label.jsonl import read_json, read_jsonl, write_json, write_jsonl
 from novel_speaker_label.ollama_client import OllamaConfig, OllamaClient, collect_streaming_response
 from novel_speaker_label.preprocess import PreprocessConfig, preprocess_volume
 
@@ -129,6 +135,157 @@ class OllamaClientTests(unittest.TestCase):
         client = OllamaClient(OllamaConfig(timeout=0))
 
         self.assertIsNone(client._socket_timeout())
+
+
+class AnnotationTests(unittest.TestCase):
+    def test_single_model_confident_vote_is_accepted(self) -> None:
+        dialogue = {
+            "dialogue_id": "volume_01-d000001",
+            "dialogue_index": 0,
+            "volume_id": "volume_01",
+            "chapter_id": "volume_01-c001",
+            "chapter_index": 1,
+            "chapter_title": "第一幕",
+            "scene_id": "volume_01-c001-s001",
+            "scene_index": 1,
+            "paragraph_id": "p1",
+            "paragraph_index": 0,
+            "local_dialogue_index": 1,
+            "text": "你好。",
+            "quote_text": "「你好。」",
+            "char_start": 0,
+            "char_end": 5,
+        }
+        vote = {
+            "dialogue_id": "volume_01-d000001",
+            "paragraph_id": "p1",
+            "char_start": 0,
+            "char_end": 5,
+            "model": "model-a",
+            "weight": 1.0,
+            "speaker_entity_id": "char_0001",
+            "speaker_display": "罗伦斯",
+            "speaker_status": "known",
+            "confidence": 0.9,
+            "candidate_speakers": [],
+            "evidence": ["叙述提到罗伦斯开口"],
+            "needs_review": False,
+        }
+
+        annotation = _aggregate_votes(
+            dialogue, [vote], AnnotationConfig(output_dir=Path("unused"))
+        )
+
+        self.assertFalse(annotation["needs_review"])
+        self.assertEqual(annotation["speaker_entity_id"], "char_0001")
+        self.assertEqual(annotation["speaker_status"], "known")
+
+    def test_render_labeled_text_inserts_review_label(self) -> None:
+        paragraphs = [{"paragraph_id": "p1", "text": "「你好」「嗯」"}]
+        annotations = [
+            {
+                "paragraph_id": "p1",
+                "char_start": 0,
+                "speaker_display": "罗伦斯",
+                "speaker_status": "known",
+                "needs_review": False,
+            },
+            {
+                "paragraph_id": "p1",
+                "char_start": 4,
+                "speaker_display": "赫萝",
+                "speaker_status": "review",
+                "needs_review": True,
+            },
+        ]
+
+        self.assertEqual(
+            _render_labeled_text(paragraphs, annotations),
+            "【罗伦斯】「你好」【待复核】「嗯」\n",
+        )
+
+    def test_annotate_dry_run_writes_prompt_without_ollama(self) -> None:
+        with tempfile.TemporaryDirectory(dir=Path.cwd()) as tmp:
+            output_dir = Path(tmp) / "outputs" / "volume_01"
+            write_json(
+                output_dir / "volume.json",
+                {"volume_id": "volume_01", "volume": 1},
+            )
+            write_jsonl(
+                output_dir / "preprocess" / "paragraphs.jsonl",
+                [
+                    {
+                        "paragraph_id": "p1",
+                        "text": "罗伦斯看着赫萝。「你好。」",
+                    }
+                ],
+            )
+            write_jsonl(
+                output_dir / "preprocess" / "dialogues.jsonl",
+                [
+                    {
+                        "dialogue_id": "volume_01-d000001",
+                        "dialogue_index": 0,
+                        "volume_id": "volume_01",
+                        "chapter_id": "volume_01-c001",
+                        "chapter_index": 1,
+                        "chapter_title": "第一幕",
+                        "scene_id": "volume_01-c001-s001",
+                        "scene_index": 1,
+                        "paragraph_id": "p1",
+                        "paragraph_index": 0,
+                        "local_dialogue_index": 1,
+                        "text": "你好。",
+                        "quote_text": "「你好。」",
+                        "paragraph_text": "罗伦斯看着赫萝。「你好。」",
+                        "char_start": 7,
+                        "char_end": 12,
+                        "prev_context": [],
+                        "next_context": [],
+                    }
+                ],
+            )
+            write_jsonl(
+                output_dir / "memory" / "semantic" / "characters.jsonl",
+                [
+                    {
+                        "entity_id": "char_0001",
+                        "display_name": "罗伦斯",
+                        "aliases": [],
+                        "titles": ["旅行商人"],
+                        "description": "旅行商人",
+                        "speech_style": "冷静",
+                        "relationship_hints": [],
+                        "confidence": 0.9,
+                    }
+                ],
+            )
+            write_jsonl(
+                output_dir / "memory" / "episodic" / "scenes.jsonl",
+                [
+                    {
+                        "scene_id": "volume_01-c001-s001-r001",
+                        "parent_scene_id": "volume_01-c001-s001",
+                        "scene_summary": "罗伦斯与赫萝交谈。",
+                        "active_characters": ["罗伦斯", "赫萝"],
+                        "relationships": [],
+                        "chunk_index": 1,
+                        "chunk_count": 1,
+                    }
+                ],
+            )
+
+            summary = annotate_volume(
+                AnnotationConfig(output_dir=output_dir, models=("fake-model",), dry_run=True)
+            )
+
+            self.assertEqual(summary["prompt_count"], 1)
+            self.assertEqual(summary["dialogue_count"], 1)
+            dry_run = read_json(output_dir / "annotation" / "dry_run.json")
+            self.assertEqual(dry_run["models"], ["fake-model"])
+            self.assertTrue(
+                (output_dir / "annotation" / "prompts" / "volume_01-d000001--fake_model.txt").exists()
+            )
 
 
 if __name__ == "__main__":

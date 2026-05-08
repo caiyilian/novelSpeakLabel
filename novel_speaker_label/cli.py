@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 from pathlib import Path
 
+from .annotation import AnnotationConfig, annotate_volume
 from .discovery import DiscoveryConfig, discover_volume
 from .preprocess import PreprocessConfig, find_volume_file, preprocess_volume
 
@@ -10,7 +11,7 @@ from .preprocess import PreprocessConfig, find_volume_file, preprocess_volume
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(
         prog="novel_speaker_label",
-        description="Stage 0/1 pipeline for light-novel speaker labeling.",
+        description="Stage 0/1/2 pipeline for light-novel speaker labeling.",
     )
     subparsers = parser.add_subparsers(dest="command", required=True)
 
@@ -89,6 +90,61 @@ def main(argv: list[str] | None = None) -> int:
         help="Only read existing discovery/cache JSON files; never call Ollama.",
     )
 
+    annotate_parser = subparsers.add_parser(
+        "annotate", help="Stage 2: label each dialogue speaker from memory files."
+    )
+    _add_common_volume_args(annotate_parser, require_input=False)
+    annotate_parser.add_argument(
+        "--model",
+        dest="models",
+        action="append",
+        default=None,
+        help="Ollama model to use. Repeat for multi-model voting.",
+    )
+    annotate_parser.add_argument("--ollama-host", default="http://127.0.0.1:11434")
+    annotate_parser.add_argument(
+        "--timeout",
+        type=int,
+        default=1800,
+        help="Socket timeout in seconds. Use 0 to disable it for long local runs.",
+    )
+    annotate_parser.add_argument("--temperature", type=float, default=0.0)
+    annotate_parser.add_argument("--num-predict", type=int, default=2048)
+    annotate_parser.add_argument("--dry-run", action="store_true")
+    annotate_parser.add_argument("--overwrite-cache", action="store_true")
+    annotate_parser.add_argument(
+        "--cache-only",
+        action="store_true",
+        help="Only read existing annotation/cache JSON files; never call Ollama.",
+    )
+    annotate_parser.add_argument("--stop-on-error", action="store_true")
+    annotate_parser.add_argument(
+        "--model-weight",
+        action="append",
+        default=[],
+        metavar="MODEL=WEIGHT",
+        help="Optional aggregation weight for a model. Repeat as needed.",
+    )
+    annotate_parser.add_argument("--max-characters", type=int, default=12)
+    annotate_parser.add_argument("--max-mysteries", type=int, default=8)
+    annotate_parser.add_argument("--max-scene-summaries", type=int, default=6)
+    annotate_parser.add_argument(
+        "--start-dialogue-index",
+        type=int,
+        default=0,
+        help="Zero-based dialogue_index to start from.",
+    )
+    annotate_parser.add_argument(
+        "--dialogue-limit",
+        type=int,
+        default=None,
+        help="Maximum number of dialogues to process.",
+    )
+    annotate_parser.add_argument("--min-confidence", type=float, default=0.55)
+    annotate_parser.add_argument("--min-agreement", type=float, default=0.65)
+    annotate_parser.add_argument("--min-margin", type=float, default=0.20)
+    annotate_parser.add_argument("--min-support-models", type=int, default=2)
+
     rebuild_parser = subparsers.add_parser(
         "rebuild-memory",
         help="Rebuild scene_discoveries and memory files from existing cache only.",
@@ -166,6 +222,38 @@ def main(argv: list[str] | None = None) -> int:
             )
         )
         _print_summary("discover", summary)
+        return 0
+
+    if args.command == "annotate":
+        try:
+            model_weights = _parse_model_weights(args.model_weight)
+        except ValueError as exc:
+            parser.error(str(exc))
+        summary = annotate_volume(
+            AnnotationConfig(
+                output_dir=_resolve_output(args),
+                models=tuple(args.models or ["qwen3:32b"]),
+                ollama_host=args.ollama_host,
+                timeout=args.timeout,
+                temperature=args.temperature,
+                num_predict=args.num_predict,
+                dry_run=args.dry_run,
+                overwrite_cache=args.overwrite_cache,
+                cache_only=args.cache_only,
+                continue_on_error=not args.stop_on_error,
+                model_weights=model_weights,
+                max_characters=args.max_characters,
+                max_mysteries=args.max_mysteries,
+                max_scene_summaries=args.max_scene_summaries,
+                start_dialogue_index=args.start_dialogue_index,
+                dialogue_limit=args.dialogue_limit,
+                min_confidence=args.min_confidence,
+                min_agreement=args.min_agreement,
+                min_margin=args.min_margin,
+                min_support_models=args.min_support_models,
+            )
+        )
+        _print_summary("annotate", summary)
         return 0
 
     if args.command == "rebuild-memory":
@@ -258,3 +346,22 @@ def _print_summary(stage: str, summary: dict) -> None:
     for key, value in summary.items():
         if isinstance(value, (str, int, float, bool)):
             print(f"{key}: {value}")
+
+
+def _parse_model_weights(rows: list[str]) -> dict[str, float]:
+    weights: dict[str, float] = {}
+    for row in rows:
+        if "=" not in row:
+            raise ValueError(f"Invalid --model-weight {row!r}; expected MODEL=WEIGHT")
+        model, raw_weight = row.split("=", 1)
+        model = model.strip()
+        if not model:
+            raise ValueError(f"Invalid --model-weight {row!r}; model is empty")
+        try:
+            weight = float(raw_weight)
+        except ValueError as exc:
+            raise ValueError(
+                f"Invalid --model-weight {row!r}; weight must be a number"
+            ) from exc
+        weights[model] = weight
+    return weights

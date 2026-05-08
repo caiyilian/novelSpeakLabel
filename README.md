@@ -2,10 +2,11 @@
 
 轻小说对话说话人标注实验项目。
 
-当前代码只实现 issue #1 要求的前两步：
+当前代码实现前三步中的自动化部分：
 
 - 阶段 0：预处理，把小说拆成章节、场景、段落和对话单元。
 - 阶段 1：发现与建库，用 Ollama 扫描场景，生成角色候选、未知人物、场景摘要和记忆文件。
+- 阶段 2：正式标注，基于阶段 1 记忆逐句判断说话人，生成投票、聚合结果、复核队列和标注文本。
 
 原文不会被原地修改，所有产物默认写到 `outputs/volume_XX/`。
 
@@ -66,11 +67,44 @@ outputs/volume_01/
       characters.jsonl
 ```
 
+然后做阶段 2 正式标注：
+
+```bash
+python -m novel_speaker_label annotate --volume 1 --model qwen3:32b
+```
+
+如果只想检查阶段 2 prompt，不调用 Ollama：
+
+```bash
+python -m novel_speaker_label annotate --volume 1 --model qwen3:32b --dry-run
+```
+
+阶段 2 会输出：
+
+```text
+outputs/volume_01/
+  annotation/
+    prompts/
+    cache/
+    raw/
+    failures/
+    votes.jsonl
+    annotations.jsonl
+    review_queue.jsonl
+    failed_requests.jsonl
+    run_summary.json
+    final_labeled.txt
+```
+
+`final_labeled.txt` 是新文件，原文不会被原地修改。`review_queue.jsonl` 中的对话需要人工或后续阶段 3 回填修正。
+
 也可以一步跑完：
 
 ```bash
 python -m novel_speaker_label run-volume --volume 1 --model qwen3:32b
 ```
+
+`run-volume` 目前只串起阶段 0 和阶段 1；阶段 2 请在阶段 1 完成后单独运行 `annotate`。
 
 ## Ollama 参数
 
@@ -127,6 +161,23 @@ python -m novel_speaker_label rebuild-memory \
 ```
 
 注意：`--max-paragraphs-per-request` 和 `--max-dialogues-per-request` 必须和生成 cache 时使用的切分参数一致，否则会找不到对应的 cache 文件。
+
+阶段 2 也支持只用现有 cache 重建聚合结果和标注文本：
+
+```bash
+python -m novel_speaker_label annotate --volume 1 --model qwen3:32b --cache-only
+```
+
+多模型投票可以重复传 `--model`，并可按模型设置聚合权重：
+
+```bash
+python -m novel_speaker_label annotate \
+  --volume 1 \
+  --model qwen3:32b \
+  --model llama3:latest \
+  --model-weight qwen3:32b=1.0 \
+  --model-weight llama3:latest=0.8
+```
 
 ## 本地测试
 
