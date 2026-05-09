@@ -12,6 +12,24 @@ from .ollama_client import OllamaClient, OllamaConfig
 SPEAKER_STATUSES = {"known", "mystery", "npc", "ambiguous", "review"}
 REVIEW_LABEL = "待复核"
 LOW_SIGNAL_NAMES = {"咱", "汝", "你", "我", "他", "她", "它", "我们", "他们", "她们"}
+# Older stage 1 caches may have stored idiolect pronouns in aliases/titles.
+LEGACY_SPEECH_MARKER_VALUES = {
+    "咱",
+    "汝",
+    "俺",
+    "吾",
+    "吾辈",
+    "妾身",
+    "在下",
+    "小生",
+    "本座",
+    "本王",
+    "朕",
+    "老身",
+    "奴家",
+    "鄙人",
+    "贫道",
+}
 LOW_SIGNAL_TITLES = {
     "中间人",
     "交易者",
@@ -51,6 +69,7 @@ RULE_MODEL = "rule:context"
 RULE_MODEL_PREFIX = "rule:"
 RULE_CONFIDENCE = 0.98
 ALTERNATION_RULE_CONFIDENCE = 0.92
+SPEECH_MARKER_RULE_CONFIDENCE = 0.86
 ALTERNATION_MAX_PARAGRAPH_GAP = 3
 ADDRESS_TITLES = ("先生", "小姐", "大人", "阁下", "夫人")
 SECOND_PERSON_MARKERS = ("你", "您")
@@ -249,12 +268,14 @@ def annotate_volume(config: AnnotationConfig) -> dict:
                 votes.append(vote)
                 dialogue_votes_by_id[vote["dialogue_id"]].append(vote)
 
+            speaker_options = _known_speaker_options(payload)
             for dialogue in dialogue_window:
                 annotations.append(
                     _aggregate_votes(
                         dialogue,
                         dialogue_votes_by_id[dialogue["dialogue_id"]],
                         config,
+                        speaker_options=speaker_options,
                     )
                 )
 
@@ -826,6 +847,7 @@ def _character_card(row: dict) -> dict:
         "titles": _unique_strings(_as_list(row.get("titles")), 8),
         "description": _truncate(row.get("description", ""), 260),
         "speech_style": _truncate(row.get("speech_style", ""), 160),
+        "speech_markers": _unique_strings(_as_list(row.get("speech_markers")), 8),
         "relationship_hints": _unique_strings(
             _as_list(row.get("relationship_hints")), 8
         ),
@@ -871,6 +893,7 @@ def _build_annotation_prompt(payload: dict) -> str:
         "11. target_dialogues 中 dialogue_kind=inline 的项目是正文内嵌引号，不要当作独立对白；标为 review，needs_review=true。\n"
         "12. candidate_mysteries 只是可选候选；如果候选名称和当前段落地点/人物不一致，必须改用 npc 或 review。\n"
         "13. 如果只有轮次推断、没有叙述锚点或自我介绍，请降低 confidence，并在 evidence 里说明轮次依据。\n\n"
+        "14. candidate_characters.speech_markers 是阶段 1 提取的高区分度口癖/自称/固定短语；命中时可作为证据，但如果多个角色共享或上下文反证明显，必须进入复核。\n\n"
         "输出 JSON 结构：\n"
         "{\n"
         '  "annotations": [\n'
@@ -1042,6 +1065,10 @@ def _explicit_rule_speaker(dialogue: dict, payload: dict) -> dict | None:
     if speaker:
         return speaker
 
+    speaker = _speech_marker_rule_speaker(dialogue, payload)
+    if speaker:
+        return speaker
+
     for text in _direct_attribution_contexts(dialogue):
         option = _speaker_option_from_direct_attribution(text, payload)
         if option:
@@ -1069,6 +1096,20 @@ def _self_intro_rule_speaker(dialogue: dict, payload: dict) -> dict | None:
                     RULE_CONFIDENCE,
                 )
     return None
+
+
+def _speech_marker_rule_speaker(dialogue: dict, payload: dict) -> dict | None:
+    option = _unique_speech_marker_option(
+        _clean_text(dialogue.get("text")),
+        _known_speaker_options(payload),
+    )
+    if not option:
+        return None
+    return _speaker_from_option(
+        option,
+        f"规则：台词命中{option['display']}的角色记忆口癖",
+        SPEECH_MARKER_RULE_CONFIDENCE,
+    )
 
 
 def _speaker_from_listener_reaction(dialogue: dict, payload: dict) -> dict | None:
@@ -1413,9 +1454,85 @@ def _known_speaker_options(payload: dict) -> list[dict]:
                 "display": display,
                 "status": "known",
                 "names": names,
+                "speech_markers": _speech_markers_from_character_card(row),
             }
         )
     return options
+
+
+def _speech_markers_from_character_card(row: dict) -> list[str]:
+    markers = [
+        _clean_text(value)
+        for value in _as_list(row.get("speech_markers"))
+        if _clean_text(value)
+    ]
+    markers.extend(_legacy_speech_markers_from_character_card(row))
+    return _unique_strings(
+        [marker for marker in markers if _is_usable_speech_marker(marker)],
+        12,
+    )
+
+
+def _legacy_speech_markers_from_character_card(row: dict) -> list[str]:
+    markers: list[str] = []
+    for value in _as_list(row.get("aliases")) + _as_list(row.get("titles")):
+        marker = _clean_text(value)
+        if marker in LEGACY_SPEECH_MARKER_VALUES:
+            markers.append(marker)
+    return markers
+
+
+def _is_usable_speech_marker(marker: str) -> bool:
+    if not marker:
+        return False
+    if len(marker) > 12:
+        return False
+    return True
+
+
+def _unique_speech_marker_option(text: str, options: list[dict]) -> dict | None:
+    matches = _speech_marker_matches_by_option(text, options)
+    if len(matches) != 1:
+        return None
+    return matches[0][0]
+
+
+def _speech_marker_matches_by_option(
+    text: str, options: list[dict]
+) -> list[tuple[dict, list[str]]]:
+    cleaned = _clean_text(text)
+    if not cleaned:
+        return []
+
+    marker_owners: dict[str, list[dict]] = {}
+    for option in options:
+        for marker in option.get("speech_markers", []):
+            marker_owners.setdefault(marker, []).append(option)
+
+    matches: dict[str, tuple[dict, list[str]]] = {}
+    for marker, owners in marker_owners.items():
+        if len(owners) != 1:
+            continue
+        if not _speech_marker_in_text(marker, cleaned):
+            continue
+        option = owners[0]
+        key = _speaker_rule_key(option)
+        if key not in matches:
+            matches[key] = (option, [])
+        matches[key][1].append(marker)
+    return list(matches.values())
+
+
+def _speech_marker_in_text(marker: str, text: str) -> bool:
+    if not marker or marker not in text:
+        return False
+    if len(marker) == 1:
+        for match in re.finditer(re.escape(marker), text):
+            if match.end() < len(text) and text[match.end()] == "们":
+                continue
+            return True
+        return False
+    return marker in text
 
 
 def _option_mentioned_in_text(option: dict, text: str) -> bool:
@@ -1492,7 +1609,12 @@ def _rule_vote_for_speaker(dialogue: dict, speaker: dict) -> dict:
     )
 
 
-def _aggregate_votes(dialogue: dict, votes: list[dict], config: AnnotationConfig) -> dict:
+def _aggregate_votes(
+    dialogue: dict,
+    votes: list[dict],
+    config: AnnotationConfig,
+    speaker_options: list[dict] | None = None,
+) -> dict:
     base = {
         "dialogue_id": dialogue["dialogue_id"],
         "dialogue_index": dialogue["dialogue_index"],
@@ -1572,7 +1694,9 @@ def _aggregate_votes(dialogue: dict, votes: list[dict], config: AnnotationConfig
     participating_model_count = len(non_rule_models) or len({vote["model"] for vote in votes})
     required_support = min(config.min_support_models, max(1, participating_model_count))
     accepted_by_rule = bool(rule_override_key and top["key"] == rule_override_key)
-    contradiction_reason = _speaker_contradiction_reason(dialogue, top)
+    contradiction_reason = _speaker_contradiction_reason(
+        dialogue, top, speaker_options or []
+    )
     forced_review_reason = contradiction_reason or (
         "" if accepted_by_rule else _forced_review_reason(dialogue, top, participating_model_count)
     )
@@ -1653,7 +1777,9 @@ def _forced_review_reason(
     return ""
 
 
-def _speaker_contradiction_reason(dialogue: dict, top: dict) -> str:
+def _speaker_contradiction_reason(
+    dialogue: dict, top: dict, speaker_options: list[dict]
+) -> str:
     if _dialogue_kind(dialogue) != "standalone":
         return ""
     display = _clean_text(top.get("speaker_display"))
@@ -1664,26 +1790,28 @@ def _speaker_contradiction_reason(dialogue: dict, top: dict) -> str:
     text = _clean_text(dialogue.get("text"))
     if not text:
         return ""
-    if display == "赫萝" and _third_person_reference_to_holo(text):
-        return "speaker_contradiction:third_person_holo_reference"
-    if display != "赫萝" and _has_holo_dialect(text):
-        return "speaker_contradiction:holo_dialect"
+    if _third_person_reference_to_display(text, display):
+        return "speaker_contradiction:third_person_name_reference"
+
+    option_by_key = {
+        _speaker_rule_key(option): option for option in speaker_options
+    }
+    top_key = _vote_group_key(top)
+    for option, _markers in _speech_marker_matches_by_option(text, speaker_options):
+        if _speaker_rule_key(option) != top_key and top_key in option_by_key:
+            return f"speaker_contradiction:speech_marker:{option['display']}"
     return ""
 
 
-def _third_person_reference_to_holo(text: str) -> bool:
+def _third_person_reference_to_display(text: str, display: str) -> bool:
     cleaned = _clean_text(text)
-    if "赫萝" not in cleaned:
+    if not display or display not in cleaned:
         return False
+    escaped = re.escape(display)
     return bool(
-        re.search(r"她(?:的)?名字是赫萝", cleaned)
-        or re.search(r"她(?:应该|一定|会|是|的).{0,20}赫萝", cleaned)
+        re.search(rf"[他她它](?:的)?名字是{escaped}", cleaned)
+        or re.search(rf"[他她它](?:应该|一定|会|是|的|叫).{{0,20}}{escaped}", cleaned)
     )
-
-
-def _has_holo_dialect(text: str) -> bool:
-    cleaned = _clean_text(text)
-    return "汝" in cleaned or bool(re.search(r"咱(?!们)", cleaned))
 
 
 def _has_speaker_anchor(dialogue: dict, top: dict) -> bool:

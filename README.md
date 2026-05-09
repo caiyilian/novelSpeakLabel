@@ -67,6 +67,8 @@ outputs/volume_01/
       characters.jsonl
 ```
 
+`memory/semantic/characters.jsonl` 会保存角色名、别名、身份、关系、说话风格和 `speech_markers`。`speech_markers` 用来记录高区分度的口癖、自称、固定句尾或固定短语，阶段 2 会把它作为候选说话人的辅助证据。如果你手里是旧版阶段 1 缓存，需要用 `discover --overwrite-cache` 重新跑一次，才会提取新的口癖字段。
+
 然后做阶段 2 正式标注：
 
 ```bash

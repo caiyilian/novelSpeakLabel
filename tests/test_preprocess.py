@@ -210,6 +210,31 @@ class CharacterStoreTests(unittest.TestCase):
         self.assertEqual(len(store.characters), 1)
         self.assertEqual(store.characters[0]["display_name"], "列支敦·马贺特")
 
+    def test_speech_markers_are_stored_separately_from_titles(self) -> None:
+        store = CharacterStore()
+        store.add_or_update(
+            {
+                "display_name": "阿晴",
+                "titles": ["巫女"],
+                "speech_markers": ["妾身", "也罢"],
+            },
+            "scene-1",
+        )
+        store.add_or_update(
+            {
+                "display_name": "阿晴",
+                "speech_markers": ["妾身", "罢了"],
+            },
+            "scene-2",
+        )
+
+        self.assertEqual(store.characters[0]["speech_markers"], ["妾身", "也罢", "罢了"])
+        self.assertNotIn("妾身", store.characters[0]["titles"])
+        self.assertEqual(
+            store.snapshot_for_prompt(1)[0]["speech_markers"],
+            ["妾身", "也罢", "罢了"],
+        )
+
 
 class OllamaClientTests(unittest.TestCase):
     def test_collect_streaming_response(self) -> None:
@@ -594,51 +619,147 @@ class AnnotationTests(unittest.TestCase):
 
         self.assertEqual(votes, [])
 
-    def test_holo_dialect_contradiction_forces_review(self) -> None:
+    def test_speech_marker_contradiction_uses_character_memory(self) -> None:
         dialogue = _annotation_dialogue(
             "volume_01-d000146",
             145,
             427,
-            "汝真是可爱呐。",
+            "妾身真是佩服你。",
         )
         votes = [
             _annotation_vote(dialogue, "char_0001", "罗伦斯", model="model-a"),
             _annotation_vote(dialogue, "char_0001", "罗伦斯", model="model-b"),
         ]
+        speaker_options = [
+            {
+                "entity_id": "char_0001",
+                "display": "罗伦斯",
+                "status": "known",
+                "names": ["罗伦斯"],
+                "speech_markers": [],
+            },
+            {
+                "entity_id": "char_0002",
+                "display": "阿晴",
+                "status": "known",
+                "names": ["阿晴"],
+                "speech_markers": ["妾身"],
+            },
+        ]
 
         annotation = _aggregate_votes(
-            dialogue, votes, AnnotationConfig(output_dir=Path("unused"))
+            dialogue,
+            votes,
+            AnnotationConfig(output_dir=Path("unused")),
+            speaker_options=speaker_options,
         )
 
         self.assertTrue(annotation["needs_review"])
-        self.assertEqual(annotation["review_reason"], "speaker_contradiction:holo_dialect")
+        self.assertEqual(annotation["review_reason"], "speaker_contradiction:speech_marker:阿晴")
 
-    def test_third_person_holo_reference_is_not_self_intro(self) -> None:
+    def test_speech_marker_rule_votes_use_character_memory(self) -> None:
+        payload = {
+            "candidate_characters": [
+                {
+                    "entity_id": "char_0001",
+                    "display_name": "阿晴",
+                    "aliases": [],
+                    "speech_markers": ["妾身"],
+                },
+                {
+                    "entity_id": "char_0002",
+                    "display_name": "罗伦斯",
+                    "aliases": [],
+                    "speech_markers": [],
+                },
+            ]
+        }
+        dialogue = _annotation_dialogue(
+            "volume_01-d000146",
+            145,
+            427,
+            "妾身真是佩服你。",
+        )
+
+        votes = _rule_votes_for_window([dialogue], payload)
+
+        self.assertEqual(len(votes), 1)
+        self.assertEqual(votes[0]["speaker_display"], "阿晴")
+
+    def test_legacy_title_speech_marker_votes_are_supported(self) -> None:
+        payload = {
+            "candidate_characters": [
+                {
+                    "entity_id": "char_0001",
+                    "display_name": "阿晴",
+                    "aliases": [],
+                    "titles": ["妾身"],
+                },
+                {
+                    "entity_id": "char_0002",
+                    "display_name": "罗伦斯",
+                    "aliases": [],
+                    "titles": [],
+                },
+            ]
+        }
+        dialogue = _annotation_dialogue(
+            "volume_01-d000146",
+            145,
+            427,
+            "妾身真是佩服你。",
+        )
+
+        votes = _rule_votes_for_window([dialogue], payload)
+
+        self.assertEqual(len(votes), 1)
+        self.assertEqual(votes[0]["speaker_display"], "阿晴")
+
+    def test_third_person_name_reference_is_not_self_intro(self) -> None:
         payload = {
             "candidate_characters": [
                 {"entity_id": "char_0001", "display_name": "罗伦斯", "aliases": []},
-                {"entity_id": "char_0002", "display_name": "赫萝", "aliases": []},
+                {"entity_id": "char_0002", "display_name": "阿晴", "aliases": []},
             ]
         }
         dialogue = _annotation_dialogue(
             "volume_01-d000952",
             951,
             2065,
-            "谢谢。她应该……不，她一定会来的！她的名字是赫萝，是个头上套着外套，身材娇小的女孩。",
+            "谢谢。她应该……不，她一定会来的！她的名字是阿晴，是个头上套着外套，身材娇小的女孩。",
         )
         votes = [
-            _annotation_vote(dialogue, "char_0002", "赫萝", model="model-a"),
-            _annotation_vote(dialogue, "char_0002", "赫萝", model="model-b"),
+            _annotation_vote(dialogue, "char_0002", "阿晴", model="model-a"),
+            _annotation_vote(dialogue, "char_0002", "阿晴", model="model-b"),
+        ]
+        speaker_options = [
+            {
+                "entity_id": "char_0001",
+                "display": "罗伦斯",
+                "status": "known",
+                "names": ["罗伦斯"],
+                "speech_markers": [],
+            },
+            {
+                "entity_id": "char_0002",
+                "display": "阿晴",
+                "status": "known",
+                "names": ["阿晴"],
+                "speech_markers": [],
+            },
         ]
 
         self.assertEqual(_rule_votes_for_window([dialogue], payload), [])
         annotation = _aggregate_votes(
-            dialogue, votes, AnnotationConfig(output_dir=Path("unused"))
+            dialogue,
+            votes,
+            AnnotationConfig(output_dir=Path("unused")),
+            speaker_options=speaker_options,
         )
         self.assertTrue(annotation["needs_review"])
         self.assertEqual(
             annotation["review_reason"],
-            "speaker_contradiction:third_person_holo_reference",
+            "speaker_contradiction:third_person_name_reference",
         )
 
     def test_dialogue_windows_do_not_cross_scenes(self) -> None:
