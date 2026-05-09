@@ -550,6 +550,97 @@ class AnnotationTests(unittest.TestCase):
         self.assertTrue(annotation["needs_review"])
         self.assertEqual(annotation["review_reason"], "single_model_without_anchor")
 
+    def test_rule_votes_do_not_use_later_inline_reply_as_current_attribution(self) -> None:
+        payload = {
+            "candidate_characters": [
+                {"entity_id": "char_0001", "display_name": "罗伦斯", "aliases": []},
+                {"entity_id": "char_0003", "display_name": "骑士", "aliases": []},
+            ]
+        }
+        dialogue = _annotation_dialogue(
+            "volume_01-d000022",
+            21,
+            126,
+            "听说最近，这一带会有异教徒祭典，所以我们才受命在这里防卫。你知道什么消息吗？",
+            next_context=[
+                {
+                    "text": "这时，如果表现出失望的表情，那么演技就太差了。罗伦斯假装想了好一会儿后，回答说：「我不知道耶。」事实上，罗伦斯是在撒谎。"
+                }
+            ],
+        )
+
+        votes = _rule_votes_for_window([dialogue], payload)
+
+        self.assertEqual(votes, [])
+
+    def test_rule_votes_do_not_treat_indirect_speech_as_direct_attribution(self) -> None:
+        payload = {
+            "candidate_characters": [
+                {"entity_id": "char_0001", "display_name": "罗伦斯", "aliases": []},
+                {"entity_id": "char_0002", "display_name": "赫萝", "aliases": []},
+            ]
+        }
+        dialogue = _annotation_dialogue(
+            "volume_01-d000114",
+            113,
+            365,
+            "咱变身需要的东西是一些麦子。",
+            next_context=[
+                {"text": "麦子听起来挺像是丰收之神会要的报偿，罗伦斯似乎能够理解这说法。"}
+            ],
+        )
+
+        votes = _rule_votes_for_window([dialogue], payload)
+
+        self.assertEqual(votes, [])
+
+    def test_holo_dialect_contradiction_forces_review(self) -> None:
+        dialogue = _annotation_dialogue(
+            "volume_01-d000146",
+            145,
+            427,
+            "汝真是可爱呐。",
+        )
+        votes = [
+            _annotation_vote(dialogue, "char_0001", "罗伦斯", model="model-a"),
+            _annotation_vote(dialogue, "char_0001", "罗伦斯", model="model-b"),
+        ]
+
+        annotation = _aggregate_votes(
+            dialogue, votes, AnnotationConfig(output_dir=Path("unused"))
+        )
+
+        self.assertTrue(annotation["needs_review"])
+        self.assertEqual(annotation["review_reason"], "speaker_contradiction:holo_dialect")
+
+    def test_third_person_holo_reference_is_not_self_intro(self) -> None:
+        payload = {
+            "candidate_characters": [
+                {"entity_id": "char_0001", "display_name": "罗伦斯", "aliases": []},
+                {"entity_id": "char_0002", "display_name": "赫萝", "aliases": []},
+            ]
+        }
+        dialogue = _annotation_dialogue(
+            "volume_01-d000952",
+            951,
+            2065,
+            "谢谢。她应该……不，她一定会来的！她的名字是赫萝，是个头上套着外套，身材娇小的女孩。",
+        )
+        votes = [
+            _annotation_vote(dialogue, "char_0002", "赫萝", model="model-a"),
+            _annotation_vote(dialogue, "char_0002", "赫萝", model="model-b"),
+        ]
+
+        self.assertEqual(_rule_votes_for_window([dialogue], payload), [])
+        annotation = _aggregate_votes(
+            dialogue, votes, AnnotationConfig(output_dir=Path("unused"))
+        )
+        self.assertTrue(annotation["needs_review"])
+        self.assertEqual(
+            annotation["review_reason"],
+            "speaker_contradiction:third_person_holo_reference",
+        )
+
     def test_dialogue_windows_do_not_cross_scenes(self) -> None:
         dialogues = [
             {"dialogue_id": "d1", "scene_id": "s1"},

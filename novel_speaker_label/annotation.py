@@ -46,7 +46,7 @@ SPEECH_VERBS = (
     "发出声音",
 )
 DIRECT_ATTRIBUTION_VERBS = (*SPEECH_VERBS, "念着", "打招呼")
-SELF_INTRO_MARKERS = ("我是", "我叫", "在下是", "本人是", "名字是")
+SELF_INTRO_MARKERS = ("我是", "我叫", "在下是", "本人是", "我的名字是")
 RULE_MODEL = "rule:context"
 RULE_MODEL_PREFIX = "rule:"
 RULE_CONFIDENCE = 0.98
@@ -55,7 +55,15 @@ ALTERNATION_MAX_PARAGRAPH_GAP = 3
 ADDRESS_TITLES = ("先生", "小姐", "大人", "阁下", "夫人")
 SECOND_PERSON_MARKERS = ("你", "您")
 LISTENER_REACTION_MARKERS = ("被询问", "被问", "被这么一问", "被追问", "被提问")
-INDIRECT_SPEECH_SUFFIXES = ("的话", "的事", "的内容", "的说法")
+INDIRECT_SPEECH_SUFFIXES = (
+    "的话",
+    "的任何",
+    "的事",
+    "的内容",
+    "的说法",
+    "话",
+    "法",
+)
 VILLAGE_CONTEXT_MARKERS = ("小村落", "深山", "山里的村民", "村落", "村民")
 VILLAGE_NPC_DISPLAY = "小村落的村民"
 
@@ -1193,7 +1201,7 @@ def _adjacent_narration_rows(rows: list[Any], limit: int = 2) -> list[str]:
         text = _clean_text(row.get("text", ""))
         if not text:
             continue
-        if _looks_like_standalone_quote_text(text):
+        if _looks_like_standalone_quote_text(text) or _contains_quote_text(text):
             break
         texts.append(text)
         if len(texts) >= limit:
@@ -1204,6 +1212,10 @@ def _adjacent_narration_rows(rows: list[Any], limit: int = 2) -> list[str]:
 def _looks_like_standalone_quote_text(text: str) -> bool:
     stripped = _clean_text(text)
     return stripped.startswith("「") and stripped.endswith("」")
+
+
+def _contains_quote_text(text: str) -> bool:
+    return "「" in _clean_text(text) or "」" in _clean_text(text)
 
 
 def _speaker_option_from_direct_attribution(text: str, payload: dict) -> dict | None:
@@ -1560,7 +1572,8 @@ def _aggregate_votes(dialogue: dict, votes: list[dict], config: AnnotationConfig
     participating_model_count = len(non_rule_models) or len({vote["model"] for vote in votes})
     required_support = min(config.min_support_models, max(1, participating_model_count))
     accepted_by_rule = bool(rule_override_key and top["key"] == rule_override_key)
-    forced_review_reason = (
+    contradiction_reason = _speaker_contradiction_reason(dialogue, top)
+    forced_review_reason = contradiction_reason or (
         "" if accepted_by_rule else _forced_review_reason(dialogue, top, participating_model_count)
     )
 
@@ -1638,6 +1651,39 @@ def _forced_review_reason(
     if status == "known" and not _has_speaker_anchor(dialogue, top):
         return "single_model_without_anchor"
     return ""
+
+
+def _speaker_contradiction_reason(dialogue: dict, top: dict) -> str:
+    if _dialogue_kind(dialogue) != "standalone":
+        return ""
+    display = _clean_text(top.get("speaker_display"))
+    status = _clean_status(top.get("speaker_status"))
+    if status != "known" or not display:
+        return ""
+
+    text = _clean_text(dialogue.get("text"))
+    if not text:
+        return ""
+    if display == "赫萝" and _third_person_reference_to_holo(text):
+        return "speaker_contradiction:third_person_holo_reference"
+    if display != "赫萝" and _has_holo_dialect(text):
+        return "speaker_contradiction:holo_dialect"
+    return ""
+
+
+def _third_person_reference_to_holo(text: str) -> bool:
+    cleaned = _clean_text(text)
+    if "赫萝" not in cleaned:
+        return False
+    return bool(
+        re.search(r"她(?:的)?名字是赫萝", cleaned)
+        or re.search(r"她(?:应该|一定|会|是|的).{0,20}赫萝", cleaned)
+    )
+
+
+def _has_holo_dialect(text: str) -> bool:
+    cleaned = _clean_text(text)
+    return "汝" in cleaned or bool(re.search(r"咱(?!们)", cleaned))
 
 
 def _has_speaker_anchor(dialogue: dict, top: dict) -> bool:
