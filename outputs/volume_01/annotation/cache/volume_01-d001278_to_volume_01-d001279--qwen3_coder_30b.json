@@ -1,0 +1,53 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001278",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 1.0
+        }
+      ],
+      "evidence": [
+        "上下文明确描述罗伦斯在努力拼凑话语试图挽留赫萝，此句为他最后想出的话语。",
+        "前文提到罗伦斯试图表达矛盾心情，此句语气符合其理性中带情绪的说话风格。",
+        "该句内容与罗伦斯作为商人的性格相符，强调赔偿与金钱。",
+        "后文说明罗伦斯尽量表现出愤怒情绪，此句为他所言。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001279",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 1.0
+        }
+      ],
+      "evidence": [
+        "此句延续前句情绪，继续表现罗伦斯愤怒与坚持的态度。",
+        "上下文明确指出罗伦斯在试图挽留赫萝，此句为他所言。",
+        "语气符合罗伦斯理性中带情绪的说话风格，且与商人身份相符。",
+        "后文说明罗伦斯虽害怕赫萝但仍想留下理由，此句为其表达方式之一。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "两句话为罗伦斯在试图挽留赫萝时所说，语气连贯，情绪递进，符合其角色性格与场景设定。"
+}

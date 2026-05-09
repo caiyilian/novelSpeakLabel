@@ -1,29 +1,27 @@
 {
-  "dialogue_id": "volume_01-d001157",
-  "speaker_entity_id": "char_0001",
-  "speaker_display": "罗伦斯",
-  "speaker_status": "known",
-  "confidence": 0.95,
-  "candidate_speakers": [
+  "annotations": [
     {
-      "entity_id": "char_0001",
-      "display": "罗伦斯",
-      "status": "known",
-      "score": 0.95
-    },
-    {
-      "entity_id": "char_0002",
-      "display": "赫萝",
-      "status": "known",
-      "score": 0.05
+      "dialogue_id": "volume_01-d001157",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "前文明确提到罗伦斯背对赫萝，用害羞的口吻轻声说，因此该句台词应为罗伦斯所说。",
+        "上下文显示罗伦斯在试图让赫萝内心动摇，并以策略性方式回应，符合其性格和行为模式。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
     }
   ],
-  "evidence": [
-    "前文提到罗伦斯背对赫萝，用害羞的口吻说话，符合该台词的语气和情境。",
-    "场景记忆显示罗伦斯试图以策略回应赫萝的调侃，最终选择承认她的可爱。",
-    "该台词语气害羞、略带犹豫，符合罗伦斯的性格和当前情境。"
-  ],
-  "should_create_new_entity": false,
-  "new_entity_hint": "",
-  "needs_review": false
+  "window_notes": "该句台词为罗伦斯在与赫萝互动时的回应，上下文明确显示说话人为罗伦斯，因此判断为已知角色。"
 }

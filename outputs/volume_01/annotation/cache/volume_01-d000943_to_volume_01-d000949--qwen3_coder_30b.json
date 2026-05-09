@@ -1,0 +1,194 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000943",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        },
+        {
+          "entity_id": "char_0026",
+          "display": "老卸货工",
+          "status": "known",
+          "score": 0.1
+        }
+      ],
+      "evidence": [
+        "上下文显示罗伦斯在与赫萝讨论梅迪欧商行的人，且前文提到罗伦斯与赫萝同行，对话内容符合其商人性格"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000944",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        },
+        {
+          "entity_id": "char_0024",
+          "display": "梅迪欧商行的人",
+          "status": "known",
+          "score": 0.05
+        }
+      ],
+      "evidence": [
+        "明确提到梅迪欧商行的人，且语境为罗伦斯对交易的解释，符合其商人身份和对竞争者的分析"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000945",
+      "speaker_entity_id": "char_0026",
+      "speaker_display": "老卸货工",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0026",
+          "display": "老卸货工",
+          "status": "known",
+          "score": 0.85
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.15
+        }
+      ],
+      "evidence": [
+        "前文提到罗伦斯擦汗后笑着回答，但此句为老卸货工回应罗伦斯的冒险行为，语气符合老卸货工的沉稳性格"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000946",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        },
+        {
+          "entity_id": "char_0026",
+          "display": "老卸货工",
+          "status": "known",
+          "score": 0.1
+        }
+      ],
+      "evidence": [
+        "语境为罗伦斯解释伙伴的冒失行为，符合其性格和对话逻辑"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000947",
+      "speaker_entity_id": "char_0026",
+      "speaker_display": "老卸货工",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0026",
+          "display": "老卸货工",
+          "status": "known",
+          "score": 0.9
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.1
+        }
+      ],
+      "evidence": [
+        "回应罗伦斯关于伙伴被捉的担忧，语气符合老卸货工的沉稳与关心"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000948",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        },
+        {
+          "entity_id": "char_0026",
+          "display": "老卸货工",
+          "status": "known",
+          "score": 0.1
+        }
+      ],
+      "evidence": [
+        "语境为罗伦斯担忧伙伴被捉，且提到联系马贺特行长，符合其商人行为逻辑"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000949",
+      "speaker_entity_id": "char_0026",
+      "speaker_display": "老卸货工",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0026",
+          "display": "老卸货工",
+          "status": "known",
+          "score": 0.95
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.05
+        }
+      ],
+      "evidence": [
+        "回应罗伦斯的担忧，语气沉稳，符合老卸货工的特征，且提到通知行长，与前文一致"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，罗伦斯与老卸货工交替发言，逻辑连贯。"
+}

@@ -16,7 +16,7 @@
         }
       ],
       "evidence": [
-        "上下文显示赫萝在对话中回应罗伦斯的问题，语气轻松，符合她的说话风格。"
+        "赫萝在上下文中的对话风格轻松幽默，符合该句的语气。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -37,7 +37,7 @@
         }
       ],
       "evidence": [
-        "罗伦斯在上下文中解释旅行商人的生活方式，语气理性，符合他的说话风格。"
+        "罗伦斯在上下文中分析行商生活，语气理性冷静，符合该句的叙述风格。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -58,7 +58,7 @@
         }
       ],
       "evidence": [
-        "罗伦斯继续解释旅行商人的孤独生活，语气理性，符合他的说话风格。"
+        "该句延续了罗伦斯对行商生活的理性分析，语气一致。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -79,7 +79,7 @@
         }
       ],
       "evidence": [
-        "罗伦斯以幽默的语气谈论开店的好处，语气轻松但理性，符合他的说话风格。"
+        "该句是罗伦斯对开店生活的展望，语气轻松但理性，符合其风格。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -87,41 +87,47 @@
     },
     {
       "dialogue_id": "volume_01-d000867",
-      "speaker_entity_id": "char_0001",
-      "speaker_display": "罗伦斯",
-      "speaker_status": "known",
-      "confidence": 0.94,
+      "speaker_entity_id": "",
+      "speaker_display": "",
+      "speaker_status": "review",
+      "confidence": 0.0,
       "candidate_speakers": [
         {
           "entity_id": "char_0001",
           "display": "罗伦斯",
           "status": "known",
-          "score": 0.94
+          "score": 0.5
+        },
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.5
         }
       ],
       "evidence": [
-        "罗伦斯解释「找老婆」的双关含义，语气理性，符合他的说话风格。"
+        "该句是正文中的内嵌引号，未明确归属说话人。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
-      "needs_review": false
+      "needs_review": true
     },
     {
       "dialogue_id": "volume_01-d000868",
       "speaker_entity_id": "char_0001",
       "speaker_display": "罗伦斯",
       "speaker_status": "known",
-      "confidence": 0.93,
+      "confidence": 0.95,
       "candidate_speakers": [
         {
           "entity_id": "char_0001",
           "display": "罗伦斯",
           "status": "known",
-          "score": 0.93
+          "score": 0.95
         }
       ],
       "evidence": [
-        "罗伦斯表达对赫萝开店的担忧，语气略带调侃，符合他的说话风格。"
+        "该句是罗伦斯对赫萝开店的担忧，语气中带有调侃和关心，符合其风格。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -132,17 +138,17 @@
       "speaker_entity_id": "char_0002",
       "speaker_display": "赫萝",
       "speaker_status": "known",
-      "confidence": 0.95,
+      "confidence": 0.94,
       "candidate_speakers": [
         {
           "entity_id": "char_0002",
           "display": "赫萝",
           "status": "known",
-          "score": 0.95
+          "score": 0.94
         }
       ],
       "evidence": [
-        "赫萝对罗伦斯的发言表示疑惑，语气轻松，符合她的说话风格。"
+        "赫萝对罗伦斯的提问表现出好奇和轻松的语气，符合她的说话风格。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -163,13 +169,13 @@
         }
       ],
       "evidence": [
-        "罗伦斯解释赫萝开店后的影响，语气理性且略带调侃，符合他的说话风格。"
+        "该句是罗伦斯对赫萝开店后果的理性分析，语气冷静，符合其风格。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
       "needs_review": false
     }
   ],
-  "window_notes": "对话轮次清晰，罗伦斯与赫萝交替发言，符合两人在场景中的互动模式。"
+  "window_notes": "对话轮次清晰，罗伦斯与赫萝交替发言，语气和风格符合角色设定。d000867 为内嵌引号，未明确归属说话人，需复核。"
 }
 ```

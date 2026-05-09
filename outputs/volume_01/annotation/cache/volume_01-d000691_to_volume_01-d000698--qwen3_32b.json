@@ -15,8 +15,8 @@
         }
       ],
       "evidence": [
-        "上下文显示赫萝在调侃罗伦斯，语气轻松幽默且略带威胁，符合赫萝的说话风格。",
-        "该台词出现在赫萝与罗伦斯的对话场景中，且与前一句赫萝的台词风格一致。"
+        "上下文显示赫萝在调侃罗伦斯，语气轻松幽默，符合她的说话风格。",
+        "前一句也是赫萝的台词，显示她主导对话节奏。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -37,8 +37,8 @@
         }
       ],
       "evidence": [
-        "赫萝在对话中继续以轻松幽默但略带威胁的语气回应，符合她的说话风格。",
-        "上下文显示这是赫萝与罗伦斯之间的连续对话，轮次交替合理。"
+        "赫萝在前一句中已经说话，本句是她继续调侃罗伦斯，语气一致。",
+        "「咱」是赫萝常用的自称，符合她的语言风格。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -46,21 +46,21 @@
     },
     {
       "dialogue_id": "volume_01-d000693",
-      "speaker_entity_id": "char_0002",
-      "speaker_display": "赫萝",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
       "speaker_status": "known",
-      "confidence": 0.95,
+      "confidence": 0.9,
       "candidate_speakers": [
         {
-          "entity_id": "char_0002",
-          "display": "赫萝",
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
           "status": "known",
-          "score": 0.95
+          "score": 0.9
         }
       ],
       "evidence": [
-        "赫萝继续以轻松幽默但略带威胁的语气说话，符合她的说话风格。",
-        "上下文显示这是赫萝与罗伦斯之间的连续对话，轮次交替合理。"
+        "赫萝在前两句中连续说话，本句应为罗伦斯的回应，符合对话轮次。",
+        "语气理性，符合罗伦斯的说话风格。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -81,8 +81,8 @@
         }
       ],
       "evidence": [
-        "赫萝继续以轻松幽默但略带威胁的语气说话，符合她的说话风格。",
-        "上下文显示这是赫萝与罗伦斯之间的连续对话，轮次交替合理。"
+        "赫萝在前一句中被罗伦斯反驳，本句是她继续回应，语气轻松自信。",
+        "「咱」是赫萝的自称，符合她的语言风格。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -93,18 +93,18 @@
       "speaker_entity_id": "char_0002",
       "speaker_display": "赫萝",
       "speaker_status": "known",
-      "confidence": 0.95,
+      "confidence": 0.9,
       "candidate_speakers": [
         {
           "entity_id": "char_0002",
           "display": "赫萝",
           "status": "known",
-          "score": 0.95
+          "score": 0.9
         }
       ],
       "evidence": [
-        "赫萝在对话中转换语气，表示玩笑结束，符合她的说话风格。",
-        "上下文显示这是赫萝与罗伦斯之间的连续对话，轮次交替合理。"
+        "赫萝在前一句中继续调侃，本句是她结束玩笑，语气自然。",
+        "上下文显示赫萝主导对话节奏。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -112,21 +112,21 @@
     },
     {
       "dialogue_id": "volume_01-d000696",
-      "speaker_entity_id": "char_0002",
-      "speaker_display": "赫萝",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
       "speaker_status": "known",
-      "confidence": 0.95,
+      "confidence": 0.85,
       "candidate_speakers": [
         {
-          "entity_id": "char_0002",
-          "display": "赫萝",
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
           "status": "known",
-          "score": 0.95
+          "score": 0.85
         }
       ],
       "evidence": [
-        "赫萝继续以轻松幽默但略带威胁的语气说话，符合她的说话风格。",
-        "上下文显示这是赫萝与罗伦斯之间的连续对话，轮次交替合理。"
+        "赫萝结束玩笑后，罗伦斯开始认真回应，符合对话轮次。",
+        "语气理性，符合罗伦斯的说话风格。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -134,21 +134,21 @@
     },
     {
       "dialogue_id": "volume_01-d000697",
-      "speaker_entity_id": "char_0001",
-      "speaker_display": "罗伦斯",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
       "speaker_status": "known",
-      "confidence": 0.95,
+      "confidence": 0.85,
       "candidate_speakers": [
         {
-          "entity_id": "char_0001",
-          "display": "罗伦斯",
+          "entity_id": "char_0002",
+          "display": "赫萝",
           "status": "known",
-          "score": 0.95
+          "score": 0.85
         }
       ],
       "evidence": [
-        "罗伦斯对赫萝的发言提出疑问，语气理性，符合他的说话风格。",
-        "上下文显示这是赫萝与罗伦斯之间的连续对话，轮次交替合理。"
+        "罗伦斯提出观察后，赫萝回应「低沉？」，符合对话轮次。",
+        "语气轻松，符合赫萝的说话风格。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -159,23 +159,23 @@
       "speaker_entity_id": "char_0001",
       "speaker_display": "罗伦斯",
       "speaker_status": "known",
-      "confidence": 0.95,
+      "confidence": 0.8,
       "candidate_speakers": [
         {
           "entity_id": "char_0001",
           "display": "罗伦斯",
           "status": "known",
-          "score": 0.95
+          "score": 0.8
         }
       ],
       "evidence": [
-        "罗伦斯继续以理性语气表达对杰廉的怀疑，符合他的说话风格。",
-        "上下文显示这是赫萝与罗伦斯之间的连续对话，轮次交替合理。"
+        "赫萝回应后，罗伦斯继续提出疑问，符合对话轮次。",
+        "语气理性，符合罗伦斯的说话风格。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
       "needs_review": false
     }
   ],
-  "window_notes": "对话轮次清晰，赫萝与罗伦斯交替发言，语气和风格符合各自角色设定。"
+  "window_notes": "赫萝与罗伦斯交替对话，赫萝主导节奏，罗伦斯理性回应。对话轮次清晰，无新角色登场。"
 }

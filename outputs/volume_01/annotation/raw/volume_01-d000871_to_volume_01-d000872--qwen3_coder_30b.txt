@@ -1,0 +1,55 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000871",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 1.0
+        },
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.1
+        }
+      ],
+      "evidence": ["前文提到罗伦斯想起赫萝说过想要先到处看看世界，再回到北方；此句为罗伦斯对赫萝的询问，语气符合其理性冷静风格"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000872",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 1.0
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.05
+        }
+      ],
+      "evidence": ["前文描述赫萝受到打击、咬着面包低头；此句为赫萝表达不想再一个人的内心独白，符合其情绪状态；且赫萝在本段落中表现出依赖与脆弱"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "罗伦斯提出疑问后，赫萝回应并表达出对孤独的恐惧，对话轮次清晰，符合两人关系及情绪发展"
+}

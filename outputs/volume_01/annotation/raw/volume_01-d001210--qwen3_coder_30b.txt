@@ -1,0 +1,34 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001210",
+      "speaker_entity_id": "mystery_volume_01_c007_s002_r004_伏击者",
+      "speaker_display": "伏击者",
+      "speaker_status": "mystery",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "mystery_volume_01_c007_s002_r004_伏击者",
+          "display": "伏击者",
+          "status": "mystery",
+          "score": 0.85
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.1
+        }
+      ],
+      "evidence": [
+        "「喀啦」声来自被罗伦斯击中的男子，该男子是伏击者",
+        "前文描述罗伦斯反击并击中对方，声音与打击动作一致",
+        "该男子被赫萝咬住手臂后喊叫，随后被击中"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "根据上下文，该声音为被罗伦斯击中的伏击者发出，结合前文描述其被赫萝咬住手臂后喊叫，随后被罗伦斯击中嘴巴上方，可推断说话人为伏击者。"
+}

@@ -1,0 +1,89 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000982",
+      "speaker_entity_id": "char_0024",
+      "speaker_display": "梅迪欧商行的人",
+      "speaker_status": "mystery",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0024",
+          "display": "梅迪欧商行的人",
+          "status": "mystery",
+          "score": 0.85
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.1
+        }
+      ],
+      "evidence": [
+        "提及罗伦斯先生，语气带有威胁性，符合梅迪欧商行人员风格",
+        "对话内容针对罗伦斯的处境，强调利益与交易关系"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000983",
+      "speaker_entity_id": "char_0024",
+      "speaker_display": "梅迪欧商行的人",
+      "speaker_status": "mystery",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0024",
+          "display": "梅迪欧商行的人",
+          "status": "mystery",
+          "score": 0.85
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.1
+        }
+      ],
+      "evidence": [
+        "继续使用对罗伦斯的称呼，语气理性但带有压迫感",
+        "提及罗伦斯提出交易并投入金额，符合梅迪欧商行立场"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000984",
+      "speaker_entity_id": "char_0024",
+      "speaker_display": "梅迪欧商行的人",
+      "speaker_status": "mystery",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0024",
+          "display": "梅迪欧商行的人",
+          "status": "mystery",
+          "score": 0.85
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.1
+        }
+      ],
+      "evidence": [
+        "语气中带有遗憾，但依然坚持利益优先",
+        "与前两句对话内容一致，属于同一人发言"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "三句台词为同一人连续发言，语气一致，符合梅迪欧商行人员对罗伦斯的威胁与谈判策略。"
+}

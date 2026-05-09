@@ -1,0 +1,32 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001081",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.75,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.8
+        },
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.2
+        }
+      ],
+      "evidence": [
+        "前文描写罗伦斯因未听到赫萝声音而感到失望，此句为罗伦斯在赫萝动作后反应；赫萝的台词通常更明确，此句语气更像罗伦斯的困惑或无奈；无明确叙述锚点支持赫萝说话。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "根据上下文，赫萝正在执行动作并说话，而罗伦斯在她之后有反应，推测此句为罗伦斯的反应，但无明确叙述支持，因此判断存在不确定性。"
+}

@@ -1,0 +1,416 @@
+你是轻小说说话人标注项目的阶段 2：正式标注助手。
+你的任务是判断输入 target_dialogues 中每一句台词的说话人，不要改写原文。
+必须把这些台词当作同一个连续片段来判断，优先保持对话轮次和叙述线索的一致性。
+
+规则：
+1. 只输出严格 JSON，不要 Markdown，不要解释性前后缀。
+2. 如果说话人是候选角色，speaker_entity_id 必须使用 candidate_characters 里的 entity_id，speaker_status 填 known。
+3. 如果说话人像某个未知人物，speaker_entity_id 使用 candidate_mysteries 里的 mystery_id，speaker_status 填 mystery。
+4. 如果只是无法追踪的路人/群体，speaker_status 填 npc，speaker_entity_id 可为空或使用 npc:简短称呼。
+5. 证据不足时不要硬猜，speaker_status 填 ambiguous 或 review，并把 needs_review 设为 true。
+6. candidate_speakers 至少列出 1 个候选；如果无法判断，列出最可能的候选和不确定原因。
+7. confidence 使用 0 到 1 之间的小数，表示你对最终判断的把握。
+8. 不要只因为台词里提到某个名字、职业、地点，就把说话人标成那个实体；被称呼的人通常不是说话人。
+9. 连续问答、交易寒暄、命令/回答等场景要按上下句轮次判断；同一人连续说话必须有叙述或语气证据支持。
+10. 如果当前上下文显示某角色还没有登场，不要因为角色库或后文记忆里有这个角色就提前标给他/她。
+
+11. target_dialogues 中 dialogue_kind=inline 的项目是正文内嵌引号，不要当作独立对白；标为 review，needs_review=true。
+12. candidate_mysteries 只是可选候选；如果候选名称和当前段落地点/人物不一致，必须改用 npc 或 review。
+13. 如果只有轮次推断、没有叙述锚点或自我介绍，请降低 confidence，并在 evidence 里说明轮次依据。
+
+输出 JSON 结构：
+{
+  "annotations": [
+    {
+      "dialogue_id": "必须来自 target_dialogue_ids",
+      "speaker_entity_id": "string",
+      "speaker_display": "string",
+      "speaker_status": "known|mystery|npc|ambiguous|review",
+      "confidence": 0.0,
+      "candidate_speakers": [
+        {"entity_id": "string", "display": "string", "status": "known|mystery|npc|ambiguous|review", "score": 0.0}
+      ],
+      "evidence": ["短证据，不要大段复制原文"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "可选，简短说明整体轮次判断"
+}
+必须为 target_dialogue_ids 中每个 dialogue_id 输出且只输出一条 annotation。
+
+输入 JSON：
+{
+  "volume": {
+    "volume_id": "volume_01",
+    "volume": 1
+  },
+  "target_dialogue_ids": [
+    "volume_01-d000251",
+    "volume_01-d000252",
+    "volume_01-d000253",
+    "volume_01-d000254",
+    "volume_01-d000255",
+    "volume_01-d000256"
+  ],
+  "dialogues": [
+    {
+      "dialogue_id": "volume_01-d000251",
+      "dialogue_index": 250,
+      "window_position": 1,
+      "chapter_id": "volume_01-c003",
+      "chapter_title": "第二幕",
+      "scene_id": "volume_01-c003-s002",
+      "paragraph_id": "volume_01-c003-s002-p000701",
+      "paragraph_index": 700,
+      "local_dialogue_index": 1,
+      "text": "不过，老板您让妻子这样套着外套，还真是保护周到呢。",
+      "quote_text": "「不过，老板您让妻子这样套着外套，还真是保护周到呢。」",
+      "paragraph_text": "「不过，老板您让妻子这样套着外套，还真是保护周到呢。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 27
+    },
+    {
+      "dialogue_id": "volume_01-d000252",
+      "dialogue_index": 251,
+      "window_position": 2,
+      "chapter_id": "volume_01-c003",
+      "chapter_title": "第二幕",
+      "scene_id": "volume_01-c003-s002",
+      "paragraph_id": "volume_01-c003-s002-p000703",
+      "paragraph_index": 702,
+      "local_dialogue_index": 1,
+      "text": "嘿嘿，男人的本性就是越看不到，就越想看。我们能够在这里相遇，也算是神的指引。能不能就看在这个份上，让小的见见夫人一面啊？",
+      "quote_text": "「嘿嘿，男人的本性就是越看不到，就越想看。我们能够在这里相遇，也算是神的指引。能不能就看在这个份上，让小的见见夫人一面啊？」",
+      "paragraph_text": "「嘿嘿，男人的本性就是越看不到，就越想看。我们能够在这里相遇，也算是神的指引。能不能就看在这个份上，让小的见见夫人一面啊？」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 62
+    },
+    {
+      "dialogue_id": "volume_01-d000253",
+      "dialogue_index": 252,
+      "window_position": 3,
+      "chapter_id": "volume_01-c003",
+      "chapter_title": "第二幕",
+      "scene_id": "volume_01-c003-s002",
+      "paragraph_id": "volume_01-c003-s002-p000706",
+      "paragraph_index": 705,
+      "local_dialogue_index": 1,
+      "text": "旅行唯有出发前最愉快，狗儿唯有叫声最吓人，女人唯有背影最美丽。随随便便抛头露面，会坏了人家的美梦，这种事情咱做不来。",
+      "quote_text": "「旅行唯有出发前最愉快，狗儿唯有叫声最吓人，女人唯有背影最美丽。随随便便抛头露面，会坏了人家的美梦，这种事情咱做不来。」",
+      "paragraph_text": "「旅行唯有出发前最愉快，狗儿唯有叫声最吓人，女人唯有背影最美丽。随随便便抛头露面，会坏了人家的美梦，这种事情咱做不来。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 60
+    },
+    {
+      "dialogue_id": "volume_01-d000254",
+      "dialogue_index": 253,
+      "window_position": 4,
+      "chapter_id": "volume_01-c003",
+      "chapter_title": "第二幕",
+      "scene_id": "volume_01-c003-s002",
+      "paragraph_id": "volume_01-c003-s002-p000708",
+      "paragraph_index": 707,
+      "local_dialogue_index": 1,
+      "text": "嘿嘿……夫人真是了得。",
+      "quote_text": "「嘿嘿……夫人真是了得。」",
+      "paragraph_text": "「嘿嘿……夫人真是了得。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 13
+    },
+    {
+      "dialogue_id": "volume_01-d000255",
+      "dialogue_index": 254,
+      "window_position": 5,
+      "chapter_id": "volume_01-c003",
+      "chapter_title": "第二幕",
+      "scene_id": "volume_01-c003-s002",
+      "paragraph_id": "volume_01-c003-s002-p000709",
+      "paragraph_index": 708,
+      "local_dialogue_index": 1,
+      "text": "光是想要怎么不被踩在脚底下，就够我受了。",
+      "quote_text": "「光是想要怎么不被踩在脚底下，就够我受了。」",
+      "paragraph_text": "「光是想要怎么不被踩在脚底下，就够我受了。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 22
+    },
+    {
+      "dialogue_id": "volume_01-d000256",
+      "dialogue_index": 255,
+      "window_position": 6,
+      "chapter_id": "volume_01-c003",
+      "chapter_title": "第二幕",
+      "scene_id": "volume_01-c003-s002",
+      "paragraph_id": "volume_01-c003-s002-p000711",
+      "paragraph_index": 710,
+      "local_dialogue_index": 1,
+      "text": "小的想，能够与两位相遇一定是神的指引。不知道两位有没有兴趣听听小的说话？",
+      "quote_text": "「小的想，能够与两位相遇一定是神的指引。不知道两位有没有兴趣听听小的说话？」",
+      "paragraph_text": "「小的想，能够与两位相遇一定是神的指引。不知道两位有没有兴趣听听小的说话？」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 38
+    }
+  ],
+  "context": {
+    "paragraphs": [
+      {
+        "paragraph_id": "volume_01-c003-s002-p000698",
+        "paragraph_index": 697,
+        "text": "罗伦斯一提到赫萝的名字，她便轻轻点头向杰廉打招呼。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c003-s002-p000699",
+        "paragraph_index": 698,
+        "text": "「喔，夫妻俩一同行商啊？」",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c003-s002-p000700",
+        "paragraph_index": 699,
+        "text": "「妻子生性古怪，认为待在家里不如待在马车上好。」",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c003-s002-p000701",
+        "paragraph_index": 700,
+        "text": "「不过，老板您让妻子这样套着外套，还真是保护周到呢。」",
+        "target_dialogue_ids": [
+          "volume_01-d000251"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c003-s002-p000702",
+        "paragraph_index": 701,
+        "text": "或许杰廉以前曾是城里的市井无赖，他的能言善道让罗伦斯有些佩服。不过，旅行商人亲戚曾告诫过罗伦斯，最好不要有像他这样的说话态度。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c003-s002-p000703",
+        "paragraph_index": 702,
+        "text": "「嘿嘿，男人的本性就是越看不到，就越想看。我们能够在这里相遇，也算是神的指引。能不能就看在这个份上，让小的见见夫人一面啊？」",
+        "target_dialogue_ids": [
+          "volume_01-d000252"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c003-s002-p000704",
+        "paragraph_index": 703,
+        "text": "真是厚颜无耻！尽管赫萝并非真是罗伦斯的妻子，但罗伦斯还是忍不住这么想。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c003-s002-p000705",
+        "paragraph_index": 704,
+        "text": "然而，就在罗伦斯打算出声责怪时，赫萝本人却开口说：",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c003-s002-p000706",
+        "paragraph_index": 705,
+        "text": "「旅行唯有出发前最愉快，狗儿唯有叫声最吓人，女人唯有背影最美丽。随随便便抛头露面，会坏了人家的美梦，这种事情咱做不来。」",
+        "target_dialogue_ids": [
+          "volume_01-d000253"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c003-s002-p000707",
+        "paragraph_index": 706,
+        "text": "赫萝说完后，在外套底下轻轻笑了笑。杰廉被赫萝这么一说，只能尴尬地笑笑。就连罗伦斯都非常佩服赫萝的妙语如珠。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c003-s002-p000708",
+        "paragraph_index": 707,
+        "text": "「嘿嘿……夫人真是了得。」",
+        "target_dialogue_ids": [
+          "volume_01-d000254"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c003-s002-p000709",
+        "paragraph_index": 708,
+        "text": "「光是想要怎么不被踩在脚底下，就够我受了。」",
+        "target_dialogue_ids": [
+          "volume_01-d000255"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c003-s002-p000710",
+        "paragraph_index": 709,
+        "text": "这句话有一半以上是发自罗伦斯的真心。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c003-s002-p000711",
+        "paragraph_index": 710,
+        "text": "「小的想，能够与两位相遇一定是神的指引。不知道两位有没有兴趣听听小的说话？」",
+        "target_dialogue_ids": [
+          "volume_01-d000256"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c003-s002-p000712",
+        "paragraph_index": 711,
+        "text": "就在沉默降临的那一瞬间，杰廉露出缺了门牙的笑脸，挨近罗伦斯说道。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c003-s002-p000713",
+        "paragraph_index": 712,
+        "text": "教会不同于一般的旅馆，虽然会提供房间，但不会为投宿客打点饮食。不过，只要捐款就可以使用锅子。罗伦斯捐款借来锅子，并把五颗马铃薯放入装了水的锅子里。当然了，生火所需的薪柴必须另外付费。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c003-s002-p000714",
+        "paragraph_index": 713,
+        "text": "趁着等待马铃薯煮熟的空档，罗伦斯随手把赫萝寄宿其中的麦子去壳，再找来没有用到的皮袋，把去好壳的麦粒装进去。罗伦斯想起赫萝说过想挂在脖子上，于是拿了一条皮绳回到锅子旁。马铃薯、薪柴、皮袋及皮绳，这些全部加起来也是一小笔钱，罗伦斯一边在心里盘算要向赫罗收多少钱，一边拿着煮熟的马铃薯走回房里。",
+        "target_dialogue_ids": []
+      }
+    ]
+  },
+  "scene_memory": [
+    {
+      "scene_id": "volume_01-c003-s002-r003",
+      "parent_scene_id": "volume_01-c003-s002",
+      "chunk_index": 3,
+      "chunk_count": 6,
+      "scene_summary": "罗伦斯与赫萝在教会中与杰廉互动。杰廉试图接近赫萝，但被赫萝巧妙地拒绝。罗伦斯在等待马铃薯煮熟时处理麦子，并准备与赫萝一同旅行。",
+      "active_characters": [
+        "罗伦斯",
+        "赫萝",
+        "杰廉"
+      ],
+      "relationships": [
+        "罗伦斯与赫萝的关系被杰廉误解为夫妻",
+        "杰廉试图接近赫萝但被拒绝",
+        "罗伦斯对杰廉的厚颜无耻感到不满"
+      ],
+      "notes": "杰廉是本场景中唯一新出现的可追踪人物，其厚颜无耻的说话风格和试图接近赫萝的行为是关键线索。赫萝的机智回应和罗伦斯的反应也提供了角色互动的线索。"
+    },
+    {
+      "scene_id": "volume_01-c003-s002-r004",
+      "parent_scene_id": "volume_01-c003-s002",
+      "chunk_index": 4,
+      "chunk_count": 6,
+      "scene_summary": "罗伦斯与赫萝在房间中互动，赫萝表现出对食物的强烈兴趣，尤其是马铃薯和麦子。两人之间的对话轻松幽默，赫萝展现出狼的特征和非人类的特质。",
+      "active_characters": [
+        "罗伦斯",
+        "赫萝"
+      ],
+      "relationships": [
+        "罗伦斯与赫萝之间有亲密互动，罗伦斯提供食物和物品，赫萝接受并表现出依赖",
+        "赫萝表现出对食物的强烈兴趣，暗示其非人类的特征"
+      ],
+      "notes": "赫萝表现出狼的特征和非人类的特质，但未提及新的神秘人物。场景中没有出现未命名但可追踪的神秘人物。"
+    }
+  ],
+  "candidate_characters": [
+    {
+      "entity_id": "char_0001",
+      "display_name": "罗伦斯",
+      "aliases": [
+        "罗伦斯",
+        "罗伦斯先生"
+      ],
+      "titles": [
+        "中间人",
+        "交易者",
+        "同行",
+        "商人",
+        "小毛头",
+        "小的",
+        "市井无赖",
+        "年轻人"
+      ],
+      "description": "一位行商人，正在与米隆商行的代表马贺特进行交易谈判。他原本期待获得两千枚银币，但实际只得到一百二十枚，感到震惊和困惑。 / 一位行商人，发现并收留了赫萝，决定与她一同旅行。 / 一位二十五岁的自力更生旅行商人，已有七年行商经验，性格泰然自若。 / 一位冷静理性的旅行商人，对赫萝的身份持怀疑态度，但仍保持互动。他注重外表整洁，对商业制度有深入理解。 / 冷静理性的旅行商人，与赫萝一同旅行。在本场景中与米隆商行的马贺特讨论梅迪欧商行的威胁，提出利用崔尼银币交易作为交涉王牌。 / 一位冷静理性的旅行商人，与赫萝一同旅行…",
+      "speech_style": "理性、坚定、略带情绪化 / 冷静、理性，带有悔恨和自责的语气。 / 冷静、理性，语气中带有对赫萝的关心和些许担忧。 / 冷静、理性、略带失落 / 冷静、理性，对商业制度有深入理解，并能清晰地向他人解释。 / 理性、礼貌、略带谨慎。 / 理性、冷静，带有商业分析倾向。 / 理性、沉稳、略带幽默 / 理性、冷静，但因困惑…",
+      "relationship_hints": [
+        "与赫萝一同旅行",
+        "对赫萝的真实性持怀疑态度",
+        "与深山村落的村民有交易关系",
+        "对修道院抱有商业期望但未成功",
+        "与骑士有短暂互动",
+        "与小村落的村民有交易关系",
+        "与修道院有关联",
+        "对教会和异教徒问题有见解"
+      ],
+      "first_seen_scene_id": "volume_01-c000-s003-r001",
+      "latest_seen_scene_id": "volume_01-c008-s003-r002",
+      "confidence": 1.0
+    },
+    {
+      "entity_id": "char_0002",
+      "display_name": "赫萝",
+      "aliases": [
+        "赫萝"
+      ],
+      "titles": [
+        "丰收之神",
+        "咱",
+        "神秘少女",
+        "约伊兹的贤狼",
+        "贤狼"
+      ],
+      "description": "自称丰收之神的神秘少女，拥有狼的耳朵和尾巴。在本场景中协助罗伦斯，表现出对他的关心和保护。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴，行为举止非人类，表现出轻松幽默但略带威胁性的说话风格。在本场景中，她对罗伦斯的伤口进行吸血，引发旁人惊呼，并表现出悲伤的情绪。 / 自称是丰收之神的神秘少女，拥有狼的耳朵和尾巴。在本场景中逐渐显露出非人类的特征，最终完全变成一只巨大的狼。她与罗伦斯有情感交流，表现出悲伤和决绝的情绪。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴，未直接参与本场景，但罗伦斯的行动可能与她有关…",
+      "speech_style": "轻松幽默但略带威胁性，情绪化且带有调侃语气。 / 轻松幽默、略带调侃和威胁 / 轻松幽默、略带威胁性 / 轻松幽默、略带威胁性、撒娇 / 警觉、神秘 / 轻松幽默但略带威胁性 / 轻松幽默、略带调侃 / 轻松幽默但略带威胁性，语气中透露出对罗伦斯的依赖。 / 轻松幽默、略带威胁性、自信 / 轻松幽默但略带威胁性，情绪…",
+      "relationship_hints": [
+        "与罗伦斯一同旅行",
+        "被罗伦斯怀疑是否为真正的神",
+        "与叶勒有附身关系",
+        "与罗伦斯有潜在互动",
+        "与罗伦斯有互动，似乎是被他发现并收留的。",
+        "与罗伦斯有互动，但尚未明确关系",
+        "与罗伦斯互动频繁，表现出对他的信任和玩笑态度",
+        "与罗伦斯互动密切"
+      ],
+      "first_seen_scene_id": "volume_01-c000-s003-r001",
+      "latest_seen_scene_id": "volume_01-c008-s003-r002",
+      "confidence": 1.0
+    },
+    {
+      "entity_id": "char_0009",
+      "display_name": "杰廉",
+      "aliases": [],
+      "titles": [
+        "中间人",
+        "交易者",
+        "同行",
+        "商人",
+        "小毛头",
+        "小的",
+        "市井无赖",
+        "年轻人"
+      ],
+      "description": "一位能言善道的市井无赖，试图接近赫萝并表现出厚颜无耻的态度。 / 提供货币投机情报的商人，被罗伦斯怀疑其动机。 / 与罗伦斯达成交易的中间人，提供情报服务，自称小人物，但行为谨慎。 / 与罗伦斯和赫萝同行的旅人，已离开队伍。他的离开引发了赫萝和罗伦斯的讨论。 / 提出交易提议的人物，未直接出现，但被赫萝提及。 / 被罗伦斯寻找的男子，据称会在日落后出现。 / 据称会在日落后出现的男子，被罗伦斯和赫萝推测会如女店员所说出现。 / 与罗伦斯和赫萝互动的商人，对皮草交易表现出兴趣。 / 提供银币含银量情报的中间人，表现…",
+      "speech_style": "厚颜无耻、能言善道、带有谄媚语气 / 未直接说话，但被罗伦斯和赫萝评价为「小毛头」和「说谎者」 / 谦卑但自信，带有职业性的谨慎语气。 / 未直接发言，但被提及。 / 未知 / 未直接出现 / 直接、略带调侃 / 谦卑、谨慎、略带紧张 / 谦卑、谨慎、带有讨好语气 / 谨慎、不自信 / 未直接说话，但被罗伦斯提及 /…",
+      "relationship_hints": [
+        "对罗伦斯表示敬佩",
+        "试图获取情报",
+        "与罗伦斯和赫萝互动",
+        "与罗伦斯有亲戚关系",
+        "试图接近赫萝",
+        "向罗伦斯提供情报，但罗伦斯怀疑其真实性",
+        "可能向其他商人提供相同情报",
+        "与罗伦斯有商业合作关系"
+      ],
+      "first_seen_scene_id": "volume_01-c003-s002-r002",
+      "latest_seen_scene_id": "volume_01-c004-s008-r005",
+      "confidence": 0.9
+    }
+  ],
+  "candidate_mysteries": []
+}

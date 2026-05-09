@@ -1,0 +1,456 @@
+你是轻小说说话人标注项目的阶段 2：正式标注助手。
+你的任务是判断输入 target_dialogues 中每一句台词的说话人，不要改写原文。
+必须把这些台词当作同一个连续片段来判断，优先保持对话轮次和叙述线索的一致性。
+
+规则：
+1. 只输出严格 JSON，不要 Markdown，不要解释性前后缀。
+2. 如果说话人是候选角色，speaker_entity_id 必须使用 candidate_characters 里的 entity_id，speaker_status 填 known。
+3. 如果说话人像某个未知人物，speaker_entity_id 使用 candidate_mysteries 里的 mystery_id，speaker_status 填 mystery。
+4. 如果只是无法追踪的路人/群体，speaker_status 填 npc，speaker_entity_id 可为空或使用 npc:简短称呼。
+5. 证据不足时不要硬猜，speaker_status 填 ambiguous 或 review，并把 needs_review 设为 true。
+6. candidate_speakers 至少列出 1 个候选；如果无法判断，列出最可能的候选和不确定原因。
+7. confidence 使用 0 到 1 之间的小数，表示你对最终判断的把握。
+8. 不要只因为台词里提到某个名字、职业、地点，就把说话人标成那个实体；被称呼的人通常不是说话人。
+9. 连续问答、交易寒暄、命令/回答等场景要按上下句轮次判断；同一人连续说话必须有叙述或语气证据支持。
+10. 如果当前上下文显示某角色还没有登场，不要因为角色库或后文记忆里有这个角色就提前标给他/她。
+
+11. target_dialogues 中 dialogue_kind=inline 的项目是正文内嵌引号，不要当作独立对白；标为 review，needs_review=true。
+12. candidate_mysteries 只是可选候选；如果候选名称和当前段落地点/人物不一致，必须改用 npc 或 review。
+13. 如果只有轮次推断、没有叙述锚点或自我介绍，请降低 confidence，并在 evidence 里说明轮次依据。
+
+输出 JSON 结构：
+{
+  "annotations": [
+    {
+      "dialogue_id": "必须来自 target_dialogue_ids",
+      "speaker_entity_id": "string",
+      "speaker_display": "string",
+      "speaker_status": "known|mystery|npc|ambiguous|review",
+      "confidence": 0.0,
+      "candidate_speakers": [
+        {"entity_id": "string", "display": "string", "status": "known|mystery|npc|ambiguous|review", "score": 0.0}
+      ],
+      "evidence": ["短证据，不要大段复制原文"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "可选，简短说明整体轮次判断"
+}
+必须为 target_dialogue_ids 中每个 dialogue_id 输出且只输出一条 annotation。
+
+输入 JSON：
+{
+  "volume": {
+    "volume_id": "volume_01",
+    "volume": 1
+  },
+  "target_dialogue_ids": [
+    "volume_01-d000503",
+    "volume_01-d000504",
+    "volume_01-d000505",
+    "volume_01-d000506",
+    "volume_01-d000507",
+    "volume_01-d000508",
+    "volume_01-d000509",
+    "volume_01-d000510"
+  ],
+  "dialogues": [
+    {
+      "dialogue_id": "volume_01-d000503",
+      "dialogue_index": 502,
+      "window_position": 1,
+      "chapter_id": "volume_01-c004",
+      "chapter_title": "第三幕",
+      "scene_id": "volume_01-c004-s004",
+      "paragraph_id": "volume_01-c004-s004-p001187",
+      "paragraph_index": 1186,
+      "local_dialogue_index": 1,
+      "text": "嗯～果然是葡萄酒好。",
+      "quote_text": "「嗯～果然是葡萄酒好。」",
+      "paragraph_text": "「嗯～果然是葡萄酒好。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 12
+    },
+    {
+      "dialogue_id": "volume_01-d000504",
+      "dialogue_index": 503,
+      "window_position": 2,
+      "chapter_id": "volume_01-c004",
+      "chapter_title": "第三幕",
+      "scene_id": "volume_01-c004-s004",
+      "paragraph_id": "volume_01-c004-s004-p001189",
+      "paragraph_index": 1188,
+      "local_dialogue_index": 1,
+      "text": "怎么着？汝不喝吗？",
+      "quote_text": "「怎么着？汝不喝吗？」",
+      "paragraph_text": "「怎么着？汝不喝吗？」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 11
+    },
+    {
+      "dialogue_id": "volume_01-d000505",
+      "dialogue_index": 504,
+      "window_position": 3,
+      "chapter_id": "volume_01-c004",
+      "chapter_title": "第三幕",
+      "scene_id": "volume_01-c004-s004",
+      "paragraph_id": "volume_01-c004-s004-p001191",
+      "paragraph_index": 1190,
+      "local_dialogue_index": 1,
+      "text": "你曾经当过商人吗？",
+      "quote_text": "「你曾经当过商人吗？」",
+      "paragraph_text": "「你曾经当过商人吗？」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 11
+    },
+    {
+      "dialogue_id": "volume_01-d000506",
+      "dialogue_index": 505,
+      "window_position": 4,
+      "chapter_id": "volume_01-c004",
+      "chapter_title": "第三幕",
+      "scene_id": "volume_01-c004-s004",
+      "paragraph_id": "volume_01-c004-s004-p001193",
+      "paragraph_index": 1192,
+      "local_dialogue_index": 1,
+      "text": "怎么？咱的表现伤到汝的自尊呀？",
+      "quote_text": "「怎么？咱的表现伤到汝的自尊呀？」",
+      "paragraph_text": "「怎么？咱的表现伤到汝的自尊呀？」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 17
+    },
+    {
+      "dialogue_id": "volume_01-d000507",
+      "dialogue_index": 506,
+      "window_position": 5,
+      "chapter_id": "volume_01-c004",
+      "chapter_title": "第三幕",
+      "scene_id": "volume_01-c004-s004",
+      "paragraph_id": "volume_01-c004-s004-p001195",
+      "paragraph_index": 1194,
+      "local_dialogue_index": 1,
+      "text": "咱是不清楚汝经历过多少次洽谈，不过咱在那座村落里也看过不少洽谈。那是什么时候来着啊？总之是很久以前的事了。那是一个绝顶聪明的人使用过的方法，不是咱想出来的。",
+      "quote_text": "「咱是不清楚汝经历过多少次洽谈，不过咱在那座村落里也看过不少洽谈。那是什么时候来着啊？总之是很久以前的事了。那是一个绝顶聪明的人使用过的方法，不是咱想出来的。」",
+      "paragraph_text": "「咱是不清楚汝经历过多少次洽谈，不过咱在那座村落里也看过不少洽谈。那是什么时候来着啊？总之是很久以前的事了。那是一个绝顶聪明的人使用过的方法，不是咱想出来的。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 80
+    },
+    {
+      "dialogue_id": "volume_01-d000508",
+      "dialogue_index": 507,
+      "window_position": 6,
+      "chapter_id": "volume_01-c004",
+      "chapter_title": "第三幕",
+      "scene_id": "volume_01-c004-s004",
+      "paragraph_id": "volume_01-c004-s004-p001196",
+      "paragraph_index": 1195,
+      "local_dialogue_index": 1,
+      "text": "真的吗？",
+      "quote_text": "「真的吗？」",
+      "paragraph_text": "罗伦斯没有开口，而是用眼神问：「真的吗？」罗伦斯虽自觉没出息，但看到赫萝边喝酒，边露出带点困扰的笑容点点头后，他不禁叹了口气，同时也稍稍感到安心。",
+      "dialogue_kind": "inline",
+      "outside_quote_text": "罗伦斯没有开口，而是用眼神问：罗伦斯虽自觉没出息，但看到赫萝边喝酒，边露出带点困扰的笑容点点头后，他不禁叹了口气，同时也稍稍感到安心。",
+      "char_start": 15,
+      "char_end": 21
+    },
+    {
+      "dialogue_id": "volume_01-d000509",
+      "dialogue_index": 508,
+      "window_position": 7,
+      "chapter_id": "volume_01-c004",
+      "chapter_title": "第三幕",
+      "scene_id": "volume_01-c004-s004",
+      "paragraph_id": "volume_01-c004-s004-p001197",
+      "paragraph_index": 1196,
+      "local_dialogue_index": 1,
+      "text": "话说回来，我是真的没发现味道。况且，昨晚盖着貂皮睡觉时也没有闻到水果的芳香啊。",
+      "quote_text": "「话说回来，我是真的没发现味道。况且，昨晚盖着貂皮睡觉时也没有闻到水果的芳香啊。」",
+      "paragraph_text": "「话说回来，我是真的没发现味道。况且，昨晚盖着貂皮睡觉时也没有闻到水果的芳香啊。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 41
+    },
+    {
+      "dialogue_id": "volume_01-d000510",
+      "dialogue_index": 509,
+      "window_position": 8,
+      "chapter_id": "volume_01-c004",
+      "chapter_title": "第三幕",
+      "scene_id": "volume_01-c004-s004",
+      "paragraph_id": "volume_01-c004-s004-p001198",
+      "paragraph_index": 1197,
+      "local_dialogue_index": 1,
+      "text": "原因就在于汝买给咱的苹果。",
+      "quote_text": "「原因就在于汝买给咱的苹果。」",
+      "paragraph_text": "「原因就在于汝买给咱的苹果。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 15
+    }
+  ],
+  "context": {
+    "paragraphs": [
+      {
+        "paragraph_id": "volume_01-c004-s004-p001184",
+        "paragraph_index": 1183,
+        "text": "一坐上优伦朵酒吧的座位，罗伦斯感觉整个人疲惫不堪。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s004-p001185",
+        "paragraph_index": 1184,
+        "text": "反看赫萝却是精力充沛。两三下就轻松打败两名商人，想必她的心情一定很好。可能是时间还早，店内显得冷清，所以店员立刻送上酒来。两人举起酒杯干杯，赫萝一口气喝掉，但罗伦斯却只是沾了一小口而已。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s004-p001186",
+        "paragraph_index": 1185,
+        "text": "明明点了特级葡萄酒，喝来却是全然无味。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s004-p001187",
+        "paragraph_index": 1186,
+        "text": "「嗯～果然是葡萄酒好。」",
+        "target_dialogue_ids": [
+          "volume_01-d000503"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c004-s004-p001188",
+        "paragraph_index": 1187,
+        "text": "赫萝说完，连续打了两次嗝。她举高木制酒杯向店员再追加一杯酒，女店员满脸笑容回应出手阔气的客人。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s004-p001189",
+        "paragraph_index": 1188,
+        "text": "「怎么着？汝不喝吗？」",
+        "target_dialogue_ids": [
+          "volume_01-d000504"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c004-s004-p001190",
+        "paragraph_index": 1189,
+        "text": "喀哩喀哩，赫萝一边吃炒过的干豆，一边询问。她的语气听来并不像在炫耀自己的胜利，于是罗伦斯决定直率地发问：",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s004-p001191",
+        "paragraph_index": 1190,
+        "text": "「你曾经当过商人吗？」",
+        "target_dialogue_ids": [
+          "volume_01-d000505"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c004-s004-p001192",
+        "paragraph_index": 1191,
+        "text": "赫萝一边吃着酥脆的干豆，一边举起追加的酒杯，她的脸上意外地露出苦笑说：",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s004-p001193",
+        "paragraph_index": 1192,
+        "text": "「怎么？咱的表现伤到汝的自尊呀？」",
+        "target_dialogue_ids": [
+          "volume_01-d000506"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c004-s004-p001194",
+        "paragraph_index": 1193,
+        "text": "完全正确。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s004-p001195",
+        "paragraph_index": 1194,
+        "text": "「咱是不清楚汝经历过多少次洽谈，不过咱在那座村落里也看过不少洽谈。那是什么时候来着啊？总之是很久以前的事了。那是一个绝顶聪明的人使用过的方法，不是咱想出来的。」",
+        "target_dialogue_ids": [
+          "volume_01-d000507"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c004-s004-p001196",
+        "paragraph_index": 1195,
+        "text": "罗伦斯没有开口，而是用眼神问：「真的吗？」罗伦斯虽自觉没出息，但看到赫萝边喝酒，边露出带点困扰的笑容点点头后，他不禁叹了口气，同时也稍稍感到安心。",
+        "target_dialogue_ids": [
+          "volume_01-d000508"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c004-s004-p001197",
+        "paragraph_index": 1196,
+        "text": "「话说回来，我是真的没发现味道。况且，昨晚盖着貂皮睡觉时也没有闻到水果的芳香啊。」",
+        "target_dialogue_ids": [
+          "volume_01-d000509"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c004-s004-p001198",
+        "paragraph_index": 1197,
+        "text": "「原因就在于汝买给咱的苹果。」",
+        "target_dialogue_ids": [
+          "volume_01-d000510"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c004-s004-p001199",
+        "paragraph_index": 1198,
+        "text": "罗伦斯惊讶的说不出话来，赫萝什么时候动了这种手脚？",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s004-p001200",
+        "paragraph_index": 1199,
+        "text": "可是，这时罗伦斯脑中立即浮现一个疑问。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s004-p001201",
+        "paragraph_index": 1200,
+        "text": "这不是诈欺吗？",
+        "target_dialogue_ids": []
+      }
+    ]
+  },
+  "scene_memory": [
+    {
+      "scene_id": "volume_01-c004-s004-r003",
+      "parent_scene_id": "volume_01-c004-s004",
+      "chunk_index": 3,
+      "chunk_count": 6,
+      "scene_summary": "罗伦斯与赫萝在对话中讨论赫萝的商业技巧，赫萝承认自己并非原创这些策略，而是从他人处学习。罗伦斯对此感到惊讶，但最终选择相信她。",
+      "active_characters": [
+        "罗伦斯",
+        "赫萝"
+      ],
+      "relationships": [
+        "罗伦斯与赫萝之间存在长期互动，表现出信任与怀疑并存的关系。",
+        "赫萝承认自己的商业策略并非原创，暗示她曾向他人学习，但未提及具体人物。"
+      ],
+      "notes": "赫萝的说话风格和自称‘咱’的用法是其显著特征。罗伦斯的理性与赫萝的轻松幽默形成鲜明对比。场景中未出现新的神秘人物，但赫萝提到的‘绝顶聪明的人’可能在后文出现。"
+    }
+  ],
+  "candidate_characters": [
+    {
+      "entity_id": "char_0001",
+      "display_name": "罗伦斯",
+      "aliases": [
+        "罗伦斯",
+        "罗伦斯先生"
+      ],
+      "titles": [
+        "中间人",
+        "交易者",
+        "同行",
+        "商人",
+        "小毛头",
+        "小的",
+        "市井无赖",
+        "年轻人"
+      ],
+      "description": "一位行商人，正在与米隆商行的代表马贺特进行交易谈判。他原本期待获得两千枚银币，但实际只得到一百二十枚，感到震惊和困惑。 / 一位行商人，发现并收留了赫萝，决定与她一同旅行。 / 一位二十五岁的自力更生旅行商人，已有七年行商经验，性格泰然自若。 / 一位冷静理性的旅行商人，对赫萝的身份持怀疑态度，但仍保持互动。他注重外表整洁，对商业制度有深入理解。 / 冷静理性的旅行商人，与赫萝一同旅行。在本场景中与米隆商行的马贺特讨论梅迪欧商行的威胁，提出利用崔尼银币交易作为交涉王牌。 / 一位冷静理性的旅行商人，与赫萝一同旅行…",
+      "speech_style": "理性、坚定、略带情绪化 / 冷静、理性，带有悔恨和自责的语气。 / 冷静、理性，语气中带有对赫萝的关心和些许担忧。 / 冷静、理性、略带失落 / 冷静、理性，对商业制度有深入理解，并能清晰地向他人解释。 / 理性、礼貌、略带谨慎。 / 理性、冷静，带有商业分析倾向。 / 理性、沉稳、略带幽默 / 理性、冷静，但因困惑…",
+      "relationship_hints": [
+        "与赫萝一同旅行",
+        "对赫萝的真实性持怀疑态度",
+        "与深山村落的村民有交易关系",
+        "对修道院抱有商业期望但未成功",
+        "与骑士有短暂互动",
+        "与小村落的村民有交易关系",
+        "与修道院有关联",
+        "对教会和异教徒问题有见解"
+      ],
+      "first_seen_scene_id": "volume_01-c000-s003-r001",
+      "latest_seen_scene_id": "volume_01-c008-s003-r002",
+      "confidence": 1.0
+    },
+    {
+      "entity_id": "char_0002",
+      "display_name": "赫萝",
+      "aliases": [
+        "赫萝"
+      ],
+      "titles": [
+        "丰收之神",
+        "咱",
+        "神秘少女",
+        "约伊兹的贤狼",
+        "贤狼"
+      ],
+      "description": "自称丰收之神的神秘少女，拥有狼的耳朵和尾巴。在本场景中协助罗伦斯，表现出对他的关心和保护。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴，行为举止非人类，表现出轻松幽默但略带威胁性的说话风格。在本场景中，她对罗伦斯的伤口进行吸血，引发旁人惊呼，并表现出悲伤的情绪。 / 自称是丰收之神的神秘少女，拥有狼的耳朵和尾巴。在本场景中逐渐显露出非人类的特征，最终完全变成一只巨大的狼。她与罗伦斯有情感交流，表现出悲伤和决绝的情绪。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴，未直接参与本场景，但罗伦斯的行动可能与她有关…",
+      "speech_style": "轻松幽默但略带威胁性，情绪化且带有调侃语气。 / 轻松幽默、略带调侃和威胁 / 轻松幽默、略带威胁性 / 轻松幽默、略带威胁性、撒娇 / 警觉、神秘 / 轻松幽默但略带威胁性 / 轻松幽默、略带调侃 / 轻松幽默但略带威胁性，语气中透露出对罗伦斯的依赖。 / 轻松幽默、略带威胁性、自信 / 轻松幽默但略带威胁性，情绪…",
+      "relationship_hints": [
+        "与罗伦斯一同旅行",
+        "被罗伦斯怀疑是否为真正的神",
+        "与叶勒有附身关系",
+        "与罗伦斯有潜在互动",
+        "与罗伦斯有互动，似乎是被他发现并收留的。",
+        "与罗伦斯有互动，但尚未明确关系",
+        "与罗伦斯互动频繁，表现出对他的信任和玩笑态度",
+        "与罗伦斯互动密切"
+      ],
+      "first_seen_scene_id": "volume_01-c000-s003-r001",
+      "latest_seen_scene_id": "volume_01-c008-s003-r002",
+      "confidence": 1.0
+    },
+    {
+      "entity_id": "char_0010",
+      "display_name": "店员",
+      "aliases": [],
+      "titles": [
+        "米隆商行店员",
+        "采购人员",
+        "鉴定员",
+        "鉴定商品的采购人员"
+      ],
+      "description": "在卸货场迎接罗伦斯的店员，穿着整洁，态度专业。 / 商行的店员，负责接待罗伦斯并指引卸货场的位置。",
+      "speech_style": "礼貌、热情、简洁 / 礼貌、略显紧张",
+      "relationship_hints": [
+        "与罗伦斯互动",
+        "引导罗伦斯前往左手边人员",
+        "与罗伦斯有互动",
+        "提供卸货场指引"
+      ],
+      "first_seen_scene_id": "volume_01-c004-s002-r005",
+      "latest_seen_scene_id": "volume_01-c008-s002-r006",
+      "confidence": 0.85
+    },
+    {
+      "entity_id": "char_0018",
+      "display_name": "女店员",
+      "aliases": [],
+      "titles": [],
+      "description": "酒吧的女店员，对杰廉的名字反应积极，提供有用信息。 / 酒吧的女店员，对顾客礼貌，提供服务，并对杰廉的名字表现出兴趣。 / 酒吧的女店员，对杰廉的名字表现出兴趣，并提供信息。她的行为被罗伦斯和赫萝认为是谎言。",
+      "speech_style": "开朗、直接，语气友好。 / 礼貌、简短，服务导向。 / 礼貌、服务性",
+      "relationship_hints": [
+        "与杰廉有联系",
+        "在酒吧工作",
+        "与罗伦斯有互动",
+        "对杰廉的名字反应积极",
+        "试图拖延罗伦斯与赫萝的时间"
+      ],
+      "first_seen_scene_id": "volume_01-c004-s004-r005",
+      "latest_seen_scene_id": "volume_01-c004-s005-r001",
+      "confidence": 0.85
+    }
+  ],
+  "candidate_mysteries": []
+}

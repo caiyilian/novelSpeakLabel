@@ -2,26 +2,20 @@
   "annotations": [
     {
       "dialogue_id": "volume_01-d000645",
-      "speaker_entity_id": "mystery_volume_01_c004_s007_r002_神秘女孩",
-      "speaker_display": "神秘女孩",
-      "speaker_status": "mystery",
-      "confidence": 0.8,
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
       "candidate_speakers": [
         {
-          "entity_id": "mystery_volume_01_c004_s007_r002_神秘女孩",
-          "display": "神秘女孩",
-          "status": "mystery",
-          "score": 0.8
-        },
-        {
-          "entity_id": "char_0002",
-          "display": "赫萝",
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
           "status": "known",
-          "score": 0.6
+          "score": 0.95
         }
       ],
       "evidence": [
-        "上下文提到神秘女孩是罗伦斯在帕斯罗村路上捡到的，此句是她对罗伦斯的回应。"
+        "上下文提到罗伦斯说他是在路上捡到赫萝的，接着这句话是对此的回应，符合对话轮次"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -29,20 +23,20 @@
     },
     {
       "dialogue_id": "volume_01-d000646",
-      "speaker_entity_id": "char_0001",
-      "speaker_display": "罗伦斯",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
       "speaker_status": "known",
       "confidence": 0.9,
       "candidate_speakers": [
         {
-          "entity_id": "char_0001",
-          "display": "罗伦斯",
+          "entity_id": "char_0002",
+          "display": "赫萝",
           "status": "known",
           "score": 0.9
         }
       ],
       "evidence": [
-        "罗伦斯是对话的发起者，此句是他的回应，语气带有调侃和轻松。"
+        "赫萝在上下文中被描述为听到罗伦斯的话后附和，符合此句的语气和位置"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -50,20 +44,20 @@
     },
     {
       "dialogue_id": "volume_01-d000647",
-      "speaker_entity_id": "char_0001",
-      "speaker_display": "罗伦斯",
+      "speaker_entity_id": "char_0019",
+      "speaker_display": "怀兹",
       "speaker_status": "known",
       "confidence": 0.9,
       "candidate_speakers": [
         {
-          "entity_id": "char_0001",
-          "display": "罗伦斯",
+          "entity_id": "char_0019",
+          "display": "怀兹",
           "status": "known",
           "score": 0.9
         }
       ],
       "evidence": [
-        "罗伦斯继续与神秘女孩对话，询问其名字，符合上下文的对话轮次。"
+        "上下文提到怀兹对赫萝表现出兴趣，此句是怀兹对赫萝的提问"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -71,26 +65,20 @@
     },
     {
       "dialogue_id": "volume_01-d000648",
-      "speaker_entity_id": "mystery_volume_01_c004_s007_r002_神秘女孩",
-      "speaker_display": "神秘女孩",
-      "speaker_status": "mystery",
-      "confidence": 0.85,
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
       "candidate_speakers": [
-        {
-          "entity_id": "mystery_volume_01_c004_s007_r002_神秘女孩",
-          "display": "神秘女孩",
-          "status": "mystery",
-          "score": 0.85
-        },
         {
           "entity_id": "char_0002",
           "display": "赫萝",
           "status": "known",
-          "score": 0.6
+          "score": 0.95
         }
       ],
       "evidence": [
-        "神秘女孩回答罗伦斯的问题，自称名字为赫萝，符合上下文的对话轮次。"
+        "赫萝在上下文中被描述为回答怀兹的问题，符合此句的语气和位置"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -111,7 +99,7 @@
         }
       ],
       "evidence": [
-        "怀兹对赫萝的名字表示称赞，符合他试图接近赫萝的行为模式。"
+        "上下文提到怀兹夸奖赫萝，此句是怀兹的回应"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -122,17 +110,17 @@
       "speaker_entity_id": "char_0019",
       "speaker_display": "怀兹",
       "speaker_status": "known",
-      "confidence": 0.95,
+      "confidence": 0.9,
       "candidate_speakers": [
         {
           "entity_id": "char_0019",
           "display": "怀兹",
           "status": "known",
-          "score": 0.95
+          "score": 0.9
         }
       ],
       "evidence": [
-        "怀兹继续表达对赫萝的兴趣，提出工作和婚姻的建议，符合他的性格和对话轮次。"
+        "上下文提到怀兹试图追求赫萝，此句是怀兹的进一步表达"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -153,7 +141,7 @@
         }
       ],
       "evidence": [
-        "罗伦斯打断怀兹的对话，表明他有事要请怀兹帮忙，符合上下文的对话轮次。"
+        "上下文提到罗伦斯打断怀兹的话题，此句是罗伦斯的回应"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -174,12 +162,12 @@
         }
       ],
       "evidence": [
-        "怀兹对罗伦斯的打断表示不满，并讽刺他抢先一步，符合他的性格和对话轮次。"
+        "上下文提到怀兹对罗伦斯的打断表现出厌恶，此句是怀兹的回应"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
       "needs_review": false
     }
   ],
-  "window_notes": "对话轮次清晰，罗伦斯、怀兹和神秘女孩（赫萝）交替发言，符合场景中三人互动的模式。"
+  "window_notes": "对话轮次清晰，罗伦斯、赫萝、怀兹三人交替发言，符合场景中三人互动的叙述线索。"
 }

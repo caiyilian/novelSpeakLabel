@@ -16,7 +16,7 @@
         }
       ],
       "evidence": [
-        "赫萝看到出现在转角的人不禁叫了出来。"
+        "上下文提到赫萝看到叶勒后叫了出来，紧接着是这句「啊。」，符合她的反应语气。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -37,8 +37,7 @@
         }
       ],
       "evidence": [
-        "出现在转角的人是叶勒。",
-        "叶勒说话的神情仿佛自己不是村民似的。"
+        "对话中明确称呼「罗伦斯」，且上下文提到叶勒刚刚出现，符合说话人身份。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -49,17 +48,17 @@
       "speaker_entity_id": "char_0004",
       "speaker_display": "叶勒",
       "speaker_status": "known",
-      "confidence": 0.95,
+      "confidence": 0.9,
       "candidate_speakers": [
         {
           "entity_id": "char_0004",
           "display": "叶勒",
           "status": "known",
-          "score": 0.95
+          "score": 0.9
         }
       ],
       "evidence": [
-        "叶勒说话的神情仿佛自己不是村民似的。"
+        "叶勒在前一句刚提到罗伦斯，接下来继续谈论帕斯罗村的交易，符合对话轮次。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -70,17 +69,17 @@
       "speaker_entity_id": "char_0004",
       "speaker_display": "叶勒",
       "speaker_status": "known",
-      "confidence": 0.95,
+      "confidence": 0.85,
       "candidate_speakers": [
         {
           "entity_id": "char_0004",
           "display": "叶勒",
           "status": "known",
-          "score": 0.95
+          "score": 0.85
         }
       ],
       "evidence": [
-        "叶勒说话的神情仿佛自己不是村民似的。"
+        "叶勒继续谈论帕斯罗村的交易细节，符合对话轮次。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -91,17 +90,17 @@
       "speaker_entity_id": "char_0004",
       "speaker_display": "叶勒",
       "speaker_status": "known",
-      "confidence": 0.95,
+      "confidence": 0.8,
       "candidate_speakers": [
         {
           "entity_id": "char_0004",
           "display": "叶勒",
           "status": "known",
-          "score": 0.95
+          "score": 0.8
         }
       ],
       "evidence": [
-        "叶勒说话的神情仿佛自己不是村民似的。"
+        "叶勒在前几句持续发言，此句为对话轮次的延续。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -109,20 +108,20 @@
     },
     {
       "dialogue_id": "volume_01-d001239",
-      "speaker_entity_id": "char_0002",
-      "speaker_display": "赫萝",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
       "speaker_status": "known",
-      "confidence": 0.9,
+      "confidence": 0.85,
       "candidate_speakers": [
         {
-          "entity_id": "char_0002",
-          "display": "赫萝",
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
           "status": "known",
-          "score": 0.9
+          "score": 0.85
         }
       ],
       "evidence": [
-        "赫萝对叶勒的出现表现出情绪波动。"
+        "对话中明确称呼「叶勒」，且上下文提到罗伦斯对叶勒的反应，符合说话人身份。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -133,17 +132,17 @@
       "speaker_entity_id": "char_0004",
       "speaker_display": "叶勒",
       "speaker_status": "known",
-      "confidence": 0.95,
+      "confidence": 0.8,
       "candidate_speakers": [
         {
           "entity_id": "char_0004",
           "display": "叶勒",
           "status": "known",
-          "score": 0.95
+          "score": 0.8
         }
       ],
       "evidence": [
-        "叶勒把视线移向罗伦斯身后的赫萝，继续说："
+        "叶勒在前一句刚被罗伦斯回应，此句为对话轮次的延续。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -154,23 +153,23 @@
       "speaker_entity_id": "char_0004",
       "speaker_display": "叶勒",
       "speaker_status": "known",
-      "confidence": 0.95,
+      "confidence": 0.8,
       "candidate_speakers": [
         {
           "entity_id": "char_0004",
           "display": "叶勒",
           "status": "known",
-          "score": 0.95
+          "score": 0.8
         }
       ],
       "evidence": [
-        "叶勒把视线移向罗伦斯身后的赫萝，继续说："
+        "叶勒在前几句持续发言，此句为对话轮次的延续。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
       "needs_review": false
     }
   ],
-  "window_notes": "对话轮次清晰，叶勒和赫萝交替发言，符合上下文中的互动模式。"
+  "window_notes": "对话轮次清晰，叶勒和罗伦斯交替发言，赫萝在开头有简短反应。所有台词均可通过上下文和角色行为合理分配。"
 }
 ```

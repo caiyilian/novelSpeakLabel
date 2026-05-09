@@ -1,0 +1,105 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000047",
+      "speaker_entity_id": "mystery_volume_01_c002_s002_r005_神秘女孩",
+      "speaker_display": "神秘女孩",
+      "speaker_status": "mystery",
+      "confidence": 0.7,
+      "candidate_speakers": [
+        {
+          "entity_id": "mystery_volume_01_c002_s002_r005_神秘女孩",
+          "display": "神秘女孩",
+          "status": "mystery",
+          "score": 0.85
+        },
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.1
+        }
+      ],
+      "evidence": ["前文描述女孩在马车上睡觉，且罗伦斯未看到其醒来，推测为同一人；但未明确身份"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    },
+    {
+      "dialogue_id": "volume_01-d000048",
+      "speaker_entity_id": "mystery_volume_01_c002_s002_r005_神秘女孩",
+      "speaker_display": "神秘女孩",
+      "speaker_status": "mystery",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {
+          "entity_id": "mystery_volume_01_c002_s002_r005_神秘女孩",
+          "display": "神秘女孩",
+          "status": "mystery",
+          "score": 0.85
+        },
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.1
+        }
+      ],
+      "evidence": ["罗伦斯在惊愕中喊出‘喂！’，结合上下文推测为同一人；但未确认是否为赫萝"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    },
+    {
+      "dialogue_id": "volume_01-d000049",
+      "speaker_entity_id": "mystery_volume_01_c002_s002_r005_神秘女孩",
+      "speaker_display": "神秘女孩",
+      "speaker_status": "mystery",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "mystery_volume_01_c002_s002_r005_神秘女孩",
+          "display": "神秘女孩",
+          "status": "mystery",
+          "score": 0.85
+        },
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.1
+        }
+      ],
+      "evidence": ["罗伦斯连续呼唤女孩，语气带有责备意味，推测为同一人；但未明确身份"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    },
+    {
+      "dialogue_id": "volume_01-d000050",
+      "speaker_entity_id": "mystery_volume_01_c002_s002_r005_神秘女孩",
+      "speaker_display": "神秘女孩",
+      "speaker_status": "mystery",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {
+          "entity_id": "mystery_volume_01_c002_s002_r005_神秘女孩",
+          "display": "神秘女孩",
+          "status": "mystery",
+          "score": 0.85
+        },
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.1
+        }
+      ],
+      "evidence": ["女孩对罗伦斯的呼唤做出反应，声音甜美，符合神秘女孩描述；但未确认是否为赫萝"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    }
+  ],
+  "window_notes": "四句台词构成连续对话轮次，从罗伦斯惊愕地喊出‘喂！’到女孩反应，推测为同一人，但身份尚未明确"
+}

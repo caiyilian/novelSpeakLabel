@@ -1,0 +1,30 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000026",
+      "speaker_entity_id": "char_0005",
+      "speaker_display": "农夫",
+      "speaker_status": "known",
+      "confidence": 0.75,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0005",
+          "display": "农夫",
+          "status": "known",
+          "score": 0.75
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.2
+        }
+      ],
+      "evidence": ["前文描写罗伦斯在麦田中与农夫交谈，该台词符合农夫朴实真诚的说话风格；罗伦斯在前文有苦笑动作，但未直接发言。"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "根据上下文，罗伦斯正在与农夫互动，该台词语气符合农夫的朴实风格，且罗伦斯未直接发言，因此推测为农夫所说。"
+}

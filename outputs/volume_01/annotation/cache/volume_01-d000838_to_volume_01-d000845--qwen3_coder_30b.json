@@ -1,0 +1,237 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000838",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 1.0
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.0
+        }
+      ],
+      "evidence": [
+        "赫萝从床上坐起，对罗伦斯说话，上下文显示她刚醒来，情绪轻松。",
+        "赫萝在对话中表现出对罗伦斯的关心和调侃语气。",
+        "赫萝在前文已出现并参与互动，罗伦斯对她的状态有回应。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000839",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 1.0
+        },
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.0
+        }
+      ],
+      "evidence": [
+        "罗伦斯在前文对赫萝的状态做出回应，上下文逻辑连贯。",
+        "罗伦斯对赫萝的状况有明确关注，符合其理性冷静的性格。",
+        "赫萝回应后，罗伦斯继续给出建议，符合角色互动逻辑。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000840",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 1.0
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.0
+        }
+      ],
+      "evidence": [
+        "赫萝在前文已出现并参与互动，回应罗伦斯的询问。",
+        "赫萝语气轻松，符合其性格特征。",
+        "赫萝提到肚子饿，符合她刚醒来、需要进食的场景。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000841",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 1.0
+        },
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.0
+        }
+      ],
+      "evidence": [
+        "罗伦斯对赫萝的状态做出回应，符合其理性冷静的性格。",
+        "罗伦斯给出建议，符合其角色设定。",
+        "赫萝回应后，罗伦斯继续给出建议，符合角色互动逻辑。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000842",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 1.0
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.0
+        }
+      ],
+      "evidence": [
+        "赫萝在前文已出现并参与互动，语气轻松。",
+        "赫萝在对话中表现出对罗伦斯的调侃语气。",
+        "赫萝在前文已表现出对罗伦斯的关心和互动。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000843",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 1.0
+        },
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.0
+        }
+      ],
+      "evidence": [
+        "罗伦斯在前文对赫萝的状况做出回应，符合其角色设定。",
+        "罗伦斯给出建议，符合其理性冷静的性格。",
+        "赫萝回应后，罗伦斯继续给出建议，符合角色互动逻辑。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000844",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 1.0
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.0
+        }
+      ],
+      "evidence": [
+        "赫萝在前文已出现并参与互动，语气轻松。",
+        "赫萝在对话中表现出对罗伦斯的调侃语气。",
+        "赫萝在前文已表现出对罗伦斯的关心和互动。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000845",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 1.0
+        },
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.0
+        }
+      ],
+      "evidence": [
+        "罗伦斯在前文对赫萝的状况做出回应，符合其角色设定。",
+        "罗伦斯给出建议，符合其理性冷静的性格。",
+        "赫萝回应后，罗伦斯继续给出建议，符合角色互动逻辑。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，赫萝与罗伦斯交替发言，赫萝在前半段表现轻松调侃，罗伦斯则理性回应。"
+}

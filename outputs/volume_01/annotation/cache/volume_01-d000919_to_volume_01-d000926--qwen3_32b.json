@@ -2,29 +2,31 @@
   "annotations": [
     {
       "dialogue_id": "volume_01-d000919",
-      "speaker_entity_id": "char_0030",
-      "speaker_display": "米隆商行",
-      "speaker_status": "ambiguous",
-      "confidence": 0.4,
+      "speaker_entity_id": "mystery_volume_01_c005_s006_r001_追踪者A",
+      "speaker_display": "追踪者A",
+      "speaker_status": "mystery",
+      "confidence": 0.75,
       "candidate_speakers": [
         {
           "entity_id": "mystery_volume_01_c005_s006_r001_追踪者A",
           "display": "追踪者A",
           "status": "mystery",
-          "score": 0.6
+          "score": 0.75
         },
         {
-          "entity_id": "char_0030",
-          "display": "米隆商行",
-          "status": "known",
-          "score": 0.4
+          "entity_id": "mystery_volume_01_c005_s006_r001_追踪者B",
+          "display": "追踪者B",
+          "status": "mystery",
+          "score": 0.25
         }
       ],
       "evidence": [
-        "台词语气强硬，像是在指挥手下行动",
-        "上下文提到对方派出来的人数众多，可能与追踪者有关"
+        "台词语气强硬，符合追踪者A的描述",
+        "上下文提到对方人数众多且熟悉地形，符合追踪者A的行动风格"
       ],
-      "needs_review": true
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
     },
     {
       "dialogue_id": "volume_01-d000920",
@@ -40,167 +42,188 @@
           "score": 0.7
         },
         {
-          "entity_id": "char_0030",
-          "display": "米隆商行",
-          "status": "known",
+          "entity_id": "mystery_volume_01_c005_s006_r001_追踪者B",
+          "display": "追踪者B",
+          "status": "mystery",
           "score": 0.3
         }
       ],
       "evidence": [
-        "台词提到对方派出来的人数众多，语气像是在报告情况",
-        "上下文显示说话人是追踪者之一"
-      ]
+        "台词内容与追踪者A的观察一致，提到对方人数众多和地形熟悉",
+        "上下文显示这是追踪者A的评论，而非罗伦斯或赫萝"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
     },
     {
       "dialogue_id": "volume_01-d000921",
-      "speaker_entity_id": "char_0001",
-      "speaker_display": "罗伦斯",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
       "speaker_status": "known",
-      "confidence": 0.85,
+      "confidence": 0.9,
       "candidate_speakers": [
-        {
-          "entity_id": "char_0001",
-          "display": "罗伦斯",
-          "status": "known",
-          "score": 0.85
-        },
         {
           "entity_id": "char_0002",
           "display": "赫萝",
           "status": "known",
-          "score": 0.15
+          "score": 0.9
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.1
         }
       ],
       "evidence": [
-        "上下文显示罗伦斯和赫萝正在讨论局势",
-        "语气符合罗伦斯冷静理性的风格"
-      ]
+        "上下文显示赫萝正在提出策略建议",
+        "赫萝在场景中主导讨论，语气符合其风格"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
     },
     {
       "dialogue_id": "volume_01-d000922",
       "speaker_entity_id": "char_0002",
       "speaker_display": "赫萝",
       "speaker_status": "known",
-      "confidence": 0.9,
+      "confidence": 0.85,
       "candidate_speakers": [
         {
           "entity_id": "char_0002",
           "display": "赫萝",
           "status": "known",
-          "score": 0.9
+          "score": 0.85
         },
         {
           "entity_id": "char_0001",
           "display": "罗伦斯",
           "status": "known",
-          "score": 0.1
+          "score": 0.15
         }
       ],
       "evidence": [
-        "赫萝在上下文中主导策略讨论",
-        "语气轻松，符合赫萝的说话风格"
-      ]
+        "赫萝在前一句提出局势不妙，此句是她提出的策略建议",
+        "上下文显示赫萝主导策略讨论"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
     },
     {
       "dialogue_id": "volume_01-d000923",
       "speaker_entity_id": "char_0002",
       "speaker_display": "赫萝",
       "speaker_status": "known",
-      "confidence": 0.9,
+      "confidence": 0.8,
       "candidate_speakers": [
         {
           "entity_id": "char_0002",
           "display": "赫萝",
           "status": "known",
-          "score": 0.9
+          "score": 0.8
         },
         {
           "entity_id": "char_0001",
           "display": "罗伦斯",
           "status": "known",
-          "score": 0.1
+          "score": 0.2
         }
       ],
       "evidence": [
-        "使用「咱」自称，符合赫萝的说话风格",
-        "上下文显示赫萝在回应罗伦斯的建议"
-      ]
+        "赫萝在前一句提出兵分两路，此句是她对策略的补充",
+        "使用「咱」自称，符合赫萝的说话风格"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
     },
     {
       "dialogue_id": "volume_01-d000924",
       "speaker_entity_id": "char_0001",
       "speaker_display": "罗伦斯",
       "speaker_status": "known",
-      "confidence": 0.85,
+      "confidence": 0.75,
       "candidate_speakers": [
         {
           "entity_id": "char_0001",
           "display": "罗伦斯",
           "status": "known",
-          "score": 0.85
+          "score": 0.75
         },
         {
           "entity_id": "char_0002",
           "display": "赫萝",
           "status": "known",
-          "score": 0.15
+          "score": 0.25
         }
       ],
       "evidence": [
-        "罗伦斯在上下文中对赫萝的建议表示回应",
-        "语气简洁，符合罗伦斯的说话风格"
-      ]
+        "赫萝在前一句提出想法，罗伦斯回应「比如说？」符合对话轮次",
+        "罗伦斯在场景中通常较为理性，此句符合其风格"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
     },
     {
       "dialogue_id": "volume_01-d000925",
       "speaker_entity_id": "char_0002",
       "speaker_display": "赫萝",
       "speaker_status": "known",
-      "confidence": 0.9,
+      "confidence": 0.85,
       "candidate_speakers": [
         {
           "entity_id": "char_0002",
           "display": "赫萝",
           "status": "known",
-          "score": 0.9
+          "score": 0.85
         },
         {
           "entity_id": "char_0001",
           "display": "罗伦斯",
           "status": "known",
-          "score": 0.1
+          "score": 0.15
         }
       ],
       "evidence": [
-        "使用「咱」自称，符合赫萝的说话风格",
-        "上下文显示赫萝在详细说明自己的计划"
-      ]
+        "赫萝在前一句被罗伦斯问及「比如说？」，此句是她的回应",
+        "使用「咱」自称，符合赫萝的说话风格"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
     },
     {
       "dialogue_id": "volume_01-d000926",
       "speaker_entity_id": "char_0001",
       "speaker_display": "罗伦斯",
       "speaker_status": "known",
-      "confidence": 0.85,
+      "confidence": 0.8,
       "candidate_speakers": [
         {
           "entity_id": "char_0001",
           "display": "罗伦斯",
           "status": "known",
-          "score": 0.85
+          "score": 0.8
         },
         {
           "entity_id": "char_0002",
           "display": "赫萝",
           "status": "known",
-          "score": 0.15
+          "score": 0.2
         }
       ],
       "evidence": [
-        "罗伦斯在上下文中对赫萝的计划表示反对",
-        "语气急切，符合罗伦斯的反应风格"
-      ]
+        "赫萝在前一句提出策略，罗伦斯表示反对，符合对话轮次",
+        "语气激动，符合罗伦斯对赫萝独自行动的担忧"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
     }
   ],
-  "window_notes": "对话轮次清晰，罗伦斯和赫萝交替发言，符合两人在场景中的互动模式。追踪者A在前两句台词中出现，但缺乏明确身份线索。"
+  "window_notes": "对话轮次清晰，赫萝和罗伦斯交替发言，符合场景中两人讨论策略的互动模式。追踪者A在对话开始时出现，语气强硬，符合其身份。"
 }

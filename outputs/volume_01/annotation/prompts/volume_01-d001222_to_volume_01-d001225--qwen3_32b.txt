@@ -1,0 +1,291 @@
+你是轻小说说话人标注项目的阶段 2：正式标注助手。
+你的任务是判断输入 target_dialogues 中每一句台词的说话人，不要改写原文。
+必须把这些台词当作同一个连续片段来判断，优先保持对话轮次和叙述线索的一致性。
+
+规则：
+1. 只输出严格 JSON，不要 Markdown，不要解释性前后缀。
+2. 如果说话人是候选角色，speaker_entity_id 必须使用 candidate_characters 里的 entity_id，speaker_status 填 known。
+3. 如果说话人像某个未知人物，speaker_entity_id 使用 candidate_mysteries 里的 mystery_id，speaker_status 填 mystery。
+4. 如果只是无法追踪的路人/群体，speaker_status 填 npc，speaker_entity_id 可为空或使用 npc:简短称呼。
+5. 证据不足时不要硬猜，speaker_status 填 ambiguous 或 review，并把 needs_review 设为 true。
+6. candidate_speakers 至少列出 1 个候选；如果无法判断，列出最可能的候选和不确定原因。
+7. confidence 使用 0 到 1 之间的小数，表示你对最终判断的把握。
+8. 不要只因为台词里提到某个名字、职业、地点，就把说话人标成那个实体；被称呼的人通常不是说话人。
+9. 连续问答、交易寒暄、命令/回答等场景要按上下句轮次判断；同一人连续说话必须有叙述或语气证据支持。
+10. 如果当前上下文显示某角色还没有登场，不要因为角色库或后文记忆里有这个角色就提前标给他/她。
+
+11. target_dialogues 中 dialogue_kind=inline 的项目是正文内嵌引号，不要当作独立对白；标为 review，needs_review=true。
+12. candidate_mysteries 只是可选候选；如果候选名称和当前段落地点/人物不一致，必须改用 npc 或 review。
+13. 如果只有轮次推断、没有叙述锚点或自我介绍，请降低 confidence，并在 evidence 里说明轮次依据。
+
+输出 JSON 结构：
+{
+  "annotations": [
+    {
+      "dialogue_id": "必须来自 target_dialogue_ids",
+      "speaker_entity_id": "string",
+      "speaker_display": "string",
+      "speaker_status": "known|mystery|npc|ambiguous|review",
+      "confidence": 0.0,
+      "candidate_speakers": [
+        {"entity_id": "string", "display": "string", "status": "known|mystery|npc|ambiguous|review", "score": 0.0}
+      ],
+      "evidence": ["短证据，不要大段复制原文"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "可选，简短说明整体轮次判断"
+}
+必须为 target_dialogue_ids 中每个 dialogue_id 输出且只输出一条 annotation。
+
+输入 JSON：
+{
+  "volume": {
+    "volume_id": "volume_01",
+    "volume": 1
+  },
+  "target_dialogue_ids": [
+    "volume_01-d001222",
+    "volume_01-d001223",
+    "volume_01-d001224",
+    "volume_01-d001225"
+  ],
+  "dialogues": [
+    {
+      "dialogue_id": "volume_01-d001222",
+      "dialogue_index": 1221,
+      "window_position": 1,
+      "chapter_id": "volume_01-c007",
+      "chapter_title": "第六幕",
+      "scene_id": "volume_01-c007-s002",
+      "paragraph_id": "volume_01-c007-s002-p002711",
+      "paragraph_index": 2710,
+      "local_dialogue_index": 1,
+      "text": "……这纱布？",
+      "quote_text": "「……这纱布？」",
+      "paragraph_text": "「……这纱布？」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 8
+    },
+    {
+      "dialogue_id": "volume_01-d001223",
+      "dialogue_index": 1222,
+      "window_position": 2,
+      "chapter_id": "volume_01-c007",
+      "chapter_title": "第六幕",
+      "scene_id": "volume_01-c007-s002",
+      "paragraph_id": "volume_01-c007-s002-p002712",
+      "paragraph_index": 2711,
+      "local_dialogue_index": 1,
+      "text": "咱撕下袖子当纱布。汝连这都不知道啊？",
+      "quote_text": "「咱撕下袖子当纱布。汝连这都不知道啊？」",
+      "paragraph_text": "「咱撕下袖子当纱布。汝连这都不知道啊？」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 20
+    },
+    {
+      "dialogue_id": "volume_01-d001224",
+      "dialogue_index": 1223,
+      "window_position": 3,
+      "chapter_id": "volume_01-c007",
+      "chapter_title": "第六幕",
+      "scene_id": "volume_01-c007-s002",
+      "paragraph_id": "volume_01-c007-s002-p002713",
+      "paragraph_index": 2712,
+      "local_dialogue_index": 1,
+      "text": "没有，我知道，没事的。",
+      "quote_text": "「没有，我知道，没事的。」",
+      "paragraph_text": "「没有，我知道，没事的。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 13
+    },
+    {
+      "dialogue_id": "volume_01-d001225",
+      "dialogue_index": 1224,
+      "window_position": 4,
+      "chapter_id": "volume_01-c007",
+      "chapter_title": "第六幕",
+      "scene_id": "volume_01-c007-s002",
+      "paragraph_id": "volume_01-c007-s002-p002715",
+      "paragraph_index": 2714,
+      "local_dialogue_index": 1,
+      "text": "再一下就到了。走到那条通道的尽头，再往右转……",
+      "quote_text": "「再一下就到了。走到那条通道的尽头，再往右转……」",
+      "paragraph_text": "「再一下就到了。走到那条通道的尽头，再往右转……」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 25
+    }
+  ],
+  "context": {
+    "paragraphs": [
+      {
+        "paragraph_id": "volume_01-c007-s002-p002708",
+        "paragraph_index": 2707,
+        "text": "「汝没听到吗？有阳光的味道，咱刚刚说过有地方可以通往地上啊？」",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c007-s002-p002709",
+        "paragraph_index": 2708,
+        "text": "「喔，嗯。」",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c007-s002-p002710",
+        "paragraph_index": 2709,
+        "text": "虽然完全没有印象，但罗伦斯点点头回答。他把身子从墙上挪开，摇晃身体准备踏出步伐时，发现左手臂不知何时已包扎上取代纱布的布条。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c007-s002-p002711",
+        "paragraph_index": 2710,
+        "text": "「……这纱布？」",
+        "target_dialogue_ids": [
+          "volume_01-d001222"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c007-s002-p002712",
+        "paragraph_index": 2711,
+        "text": "「咱撕下袖子当纱布。汝连这都不知道啊？」",
+        "target_dialogue_ids": [
+          "volume_01-d001223"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c007-s002-p002713",
+        "paragraph_index": 2712,
+        "text": "「没有，我知道，没事的。」",
+        "target_dialogue_ids": [
+          "volume_01-d001224"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c007-s002-p002714",
+        "paragraph_index": 2713,
+        "text": "这次罗伦斯确实露出笑容回答，于是赫萝也没再多说些什么。只不过继续往前走时，换成赫萝走在前头。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c007-s002-p002715",
+        "paragraph_index": 2714,
+        "text": "「再一下就到了。走到那条通道的尽头，再往右转……」",
+        "target_dialogue_ids": [
+          "volume_01-d001225"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c007-s003-p002716",
+        "paragraph_index": 2715,
+        "text": "赫萝拉着罗伦斯的手一边频频回头，一边说话，但说到一半就停了下来。罗伦斯也非常清楚赫萝停下来的原因。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c007-s003-p002717",
+        "paragraph_index": 2716,
+        "text": "那是因为有脚步声从后方传来。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c007-s003-p002718",
+        "paragraph_index": 2717,
+        "text": "「快点、快点。」",
+        "target_dialogue_ids": []
+      }
+    ]
+  },
+  "scene_memory": [
+    {
+      "scene_id": "volume_01-c007-s002-r006",
+      "parent_scene_id": "volume_01-c007-s002",
+      "chunk_index": 6,
+      "chunk_count": 6,
+      "scene_summary": "罗伦斯和赫萝在旅途中继续前行，赫萝走在前头，罗伦斯表现出轻松但略带担忧的态度。赫萝提到即将到达目的地，暗示他们正在接近某个重要地点。",
+      "active_characters": [
+        "罗伦斯",
+        "赫萝"
+      ],
+      "relationships": [
+        "罗伦斯与赫萝一同旅行",
+        "罗伦斯对赫萝的身份持怀疑态度但保持互动",
+        "赫萝在行动中表现出主导地位"
+      ],
+      "notes": "本场景中未出现新的神秘人物，罗伦斯和赫萝的互动延续了他们一贯的模式。赫萝走在前头，暗示他们接近某个重要地点。"
+    }
+  ],
+  "candidate_characters": [
+    {
+      "entity_id": "char_0001",
+      "display_name": "罗伦斯",
+      "aliases": [
+        "罗伦斯",
+        "罗伦斯先生"
+      ],
+      "titles": [
+        "中间人",
+        "交易者",
+        "同行",
+        "商人",
+        "小毛头",
+        "小的",
+        "市井无赖",
+        "年轻人"
+      ],
+      "description": "一位行商人，正在与米隆商行的代表马贺特进行交易谈判。他原本期待获得两千枚银币，但实际只得到一百二十枚，感到震惊和困惑。 / 一位行商人，发现并收留了赫萝，决定与她一同旅行。 / 一位二十五岁的自力更生旅行商人，已有七年行商经验，性格泰然自若。 / 一位冷静理性的旅行商人，对赫萝的身份持怀疑态度，但仍保持互动。他注重外表整洁，对商业制度有深入理解。 / 冷静理性的旅行商人，与赫萝一同旅行。在本场景中与米隆商行的马贺特讨论梅迪欧商行的威胁，提出利用崔尼银币交易作为交涉王牌。 / 一位冷静理性的旅行商人，与赫萝一同旅行…",
+      "speech_style": "理性、坚定、略带情绪化 / 冷静、理性，带有悔恨和自责的语气。 / 冷静、理性，语气中带有对赫萝的关心和些许担忧。 / 冷静、理性、略带失落 / 冷静、理性，对商业制度有深入理解，并能清晰地向他人解释。 / 理性、礼貌、略带谨慎。 / 理性、冷静，带有商业分析倾向。 / 理性、沉稳、略带幽默 / 理性、冷静，但因困惑…",
+      "relationship_hints": [
+        "与赫萝一同旅行",
+        "对赫萝的真实性持怀疑态度",
+        "与深山村落的村民有交易关系",
+        "对修道院抱有商业期望但未成功",
+        "与骑士有短暂互动",
+        "与小村落的村民有交易关系",
+        "与修道院有关联",
+        "对教会和异教徒问题有见解"
+      ],
+      "first_seen_scene_id": "volume_01-c000-s003-r001",
+      "latest_seen_scene_id": "volume_01-c008-s003-r002",
+      "confidence": 1.0
+    },
+    {
+      "entity_id": "char_0002",
+      "display_name": "赫萝",
+      "aliases": [
+        "赫萝"
+      ],
+      "titles": [
+        "丰收之神",
+        "咱",
+        "神秘少女",
+        "约伊兹的贤狼",
+        "贤狼"
+      ],
+      "description": "自称丰收之神的神秘少女，拥有狼的耳朵和尾巴。在本场景中协助罗伦斯，表现出对他的关心和保护。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴，行为举止非人类，表现出轻松幽默但略带威胁性的说话风格。在本场景中，她对罗伦斯的伤口进行吸血，引发旁人惊呼，并表现出悲伤的情绪。 / 自称是丰收之神的神秘少女，拥有狼的耳朵和尾巴。在本场景中逐渐显露出非人类的特征，最终完全变成一只巨大的狼。她与罗伦斯有情感交流，表现出悲伤和决绝的情绪。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴，未直接参与本场景，但罗伦斯的行动可能与她有关…",
+      "speech_style": "轻松幽默但略带威胁性，情绪化且带有调侃语气。 / 轻松幽默、略带调侃和威胁 / 轻松幽默、略带威胁性 / 轻松幽默、略带威胁性、撒娇 / 警觉、神秘 / 轻松幽默但略带威胁性 / 轻松幽默、略带调侃 / 轻松幽默但略带威胁性，语气中透露出对罗伦斯的依赖。 / 轻松幽默、略带威胁性、自信 / 轻松幽默但略带威胁性，情绪…",
+      "relationship_hints": [
+        "与罗伦斯一同旅行",
+        "被罗伦斯怀疑是否为真正的神",
+        "与叶勒有附身关系",
+        "与罗伦斯有潜在互动",
+        "与罗伦斯有互动，似乎是被他发现并收留的。",
+        "与罗伦斯有互动，但尚未明确关系",
+        "与罗伦斯互动频繁，表现出对他的信任和玩笑态度",
+        "与罗伦斯互动密切"
+      ],
+      "first_seen_scene_id": "volume_01-c000-s003-r001",
+      "latest_seen_scene_id": "volume_01-c008-s003-r002",
+      "confidence": 1.0
+    }
+  ],
+  "candidate_mysteries": []
+}

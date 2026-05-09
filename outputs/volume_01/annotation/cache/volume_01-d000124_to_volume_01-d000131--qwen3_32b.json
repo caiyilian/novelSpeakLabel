@@ -15,7 +15,8 @@
         }
       ],
       "evidence": [
-        "赫萝在上下文中多次使用自称‘咱’，语气轻松带调侃，符合该句台词风格。"
+        "上下文显示赫萝在嘲讽罗伦斯，语气轻松带有调侃，符合赫萝的说话风格。",
+        "赫萝在对话中使用自称‘咱’，与台词中的‘咱’一致。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -36,7 +37,8 @@
         }
       ],
       "evidence": [
-        "赫萝在上下文中多次使用自称‘咱’，语气轻松带调侃，符合该句台词风格。"
+        "赫萝在前一句中刚嘲讽罗伦斯，此句继续以轻松语气调侃他，符合对话轮次。",
+        "使用‘咱’自称，语气轻松，符合赫萝的说话风格。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -57,7 +59,8 @@
         }
       ],
       "evidence": [
-        "赫萝在上下文中多次使用自称‘咱’，语气轻松带调侃，符合该句台词风格。"
+        "赫萝继续主导对话，提出‘变身给汝看’的条件，符合她掌控对话的风格。",
+        "使用‘咱’自称，语气轻松但略带威胁，符合赫萝的说话方式。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -78,7 +81,8 @@
         }
       ],
       "evidence": [
-        "罗伦斯在上下文中对赫萝的发言表示困惑，符合该句台词的回应语气。"
+        "上下文显示罗伦斯对赫萝的提议感到困惑，此句是他的回应，符合对话轮次。",
+        "罗伦斯在场景中表现出理性与怀疑，此句简短且犹豫，符合他的说话风格。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -86,20 +90,21 @@
     },
     {
       "dialogue_id": "volume_01-d000128",
-      "speaker_entity_id": "char_0001",
-      "speaker_display": "罗伦斯",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
       "speaker_status": "known",
-      "confidence": 0.9,
+      "confidence": 0.95,
       "candidate_speakers": [
         {
-          "entity_id": "char_0001",
-          "display": "罗伦斯",
+          "entity_id": "char_0002",
+          "display": "赫萝",
           "status": "known",
-          "score": 0.9
+          "score": 0.95
         }
       ],
       "evidence": [
-        "罗伦斯在上下文中对赫萝的发言表示困惑，符合该句台词的回应语气。"
+        "赫萝继续主导对话，提出假设性问题，语气轻松但略带威胁，符合她的风格。",
+        "使用‘咱’自称，符合赫萝的说话方式。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -120,7 +125,8 @@
         }
       ],
       "evidence": [
-        "罗伦斯在上下文中对赫萝的发言表示困惑，符合该句台词的回应语气。"
+        "罗伦斯对赫萝的提议感到犹豫，此句是他的回应，符合对话轮次。",
+        "‘这……’是典型的犹豫表达，符合罗伦斯的说话风格。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -141,7 +147,8 @@
         }
       ],
       "evidence": [
-        "赫萝在上下文中多次使用自称‘咱’，语气轻松带调侃，符合该句台词风格。"
+        "赫萝继续主导对话，语气轻松但略带自信，符合她的风格。",
+        "使用‘咱’自称，符合赫萝的说话方式。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -162,12 +169,13 @@
         }
       ],
       "evidence": [
-        "赫萝在上下文中多次使用自称‘咱’，语气轻松带调侃，符合该句台词风格。"
+        "赫萝继续主导对话，提出具体行动，语气轻松但略带调侃，符合她的风格。",
+        "使用‘咱’自称，符合赫萝的说话方式。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
       "needs_review": false
     }
   ],
-  "window_notes": "对话轮次清晰，赫萝与罗伦斯交替发言，符合上下文中的互动模式。赫萝使用自称‘咱’，语气轻松带调侃，罗伦斯则表现出困惑和回应。"
+  "window_notes": "对话轮次清晰，赫萝与罗伦斯交替发言，赫萝主导对话节奏，罗伦斯多为回应。所有台词均符合已知角色的说话风格和上下文逻辑。"
 }

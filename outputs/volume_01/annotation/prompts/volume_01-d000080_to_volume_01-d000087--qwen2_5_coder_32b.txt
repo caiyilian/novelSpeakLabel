@@ -1,0 +1,455 @@
+你是轻小说说话人标注项目的阶段 2：正式标注助手。
+你的任务是判断输入 target_dialogues 中每一句台词的说话人，不要改写原文。
+必须把这些台词当作同一个连续片段来判断，优先保持对话轮次和叙述线索的一致性。
+
+规则：
+1. 只输出严格 JSON，不要 Markdown，不要解释性前后缀。
+2. 如果说话人是候选角色，speaker_entity_id 必须使用 candidate_characters 里的 entity_id，speaker_status 填 known。
+3. 如果说话人像某个未知人物，speaker_entity_id 使用 candidate_mysteries 里的 mystery_id，speaker_status 填 mystery。
+4. 如果只是无法追踪的路人/群体，speaker_status 填 npc，speaker_entity_id 可为空或使用 npc:简短称呼。
+5. 证据不足时不要硬猜，speaker_status 填 ambiguous 或 review，并把 needs_review 设为 true。
+6. candidate_speakers 至少列出 1 个候选；如果无法判断，列出最可能的候选和不确定原因。
+7. confidence 使用 0 到 1 之间的小数，表示你对最终判断的把握。
+8. 不要只因为台词里提到某个名字、职业、地点，就把说话人标成那个实体；被称呼的人通常不是说话人。
+9. 连续问答、交易寒暄、命令/回答等场景要按上下句轮次判断；同一人连续说话必须有叙述或语气证据支持。
+10. 如果当前上下文显示某角色还没有登场，不要因为角色库或后文记忆里有这个角色就提前标给他/她。
+
+11. target_dialogues 中 dialogue_kind=inline 的项目是正文内嵌引号，不要当作独立对白；标为 review，needs_review=true。
+12. candidate_mysteries 只是可选候选；如果候选名称和当前段落地点/人物不一致，必须改用 npc 或 review。
+13. 如果只有轮次推断、没有叙述锚点或自我介绍，请降低 confidence，并在 evidence 里说明轮次依据。
+
+输出 JSON 结构：
+{
+  "annotations": [
+    {
+      "dialogue_id": "必须来自 target_dialogue_ids",
+      "speaker_entity_id": "string",
+      "speaker_display": "string",
+      "speaker_status": "known|mystery|npc|ambiguous|review",
+      "confidence": 0.0,
+      "candidate_speakers": [
+        {"entity_id": "string", "display": "string", "status": "known|mystery|npc|ambiguous|review", "score": 0.0}
+      ],
+      "evidence": ["短证据，不要大段复制原文"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "可选，简短说明整体轮次判断"
+}
+必须为 target_dialogue_ids 中每个 dialogue_id 输出且只输出一条 annotation。
+
+输入 JSON：
+{
+  "volume": {
+    "volume_id": "volume_01",
+    "volume": 1
+  },
+  "target_dialogue_ids": [
+    "volume_01-d000080",
+    "volume_01-d000081",
+    "volume_01-d000082",
+    "volume_01-d000083",
+    "volume_01-d000084",
+    "volume_01-d000085",
+    "volume_01-d000086",
+    "volume_01-d000087"
+  ],
+  "dialogues": [
+    {
+      "dialogue_id": "volume_01-d000080",
+      "dialogue_index": 79,
+      "window_position": 1,
+      "chapter_id": "volume_01-c002",
+      "chapter_title": "第一幕",
+      "scene_id": "volume_01-c002-s003",
+      "paragraph_id": "volume_01-c002-s003-p000295",
+      "paragraph_index": 294,
+      "local_dialogue_index": 1,
+      "text": "不。",
+      "quote_text": "「不。」",
+      "paragraph_text": "「不。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 4
+    },
+    {
+      "dialogue_id": "volume_01-d000081",
+      "dialogue_index": 80,
+      "window_position": 2,
+      "chapter_id": "volume_01-c002",
+      "chapter_title": "第一幕",
+      "scene_id": "volume_01-c002-s003",
+      "paragraph_id": "volume_01-c002-s003-p000297",
+      "paragraph_index": 296,
+      "local_dialogue_index": 1,
+      "text": "咱的出生地是在更遥远的北方大地。",
+      "quote_text": "「咱的出生地是在更遥远的北方大地。」",
+      "paragraph_text": "「咱的出生地是在更遥远的北方大地。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 18
+    },
+    {
+      "dialogue_id": "volume_01-d000082",
+      "dialogue_index": 81,
+      "window_position": 3,
+      "chapter_id": "volume_01-c002",
+      "chapter_title": "第一幕",
+      "scene_id": "volume_01-c002-s003",
+      "paragraph_id": "volume_01-c002-s003-p000298",
+      "paragraph_index": 297,
+      "local_dialogue_index": 1,
+      "text": "北方？",
+      "quote_text": "「北方？」",
+      "paragraph_text": "「北方？」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 5
+    },
+    {
+      "dialogue_id": "volume_01-d000083",
+      "dialogue_index": 82,
+      "window_position": 4,
+      "chapter_id": "volume_01-c002",
+      "chapter_title": "第一幕",
+      "scene_id": "volume_01-c002-s003",
+      "paragraph_id": "volume_01-c002-s003-p000299",
+      "paragraph_index": 298,
+      "local_dialogue_index": 1,
+      "text": "嗯。那儿夏季短暂，冬季漫长，是个银白色的世界呢。",
+      "quote_text": "「嗯。那儿夏季短暂，冬季漫长，是个银白色的世界呢。」",
+      "paragraph_text": "「嗯。那儿夏季短暂，冬季漫长，是个银白色的世界呢。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 26
+    },
+    {
+      "dialogue_id": "volume_01-d000084",
+      "dialogue_index": 83,
+      "window_position": 5,
+      "chapter_id": "volume_01-c002",
+      "chapter_title": "第一幕",
+      "scene_id": "volume_01-c002-s003",
+      "paragraph_id": "volume_01-c002-s003-p000301",
+      "paragraph_index": 300,
+      "local_dialogue_index": 1,
+      "text": "汝曾去过吗？",
+      "quote_text": "「汝曾去过吗？」",
+      "paragraph_text": "「汝曾去过吗？」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 8
+    },
+    {
+      "dialogue_id": "volume_01-d000085",
+      "dialogue_index": 84,
+      "window_position": 6,
+      "chapter_id": "volume_01-c002",
+      "chapter_title": "第一幕",
+      "scene_id": "volume_01-c002-s003",
+      "paragraph_id": "volume_01-c002-s003-p000304",
+      "paragraph_index": 303,
+      "local_dialogue_index": 1,
+      "text": "我去过最北端的地方是亚罗西史托，那是全年吹着暴风雪的恐怖地方。",
+      "quote_text": "「我去过最北端的地方是亚罗西史托，那是全年吹着暴风雪的恐怖地方。」",
+      "paragraph_text": "「我去过最北端的地方是亚罗西史托，那是全年吹着暴风雪的恐怖地方。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 33
+    },
+    {
+      "dialogue_id": "volume_01-d000086",
+      "dialogue_index": 85,
+      "window_position": 7,
+      "chapter_id": "volume_01-c002",
+      "chapter_title": "第一幕",
+      "scene_id": "volume_01-c002-s003",
+      "paragraph_id": "volume_01-c002-s003-p000306",
+      "paragraph_index": 305,
+      "local_dialogue_index": 1,
+      "text": "喔，咱没听过。",
+      "quote_text": "「喔，咱没听过。」",
+      "paragraph_text": "「喔，咱没听过。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 9
+    },
+    {
+      "dialogue_id": "volume_01-d000087",
+      "dialogue_index": 86,
+      "window_position": 8,
+      "chapter_id": "volume_01-c002",
+      "chapter_title": "第一幕",
+      "scene_id": "volume_01-c002-s003",
+      "paragraph_id": "volume_01-c002-s003-p000308",
+      "paragraph_index": 307,
+      "local_dialogue_index": 1,
+      "text": "那你曾去过哪里呢？",
+      "quote_text": "「那你曾去过哪里呢？」",
+      "paragraph_text": "「那你曾去过哪里呢？」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 11
+    }
+  ],
+  "context": {
+    "paragraphs": [
+      {
+        "paragraph_id": "volume_01-c002-s003-p000292",
+        "paragraph_index": 291,
+        "text": "「虽然咱长久以来被尊为神，且被束缚在这块土地上，但咱根本不是什么伟大的神。咱就是咱，咱是赫萝。」",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000293",
+        "paragraph_index": 292,
+        "text": "罗伦斯推测女孩出生后就一直被关在家里，这么一想，不禁有些怜悯起女孩来了。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000294",
+        "paragraph_index": 293,
+        "text": "「长久是说打从出生开始吗？」",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000295",
+        "paragraph_index": 294,
+        "text": "「不。」",
+        "target_dialogue_ids": [
+          "volume_01-d000080"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000296",
+        "paragraph_index": 295,
+        "text": "女孩的回答让罗伦斯感到意外。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000297",
+        "paragraph_index": 296,
+        "text": "「咱的出生地是在更遥远的北方大地。」",
+        "target_dialogue_ids": [
+          "volume_01-d000081"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000298",
+        "paragraph_index": 297,
+        "text": "「北方？」",
+        "target_dialogue_ids": [
+          "volume_01-d000082"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000299",
+        "paragraph_index": 298,
+        "text": "「嗯。那儿夏季短暂，冬季漫长，是个银白色的世界呢。」",
+        "target_dialogue_ids": [
+          "volume_01-d000083"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000300",
+        "paragraph_index": 299,
+        "text": "赫萝突然瞇起眼睛看向远方，她的模样实在不像在说谎。她思念起遥远北方大地的神情如果真是演技的话，那未免也太过自然了。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000301",
+        "paragraph_index": 300,
+        "text": "「汝曾去过吗？」",
+        "target_dialogue_ids": [
+          "volume_01-d000084"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000302",
+        "paragraph_index": 301,
+        "text": "女孩反问罗伦斯。罗伦斯虽然觉得被反将一军，不过顺着话题继续聊下去的话，就能够马上看出赫萝是否撒谎，还是随口把听来的故事说出来。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000303",
+        "paragraph_index": 302,
+        "text": "因为罗伦斯的行商经验可是远及极北地区。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000304",
+        "paragraph_index": 303,
+        "text": "「我去过最北端的地方是亚罗西史托，那是全年吹着暴风雪的恐怖地方。」",
+        "target_dialogue_ids": [
+          "volume_01-d000085"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000305",
+        "paragraph_index": 304,
+        "text": "听到罗伦斯这么说，赫萝微微倾着头想了一下，回答说：",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000306",
+        "paragraph_index": 305,
+        "text": "「喔，咱没听过。」",
+        "target_dialogue_ids": [
+          "volume_01-d000086"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000307",
+        "paragraph_index": 306,
+        "text": "罗伦斯原以为女孩会假装知道，没料到她会有令人意外的反应。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000308",
+        "paragraph_index": 307,
+        "text": "「那你曾去过哪里呢？」",
+        "target_dialogue_ids": [
+          "volume_01-d000087"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000309",
+        "paragraph_index": 308,
+        "text": "「咱去过约伊兹，怎么着？」",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000310",
+        "paragraph_index": 309,
+        "text": "罗伦斯回答一声「没事」后，硬是掩饰住内心的动摇。罗伦斯曾听过约伊兹这个地名，不过，那是在北方大地的旅馆听来的古老传说里，所出现的地名。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000311",
+        "paragraph_index": 310,
+        "text": "「你是在那里出生的吗？」",
+        "target_dialogue_ids": []
+      }
+    ]
+  },
+  "scene_memory": [
+    {
+      "scene_id": "volume_01-c002-s003-r005",
+      "parent_scene_id": "volume_01-c002-s003",
+      "chunk_index": 5,
+      "chunk_count": 6,
+      "scene_summary": "罗伦斯与赫萝在对话中探讨赫萝的出生地和经历。赫萝提到自己来自遥远的北方大地，罗伦斯则分享了自己在极北地区的行商经验。赫萝的反应自然，似乎并非刻意编造。",
+      "active_characters": [
+        "罗伦斯",
+        "赫萝"
+      ],
+      "relationships": [
+        "罗伦斯与赫萝之间存在信任与怀疑的复杂关系"
+      ],
+      "notes": "赫萝的出生地和经历仍存疑，但她的反应自然，未表现出刻意隐瞒的迹象。罗伦斯的行商经验为对话提供了背景支撑。"
+    },
+    {
+      "scene_id": "volume_01-c002-s003-r006",
+      "parent_scene_id": "volume_01-c002-s003",
+      "chunk_index": 6,
+      "chunk_count": 6,
+      "scene_summary": "罗伦斯与赫萝讨论赫萝的出生地约伊兹，赫萝表现出对故乡的怀念与空虚感，罗伦斯则对她的说法感到怀疑。",
+      "active_characters": [
+        "罗伦斯",
+        "赫萝"
+      ],
+      "relationships": [
+        "罗伦斯对赫萝的背景表示怀疑",
+        "赫萝表现出对故乡的怀念"
+      ],
+      "notes": "赫萝提到的约伊兹是一个未命名但可追踪的神秘地点，可能在后文有重要线索。"
+    }
+  ],
+  "candidate_characters": [
+    {
+      "entity_id": "char_0001",
+      "display_name": "罗伦斯",
+      "aliases": [
+        "罗伦斯",
+        "罗伦斯先生"
+      ],
+      "titles": [
+        "中间人",
+        "交易者",
+        "同行",
+        "商人",
+        "小毛头",
+        "小的",
+        "市井无赖",
+        "年轻人"
+      ],
+      "description": "一位行商人，正在与米隆商行的代表马贺特进行交易谈判。他原本期待获得两千枚银币，但实际只得到一百二十枚，感到震惊和困惑。 / 一位行商人，发现并收留了赫萝，决定与她一同旅行。 / 一位二十五岁的自力更生旅行商人，已有七年行商经验，性格泰然自若。 / 一位冷静理性的旅行商人，对赫萝的身份持怀疑态度，但仍保持互动。他注重外表整洁，对商业制度有深入理解。 / 冷静理性的旅行商人，与赫萝一同旅行。在本场景中与米隆商行的马贺特讨论梅迪欧商行的威胁，提出利用崔尼银币交易作为交涉王牌。 / 一位冷静理性的旅行商人，与赫萝一同旅行…",
+      "speech_style": "理性、坚定、略带情绪化 / 冷静、理性，带有悔恨和自责的语气。 / 冷静、理性，语气中带有对赫萝的关心和些许担忧。 / 冷静、理性、略带失落 / 冷静、理性，对商业制度有深入理解，并能清晰地向他人解释。 / 理性、礼貌、略带谨慎。 / 理性、冷静，带有商业分析倾向。 / 理性、沉稳、略带幽默 / 理性、冷静，但因困惑…",
+      "relationship_hints": [
+        "与赫萝一同旅行",
+        "对赫萝的真实性持怀疑态度",
+        "与深山村落的村民有交易关系",
+        "对修道院抱有商业期望但未成功",
+        "与骑士有短暂互动",
+        "与小村落的村民有交易关系",
+        "与修道院有关联",
+        "对教会和异教徒问题有见解"
+      ],
+      "first_seen_scene_id": "volume_01-c000-s003-r001",
+      "latest_seen_scene_id": "volume_01-c008-s003-r002",
+      "confidence": 1.0
+    },
+    {
+      "entity_id": "char_0002",
+      "display_name": "赫萝",
+      "aliases": [
+        "赫萝"
+      ],
+      "titles": [
+        "丰收之神",
+        "咱",
+        "神秘少女",
+        "约伊兹的贤狼",
+        "贤狼"
+      ],
+      "description": "自称丰收之神的神秘少女，拥有狼的耳朵和尾巴。在本场景中协助罗伦斯，表现出对他的关心和保护。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴，行为举止非人类，表现出轻松幽默但略带威胁性的说话风格。在本场景中，她对罗伦斯的伤口进行吸血，引发旁人惊呼，并表现出悲伤的情绪。 / 自称是丰收之神的神秘少女，拥有狼的耳朵和尾巴。在本场景中逐渐显露出非人类的特征，最终完全变成一只巨大的狼。她与罗伦斯有情感交流，表现出悲伤和决绝的情绪。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴，未直接参与本场景，但罗伦斯的行动可能与她有关…",
+      "speech_style": "轻松幽默但略带威胁性，情绪化且带有调侃语气。 / 轻松幽默、略带调侃和威胁 / 轻松幽默、略带威胁性 / 轻松幽默、略带威胁性、撒娇 / 警觉、神秘 / 轻松幽默但略带威胁性 / 轻松幽默、略带调侃 / 轻松幽默但略带威胁性，语气中透露出对罗伦斯的依赖。 / 轻松幽默、略带威胁性、自信 / 轻松幽默但略带威胁性，情绪…",
+      "relationship_hints": [
+        "与罗伦斯一同旅行",
+        "被罗伦斯怀疑是否为真正的神",
+        "与叶勒有附身关系",
+        "与罗伦斯有潜在互动",
+        "与罗伦斯有互动，似乎是被他发现并收留的。",
+        "与罗伦斯有互动，但尚未明确关系",
+        "与罗伦斯互动频繁，表现出对他的信任和玩笑态度",
+        "与罗伦斯互动密切"
+      ],
+      "first_seen_scene_id": "volume_01-c000-s003-r001",
+      "latest_seen_scene_id": "volume_01-c008-s003-r002",
+      "confidence": 1.0
+    }
+  ],
+  "candidate_mysteries": [
+    {
+      "mystery_id": "mystery_volume_01_c002_s003_r006_约伊兹",
+      "temporary_name": "约伊兹",
+      "description": "赫萝提到的出生地，是一个古老传说中的地名。",
+      "evidence": [
+        "volume_01-c002-s003-p000310",
+        "volume_01-c002-s003-p000312"
+      ],
+      "source_scene_id": "volume_01-c002-s003-r006",
+      "confidence": 0.7
+    }
+  ]
+}

@@ -1,0 +1,88 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001136",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.95
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.05
+        }
+      ],
+      "evidence": [
+        "使用自称‘咱’，符合赫萝的说话风格",
+        "提到‘回到北方’，暗示非人类视角，符合赫萝的背景设定",
+        "上下文显示赫萝刚刚停止哭泣，情绪波动明显，符合当前语境"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001137",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.98,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.98
+        }
+      ],
+      "evidence": [
+        "上下文显示罗伦斯一边轻抚赫萝的头，一边保持笑容说出这段话",
+        "内容强调‘商人’身份，符合罗伦斯的自我定位和说话风格",
+        "‘我们’的使用与后一句‘罗伦斯当然刻意加重语气说出『我们』两个字’呼应，明确说话人"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001138",
+      "speaker_entity_id": "",
+      "speaker_display": "",
+      "speaker_status": "review",
+      "confidence": 0.0,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.8
+        },
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.2
+        }
+      ],
+      "evidence": [
+        "对话类型为 inline，未独立成句，不符合 standalone 对白格式",
+        "上下文显示‘罗伦斯当然刻意加重语气说出『我们』两个字’，说明说话人是罗伦斯",
+        "但因是内嵌引号，需进一步确认是否为完整对白"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    }
+  ],
+  "window_notes": "对话轮次清晰，赫萝与罗伦斯交替发言，符合场景中两人互动的叙述线索。第三句为内嵌引号，需进一步确认是否为完整对白。"
+}
+```

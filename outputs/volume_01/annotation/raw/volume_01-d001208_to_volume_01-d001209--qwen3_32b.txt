@@ -1,0 +1,58 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001208",
+      "speaker_entity_id": "mystery_volume_01_c007_s002_r003_矮小孩童",
+      "speaker_display": "矮小孩童",
+      "speaker_status": "mystery",
+      "confidence": 0.75,
+      "candidate_speakers": [
+        {
+          "entity_id": "mystery_volume_01_c007_s002_r003_矮小孩童",
+          "display": "矮小孩童",
+          "status": "mystery",
+          "score": 0.75
+        }
+      ],
+      "evidence": [
+        "上下文提到一个矮小孩童模样的黑影，手持小刀，试图袭击罗伦斯和赫萝。",
+        "该段对话出现在黑影出现后，且没有提到罗伦斯或赫萝发出类似声音。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001209",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.85
+        },
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.15
+        }
+      ],
+      "evidence": [
+        "上下文提到罗伦斯在黑暗中看到黑影并感到脸颊被割伤，随后反应激烈。",
+        "该句台词表现出愤怒和惊讶，符合罗伦斯的反应风格。",
+        "赫萝在前文被描述为咬住对方的手臂，不太可能同时发出这样的台词。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次为连续的两个动作：矮小孩童发出奇怪声音，罗伦斯反应愤怒。符合上下文中的袭击场景。"
+}
+```

@@ -1,29 +1,28 @@
 {
-  "dialogue_id": "volume_01-d000051",
-  "speaker_entity_id": "char_0001",
-  "speaker_display": "罗伦斯",
-  "speaker_status": "known",
-  "confidence": 0.98,
-  "candidate_speakers": [
+  "annotations": [
     {
-      "entity_id": "char_0001",
-      "display": "罗伦斯",
-      "status": "known",
-      "score": 0.98
-    },
-    {
-      "entity_id": "mystery_volume_01_c002_s002_r005_神秘女孩",
-      "display": "神秘女孩",
-      "status": "mystery",
-      "score": 0.02
+      "dialogue_id": "volume_01-d000051",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "上下文显示罗伦斯是当前场景的主动角色，正在试图叫醒女孩。",
+        "前文提到罗伦斯恢复了平常心，并打算开口说话，紧接着就是这句台词。",
+        "场景记忆中明确指出罗伦斯在质问女孩为何坐在他的马车上。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
     }
   ],
-  "evidence": [
-    "上下文显示罗伦斯在试图叫醒神秘女孩，语气中带有责备和警觉，符合罗伦斯冷静理性的说话风格。",
-    "场景记忆中提到罗伦斯发现神秘女孩在马车上睡觉，并试图叫醒她。",
-    "台词中提到「你的马车」，表明说话人是马车的主人，而罗伦斯是马车的主人。"
-  ],
-  "should_create_new_entity": false,
-  "new_entity_hint": "",
-  "needs_review": false
+  "window_notes": "该台词是罗伦斯对神秘女孩的质问，符合上下文逻辑和场景记忆中的角色行为。"
 }

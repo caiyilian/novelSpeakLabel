@@ -1,0 +1,191 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000790",
+      "speaker_entity_id": "",
+      "speaker_display": "",
+      "speaker_status": "npc",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {
+          "entity_id": "",
+          "display": "店老板",
+          "status": "npc",
+          "score": 0.6
+        },
+        {
+          "entity_id": "",
+          "display": "罗伦斯",
+          "status": "ambiguous",
+          "score": 0.4
+        }
+      ],
+      "evidence": [
+        "对话轮次推断"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    },
+    {
+      "dialogue_id": "volume_01-d000791",
+      "speaker_entity_id": "",
+      "speaker_display": "",
+      "speaker_status": "npc",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {
+          "entity_id": "",
+          "display": "罗伦斯",
+          "status": "ambiguous",
+          "score": 0.6
+        },
+        {
+          "entity_id": "",
+          "display": "店老板",
+          "status": "npc",
+          "score": 0.4
+        }
+      ],
+      "evidence": [
+        "对话轮次推断"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    },
+    {
+      "dialogue_id": "volume_01-d000792",
+      "speaker_entity_id": "char_0021",
+      "speaker_display": "店老板",
+      "speaker_status": "known",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0021",
+          "display": "店老板",
+          "status": "known",
+          "score": 0.8
+        }
+      ],
+      "evidence": [
+        "对话内容符合店老板的观察和评论"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000793",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.8
+        }
+      ],
+      "evidence": [
+        "对话内容符合赫萝的宿醉状态"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000794",
+      "speaker_entity_id": "char_0021",
+      "speaker_display": "店老板",
+      "speaker_status": "known",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0021",
+          "display": "店老板",
+          "status": "known",
+          "score": 0.8
+        }
+      ],
+      "evidence": [
+        "对话内容符合店老板的经验和评论"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000795",
+      "speaker_entity_id": "",
+      "speaker_display": "",
+      "speaker_status": "npc",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {
+          "entity_id": "",
+          "display": "店老板",
+          "status": "ambiguous",
+          "score": 0.6
+        },
+        {
+          "entity_id": "",
+          "display": "罗伦斯",
+          "status": "ambiguous",
+          "score": 0.4
+        }
+      ],
+      "evidence": [
+        "对话轮次推断"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    },
+    {
+      "dialogue_id": "volume_01-d000796",
+      "speaker_entity_id": "char_0021",
+      "speaker_display": "店老板",
+      "speaker_status": "known",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0021",
+          "display": "店老板",
+          "status": "known",
+          "score": 0.8
+        }
+      ],
+      "evidence": [
+        "对话内容符合店老板的建议和观察"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000797",
+      "speaker_entity_id": "char_0021",
+      "speaker_display": "店老板",
+      "speaker_status": "known",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0021",
+          "display": "店老板",
+          "status": "known",
+          "score": 0.8
+        }
+      ],
+      "evidence": [
+        "对话内容符合店老板的行为"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次推断显示前两句可能是罗伦斯或店老板，但缺乏明确证据。后续对话中店老板的发言较为明显。"
+}

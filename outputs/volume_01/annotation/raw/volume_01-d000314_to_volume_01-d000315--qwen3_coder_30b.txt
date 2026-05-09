@@ -1,0 +1,49 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000314",
+      "speaker_entity_id": "char_0009",
+      "speaker_display": "杰廉",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0009",
+          "display": "杰廉",
+          "status": "known",
+          "score": 1.0
+        }
+      ],
+      "evidence": ["台词内容符合杰廉作为中间人、谨慎且能言善道的说话风格；提及优伦朵酒吧联络点，与场景中杰廉告知罗伦斯联络方式一致。"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000315",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 1.0
+        },
+        {
+          "entity_id": "char_0009",
+          "display": "杰廉",
+          "status": "known",
+          "score": 0.2
+        }
+      ],
+      "evidence": ["罗伦斯是前一句说话人杰廉的对话对象，且上下文为罗伦斯与杰廉在讨论合约与联络方式；语气符合罗伦斯冷静理性、接受安排的说话风格。"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "杰廉先发言，告知联络方式；罗伦斯回应，确认收到信息。对话轮次清晰，符合商业合作场景。"
+}

@@ -6,17 +6,23 @@
       "speaker_entity_id": "char_0001",
       "speaker_display": "罗伦斯",
       "speaker_status": "known",
-      "confidence": 0.95,
+      "confidence": 0.9,
       "candidate_speakers": [
         {
           "entity_id": "char_0001",
           "display": "罗伦斯",
           "status": "known",
-          "score": 0.95
+          "score": 0.9
+        },
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.1
         }
       ],
       "evidence": [
-        "对话内容是对赫萝行为的质疑，语气带有理性与不满，符合罗伦斯的说话风格。"
+        "上下文显示赫萝刚刚吃苹果，罗伦斯对她的行为表示怀疑，因此这句话更可能是罗伦斯的质疑。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -27,17 +33,17 @@
       "speaker_entity_id": "char_0002",
       "speaker_display": "赫萝",
       "speaker_status": "known",
-      "confidence": 0.98,
+      "confidence": 0.95,
       "candidate_speakers": [
         {
           "entity_id": "char_0002",
           "display": "赫萝",
           "status": "known",
-          "score": 0.98
+          "score": 0.95
         }
       ],
       "evidence": [
-        "自称「贤狼赫萝」，语气轻松自信，符合赫萝的自我介绍风格。"
+        "赫萝自称「咱是贤狼赫萝」，明确自我介绍，说话风格符合其角色设定。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -45,69 +51,6 @@
     },
     {
       "dialogue_id": "volume_01-d000418",
-      "speaker_entity_id": "char_0001",
-      "speaker_display": "罗伦斯",
-      "speaker_status": "known",
-      "confidence": 0.95,
-      "candidate_speakers": [
-        {
-          "entity_id": "char_0001",
-          "display": "罗伦斯",
-          "status": "known",
-          "score": 0.95
-        }
-      ],
-      "evidence": [
-        "语气理性且带有恳求，符合罗伦斯试图说服赫萝的风格。"
-      ],
-      "should_create_new_entity": false,
-      "new_entity_hint": "",
-      "needs_review": false
-    },
-    {
-      "dialogue_id": "volume_01-d000419",
-      "speaker_entity_id": "char_0002",
-      "speaker_display": "赫萝",
-      "speaker_status": "known",
-      "confidence": 0.92,
-      "candidate_speakers": [
-        {
-          "entity_id": "char_0002",
-          "display": "赫萝",
-          "status": "known",
-          "score": 0.92
-        }
-      ],
-      "evidence": [
-        "语气含糊、吞吞吐吐，符合赫萝在被质疑时的反应风格。"
-      ],
-      "should_create_new_entity": false,
-      "new_entity_hint": "",
-      "needs_review": false
-    },
-    {
-      "dialogue_id": "volume_01-d000420",
-      "speaker_entity_id": "char_0002",
-      "speaker_display": "赫萝",
-      "speaker_status": "known",
-      "confidence": 0.93,
-      "candidate_speakers": [
-        {
-          "entity_id": "char_0002",
-          "display": "赫萝",
-          "status": "known",
-          "score": 0.93
-        }
-      ],
-      "evidence": [
-        "简短而果断，符合赫萝在对话中打断他人、主导节奏的风格。"
-      ],
-      "should_create_new_entity": false,
-      "new_entity_hint": "",
-      "needs_review": false
-    },
-    {
-      "dialogue_id": "volume_01-d000421",
       "speaker_entity_id": "char_0002",
       "speaker_display": "赫萝",
       "speaker_status": "known",
@@ -121,7 +64,70 @@
         }
       ],
       "evidence": [
-        "语气短促，符合赫萝在对话中表现出的随意和不耐烦。"
+        "赫萝在前一句刚自我介绍，此句是她继续表达对金钱使用的不满，符合对话轮次。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000419",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "赫萝在前几句连续发言，此句是她继续表达，语气混乱但符合其说话风格。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000420",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "赫萝在前一句表达犹豫，罗伦斯回应「吃完再说吧」，符合对话轮次和角色互动模式。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000421",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.8
+        }
+      ],
+      "evidence": [
+        "赫萝在前几句连续发言，此句是她吃完后发出的感叹，符合对话轮次。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -132,17 +138,17 @@
       "speaker_entity_id": "char_0001",
       "speaker_display": "罗伦斯",
       "speaker_status": "known",
-      "confidence": 0.94,
+      "confidence": 0.85,
       "candidate_speakers": [
         {
           "entity_id": "char_0001",
           "display": "罗伦斯",
           "status": "known",
-          "score": 0.94
+          "score": 0.85
         }
       ],
       "evidence": [
-        "语气带有评价和调侃，符合罗伦斯对赫萝行为的反应风格。"
+        "赫萝在前一句发出感叹，罗伦斯回应「你真会吃」，符合对话轮次和角色互动模式。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -153,23 +159,23 @@
       "speaker_entity_id": "char_0002",
       "speaker_display": "赫萝",
       "speaker_status": "known",
-      "confidence": 0.96,
+      "confidence": 0.9,
       "candidate_speakers": [
         {
           "entity_id": "char_0002",
           "display": "赫萝",
           "status": "known",
-          "score": 0.96
+          "score": 0.9
         }
       ],
       "evidence": [
-        "语气夸张、带有神秘色彩，符合赫萝对苹果的描述风格。"
+        "赫萝在前几句连续发言，此句是她继续表达对苹果的看法，符合对话轮次和角色设定。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
       "needs_review": false
     }
   ],
-  "window_notes": "对话轮次清晰，罗伦斯与赫萝交替发言，符合两人在场景中的互动模式。"
+  "window_notes": "对话轮次清晰，赫萝和罗伦斯交替发言，符合两人在场景中的互动模式。"
 }
 ```

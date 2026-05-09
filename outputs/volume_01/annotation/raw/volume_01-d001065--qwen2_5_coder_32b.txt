@@ -1,0 +1,21 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001065",
+      "speaker_entity_id": "",
+      "speaker_display": "",
+      "speaker_status": "ambiguous",
+      "confidence": 0.3,
+      "candidate_speakers": [
+        {"entity_id": "char_0001", "display": "罗伦斯", "status": "known", "score": 0.2},
+        {"entity_id": "char_0002", "display": "赫萝", "status": "known", "score": 0.2},
+        {"entity_id": "char_0020", "display": "列支敦·马贺特", "status": "known", "score": 0.1}
+      ],
+      "evidence": ["对话轮次推断"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    }
+  ],
+  "window_notes": "根据上下文，无法确定说话人身份。罗伦斯、赫萝和列支敦·马贺特都有可能说出这句话，但缺乏明确的叙述锚点或自我介绍来确认。"
+}

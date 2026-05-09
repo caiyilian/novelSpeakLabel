@@ -16,8 +16,8 @@
         }
       ],
       "evidence": [
-        "上下文显示赫萝正在与罗伦斯互动，且她的说话风格轻松幽默，带有调侃和威胁性语气，符合赫萝的特征。",
-        "赫萝在本场景中多次发言，且上下文明确指出她正在谈论自己的灼伤，符合台词内容。"
+        "上下文显示赫萝正在与罗伦斯互动，且她的说话风格轻松幽默，带有嘲讽意味，符合赫萝的特征。",
+        "上下文提到赫萝的狼耳和尾巴，暗示她以第一人称自称‘咱’，与台词中的‘咱’一致。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -38,8 +38,8 @@
         }
       ],
       "evidence": [
-        "赫萝在本场景中持续发言，且上下文显示她正在谈论貂皮和狼的联系，符合她的说话风格和内容。",
-        "上下文明确指出赫萝正在与罗伦斯对话，且她的发言风格轻松幽默，带有调侃和威胁性语气。"
+        "上下文显示赫萝正在与罗伦斯互动，且她的说话风格轻松幽默，带有嘲讽意味，符合赫萝的特征。",
+        "台词中‘咱’的自称与赫萝的说话风格一致。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -60,8 +60,8 @@
         }
       ],
       "evidence": [
-        "上下文显示罗伦斯正在回应赫萝的发言，询问貂皮是否能卖得好价钱，符合他的理性语气。",
-        "罗伦斯在本场景中多次发言，且上下文明确指出他正在与赫萝对话。"
+        "上下文显示罗伦斯在与赫萝对话，且他通常以理性、礼貌的语气说话，符合该句的语气。",
+        "该句是对赫萝上一句的回应，符合对话轮次。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -82,8 +82,8 @@
         }
       ],
       "evidence": [
-        "赫萝在本场景中持续发言，且上下文显示她正在回应罗伦斯的问题，语气轻松幽默，符合她的说话风格。",
-        "赫萝明确表示自己不是皮草商人，这与她的身份设定一致。"
+        "上下文显示赫萝正在与罗伦斯互动，且她的说话风格轻松幽默，带有嘲讽意味，符合赫萝的特征。",
+        "台词中‘咱’的自称与赫萝的说话风格一致。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -91,28 +91,6 @@
     },
     {
       "dialogue_id": "volume_01-d000202",
-      "speaker_entity_id": "char_0002",
-      "speaker_display": "赫萝",
-      "speaker_status": "known",
-      "confidence": 0.95,
-      "candidate_speakers": [
-        {
-          "entity_id": "char_0002",
-          "display": "赫萝",
-          "status": "known",
-          "score": 0.95
-        }
-      ],
-      "evidence": [
-        "赫萝在本场景中持续发言，且上下文显示她正在谈论麦子的处理方式，语气轻松幽默，符合她的说话风格。",
-        "赫萝提到“那些麦子”，这与她之前提到的寄宿在麦子中的设定一致。"
-      ],
-      "should_create_new_entity": false,
-      "new_entity_hint": "",
-      "needs_review": false
-    },
-    {
-      "dialogue_id": "volume_01-d000203",
       "speaker_entity_id": "char_0001",
       "speaker_display": "罗伦斯",
       "speaker_status": "known",
@@ -126,15 +104,15 @@
         }
       ],
       "evidence": [
-        "上下文显示罗伦斯正在回应赫萝的发言，询问“怎么处理是指”，符合他的理性语气。",
-        "罗伦斯在本场景中多次发言，且上下文明确指出他正在与赫萝对话。"
+        "上下文显示罗伦斯在与赫萝对话，且他通常以理性、礼貌的语气说话，符合该句的语气。",
+        "该句是对赫萝上一句的回应，符合对话轮次。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
       "needs_review": false
     },
     {
-      "dialogue_id": "volume_01-d000204",
+      "dialogue_id": "volume_01-d000203",
       "speaker_entity_id": "char_0002",
       "speaker_display": "赫萝",
       "speaker_status": "known",
@@ -148,8 +126,30 @@
         }
       ],
       "evidence": [
-        "赫萝在本场景中持续发言，且上下文显示她正在回应罗伦斯的问题，语气轻松幽默，符合她的说话风格。",
-        "赫萝提到“寄宿在麦子里”，这与她之前提到的设定一致。"
+        "上下文显示赫萝正在与罗伦斯互动，且她的说话风格轻松幽默，带有嘲讽意味，符合赫萝的特征。",
+        "台词中‘咱’的自称与赫萝的说话风格一致。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000204",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "上下文显示罗伦斯在与赫萝对话，且他通常以理性、礼貌的语气说话，符合该句的语气。",
+        "该句是对赫萝上一句的回应，符合对话轮次。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -170,14 +170,14 @@
         }
       ],
       "evidence": [
-        "赫萝在本场景中持续发言，且上下文显示她正在详细解释麦子的处理方式，语气轻松幽默，符合她的说话风格。",
-        "赫萝提到“咱还活着”、“那些麦子就不会腐烂或枯萎”，这与她寄宿在麦子中的设定一致。"
+        "上下文显示赫萝正在与罗伦斯互动，且她的说话风格轻松幽默，带有嘲讽意味，符合赫萝的特征。",
+        "台词中‘咱’的自称与赫萝的说话风格一致。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
       "needs_review": false
     }
   ],
-  "window_notes": "本对话片段为赫萝与罗伦斯之间的连续对话，赫萝持续发言，罗伦斯偶尔回应。对话围绕赫萝的灼伤、貂皮和麦子展开，符合两人在场景中的互动模式。"
+  "window_notes": "对话轮次清晰，赫萝和罗伦斯交替发言，符合场景中两人互动的模式。赫萝使用‘咱’自称，罗伦斯则以理性语气回应，整体对话连贯。"
 }
 ```

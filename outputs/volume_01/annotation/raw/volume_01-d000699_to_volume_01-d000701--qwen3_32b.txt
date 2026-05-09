@@ -1,0 +1,94 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000699",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.85
+        },
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.15
+        }
+      ],
+      "evidence": [
+        "对话内容理性分析银币价值，语气冷静，符合罗伦斯的说话风格。",
+        "赫萝通常使用轻松调侃的语气，而非冷静分析。",
+        "上下文显示罗伦斯正在思考杰廉的动机，此句可能是他对赫萝的回应。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000700",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.8
+        },
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.2
+        }
+      ],
+      "evidence": [
+        "语气理性，分析诈欺行为，符合罗伦斯的说话风格。",
+        "赫萝通常不会以如此理性的方式分析诈欺行为。",
+        "此句是对前一句的回应，符合罗伦斯与赫萝之间的对话轮次。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000701",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.75,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.75
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.25
+        }
+      ],
+      "evidence": [
+        "语气轻松，带有感叹，符合赫萝的说话风格。",
+        "罗伦斯通常不会以感叹的方式表达困惑。",
+        "此句可能是赫萝对前两句的总结性评论。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "三句对话构成一个连续的对话轮次，罗伦斯先分析，再补充观点，赫萝最后以感叹总结，符合角色间的互动模式。"
+}
+```

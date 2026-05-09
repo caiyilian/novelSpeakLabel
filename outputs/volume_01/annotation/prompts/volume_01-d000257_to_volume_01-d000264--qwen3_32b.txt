@@ -1,0 +1,444 @@
+你是轻小说说话人标注项目的阶段 2：正式标注助手。
+你的任务是判断输入 target_dialogues 中每一句台词的说话人，不要改写原文。
+必须把这些台词当作同一个连续片段来判断，优先保持对话轮次和叙述线索的一致性。
+
+规则：
+1. 只输出严格 JSON，不要 Markdown，不要解释性前后缀。
+2. 如果说话人是候选角色，speaker_entity_id 必须使用 candidate_characters 里的 entity_id，speaker_status 填 known。
+3. 如果说话人像某个未知人物，speaker_entity_id 使用 candidate_mysteries 里的 mystery_id，speaker_status 填 mystery。
+4. 如果只是无法追踪的路人/群体，speaker_status 填 npc，speaker_entity_id 可为空或使用 npc:简短称呼。
+5. 证据不足时不要硬猜，speaker_status 填 ambiguous 或 review，并把 needs_review 设为 true。
+6. candidate_speakers 至少列出 1 个候选；如果无法判断，列出最可能的候选和不确定原因。
+7. confidence 使用 0 到 1 之间的小数，表示你对最终判断的把握。
+8. 不要只因为台词里提到某个名字、职业、地点，就把说话人标成那个实体；被称呼的人通常不是说话人。
+9. 连续问答、交易寒暄、命令/回答等场景要按上下句轮次判断；同一人连续说话必须有叙述或语气证据支持。
+10. 如果当前上下文显示某角色还没有登场，不要因为角色库或后文记忆里有这个角色就提前标给他/她。
+
+11. target_dialogues 中 dialogue_kind=inline 的项目是正文内嵌引号，不要当作独立对白；标为 review，needs_review=true。
+12. candidate_mysteries 只是可选候选；如果候选名称和当前段落地点/人物不一致，必须改用 npc 或 review。
+13. 如果只有轮次推断、没有叙述锚点或自我介绍，请降低 confidence，并在 evidence 里说明轮次依据。
+
+输出 JSON 结构：
+{
+  "annotations": [
+    {
+      "dialogue_id": "必须来自 target_dialogue_ids",
+      "speaker_entity_id": "string",
+      "speaker_display": "string",
+      "speaker_status": "known|mystery|npc|ambiguous|review",
+      "confidence": 0.0,
+      "candidate_speakers": [
+        {"entity_id": "string", "display": "string", "status": "known|mystery|npc|ambiguous|review", "score": 0.0}
+      ],
+      "evidence": ["短证据，不要大段复制原文"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "可选，简短说明整体轮次判断"
+}
+必须为 target_dialogue_ids 中每个 dialogue_id 输出且只输出一条 annotation。
+
+输入 JSON：
+{
+  "volume": {
+    "volume_id": "volume_01",
+    "volume": 1
+  },
+  "target_dialogue_ids": [
+    "volume_01-d000257",
+    "volume_01-d000258",
+    "volume_01-d000259",
+    "volume_01-d000260",
+    "volume_01-d000261",
+    "volume_01-d000262",
+    "volume_01-d000263",
+    "volume_01-d000264"
+  ],
+  "dialogues": [
+    {
+      "dialogue_id": "volume_01-d000257",
+      "dialogue_index": 256,
+      "window_position": 1,
+      "chapter_id": "volume_01-c003",
+      "chapter_title": "第二幕",
+      "scene_id": "volume_01-c003-s002",
+      "paragraph_id": "volume_01-c003-s002-p000716",
+      "paragraph_index": 715,
+      "local_dialogue_index": 1,
+      "text": "嗯？好香的味道。",
+      "quote_text": "「嗯？好香的味道。」",
+      "paragraph_text": "「嗯？好香的味道。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 10
+    },
+    {
+      "dialogue_id": "volume_01-d000258",
+      "dialogue_index": 257,
+      "window_position": 2,
+      "chapter_id": "volume_01-c003",
+      "chapter_title": "第二幕",
+      "scene_id": "volume_01-c003-s002",
+      "paragraph_id": "volume_01-c003-s002-p000720",
+      "paragraph_index": 719,
+      "local_dialogue_index": 1,
+      "text": "哇哇。嗯？是麦子啊。",
+      "quote_text": "「哇哇。嗯？是麦子啊。」",
+      "paragraph_text": "「哇哇。嗯？是麦子啊。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 12
+    },
+    {
+      "dialogue_id": "volume_01-d000259",
+      "dialogue_index": 258,
+      "window_position": 3,
+      "chapter_id": "volume_01-c003",
+      "chapter_title": "第二幕",
+      "scene_id": "volume_01-c003-s002",
+      "paragraph_id": "volume_01-c003-s002-p000721",
+      "paragraph_index": 720,
+      "local_dialogue_index": 1,
+      "text": "还有皮绳，你自己想办法挂在脖子上吧。",
+      "quote_text": "「还有皮绳，你自己想办法挂在脖子上吧。」",
+      "paragraph_text": "「还有皮绳，你自己想办法挂在脖子上吧。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 20
+    },
+    {
+      "dialogue_id": "volume_01-d000260",
+      "dialogue_index": 259,
+      "window_position": 4,
+      "chapter_id": "volume_01-c003",
+      "chapter_title": "第二幕",
+      "scene_id": "volume_01-c003-s002",
+      "paragraph_id": "volume_01-c003-s002-p000722",
+      "paragraph_index": 721,
+      "local_dialogue_index": 1,
+      "text": "嗯，感恩，不过，还是吃饭先！",
+      "quote_text": "「嗯，感恩，不过，还是吃饭先！」",
+      "paragraph_text": "「嗯，感恩，不过，还是吃饭先！」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 16
+    },
+    {
+      "dialogue_id": "volume_01-d000261",
+      "dialogue_index": 260,
+      "window_position": 5,
+      "chapter_id": "volume_01-c003",
+      "chapter_title": "第二幕",
+      "scene_id": "volume_01-c003-s002",
+      "paragraph_id": "volume_01-c003-s002-p000725",
+      "paragraph_index": 724,
+      "local_dialogue_index": 1,
+      "text": "狼也会觉得马铃薯好吃啊？",
+      "quote_text": "「狼也会觉得马铃薯好吃啊？」",
+      "paragraph_text": "「狼也会觉得马铃薯好吃啊？」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 14
+    },
+    {
+      "dialogue_id": "volume_01-d000262",
+      "dialogue_index": 261,
+      "window_position": 6,
+      "chapter_id": "volume_01-c003",
+      "chapter_title": "第二幕",
+      "scene_id": "volume_01-c003-s002",
+      "paragraph_id": "volume_01-c003-s002-p000726",
+      "paragraph_index": 725,
+      "local_dialogue_index": 1,
+      "text": "嗯。咱们狼又不是整年都吃肉。咱们会吃树上的嫩芽，也会吃鱼，人类种的蔬菜比嫩芽还要好吃。还有，咱挺喜欢人类想到把肉或蔬菜用火烧过的点子。",
+      "quote_text": "「嗯。咱们狼又不是整年都吃肉。咱们会吃树上的嫩芽，也会吃鱼，人类种的蔬菜比嫩芽还要好吃。还有，咱挺喜欢人类想到把肉或蔬菜用火烧过的点子。」",
+      "paragraph_text": "「嗯。咱们狼又不是整年都吃肉。咱们会吃树上的嫩芽，也会吃鱼，人类种的蔬菜比嫩芽还要好吃。还有，咱挺喜欢人类想到把肉或蔬菜用火烧过的点子。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 69
+    },
+    {
+      "dialogue_id": "volume_01-d000263",
+      "dialogue_index": 262,
+      "window_position": 7,
+      "chapter_id": "volume_01-c003",
+      "chapter_title": "第二幕",
+      "scene_id": "volume_01-c003-s002",
+      "paragraph_id": "volume_01-c003-s002-p000728",
+      "paragraph_index": 727,
+      "local_dialogue_index": 1,
+      "text": "呼，吓咱一跳。人类的喉咙果然还是太窄，真不方便。",
+      "quote_text": "「呼，吓咱一跳。人类的喉咙果然还是太窄，真不方便。」",
+      "paragraph_text": "「呼，吓咱一跳。人类的喉咙果然还是太窄，真不方便。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 26
+    },
+    {
+      "dialogue_id": "volume_01-d000264",
+      "dialogue_index": 263,
+      "window_position": 8,
+      "chapter_id": "volume_01-c003",
+      "chapter_title": "第二幕",
+      "scene_id": "volume_01-c003-s002",
+      "paragraph_id": "volume_01-c003-s002-p000729",
+      "paragraph_index": 728,
+      "local_dialogue_index": 1,
+      "text": "狼嘛，当然是狼吞虎咽了。",
+      "quote_text": "「狼嘛，当然是狼吞虎咽了。」",
+      "paragraph_text": "「狼嘛，当然是狼吞虎咽了。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 14
+    }
+  ],
+  "context": {
+    "paragraphs": [
+      {
+        "paragraph_id": "volume_01-c003-s002-p000713",
+        "paragraph_index": 712,
+        "text": "教会不同于一般的旅馆，虽然会提供房间，但不会为投宿客打点饮食。不过，只要捐款就可以使用锅子。罗伦斯捐款借来锅子，并把五颗马铃薯放入装了水的锅子里。当然了，生火所需的薪柴必须另外付费。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c003-s002-p000714",
+        "paragraph_index": 713,
+        "text": "趁着等待马铃薯煮熟的空档，罗伦斯随手把赫萝寄宿其中的麦子去壳，再找来没有用到的皮袋，把去好壳的麦粒装进去。罗伦斯想起赫萝说过想挂在脖子上，于是拿了一条皮绳回到锅子旁。马铃薯、薪柴、皮袋及皮绳，这些全部加起来也是一小笔钱，罗伦斯一边在心里盘算要向赫罗收多少钱，一边拿着煮熟的马铃薯走回房里。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c003-s002-p000715",
+        "paragraph_index": 714,
+        "text": "罗伦斯因为双手拿满东西所以没能敲门，但拥有狼耳朵的赫萝似乎靠脚步声就能够分辨来者何人。就算如此，罗伦斯进到房间，赫萝竟是连头也不回地坐在床上，悠哉地梳理着尾巴的毛。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c003-s002-p000716",
+        "paragraph_index": 715,
+        "text": "「嗯？好香的味道。」",
+        "target_dialogue_ids": [
+          "volume_01-d000257"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c003-s002-p000717",
+        "paragraph_index": 716,
+        "text": "赫萝抬起头说，她的鼻子似乎和耳朵一样灵敏。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c003-s002-p000718",
+        "paragraph_index": 717,
+        "text": "马铃薯上面放了少许山羊乳做成的乳酪。罗伦斯在独自行商时从不曾如此享受，但今天是两个人，所以他决定慷慨拿出乳酪。看到赫萝开心的反应，也就觉得挺值得的。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c003-s002-p000719",
+        "paragraph_index": 718,
+        "text": "罗伦斯把马铃薯放在床边的桌子上，赫萝立刻从床上伸手准备拿马铃薯。就在赫萝的手快要抓到马铃薯时，罗伦斯把装满麦粒的皮袋丢给了她。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c003-s002-p000720",
+        "paragraph_index": 719,
+        "text": "「哇哇。嗯？是麦子啊。」",
+        "target_dialogue_ids": [
+          "volume_01-d000258"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c003-s002-p000721",
+        "paragraph_index": 720,
+        "text": "「还有皮绳，你自己想办法挂在脖子上吧。」",
+        "target_dialogue_ids": [
+          "volume_01-d000259"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c003-s002-p000722",
+        "paragraph_index": 721,
+        "text": "「嗯，感恩，不过，还是吃饭先！」",
+        "target_dialogue_ids": [
+          "volume_01-d000260"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c003-s002-p000723",
+        "paragraph_index": 722,
+        "text": "赫萝随便把皮袋及皮绳放在旁边，那动作之草率让罗伦斯吓了一跳。赫萝一副口水直流的表情，把手伸向马铃薯。看来，吃饭对赫萝来说似乎比什么都重要。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c003-s002-p000724",
+        "paragraph_index": 723,
+        "text": "赫萝拿了一颗大马铃薯，并迅速剖成两半。看着热气立刻从马铃薯冒出来，赫萝的脸上漾起幸福的笑容。赫萝的尾巴像只小狗一样甩来甩去，虽然罗伦斯觉得那模样好笑，但他知道如果说出口，肯定会惹得赫萝发怒，所以也就作罢。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c003-s002-p000725",
+        "paragraph_index": 724,
+        "text": "「狼也会觉得马铃薯好吃啊？」",
+        "target_dialogue_ids": [
+          "volume_01-d000261"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c003-s002-p000726",
+        "paragraph_index": 725,
+        "text": "「嗯。咱们狼又不是整年都吃肉。咱们会吃树上的嫩芽，也会吃鱼，人类种的蔬菜比嫩芽还要好吃。还有，咱挺喜欢人类想到把肉或蔬菜用火烧过的点子。」",
+        "target_dialogue_ids": [
+          "volume_01-d000262"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c003-s002-p000727",
+        "paragraph_index": 726,
+        "text": "听说猫舌头怕烫，但狼看起来似乎没有这样的困扰。赫萝拿着热呼呼的半颗马铃薯，只吹了两三次气，就整个放入口中。才觉得赫萝吃得太大口，果然她就被噎着了。罗伦斯把装着水的皮袋丢给赫萝，解救了她。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c003-s002-p000728",
+        "paragraph_index": 727,
+        "text": "「呼，吓咱一跳。人类的喉咙果然还是太窄，真不方便。」",
+        "target_dialogue_ids": [
+          "volume_01-d000263"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c003-s002-p000729",
+        "paragraph_index": 728,
+        "text": "「狼嘛，当然是狼吞虎咽了。」",
+        "target_dialogue_ids": [
+          "volume_01-d000264"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c003-s002-p000730",
+        "paragraph_index": 729,
+        "text": "「嗯。汝瞧，那是因为狼没有这东西，所以没法儿慢慢咀嚼。」",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c003-s002-p000731",
+        "paragraph_index": 730,
+        "text": "赫萝用手指勾着嘴角往外拉，她指的应该是脸颊吧。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c003-s002-p000732",
+        "paragraph_index": 731,
+        "text": "「不过，咱以前也曾经因为吞下马铃薯而被噎着。」",
+        "target_dialogue_ids": []
+      }
+    ]
+  },
+  "scene_memory": [
+    {
+      "scene_id": "volume_01-c003-s002-r004",
+      "parent_scene_id": "volume_01-c003-s002",
+      "chunk_index": 4,
+      "chunk_count": 6,
+      "scene_summary": "罗伦斯与赫萝在房间中互动，赫萝表现出对食物的强烈兴趣，尤其是马铃薯和麦子。两人之间的对话轻松幽默，赫萝展现出狼的特征和非人类的特质。",
+      "active_characters": [
+        "罗伦斯",
+        "赫萝"
+      ],
+      "relationships": [
+        "罗伦斯与赫萝之间有亲密互动，罗伦斯提供食物和物品，赫萝接受并表现出依赖",
+        "赫萝表现出对食物的强烈兴趣，暗示其非人类的特征"
+      ],
+      "notes": "赫萝表现出狼的特征和非人类的特质，但未提及新的神秘人物。场景中没有出现未命名但可追踪的神秘人物。"
+    },
+    {
+      "scene_id": "volume_01-c003-s002-r005",
+      "parent_scene_id": "volume_01-c003-s002",
+      "chunk_index": 5,
+      "chunk_count": 6,
+      "scene_summary": "罗伦斯与赫萝在旅途中交谈，赫萝谈论咀嚼与马铃薯的经历，并提到跳蚤的问题，表现出轻松幽默但略带威胁的说话风格。",
+      "active_characters": [
+        "罗伦斯",
+        "赫萝"
+      ],
+      "relationships": [
+        "罗伦斯与赫萝一同旅行",
+        "罗伦斯对赫萝的身份持怀疑态度"
+      ],
+      "notes": "赫萝表现出轻松幽默但略带威胁的说话风格，罗伦斯则保持理性与怀疑态度。两人之间存在互动与信任的微妙平衡。"
+    }
+  ],
+  "candidate_characters": [
+    {
+      "entity_id": "char_0001",
+      "display_name": "罗伦斯",
+      "aliases": [
+        "罗伦斯",
+        "罗伦斯先生"
+      ],
+      "titles": [
+        "中间人",
+        "交易者",
+        "同行",
+        "商人",
+        "小毛头",
+        "小的",
+        "市井无赖",
+        "年轻人"
+      ],
+      "description": "一位行商人，正在与米隆商行的代表马贺特进行交易谈判。他原本期待获得两千枚银币，但实际只得到一百二十枚，感到震惊和困惑。 / 一位行商人，发现并收留了赫萝，决定与她一同旅行。 / 一位二十五岁的自力更生旅行商人，已有七年行商经验，性格泰然自若。 / 一位冷静理性的旅行商人，对赫萝的身份持怀疑态度，但仍保持互动。他注重外表整洁，对商业制度有深入理解。 / 冷静理性的旅行商人，与赫萝一同旅行。在本场景中与米隆商行的马贺特讨论梅迪欧商行的威胁，提出利用崔尼银币交易作为交涉王牌。 / 一位冷静理性的旅行商人，与赫萝一同旅行…",
+      "speech_style": "理性、坚定、略带情绪化 / 冷静、理性，带有悔恨和自责的语气。 / 冷静、理性，语气中带有对赫萝的关心和些许担忧。 / 冷静、理性、略带失落 / 冷静、理性，对商业制度有深入理解，并能清晰地向他人解释。 / 理性、礼貌、略带谨慎。 / 理性、冷静，带有商业分析倾向。 / 理性、沉稳、略带幽默 / 理性、冷静，但因困惑…",
+      "relationship_hints": [
+        "与赫萝一同旅行",
+        "对赫萝的真实性持怀疑态度",
+        "与深山村落的村民有交易关系",
+        "对修道院抱有商业期望但未成功",
+        "与骑士有短暂互动",
+        "与小村落的村民有交易关系",
+        "与修道院有关联",
+        "对教会和异教徒问题有见解"
+      ],
+      "first_seen_scene_id": "volume_01-c000-s003-r001",
+      "latest_seen_scene_id": "volume_01-c008-s003-r002",
+      "confidence": 1.0
+    },
+    {
+      "entity_id": "char_0002",
+      "display_name": "赫萝",
+      "aliases": [
+        "赫萝"
+      ],
+      "titles": [
+        "丰收之神",
+        "咱",
+        "神秘少女",
+        "约伊兹的贤狼",
+        "贤狼"
+      ],
+      "description": "自称丰收之神的神秘少女，拥有狼的耳朵和尾巴。在本场景中协助罗伦斯，表现出对他的关心和保护。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴，行为举止非人类，表现出轻松幽默但略带威胁性的说话风格。在本场景中，她对罗伦斯的伤口进行吸血，引发旁人惊呼，并表现出悲伤的情绪。 / 自称是丰收之神的神秘少女，拥有狼的耳朵和尾巴。在本场景中逐渐显露出非人类的特征，最终完全变成一只巨大的狼。她与罗伦斯有情感交流，表现出悲伤和决绝的情绪。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴，未直接参与本场景，但罗伦斯的行动可能与她有关…",
+      "speech_style": "轻松幽默但略带威胁性，情绪化且带有调侃语气。 / 轻松幽默、略带调侃和威胁 / 轻松幽默、略带威胁性 / 轻松幽默、略带威胁性、撒娇 / 警觉、神秘 / 轻松幽默但略带威胁性 / 轻松幽默、略带调侃 / 轻松幽默但略带威胁性，语气中透露出对罗伦斯的依赖。 / 轻松幽默、略带威胁性、自信 / 轻松幽默但略带威胁性，情绪…",
+      "relationship_hints": [
+        "与罗伦斯一同旅行",
+        "被罗伦斯怀疑是否为真正的神",
+        "与叶勒有附身关系",
+        "与罗伦斯有潜在互动",
+        "与罗伦斯有互动，似乎是被他发现并收留的。",
+        "与罗伦斯有互动，但尚未明确关系",
+        "与罗伦斯互动频繁，表现出对他的信任和玩笑态度",
+        "与罗伦斯互动密切"
+      ],
+      "first_seen_scene_id": "volume_01-c000-s003-r001",
+      "latest_seen_scene_id": "volume_01-c008-s003-r002",
+      "confidence": 1.0
+    }
+  ],
+  "candidate_mysteries": []
+}

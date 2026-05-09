@@ -1,0 +1,34 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000993",
+      "speaker_entity_id": "char_0020",
+      "speaker_display": "列支敦·马贺特",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0020",
+          "display": "列支敦·马贺特",
+          "status": "known",
+          "score": 0.85
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.1
+        }
+      ],
+      "evidence": [
+        "前文提到马贺特与罗伦斯讨论梅迪欧商行威胁，语气符合其冷静理性风格",
+        "台词内容涉及对罗伦斯处境的分析，符合马贺特作为商行代表的立场",
+        "罗伦斯在前文已表达困惑，此句为继续推进讨论，非罗伦斯自述"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话由马贺特提出，围绕梅迪欧商行与罗伦斯、赫萝的遭遇展开，符合马贺特作为商行代表的理性分析风格"
+}

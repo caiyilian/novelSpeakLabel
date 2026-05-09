@@ -1,23 +1,28 @@
 {
-  "dialogue_id": "volume_01-d000312",
-  "speaker_entity_id": "char_0002",
-  "speaker_display": "赫萝",
-  "speaker_status": "known",
-  "confidence": 0.98,
-  "candidate_speakers": [
+  "annotations": [
     {
-      "entity_id": "char_0002",
-      "display": "赫萝",
-      "status": "known",
-      "score": 0.98
+      "dialogue_id": "volume_01-d000312",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "前一句描述赫萝从外套底下探出脸，紧接着就是这句台词，符合说话人连续性",
+        "台词中使用了「咱」自称，与赫萝的说话风格一致",
+        "「贤狼」是赫萝的自称或被称呼的称号，符合其身份"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
     }
   ],
-  "evidence": [
-    "赫萝点了点头，从外套底下探出脸说：",
-    "「如果被汝安慰，就太有损咱贤狼的名誉了。」",
-    "赫萝的说话风格表现出轻松幽默但略带威胁性，符合她的语言特征，如自称「咱」和「贤狼」。"
-  ],
-  "should_create_new_entity": false,
-  "new_entity_hint": "",
-  "needs_review": false
+  "window_notes": "该台词紧接在赫萝探出脸的叙述之后，符合说话人轮次逻辑，且台词风格与赫萝一致，判断为赫萝说话合理。"
 }

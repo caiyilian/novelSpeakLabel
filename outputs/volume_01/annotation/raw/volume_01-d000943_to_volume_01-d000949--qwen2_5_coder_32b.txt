@@ -1,0 +1,115 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000943",
+      "speaker_entity_id": "",
+      "speaker_display": "",
+      "speaker_status": "ambiguous",
+      "confidence": 0.2,
+      "candidate_speakers": [
+        {"entity_id": "char_0001", "display": "罗伦斯", "status": "known", "score": 0.3},
+        {"entity_id": "char_0002", "display": "赫萝", "status": "known", "score": 0.3},
+        {"entity_id": "", "display": "npc:旁白", "status": "npc", "score": 0.4}
+      ],
+      "evidence": ["对话轮次不明确，没有明显的叙述锚点"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    },
+    {
+      "dialogue_id": "volume_01-d000944",
+      "speaker_entity_id": "",
+      "speaker_display": "",
+      "speaker_status": "ambiguous",
+      "confidence": 0.2,
+      "candidate_speakers": [
+        {"entity_id": "char_0001", "display": "罗伦斯", "status": "known", "score": 0.3},
+        {"entity_id": "char_0002", "display": "赫萝", "status": "known", "score": 0.3},
+        {"entity_id": "", "display": "npc:旁白", "status": "npc", "score": 0.4}
+      ],
+      "evidence": ["对话轮次不明确，没有明显的叙述锚点"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    },
+    {
+      "dialogue_id": "volume_01-d000945",
+      "speaker_entity_id": "",
+      "speaker_display": "",
+      "speaker_status": "ambiguous",
+      "confidence": 0.2,
+      "candidate_speakers": [
+        {"entity_id": "char_0001", "display": "罗伦斯", "status": "known", "score": 0.3},
+        {"entity_id": "char_0002", "display": "赫萝", "status": "known", "score": 0.3},
+        {"entity_id": "", "display": "npc:旁白", "status": "npc", "score": 0.4}
+      ],
+      "evidence": ["对话轮次不明确，没有明显的叙述锚点"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    },
+    {
+      "dialogue_id": "volume_01-d000946",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {"entity_id": "char_0001", "display": "罗伦斯", "status": "known", "score": 0.9}
+      ],
+      "evidence": ["前一句提到的“那些家伙”可能是梅迪欧商行的人，罗伦斯在解释自己的行为"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000947",
+      "speaker_entity_id": "",
+      "speaker_display": "",
+      "speaker_status": "ambiguous",
+      "confidence": 0.2,
+      "candidate_speakers": [
+        {"entity_id": "char_0001", "display": "罗伦斯", "status": "known", "score": 0.3},
+        {"entity_id": "char_0002", "display": "赫萝", "status": "known", "score": 0.3},
+        {"entity_id": "", "display": "npc:旁白", "status": "npc", "score": 0.4}
+      ],
+      "evidence": ["对话轮次不明确，没有明显的叙述锚点"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    },
+    {
+      "dialogue_id": "volume_01-d000948",
+      "speaker_entity_id": "",
+      "speaker_display": "",
+      "speaker_status": "ambiguous",
+      "confidence": 0.2,
+      "candidate_speakers": [
+        {"entity_id": "char_0001", "display": "罗伦斯", "status": "known", "score": 0.3},
+        {"entity_id": "char_0002", "display": "赫萝", "status": "known", "score": 0.3},
+        {"entity_id": "", "display": "npc:旁白", "status": "npc", "score": 0.4}
+      ],
+      "evidence": ["对话轮次不明确，没有明显的叙述锚点"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    },
+    {
+      "dialogue_id": "volume_01-d000949",
+      "speaker_entity_id": "",
+      "speaker_display": "",
+      "speaker_status": "ambiguous",
+      "confidence": 0.2,
+      "candidate_speakers": [
+        {"entity_id": "char_0001", "display": "罗伦斯", "status": "known", "score": 0.3},
+        {"entity_id": "char_0002", "display": "赫萝", "status": "known", "score": 0.3},
+        {"entity_id": "", "display": "npc:旁白", "status": "npc", "score": 0.4}
+      ],
+      "evidence": ["对话轮次不明确，没有明显的叙述锚点"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    }
+  ],
+  "window_notes": "前几句话的说话人难以确定，后续对话中罗伦斯出现，但整体轮次判断依据不足。"
+}

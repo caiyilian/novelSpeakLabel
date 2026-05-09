@@ -1,0 +1,55 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000183",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 1.0
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.0
+        }
+      ],
+      "evidence": ["使用第一人称'咱'，符合赫萝的说话风格；提到尾巴、衣物搭配等细节，符合赫萝作为狼族的特征；上下文明确为赫萝在试穿衣物。"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000184",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 1.0
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.0
+        }
+      ],
+      "evidence": ["承接前句语境，语气轻松自然，符合赫萝的说话风格；回应前句关于剪洞的提议，表现出对自身行为的自信；上下文明确为赫萝在回应罗伦斯的担忧。"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "赫萝在试穿衣物并提出剪洞，罗伦斯对此表示担忧，赫萝则轻松回应，对话轮次清晰，符合角色性格与互动逻辑。"
+}

@@ -1,0 +1,34 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001274",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.85
+        },
+        {
+          "entity_id": "mystery_volume_01_c007_s004_r006_神秘说话者",
+          "display": "神秘说话者",
+          "status": "mystery",
+          "score": 0.15
+        }
+      ],
+      "evidence": [
+        "前文描述罗伦斯收到『麦子拿来。』的命令后准备递出皮袋",
+        "罗伦斯在听到疑问后产生不祥预感，符合其理性性格",
+        "赫萝在罗伦斯提问后沉默并踏出前脚，暗示罗伦斯是主动发问者"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "罗伦斯在收到『麦子拿来。』的命令后准备递出皮袋，随后因不祥预感提出疑问，符合其理性性格。赫萝的反应也暗示罗伦斯是主动发问者。"
+}

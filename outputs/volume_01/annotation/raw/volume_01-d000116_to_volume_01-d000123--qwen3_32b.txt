@@ -3,26 +3,20 @@
   "annotations": [
     {
       "dialogue_id": "volume_01-d000116",
-      "speaker_entity_id": "char_0001",
-      "speaker_display": "罗伦斯",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
       "speaker_status": "known",
-      "confidence": 0.9,
+      "confidence": 0.95,
       "candidate_speakers": [
-        {
-          "entity_id": "char_0001",
-          "display": "罗伦斯",
-          "status": "known",
-          "score": 0.9
-        },
         {
           "entity_id": "char_0002",
           "display": "赫萝",
           "status": "known",
-          "score": 0.1
+          "score": 0.95
         }
       ],
       "evidence": [
-        "赫萝在前文刚刚提到‘或是鲜血’，罗伦斯对此感到震惊并重复‘鲜……血？’，符合罗伦斯的反应模式。"
+        "上下文显示赫萝在谈论变身所需的代价，包括鲜血，这是她主动提出的内容。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -40,16 +34,10 @@
           "display": "赫萝",
           "status": "known",
           "score": 0.95
-        },
-        {
-          "entity_id": "char_0001",
-          "display": "罗伦斯",
-          "status": "known",
-          "score": 0.05
         }
       ],
       "evidence": [
-        "赫萝在前文提到‘或是鲜血’，罗伦斯反应后，赫萝紧接着补充‘不过，不需要很多。’，符合对话轮次。"
+        "这是对前一句「鲜……血？」的延续，属于同一说话人。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -67,16 +55,10 @@
           "display": "赫萝",
           "status": "known",
           "score": 0.95
-        },
-        {
-          "entity_id": "char_0001",
-          "display": "罗伦斯",
-          "status": "known",
-          "score": 0.05
         }
       ],
       "evidence": [
-        "赫萝在前文提到‘不过，不需要很多。’，紧接着说‘怎么着，怕了啊？’，语气带有挑衅，符合赫萝的说话风格。"
+        "赫萝在上下文中表现出对罗伦斯反应的不满，语气带有挑衅，符合她的说话风格。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -94,16 +76,10 @@
           "display": "罗伦斯",
           "status": "known",
           "score": 0.9
-        },
-        {
-          "entity_id": "char_0002",
-          "display": "赫萝",
-          "status": "known",
-          "score": 0.1
         }
       ],
       "evidence": [
-        "赫萝说‘怎么着，怕了啊？’后，罗伦斯反射性地回答‘那怎么可能’，符合对话轮次和罗伦斯的性格。"
+        "上下文明确指出「赫萝看着神情胆怯的罗伦斯，苦笑说道。虽然罗伦斯反射性地回答『那怎么可能』」，说明这是罗伦斯的回应。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -121,16 +97,10 @@
           "display": "赫萝",
           "status": "known",
           "score": 0.95
-        },
-        {
-          "entity_id": "char_0001",
-          "display": "罗伦斯",
-          "status": "known",
-          "score": 0.05
         }
       ],
       "evidence": [
-        "赫萝在前文提到‘怎么着，怕了啊？’，罗伦斯回应后，赫萝继续说‘看见汝的反应，咱就更不想变身了。’，符合对话轮次和语气。"
+        "上下文显示赫萝在回应罗伦斯的反应，语气中带有情绪，符合她的说话风格。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -148,16 +118,10 @@
           "display": "罗伦斯",
           "status": "known",
           "score": 0.9
-        },
-        {
-          "entity_id": "char_0002",
-          "display": "赫萝",
-          "status": "known",
-          "score": 0.1
         }
       ],
       "evidence": [
-        "赫萝说‘看见汝的反应，咱就更不想变身了。’后，罗伦斯反问‘为、为什么？’，符合对话轮次和罗伦斯的反应。"
+        "上下文明确指出这是罗伦斯的反应，他反问赫萝「为、为什么？」"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -175,16 +139,10 @@
           "display": "赫萝",
           "status": "known",
           "score": 0.95
-        },
-        {
-          "entity_id": "char_0001",
-          "display": "罗伦斯",
-          "status": "known",
-          "score": 0.05
         }
       ],
       "evidence": [
-        "赫萝在前文被罗伦斯反问‘为、为什么？’后，继续以长篇解释回应，符合赫萝的说话风格和对话轮次。"
+        "赫萝在上下文中继续表达对罗伦斯反应的失望，语气悲伤，符合她的说话风格。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -202,22 +160,16 @@
           "display": "罗伦斯",
           "status": "known",
           "score": 0.9
-        },
-        {
-          "entity_id": "char_0002",
-          "display": "赫萝",
-          "status": "known",
-          "score": 0.1
         }
       ],
       "evidence": [
-        "赫萝说完长篇解释后，罗伦斯回应‘我、我怎么可能害怕看到你的模样。’，符合对话轮次和罗伦斯的反应。"
+        "这是罗伦斯对赫萝的回应，语气中带有辩解，符合他的说话风格。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
       "needs_review": false
     }
   ],
-  "window_notes": "对话轮次清晰，赫萝与罗伦斯交替发言，符合两人在场景中的互动模式。"
+  "window_notes": "对话轮次清晰，赫萝与罗伦斯交替发言，符合上下文中的互动模式。"
 }
 ```

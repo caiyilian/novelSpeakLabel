@@ -16,8 +16,7 @@
         }
       ],
       "evidence": [
-        "上下文显示罗伦斯在与赫萝讨论麦子的处理方式，此句为罗伦斯对赫萝的回应，符合对话轮次。",
-        "赫萝在前文提到麦子不会腐烂，罗伦斯对此做出回应，符合逻辑顺序。"
+        "上下文显示罗伦斯在与赫萝讨论麦子的处理方式，此句为罗伦斯对赫萝的回应。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -38,8 +37,7 @@
         }
       ],
       "evidence": [
-        "赫萝在前一句后回应罗伦斯的提议，符合对话轮次。",
-        "赫萝的语气轻松，符合其说话风格。"
+        "赫萝在上一句之后回应罗伦斯，语气轻松，符合她的说话风格。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -47,28 +45,6 @@
     },
     {
       "dialogue_id": "volume_01-d000208",
-      "speaker_entity_id": "char_0002",
-      "speaker_display": "赫萝",
-      "speaker_status": "known",
-      "confidence": 0.95,
-      "candidate_speakers": [
-        {
-          "entity_id": "char_0002",
-          "display": "赫萝",
-          "status": "known",
-          "score": 0.95
-        }
-      ],
-      "evidence": [
-        "赫萝继续与罗伦斯讨论麦子的用途，符合对话轮次。",
-        "赫萝的语气带有请求性质，符合其说话风格。"
-      ],
-      "should_create_new_entity": false,
-      "new_entity_hint": "",
-      "needs_review": false
-    },
-    {
-      "dialogue_id": "volume_01-d000209",
       "speaker_entity_id": "char_0001",
       "speaker_display": "罗伦斯",
       "speaker_status": "known",
@@ -82,8 +58,28 @@
         }
       ],
       "evidence": [
-        "罗伦斯回应赫萝的请求，解释麦子的特性，符合对话轮次。",
-        "罗伦斯的语气理性，符合其说话风格。"
+        "罗伦斯继续与赫萝对话，提出新的请求，符合对话轮次。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000209",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "赫萝回应罗伦斯的请求，语气带有解释和否定，符合她的说话风格。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -104,8 +100,7 @@
         }
       ],
       "evidence": [
-        "罗伦斯提出前往大厅烘干衣服的建议，符合对话轮次。",
-        "罗伦斯的语气理性，符合其说话风格。"
+        "罗伦斯提出前往大厅烘干衣服的建议，符合他理性、解决问题的风格。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -126,8 +121,7 @@
         }
       ],
       "evidence": [
-        "赫萝回应罗伦斯的建议，表示赞同，符合对话轮次。",
-        "赫萝的语气轻松，符合其说话风格。"
+        "赫萝回应罗伦斯的建议，语气轻松，符合她的说话风格。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -148,8 +142,7 @@
         }
       ],
       "evidence": [
-        "罗伦斯对赫萝的笑声表示疑问，符合对话轮次。",
-        "罗伦斯的语气带有疑问，符合其说话风格。"
+        "罗伦斯对赫萝的笑声表示疑惑，符合对话轮次和他理性、略带困惑的语气。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -170,14 +163,13 @@
         }
       ],
       "evidence": [
-        "赫萝回应罗伦斯的疑问，解释自己笑的原因，符合对话轮次。",
-        "赫萝的语气轻松幽默，符合其说话风格。"
+        "赫萝继续以轻松幽默的语气回应罗伦斯，符合她的说话风格和对话轮次。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
       "needs_review": false
     }
   ],
-  "window_notes": "对话轮次清晰，罗伦斯与赫萝交替发言，符合两人在场景中的互动模式。"
+  "window_notes": "对话轮次清晰，罗伦斯和赫萝交替发言，符合两人在场景中的互动模式。"
 }
 ```

@@ -16,8 +16,7 @@
         }
       ],
       "evidence": [
-        "赫萝趴在桌上回答，然后睁开一边的眼睛看着罗伦斯说",
-        "罗伦斯表现出对赫萝的关心，计划为她购买梳子和帽子"
+        "上下文显示赫萝因宿醉趴在桌上，罗伦斯在对话中表现出关心和调侃，符合说话人语气。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -38,8 +37,7 @@
         }
       ],
       "evidence": [
-        "赫萝趴在桌上回答，然后睁开一边的眼睛看着罗伦斯说",
-        "赫萝的狼耳在对话中有所反应，暗示她对某些话题仍保持警觉"
+        "赫萝在上下文中被描述为趴在桌上，且使用了「汝」来称呼对方，符合其说话风格。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -60,8 +58,7 @@
         }
       ],
       "evidence": [
-        "罗伦斯伸手拿起面包咬了一口，看着再度趴在桌上的赫萝，露出苦笑",
-        "罗伦斯表现出对赫萝的关心，计划为她购买梳子和帽子"
+        "对话轮次显示罗伦斯在赫萝之后回应，语气符合其冷静理性的风格。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -82,8 +79,7 @@
         }
       ],
       "evidence": [
-        "赫萝缓慢地抬起头坐正身子后，再度啜起没喝完的苹果汁",
-        "赫萝的狼耳在对话中有所反应，暗示她对某些话题仍保持警觉"
+        "赫萝提到「我本来打算去了商行后要去买东西」，符合其在场景中的行为和语气。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -104,8 +100,7 @@
         }
       ],
       "evidence": [
-        "罗伦斯表现出对赫萝的关心，计划为她购买梳子和帽子",
-        "赫萝的尾巴和耳朵暴露了她的情绪，暗示她并非完全能控制自己的狼性特征"
+        "罗伦斯建议赫萝一个人去买东西，语气中带有关心和无奈，符合其说话风格。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -113,28 +108,6 @@
     },
     {
       "dialogue_id": "volume_01-d000814",
-      "speaker_entity_id": "char_0002",
-      "speaker_display": "赫萝",
-      "speaker_status": "known",
-      "confidence": 0.98,
-      "candidate_speakers": [
-        {
-          "entity_id": "char_0002",
-          "display": "赫萝",
-          "status": "known",
-          "score": 0.98
-        }
-      ],
-      "evidence": [
-        "赫萝的尾巴和耳朵暴露了她的情绪，暗示她并非完全能控制自己的狼性特征",
-        "赫萝说话轻松幽默但略带威胁性，语气中透露出对罗伦斯的依赖"
-      ],
-      "should_create_new_entity": false,
-      "new_entity_hint": "",
-      "needs_review": false
-    },
-    {
-      "dialogue_id": "volume_01-d000815",
       "speaker_entity_id": "char_0002",
       "speaker_display": "赫萝",
       "speaker_status": "known",
@@ -148,8 +121,28 @@
         }
       ],
       "evidence": [
-        "赫萝感到无趣地稍稍嘟起下嘴唇",
-        "赫萝说话轻松幽默但略带威胁性，情绪波动明显"
+        "赫萝以调侃的语气反问罗伦斯是否想一起去，符合其轻松幽默但略带威胁的说话风格。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000815",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.96,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.96
+        }
+      ],
+      "evidence": [
+        "赫萝因罗伦斯的平静反应感到无趣，语气中带有撒娇和不满，符合其性格。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -160,24 +153,23 @@
       "speaker_entity_id": "char_0001",
       "speaker_display": "罗伦斯",
       "speaker_status": "known",
-      "confidence": 0.96,
+      "confidence": 0.95,
       "candidate_speakers": [
         {
           "entity_id": "char_0001",
           "display": "罗伦斯",
           "status": "known",
-          "score": 0.96
+          "score": 0.95
         }
       ],
       "evidence": [
-        "罗伦斯伸手拿起面包咬了一口，看着再度趴在桌上的赫萝，露出苦笑",
-        "罗伦斯表现出对赫萝的关心，计划为她购买梳子和帽子"
+        "罗伦斯表示会为赫萝买梳子和帽子，语气中带有关心和幽默，符合其说话风格。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
       "needs_review": false
     }
   ],
-  "window_notes": "对话轮次清晰，罗伦斯与赫萝交替发言，符合两人在场景中的互动模式。赫萝的狼耳和尾巴在对话中多次出现，暗示她的情绪变化，有助于确认说话人。"
+  "window_notes": "对话轮次清晰，罗伦斯与赫萝交替发言，语气和行为符合角色设定，整体判断较为明确。"
 }
 ```

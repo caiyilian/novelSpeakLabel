@@ -2,26 +2,20 @@
   "annotations": [
     {
       "dialogue_id": "volume_01-d000408",
-      "speaker_entity_id": "char_0001",
-      "speaker_display": "罗伦斯",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
       "speaker_status": "known",
-      "confidence": 0.9,
+      "confidence": 0.95,
       "candidate_speakers": [
-        {
-          "entity_id": "char_0001",
-          "display": "罗伦斯",
-          "status": "known",
-          "score": 0.9
-        },
         {
           "entity_id": "char_0002",
           "display": "赫萝",
           "status": "known",
-          "score": 0.1
+          "score": 0.95
         }
       ],
       "evidence": [
-        "上下文显示罗伦斯在试探赫萝，赫萝随后表达对苹果的渴望，符合罗伦斯先发问的逻辑。"
+        "赫萝在场景中频繁出现，且是主要对话角色之一。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -42,7 +36,7 @@
         }
       ],
       "evidence": [
-        "赫萝在本场景中多次表达对苹果的渴望，语气断续，符合其说话风格。"
+        "赫萝在场景中频繁出现，且是主要对话角色之一。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -53,23 +47,17 @@
       "speaker_entity_id": "char_0001",
       "speaker_display": "罗伦斯",
       "speaker_status": "known",
-      "confidence": 0.9,
+      "confidence": 0.95,
       "candidate_speakers": [
         {
           "entity_id": "char_0001",
           "display": "罗伦斯",
           "status": "known",
-          "score": 0.9
-        },
-        {
-          "entity_id": "char_0002",
-          "display": "赫萝",
-          "status": "known",
-          "score": 0.1
+          "score": 0.95
         }
       ],
       "evidence": [
-        "罗伦斯在对话中表现出对赫萝的经济行为的不满，语气强硬，符合其说话风格。"
+        "罗伦斯是赫萝的对话对象，且在场景中频繁出现。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -80,17 +68,17 @@
       "speaker_entity_id": "char_0002",
       "speaker_display": "赫萝",
       "speaker_status": "known",
-      "confidence": 0.95,
+      "confidence": 0.9,
       "candidate_speakers": [
         {
           "entity_id": "char_0002",
           "display": "赫萝",
           "status": "known",
-          "score": 0.95
+          "score": 0.9
         }
       ],
       "evidence": [
-        "赫萝在吃苹果的同时发出声音，上下文明确指出是她吃苹果并瞪着罗伦斯。"
+        "赫萝一边发出「喀滋喀滋」的声响吃着苹果，一边瞪着罗伦斯。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -108,16 +96,10 @@
           "display": "罗伦斯",
           "status": "known",
           "score": 0.85
-        },
-        {
-          "entity_id": "char_0002",
-          "display": "赫萝",
-          "status": "known",
-          "score": 0.15
         }
       ],
       "evidence": [
-        "上下文提到罗伦斯慷慨地给了赫萝银币，而赫萝买了苹果回来，罗伦斯对此感到惊讶，因此「客气」应是罗伦斯的评论。"
+        "罗伦斯慷慨地给了她一枚崔尼银币，暗示他在此前的对话中发言。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -128,17 +110,17 @@
       "speaker_entity_id": "char_0002",
       "speaker_display": "赫萝",
       "speaker_status": "known",
-      "confidence": 0.95,
+      "confidence": 0.9,
       "candidate_speakers": [
         {
           "entity_id": "char_0002",
           "display": "赫萝",
           "status": "known",
-          "score": 0.95
+          "score": 0.9
         }
       ],
       "evidence": [
-        "赫萝在吃苹果的同时说话，语气断续，符合其说话风格。"
+        "赫萝在场景中频繁出现，且是主要对话角色之一。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -149,23 +131,17 @@
       "speaker_entity_id": "char_0001",
       "speaker_display": "罗伦斯",
       "speaker_status": "known",
-      "confidence": 0.9,
+      "confidence": 0.85,
       "candidate_speakers": [
         {
           "entity_id": "char_0001",
           "display": "罗伦斯",
           "status": "known",
-          "score": 0.9
-        },
-        {
-          "entity_id": "char_0002",
-          "display": "赫萝",
-          "status": "known",
-          "score": 0.1
+          "score": 0.85
         }
       ],
       "evidence": [
-        "罗伦斯在对话中表现出对赫萝心理的洞察，语气理性，符合其说话风格。"
+        "罗伦斯在场景中频繁出现，且是赫萝的对话对象。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -176,22 +152,22 @@
       "speaker_entity_id": "char_0002",
       "speaker_display": "赫萝",
       "speaker_status": "known",
-      "confidence": 0.95,
+      "confidence": 0.9,
       "candidate_speakers": [
         {
           "entity_id": "char_0002",
           "display": "赫萝",
           "status": "known",
-          "score": 0.95
+          "score": 0.9
         }
       ],
       "evidence": [
-        "赫萝在吃苹果后说话，语气简短，符合其说话风格。"
+        "赫萝在场景中频繁出现，且是主要对话角色之一。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
       "needs_review": false
     }
   ],
-  "window_notes": "对话轮次清晰，罗伦斯与赫萝交替发言，符合两人在场景中的互动模式。"
+  "window_notes": "赫萝和罗伦斯在场景中交替发言，对话轮次清晰，符合两人互动模式。赫萝表现出对苹果的渴望，罗伦斯则表现出无奈和调侃。"
 }

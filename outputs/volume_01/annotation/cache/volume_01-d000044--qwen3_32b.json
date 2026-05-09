@@ -1,23 +1,27 @@
 {
-  "dialogue_id": "volume_01-d000044",
-  "speaker_entity_id": "char_0001",
-  "speaker_display": "罗伦斯",
-  "speaker_status": "known",
-  "confidence": 0.95,
-  "candidate_speakers": [
+  "annotations": [
     {
-      "entity_id": "char_0001",
-      "display": "罗伦斯",
-      "status": "known",
-      "score": 0.95
+      "dialogue_id": "volume_01-d000044",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "上下文显示罗伦斯刚刚表达对叶勒被关在谷仓的困扰，随后叹气并坐回马车，符合「算了……」的语气和情绪。",
+        "该段对话是独立引号，且上下文没有其他角色说话，因此推断为罗伦斯的独白。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
     }
   ],
-  "evidence": [
-    "上下文显示罗伦斯在祭典后感到困扰，随后叹气并离开村庄，符合「算了……」的语气和情绪。",
-    "当前段落是罗伦斯离开村庄前的独白或情绪表达，符合他冷静理性的性格。",
-    "场景记忆中罗伦斯多次表现出对叶勒和赫萝的复杂情绪，符合此台词的语境。"
-  ],
-  "should_create_new_entity": false,
-  "new_entity_hint": "",
-  "needs_review": false
+  "window_notes": "该段对话为罗伦斯的独白，上下文显示他因叶勒被关而感到无奈，语气符合「算了……」的表达。无其他说话人出现，判断为罗伦斯。"
 }

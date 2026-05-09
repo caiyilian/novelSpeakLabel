@@ -15,9 +15,10 @@
         }
       ],
       "evidence": [
-        "罗伦斯在追逐赫萝的过程中，听到叫喊声，推测是他在洛依大道上发现目标。",
-        "上下文显示罗伦斯正在奔跑并试图找到赫萝，因此他最有可能发出此句台词。"
+        "罗伦斯在追赶赫萝并试图逃脱追捕者，此句为他奔跑时的观察与报告。"
       ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
       "needs_review": false
     },
     {
@@ -25,19 +26,20 @@
       "speaker_entity_id": "mystery_volume_01_c005_s006_r003_追捕者",
       "speaker_display": "追捕者",
       "speaker_status": "mystery",
-      "confidence": 0.8,
+      "confidence": 0.7,
       "candidate_speakers": [
         {
           "entity_id": "mystery_volume_01_c005_s006_r003_追捕者",
           "display": "追捕者",
           "status": "mystery",
-          "score": 0.8
+          "score": 0.7
         }
       ],
       "evidence": [
-        "声音从罗伦斯的斜后方传来，推测是追捕者在对话。",
-        "上下文显示追捕者正在试图捉到罗伦斯和赫萝。"
+        "声音从罗伦斯的斜后方传来，暗示是追捕者在对话。"
       ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
       "needs_review": false
     },
     {
@@ -45,19 +47,20 @@
       "speaker_entity_id": "char_0002",
       "speaker_display": "赫萝",
       "speaker_status": "known",
-      "confidence": 0.9,
+      "confidence": 0.85,
       "candidate_speakers": [
         {
           "entity_id": "char_0002",
           "display": "赫萝",
           "status": "known",
-          "score": 0.9
+          "score": 0.85
         }
       ],
       "evidence": [
-        "罗伦斯冲进大街道后，后方传来「找到了！」的声音，推测是赫萝发出的。",
-        "赫萝在场景中独自行动，且与罗伦斯有互动，因此她最有可能发出此句台词。"
+        "罗伦斯左转后听见后方传来「找到了！」的声音，赫萝此前独自行动，最可能发出此声。"
       ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
       "needs_review": false
     },
     {
@@ -75,9 +78,10 @@
         }
       ],
       "evidence": [
-        "罗伦斯在米隆商行前拍打栅栏并喊叫，因此他最有可能说出这句台词。",
-        "上下文显示罗伦斯正在请求庇护，因此他最有可能说出这句台词。"
+        "罗伦斯拍打卸货场的栅栏并喊叫，此句为他请求庇护的直接表达。"
       ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
       "needs_review": false
     },
     {
@@ -85,19 +89,20 @@
       "speaker_entity_id": "mystery_volume_01_c005_s006_r003_追捕者",
       "speaker_display": "追捕者",
       "speaker_status": "mystery",
-      "confidence": 0.85,
+      "confidence": 0.75,
       "candidate_speakers": [
         {
           "entity_id": "mystery_volume_01_c005_s006_r003_追捕者",
           "display": "追捕者",
           "status": "mystery",
-          "score": 0.85
+          "score": 0.75
         }
       ],
       "evidence": [
-        "说话的男子用棒子敲打栅栏，推测是追捕者在对话。",
-        "上下文显示追捕者正在试图捉到罗伦斯。"
+        "说话的男子试图强行拉开栅栏，与追捕者行为一致。"
       ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
       "needs_review": false
     },
     {
@@ -115,9 +120,10 @@
         }
       ],
       "evidence": [
-        "一名留有胡子、稍稍上了年纪的男子从里面走出来，他对栅栏外大喝，推测是老卸货工在说话。",
-        "老卸货工在场景中出现，并对追捕者进行斥责。"
+        "一名留有胡子、稍稍上了年纪的男子从里面走出来并大喝，符合老卸货工的描述。"
       ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
       "needs_review": false
     },
     {
@@ -125,19 +131,20 @@
       "speaker_entity_id": "char_0026",
       "speaker_display": "老卸货工",
       "speaker_status": "known",
-      "confidence": 0.85,
+      "confidence": 0.8,
       "candidate_speakers": [
         {
           "entity_id": "char_0026",
           "display": "老卸货工",
           "status": "known",
-          "score": 0.85
+          "score": 0.8
         }
       ],
       "evidence": [
-        "老卸货工在场景中继续对话，询问夜间骚动的原因。",
-        "上下文显示老卸货工在米隆商行内，因此他最有可能说出这句台词。"
+        "老卸货工在骚动后开口询问，符合上下文轮次推断。"
       ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
       "needs_review": false
     },
     {
@@ -155,11 +162,12 @@
         }
       ],
       "evidence": [
-        "罗伦斯在米隆商行内，向老卸货工表达感激之情。",
-        "上下文显示罗伦斯在米隆商行内，因此他最有可能说出这句台词。"
+        "罗伦斯回应老卸货工的提问，符合对话轮次推断。"
       ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
       "needs_review": false
     }
   ],
-  "window_notes": "对话轮次清晰，罗伦斯、赫萝、老卸货工和追捕者交替发言，符合场景中的紧张追逐和庇护情节。"
+  "window_notes": "对话轮次清晰，罗伦斯、赫萝、老卸货工和追捕者交替发言，符合场景中人物行为和位置推断。"
 }

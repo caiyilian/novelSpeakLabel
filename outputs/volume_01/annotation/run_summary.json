@@ -1,17 +1,20 @@
 {
   "volume_id": "volume_01",
   "models": [
-    "qwen3:32b"
+    "qwen3:32b",
+    "qwen3-coder:30b",
+    "qwen2.5-coder:32b"
   ],
   "dry_run": false,
   "cache_only": false,
   "dialogue_count": 1345,
-  "window_count": 186,
+  "window_count": 256,
   "annotation_window_size": 8,
-  "request_count": 186,
-  "prompt_count": 186,
-  "vote_count": 1345,
+  "max_dialogue_paragraph_gap": 4,
+  "request_count": 768,
+  "prompt_count": 768,
+  "vote_count": 4035,
   "annotation_count": 1345,
-  "review_count": 22,
+  "review_count": 587,
   "failed_request_count": 0
 }

@@ -16,7 +16,8 @@
         }
       ],
       "evidence": [
-        "赫萝在场景中频繁出现并发言，且使用‘咱’自称，符合台词风格。"
+        "赫萝在上下文中频繁出现，且使用‘咱’自称，符合其说话风格。",
+        "对话内容与赫萝对罗伦斯的调侃态度一致。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -37,7 +38,8 @@
         }
       ],
       "evidence": [
-        "罗伦斯在场景中表达对开店的期待，符合台词内容。"
+        "这是对前一句的回应，符合对话轮次。",
+        "语气理性且坚定，符合罗伦斯的说话风格。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -58,7 +60,8 @@
         }
       ],
       "evidence": [
-        "赫萝在场景中回忆过去的画家，符合她的说话风格和上下文。"
+        "赫萝在上下文中频繁出现，且使用‘咱’自称，符合其说话风格。",
+        "对话内容与赫萝对罗伦斯的调侃态度一致。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -79,7 +82,8 @@
         }
       ],
       "evidence": [
-        "赫萝继续对罗伦斯的梦想进行评论，语气轻松且带有调侃。"
+        "赫萝在上下文中频繁出现，且使用‘咱’自称，符合其说话风格。",
+        "对话内容与赫萝对罗伦斯的调侃态度一致。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -100,7 +104,8 @@
         }
       ],
       "evidence": [
-        "罗伦斯表达对米隆商行的不满，符合他的性格和场景中的情绪。"
+        "这是对前一句的回应，符合对话轮次。",
+        "语气理性且坚定，符合罗伦斯的说话风格。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -121,7 +126,8 @@
         }
       ],
       "evidence": [
-        "赫萝在场景中以轻松的语气表达对罗伦斯的支持，符合她的说话风格。"
+        "赫萝在上下文中频繁出现，且使用‘咱’自称，符合其说话风格。",
+        "对话内容与赫萝对罗伦斯的调侃态度一致。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -129,27 +135,6 @@
     },
     {
       "dialogue_id": "volume_01-d000861",
-      "speaker_entity_id": "char_0002",
-      "speaker_display": "赫萝",
-      "speaker_status": "known",
-      "confidence": 0.95,
-      "candidate_speakers": [
-        {
-          "entity_id": "char_0002",
-          "display": "赫萝",
-          "status": "known",
-          "score": 0.95
-        }
-      ],
-      "evidence": [
-        "赫萝提出对开店的疑问，语气轻松，符合她的说话风格。"
-      ],
-      "should_create_new_entity": false,
-      "new_entity_hint": "",
-      "needs_review": false
-    },
-    {
-      "dialogue_id": "volume_01-d000862",
       "speaker_entity_id": "char_0001",
       "speaker_display": "罗伦斯",
       "speaker_status": "known",
@@ -163,13 +148,36 @@
         }
       ],
       "evidence": [
-        "罗伦斯冷静地回应赫萝的提问，符合他的理性性格。"
+        "这是对前一句的回应，符合对话轮次。",
+        "语气理性且坚定，符合罗伦斯的说话风格。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000862",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "赫萝在上下文中频繁出现，且使用‘咱’自称，符合其说话风格。",
+        "对话内容与赫萝对罗伦斯的调侃态度一致。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
       "needs_review": false
     }
   ],
-  "window_notes": "对话轮次清晰，罗伦斯与赫萝交替发言，符合场景中两人互动的模式。"
+  "window_notes": "对话轮次清晰，罗伦斯与赫萝交替发言，符合两人在场景中的互动模式。赫萝使用‘咱’自称，罗伦斯语气理性，符合各自角色设定。"
 }
 ```

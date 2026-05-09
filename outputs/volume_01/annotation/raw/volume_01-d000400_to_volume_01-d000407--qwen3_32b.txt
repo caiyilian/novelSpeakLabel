@@ -16,7 +16,7 @@
         }
       ],
       "evidence": [
-        "上下文显示罗伦斯在对话中提到「早知道我也应该跟着买」，随后赫萝注视他，而罗伦斯继续装傻，暗示他正在主导对话。"
+        "上下文显示罗伦斯与赫萝在交谈，赫萝表现出心不在焉，而罗伦斯在试探她。此句为试探性语气，符合罗伦斯的说话风格。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -27,17 +27,17 @@
       "speaker_entity_id": "char_0001",
       "speaker_display": "罗伦斯",
       "speaker_status": "known",
-      "confidence": 0.95,
+      "confidence": 0.9,
       "candidate_speakers": [
         {
           "entity_id": "char_0001",
           "display": "罗伦斯",
           "status": "known",
-          "score": 0.95
+          "score": 0.9
         }
       ],
       "evidence": [
-        "这是罗伦斯对前一句的回应，延续了他主导对话的语气和内容。"
+        "此句延续上一句的语气，罗伦斯在讨论坐船的风险，符合他理性分析的说话风格。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -45,48 +45,6 @@
     },
     {
       "dialogue_id": "volume_01-d000402",
-      "speaker_entity_id": "char_0002",
-      "speaker_display": "赫萝",
-      "speaker_status": "known",
-      "confidence": 0.9,
-      "candidate_speakers": [
-        {
-          "entity_id": "char_0002",
-          "display": "赫萝",
-          "status": "known",
-          "score": 0.9
-        }
-      ],
-      "evidence": [
-        "赫萝在上下文中表现出对罗伦斯的反应，例如「心不在焉地回应罗伦斯的话」，符合她对「坐船？」的疑问语气。"
-      ],
-      "should_create_new_entity": false,
-      "new_entity_hint": "",
-      "needs_review": false
-    },
-    {
-      "dialogue_id": "volume_01-d000403",
-      "speaker_entity_id": "char_0001",
-      "speaker_display": "罗伦斯",
-      "speaker_status": "known",
-      "confidence": 0.95,
-      "candidate_speakers": [
-        {
-          "entity_id": "char_0001",
-          "display": "罗伦斯",
-          "status": "known",
-          "score": 0.95
-        }
-      ],
-      "evidence": [
-        "这是对赫萝疑问的详细解释，符合罗伦斯冷静理性、解释商业细节的说话风格。"
-      ],
-      "should_create_new_entity": false,
-      "new_entity_hint": "",
-      "needs_review": false
-    },
-    {
-      "dialogue_id": "volume_01-d000404",
       "speaker_entity_id": "char_0002",
       "speaker_display": "赫萝",
       "speaker_status": "known",
@@ -100,14 +58,14 @@
         }
       ],
       "evidence": [
-        "赫萝在上下文中表现出心不在焉，且对罗伦斯的长篇解释感到困惑，符合「唔，啊。」的简短回应。"
+        "赫萝对罗伦斯的建议表示疑惑，符合她心不在焉、对苹果渴望但不愿直接表达的状态。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
       "needs_review": false
     },
     {
-      "dialogue_id": "volume_01-d000405",
+      "dialogue_id": "volume_01-d000403",
       "speaker_entity_id": "char_0001",
       "speaker_display": "罗伦斯",
       "speaker_status": "known",
@@ -121,7 +79,49 @@
         }
       ],
       "evidence": [
-        "这是对赫萝困惑的回应，符合罗伦斯试图引导她表达真实想法的对话模式。"
+        "罗伦斯详细解释坐船的机制，语气理性且带有商业分析倾向，符合他的说话风格。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000404",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.8
+        }
+      ],
+      "evidence": [
+        "赫萝的反应简短且模糊，符合她心不在焉的状态，可能是对罗伦斯长篇解释的回应。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000405",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "罗伦斯对赫萝的反应感到疑惑，符合他试图引导她表达真实想法的策略。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -132,17 +132,17 @@
       "speaker_entity_id": "char_0001",
       "speaker_display": "罗伦斯",
       "speaker_status": "known",
-      "confidence": 0.95,
+      "confidence": 0.9,
       "candidate_speakers": [
         {
           "entity_id": "char_0001",
           "display": "罗伦斯",
           "status": "known",
-          "score": 0.95
+          "score": 0.9
         }
       ],
       "evidence": [
-        "这是罗伦斯继续主导对话，回到他之前提到的「船」话题，符合他理性、有策略的说话风格。"
+        "罗伦斯主动回到船的话题，可能是为了继续试探赫萝的反应。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -163,13 +163,13 @@
         }
       ],
       "evidence": [
-        "赫萝在上下文中表现出对苹果的渴望，且在本句中直接提到「苹果」，符合她说话风格中轻松幽默但略带情绪化的特征。"
+        "赫萝终于直接表达对苹果的渴望，符合她最终坦率说出内心想法的情节发展。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
       "needs_review": false
     }
   ],
-  "window_notes": "对话轮次清晰，罗伦斯主导对话并解释商业细节，赫萝则表现出困惑和渴望，符合两人在场景中的互动模式。"
+  "window_notes": "对话轮次清晰，罗伦斯与赫萝交替发言，符合场景中两人互动的模式。"
 }
 ```

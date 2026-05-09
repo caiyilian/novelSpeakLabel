@@ -3,20 +3,26 @@
   "annotations": [
     {
       "dialogue_id": "volume_01-d000611",
-      "speaker_entity_id": "char_0002",
-      "speaker_display": "赫萝",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
       "speaker_status": "known",
-      "confidence": 0.95,
+      "confidence": 0.85,
       "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.85
+        },
         {
           "entity_id": "char_0002",
           "display": "赫萝",
           "status": "known",
-          "score": 0.95
+          "score": 0.15
         }
       ],
       "evidence": [
-        "赫萝在本场景中频繁发言，语气轻松，符合台词「是啊。」的风格。"
+        "上下文显示赫萝刚刚表示了对罗伦斯的怀疑，而罗伦斯的回应更符合理性语气。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -27,17 +33,23 @@
       "speaker_entity_id": "char_0002",
       "speaker_display": "赫萝",
       "speaker_status": "known",
-      "confidence": 0.95,
+      "confidence": 0.9,
       "candidate_speakers": [
         {
           "entity_id": "char_0002",
           "display": "赫萝",
           "status": "known",
-          "score": 0.95
+          "score": 0.9
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.1
         }
       ],
       "evidence": [
-        "赫萝的台词风格轻松幽默但略带威胁性，符合「如果汝认为咱是这样的人，咱或许会生气。」的语气。"
+        "赫萝在前一段中刚刚表达了对罗伦斯怀疑的不满，语气中带有挑衅和调侃，符合她的说话风格。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -48,17 +60,23 @@
       "speaker_entity_id": "char_0001",
       "speaker_display": "罗伦斯",
       "speaker_status": "known",
-      "confidence": 0.9,
+      "confidence": 0.8,
       "candidate_speakers": [
         {
           "entity_id": "char_0001",
           "display": "罗伦斯",
           "status": "known",
-          "score": 0.9
+          "score": 0.8
+        },
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.2
         }
       ],
       "evidence": [
-        "罗伦斯的台词风格理性冷静，符合「总而言之，杰廉说的可能是真话。」的语气。"
+        "罗伦斯在前一段中刚刚回应了赫萝的挑衅，语气理性，符合他冷静分析的风格。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -69,17 +87,23 @@
       "speaker_entity_id": "char_0002",
       "speaker_display": "赫萝",
       "speaker_status": "known",
-      "confidence": 0.95,
+      "confidence": 0.85,
       "candidate_speakers": [
         {
           "entity_id": "char_0002",
           "display": "赫萝",
           "status": "known",
-          "score": 0.95
+          "score": 0.85
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.15
         }
       ],
       "evidence": [
-        "赫萝的语气轻松，符合「嗯。那，咱们现在要去哪儿？」的风格。"
+        "赫萝在前一段中刚刚表达了对罗伦斯的不满，语气中带有调侃和反问，符合她的说话风格。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -90,17 +114,23 @@
       "speaker_entity_id": "char_0001",
       "speaker_display": "罗伦斯",
       "speaker_status": "known",
-      "confidence": 0.9,
+      "confidence": 0.85,
       "candidate_speakers": [
         {
           "entity_id": "char_0001",
           "display": "罗伦斯",
           "status": "known",
-          "score": 0.9
+          "score": 0.85
+        },
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.15
         }
       ],
       "evidence": [
-        "罗伦斯的语气理性冷静，符合「既然已经知道是哪种银币了，那就应该调查一下。」的风格。"
+        "罗伦斯在前一段中刚刚回应了赫萝的提问，语气理性，符合他冷静分析的风格。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -111,17 +141,23 @@
       "speaker_entity_id": "char_0002",
       "speaker_display": "赫萝",
       "speaker_status": "known",
-      "confidence": 0.95,
+      "confidence": 0.8,
       "candidate_speakers": [
         {
           "entity_id": "char_0002",
           "display": "赫萝",
           "status": "known",
-          "score": 0.95
+          "score": 0.8
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.2
         }
       ],
       "evidence": [
-        "赫萝的语气轻松，符合「去铸币厂？」的风格。"
+        "赫萝在前一段中刚刚表达了对罗伦斯的不满，语气中带有调侃和反问，符合她的说话风格。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -132,17 +168,23 @@
       "speaker_entity_id": "char_0001",
       "speaker_display": "罗伦斯",
       "speaker_status": "known",
-      "confidence": 0.9,
+      "confidence": 0.85,
       "candidate_speakers": [
         {
           "entity_id": "char_0001",
           "display": "罗伦斯",
           "status": "known",
-          "score": 0.9
+          "score": 0.85
+        },
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.15
         }
       ],
       "evidence": [
-        "罗伦斯的语气理性冷静，符合「像我这样的商人如果随意去了铸币厂，肯定会被士兵用枪给刺死。我们要去的地方是兑换商那儿。」的风格。"
+        "罗伦斯在前一段中刚刚回应了赫萝的提问，语气理性，符合他冷静分析的风格。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -153,23 +195,29 @@
       "speaker_entity_id": "char_0002",
       "speaker_display": "赫萝",
       "speaker_status": "known",
-      "confidence": 0.95,
+      "confidence": 0.85,
       "candidate_speakers": [
         {
           "entity_id": "char_0002",
           "display": "赫萝",
           "status": "known",
-          "score": 0.95
+          "score": 0.85
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.15
         }
       ],
       "evidence": [
-        "赫萝的语气轻松幽默，符合「哼，咱当然也有不知道的事。」的风格。"
+        "赫萝在前一段中刚刚表达了对罗伦斯的不满，语气中带有调侃和反问，符合她的说话风格。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
       "needs_review": false
     }
   ],
-  "window_notes": "赫萝和罗伦斯交替发言，对话轮次清晰，符合两人在场景中的互动模式。"
+  "window_notes": "对话轮次清晰，罗伦斯与赫萝交替发言，语气和风格符合角色设定。"
 }
 ```

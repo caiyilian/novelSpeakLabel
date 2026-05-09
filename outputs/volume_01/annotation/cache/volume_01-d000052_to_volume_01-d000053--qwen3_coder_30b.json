@@ -1,0 +1,63 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000052",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.9
+        },
+        {
+          "entity_id": "mystery_volume_01_c002_s002_r006_神秘女孩",
+          "display": "神秘女孩",
+          "status": "mystery",
+          "score": 0.1
+        }
+      ],
+      "evidence": [
+        "前文描述女孩头上长有小狗耳朵，与赫萝的狼耳特征一致",
+        "赫萝是本场景中唯一已知的有动物耳朵的角色",
+        "该台词为低语，符合赫萝在被唤醒时的反应"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000053",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        },
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.05
+        }
+      ],
+      "evidence": [
+        "前文明确描述罗伦斯试图叫醒女孩并质问她",
+        "罗伦斯是本段落中唯一出现的主动发问者",
+        "该台词为质问语气，符合罗伦斯的性格与行为逻辑"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "第一句为赫萝发出的低语，第二句为罗伦斯的质问，对话轮次清晰，符合上下文叙述逻辑。"
+}

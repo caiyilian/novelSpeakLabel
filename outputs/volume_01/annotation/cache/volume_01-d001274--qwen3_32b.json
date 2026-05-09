@@ -1,23 +1,26 @@
 {
-  "dialogue_id": "volume_01-d001274",
-  "speaker_entity_id": "char_0001",
-  "speaker_display": "罗伦斯",
-  "speaker_status": "known",
-  "confidence": 0.95,
-  "candidate_speakers": [
+  "annotations": [
     {
-      "entity_id": "char_0001",
-      "display": "罗伦斯",
-      "status": "known",
-      "score": 0.95
+      "dialogue_id": "volume_01-d001274",
+      "speaker_entity_id": "mystery_volume_01_c007_s004_r006_神秘说话者",
+      "speaker_display": "神秘说话者",
+      "speaker_status": "mystery",
+      "confidence": 0.6,
+      "candidate_speakers": [
+        {
+          "entity_id": "mystery_volume_01_c007_s004_r006_神秘说话者",
+          "display": "神秘说话者",
+          "status": "mystery",
+          "score": 0.6
+        }
+      ],
+      "evidence": [
+        "前一段中『麦子拿来。』是同一说话者发出的命令，且上下文显示罗伦斯对此感到不安，暗示说话者身份不明但与交易有关。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
     }
   ],
-  "evidence": [
-    "前文提到罗伦斯在思考麦子的用途，随后他提出疑问「拿麦子要做什么？」",
-    "场景记忆中提到罗伦斯对麦子的用途感到不安，暗示他可能是提问者",
-    "当前段落是罗伦斯的直接提问，语气和上下文符合他的理性风格"
-  ],
-  "should_create_new_entity": false,
-  "new_entity_hint": "",
-  "needs_review": false
+  "window_notes": "对话轮次显示罗伦斯在回应一个未知说话者的命令『麦子拿来。』，随后他提出疑问『拿麦子要做什么？』，因此该句台词应为罗伦斯的回应，说话人应为前文的神秘说话者。"
 }

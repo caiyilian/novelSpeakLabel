@@ -1,0 +1,49 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000054",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.9
+        },
+        {
+          "entity_id": "mystery_volume_01_c002_s003_r001_神秘女孩",
+          "display": "神秘女孩",
+          "status": "mystery",
+          "score": 0.7
+        }
+      ],
+      "evidence": ["前文描述女孩发出长嚎声，赫萝是场景中唯一出现的女性角色，且有狼嚎特征；赫萝被描述为拥有狼的耳朵和尾巴"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000055",
+      "speaker_entity_id": "npc:冷风",
+      "speaker_display": "冷风",
+      "speaker_status": "npc",
+      "confidence": 0.3,
+      "candidate_speakers": [
+        {
+          "entity_id": "npc:冷风",
+          "display": "冷风",
+          "status": "npc",
+          "score": 0.3
+        }
+      ],
+      "evidence": ["该句为环境描写中的拟声词，非角色对白；上下文提到‘冷风’进入身体，但无明确说话人"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "第一句为赫萝发出的狼嚎，第二句为环境描写中的拟声词，非角色对白"
+}

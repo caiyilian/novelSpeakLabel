@@ -1,29 +1,33 @@
 {
-  "dialogue_id": "volume_01-d001081",
-  "speaker_entity_id": "char_0002",
-  "speaker_display": "赫萝",
-  "speaker_status": "known",
-  "confidence": 0.9,
-  "candidate_speakers": [
+  "annotations": [
     {
-      "entity_id": "char_0002",
-      "display": "赫萝",
-      "status": "known",
-      "score": 0.9
-    },
-    {
-      "entity_id": "mystery_volume_01_c006_s003_r002_神秘人物A",
-      "display": "神秘人物A",
-      "status": "mystery",
-      "score": 0.3
+      "dialogue_id": "volume_01-d001081",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        },
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.1
+        }
+      ],
+      "evidence": [
+        "前一句是赫萝的命令式台词，此句为简短回应，符合罗伦斯的被动反应语气。",
+        "上下文显示罗伦斯被赫萝推着前进，因此此句应为罗伦斯回应赫萝的命令。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
     }
   ],
-  "evidence": [
-    "赫萝在本场景中频繁出现并有明确台词，语气和情绪波动符合她的说话风格。",
-    "前一段中赫萝对罗伦斯说话，语气带有命令和不耐烦，符合她的行为模式。",
-    "当前台词「什……呃，喔。」是简短的反应，符合赫萝在对话中常见的语气和情绪表达。"
-  ],
-  "should_create_new_entity": false,
-  "new_entity_hint": "",
-  "needs_review": false
+  "window_notes": "对话轮次为赫萝→罗伦斯，符合上下文中的互动模式。"
 }

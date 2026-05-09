@@ -1,25 +1,29 @@
 ```json
 {
-  "dialogue_id": "volume_01-d000766",
-  "speaker_entity_id": "char_0002",
-  "speaker_display": "赫萝",
-  "speaker_status": "known",
-  "confidence": 0.95,
-  "candidate_speakers": [
+  "annotations": [
     {
-      "entity_id": "char_0002",
-      "display": "赫萝",
-      "status": "known",
-      "score": 0.95
+      "dialogue_id": "volume_01-d000766",
+      "speaker_entity_id": "mystery_volume_01_c005_s001_r004_帕斯罗村朋友",
+      "speaker_display": "帕斯罗村朋友",
+      "speaker_status": "mystery",
+      "confidence": 0.75,
+      "candidate_speakers": [
+        {
+          "entity_id": "mystery_volume_01_c005_s001_r004_帕斯罗村朋友",
+          "display": "帕斯罗村朋友",
+          "status": "mystery",
+          "score": 0.75
+        }
+      ],
+      "evidence": [
+        "赫萝在前文提到「那家伙虽然有些少根筋，不过是个极其开朗的人」，并称其为「那家伙」，暗示说话人不是赫萝或罗伦斯，而是她提到的帕斯罗村朋友。",
+        "当前台词「那家伙真的是少根筋，经常做出令人难以置信的事」与前文描述一致，符合赫萝对朋友的评价语气。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
     }
   ],
-  "evidence": [
-    "赫萝在场景中频繁提及帕斯罗村的朋友，并表现出亲密和调侃的态度。",
-    "当前对话延续了赫萝对帕斯罗村朋友的描述，语气和风格与赫萝一贯的轻松幽默但略带威胁的说话方式一致。",
-    "场景记忆中明确指出赫萝在谈论她的朋友，而罗伦斯对此表现出嫉妒或困扰，符合赫萝的说话风格和互动模式。"
-  ],
-  "should_create_new_entity": false,
-  "new_entity_hint": "",
-  "needs_review": false
+  "window_notes": "当前对话为赫萝对帕斯罗村朋友的评价，说话人应为该朋友，因此标注为 mystery。"
 }
 ```

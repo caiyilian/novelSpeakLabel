@@ -1,0 +1,59 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000487",
+      "speaker_entity_id": "mystery_volume_01_c004_s003_r006_神秘提问者",
+      "speaker_display": "神秘提问者",
+      "speaker_status": "mystery",
+      "confidence": 0.6,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0017",
+          "display": "男子",
+          "status": "known",
+          "score": 0.4
+        },
+        {
+          "entity_id": "mystery_volume_01_c004_s003_r006_神秘提问者",
+          "display": "神秘提问者",
+          "status": "mystery",
+          "score": 0.6
+        }
+      ],
+      "evidence": [
+        "对话轮次依据"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    },
+    {
+      "dialogue_id": "volume_01-d000488",
+      "speaker_entity_id": "mystery_volume_01_c004_s003_r006_神秘回答者",
+      "speaker_display": "神秘回答者",
+      "speaker_status": "mystery",
+      "confidence": 0.6,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0017",
+          "display": "男子",
+          "status": "known",
+          "score": 0.4
+        },
+        {
+          "entity_id": "mystery_volume_01_c004_s003_r006_神秘回答者",
+          "display": "神秘回答者",
+          "status": "mystery",
+          "score": 0.6
+        }
+      ],
+      "evidence": [
+        "对话轮次依据"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    }
+  ],
+  "window_notes": "两句话的说话人身份不明确，可能是男子本人或另一名未命名人物。"
+}

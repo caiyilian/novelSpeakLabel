@@ -1,0 +1,119 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000445",
+      "speaker_entity_id": "char_0010",
+      "speaker_display": "店员",
+      "speaker_status": "known",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0010",
+          "display": "店员",
+          "status": "known",
+          "score": 0.8
+        },
+        {
+          "entity_id": "char_0012",
+          "display": "采购人员",
+          "status": "known",
+          "score": 0.6
+        }
+      ],
+      "evidence": [
+        "对话发生在卸货场，说话人描述马的特性，符合店员接待罗伦斯时的语气和场景。",
+        "上下文显示说话人是男子，与罗伦斯互动，符合店员角色的出场顺序。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000446",
+      "speaker_entity_id": "char_0010",
+      "speaker_display": "店员",
+      "speaker_status": "known",
+      "confidence": 0.75,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0010",
+          "display": "店员",
+          "status": "known",
+          "score": 0.75
+        },
+        {
+          "entity_id": "char_0012",
+          "display": "采购人员",
+          "status": "known",
+          "score": 0.5
+        }
+      ],
+      "evidence": [
+        "对话延续了前一句的语气和说话人，符合同一人连续发言的场景。",
+        "内容与马有关，符合店员在卸货场接待罗伦斯时的对话风格。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000447",
+      "speaker_entity_id": "char_0010",
+      "speaker_display": "店员",
+      "speaker_status": "known",
+      "confidence": 0.7,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0010",
+          "display": "店员",
+          "status": "known",
+          "score": 0.7
+        },
+        {
+          "entity_id": "char_0012",
+          "display": "采购人员",
+          "status": "known",
+          "score": 0.4
+        }
+      ],
+      "evidence": [
+        "对话简短，但符合前两句的说话人轮次，未出现新角色。",
+        "语气礼貌，符合店员的说话风格。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000448",
+      "speaker_entity_id": "char_0012",
+      "speaker_display": "采购人员",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0012",
+          "display": "采购人员",
+          "status": "known",
+          "score": 0.85
+        },
+        {
+          "entity_id": "char_0016",
+          "display": "鉴定员",
+          "status": "known",
+          "score": 0.6
+        }
+      ],
+      "evidence": [
+        "说话人明确称呼罗伦斯为「克拉福·罗伦斯先生」，符合采购人员的正式语气。",
+        "上下文显示说话人是被唤来的男子，与罗伦斯进行交易，符合采购人员角色。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，前两句由店员连续发言，第三句为简短回应，第四句换为采购人员发言，符合场景中角色互动顺序。"
+}
+```

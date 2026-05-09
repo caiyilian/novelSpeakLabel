@@ -1,0 +1,47 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001206",
+      "speaker_entity_id": "unknown",
+      "speaker_display": "未知人物",
+      "speaker_status": "mystery",
+      "confidence": 0.3,
+      "candidate_speakers": [
+        {
+          "entity_id": "mystery:001",
+          "display": "神秘人物",
+          "status": "mystery",
+          "score": 0.3
+        }
+      ],
+      "evidence": [
+        "「哈、哈……」是突然出现的笑声，上下文未提及说话人身份，也没有明确的叙述线索指向已知角色。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    },
+    {
+      "dialogue_id": "volume_01-d001207",
+      "speaker_entity_id": "unknown",
+      "speaker_display": "未知人物",
+      "speaker_status": "mystery",
+      "confidence": 0.4,
+      "candidate_speakers": [
+        {
+          "entity_id": "mystery:001",
+          "display": "神秘人物",
+          "status": "mystery",
+          "score": 0.4
+        }
+      ],
+      "evidence": [
+        "「啾！」是紧接着前一句的短促声音，可能是同一人发出的喷嚏声，但没有明确叙述线索指向已知角色。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    }
+  ],
+  "window_notes": "两句话连续出现，可能是同一人发出的笑声和喷嚏声，但上下文未提供说话人身份线索，因此无法明确归属已知角色。"
+}

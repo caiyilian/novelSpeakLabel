@@ -1,0 +1,500 @@
+你是轻小说说话人标注项目的阶段 2：正式标注助手。
+你的任务是判断输入 target_dialogues 中每一句台词的说话人，不要改写原文。
+必须把这些台词当作同一个连续片段来判断，优先保持对话轮次和叙述线索的一致性。
+
+规则：
+1. 只输出严格 JSON，不要 Markdown，不要解释性前后缀。
+2. 如果说话人是候选角色，speaker_entity_id 必须使用 candidate_characters 里的 entity_id，speaker_status 填 known。
+3. 如果说话人像某个未知人物，speaker_entity_id 使用 candidate_mysteries 里的 mystery_id，speaker_status 填 mystery。
+4. 如果只是无法追踪的路人/群体，speaker_status 填 npc，speaker_entity_id 可为空或使用 npc:简短称呼。
+5. 证据不足时不要硬猜，speaker_status 填 ambiguous 或 review，并把 needs_review 设为 true。
+6. candidate_speakers 至少列出 1 个候选；如果无法判断，列出最可能的候选和不确定原因。
+7. confidence 使用 0 到 1 之间的小数，表示你对最终判断的把握。
+8. 不要只因为台词里提到某个名字、职业、地点，就把说话人标成那个实体；被称呼的人通常不是说话人。
+9. 连续问答、交易寒暄、命令/回答等场景要按上下句轮次判断；同一人连续说话必须有叙述或语气证据支持。
+10. 如果当前上下文显示某角色还没有登场，不要因为角色库或后文记忆里有这个角色就提前标给他/她。
+
+11. target_dialogues 中 dialogue_kind=inline 的项目是正文内嵌引号，不要当作独立对白；标为 review，needs_review=true。
+12. candidate_mysteries 只是可选候选；如果候选名称和当前段落地点/人物不一致，必须改用 npc 或 review。
+13. 如果只有轮次推断、没有叙述锚点或自我介绍，请降低 confidence，并在 evidence 里说明轮次依据。
+
+输出 JSON 结构：
+{
+  "annotations": [
+    {
+      "dialogue_id": "必须来自 target_dialogue_ids",
+      "speaker_entity_id": "string",
+      "speaker_display": "string",
+      "speaker_status": "known|mystery|npc|ambiguous|review",
+      "confidence": 0.0,
+      "candidate_speakers": [
+        {"entity_id": "string", "display": "string", "status": "known|mystery|npc|ambiguous|review", "score": 0.0}
+      ],
+      "evidence": ["短证据，不要大段复制原文"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "可选，简短说明整体轮次判断"
+}
+必须为 target_dialogue_ids 中每个 dialogue_id 输出且只输出一条 annotation。
+
+输入 JSON：
+{
+  "volume": {
+    "volume_id": "volume_01",
+    "volume": 1
+  },
+  "target_dialogue_ids": [
+    "volume_01-d000148",
+    "volume_01-d000149",
+    "volume_01-d000150",
+    "volume_01-d000151",
+    "volume_01-d000152",
+    "volume_01-d000153",
+    "volume_01-d000154",
+    "volume_01-d000155"
+  ],
+  "dialogues": [
+    {
+      "dialogue_id": "volume_01-d000148",
+      "dialogue_index": 147,
+      "window_position": 1,
+      "chapter_id": "volume_01-c002",
+      "chapter_title": "第一幕",
+      "scene_id": "volume_01-c002-s005",
+      "paragraph_id": "volume_01-c002-s005-p000436",
+      "paragraph_index": 435,
+      "local_dialogue_index": 1,
+      "text": "难道你真的是神？",
+      "quote_text": "「难道你真的是神？」",
+      "paragraph_text": "「难道你真的是神？」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 10
+    },
+    {
+      "dialogue_id": "volume_01-d000149",
+      "dialogue_index": 148,
+      "window_position": 2,
+      "chapter_id": "volume_01-c002",
+      "chapter_title": "第一幕",
+      "scene_id": "volume_01-c002-s005",
+      "paragraph_id": "volume_01-c002-s005-p000437",
+      "paragraph_index": 436,
+      "local_dialogue_index": 1,
+      "text": "咱才不是神。汝看咱的脚这么大，应该也明白，咱不过是体型比较大，嗯……加上比身边同伴们还要聪明的狼罢了。咱是赫萝，贤狼赫萝。",
+      "quote_text": "「咱才不是神。汝看咱的脚这么大，应该也明白，咱不过是体型比较大，嗯……加上比身边同伴们还要聪明的狼罢了。咱是赫萝，贤狼赫萝。」",
+      "paragraph_text": "「咱才不是神。汝看咱的脚这么大，应该也明白，咱不过是体型比较大，嗯……加上比身边同伴们还要聪明的狼罢了。咱是赫萝，贤狼赫萝。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 63
+    },
+    {
+      "dialogue_id": "volume_01-d000150",
+      "dialogue_index": 149,
+      "window_position": 3,
+      "chapter_id": "volume_01-c002",
+      "chapter_title": "第一幕",
+      "scene_id": "volume_01-c002-s005",
+      "paragraph_id": "volume_01-c002-s005-p000441",
+      "paragraph_index": 440,
+      "local_dialogue_index": 1,
+      "text": "呐，如何呢？",
+      "quote_text": "「呐，如何呢？」",
+      "paragraph_text": "「呐，如何呢？」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 8
+    },
+    {
+      "dialogue_id": "volume_01-d000151",
+      "dialogue_index": 150,
+      "window_position": 4,
+      "chapter_id": "volume_01-c002",
+      "chapter_title": "第一幕",
+      "scene_id": "volume_01-c002-s005",
+      "paragraph_id": "volume_01-c002-s005-p000443",
+      "paragraph_index": 442,
+      "local_dialogue_index": 1,
+      "text": "可是……真的赫萝现在应该在叶勒的身体里啊，我听说赫萝会进入割下最后一束麦子的人的身体里……",
+      "quote_text": "「可是……真的赫萝现在应该在叶勒的身体里啊，我听说赫萝会进入割下最后一束麦子的人的身体里……」",
+      "paragraph_text": "「可是……真的赫萝现在应该在叶勒的身体里啊，我听说赫萝会进入割下最后一束麦子的人的身体里……」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 47
+    },
+    {
+      "dialogue_id": "volume_01-d000152",
+      "dialogue_index": 151,
+      "window_position": 5,
+      "chapter_id": "volume_01-c002",
+      "chapter_title": "第一幕",
+      "scene_id": "volume_01-c002-s005",
+      "paragraph_id": "volume_01-c002-s005-p000444",
+      "paragraph_index": 443,
+      "local_dialogue_index": 1,
+      "text": "呵呵呵，咱是贤狼啊，咱很了解自己受到哪些限制。正确来说，咱是存在于麦子之中。少了麦子，咱就活不了命。还有，在这个收割的时期，咱确实在最后收割的麦子里，而且没办法从里面逃脱。只要有人类看着，咱就跑不了。不过，还是有例外。",
+      "quote_text": "「呵呵呵，咱是贤狼啊，咱很了解自己受到哪些限制。正确来说，咱是存在于麦子之中。少了麦子，咱就活不了命。还有，在这个收割的时期，咱确实在最后收割的麦子里，而且没办法从里面逃脱。只要有人类看着，咱就跑不了。不过，还是有例外。」",
+      "paragraph_text": "「呵呵呵，咱是贤狼啊，咱很了解自己受到哪些限制。正确来说，咱是存在于麦子之中。少了麦子，咱就活不了命。还有，在这个收割的时期，咱确实在最后收割的麦子里，而且没办法从里面逃脱。只要有人类看着，咱就跑不了。不过，还是有例外。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 111
+    },
+    {
+      "dialogue_id": "volume_01-d000153",
+      "dialogue_index": 152,
+      "window_position": 6,
+      "chapter_id": "volume_01-c002",
+      "chapter_title": "第一幕",
+      "scene_id": "volume_01-c002-s005",
+      "paragraph_id": "volume_01-c002-s005-p000446",
+      "paragraph_index": 445,
+      "local_dialogue_index": 1,
+      "text": "如果附近有比最后收割的熟麦还要大量的麦子，咱就可以在麦子之间移动，而不用担心被人类看到。村里的人说过呗？太贪心收割的话，就会追不到丰收之神，而让祂逃跑了。",
+      "quote_text": "「如果附近有比最后收割的熟麦还要大量的麦子，咱就可以在麦子之间移动，而不用担心被人类看到。村里的人说过呗？太贪心收割的话，就会追不到丰收之神，而让祂逃跑了。」",
+      "paragraph_text": "「如果附近有比最后收割的熟麦还要大量的麦子，咱就可以在麦子之间移动，而不用担心被人类看到。村里的人说过呗？太贪心收割的话，就会追不到丰收之神，而让祂逃跑了。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 79
+    },
+    {
+      "dialogue_id": "volume_01-d000154",
+      "dialogue_index": 153,
+      "window_position": 7,
+      "chapter_id": "volume_01-c002",
+      "chapter_title": "第一幕",
+      "scene_id": "volume_01-c002-s005",
+      "paragraph_id": "volume_01-c002-s005-p000449",
+      "paragraph_index": 448,
+      "local_dialogue_index": 1,
+      "text": "总之，就是这么回事。要说汝是咱的救命恩人，也算是呗。如果没有汝，咱就没办法从村子里逃出来。",
+      "quote_text": "「总之，就是这么回事。要说汝是咱的救命恩人，也算是呗。如果没有汝，咱就没办法从村子里逃出来。」",
+      "paragraph_text": "「总之，就是这么回事。要说汝是咱的救命恩人，也算是呗。如果没有汝，咱就没办法从村子里逃出来。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 47
+    },
+    {
+      "dialogue_id": "volume_01-d000155",
+      "dialogue_index": 154,
+      "window_position": 8,
+      "chapter_id": "volume_01-c002",
+      "chapter_title": "第一幕",
+      "scene_id": "volume_01-c002-s005",
+      "paragraph_id": "volume_01-c002-s005-p000452",
+      "paragraph_index": 451,
+      "local_dialogue_index": 1,
+      "text": "既然这样，那就把这些麦子带回村里吧。少了丰收之神，村民们应该会很困扰。我认识叶勒和帕斯罗村的村民已经很久了，我可不希望看到他们伤脑筋。",
+      "quote_text": "「既然这样，那就把这些麦子带回村里吧。少了丰收之神，村民们应该会很困扰。我认识叶勒和帕斯罗村的村民已经很久了，我可不希望看到他们伤脑筋。」",
+      "paragraph_text": "「既然这样，那就把这些麦子带回村里吧。少了丰收之神，村民们应该会很困扰。我认识叶勒和帕斯罗村的村民已经很久了，我可不希望看到他们伤脑筋。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 69
+    }
+  ],
+  "context": {
+    "paragraphs": [
+      {
+        "paragraph_id": "volume_01-c002-s005-p000433",
+        "paragraph_index": 432,
+        "text": "赫萝肩上的动物前脚，有着重如巨木般的骨头，并包覆着如战士强壮手臂般的肌肉，肌肉表面整齐地长出漂亮的褐色长毛。从连接肩膀的根部到踝部，再往前延伸到巨大的脚掌，脚掌上的每一个肉球像还没切开的面包。从美丽桃红色、触感柔软的肉球再看过去，就是带着坚硬质感、如镰刀般的爪子。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s005-p000434",
+        "paragraph_index": 433,
+        "text": "无论是前脚、还是爪子的触感，都完全不像幻觉。动物爪子特有的不冷不热温度，再加上碰到不该触摸的东西的感觉，都让罗伦斯毛骨悚然。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s005-p000435",
+        "paragraph_index": 434,
+        "text": "罗伦斯咽下口中的唾液，不自觉地轻声说：",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s005-p000436",
+        "paragraph_index": 435,
+        "text": "「难道你真的是神？」",
+        "target_dialogue_ids": [
+          "volume_01-d000148"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c002-s005-p000437",
+        "paragraph_index": 436,
+        "text": "「咱才不是神。汝看咱的脚这么大，应该也明白，咱不过是体型比较大，嗯……加上比身边同伴们还要聪明的狼罢了。咱是赫萝，贤狼赫萝。」",
+        "target_dialogue_ids": [
+          "volume_01-d000149"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c002-s005-p000438",
+        "paragraph_index": 437,
+        "text": "女孩若无其事地自夸聪明，并且得意地看着罗伦斯。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s005-p000439",
+        "paragraph_index": 438,
+        "text": "那模样看起来就跟普通的调皮女孩没两样。然而，女孩肩上的动物前脚所散发出来的气息，实在教人无法相信她只是只普通的动物。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s005-p000440",
+        "paragraph_index": 439,
+        "text": "女孩给人的感觉绝对不只是体型比较大而已。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s005-p000441",
+        "paragraph_index": 440,
+        "text": "「呐，如何呢？」",
+        "target_dialogue_ids": [
+          "volume_01-d000150"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c002-s005-p000442",
+        "paragraph_index": 441,
+        "text": "面对赫萝再度询问，罗伦斯仍然无法整理出思绪，只能暧昧地点点头。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s005-p000443",
+        "paragraph_index": 442,
+        "text": "「可是……真的赫萝现在应该在叶勒的身体里啊，我听说赫萝会进入割下最后一束麦子的人的身体里……」",
+        "target_dialogue_ids": [
+          "volume_01-d000151"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c002-s005-p000444",
+        "paragraph_index": 443,
+        "text": "「呵呵呵，咱是贤狼啊，咱很了解自己受到哪些限制。正确来说，咱是存在于麦子之中。少了麦子，咱就活不了命。还有，在这个收割的时期，咱确实在最后收割的麦子里，而且没办法从里面逃脱。只要有人类看着，咱就跑不了。不过，还是有例外。」",
+        "target_dialogue_ids": [
+          "volume_01-d000152"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c002-s005-p000445",
+        "paragraph_index": 444,
+        "text": "罗伦斯一边听，一边佩服赫萝能够一口气说出这么多话。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s005-p000446",
+        "paragraph_index": 445,
+        "text": "「如果附近有比最后收割的熟麦还要大量的麦子，咱就可以在麦子之间移动，而不用担心被人类看到。村里的人说过呗？太贪心收割的话，就会追不到丰收之神，而让祂逃跑了。」",
+        "target_dialogue_ids": [
+          "volume_01-d000153"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c002-s005-p000447",
+        "paragraph_index": 446,
+        "text": "罗伦斯惊觉，把视线移到货台的某个位置上。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s005-p000448",
+        "paragraph_index": 447,
+        "text": "那里放着麦束，是深山里的村民给罗伦斯的麦子。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s005-p000449",
+        "paragraph_index": 448,
+        "text": "「总之，就是这么回事。要说汝是咱的救命恩人，也算是呗。如果没有汝，咱就没办法从村子里逃出来。」",
+        "target_dialogue_ids": [
+          "volume_01-d000154"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c002-s005-p000450",
+        "paragraph_index": 449,
+        "text": "虽然罗伦斯还无法完全相信赫萝说的话，不过，赫萝再次吞下几颗麦穗，让手臂恢复原貌的样子，却让她的话变得很有说服力。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s005-p000451",
+        "paragraph_index": 450,
+        "text": "赫萝提到救命恩人时，表现得有些抗拒，于是罗伦斯灵机一动，决定要反捉弄一下赫萝。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s005-p000452",
+        "paragraph_index": 451,
+        "text": "「既然这样，那就把这些麦子带回村里吧。少了丰收之神，村民们应该会很困扰。我认识叶勒和帕斯罗村的村民已经很久了，我可不希望看到他们伤脑筋。」",
+        "target_dialogue_ids": [
+          "volume_01-d000155"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c002-s005-p000453",
+        "paragraph_index": 452,
+        "text": "虽然这些话是罗伦斯临时起意，但仔细一想，他发现自己说的话一点也没错。如果赫萝真的是赫萝，那么她一离开村落，村民就要遭遇无法丰收的灾祸了。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s005-p000454",
+        "paragraph_index": 453,
+        "text": "然而，这些思绪一下子就消失了。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s005-p000455",
+        "paragraph_index": 454,
+        "text": "那是因为赫萝露出遭到背叛的表情看着罗伦斯。",
+        "target_dialogue_ids": []
+      }
+    ]
+  },
+  "scene_memory": [
+    {
+      "scene_id": "volume_01-c002-s005-r004",
+      "parent_scene_id": "volume_01-c002-s005",
+      "chunk_index": 4,
+      "chunk_count": 6,
+      "scene_summary": "罗伦斯与赫萝在麦田中对话，赫萝解释自己作为丰收之神的限制与存在方式，并提到自己曾被关在叶勒的身体里。罗伦斯对赫萝的解释半信半疑，但赫萝通过展示变身能力增强了说服力。",
+      "active_characters": [
+        "罗伦斯",
+        "赫萝"
+      ],
+      "relationships": [
+        "赫萝与罗伦斯之间存在互动与信任的初步建立",
+        "赫萝与叶勒之间存在身份关联",
+        "罗伦斯与帕斯罗村的村民有长期关系"
+      ],
+      "notes": "赫萝的说话风格和行为表现出非人类特征，但她的解释与行为（如吞食麦穗）增强了可信度。罗伦斯虽然怀疑，但表现出理性与包容。叶勒作为背景人物，其身份与赫萝的过去有关。"
+    },
+    {
+      "scene_id": "volume_01-c002-s005-r005",
+      "parent_scene_id": "volume_01-c002-s005",
+      "chunk_index": 5,
+      "chunk_count": 6,
+      "scene_summary": "罗伦斯在与赫萝的对话中陷入内心挣扎，一方面怀疑赫萝是否真的是丰收之神，另一方面又因她的哀求而动摇。赫萝表现出脆弱和不安，与先前的霸气形象形成对比。",
+      "active_characters": [
+        "罗伦斯",
+        "赫萝"
+      ],
+      "relationships": [
+        "罗伦斯与赫萝之间存在信任与怀疑的复杂关系",
+        "赫萝对罗伦斯表现出依赖和期待"
+      ],
+      "notes": "赫萝在本场景中表现出不同于以往的脆弱情绪，暗示其身份或动机可能有更多层次。罗伦斯的内心挣扎为后续剧情发展埋下伏笔。"
+    }
+  ],
+  "candidate_characters": [
+    {
+      "entity_id": "char_0002",
+      "display_name": "赫萝",
+      "aliases": [
+        "赫萝"
+      ],
+      "titles": [
+        "丰收之神",
+        "咱",
+        "神秘少女",
+        "约伊兹的贤狼",
+        "贤狼"
+      ],
+      "description": "自称丰收之神的神秘少女，拥有狼的耳朵和尾巴。在本场景中协助罗伦斯，表现出对他的关心和保护。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴，行为举止非人类，表现出轻松幽默但略带威胁性的说话风格。在本场景中，她对罗伦斯的伤口进行吸血，引发旁人惊呼，并表现出悲伤的情绪。 / 自称是丰收之神的神秘少女，拥有狼的耳朵和尾巴。在本场景中逐渐显露出非人类的特征，最终完全变成一只巨大的狼。她与罗伦斯有情感交流，表现出悲伤和决绝的情绪。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴，未直接参与本场景，但罗伦斯的行动可能与她有关…",
+      "speech_style": "轻松幽默但略带威胁性，情绪化且带有调侃语气。 / 轻松幽默、略带调侃和威胁 / 轻松幽默、略带威胁性 / 轻松幽默、略带威胁性、撒娇 / 警觉、神秘 / 轻松幽默但略带威胁性 / 轻松幽默、略带调侃 / 轻松幽默但略带威胁性，语气中透露出对罗伦斯的依赖。 / 轻松幽默、略带威胁性、自信 / 轻松幽默但略带威胁性，情绪…",
+      "relationship_hints": [
+        "与罗伦斯一同旅行",
+        "被罗伦斯怀疑是否为真正的神",
+        "与叶勒有附身关系",
+        "与罗伦斯有潜在互动",
+        "与罗伦斯有互动，似乎是被他发现并收留的。",
+        "与罗伦斯有互动，但尚未明确关系",
+        "与罗伦斯互动频繁，表现出对他的信任和玩笑态度",
+        "与罗伦斯互动密切"
+      ],
+      "first_seen_scene_id": "volume_01-c000-s003-r001",
+      "latest_seen_scene_id": "volume_01-c008-s003-r002",
+      "confidence": 1.0
+    },
+    {
+      "entity_id": "char_0001",
+      "display_name": "罗伦斯",
+      "aliases": [
+        "罗伦斯",
+        "罗伦斯先生"
+      ],
+      "titles": [
+        "中间人",
+        "交易者",
+        "同行",
+        "商人",
+        "小毛头",
+        "小的",
+        "市井无赖",
+        "年轻人"
+      ],
+      "description": "一位行商人，正在与米隆商行的代表马贺特进行交易谈判。他原本期待获得两千枚银币，但实际只得到一百二十枚，感到震惊和困惑。 / 一位行商人，发现并收留了赫萝，决定与她一同旅行。 / 一位二十五岁的自力更生旅行商人，已有七年行商经验，性格泰然自若。 / 一位冷静理性的旅行商人，对赫萝的身份持怀疑态度，但仍保持互动。他注重外表整洁，对商业制度有深入理解。 / 冷静理性的旅行商人，与赫萝一同旅行。在本场景中与米隆商行的马贺特讨论梅迪欧商行的威胁，提出利用崔尼银币交易作为交涉王牌。 / 一位冷静理性的旅行商人，与赫萝一同旅行…",
+      "speech_style": "理性、坚定、略带情绪化 / 冷静、理性，带有悔恨和自责的语气。 / 冷静、理性，语气中带有对赫萝的关心和些许担忧。 / 冷静、理性、略带失落 / 冷静、理性，对商业制度有深入理解，并能清晰地向他人解释。 / 理性、礼貌、略带谨慎。 / 理性、冷静，带有商业分析倾向。 / 理性、沉稳、略带幽默 / 理性、冷静，但因困惑…",
+      "relationship_hints": [
+        "与赫萝一同旅行",
+        "对赫萝的真实性持怀疑态度",
+        "与深山村落的村民有交易关系",
+        "对修道院抱有商业期望但未成功",
+        "与骑士有短暂互动",
+        "与小村落的村民有交易关系",
+        "与修道院有关联",
+        "对教会和异教徒问题有见解"
+      ],
+      "first_seen_scene_id": "volume_01-c000-s003-r001",
+      "latest_seen_scene_id": "volume_01-c008-s003-r002",
+      "confidence": 1.0
+    },
+    {
+      "entity_id": "char_0004",
+      "display_name": "叶勒",
+      "aliases": [
+        "叶勒"
+      ],
+      "titles": [
+        "帕斯罗村农夫",
+        "村民代表"
+      ],
+      "description": "帕斯罗村的农夫，今年雇用年轻人种田。 / 帕斯罗村的农夫，今年雇用年轻人种田，是村民丰收祭典的中心人物。 / 帕斯罗村的农夫，今年雇用年轻人种田，是村民丰收祭典的中心人物。他被村民认为是丰收之神附身的载体。 / 帕斯罗村的农夫，曾与罗伦斯交易麦子，对罗伦斯怀有感恩之心。 / 赫萝提及的愤怒对象，可能是帕斯罗村的农夫，曾被认为是丰收之神附身的载体。 / 帕斯罗村的农夫，被认为是丰收之神附身的载体。 / 帕斯罗村的农夫，被认为是丰收之神附身的载体。在本场景中突然出现，与罗伦斯有旧识，并提及帕斯罗村的银币交易计划。 /…",
+      "speech_style": "未直接说话，通过他人描述 / 未直接说话，但被村民高声呼喊 / 热情、激动，带有仪式感。 / 未直接说话，但通过他人叙述体现其性格 / 未直接说话 / 未直接发言，但被提及。 / 略带悲伤但坚定 / 理性、策略性、带有说服力 / 热情、说服性强 / 坚定、略带威胁 / 命令式 / 情绪化、不讲理",
+      "relationship_hints": [
+        "与罗伦斯有互动",
+        "雇用年轻人",
+        "是村民活动的组织者",
+        "与农夫有联系",
+        "与罗伦斯有交谈的意图",
+        "被村民追逐",
+        "与罗伦斯有商业交易关系",
+        "被村民视为丰收之神附身的载体"
+      ],
+      "first_seen_scene_id": "volume_01-c002-s001-r006",
+      "latest_seen_scene_id": "volume_01-c007-s004-r005",
+      "confidence": 0.95
+    }
+  ],
+  "candidate_mysteries": [
+    {
+      "mystery_id": "mystery_volume_01_c002_s005_r004_叶勒",
+      "temporary_name": "叶勒",
+      "description": "帕斯罗村的农夫，曾被认为是丰收之神附身的载体。赫萝提到自己曾进入他的身体。",
+      "evidence": [
+        "volume_01-c002-s005-p000443"
+      ],
+      "source_scene_id": "volume_01-c002-s005-r004",
+      "confidence": 0.85
+    }
+  ]
+}

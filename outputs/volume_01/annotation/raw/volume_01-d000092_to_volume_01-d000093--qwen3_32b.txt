@@ -1,0 +1,52 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000092",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "上下文显示罗伦斯对赫萝的背景持怀疑态度，而此句是询问地名，符合他试图验证赫萝记忆的逻辑。",
+        "赫萝在下一句中回答了问题，符合对话轮次：罗伦斯提问，赫萝回应。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000093",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "赫萝在场景中是主要对话者之一，且在上一句中被罗伦斯提问后立即回应，符合对话轮次。",
+        "使用自称「咱」，这是赫萝的典型说话风格。",
+        "提到纽希拉，与场景记忆中赫萝回忆地名的行为一致。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰：罗伦斯提问，赫萝回应。上下文和说话风格支持当前标注。"
+}
+```

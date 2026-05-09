@@ -1,0 +1,34 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000133",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.9
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.1
+        }
+      ],
+      "evidence": [
+        "前文描述赫萝吞下麦穗后突然呻吟并倒下",
+        "赫萝是唯一在该场景中展示变身能力的角色",
+        "罗伦斯的反应表明他正在关注赫萝的异常表现"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "赫萝吞下麦穗后突然呻吟，结合上下文判断为赫萝发出的声音，罗伦斯在场并关注其反应，无其他角色具备明显说话证据。"
+}

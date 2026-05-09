@@ -1,0 +1,35 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001226",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.9
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.1
+        }
+      ],
+      "evidence": [
+        "前文描述赫萝拉着罗伦斯的手并频频回头",
+        "赫萝用近乎沙哑的声音催促",
+        "罗伦斯清楚赫萝停下来的原因是脚步声",
+        "赫萝在逃亡中表现出对罗伦斯的关心和保护"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "赫萝在逃亡中催促罗伦斯加快脚步，语气沙哑，符合其在危险情境下的行为特征。"
+}

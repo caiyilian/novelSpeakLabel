@@ -1,0 +1,102 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000730",
+      "speaker_entity_id": "mystery_volume_01_c004_s009_r002_神秘人物",
+      "speaker_display": "神秘人物",
+      "speaker_status": "mystery",
+      "confidence": 0.7,
+      "candidate_speakers": [
+        {
+          "entity_id": "mystery_volume_01_c004_s009_r002_神秘人物",
+          "display": "神秘人物",
+          "status": "mystery",
+          "score": 0.7
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.2
+        }
+      ],
+      "evidence": [
+        "神秘人物在罗伦斯思考时突然出现并说话，语气带有调侃意味。",
+        "该台词出现在罗伦斯与赫萝的对话场景中，但未提及罗伦斯或赫萝的反应，更像是旁观者评论。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000731",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "罗伦斯在场景中表现出急躁但逻辑清晰的说话风格，且场景记忆中提到他急躁地向赫萝解释计策。",
+        "该台词「走吧！」是罗伦斯在场景中推动行动的典型表达。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000732",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "赫萝是罗伦斯的对话对象，且在场景中被提及为被罗伦斯回头回答的人。",
+        "该台词「嗯？咦？去哪？」符合赫萝轻松幽默但略带调侃的说话风格。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000733",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.98,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.98
+        }
+      ],
+      "evidence": [
+        "该台词出现在罗伦斯小跑并回头回答赫萝之后，是连续对话的一部分。",
+        "台词内容「去米隆商行！」与场景记忆中「罗伦斯计划前往米隆商行」一致。",
+        "台词中提到的计策分析符合罗伦斯冷静理性、商业分析倾向的说话风格。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次为：神秘人物 → 罗伦斯 → 赫萝 → 罗伦斯。整体对话符合场景中罗伦斯与赫萝的互动模式，且神秘人物的出现与场景记忆中提到的神秘人物一致。"
+}
+```

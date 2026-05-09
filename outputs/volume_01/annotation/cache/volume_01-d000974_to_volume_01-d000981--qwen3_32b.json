@@ -5,18 +5,20 @@
       "speaker_entity_id": "char_0020",
       "speaker_display": "列支敦·马贺特",
       "speaker_status": "known",
-      "confidence": 0.98,
+      "confidence": 0.95,
       "candidate_speakers": [
         {
           "entity_id": "char_0020",
           "display": "列支敦·马贺特",
           "status": "known",
-          "score": 0.98
+          "score": 0.95
         }
       ],
       "evidence": [
-        "对话中提到「罗伦斯先生您是旅行商人」，符合马贺特作为商行代表的身份和语气。"
+        "对话中提到『罗伦斯先生您是旅行商人』，符合马贺特作为商行代表的身份和语气。"
       ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
       "needs_review": false
     },
     {
@@ -24,18 +26,20 @@
       "speaker_entity_id": "char_0020",
       "speaker_display": "列支敦·马贺特",
       "speaker_status": "known",
-      "confidence": 0.97,
+      "confidence": 0.95,
       "candidate_speakers": [
         {
           "entity_id": "char_0020",
           "display": "列支敦·马贺特",
           "status": "known",
-          "score": 0.97
+          "score": 0.95
         }
       ],
       "evidence": [
-        "延续上一句的对话，符合同一人连续发言的逻辑。"
+        "对话延续了前一句的逻辑，是同一人对罗伦斯的进一步解释。"
       ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
       "needs_review": false
     },
     {
@@ -43,18 +47,20 @@
       "speaker_entity_id": "char_0020",
       "speaker_display": "列支敦·马贺特",
       "speaker_status": "known",
-      "confidence": 0.96,
+      "confidence": 0.9,
       "candidate_speakers": [
         {
           "entity_id": "char_0020",
           "display": "列支敦·马贺特",
           "status": "known",
-          "score": 0.96
+          "score": 0.9
         }
       ],
       "evidence": [
-        "延续上一句的对话，符合同一人连续发言的逻辑。"
+        "对话是对前一句的回应，语气上仍保持冷静和理性，符合马贺特的说话风格。"
       ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
       "needs_review": false
     },
     {
@@ -62,18 +68,20 @@
       "speaker_entity_id": "char_0001",
       "speaker_display": "罗伦斯",
       "speaker_status": "known",
-      "confidence": 0.95,
+      "confidence": 0.85,
       "candidate_speakers": [
         {
           "entity_id": "char_0001",
           "display": "罗伦斯",
           "status": "known",
-          "score": 0.95
+          "score": 0.85
         }
       ],
       "evidence": [
-        "对话简短，符合罗伦斯对马贺特发言的回应语气。"
+        "对话是针对马贺特的质疑提出反问，符合罗伦斯的理性商人性格。"
       ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
       "needs_review": false
     },
     {
@@ -81,18 +89,20 @@
       "speaker_entity_id": "char_0020",
       "speaker_display": "列支敦·马贺特",
       "speaker_status": "known",
-      "confidence": 0.97,
+      "confidence": 0.9,
       "candidate_speakers": [
         {
           "entity_id": "char_0020",
           "display": "列支敦·马贺特",
           "status": "known",
-          "score": 0.97
+          "score": 0.9
         }
       ],
       "evidence": [
-        "延续上一句的对话，符合同一人连续发言的逻辑。"
+        "对话是对罗伦斯的反问进行解释，语气和逻辑延续了前文，符合马贺特的说话风格。"
       ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
       "needs_review": false
     },
     {
@@ -100,18 +110,20 @@
       "speaker_entity_id": "char_0001",
       "speaker_display": "罗伦斯",
       "speaker_status": "known",
-      "confidence": 0.94,
+      "confidence": 0.85,
       "candidate_speakers": [
         {
           "entity_id": "char_0001",
           "display": "罗伦斯",
           "status": "known",
-          "score": 0.94
+          "score": 0.85
         }
       ],
       "evidence": [
-        "对话简短，符合罗伦斯对马贺特发言的回应语气。"
+        "对话是对马贺特的回应，语气中带有迟疑，符合罗伦斯的反应模式。"
       ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
       "needs_review": false
     },
     {
@@ -119,18 +131,20 @@
       "speaker_entity_id": "char_0020",
       "speaker_display": "列支敦·马贺特",
       "speaker_status": "known",
-      "confidence": 0.96,
+      "confidence": 0.9,
       "candidate_speakers": [
         {
           "entity_id": "char_0020",
           "display": "列支敦·马贺特",
           "status": "known",
-          "score": 0.96
+          "score": 0.9
         }
       ],
       "evidence": [
-        "延续上一句的对话，符合同一人连续发言的逻辑。"
+        "对话延续了前一句的逻辑，是马贺特对罗伦斯的进一步解释。"
       ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
       "needs_review": false
     },
     {
@@ -138,20 +152,22 @@
       "speaker_entity_id": "char_0001",
       "speaker_display": "罗伦斯",
       "speaker_status": "known",
-      "confidence": 0.93,
+      "confidence": 0.85,
       "candidate_speakers": [
         {
           "entity_id": "char_0001",
           "display": "罗伦斯",
           "status": "known",
-          "score": 0.93
+          "score": 0.85
         }
       ],
       "evidence": [
-        "对话简短，符合罗伦斯对马贺特发言的回应语气。"
+        "对话是罗伦斯对马贺特的进一步质疑，语气中带有困惑，符合其性格。"
       ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
       "needs_review": false
     }
   ],
-  "window_notes": "对话轮次清晰，列支敦·马贺特与罗伦斯交替发言，符合上下文逻辑。"
+  "window_notes": "对话轮次清晰，列支敦·马贺特与罗伦斯交替发言，符合场景中两人讨论的逻辑。"
 }

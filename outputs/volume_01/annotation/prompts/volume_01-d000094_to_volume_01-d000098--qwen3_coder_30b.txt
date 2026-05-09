@@ -1,0 +1,379 @@
+你是轻小说说话人标注项目的阶段 2：正式标注助手。
+你的任务是判断输入 target_dialogues 中每一句台词的说话人，不要改写原文。
+必须把这些台词当作同一个连续片段来判断，优先保持对话轮次和叙述线索的一致性。
+
+规则：
+1. 只输出严格 JSON，不要 Markdown，不要解释性前后缀。
+2. 如果说话人是候选角色，speaker_entity_id 必须使用 candidate_characters 里的 entity_id，speaker_status 填 known。
+3. 如果说话人像某个未知人物，speaker_entity_id 使用 candidate_mysteries 里的 mystery_id，speaker_status 填 mystery。
+4. 如果只是无法追踪的路人/群体，speaker_status 填 npc，speaker_entity_id 可为空或使用 npc:简短称呼。
+5. 证据不足时不要硬猜，speaker_status 填 ambiguous 或 review，并把 needs_review 设为 true。
+6. candidate_speakers 至少列出 1 个候选；如果无法判断，列出最可能的候选和不确定原因。
+7. confidence 使用 0 到 1 之间的小数，表示你对最终判断的把握。
+8. 不要只因为台词里提到某个名字、职业、地点，就把说话人标成那个实体；被称呼的人通常不是说话人。
+9. 连续问答、交易寒暄、命令/回答等场景要按上下句轮次判断；同一人连续说话必须有叙述或语气证据支持。
+10. 如果当前上下文显示某角色还没有登场，不要因为角色库或后文记忆里有这个角色就提前标给他/她。
+
+11. target_dialogues 中 dialogue_kind=inline 的项目是正文内嵌引号，不要当作独立对白；标为 review，needs_review=true。
+12. candidate_mysteries 只是可选候选；如果候选名称和当前段落地点/人物不一致，必须改用 npc 或 review。
+13. 如果只有轮次推断、没有叙述锚点或自我介绍，请降低 confidence，并在 evidence 里说明轮次依据。
+
+输出 JSON 结构：
+{
+  "annotations": [
+    {
+      "dialogue_id": "必须来自 target_dialogue_ids",
+      "speaker_entity_id": "string",
+      "speaker_display": "string",
+      "speaker_status": "known|mystery|npc|ambiguous|review",
+      "confidence": 0.0,
+      "candidate_speakers": [
+        {"entity_id": "string", "display": "string", "status": "known|mystery|npc|ambiguous|review", "score": 0.0}
+      ],
+      "evidence": ["短证据，不要大段复制原文"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "可选，简短说明整体轮次判断"
+}
+必须为 target_dialogue_ids 中每个 dialogue_id 输出且只输出一条 annotation。
+
+输入 JSON：
+{
+  "volume": {
+    "volume_id": "volume_01",
+    "volume": 1
+  },
+  "target_dialogue_ids": [
+    "volume_01-d000094",
+    "volume_01-d000095",
+    "volume_01-d000096",
+    "volume_01-d000097",
+    "volume_01-d000098"
+  ],
+  "dialogues": [
+    {
+      "dialogue_id": "volume_01-d000094",
+      "dialogue_index": 93,
+      "window_position": 1,
+      "chapter_id": "volume_01-c002",
+      "chapter_title": "第一幕",
+      "scene_id": "volume_01-c002-s004",
+      "paragraph_id": "volume_01-c002-s004-p000322",
+      "paragraph_index": 321,
+      "local_dialogue_index": 1,
+      "text": "呜……咱虽然不讨厌人类的外表，不过还是太冷了，身上的毛太少了。",
+      "quote_text": "「呜……咱虽然不讨厌人类的外表，不过还是太冷了，身上的毛太少了。」",
+      "paragraph_text": "「呜……咱虽然不讨厌人类的外表，不过还是太冷了，身上的毛太少了。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 33
+    },
+    {
+      "dialogue_id": "volume_01-d000095",
+      "dialogue_index": 94,
+      "window_position": 2,
+      "chapter_id": "volume_01-c002",
+      "chapter_title": "第一幕",
+      "scene_id": "volume_01-c002-s004",
+      "paragraph_id": "volume_01-c002-s004-p000325",
+      "paragraph_index": 324,
+      "local_dialogue_index": 1,
+      "text": "你刚刚也有提到模样如何又如何的，到底是什么意思啊？",
+      "quote_text": "「你刚刚也有提到模样如何又如何的，到底是什么意思啊？」",
+      "paragraph_text": "「你刚刚也有提到模样如何又如何的，到底是什么意思啊？」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 27
+    },
+    {
+      "dialogue_id": "volume_01-d000096",
+      "dialogue_index": 95,
+      "window_position": 3,
+      "chapter_id": "volume_01-c002",
+      "chapter_title": "第一幕",
+      "scene_id": "volume_01-c002-s004",
+      "paragraph_id": "volume_01-c002-s004-p000327",
+      "paragraph_index": 326,
+      "local_dialogue_index": 1,
+      "text": "就如字面上的意思啊。咱好久没有以人类的模样出现了，很可爱呗？",
+      "quote_text": "「就如字面上的意思啊。咱好久没有以人类的模样出现了，很可爱呗？」",
+      "paragraph_text": "「就如字面上的意思啊。咱好久没有以人类的模样出现了，很可爱呗？」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 32
+    },
+    {
+      "dialogue_id": "volume_01-d000097",
+      "dialogue_index": 96,
+      "window_position": 4,
+      "chapter_id": "volume_01-c002",
+      "chapter_title": "第一幕",
+      "scene_id": "volume_01-c002-s004",
+      "paragraph_id": "volume_01-c002-s004-p000329",
+      "paragraph_index": 328,
+      "local_dialogue_index": 1,
+      "text": "不过是身上多了点东西，你终究是人类吧。难不成就像马儿变成人类的故事一样，你是小狗变成的人类？",
+      "quote_text": "「不过是身上多了点东西，你终究是人类吧。难不成就像马儿变成人类的故事一样，你是小狗变成的人类？」",
+      "paragraph_text": "「不过是身上多了点东西，你终究是人类吧。难不成就像马儿变成人类的故事一样，你是小狗变成的人类？」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 48
+    },
+    {
+      "dialogue_id": "volume_01-d000098",
+      "dialogue_index": 97,
+      "window_position": 5,
+      "chapter_id": "volume_01-c002",
+      "chapter_title": "第一幕",
+      "scene_id": "volume_01-c002-s004",
+      "paragraph_id": "volume_01-c002-s004-p000331",
+      "paragraph_index": 330,
+      "local_dialogue_index": 1,
+      "text": "看咱的这对耳朵及尾巴！咱可是崇高无上的狼呀！不论是咱的同伴、森林里的动物，还是村落里的人类，无不对咱敬畏三分。咱这只有前端带著白毛的尾巴，最令咱引以为傲；每个人看到咱的尾巴，都会称赞不已。这对尖尖的耳朵也是咱自豪的地方，咱这对耳朵从不曾漏听任何灾祸或谎言，从危机中解救过无数同伴。说到约伊兹的贤狼，除了咱没有第二人。",
+      "quote_text": "「看咱的这对耳朵及尾巴！咱可是崇高无上的狼呀！不论是咱的同伴、森林里的动物，还是村落里的人类，无不对咱敬畏三分。咱这只有前端带著白毛的尾巴，最令咱引以为傲；每个人看到咱的尾巴，都会称赞不已。这对尖尖的耳朵也是咱自豪的地方，咱这对耳朵从不曾漏听任何灾祸或谎言，从危机中解救过无数同伴。说到约伊兹的贤狼，除了咱没有第二人。」",
+      "paragraph_text": "「看咱的这对耳朵及尾巴！咱可是崇高无上的狼呀！不论是咱的同伴、森林里的动物，还是村落里的人类，无不对咱敬畏三分。咱这只有前端带著白毛的尾巴，最令咱引以为傲；每个人看到咱的尾巴，都会称赞不已。这对尖尖的耳朵也是咱自豪的地方，咱这对耳朵从不曾漏听任何灾祸或谎言，从危机中解救过无数同伴。说到约伊兹的贤狼，除了咱没有第二人。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 160
+    }
+  ],
+  "context": {
+    "paragraphs": [
+      {
+        "paragraph_id": "volume_01-c002-s004-p000319",
+        "paragraph_index": 318,
+        "text": "这附近应该没什么人会知道纽希拉的存在啊。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s004-p000320",
+        "paragraph_index": 319,
+        "text": "赫萝完全不理会罗伦斯的思绪，她的语气听来，仿佛正在享受浸泡热泉般的舒服。赫萝突然缩起身体，轻轻打了个喷嚏。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s004-p000321",
+        "paragraph_index": 320,
+        "text": "这时，罗伦斯总算记起赫萝全身赤裸的事。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s004-p000322",
+        "paragraph_index": 321,
+        "text": "「呜……咱虽然不讨厌人类的外表，不过还是太冷了，身上的毛太少了。」",
+        "target_dialogue_ids": [
+          "volume_01-d000094"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c002-s004-p000323",
+        "paragraph_index": 322,
+        "text": "赫萝笑着说罢，钻进貂皮堆里。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s004-p000324",
+        "paragraph_index": 323,
+        "text": "看着赫萝的模样，罗伦斯的嘴角忍不住上扬了一些。不过，有件事让罗伦斯在意，于是他对钻进貂皮底下的赫萝说：",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s004-p000325",
+        "paragraph_index": 324,
+        "text": "「你刚刚也有提到模样如何又如何的，到底是什么意思啊？」",
+        "target_dialogue_ids": [
+          "volume_01-d000095"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c002-s004-p000326",
+        "paragraph_index": 325,
+        "text": "听到罗伦斯的询问，赫萝从貂皮堆中探出头来说：",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s004-p000327",
+        "paragraph_index": 326,
+        "text": "「就如字面上的意思啊。咱好久没有以人类的模样出现了，很可爱呗？」",
+        "target_dialogue_ids": [
+          "volume_01-d000096"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c002-s004-p000328",
+        "paragraph_index": 327,
+        "text": "看见赫萝如此开心地笑着说，罗伦斯不禁在心中同意她的说法。这女孩似乎会让罗伦斯乱了阵脚，他控制住表情，避免透露出内心的想法，开口说道：",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s004-p000329",
+        "paragraph_index": 328,
+        "text": "「不过是身上多了点东西，你终究是人类吧。难不成就像马儿变成人类的故事一样，你是小狗变成的人类？」",
+        "target_dialogue_ids": [
+          "volume_01-d000097"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c002-s004-p000330",
+        "paragraph_index": 329,
+        "text": "听到罗伦斯有些挑衅的言语，赫萝缓慢地站起身子。她转身露出背部，再把头转向罗伦斯，以果决的语气毫无畏惧地说：",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s004-p000331",
+        "paragraph_index": 330,
+        "text": "「看咱的这对耳朵及尾巴！咱可是崇高无上的狼呀！不论是咱的同伴、森林里的动物，还是村落里的人类，无不对咱敬畏三分。咱这只有前端带著白毛的尾巴，最令咱引以为傲；每个人看到咱的尾巴，都会称赞不已。这对尖尖的耳朵也是咱自豪的地方，咱这对耳朵从不曾漏听任何灾祸或谎言，从危机中解救过无数同伴。说到约伊兹的贤狼，除了咱没有第二人。」",
+        "target_dialogue_ids": [
+          "volume_01-d000098"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c002-s004-p000332",
+        "paragraph_index": 331,
+        "text": "虽然赫萝骄傲地说着，但她立刻记起寒冷的感觉，缩着身体躲进貂皮底下去。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s004-p000333",
+        "paragraph_index": 332,
+        "text": "罗伦斯有些看呆了。一部分是因为赫萝迷人的赤裸身躯，另一部分是因为长在腰际附近的尾巴确实动了。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s004-p000334",
+        "paragraph_index": 333,
+        "text": "不仅是耳朵，连尾巴都是真的。",
+        "target_dialogue_ids": []
+      }
+    ]
+  },
+  "scene_memory": [
+    {
+      "scene_id": "volume_01-c002-s004-r001",
+      "parent_scene_id": "volume_01-c002-s004",
+      "chunk_index": 1,
+      "chunk_count": 6,
+      "scene_summary": "罗伦斯与赫萝在对话中回忆起一些古老的城镇，如约伊兹和纽希拉。赫萝以人类形态出现，表现出对人类外表的适应与不满，同时展现出轻松幽默的说话风格。",
+      "active_characters": [
+        "罗伦斯",
+        "赫萝"
+      ],
+      "relationships": [
+        "罗伦斯与赫萝之间存在互动和信任，但罗伦斯对赫萝的背景仍持怀疑态度。",
+        "赫萝对罗伦斯表现出依赖和调皮的态度。"
+      ],
+      "notes": "赫萝提到的约伊兹和纽希拉可能是后续剧情的重要线索，值得进一步追踪。"
+    },
+    {
+      "scene_id": "volume_01-c002-s004-r002",
+      "parent_scene_id": "volume_01-c002-s004",
+      "chunk_index": 2,
+      "chunk_count": 6,
+      "scene_summary": "赫萝在罗伦斯面前展示她的狼耳和尾巴，强调自己是丰收之神。罗伦斯对此感到震惊并开始怀疑她的身份。",
+      "active_characters": [
+        "罗伦斯",
+        "赫萝"
+      ],
+      "relationships": [
+        "罗伦斯对赫萝的身份感到怀疑",
+        "赫萝展示自己的狼耳和尾巴以证明身份"
+      ],
+      "notes": "赫萝表现出强烈的自我认同和神秘感，罗伦斯则表现出理性怀疑的态度。场景中没有出现新的神秘人物。"
+    }
+  ],
+  "candidate_characters": [
+    {
+      "entity_id": "char_0002",
+      "display_name": "赫萝",
+      "aliases": [
+        "赫萝"
+      ],
+      "titles": [
+        "丰收之神",
+        "咱",
+        "神秘少女",
+        "约伊兹的贤狼",
+        "贤狼"
+      ],
+      "description": "自称丰收之神的神秘少女，拥有狼的耳朵和尾巴。在本场景中协助罗伦斯，表现出对他的关心和保护。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴，行为举止非人类，表现出轻松幽默但略带威胁性的说话风格。在本场景中，她对罗伦斯的伤口进行吸血，引发旁人惊呼，并表现出悲伤的情绪。 / 自称是丰收之神的神秘少女，拥有狼的耳朵和尾巴。在本场景中逐渐显露出非人类的特征，最终完全变成一只巨大的狼。她与罗伦斯有情感交流，表现出悲伤和决绝的情绪。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴，未直接参与本场景，但罗伦斯的行动可能与她有关…",
+      "speech_style": "轻松幽默但略带威胁性，情绪化且带有调侃语气。 / 轻松幽默、略带调侃和威胁 / 轻松幽默、略带威胁性 / 轻松幽默、略带威胁性、撒娇 / 警觉、神秘 / 轻松幽默但略带威胁性 / 轻松幽默、略带调侃 / 轻松幽默但略带威胁性，语气中透露出对罗伦斯的依赖。 / 轻松幽默、略带威胁性、自信 / 轻松幽默但略带威胁性，情绪…",
+      "relationship_hints": [
+        "与罗伦斯一同旅行",
+        "被罗伦斯怀疑是否为真正的神",
+        "与叶勒有附身关系",
+        "与罗伦斯有潜在互动",
+        "与罗伦斯有互动，似乎是被他发现并收留的。",
+        "与罗伦斯有互动，但尚未明确关系",
+        "与罗伦斯互动频繁，表现出对他的信任和玩笑态度",
+        "与罗伦斯互动密切"
+      ],
+      "first_seen_scene_id": "volume_01-c000-s003-r001",
+      "latest_seen_scene_id": "volume_01-c008-s003-r002",
+      "confidence": 1.0
+    },
+    {
+      "entity_id": "char_0001",
+      "display_name": "罗伦斯",
+      "aliases": [
+        "罗伦斯",
+        "罗伦斯先生"
+      ],
+      "titles": [
+        "中间人",
+        "交易者",
+        "同行",
+        "商人",
+        "小毛头",
+        "小的",
+        "市井无赖",
+        "年轻人"
+      ],
+      "description": "一位行商人，正在与米隆商行的代表马贺特进行交易谈判。他原本期待获得两千枚银币，但实际只得到一百二十枚，感到震惊和困惑。 / 一位行商人，发现并收留了赫萝，决定与她一同旅行。 / 一位二十五岁的自力更生旅行商人，已有七年行商经验，性格泰然自若。 / 一位冷静理性的旅行商人，对赫萝的身份持怀疑态度，但仍保持互动。他注重外表整洁，对商业制度有深入理解。 / 冷静理性的旅行商人，与赫萝一同旅行。在本场景中与米隆商行的马贺特讨论梅迪欧商行的威胁，提出利用崔尼银币交易作为交涉王牌。 / 一位冷静理性的旅行商人，与赫萝一同旅行…",
+      "speech_style": "理性、坚定、略带情绪化 / 冷静、理性，带有悔恨和自责的语气。 / 冷静、理性，语气中带有对赫萝的关心和些许担忧。 / 冷静、理性、略带失落 / 冷静、理性，对商业制度有深入理解，并能清晰地向他人解释。 / 理性、礼貌、略带谨慎。 / 理性、冷静，带有商业分析倾向。 / 理性、沉稳、略带幽默 / 理性、冷静，但因困惑…",
+      "relationship_hints": [
+        "与赫萝一同旅行",
+        "对赫萝的真实性持怀疑态度",
+        "与深山村落的村民有交易关系",
+        "对修道院抱有商业期望但未成功",
+        "与骑士有短暂互动",
+        "与小村落的村民有交易关系",
+        "与修道院有关联",
+        "对教会和异教徒问题有见解"
+      ],
+      "first_seen_scene_id": "volume_01-c000-s003-r001",
+      "latest_seen_scene_id": "volume_01-c008-s003-r002",
+      "confidence": 1.0
+    }
+  ],
+  "candidate_mysteries": [
+    {
+      "mystery_id": "mystery_volume_01_c002_s004_r001_纽希拉",
+      "temporary_name": "纽希拉",
+      "description": "一个北方的温泉城镇，被赫萝提及，似乎与她的记忆有关。",
+      "evidence": [
+        "volume_01-c002-s004-p000317",
+        "volume_01-c002-s004-p000318"
+      ],
+      "source_scene_id": "volume_01-c002-s004-r001",
+      "confidence": 0.8
+    },
+    {
+      "mystery_id": "mystery_volume_01_c002_s004_r001_约伊兹",
+      "temporary_name": "约伊兹",
+      "description": "一个六百年前被熊怪毁灭的古老城镇，被提及但未进一步展开。",
+      "evidence": [
+        "volume_01-c002-s004-p000315"
+      ],
+      "source_scene_id": "volume_01-c002-s004-r001",
+      "confidence": 0.7
+    }
+  ]
+}

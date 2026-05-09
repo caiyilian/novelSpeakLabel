@@ -1,23 +1,26 @@
 {
-  "dialogue_id": "volume_01-d000046",
-  "speaker_entity_id": "char_0001",
-  "speaker_display": "罗伦斯",
-  "speaker_status": "known",
-  "confidence": 0.98,
-  "candidate_speakers": [
+  "annotations": [
     {
-      "entity_id": "char_0001",
-      "display": "罗伦斯",
-      "status": "known",
-      "score": 0.98
+      "dialogue_id": "volume_01-d000046",
+      "speaker_entity_id": "",
+      "speaker_display": "",
+      "speaker_status": "review",
+      "confidence": 0.0,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.3
+        }
+      ],
+      "evidence": [
+        "该台词「糟糕」出现在罗伦斯的内心独白段落中，但没有明确的对话轮次或叙述线索表明这是罗伦斯的直接对白。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
     }
   ],
-  "evidence": [
-    "对话出现在罗伦斯河边露宿的段落中，上下文提到罗伦斯思考自己的处境。",
-    "「糟糕」是罗伦斯对自己可能掉进河里而发出的感叹，符合他的性格和处境。",
-    "当前段落中没有其他角色说话，也没有任何神秘人物或村民的发言。"
-  ],
-  "should_create_new_entity": false,
-  "new_entity_hint": "",
-  "needs_review": false
+  "window_notes": "该台词为内嵌引号，未形成独立对话轮次，无法明确说话人。"
 }

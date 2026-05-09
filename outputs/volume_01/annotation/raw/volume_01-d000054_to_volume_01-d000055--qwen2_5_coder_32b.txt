@@ -1,0 +1,34 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000054",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {"entity_id": "char_0002", "display": "赫萝", "status": "known", "score": 0.9}
+      ],
+      "evidence": ["女孩缓缓张开嘴巴，闭起双眼朝天空发出长嚎声"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000055",
+      "speaker_entity_id": "",
+      "speaker_display": "",
+      "speaker_status": "review",
+      "confidence": 0.2,
+      "candidate_speakers": [
+        {"entity_id": "", "display": "", "status": "npc", "score": 0.6},
+        {"entity_id": "char_0001", "display": "罗伦斯", "status": "known", "score": 0.4}
+      ],
+      "evidence": ["对话内嵌在叙述中，无法确定说话人"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    }
+  ],
+  "window_notes": "第一句是赫萝发出的狼嚎，第二句是描述罗伦斯的感受，但对话内嵌在叙述中，无法确定说话人。"
+}

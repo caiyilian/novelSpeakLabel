@@ -1,0 +1,121 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001229",
+      "speaker_entity_id": "mystery_volume_01_c007_s003_r002_未知追踪者",
+      "speaker_display": "未知追踪者",
+      "speaker_status": "mystery",
+      "confidence": 0.75,
+      "candidate_speakers": [
+        {
+          "entity_id": "mystery_volume_01_c007_s003_r002_未知追踪者",
+          "display": "未知追踪者",
+          "status": "mystery",
+          "score": 0.75
+        },
+        {
+          "entity_id": "char_0032",
+          "display": "梅迪欧商行手下",
+          "status": "known",
+          "score": 0.2
+        }
+      ],
+      "evidence": [
+        "喊声来自转角，与后文出现的梅迪欧商行手下无直接关联",
+        "上下文未提及罗伦斯或赫萝主动说话"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001230",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "上下文明确提到罗伦斯拔出短剑挡在赫萝面前",
+        "对话前文描述罗伦斯的行动，符合其性格和处境"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001231",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "上下文提到赫萝抬头望着罗伦斯，随后罗伦斯无法回看赫萝",
+        "赫萝在场景中是唯一能直接回应罗伦斯的人"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001232",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.88,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.88
+        }
+      ],
+      "evidence": [
+        "罗伦斯在前一句被赫萝评价，符合对话轮次",
+        "罗伦斯在场景中持续行动，符合说话人逻辑"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001233",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "后文明确提到赫萝生气地说话",
+        "对话轮次符合赫萝对罗伦斯的回应"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，罗伦斯与赫萝交替发言，符合两人在场景中的互动模式。第一句为未知人物喊声，后续对话由两人轮流进行。"
+}

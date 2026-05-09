@@ -1,0 +1,53 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001271",
+      "speaker_entity_id": "",
+      "speaker_display": "",
+      "speaker_status": "ambiguous",
+      "confidence": 0.3,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0004",
+          "display": "叶勒",
+          "status": "known",
+          "score": 0.2
+        },
+        {
+          "entity_id": "",
+          "display": "npc:男子",
+          "status": "npc",
+          "score": 0.3
+        }
+      ],
+      "evidence": [
+        "轮次依据，但没有明确的叙述锚点"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    },
+    {
+      "dialogue_id": "volume_01-d001272",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "赫萝被提及，且罗伦斯在场"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "第一句台词的说话人不明确，可能是叶勒或某个未命名男子；第二句台词由罗伦斯发出。"
+}

@@ -1,26 +1,30 @@
 ```json
 {
-  "dialogue_id": "volume_01-d001343",
-  "speaker_entity_id": "char_0002",
-  "speaker_display": "赫萝",
-  "speaker_status": "known",
-  "confidence": 0.95,
-  "candidate_speakers": [
+  "annotations": [
     {
-      "entity_id": "char_0002",
-      "display": "赫萝",
-      "status": "known",
-      "score": 0.95
+      "dialogue_id": "volume_01-d001343",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "上下文显示说话人坐在驾座上，且没有看向罗伦斯，符合赫萝在场景中的行为模式。",
+        "说话人使用自称「咱」，这是赫萝的典型语言风格。",
+        "场景记忆中确认赫萝与罗伦斯一同旅行，且在本场景中互动频繁。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
     }
   ],
-  "evidence": [
-    "坐在驾座上的人没有把视线移向罗伦斯，直接开口说：",
-    "「咱可不想被人讨债讨到北方来。」",
-    "赫萝的台词风格轻松幽默但略带威胁性，且常用自称「咱」",
-    "场景中赫萝是唯一坐在马车驾座上的人，且与罗伦斯有互动"
-  ],
-  "should_create_new_entity": false,
-  "new_entity_hint": "",
-  "needs_review": false
+  "window_notes": "对话为赫萝在驾座上对罗伦斯的回应，语气带有不悦，符合她一贯的说话风格和行为模式。"
 }
 ```

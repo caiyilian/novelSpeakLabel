@@ -6,13 +6,13 @@
       "speaker_entity_id": "char_0002",
       "speaker_display": "赫萝",
       "speaker_status": "known",
-      "confidence": 0.98,
+      "confidence": 0.95,
       "candidate_speakers": [
         {
           "entity_id": "char_0002",
           "display": "赫萝",
           "status": "known",
-          "score": 0.98
+          "score": 0.95
         }
       ],
       "evidence": [
@@ -27,17 +27,17 @@
       "speaker_entity_id": "char_0001",
       "speaker_display": "罗伦斯",
       "speaker_status": "known",
-      "confidence": 0.97,
+      "confidence": 0.9,
       "candidate_speakers": [
         {
           "entity_id": "char_0001",
           "display": "罗伦斯",
           "status": "known",
-          "score": 0.97
+          "score": 0.9
         }
       ],
       "evidence": [
-        "赫萝提问后，罗伦斯作为旅伴和对话对象，最可能作出回应。"
+        "赫萝刚抵达城镇并发言后，罗伦斯作为同行者最可能回应她的问题。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -48,17 +48,17 @@
       "speaker_entity_id": "char_0002",
       "speaker_display": "赫萝",
       "speaker_status": "known",
-      "confidence": 0.96,
+      "confidence": 0.9,
       "candidate_speakers": [
         {
           "entity_id": "char_0002",
           "display": "赫萝",
           "status": "known",
-          "score": 0.96
+          "score": 0.9
         }
       ],
       "evidence": [
-        "赫萝在前一句提问后继续发言，符合对话轮次逻辑。"
+        "上下文显示赫萝继续发言，与罗伦斯的回应形成对话轮次。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -69,17 +69,17 @@
       "speaker_entity_id": "char_0001",
       "speaker_display": "罗伦斯",
       "speaker_status": "known",
-      "confidence": 0.95,
+      "confidence": 0.85,
       "candidate_speakers": [
         {
           "entity_id": "char_0001",
           "display": "罗伦斯",
           "status": "known",
-          "score": 0.95
+          "score": 0.85
         }
       ],
       "evidence": [
-        "赫萝发言后，罗伦斯作为对话对象继续回应，语气带有讽刺和调侃。"
+        "赫萝发言后，罗伦斯作为同行者最可能继续对话。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -90,17 +90,17 @@
       "speaker_entity_id": "char_0002",
       "speaker_display": "赫萝",
       "speaker_status": "known",
-      "confidence": 0.94,
+      "confidence": 0.9,
       "candidate_speakers": [
         {
           "entity_id": "char_0002",
           "display": "赫萝",
           "status": "known",
-          "score": 0.94
+          "score": 0.9
         }
       ],
       "evidence": [
-        "赫萝继续观察城镇，提出关于祭典的问题，符合她的行为模式。"
+        "赫萝持续对城镇环境表现出好奇，符合她一贯的说话风格。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -111,17 +111,17 @@
       "speaker_entity_id": "char_0001",
       "speaker_display": "罗伦斯",
       "speaker_status": "known",
-      "confidence": 0.93,
+      "confidence": 0.85,
       "candidate_speakers": [
         {
           "entity_id": "char_0001",
           "display": "罗伦斯",
           "status": "known",
-          "score": 0.93
+          "score": 0.85
         }
       ],
       "evidence": [
-        "罗伦斯继续解释城镇情况，语气理性，符合他的说话风格。"
+        "赫萝发言后，罗伦斯作为同行者继续对话，符合对话轮次。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -132,17 +132,17 @@
       "speaker_entity_id": "char_0002",
       "speaker_display": "赫萝",
       "speaker_status": "known",
-      "confidence": 0.92,
+      "confidence": 0.85,
       "candidate_speakers": [
         {
           "entity_id": "char_0002",
           "display": "赫萝",
           "status": "known",
-          "score": 0.92
+          "score": 0.85
         }
       ],
       "evidence": [
-        "赫萝回应罗伦斯的解释，语气轻松，符合她的说话风格。"
+        "赫萝对罗伦斯的发言作出回应，符合她一贯的说话风格。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -153,23 +153,23 @@
       "speaker_entity_id": "char_0001",
       "speaker_display": "罗伦斯",
       "speaker_status": "known",
-      "confidence": 0.91,
+      "confidence": 0.8,
       "candidate_speakers": [
         {
           "entity_id": "char_0001",
           "display": "罗伦斯",
           "status": "known",
-          "score": 0.91
+          "score": 0.8
         }
       ],
       "evidence": [
-        "罗伦斯在赫萝分心时突然出声，语气简短，符合他的行为模式。"
+        "赫萝回应后，罗伦斯继续对话，符合对话轮次。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
       "needs_review": false
     }
   ],
-  "window_notes": "对话轮次清晰，罗伦斯与赫萝交替发言，符合两人在场景中的互动模式。"
+  "window_notes": "对话轮次清晰，赫萝与罗伦斯交替发言，符合场景中两人同行的互动模式。"
 }
 ```

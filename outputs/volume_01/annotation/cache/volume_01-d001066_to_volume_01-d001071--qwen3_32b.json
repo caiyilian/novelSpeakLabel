@@ -2,20 +2,20 @@
   "annotations": [
     {
       "dialogue_id": "volume_01-d001066",
-      "speaker_entity_id": "char_0027",
-      "speaker_display": "米隆商行人员",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
       "speaker_status": "known",
-      "confidence": 0.9,
+      "confidence": 0.95,
       "candidate_speakers": [
         {
-          "entity_id": "char_0027",
-          "display": "米隆商行人员",
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
           "status": "known",
-          "score": 0.9
+          "score": 0.95
         }
       ],
       "evidence": [
-        "上下文显示罗伦斯与米隆商行人员合作进行营救行动，且该对话是关于行动路线的指示，符合商行人员的职责范围。"
+        "上下文显示罗伦斯正在与米隆商行人员合作，且对话内容是确认路线，符合罗伦斯冷静理性的风格。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -36,7 +36,7 @@
         }
       ],
       "evidence": [
-        "该台词延续了前一句的指示内容，属于同一人对营救计划的详细说明，符合米隆商行人员的职责。"
+        "这是对路线和暗号的详细说明，符合米隆商行人员谨慎、专业的说话风格。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -47,17 +47,17 @@
       "speaker_entity_id": "char_0001",
       "speaker_display": "罗伦斯",
       "speaker_status": "known",
-      "confidence": 0.85,
+      "confidence": 0.9,
       "candidate_speakers": [
         {
           "entity_id": "char_0001",
           "display": "罗伦斯",
           "status": "known",
-          "score": 0.85
+          "score": 0.9
         }
       ],
       "evidence": [
-        "这是对前一句的回应，语气上是提问，符合罗伦斯冷静理性的性格特征。"
+        "这是对前一句的回应，符合对话轮次，罗伦斯的理性风格也适合提出疑问。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -78,7 +78,7 @@
         }
       ],
       "evidence": [
-        "这是对罗伦斯提问的回应，语气简洁，符合米隆商行人员的说话风格。"
+        "这是对罗伦斯疑问的回应，符合米隆商行人员简洁、直接的说话风格。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -86,20 +86,20 @@
     },
     {
       "dialogue_id": "volume_01-d001070",
-      "speaker_entity_id": "char_0027",
-      "speaker_display": "米隆商行人员",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
       "speaker_status": "known",
-      "confidence": 0.85,
+      "confidence": 0.9,
       "candidate_speakers": [
         {
-          "entity_id": "char_0027",
-          "display": "米隆商行人员",
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
           "status": "known",
-          "score": 0.85
+          "score": 0.9
         }
       ],
       "evidence": [
-        "该台词是行动开始前的总结性发言，语气简洁，符合米隆商行人员的职责和说话风格。"
+        "这是行动前的确认，符合罗伦斯冷静、理性的风格。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -120,12 +120,12 @@
         }
       ],
       "evidence": [
-        "该台词是行动后的评价，语气中带有惊讶和赞赏，符合罗伦斯冷静理性的性格特征。"
+        "这是对行动准备的评价，符合罗伦斯冷静、理性的风格。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
       "needs_review": false
     }
   ],
-  "window_notes": "对话轮次清晰，米隆商行人员与罗伦斯交替发言，符合场景中两人合作的设定。"
+  "window_notes": "对话轮次清晰，罗伦斯与米隆商行人员交替发言，符合合作场景的互动模式。"
 }

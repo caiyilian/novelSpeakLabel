@@ -1,0 +1,59 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000997",
+      "speaker_entity_id": "",
+      "speaker_display": "",
+      "speaker_status": "npc",
+      "confidence": 0.2,
+      "candidate_speakers": [
+        {
+          "entity_id": "",
+          "display": "路人",
+          "status": "npc",
+          "score": 0.5
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.3
+        }
+      ],
+      "evidence": [
+        "对话轮次依据"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    },
+    {
+      "dialogue_id": "volume_01-d000998",
+      "speaker_entity_id": "char_0030",
+      "speaker_display": "米隆商行",
+      "speaker_status": "known",
+      "confidence": 0.7,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0030",
+          "display": "米隆商行",
+          "status": "known",
+          "score": 0.7
+        },
+        {
+          "entity_id": "",
+          "display": "路人",
+          "status": "npc",
+          "score": 0.2
+        }
+      ],
+      "evidence": [
+        "马贺特打断罗伦斯沉思，对话轮次依据"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "第一句对话没有明确的说话人信息，第二句对话根据上下文推断为马贺特（米隆商行代表）的可能性较大。"
+}

@@ -1,0 +1,20 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001273",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {"entity_id": "char_0001", "display": "罗伦斯", "status": "known", "score": 0.9},
+        {"entity_id": "char_0002", "display": "赫萝", "status": "known", "score": 0.1}
+      ],
+      "evidence": ["罗伦斯喊了一声赫萝的名字，同时安心地呼了口气。"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "根据上下文，罗伦斯在叶勒晕过去后喊出了赫萝的名字，并且表现出安心的反应，因此判断说话人是罗伦斯。"
+}

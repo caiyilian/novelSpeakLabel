@@ -1,0 +1,99 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001300",
+      "speaker_entity_id": "char_0034",
+      "speaker_display": "国王",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0034",
+          "display": "国王",
+          "status": "known",
+          "score": 0.9
+        },
+        {
+          "entity_id": "char_0035",
+          "display": "御用商人",
+          "status": "known",
+          "score": 0.1
+        }
+      ],
+      "evidence": ["前文提到国王与米隆商行的合约，该句为确认金额的指令，符合国王权威语气"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001301",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.85
+        }
+      ],
+      "evidence": ["前文描述罗伦斯收到纸张后震惊反应，此句为疑问语气，符合罗伦斯困惑情绪"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001302",
+      "speaker_entity_id": "char_0034",
+      "speaker_display": "国王",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0034",
+          "display": "国王",
+          "status": "known",
+          "score": 0.9
+        },
+        {
+          "entity_id": "char_0035",
+          "display": "御用商人",
+          "status": "known",
+          "score": 0.1
+        }
+      ],
+      "evidence": ["前文提到国王策略，此句为具体金额说明，语气犀利，符合国王或其御用商人风格"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001303",
+      "speaker_entity_id": "char_0035",
+      "speaker_display": "御用商人",
+      "speaker_status": "known",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0035",
+          "display": "御用商人",
+          "status": "known",
+          "score": 0.8
+        },
+        {
+          "entity_id": "char_0034",
+          "display": "国王",
+          "status": "known",
+          "score": 0.2
+        }
+      ],
+      "evidence": ["内容详细解释费用构成，符合御用商人提出策略的语气与逻辑，且与国王合作背景一致"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，第一句为国王确认金额，第二句为罗伦斯震惊反应，第三句为国王或其御用商人说明金额构成，第四句为御用商人详细解释费用细节。"
+}

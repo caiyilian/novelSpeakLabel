@@ -1,0 +1,446 @@
+你是轻小说说话人标注项目的阶段 2：正式标注助手。
+你的任务是判断输入 target_dialogues 中每一句台词的说话人，不要改写原文。
+必须把这些台词当作同一个连续片段来判断，优先保持对话轮次和叙述线索的一致性。
+
+规则：
+1. 只输出严格 JSON，不要 Markdown，不要解释性前后缀。
+2. 如果说话人是候选角色，speaker_entity_id 必须使用 candidate_characters 里的 entity_id，speaker_status 填 known。
+3. 如果说话人像某个未知人物，speaker_entity_id 使用 candidate_mysteries 里的 mystery_id，speaker_status 填 mystery。
+4. 如果只是无法追踪的路人/群体，speaker_status 填 npc，speaker_entity_id 可为空或使用 npc:简短称呼。
+5. 证据不足时不要硬猜，speaker_status 填 ambiguous 或 review，并把 needs_review 设为 true。
+6. candidate_speakers 至少列出 1 个候选；如果无法判断，列出最可能的候选和不确定原因。
+7. confidence 使用 0 到 1 之间的小数，表示你对最终判断的把握。
+8. 不要只因为台词里提到某个名字、职业、地点，就把说话人标成那个实体；被称呼的人通常不是说话人。
+9. 连续问答、交易寒暄、命令/回答等场景要按上下句轮次判断；同一人连续说话必须有叙述或语气证据支持。
+10. 如果当前上下文显示某角色还没有登场，不要因为角色库或后文记忆里有这个角色就提前标给他/她。
+
+11. target_dialogues 中 dialogue_kind=inline 的项目是正文内嵌引号，不要当作独立对白；标为 review，needs_review=true。
+12. candidate_mysteries 只是可选候选；如果候选名称和当前段落地点/人物不一致，必须改用 npc 或 review。
+13. 如果只有轮次推断、没有叙述锚点或自我介绍，请降低 confidence，并在 evidence 里说明轮次依据。
+
+输出 JSON 结构：
+{
+  "annotations": [
+    {
+      "dialogue_id": "必须来自 target_dialogue_ids",
+      "speaker_entity_id": "string",
+      "speaker_display": "string",
+      "speaker_status": "known|mystery|npc|ambiguous|review",
+      "confidence": 0.0,
+      "candidate_speakers": [
+        {"entity_id": "string", "display": "string", "status": "known|mystery|npc|ambiguous|review", "score": 0.0}
+      ],
+      "evidence": ["短证据，不要大段复制原文"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "可选，简短说明整体轮次判断"
+}
+必须为 target_dialogue_ids 中每个 dialogue_id 输出且只输出一条 annotation。
+
+输入 JSON：
+{
+  "volume": {
+    "volume_id": "volume_01",
+    "volume": 1
+  },
+  "target_dialogue_ids": [
+    "volume_01-d000563",
+    "volume_01-d000564",
+    "volume_01-d000565",
+    "volume_01-d000566",
+    "volume_01-d000567",
+    "volume_01-d000568",
+    "volume_01-d000569",
+    "volume_01-d000570"
+  ],
+  "dialogues": [
+    {
+      "dialogue_id": "volume_01-d000563",
+      "dialogue_index": 562,
+      "window_position": 1,
+      "chapter_id": "volume_01-c004",
+      "chapter_title": "第三幕",
+      "scene_id": "volume_01-c004-s005",
+      "paragraph_id": "volume_01-c004-s005-p001292",
+      "paragraph_index": 1291,
+      "local_dialogue_index": 1,
+      "text": "好吧！大致上应该没问题了。",
+      "quote_text": "「好吧！大致上应该没问题了。」",
+      "paragraph_text": "「好吧！大致上应该没问题了。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 15
+    },
+    {
+      "dialogue_id": "volume_01-d000564",
+      "dialogue_index": 563,
+      "window_position": 2,
+      "chapter_id": "volume_01-c004",
+      "chapter_title": "第三幕",
+      "scene_id": "volume_01-c004-s005",
+      "paragraph_id": "volume_01-c004-s005-p001293",
+      "paragraph_index": 1292,
+      "local_dialogue_index": 1,
+      "text": "啊，谢谢您！",
+      "quote_text": "「啊，谢谢您！」",
+      "paragraph_text": "「啊，谢谢您！」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 8
+    },
+    {
+      "dialogue_id": "volume_01-d000565",
+      "dialogue_index": 564,
+      "window_position": 3,
+      "chapter_id": "volume_01-c004",
+      "chapter_title": "第三幕",
+      "scene_id": "volume_01-c004-s005",
+      "paragraph_id": "volume_01-c004-s005-p001294",
+      "paragraph_index": 1293,
+      "local_dialogue_index": 1,
+      "text": "我再做一次确认。你提出十枚崔尼银币的情报费，以及我获利的一成作为你的应收利益。另外，如果我亏损的话，你会退还情报费给我，而我不能向你请求赔偿亏损。",
+      "quote_text": "「我再做一次确认。你提出十枚崔尼银币的情报费，以及我获利的一成作为你的应收利益。另外，如果我亏损的话，你会退还情报费给我，而我不能向你请求赔偿亏损。」",
+      "paragraph_text": "「我再做一次确认。你提出十枚崔尼银币的情报费，以及我获利的一成作为你的应收利益。另外，如果我亏损的话，你会退还情报费给我，而我不能向你请求赔偿亏损。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 75
+    },
+    {
+      "dialogue_id": "volume_01-d000566",
+      "dialogue_index": 565,
+      "window_position": 4,
+      "chapter_id": "volume_01-c004",
+      "chapter_title": "第三幕",
+      "scene_id": "volume_01-c004-s005",
+      "paragraph_id": "volume_01-c004-s005-p001295",
+      "paragraph_index": 1294,
+      "local_dialogue_index": 1,
+      "text": "是的。",
+      "quote_text": "「是的。」",
+      "paragraph_text": "「是的。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 5
+    },
+    {
+      "dialogue_id": "volume_01-d000567",
+      "dialogue_index": 566,
+      "window_position": 5,
+      "chapter_id": "volume_01-c004",
+      "chapter_title": "第三幕",
+      "scene_id": "volume_01-c004-s005",
+      "paragraph_id": "volume_01-c004-s005-p001296",
+      "paragraph_index": 1295,
+      "local_dialogue_index": 1,
+      "text": "还有，在公证人面前宣告刚刚的内容。",
+      "quote_text": "「还有，在公证人面前宣告刚刚的内容。」",
+      "paragraph_text": "「还有，在公证人面前宣告刚刚的内容。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 19
+    },
+    {
+      "dialogue_id": "volume_01-d000568",
+      "dialogue_index": 567,
+      "window_position": 6,
+      "chapter_id": "volume_01-c004",
+      "chapter_title": "第三幕",
+      "scene_id": "volume_01-c004-s005",
+      "paragraph_id": "volume_01-c004-s005-p001297",
+      "paragraph_index": 1296,
+      "local_dialogue_index": 1,
+      "text": "是。对了，关于结算方面，能不能把结算日订在春天大市的三天前呢？照小的估计，今年内应该就会提高含银量了。",
+      "quote_text": "「是。对了，关于结算方面，能不能把结算日订在春天大市的三天前呢？照小的估计，今年内应该就会提高含银量了。」",
+      "paragraph_text": "「是。对了，关于结算方面，能不能把结算日订在春天大市的三天前呢？照小的估计，今年内应该就会提高含银量了。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 53
+    },
+    {
+      "dialogue_id": "volume_01-d000569",
+      "dialogue_index": 568,
+      "window_position": 7,
+      "chapter_id": "volume_01-c004",
+      "chapter_title": "第三幕",
+      "scene_id": "volume_01-c004-s005",
+      "paragraph_id": "volume_01-c004-s005-p001299",
+      "paragraph_index": 1298,
+      "local_dialogue_index": 1,
+      "text": "喔，无所谓，这时间算是妥当。",
+      "quote_text": "「喔，无所谓，这时间算是妥当。」",
+      "paragraph_text": "「喔，无所谓，这时间算是妥当。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 16
+    },
+    {
+      "dialogue_id": "volume_01-d000570",
+      "dialogue_index": 569,
+      "window_position": 8,
+      "chapter_id": "volume_01-c004",
+      "chapter_title": "第三幕",
+      "scene_id": "volume_01-c004-s005",
+      "paragraph_id": "volume_01-c004-s005-p001300",
+      "paragraph_index": 1299,
+      "local_dialogue_index": 1,
+      "text": "那么，小的希望明天就去公证，可以吗？",
+      "quote_text": "「那么，小的希望明天就去公证，可以吗？」",
+      "paragraph_text": "「那么，小的希望明天就去公证，可以吗？」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 20
+    }
+  ],
+  "context": {
+    "paragraphs": [
+      {
+        "paragraph_id": "volume_01-c004-s005-p001289",
+        "paragraph_index": 1288,
+        "text": "想到这里，罗伦斯不禁觉得赫萝指出杰廉在说谎或许是个错误的判断。赫萝本人也说过并非百发百中，况且杰廉还表示愿意退还情报费。可是，罗伦斯也不认为杰廉的计划会小家子气到只为了赚取情报费。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s005-p001290",
+        "paragraph_index": 1289,
+        "text": "就算花再多时间思考这些问题，也得不到答案。如果知道杰廉说的是哪种银币，应该就可以有新的发现。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s005-p001291",
+        "paragraph_index": 1290,
+        "text": "再说，就算演变成亏损的事态，还是可以拿回情报费。罗伦斯大可以随便作一些投资敷衍一番。比起这些，罗伦斯更感兴趣的是杰廉究竟有什么企图。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s005-p001292",
+        "paragraph_index": 1291,
+        "text": "「好吧！大致上应该没问题了。」",
+        "target_dialogue_ids": [
+          "volume_01-d000563"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c004-s005-p001293",
+        "paragraph_index": 1292,
+        "text": "「啊，谢谢您！」",
+        "target_dialogue_ids": [
+          "volume_01-d000564"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c004-s005-p001294",
+        "paragraph_index": 1293,
+        "text": "「我再做一次确认。你提出十枚崔尼银币的情报费，以及我获利的一成作为你的应收利益。另外，如果我亏损的话，你会退还情报费给我，而我不能向你请求赔偿亏损。」",
+        "target_dialogue_ids": [
+          "volume_01-d000565"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c004-s005-p001295",
+        "paragraph_index": 1294,
+        "text": "「是的。」",
+        "target_dialogue_ids": [
+          "volume_01-d000566"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c004-s005-p001296",
+        "paragraph_index": 1295,
+        "text": "「还有，在公证人面前宣告刚刚的内容。」",
+        "target_dialogue_ids": [
+          "volume_01-d000567"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c004-s005-p001297",
+        "paragraph_index": 1296,
+        "text": "「是。对了，关于结算方面，能不能把结算日订在春天大市的三天前呢？照小的估计，今年内应该就会提高含银量了。」",
+        "target_dialogue_ids": [
+          "volume_01-d000568"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c004-s005-p001298",
+        "paragraph_index": 1297,
+        "text": "距离春天大市大约还有半年的时间，银币提高或降低含银量所造成的行情变动，必须有这半年的时间才能稳定。假设含银量确实提高的话，人们对于价值增高的货币会产生莫大的信赖感，也会乐意使用具信赖感的货币进行交易。这么一来，这个货币的市场价值便会扶摇直上。这时如果急着把货币卖出，那可就亏大了。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s005-p001299",
+        "paragraph_index": 1298,
+        "text": "「喔，无所谓，这时间算是妥当。」",
+        "target_dialogue_ids": [
+          "volume_01-d000569"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c004-s005-p001300",
+        "paragraph_index": 1299,
+        "text": "「那么，小的希望明天就去公证，可以吗？」",
+        "target_dialogue_ids": [
+          "volume_01-d000570"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c004-s005-p001301",
+        "paragraph_index": 1300,
+        "text": "罗伦斯心想没理由拒绝，于是点点头，并举起酒杯说：",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s005-p001302",
+        "paragraph_index": 1301,
+        "text": "「那么，敬我们的发财梦。」",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s005-p001303",
+        "paragraph_index": 1302,
+        "text": "赫萝原本在一旁吃着干豆发呆，她看到两人举起酒杯，也匆忙地举起酒杯。",
+        "target_dialogue_ids": []
+      }
+    ]
+  },
+  "scene_memory": [
+    {
+      "scene_id": "volume_01-c004-s005-r004",
+      "parent_scene_id": "volume_01-c004-s005",
+      "chunk_index": 4,
+      "chunk_count": 6,
+      "scene_summary": "罗伦斯与杰廉进行银币含银量情报交易的谈判，杰廉提出交易条件并试图说服罗伦斯接受。罗伦斯在赫萝的提醒下保持警惕，但仍决定接受交易，并要求在公证人面前确认协议内容。",
+      "active_characters": [
+        "罗伦斯",
+        "杰廉"
+      ],
+      "relationships": [
+        "罗伦斯与杰廉进行交易",
+        "罗伦斯依赖赫萝的判断"
+      ],
+      "notes": "杰廉是本场景中提出交易的核心人物，其身份为情报贩子。罗伦斯在赫萝的提醒下保持警惕，但仍决定接受交易。赫萝未直接参与对话，但她的判断影响了罗伦斯的决策。"
+    },
+    {
+      "scene_id": "volume_01-c004-s005-r005",
+      "parent_scene_id": "volume_01-c004-s005",
+      "chunk_index": 5,
+      "chunk_count": 6,
+      "scene_summary": "罗伦斯与赫萝在公证人制度下签订合约，并以十枚银币的情报费换取杰廉的情报。随后两人告别杰廉，前往市场。赫萝对崔尼银币的信赖度表示好奇，并讨论了货币与国家命运的关系。",
+      "active_characters": [
+        "罗伦斯",
+        "赫萝",
+        "杰廉"
+      ],
+      "relationships": [
+        "罗伦斯与赫萝一同旅行",
+        "罗伦斯与杰廉进行情报交易",
+        "赫萝对崔尼银币表示好奇"
+      ],
+      "notes": "杰廉虽未直接说话，但通过罗伦斯的叙述和赫萝的反应可推测其存在。崔尼银币的提及暗示了该地区与崔尼国的联系，但未出现崔尼国代表。"
+    }
+  ],
+  "candidate_characters": [
+    {
+      "entity_id": "char_0001",
+      "display_name": "罗伦斯",
+      "aliases": [
+        "罗伦斯",
+        "罗伦斯先生"
+      ],
+      "titles": [
+        "中间人",
+        "交易者",
+        "同行",
+        "商人",
+        "小毛头",
+        "小的",
+        "市井无赖",
+        "年轻人"
+      ],
+      "description": "一位行商人，正在与米隆商行的代表马贺特进行交易谈判。他原本期待获得两千枚银币，但实际只得到一百二十枚，感到震惊和困惑。 / 一位行商人，发现并收留了赫萝，决定与她一同旅行。 / 一位二十五岁的自力更生旅行商人，已有七年行商经验，性格泰然自若。 / 一位冷静理性的旅行商人，对赫萝的身份持怀疑态度，但仍保持互动。他注重外表整洁，对商业制度有深入理解。 / 冷静理性的旅行商人，与赫萝一同旅行。在本场景中与米隆商行的马贺特讨论梅迪欧商行的威胁，提出利用崔尼银币交易作为交涉王牌。 / 一位冷静理性的旅行商人，与赫萝一同旅行…",
+      "speech_style": "理性、坚定、略带情绪化 / 冷静、理性，带有悔恨和自责的语气。 / 冷静、理性，语气中带有对赫萝的关心和些许担忧。 / 冷静、理性、略带失落 / 冷静、理性，对商业制度有深入理解，并能清晰地向他人解释。 / 理性、礼貌、略带谨慎。 / 理性、冷静，带有商业分析倾向。 / 理性、沉稳、略带幽默 / 理性、冷静，但因困惑…",
+      "relationship_hints": [
+        "与赫萝一同旅行",
+        "对赫萝的真实性持怀疑态度",
+        "与深山村落的村民有交易关系",
+        "对修道院抱有商业期望但未成功",
+        "与骑士有短暂互动",
+        "与小村落的村民有交易关系",
+        "与修道院有关联",
+        "对教会和异教徒问题有见解"
+      ],
+      "first_seen_scene_id": "volume_01-c000-s003-r001",
+      "latest_seen_scene_id": "volume_01-c008-s003-r002",
+      "confidence": 1.0
+    },
+    {
+      "entity_id": "char_0002",
+      "display_name": "赫萝",
+      "aliases": [
+        "赫萝"
+      ],
+      "titles": [
+        "丰收之神",
+        "咱",
+        "神秘少女",
+        "约伊兹的贤狼",
+        "贤狼"
+      ],
+      "description": "自称丰收之神的神秘少女，拥有狼的耳朵和尾巴。在本场景中协助罗伦斯，表现出对他的关心和保护。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴，行为举止非人类，表现出轻松幽默但略带威胁性的说话风格。在本场景中，她对罗伦斯的伤口进行吸血，引发旁人惊呼，并表现出悲伤的情绪。 / 自称是丰收之神的神秘少女，拥有狼的耳朵和尾巴。在本场景中逐渐显露出非人类的特征，最终完全变成一只巨大的狼。她与罗伦斯有情感交流，表现出悲伤和决绝的情绪。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴，未直接参与本场景，但罗伦斯的行动可能与她有关…",
+      "speech_style": "轻松幽默但略带威胁性，情绪化且带有调侃语气。 / 轻松幽默、略带调侃和威胁 / 轻松幽默、略带威胁性 / 轻松幽默、略带威胁性、撒娇 / 警觉、神秘 / 轻松幽默但略带威胁性 / 轻松幽默、略带调侃 / 轻松幽默但略带威胁性，语气中透露出对罗伦斯的依赖。 / 轻松幽默、略带威胁性、自信 / 轻松幽默但略带威胁性，情绪…",
+      "relationship_hints": [
+        "与罗伦斯一同旅行",
+        "被罗伦斯怀疑是否为真正的神",
+        "与叶勒有附身关系",
+        "与罗伦斯有潜在互动",
+        "与罗伦斯有互动，似乎是被他发现并收留的。",
+        "与罗伦斯有互动，但尚未明确关系",
+        "与罗伦斯互动频繁，表现出对他的信任和玩笑态度",
+        "与罗伦斯互动密切"
+      ],
+      "first_seen_scene_id": "volume_01-c000-s003-r001",
+      "latest_seen_scene_id": "volume_01-c008-s003-r002",
+      "confidence": 1.0
+    },
+    {
+      "entity_id": "char_0009",
+      "display_name": "杰廉",
+      "aliases": [],
+      "titles": [
+        "中间人",
+        "交易者",
+        "同行",
+        "商人",
+        "小毛头",
+        "小的",
+        "市井无赖",
+        "年轻人"
+      ],
+      "description": "一位能言善道的市井无赖，试图接近赫萝并表现出厚颜无耻的态度。 / 提供货币投机情报的商人，被罗伦斯怀疑其动机。 / 与罗伦斯达成交易的中间人，提供情报服务，自称小人物，但行为谨慎。 / 与罗伦斯和赫萝同行的旅人，已离开队伍。他的离开引发了赫萝和罗伦斯的讨论。 / 提出交易提议的人物，未直接出现，但被赫萝提及。 / 被罗伦斯寻找的男子，据称会在日落后出现。 / 据称会在日落后出现的男子，被罗伦斯和赫萝推测会如女店员所说出现。 / 与罗伦斯和赫萝互动的商人，对皮草交易表现出兴趣。 / 提供银币含银量情报的中间人，表现…",
+      "speech_style": "厚颜无耻、能言善道、带有谄媚语气 / 未直接说话，但被罗伦斯和赫萝评价为「小毛头」和「说谎者」 / 谦卑但自信，带有职业性的谨慎语气。 / 未直接发言，但被提及。 / 未知 / 未直接出现 / 直接、略带调侃 / 谦卑、谨慎、略带紧张 / 谦卑、谨慎、带有讨好语气 / 谨慎、不自信 / 未直接说话，但被罗伦斯提及 /…",
+      "relationship_hints": [
+        "对罗伦斯表示敬佩",
+        "试图获取情报",
+        "与罗伦斯和赫萝互动",
+        "与罗伦斯有亲戚关系",
+        "试图接近赫萝",
+        "向罗伦斯提供情报，但罗伦斯怀疑其真实性",
+        "可能向其他商人提供相同情报",
+        "与罗伦斯有商业合作关系"
+      ],
+      "first_seen_scene_id": "volume_01-c003-s002-r002",
+      "latest_seen_scene_id": "volume_01-c004-s008-r005",
+      "confidence": 0.9
+    }
+  ],
+  "candidate_mysteries": []
+}

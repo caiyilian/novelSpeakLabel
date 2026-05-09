@@ -16,7 +16,8 @@
         }
       ],
       "evidence": [
-        "赫萝在本场景中频繁发言，语气轻松幽默且略带威胁性，符合台词风格。"
+        "赫萝在场景中频繁发言，语气轻松幽默且略带威胁性，符合该句台词风格。",
+        "上下文显示赫萝在讨论诱惑与禁欲，与该句台词内容一致。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -37,7 +38,8 @@
         }
       ],
       "evidence": [
-        "赫萝在本场景中频繁发言，语气轻松幽默且略带威胁性，符合台词风格。"
+        "该句台词延续了前一句的讨论，语气和风格与赫萝一致。",
+        "上下文显示赫萝在讨论诱惑与禁欲，与该句台词内容一致。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -58,7 +60,8 @@
         }
       ],
       "evidence": [
-        "罗伦斯在对话中回应赫萝的发言，符合对话轮次逻辑。"
+        "该句是回应赫萝的发言，符合罗伦斯冷静理性的说话风格。",
+        "上下文显示罗伦斯对赫萝的提议保持谨慎，符合该句台词的语气。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -79,7 +82,8 @@
         }
       ],
       "evidence": [
-        "赫萝在本场景中频繁发言，语气轻松幽默且略带威胁性，符合台词风格。"
+        "该句台词延续了赫萝的发言，语气轻松幽默且略带调侃。",
+        "上下文显示赫萝在提出参与生意的建议，符合该句台词内容。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -87,20 +91,21 @@
     },
     {
       "dialogue_id": "volume_01-d000428",
-      "speaker_entity_id": "char_0001",
-      "speaker_display": "罗伦斯",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
       "speaker_status": "known",
-      "confidence": 0.95,
+      "confidence": 0.9,
       "candidate_speakers": [
         {
-          "entity_id": "char_0001",
-          "display": "罗伦斯",
+          "entity_id": "char_0002",
+          "display": "赫萝",
           "status": "known",
-          "score": 0.95
+          "score": 0.9
         }
       ],
       "evidence": [
-        "罗伦斯在对话中回应赫萝的发言，符合对话轮次逻辑。"
+        "该句是赫萝的提问，延续了她的发言轮次。",
+        "上下文显示赫萝在提出参与生意的建议，符合该句台词内容。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -121,7 +126,8 @@
         }
       ],
       "evidence": [
-        "赫萝在本场景中频繁发言，语气轻松幽默且略带威胁性，符合台词风格。"
+        "该句是赫萝的发言，延续了她的发言轮次。",
+        "上下文显示赫萝在提出参与生意的建议，符合该句台词内容。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -142,7 +148,8 @@
         }
       ],
       "evidence": [
-        "罗伦斯在对话中回应赫萝的发言，符合对话轮次逻辑。"
+        "该句是罗伦斯对赫萝提问的回应，符合他的冷静理性风格。",
+        "上下文显示罗伦斯对赫萝的提议保持谨慎，符合该句台词内容。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -163,13 +170,14 @@
         }
       ],
       "evidence": [
-        "赫萝在本场景中频繁发言，语气轻松幽默且略带威胁性，符合台词风格。"
+        "该句是赫萝的发言，延续了她的发言轮次。",
+        "上下文显示赫萝在提出参与生意的建议，符合该句台词内容。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
       "needs_review": false
     }
   ],
-  "window_notes": "对话轮次清晰，赫萝和罗伦斯交替发言，符合场景中两人互动的模式。"
+  "window_notes": "赫萝与罗伦斯交替发言，对话围绕商业策略展开，赫萝主动提出参与生意，罗伦斯则保持理性回应。对话轮次清晰，符合角色性格与场景设定。"
 }
 ```

@@ -1,23 +1,28 @@
 {
-  "dialogue_id": "volume_01-d000133",
-  "speaker_entity_id": "char_0002",
-  "speaker_display": "赫萝",
-  "speaker_status": "known",
-  "confidence": 0.95,
-  "candidate_speakers": [
+  "annotations": [
     {
-      "entity_id": "char_0002",
-      "display": "赫萝",
-      "status": "known",
-      "score": 0.95
+      "dialogue_id": "volume_01-d000133",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "上下文显示赫萝刚刚吞下麦穗，随后突然呻吟并扑倒，符合她做出反应的逻辑顺序。",
+        "场景记忆中提到赫萝展示变身能力并表现出非人类特征，暗示她可能对吞食麦穗有异常反应。",
+        "该段落紧接着描述赫萝「突然呻吟起来，她抱住左手臂，扑倒在貂皮上」，明确指向她为说话人。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
     }
   ],
-  "evidence": [
-    "赫萝突然呻吟起来，她抱住左手臂，扑倒在貂皮上。",
-    "赫萝的样子看起来根本不像演戏，罗伦斯慌张地正想开口询问，诡异的声音却传进耳里。",
-    "赫萝在场景中表现出非人类特征，如狼的耳朵和尾巴，以及情绪化的反应。"
-  ],
-  "should_create_new_entity": false,
-  "new_entity_hint": "",
-  "needs_review": false
+  "window_notes": "该段对话为赫萝在吞食麦穗后发出的呻吟，上下文明确指向她为说话人，轮次合理，无需额外审查。"
 }

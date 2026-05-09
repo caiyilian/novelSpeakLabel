@@ -1,0 +1,55 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000052",
+      "speaker_entity_id": "mystery_volume_01_c002_s002_r006_神秘女孩",
+      "speaker_display": "神秘女孩",
+      "speaker_status": "mystery",
+      "confidence": 0.75,
+      "candidate_speakers": [
+        {
+          "entity_id": "mystery_volume_01_c002_s002_r006_神秘女孩",
+          "display": "神秘女孩",
+          "status": "mystery",
+          "score": 0.75
+        },
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.2
+        }
+      ],
+      "evidence": [
+        "上下文显示女孩刚刚被叫醒，发出模糊的回应声，符合神秘女孩的描述。",
+        "该段落中提到女孩头上长着小狗耳朵，尚未明确身份，符合未知人物特征。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000053",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "前文明确提到罗伦斯叫醒女孩并准备质问，此句是其直接对话。",
+        "上下文显示罗伦斯是马车的主人，符合台词中质问的语气和立场。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，第一句为女孩模糊回应，第二句为罗伦斯的质问，符合上下文逻辑。"
+}

@@ -16,7 +16,7 @@
         }
       ],
       "evidence": [
-        "上下文显示赫萝刚刚情绪激动，正在恢复平静，符合「呜……」的语气"
+        "上下文显示赫萝刚刚情绪崩溃，正在被罗伦斯安抚，此句是她情绪低落时的短叹"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -27,17 +27,17 @@
       "speaker_entity_id": "char_0002",
       "speaker_display": "赫萝",
       "speaker_status": "known",
-      "confidence": 0.95,
+      "confidence": 0.98,
       "candidate_speakers": [
         {
           "entity_id": "char_0002",
           "display": "赫萝",
           "status": "known",
-          "score": 0.95
+          "score": 0.98
         }
       ],
       "evidence": [
-        "赫萝刚刚道歉，符合情绪恢复后的表达"
+        "赫萝在情绪稳定后道歉，符合上下文逻辑，且与前一句为连续对话"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -48,17 +48,17 @@
       "speaker_entity_id": "char_0001",
       "speaker_display": "罗伦斯",
       "speaker_status": "known",
-      "confidence": 0.95,
+      "confidence": 0.97,
       "candidate_speakers": [
         {
           "entity_id": "char_0001",
           "display": "罗伦斯",
           "status": "known",
-          "score": 0.95
+          "score": 0.97
         }
       ],
       "evidence": [
-        "罗伦斯在安抚赫萝后，提到商人也会作恶梦，符合他的身份和语气"
+        "罗伦斯在安抚赫萝后提到旅行商人的梦境，符合他冷静理性的说话风格"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -69,17 +69,17 @@
       "speaker_entity_id": "char_0002",
       "speaker_display": "赫萝",
       "speaker_status": "known",
-      "confidence": 0.95,
+      "confidence": 0.96,
       "candidate_speakers": [
         {
           "entity_id": "char_0002",
           "display": "赫萝",
           "status": "known",
-          "score": 0.95
+          "score": 0.96
         }
       ],
       "evidence": [
-        "赫萝接过纸张后，抱怨弄脏了，符合她的性格和语气"
+        "赫萝对罗伦斯递来的纸张做出反应，语气中带有调侃和感谢"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -87,20 +87,20 @@
     },
     {
       "dialogue_id": "volume_01-d000890",
-      "speaker_entity_id": "char_0001",
-      "speaker_display": "罗伦斯",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
       "speaker_status": "known",
-      "confidence": 0.95,
+      "confidence": 0.94,
       "candidate_speakers": [
         {
-          "entity_id": "char_0001",
-          "display": "罗伦斯",
+          "entity_id": "char_0002",
+          "display": "赫萝",
           "status": "known",
-          "score": 0.95
+          "score": 0.94
         }
       ],
       "evidence": [
-        "罗伦斯回应赫萝的抱怨，语气中带有安抚和调侃"
+        "赫萝对纸张的用途表示疑惑，语气中带有犹豫，符合她与罗伦斯的互动模式"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -111,17 +111,17 @@
       "speaker_entity_id": "char_0001",
       "speaker_display": "罗伦斯",
       "speaker_status": "known",
-      "confidence": 0.95,
+      "confidence": 0.99,
       "candidate_speakers": [
         {
           "entity_id": "char_0001",
           "display": "罗伦斯",
           "status": "known",
-          "score": 0.95
+          "score": 0.99
         }
       ],
       "evidence": [
-        "罗伦斯继续以轻松的语气回应赫萝，符合他的说话风格"
+        "罗伦斯解释纸张用途，并提到交易未完成，符合他理性、冷静的说话风格"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -132,17 +132,17 @@
       "speaker_entity_id": "char_0002",
       "speaker_display": "赫萝",
       "speaker_status": "known",
-      "confidence": 0.95,
+      "confidence": 0.97,
       "candidate_speakers": [
         {
           "entity_id": "char_0002",
           "display": "赫萝",
           "status": "known",
-          "score": 0.95
+          "score": 0.97
         }
       ],
       "evidence": [
-        "赫萝以「咱」自称，符合她的说话风格"
+        "赫萝在互动中表达感激，语气中带有调侃，符合她的说话风格"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -153,23 +153,23 @@
       "speaker_entity_id": "char_0002",
       "speaker_display": "赫萝",
       "speaker_status": "known",
-      "confidence": 0.95,
+      "confidence": 0.96,
       "candidate_speakers": [
         {
           "entity_id": "char_0002",
           "display": "赫萝",
           "status": "known",
-          "score": 0.95
+          "score": 0.96
         }
       ],
       "evidence": [
-        "赫萝继续以「咱」自称，并询问罗伦斯是否要睡觉，符合她的语气和行为"
+        "赫萝主动提议睡觉，语气轻松，符合她与罗伦斯的互动节奏"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
       "needs_review": false
     }
   ],
-  "window_notes": "对话轮次清晰，罗伦斯与赫萝交替发言，符合场景中两人互动的亲密关系。"
+  "window_notes": "对话轮次清晰，罗伦斯与赫萝交替发言，符合两人在场景中的互动模式。所有台词均可通过上下文和角色性格推断说话人。"
 }
 ```

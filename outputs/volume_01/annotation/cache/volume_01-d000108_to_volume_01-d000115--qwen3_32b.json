@@ -15,7 +15,7 @@
         }
       ],
       "evidence": [
-        "上下文明确指出说话者是赫萝，且她的台词风格与赫萝一致，使用‘咱’自称。"
+        "上下文明确提到赫萝带着厌恶的表情反问，说话风格与赫萝的轻松幽默但略带威胁性一致。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -36,7 +36,7 @@
         }
       ],
       "evidence": [
-        "上下文明确指出说话者是罗伦斯，且他的台词风格与罗伦斯一致，理性冷静，带有商业分析倾向。"
+        "上下文明确提到罗伦斯为了掌握主导权而开口说话，语气理性冷静，符合其角色风格。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -47,17 +47,17 @@
       "speaker_entity_id": "char_0001",
       "speaker_display": "罗伦斯",
       "speaker_status": "known",
-      "confidence": 0.97,
+      "confidence": 0.96,
       "candidate_speakers": [
         {
           "entity_id": "char_0001",
           "display": "罗伦斯",
           "status": "known",
-          "score": 0.97
+          "score": 0.96
         }
       ],
       "evidence": [
-        "上下文明确指出说话者是罗伦斯，且他的台词风格与罗伦斯一致，理性冷静，带有商业分析倾向。"
+        "上下文显示罗伦斯继续提问，语气理性，符合其角色风格。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -78,7 +78,7 @@
         }
       ],
       "evidence": [
-        "上下文明确指出说话者是赫萝，且她的台词风格与赫萝一致，使用‘咱’自称。"
+        "上下文明确提到赫萝带着厌恶的表情说话，语气中带有对教会的敌意，符合其角色特征。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -89,17 +89,17 @@
       "speaker_entity_id": "char_0002",
       "speaker_display": "赫萝",
       "speaker_status": "known",
-      "confidence": 0.95,
+      "confidence": 0.94,
       "candidate_speakers": [
         {
           "entity_id": "char_0002",
           "display": "赫萝",
           "status": "known",
-          "score": 0.95
+          "score": 0.94
         }
       ],
       "evidence": [
-        "上下文明确指出说话者是赫萝，且她的台词风格与赫萝一致，使用‘咱’自称。"
+        "赫萝继续解释变身的代价，语气轻松但略带威胁，符合其说话风格。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -120,7 +120,7 @@
         }
       ],
       "evidence": [
-        "上下文明确指出说话者是罗伦斯，且他的台词风格与罗伦斯一致，理性冷静，带有商业分析倾向。"
+        "罗伦斯继续追问，语气理性，符合其角色风格。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -141,7 +141,7 @@
         }
       ],
       "evidence": [
-        "上下文明确指出说话者是赫萝，且她的台词风格与赫萝一致，使用‘咱’自称。"
+        "赫萝回答罗伦斯的问题，语气轻松但略带威胁，符合其说话风格。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -152,22 +152,22 @@
       "speaker_entity_id": "char_0002",
       "speaker_display": "赫萝",
       "speaker_status": "known",
-      "confidence": 0.95,
+      "confidence": 0.94,
       "candidate_speakers": [
         {
           "entity_id": "char_0002",
           "display": "赫萝",
           "status": "known",
-          "score": 0.95
+          "score": 0.94
         }
       ],
       "evidence": [
-        "上下文明确指出说话者是赫萝，且她的台词风格与赫萝一致，使用‘咱’自称。"
+        "赫萝继续补充说明，语气自然，符合其说话风格。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
       "needs_review": false
     }
   ],
-  "window_notes": "对话轮次清晰，赫萝与罗伦斯交替发言，符合场景中两人互动的模式。"
+  "window_notes": "对话轮次清晰，赫萝与罗伦斯交替发言，符合上下文中的互动模式。"
 }

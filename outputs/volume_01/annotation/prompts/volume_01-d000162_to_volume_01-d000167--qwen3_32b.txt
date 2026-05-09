@@ -1,0 +1,425 @@
+你是轻小说说话人标注项目的阶段 2：正式标注助手。
+你的任务是判断输入 target_dialogues 中每一句台词的说话人，不要改写原文。
+必须把这些台词当作同一个连续片段来判断，优先保持对话轮次和叙述线索的一致性。
+
+规则：
+1. 只输出严格 JSON，不要 Markdown，不要解释性前后缀。
+2. 如果说话人是候选角色，speaker_entity_id 必须使用 candidate_characters 里的 entity_id，speaker_status 填 known。
+3. 如果说话人像某个未知人物，speaker_entity_id 使用 candidate_mysteries 里的 mystery_id，speaker_status 填 mystery。
+4. 如果只是无法追踪的路人/群体，speaker_status 填 npc，speaker_entity_id 可为空或使用 npc:简短称呼。
+5. 证据不足时不要硬猜，speaker_status 填 ambiguous 或 review，并把 needs_review 设为 true。
+6. candidate_speakers 至少列出 1 个候选；如果无法判断，列出最可能的候选和不确定原因。
+7. confidence 使用 0 到 1 之间的小数，表示你对最终判断的把握。
+8. 不要只因为台词里提到某个名字、职业、地点，就把说话人标成那个实体；被称呼的人通常不是说话人。
+9. 连续问答、交易寒暄、命令/回答等场景要按上下句轮次判断；同一人连续说话必须有叙述或语气证据支持。
+10. 如果当前上下文显示某角色还没有登场，不要因为角色库或后文记忆里有这个角色就提前标给他/她。
+
+11. target_dialogues 中 dialogue_kind=inline 的项目是正文内嵌引号，不要当作独立对白；标为 review，needs_review=true。
+12. candidate_mysteries 只是可选候选；如果候选名称和当前段落地点/人物不一致，必须改用 npc 或 review。
+13. 如果只有轮次推断、没有叙述锚点或自我介绍，请降低 confidence，并在 evidence 里说明轮次依据。
+
+输出 JSON 结构：
+{
+  "annotations": [
+    {
+      "dialogue_id": "必须来自 target_dialogue_ids",
+      "speaker_entity_id": "string",
+      "speaker_display": "string",
+      "speaker_status": "known|mystery|npc|ambiguous|review",
+      "confidence": 0.0,
+      "candidate_speakers": [
+        {"entity_id": "string", "display": "string", "status": "known|mystery|npc|ambiguous|review", "score": 0.0}
+      ],
+      "evidence": ["短证据，不要大段复制原文"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "可选，简短说明整体轮次判断"
+}
+必须为 target_dialogue_ids 中每个 dialogue_id 输出且只输出一条 annotation。
+
+输入 JSON：
+{
+  "volume": {
+    "volume_id": "volume_01",
+    "volume": 1
+  },
+  "target_dialogue_ids": [
+    "volume_01-d000162",
+    "volume_01-d000163",
+    "volume_01-d000164",
+    "volume_01-d000165",
+    "volume_01-d000166",
+    "volume_01-d000167"
+  ],
+  "dialogues": [
+    {
+      "dialogue_id": "volume_01-d000162",
+      "dialogue_index": 161,
+      "window_position": 1,
+      "chapter_id": "volume_01-c002",
+      "chapter_title": "第一幕",
+      "scene_id": "volume_01-c002-s006",
+      "paragraph_id": "volume_01-c002-s006-p000478",
+      "paragraph_index": 477,
+      "local_dialogue_index": 1,
+      "text": "怎、怎么了？",
+      "quote_text": "「怎、怎么了？」",
+      "paragraph_text": "「怎、怎么了？」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 8
+    },
+    {
+      "dialogue_id": "volume_01-d000163",
+      "dialogue_index": 162,
+      "window_position": 2,
+      "chapter_id": "volume_01-c002",
+      "chapter_title": "第一幕",
+      "scene_id": "volume_01-c002-s006",
+      "paragraph_id": "volume_01-c002-s006-p000480",
+      "paragraph_index": 479,
+      "local_dialogue_index": 1,
+      "text": "就算咱不在，那座村落未来也会持续丰收呗。",
+      "quote_text": "「就算咱不在，那座村落未来也会持续丰收呗。」",
+      "paragraph_text": "「就算咱不在，那座村落未来也会持续丰收呗。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 22
+    },
+    {
+      "dialogue_id": "volume_01-d000164",
+      "dialogue_index": 163,
+      "window_position": 3,
+      "chapter_id": "volume_01-c002",
+      "chapter_title": "第一幕",
+      "scene_id": "volume_01-c002-s006",
+      "paragraph_id": "volume_01-c002-s006-p000482",
+      "paragraph_index": 481,
+      "local_dialogue_index": 1,
+      "text": "……是这样啊？",
+      "quote_text": "「……是这样啊？」",
+      "paragraph_text": "「……是这样啊？」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 9
+    },
+    {
+      "dialogue_id": "volume_01-d000165",
+      "dialogue_index": 164,
+      "window_position": 4,
+      "chapter_id": "volume_01-c002",
+      "chapter_title": "第一幕",
+      "scene_id": "volume_01-c002-s006",
+      "paragraph_id": "volume_01-c002-s006-p000484",
+      "paragraph_index": 483,
+      "local_dialogue_index": 1,
+      "text": "咱在那座村落待了好长一段岁月，有咱尾巴的毛的数量那么多年。咱后来虽不愿意留在那里，但为了守护村里的麦田，咱从不曾偷懒过。因为很久以前，咱答应过村里的一名年轻人，说要让村里的麦子丰收，所以咱信守承诺。",
+      "quote_text": "「咱在那座村落待了好长一段岁月，有咱尾巴的毛的数量那么多年。咱后来虽不愿意留在那里，但为了守护村里的麦田，咱从不曾偷懒过。因为很久以前，咱答应过村里的一名年轻人，说要让村里的麦子丰收，所以咱信守承诺。」",
+      "paragraph_text": "「咱在那座村落待了好长一段岁月，有咱尾巴的毛的数量那么多年。咱后来虽不愿意留在那里，但为了守护村里的麦田，咱从不曾偷懒过。因为很久以前，咱答应过村里的一名年轻人，说要让村里的麦子丰收，所以咱信守承诺。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 101
+    },
+    {
+      "dialogue_id": "volume_01-d000166",
+      "dialogue_index": 165,
+      "window_position": 5,
+      "chapter_id": "volume_01-c002",
+      "chapter_title": "第一幕",
+      "scene_id": "volume_01-c002-s006",
+      "paragraph_id": "volume_01-c002-s006-p000487",
+      "paragraph_index": 486,
+      "local_dialogue_index": 1,
+      "text": "咱……咱是寄宿在麦子里的狼。不仅是麦子，只要是从大地生长出来的植物，咱可比谁都了解。所以咱遵守了诺言，让那座村落的麦田变得丰腴肥沃。但是呐，有些时候却得抑制麦子结实；若过度消耗土地资源，就得付出代价。可是呐，村民们一看到麦子收成不好，就说咱反复无常。村民们这样的态度在这几年更是变本加厉，所以这几年咱一直想要离开那里，咱无法再忍受了。那时的承诺，咱早已充分做到了。",
+      "quote_text": "「咱……咱是寄宿在麦子里的狼。不仅是麦子，只要是从大地生长出来的植物，咱可比谁都了解。所以咱遵守了诺言，让那座村落的麦田变得丰腴肥沃。但是呐，有些时候却得抑制麦子结实；若过度消耗土地资源，就得付出代价。可是呐，村民们一看到麦子收成不好，就说咱反复无常。村民们这样的态度在这几年更是变本加厉，所以这几年咱一直想要离开那里，咱无法再忍受了。那时的承诺，咱早已充分做到了。」",
+      "paragraph_text": "「咱……咱是寄宿在麦子里的狼。不仅是麦子，只要是从大地生长出来的植物，咱可比谁都了解。所以咱遵守了诺言，让那座村落的麦田变得丰腴肥沃。但是呐，有些时候却得抑制麦子结实；若过度消耗土地资源，就得付出代价。可是呐，村民们一看到麦子收成不好，就说咱反复无常。村民们这样的态度在这几年更是变本加厉，所以这几年咱一直想要离开那里，咱无法再忍受了。那时的承诺，咱早已充分做到了。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 184
+    },
+    {
+      "dialogue_id": "volume_01-d000167",
+      "dialogue_index": 166,
+      "window_position": 6,
+      "chapter_id": "volume_01-c002",
+      "chapter_title": "第一幕",
+      "scene_id": "volume_01-c002-s006",
+      "paragraph_id": "volume_01-c002-s006-p000491",
+      "paragraph_index": 490,
+      "local_dialogue_index": 1,
+      "text": "再说，那座村落未来也还会持续丰收。只不过每隔几年，那些家伙就得遭遇一次严重的饥荒，这得怪那些家伙的所作所为。但是，他们势必会靠自己的力量度过难关。那地方根本不需要咱，而那些家伙也不需要咱！",
+      "quote_text": "「再说，那座村落未来也还会持续丰收。只不过每隔几年，那些家伙就得遭遇一次严重的饥荒，这得怪那些家伙的所作所为。但是，他们势必会靠自己的力量度过难关。那地方根本不需要咱，而那些家伙也不需要咱！」",
+      "paragraph_text": "「再说，那座村落未来也还会持续丰收。只不过每隔几年，那些家伙就得遭遇一次严重的饥荒，这得怪那些家伙的所作所为。但是，他们势必会靠自己的力量度过难关。那地方根本不需要咱，而那些家伙也不需要咱！」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 96
+    }
+  ],
+  "context": {
+    "paragraphs": [
+      {
+        "paragraph_id": "volume_01-c002-s006-p000475",
+        "paragraph_index": 474,
+        "text": "虽然罗伦斯心里明白，他提出这样的问题，赫萝不可能回答对自己不利的答案；但罗伦斯毕竟是旅行商人中的老手，他遇过太多人为了做成生意，而把说谎当成理所当然。赫萝如果说谎的话，他相信自己能够立刻识破谎言。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s006-p000476",
+        "paragraph_index": 475,
+        "text": "为了不要错过任何一个谎言，罗伦斯专心等待赫萝回答。然而，赫萝却迟迟未开口。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s006-p000477",
+        "paragraph_index": 476,
+        "text": "把视线往赫萝的方向一看，罗伦斯发现赫萝脸上带着完全不同于先前，看似生气、却又像快要哭出来的表情，注视着货台的角落。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s006-p000478",
+        "paragraph_index": 477,
+        "text": "「怎、怎么了？」",
+        "target_dialogue_ids": [
+          "volume_01-d000162"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c002-s006-p000479",
+        "paragraph_index": 478,
+        "text": "那表情让罗伦斯忍不住开口问。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s006-p000480",
+        "paragraph_index": 479,
+        "text": "「就算咱不在，那座村落未来也会持续丰收呗。」",
+        "target_dialogue_ids": [
+          "volume_01-d000163"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c002-s006-p000481",
+        "paragraph_index": 480,
+        "text": "赫萝面带不悦的表情说道，她的声音听来极为愤怒。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s006-p000482",
+        "paragraph_index": 481,
+        "text": "「……是这样啊？」",
+        "target_dialogue_ids": [
+          "volume_01-d000164"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c002-s006-p000483",
+        "paragraph_index": 482,
+        "text": "罗伦斯虽然如此回答，但却被赫萝那股打从心底的愤恨气势给慑服。赫萝点了点头，她纤细的肩膀因愤怒而颤动。仔细一看，才发现赫萝的双手正用力紧握着手边的貂皮，双手因失去血色而泛白。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s006-p000484",
+        "paragraph_index": 483,
+        "text": "「咱在那座村落待了好长一段岁月，有咱尾巴的毛的数量那么多年。咱后来虽不愿意留在那里，但为了守护村里的麦田，咱从不曾偷懒过。因为很久以前，咱答应过村里的一名年轻人，说要让村里的麦子丰收，所以咱信守承诺。」",
+        "target_dialogue_ids": [
+          "volume_01-d000165"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c002-s006-p000485",
+        "paragraph_index": 484,
+        "text": "赫萝的语气显得急躁，说话时完全没看罗伦斯一眼，由此可知她的愤恨之深。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s006-p000486",
+        "paragraph_index": 485,
+        "text": "赫萝刚才说话还一副口齿伶俐的模样，现在说话却几度停顿。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s006-p000487",
+        "paragraph_index": 486,
+        "text": "「咱……咱是寄宿在麦子里的狼。不仅是麦子，只要是从大地生长出来的植物，咱可比谁都了解。所以咱遵守了诺言，让那座村落的麦田变得丰腴肥沃。但是呐，有些时候却得抑制麦子结实；若过度消耗土地资源，就得付出代价。可是呐，村民们一看到麦子收成不好，就说咱反复无常。村民们这样的态度在这几年更是变本加厉，所以这几年咱一直想要离开那里，咱无法再忍受了。那时的承诺，咱早已充分做到了。」",
+        "target_dialogue_ids": [
+          "volume_01-d000166"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c002-s006-p000488",
+        "paragraph_index": 487,
+        "text": "罗伦斯知道是什么事情让赫萝如此愤恨不平。听说，几年前统治帕斯罗村一带的领主，变成现在的亚伦多伯爵后，为了提高农作物的生产量，便不断从南方先进国家引进新的农耕方法。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s006-p000489",
+        "paragraph_index": 488,
+        "text": "或许赫萝认为村民已不再需要她。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s006-p000490",
+        "paragraph_index": 489,
+        "text": "再加上最近甚至有些人主张教会所说的神根本不存在，造成流言四处传播。实在很难保证乡下地方的丰收之神，不会受到谣言中伤的波及。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s006-p000491",
+        "paragraph_index": 490,
+        "text": "「再说，那座村落未来也还会持续丰收。只不过每隔几年，那些家伙就得遭遇一次严重的饥荒，这得怪那些家伙的所作所为。但是，他们势必会靠自己的力量度过难关。那地方根本不需要咱，而那些家伙也不需要咱！」",
+        "target_dialogue_ids": [
+          "volume_01-d000167"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c002-s006-p000492",
+        "paragraph_index": 491,
+        "text": "赫萝一口气说到这儿，深深叹了口气，随后扑倒在貂皮上。她弓起身体，把貂皮粗鲁地拉近自己，然后闷头睡觉。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s006-p000493",
+        "paragraph_index": 492,
+        "text": "因为罗伦斯看不到赫萝的脸，所以不能确定赫萝是否在哭泣，让他不知该如何开口，只能搔搔自己的头。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s006-p000494",
+        "paragraph_index": 493,
+        "text": "罗伦斯看着赫萝纤细的肩膀和狼耳朵，不知该如何是好。",
+        "target_dialogue_ids": []
+      }
+    ]
+  },
+  "scene_memory": [
+    {
+      "scene_id": "volume_01-c002-s006-r001",
+      "parent_scene_id": "volume_01-c002-s006",
+      "chunk_index": 1,
+      "chunk_count": 6,
+      "scene_summary": "罗伦斯察觉赫萝情绪异常，赫萝愤怒地讲述自己在帕斯罗村守护麦田的经历，以及村民对她的误解与不信任。",
+      "active_characters": [
+        "罗伦斯",
+        "赫萝"
+      ],
+      "relationships": [
+        "罗伦斯与赫萝之间存在信任与怀疑的复杂关系",
+        "赫萝与帕斯罗村的村民之间存在长期的守护与误解关系",
+        "赫萝与亚伦多伯爵的政策间接相关"
+      ],
+      "notes": "赫萝表现出强烈的情绪波动，暗示她与帕斯罗村的过往有深刻联系。罗伦斯的理性态度与赫萝的情绪化形成对比，为后续互动埋下伏笔。"
+    },
+    {
+      "scene_id": "volume_01-c002-s006-r002",
+      "parent_scene_id": "volume_01-c002-s006",
+      "chunk_index": 2,
+      "chunk_count": 6,
+      "scene_summary": "赫萝在情绪激动后表现出脆弱的一面，罗伦斯试图安抚她并了解她的想法。赫萝提到想回到北方，暗示她对故乡的思念。",
+      "active_characters": [
+        "罗伦斯",
+        "赫萝"
+      ],
+      "relationships": [
+        "罗伦斯与赫萝之间存在复杂的情感互动，既有怀疑也有关心。",
+        "赫萝表现出对故乡北方的强烈情感联系。"
+      ],
+      "notes": "赫萝的情绪波动和对北方的提及可能暗示她身份的深层背景，值得后续追踪。"
+    }
+  ],
+  "candidate_characters": [
+    {
+      "entity_id": "char_0002",
+      "display_name": "赫萝",
+      "aliases": [
+        "赫萝"
+      ],
+      "titles": [
+        "丰收之神",
+        "咱",
+        "神秘少女",
+        "约伊兹的贤狼",
+        "贤狼"
+      ],
+      "description": "自称丰收之神的神秘少女，拥有狼的耳朵和尾巴。在本场景中协助罗伦斯，表现出对他的关心和保护。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴，行为举止非人类，表现出轻松幽默但略带威胁性的说话风格。在本场景中，她对罗伦斯的伤口进行吸血，引发旁人惊呼，并表现出悲伤的情绪。 / 自称是丰收之神的神秘少女，拥有狼的耳朵和尾巴。在本场景中逐渐显露出非人类的特征，最终完全变成一只巨大的狼。她与罗伦斯有情感交流，表现出悲伤和决绝的情绪。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴，未直接参与本场景，但罗伦斯的行动可能与她有关…",
+      "speech_style": "轻松幽默但略带威胁性，情绪化且带有调侃语气。 / 轻松幽默、略带调侃和威胁 / 轻松幽默、略带威胁性 / 轻松幽默、略带威胁性、撒娇 / 警觉、神秘 / 轻松幽默但略带威胁性 / 轻松幽默、略带调侃 / 轻松幽默但略带威胁性，语气中透露出对罗伦斯的依赖。 / 轻松幽默、略带威胁性、自信 / 轻松幽默但略带威胁性，情绪…",
+      "relationship_hints": [
+        "与罗伦斯一同旅行",
+        "被罗伦斯怀疑是否为真正的神",
+        "与叶勒有附身关系",
+        "与罗伦斯有潜在互动",
+        "与罗伦斯有互动，似乎是被他发现并收留的。",
+        "与罗伦斯有互动，但尚未明确关系",
+        "与罗伦斯互动频繁，表现出对他的信任和玩笑态度",
+        "与罗伦斯互动密切"
+      ],
+      "first_seen_scene_id": "volume_01-c000-s003-r001",
+      "latest_seen_scene_id": "volume_01-c008-s003-r002",
+      "confidence": 1.0
+    },
+    {
+      "entity_id": "char_0001",
+      "display_name": "罗伦斯",
+      "aliases": [
+        "罗伦斯",
+        "罗伦斯先生"
+      ],
+      "titles": [
+        "中间人",
+        "交易者",
+        "同行",
+        "商人",
+        "小毛头",
+        "小的",
+        "市井无赖",
+        "年轻人"
+      ],
+      "description": "一位行商人，正在与米隆商行的代表马贺特进行交易谈判。他原本期待获得两千枚银币，但实际只得到一百二十枚，感到震惊和困惑。 / 一位行商人，发现并收留了赫萝，决定与她一同旅行。 / 一位二十五岁的自力更生旅行商人，已有七年行商经验，性格泰然自若。 / 一位冷静理性的旅行商人，对赫萝的身份持怀疑态度，但仍保持互动。他注重外表整洁，对商业制度有深入理解。 / 冷静理性的旅行商人，与赫萝一同旅行。在本场景中与米隆商行的马贺特讨论梅迪欧商行的威胁，提出利用崔尼银币交易作为交涉王牌。 / 一位冷静理性的旅行商人，与赫萝一同旅行…",
+      "speech_style": "理性、坚定、略带情绪化 / 冷静、理性，带有悔恨和自责的语气。 / 冷静、理性，语气中带有对赫萝的关心和些许担忧。 / 冷静、理性、略带失落 / 冷静、理性，对商业制度有深入理解，并能清晰地向他人解释。 / 理性、礼貌、略带谨慎。 / 理性、冷静，带有商业分析倾向。 / 理性、沉稳、略带幽默 / 理性、冷静，但因困惑…",
+      "relationship_hints": [
+        "与赫萝一同旅行",
+        "对赫萝的真实性持怀疑态度",
+        "与深山村落的村民有交易关系",
+        "对修道院抱有商业期望但未成功",
+        "与骑士有短暂互动",
+        "与小村落的村民有交易关系",
+        "与修道院有关联",
+        "对教会和异教徒问题有见解"
+      ],
+      "first_seen_scene_id": "volume_01-c000-s003-r001",
+      "latest_seen_scene_id": "volume_01-c008-s003-r002",
+      "confidence": 1.0
+    }
+  ],
+  "candidate_mysteries": [
+    {
+      "mystery_id": "mystery_volume_01_c002_s006_r001_帕斯罗村的村民",
+      "temporary_name": "帕斯罗村的村民",
+      "description": "赫萝提到的村民群体，对她的行为有误解和不信任，是她愤怒的来源。",
+      "evidence": [
+        "volume_01-c002-s006-p000487",
+        "volume_01-c002-s006-p000489"
+      ],
+      "source_scene_id": "volume_01-c002-s006-r001",
+      "confidence": 0.75
+    },
+    {
+      "mystery_id": "mystery_volume_01_c002_s006_r001_帕斯罗村的领主_亚伦多伯爵",
+      "temporary_name": "帕斯罗村的领主（亚伦多伯爵",
+      "description": "赫萝提到的统治者，引进新农耕方法，可能间接导致村民对她的误解。",
+      "evidence": [
+        "volume_01-c002-s006-p000488"
+      ],
+      "source_scene_id": "volume_01-c002-s006-r001",
+      "confidence": 0.65
+    }
+  ]
+}

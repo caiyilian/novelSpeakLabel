@@ -15,7 +15,7 @@
         }
       ],
       "evidence": [
-        "赫萝在场景中专注于梳理尾巴，是唯一未在对话中沉默的角色，且上下文显示她对杰廉的离开提出疑问。"
+        "上下文显示赫萝在梳理尾巴，突然开口提问，符合她的行为模式。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -26,17 +26,17 @@
       "speaker_entity_id": "char_0001",
       "speaker_display": "罗伦斯",
       "speaker_status": "known",
-      "confidence": 0.95,
+      "confidence": 0.9,
       "candidate_speakers": [
         {
           "entity_id": "char_0001",
           "display": "罗伦斯",
           "status": "known",
-          "score": 0.95
+          "score": 0.9
         }
       ],
       "evidence": [
-        "罗伦斯是场景中另一位活跃角色，且上下文显示他回应赫萝的问题，解释为何不与杰廉同行。"
+        "罗伦斯是场景中唯一能提供关于天气和交通方式的理性分析的人。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -47,17 +47,17 @@
       "speaker_entity_id": "char_0002",
       "speaker_display": "赫萝",
       "speaker_status": "known",
-      "confidence": 0.9,
+      "confidence": 0.85,
       "candidate_speakers": [
         {
           "entity_id": "char_0002",
           "display": "赫萝",
           "status": "known",
-          "score": 0.9
+          "score": 0.85
         }
       ],
       "evidence": [
-        "赫萝对罗伦斯的解释表示认同，符合她一贯的说话风格和态度。"
+        "赫萝对商人话题有反应，且对话轮次上紧接罗伦斯的发言。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -65,20 +65,20 @@
     },
     {
       "dialogue_id": "volume_01-d000319",
-      "speaker_entity_id": "char_0002",
-      "speaker_display": "赫萝",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
       "speaker_status": "known",
-      "confidence": 0.9,
+      "confidence": 0.8,
       "candidate_speakers": [
         {
-          "entity_id": "char_0002",
-          "display": "赫萝",
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
           "status": "known",
-          "score": 0.9
+          "score": 0.8
         }
       ],
       "evidence": [
-        "赫萝继续以简短但有力的方式回应，符合她对商人话题的熟悉和调侃语气。"
+        "罗伦斯是商人，符合「时间就是金钱」的商业逻辑表达。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -86,20 +86,20 @@
     },
     {
       "dialogue_id": "volume_01-d000320",
-      "speaker_entity_id": "char_0001",
-      "speaker_display": "罗伦斯",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
       "speaker_status": "known",
-      "confidence": 0.9,
+      "confidence": 0.8,
       "candidate_speakers": [
         {
-          "entity_id": "char_0001",
-          "display": "罗伦斯",
+          "entity_id": "char_0002",
+          "display": "赫萝",
           "status": "known",
-          "score": 0.9
+          "score": 0.8
         }
       ],
       "evidence": [
-        "罗伦斯对赫萝的发言表示回应，语气带有幽默和理性，符合他的说话风格。"
+        "赫萝的语气轻松幽默，符合她调侃罗伦斯的风格。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -110,17 +110,17 @@
       "speaker_entity_id": "char_0001",
       "speaker_display": "罗伦斯",
       "speaker_status": "known",
-      "confidence": 0.9,
+      "confidence": 0.75,
       "candidate_speakers": [
         {
           "entity_id": "char_0001",
           "display": "罗伦斯",
           "status": "known",
-          "score": 0.9
+          "score": 0.75
         }
       ],
       "evidence": [
-        "罗伦斯继续围绕时间与金钱的话题展开，符合他理性分析的说话风格。"
+        "罗伦斯是商人，符合「时间可以赚钱」的商业逻辑表达。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -131,17 +131,17 @@
       "speaker_entity_id": "char_0002",
       "speaker_display": "赫萝",
       "speaker_status": "known",
-      "confidence": 0.9,
+      "confidence": 0.8,
       "candidate_speakers": [
         {
           "entity_id": "char_0002",
           "display": "赫萝",
           "status": "known",
-          "score": 0.9
+          "score": 0.8
         }
       ],
       "evidence": [
-        "赫萝对罗伦斯的发言表示回应，语气带有调侃和自信，符合她的说话风格。"
+        "赫萝的语气带有调侃和否定，符合她的说话风格。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
@@ -152,22 +152,22 @@
       "speaker_entity_id": "char_0001",
       "speaker_display": "罗伦斯",
       "speaker_status": "known",
-      "confidence": 0.9,
+      "confidence": 0.7,
       "candidate_speakers": [
         {
           "entity_id": "char_0001",
           "display": "罗伦斯",
           "status": "known",
-          "score": 0.9
+          "score": 0.7
         }
       ],
       "evidence": [
-        "罗伦斯继续以理性方式回应赫萝的调侃，语气中带有对农夫的观察和理解。"
+        "罗伦斯是商人，对农夫和时间的关系有商业视角的评论。"
       ],
       "should_create_new_entity": false,
       "new_entity_hint": "",
       "needs_review": false
     }
   ],
-  "window_notes": "对话轮次清晰，赫萝与罗伦斯交替发言，符合两人在场景中的互动模式。"
+  "window_notes": "对话轮次清晰，赫萝和罗伦斯交替发言，符合两人在场景中的互动模式。"
 }
