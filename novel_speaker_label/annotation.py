@@ -45,7 +45,19 @@ SPEECH_VERBS = (
     "喃喃",
     "发出声音",
 )
+DIRECT_ATTRIBUTION_VERBS = (*SPEECH_VERBS, "念着", "打招呼")
 SELF_INTRO_MARKERS = ("我是", "我叫", "在下是", "本人是", "名字是")
+RULE_MODEL = "rule:context"
+RULE_MODEL_PREFIX = "rule:"
+RULE_CONFIDENCE = 0.98
+ALTERNATION_RULE_CONFIDENCE = 0.92
+ALTERNATION_MAX_PARAGRAPH_GAP = 3
+ADDRESS_TITLES = ("先生", "小姐", "大人", "阁下", "夫人")
+SECOND_PERSON_MARKERS = ("你", "您")
+LISTENER_REACTION_MARKERS = ("被询问", "被问", "被这么一问", "被追问", "被提问")
+INDIRECT_SPEECH_SUFFIXES = ("的话", "的事", "的内容", "的说法")
+VILLAGE_CONTEXT_MARKERS = ("小村落", "深山", "山里的村民", "村落", "村民")
+VILLAGE_NPC_DISPLAY = "小村落的村民"
 
 
 @dataclass(frozen=True)
@@ -130,6 +142,7 @@ def annotate_volume(config: AnnotationConfig) -> dict:
     annotations: list[dict] = []
     failed_requests: list[dict] = []
     prompt_count = 0
+    rule_vote_count = 0
 
     for request_number, dialogue_window in enumerate(dialogue_windows, start=1):
         first_dialogue = dialogue_window[0]
@@ -222,6 +235,12 @@ def annotate_volume(config: AnnotationConfig) -> dict:
                 dialogue_votes_by_id[dialogue["dialogue_id"]].append(vote)
 
         if not config.dry_run:
+            rule_votes = _rule_votes_for_window(dialogue_window, payload)
+            rule_vote_count += len(rule_votes)
+            for vote in rule_votes:
+                votes.append(vote)
+                dialogue_votes_by_id[vote["dialogue_id"]].append(vote)
+
             for dialogue in dialogue_window:
                 annotations.append(
                     _aggregate_votes(
@@ -242,6 +261,7 @@ def annotate_volume(config: AnnotationConfig) -> dict:
                 "annotation_window_size": max(1, config.annotation_window_size),
                 "max_dialogue_paragraph_gap": max(0, config.max_dialogue_paragraph_gap),
                 "prompt_count": prompt_count,
+                "rule_vote_count": 0,
                 "message": "Prompts were generated; no Ollama requests were made.",
             },
         )
@@ -271,6 +291,7 @@ def annotate_volume(config: AnnotationConfig) -> dict:
         "max_dialogue_paragraph_gap": max(0, config.max_dialogue_paragraph_gap),
         "request_count": prompt_count,
         "prompt_count": prompt_count,
+        "rule_vote_count": rule_vote_count,
         "vote_count": len(votes),
         "annotation_count": len(annotations),
         "review_count": review_count,
@@ -989,6 +1010,476 @@ def _normalize_candidate_speakers(value: Any) -> list[dict]:
     return candidates
 
 
+def _rule_votes_for_window(dialogues: list[dict], payload: dict) -> list[dict]:
+    anchors: dict[str, dict] = {}
+    for dialogue in dialogues:
+        speaker = _explicit_rule_speaker(dialogue, payload)
+        if speaker:
+            anchors[dialogue["dialogue_id"]] = speaker
+
+    inferred = _infer_alternating_rule_speakers(dialogues, payload, anchors)
+    speakers_by_id = {**inferred, **anchors}
+    return [
+        _rule_vote_for_speaker(dialogue, speakers_by_id[dialogue["dialogue_id"]])
+        for dialogue in dialogues
+        if dialogue["dialogue_id"] in speakers_by_id
+    ]
+
+
+def _explicit_rule_speaker(dialogue: dict, payload: dict) -> dict | None:
+    if _dialogue_kind(dialogue) != "standalone":
+        return None
+
+    speaker = _self_intro_rule_speaker(dialogue, payload)
+    if speaker:
+        return speaker
+
+    for text in _direct_attribution_contexts(dialogue):
+        option = _speaker_option_from_direct_attribution(text, payload)
+        if option:
+            return _speaker_from_option(
+                option,
+                f"规则：上下文叙述把台词归给{option['display']}",
+                RULE_CONFIDENCE,
+            )
+
+    speaker = _speaker_from_listener_reaction(dialogue, payload)
+    if speaker:
+        return speaker
+
+    return _speaker_from_addressed_name(dialogue, payload)
+
+
+def _self_intro_rule_speaker(dialogue: dict, payload: dict) -> dict | None:
+    text = _clean_text(dialogue.get("text"))
+    for option in _known_speaker_options(payload):
+        for name in option["names"]:
+            if _self_intro_mentions(text, name):
+                return _speaker_from_option(
+                    option,
+                    f"规则：自我介绍提到{name}",
+                    RULE_CONFIDENCE,
+                )
+    return None
+
+
+def _speaker_from_listener_reaction(dialogue: dict, payload: dict) -> dict | None:
+    text = _clean_text(dialogue.get("text"))
+    if "？" not in text and "?" not in text:
+        return None
+    next_text = "\n".join(
+        _clean_text(row.get("text"))
+        for row in _as_list(dialogue.get("next_context"))[:2]
+        if isinstance(row, dict)
+    )
+    if not next_text or not any(marker in next_text for marker in LISTENER_REACTION_MARKERS):
+        return None
+
+    option = _listener_option_from_reaction_text(next_text, payload)
+    if option:
+        counterpart = _counterpart_speaker(
+            mentioned_option=option,
+            payload=payload,
+            dialogue=dialogue,
+            context_text=_dialogue_context_text(dialogue),
+            evidence=f"规则：下一句叙述显示{option['display']}是被询问的一方",
+        )
+        if counterpart:
+            return counterpart
+    return None
+
+
+def _listener_option_from_reaction_text(text: str, payload: dict) -> dict | None:
+    marker_positions = [
+        index
+        for marker in LISTENER_REACTION_MARKERS
+        for index in [text.find(marker)]
+        if index >= 0
+    ]
+    if not marker_positions:
+        return None
+
+    matches: list[tuple[int, int, dict]] = []
+    for option in _known_speaker_options(payload):
+        for name in option["names"]:
+            for match in re.finditer(re.escape(name), text):
+                nearest_marker = min(
+                    marker_positions, key=lambda index: abs(index - match.start())
+                )
+                after_marker_penalty = 20 if match.start() > nearest_marker else 0
+                distance = abs(nearest_marker - match.start()) + after_marker_penalty
+                matches.append((distance, -len(name), option))
+    if not matches:
+        return None
+    matches.sort(key=lambda row: (row[0], row[1]))
+    return matches[0][2]
+
+
+def _speaker_from_addressed_name(dialogue: dict, payload: dict) -> dict | None:
+    text = _clean_text(dialogue.get("text"))
+    if not text:
+        return None
+    for option in _known_speaker_options(payload):
+        for name in option["names"]:
+            if _name_is_addressed(text, name):
+                counterpart = _counterpart_speaker(
+                    mentioned_option=option,
+                    payload=payload,
+                    dialogue=dialogue,
+                    context_text=_dialogue_context_text(dialogue),
+                    evidence=f"规则：台词是在称呼{option['display']}，被称呼者不是说话人",
+                )
+                if counterpart:
+                    return counterpart
+    return None
+
+
+def _name_is_addressed(text: str, name: str) -> bool:
+    if not name or name in LOW_SIGNAL_NAMES:
+        return False
+    titled = "|".join(re.escape(title) for title in ADDRESS_TITLES)
+    second_person = "|".join(re.escape(marker) for marker in SECOND_PERSON_MARKERS)
+    return bool(
+        re.search(
+            f"{re.escape(name)}(?:{titled})?[，、。！？!\\s]*({second_person})",
+            text,
+        )
+        or re.search(f"{re.escape(name)}(?:{titled})", text)
+    )
+
+
+def _counterpart_speaker(
+    mentioned_option: dict,
+    payload: dict,
+    dialogue: dict,
+    context_text: str,
+    evidence: str,
+) -> dict | None:
+    mentioned_key = _speaker_rule_key(mentioned_option)
+    mentioned_others = [
+        option
+        for option in _known_speaker_options(payload)
+        if _speaker_rule_key(option) != mentioned_key
+        and _option_mentioned_in_text(option, context_text)
+    ]
+    if len(mentioned_others) == 1:
+        return _speaker_from_option(mentioned_others[0], evidence, RULE_CONFIDENCE)
+
+    all_others = [
+        option
+        for option in _known_speaker_options(payload)
+        if _speaker_rule_key(option) != mentioned_key
+    ]
+    if len(all_others) == 1:
+        return _speaker_from_option(all_others[0], evidence, RULE_CONFIDENCE)
+
+    npc = _npc_speaker_from_context([context_text])
+    if npc:
+        return _speaker_with_evidence(npc, evidence, RULE_CONFIDENCE)
+    return None
+
+
+def _direct_attribution_contexts(dialogue: dict) -> list[str]:
+    texts = [_outside_quote_text(dialogue)]
+    texts.extend(_adjacent_narration_rows(_as_list(dialogue.get("next_context"))))
+    return [text for text in (_clean_text(value) for value in texts) if text]
+
+
+def _adjacent_narration_rows(rows: list[Any], limit: int = 2) -> list[str]:
+    texts: list[str] = []
+    for row in rows:
+        if not isinstance(row, dict):
+            continue
+        text = _clean_text(row.get("text", ""))
+        if not text:
+            continue
+        if _looks_like_standalone_quote_text(text):
+            break
+        texts.append(text)
+        if len(texts) >= limit:
+            break
+    return texts
+
+
+def _looks_like_standalone_quote_text(text: str) -> bool:
+    stripped = _clean_text(text)
+    return stripped.startswith("「") and stripped.endswith("」")
+
+
+def _speaker_option_from_direct_attribution(text: str, payload: dict) -> dict | None:
+    matches: list[tuple[int, int, int, dict]] = []
+    for option in _known_speaker_options(payload):
+        for name in option["names"]:
+            if not name or name not in text:
+                continue
+            for verb in DIRECT_ATTRIBUTION_VERBS:
+                name_then_verb = f"{re.escape(name)}.{{0,30}}{re.escape(verb)}"
+                for match in re.finditer(name_then_verb, text):
+                    if _speech_verb_match_is_indirect(text, match.end(), verb):
+                        continue
+                    matches.append((match.start(), match.end(), -len(name), option))
+
+    if not matches:
+        return None
+    matches.sort(key=lambda row: (row[0], row[1], row[2]))
+    return matches[0][3]
+
+
+def _infer_alternating_rule_speakers(
+    dialogues: list[dict], payload: dict, anchors: dict[str, dict]
+) -> dict[str, dict]:
+    inferred: dict[str, dict] = {}
+    for segment in _standalone_rule_segments(dialogues):
+        anchor_items = [
+            (index, anchors[dialogue["dialogue_id"]])
+            for index, dialogue in enumerate(segment)
+            if dialogue["dialogue_id"] in anchors
+        ]
+        if not anchor_items:
+            continue
+
+        speakers_by_key = {
+            _speaker_rule_key(speaker): speaker for _, speaker in anchor_items
+        }
+        if len(speakers_by_key) > 2:
+            continue
+        if len(speakers_by_key) == 1:
+            anchor_speaker = next(iter(speakers_by_key.values()))
+            counterpart = _segment_counterpart_speaker(segment, payload, anchor_speaker)
+            if not counterpart:
+                continue
+            speakers_by_key[_speaker_rule_key(counterpart)] = counterpart
+
+        if len(speakers_by_key) != 2:
+            continue
+        if len(segment) > 6 and len(anchor_items) < 2:
+            continue
+
+        ref_index, ref_speaker = anchor_items[0]
+        ref_key = _speaker_rule_key(ref_speaker)
+        other_key = next(key for key in speakers_by_key if key != ref_key)
+        if not _alternation_anchors_are_consistent(
+            anchor_items, ref_index, ref_key, other_key
+        ):
+            continue
+
+        for index, dialogue in enumerate(segment):
+            dialogue_id = dialogue["dialogue_id"]
+            if dialogue_id in anchors:
+                continue
+            expected_key = ref_key if (index - ref_index) % 2 == 0 else other_key
+            inferred[dialogue_id] = _speaker_with_evidence(
+                speakers_by_key[expected_key],
+                "规则：相邻两人连续对白按轮次交替",
+                ALTERNATION_RULE_CONFIDENCE,
+            )
+    return inferred
+
+
+def _standalone_rule_segments(dialogues: list[dict]) -> list[list[dict]]:
+    segments: list[list[dict]] = []
+    current: list[dict] = []
+    for dialogue in dialogues:
+        if _dialogue_kind(dialogue) != "standalone":
+            if current:
+                segments.append(current)
+                current = []
+            continue
+        if current and _dialogue_gap_exceeds(
+            current[-1], dialogue, ALTERNATION_MAX_PARAGRAPH_GAP
+        ):
+            segments.append(current)
+            current = []
+        current.append(dialogue)
+    if current:
+        segments.append(current)
+    return segments
+
+
+def _alternation_anchors_are_consistent(
+    anchor_items: list[tuple[int, dict]],
+    ref_index: int,
+    ref_key: str,
+    other_key: str,
+) -> bool:
+    for index, speaker in anchor_items:
+        expected_key = ref_key if (index - ref_index) % 2 == 0 else other_key
+        if _speaker_rule_key(speaker) != expected_key:
+            return False
+    return True
+
+
+def _segment_counterpart_speaker(
+    segment: list[dict], payload: dict, anchor_speaker: dict
+) -> dict | None:
+    anchor_key = _speaker_rule_key(anchor_speaker)
+    options = [
+        option
+        for option in _segment_known_options(segment, payload)
+        if _speaker_rule_key(option) != anchor_key
+    ]
+    if len(options) == 1:
+        return _speaker_from_option(
+            options[0],
+            "规则：同一小段只有两个本地说话候选",
+            ALTERNATION_RULE_CONFIDENCE,
+        )
+
+    npc = _npc_speaker_from_context(_segment_context_texts(segment))
+    if npc and _speaker_rule_key(npc) != anchor_key:
+        return _speaker_with_evidence(
+            npc,
+            "规则：同一小段对白发生在村落交易语境",
+            ALTERNATION_RULE_CONFIDENCE,
+        )
+    return None
+
+
+def _segment_known_options(segment: list[dict], payload: dict) -> list[dict]:
+    context_text = "\n".join(_segment_context_texts(segment))
+    return [
+        option
+        for option in _known_speaker_options(payload)
+        if _option_mentioned_in_text(option, context_text)
+    ]
+
+
+def _segment_context_texts(segment: list[dict]) -> list[str]:
+    texts: list[Any] = []
+    for dialogue in segment:
+        texts.append(dialogue.get("text", ""))
+        texts.append(dialogue.get("paragraph_text", ""))
+        texts.append(_outside_quote_text(dialogue))
+        texts.extend(
+            row.get("text", "")
+            for row in _as_list(dialogue.get("prev_context"))
+            if isinstance(row, dict)
+        )
+        texts.extend(
+            row.get("text", "")
+            for row in _as_list(dialogue.get("next_context"))
+            if isinstance(row, dict)
+        )
+    return [text for text in (_clean_text(value) for value in texts) if text]
+
+
+def _dialogue_context_text(dialogue: dict) -> str:
+    texts: list[Any] = [
+        dialogue.get("text", ""),
+        dialogue.get("paragraph_text", ""),
+        _outside_quote_text(dialogue),
+    ]
+    texts.extend(
+        row.get("text", "")
+        for row in _as_list(dialogue.get("prev_context"))
+        if isinstance(row, dict)
+    )
+    texts.extend(
+        row.get("text", "")
+        for row in _as_list(dialogue.get("next_context"))
+        if isinstance(row, dict)
+    )
+    return "\n".join(text for text in (_clean_text(value) for value in texts) if text)
+
+
+def _known_speaker_options(payload: dict) -> list[dict]:
+    options: list[dict] = []
+    for row in _as_list(payload.get("candidate_characters")):
+        if not isinstance(row, dict):
+            continue
+        display = _clean_text(row.get("display_name") or row.get("display"))
+        entity_id = _clean_text(row.get("entity_id"))
+        if not display or not entity_id:
+            continue
+        names = _unique_strings([display, *_as_list(row.get("aliases"))], 10)
+        names = [name for name in names if _name_appears(name, display + "\n" + name)]
+        if not names:
+            names = [display]
+        options.append(
+            {
+                "entity_id": entity_id,
+                "display": display,
+                "status": "known",
+                "names": names,
+            }
+        )
+    return options
+
+
+def _option_mentioned_in_text(option: dict, text: str) -> bool:
+    return any(_name_appears(name, text) for name in option.get("names", []))
+
+
+def _speaker_from_option(option: dict, evidence: str, confidence: float) -> dict:
+    return {
+        "entity_id": option["entity_id"],
+        "display": option["display"],
+        "status": option["status"],
+        "confidence": confidence,
+        "evidence": [evidence],
+    }
+
+
+def _npc_speaker_from_context(texts: list[str]) -> dict | None:
+    context_text = "\n".join(_clean_text(text) for text in texts if _clean_text(text))
+    if any(marker in context_text for marker in VILLAGE_CONTEXT_MARKERS):
+        return {
+            "entity_id": f"npc:{_clean_identifier(VILLAGE_NPC_DISPLAY)}",
+            "display": VILLAGE_NPC_DISPLAY,
+            "status": "npc",
+            "confidence": RULE_CONFIDENCE,
+            "evidence": ["规则：上下文是深山小村落交易"],
+        }
+    return None
+
+
+def _speaker_with_evidence(speaker: dict, evidence: str, confidence: float) -> dict:
+    return {
+        "entity_id": speaker["entity_id"],
+        "display": speaker["display"],
+        "status": speaker["status"],
+        "confidence": confidence,
+        "evidence": _unique_strings([evidence, *_as_list(speaker.get("evidence"))], 4),
+    }
+
+
+def _speaker_rule_key(speaker: dict) -> str:
+    entity_id = _clean_text(speaker.get("entity_id") or speaker.get("speaker_entity_id"))
+    if entity_id:
+        return entity_id
+    status = _clean_status(speaker.get("status") or speaker.get("speaker_status"))
+    display = _clean_text(speaker.get("display") or speaker.get("speaker_display"))
+    return f"{status}:{display}"
+
+
+def _rule_vote_for_speaker(dialogue: dict, speaker: dict) -> dict:
+    parsed_vote = {
+        "dialogue_id": dialogue["dialogue_id"],
+        "speaker_entity_id": speaker["entity_id"],
+        "speaker_display": speaker["display"],
+        "speaker_status": speaker["status"],
+        "confidence": speaker.get("confidence", RULE_CONFIDENCE),
+        "candidate_speakers": [
+            {
+                "entity_id": speaker["entity_id"],
+                "display": speaker["display"],
+                "status": speaker["status"],
+                "score": speaker.get("confidence", RULE_CONFIDENCE),
+            }
+        ],
+        "evidence": speaker.get("evidence", []),
+        "should_create_new_entity": False,
+        "new_entity_hint": "",
+        "needs_review": False,
+    }
+    return _normalize_vote(
+        parsed_vote=parsed_vote,
+        dialogue=dialogue,
+        model=RULE_MODEL,
+        weight=1.0,
+    )
+
+
 def _aggregate_votes(dialogue: dict, votes: list[dict], config: AnnotationConfig) -> dict:
     base = {
         "dialogue_id": dialogue["dialogue_id"],
@@ -1032,32 +1523,54 @@ def _aggregate_votes(dialogue: dict, votes: list[dict], config: AnnotationConfig
         group = groups.setdefault(
             key,
             {
+                "key": key,
                 "speaker_entity_id": vote["speaker_entity_id"],
                 "speaker_display": vote["speaker_display"],
                 "speaker_status": vote["speaker_status"],
                 "score": 0.0,
+                "rule_confidence": 0.0,
                 "models": set(),
                 "evidence": [],
                 "needs_review": False,
             },
         )
         group["score"] += weight * _safe_float(vote.get("confidence"), 0.0)
+        if _is_rule_vote(vote):
+            group["rule_confidence"] = max(
+                group["rule_confidence"], _safe_float(vote.get("confidence"), 0.0)
+            )
         group["models"].add(vote["model"])
         group["evidence"].extend(vote.get("evidence", []))
         group["needs_review"] = group["needs_review"] or bool(vote.get("needs_review"))
 
+    rule_override_key = _rule_override_key(votes)
     ranked = sorted(groups.values(), key=lambda row: row["score"], reverse=True)
+    if rule_override_key and rule_override_key in groups:
+        rule_group = groups[rule_override_key]
+        ranked = [rule_group] + [
+            row for row in ranked if row["key"] != rule_override_key
+        ]
     top = ranked[0]
     second_score = ranked[1]["score"] if len(ranked) > 1 else 0.0
     denominator = total_weight if total_weight > 0 else 1.0
     agreement = top["score"] / denominator
     margin = (top["score"] - second_score) / denominator
     support_count = len(top["models"])
-    participating_model_count = len({vote["model"] for vote in votes})
+    non_rule_models = {vote["model"] for vote in votes if not _is_rule_vote(vote)}
+    participating_model_count = len(non_rule_models) or len({vote["model"] for vote in votes})
     required_support = min(config.min_support_models, max(1, participating_model_count))
-    forced_review_reason = _forced_review_reason(dialogue, top, participating_model_count)
+    accepted_by_rule = bool(rule_override_key and top["key"] == rule_override_key)
+    forced_review_reason = (
+        "" if accepted_by_rule else _forced_review_reason(dialogue, top, participating_model_count)
+    )
 
-    if forced_review_reason:
+    if accepted_by_rule:
+        accepted = (
+            not top["needs_review"]
+            and top["speaker_status"] in {"known", "npc"}
+            and top["rule_confidence"] >= ALTERNATION_RULE_CONFIDENCE
+        )
+    elif forced_review_reason:
         accepted = False
     elif participating_model_count <= 1:
         accepted = (
@@ -1090,10 +1603,14 @@ def _aggregate_votes(dialogue: dict, votes: list[dict], config: AnnotationConfig
         "speaker_entity_id": top["speaker_entity_id"],
         "speaker_display": top["speaker_display"] or REVIEW_LABEL,
         "speaker_status": top["speaker_status"] if accepted else "review",
-        "confidence": round(agreement, 4),
+        "confidence": round(
+            max(agreement, top["rule_confidence"]) if accepted_by_rule else agreement,
+            4,
+        ),
         "candidate_speakers": candidate_speakers,
         "evidence": _unique_strings(top["evidence"], 8),
         "needs_review": not accepted,
+        "rule_applied": accepted_by_rule and accepted,
         "review_reason": ""
         if accepted
         else _review_reason(
@@ -1144,18 +1661,7 @@ def _self_intro_mentions(text: Any, display: str) -> bool:
 
 
 def _context_attributes_speech_to(dialogue: dict, display: str) -> bool:
-    context_parts = [_outside_quote_text(dialogue)]
-    context_parts.extend(
-        row.get("text", "")
-        for row in _as_list(dialogue.get("prev_context"))
-        if isinstance(row, dict)
-    )
-    context_parts.extend(
-        row.get("text", "")
-        for row in _as_list(dialogue.get("next_context"))
-        if isinstance(row, dict)
-    )
-    for text in context_parts:
+    for text in _direct_attribution_contexts(dialogue):
         cleaned = _clean_text(text)
         if not cleaned:
             continue
@@ -1168,11 +1674,39 @@ def _speech_verb_near_name(text: str, display: str) -> bool:
     if display not in text:
         return False
     for verb in SPEECH_VERBS:
-        if re.search(f"{re.escape(display)}.{{0,30}}{re.escape(verb)}", text):
-            return True
-        if re.search(f"{re.escape(verb)}.{{0,30}}{re.escape(display)}", text):
-            return True
+        name_then_verb = f"{re.escape(display)}.{{0,30}}{re.escape(verb)}"
+        for match in re.finditer(name_then_verb, text):
+            if not _speech_verb_match_is_indirect(text, match.end(), verb):
+                return True
     return False
+
+
+def _speech_verb_match_is_indirect(text: str, match_end: int, verb: str) -> bool:
+    verb_start = match_end - len(verb)
+    if verb_start > 0 and text[verb_start - 1] in {"被", "询"}:
+        return True
+    if verb not in {"说", "问"}:
+        return False
+    suffix = text[match_end : match_end + 4]
+    return any(suffix.startswith(value) for value in INDIRECT_SPEECH_SUFFIXES)
+
+
+def _is_rule_vote(vote: dict) -> bool:
+    return _clean_text(vote.get("model")).startswith(RULE_MODEL_PREFIX)
+
+
+def _rule_override_key(votes: list[dict]) -> str:
+    keys = {
+        _vote_group_key(vote)
+        for vote in votes
+        if _is_rule_vote(vote)
+        and not vote.get("needs_review")
+        and _clean_status(vote.get("speaker_status")) in {"known", "npc"}
+        and _safe_float(vote.get("confidence"), 0.0) >= ALTERNATION_RULE_CONFIDENCE
+    }
+    if len(keys) == 1:
+        return next(iter(keys))
+    return ""
 
 
 def _vote_group_key(vote: dict) -> str:

@@ -6,15 +6,16 @@
     "qwen2.5-coder:32b"
   ],
   "dry_run": false,
-  "cache_only": false,
+  "cache_only": true,
   "dialogue_count": 1345,
   "window_count": 256,
   "annotation_window_size": 8,
   "max_dialogue_paragraph_gap": 4,
   "request_count": 768,
   "prompt_count": 768,
-  "vote_count": 4035,
+  "rule_vote_count": 588,
+  "vote_count": 4623,
   "annotation_count": 1345,
-  "review_count": 587,
+  "review_count": 385,
   "failed_request_count": 0
 }

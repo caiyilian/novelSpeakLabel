@@ -11,6 +11,7 @@ from novel_speaker_label.annotation import (
     _extract_parsed_votes,
     _parse_json_response,
     _render_labeled_text,
+    _rule_votes_for_window,
     _select_mystery_candidates,
     annotate_volume,
 )
@@ -18,6 +19,66 @@ from novel_speaker_label.discovery import CharacterStore, _split_scene_into_requ
 from novel_speaker_label.jsonl import read_json, read_jsonl, write_json, write_jsonl
 from novel_speaker_label.ollama_client import OllamaConfig, OllamaClient, collect_streaming_response
 from novel_speaker_label.preprocess import PreprocessConfig, preprocess_volume
+
+
+def _annotation_dialogue(
+    dialogue_id: str,
+    dialogue_index: int,
+    paragraph_index: int,
+    text: str,
+    *,
+    paragraph_text: str | None = None,
+    prev_context: list[dict] | None = None,
+    next_context: list[dict] | None = None,
+) -> dict:
+    quote_text = f"「{text}」"
+    full_paragraph = paragraph_text or quote_text
+    return {
+        "dialogue_id": dialogue_id,
+        "dialogue_index": dialogue_index,
+        "volume_id": "volume_01",
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c002-s001",
+        "scene_index": 1,
+        "paragraph_id": f"p{paragraph_index}",
+        "paragraph_index": paragraph_index,
+        "local_dialogue_index": 1,
+        "text": text,
+        "quote_text": quote_text,
+        "paragraph_text": full_paragraph,
+        "dialogue_kind": "standalone",
+        "char_start": 0,
+        "char_end": len(full_paragraph),
+        "prev_context": prev_context or [],
+        "next_context": next_context or [],
+    }
+
+
+def _annotation_vote(
+    dialogue: dict,
+    entity_id: str,
+    display: str,
+    *,
+    model: str = "model-a",
+    confidence: float = 0.9,
+) -> dict:
+    return {
+        "dialogue_id": dialogue["dialogue_id"],
+        "paragraph_id": dialogue["paragraph_id"],
+        "char_start": dialogue["char_start"],
+        "char_end": dialogue["char_end"],
+        "model": model,
+        "weight": 1.0,
+        "speaker_entity_id": entity_id,
+        "speaker_display": display,
+        "speaker_status": "known",
+        "confidence": confidence,
+        "candidate_speakers": [],
+        "evidence": ["测试投票"],
+        "needs_review": False,
+    }
 
 
 class PreprocessTests(unittest.TestCase):
@@ -301,6 +362,193 @@ class AnnotationTests(unittest.TestCase):
         self.assertTrue(annotation["needs_review"])
         self.assertEqual(annotation["speaker_status"], "review")
         self.assertEqual(annotation["review_reason"], "single_model_mystery_candidate")
+
+    def test_rule_votes_use_addressed_name_and_turns_for_village_trade(self) -> None:
+        payload = {
+            "candidate_characters": [
+                {
+                    "entity_id": "char_0001",
+                    "display_name": "罗伦斯",
+                    "aliases": ["罗伦斯先生"],
+                }
+            ]
+        }
+        dialogues = [
+            _annotation_dialogue("volume_01-d000002", 1, 78, "这是最后一件了吧？"),
+            _annotation_dialogue(
+                "volume_01-d000003",
+                2,
+                79,
+                "嗯，这里确实有……七十件。多谢惠顾。",
+            ),
+            _annotation_dialogue(
+                "volume_01-d000004",
+                3,
+                80,
+                "不，我们才要谢谢你呢。只有罗伦斯先生你愿意到这深山里来，真是帮了我们大忙。",
+            ),
+            _annotation_dialogue(
+                "volume_01-d000005",
+                4,
+                81,
+                "不过，我也因此拿到上等的皮草啊，我会再来的。",
+            ),
+        ]
+
+        votes = _rule_votes_for_window(dialogues, payload)
+        by_id = {vote["dialogue_id"]: vote for vote in votes}
+
+        self.assertEqual(by_id["volume_01-d000002"]["speaker_display"], "小村落的村民")
+        self.assertEqual(by_id["volume_01-d000003"]["speaker_display"], "罗伦斯")
+        self.assertEqual(by_id["volume_01-d000004"]["speaker_display"], "小村落的村民")
+        self.assertEqual(by_id["volume_01-d000005"]["speaker_display"], "罗伦斯")
+
+    def test_rule_votes_do_not_let_direct_attribution_cross_dialogues(self) -> None:
+        payload = {
+            "candidate_characters": [
+                {"entity_id": "char_0001", "display_name": "罗伦斯", "aliases": []},
+                {"entity_id": "char_0003", "display_name": "骑士", "aliases": []},
+            ]
+        }
+        dialogues = [
+            _annotation_dialogue(
+                "volume_01-d000014",
+                13,
+                112,
+                "原来如此。我看你车上还有货，是盐吗？",
+                next_context=[
+                    {"text": "「不，这些是皮草。您瞧。」"},
+                    {"text": "罗伦斯一边说，一边转向货台掀开覆盖的麻布。那是非常漂亮的貂皮。如果以眼前这位骑士的薪水来看，相信貂皮的价值比他的年薪还要高。"},
+                ],
+            ),
+            _annotation_dialogue(
+                "volume_01-d000015",
+                14,
+                113,
+                "不，这些是皮草。您瞧。",
+                next_context=[
+                    {"text": "罗伦斯一边说，一边转向货台掀开覆盖的麻布。那是非常漂亮的貂皮。如果以眼前这位骑士的薪水来看，相信貂皮的价值比他的年薪还要高。"}
+                ],
+            ),
+            _annotation_dialogue(
+                "volume_01-d000016",
+                15,
+                115,
+                "喔，那这是什么？",
+                prev_context=[
+                    {"text": "「原来如此。我看你车上还有货，是盐吗？」"},
+                    {"text": "「不，这些是皮草。您瞧。」"},
+                    {"text": "罗伦斯一边说，一边转向货台掀开覆盖的麻布。那是非常漂亮的貂皮。如果以眼前这位骑士的薪水来看，相信貂皮的价值比他的年薪还要高。"},
+                ],
+            ),
+            _annotation_dialogue(
+                "volume_01-d000017",
+                16,
+                116,
+                "啊，这是山里的村民给我的麦子。",
+            ),
+            _annotation_dialogue("volume_01-d000018", 17, 118, "嗯。好了，你可以走了。"),
+        ]
+
+        votes = _rule_votes_for_window(dialogues, payload)
+        by_id = {vote["dialogue_id"]: vote for vote in votes}
+
+        self.assertEqual(by_id["volume_01-d000014"]["speaker_display"], "骑士")
+        self.assertEqual(by_id["volume_01-d000015"]["speaker_display"], "罗伦斯")
+        self.assertEqual(by_id["volume_01-d000016"]["speaker_display"], "骑士")
+        self.assertEqual(by_id["volume_01-d000017"]["speaker_display"], "罗伦斯")
+        self.assertEqual(by_id["volume_01-d000018"]["speaker_display"], "骑士")
+
+    def test_rule_votes_use_farm_greeting_anchor_and_turns(self) -> None:
+        payload = {
+            "candidate_characters": [
+                {"entity_id": "char_0001", "display_name": "罗伦斯", "aliases": []},
+                {"entity_id": "char_0005", "display_name": "农夫", "aliases": []},
+            ]
+        }
+        dialogues = [
+            _annotation_dialogue(
+                "volume_01-d000027",
+                26,
+                149,
+                "嗨！辛苦了。",
+                next_context=[
+                    {"text": "罗伦斯朝正在帕斯罗村的麦田一角，把麦子往马车上堆的农夫打招呼。"}
+                ],
+            ),
+            _annotation_dialogue("volume_01-d000028", 27, 151, "喔？"),
+            _annotation_dialogue("volume_01-d000029", 28, 152, "请问叶勒在哪里啊？"),
+            _annotation_dialogue(
+                "volume_01-d000030",
+                29,
+                153,
+                "喔！叶勒在那儿。",
+                next_context=[{"text": "农夫晒得黝黑的脸上堆满了笑容说道。"}],
+            ),
+        ]
+
+        votes = _rule_votes_for_window(dialogues, payload)
+        by_id = {vote["dialogue_id"]: vote for vote in votes}
+
+        self.assertEqual(by_id["volume_01-d000027"]["speaker_display"], "罗伦斯")
+        self.assertEqual(by_id["volume_01-d000028"]["speaker_display"], "农夫")
+        self.assertEqual(by_id["volume_01-d000029"]["speaker_display"], "罗伦斯")
+        self.assertEqual(by_id["volume_01-d000030"]["speaker_display"], "农夫")
+
+    def test_rule_vote_overrides_wrong_model_majority(self) -> None:
+        payload = {
+            "candidate_characters": [
+                {"entity_id": "char_0001", "display_name": "罗伦斯", "aliases": []},
+                {"entity_id": "char_0003", "display_name": "骑士", "aliases": []},
+            ]
+        }
+        dialogue = _annotation_dialogue(
+            "volume_01-d000020",
+            19,
+            120,
+            "发生什么事了吗？平常在这里应该见不到骑士吧？",
+            prev_context=[
+                {"text": "罗伦斯一边有意无意地把玩刚刚的皮袋，一边转回骑士的方向。"}
+            ],
+            next_context=[
+                {"text": "年轻骑士可能是因为被询问而感到不悦，稍稍皱起眉头，再看到罗伦斯手中的皮袋，眉头皱得更深了。"}
+            ],
+        )
+        rule_vote = _rule_votes_for_window([dialogue], payload)[0]
+        model_votes = [
+            _annotation_vote(dialogue, "char_0003", "骑士", model="model-a"),
+            _annotation_vote(dialogue, "char_0003", "骑士", model="model-b"),
+            _annotation_vote(dialogue, "char_0003", "骑士", model="model-c"),
+        ]
+
+        annotation = _aggregate_votes(
+            dialogue,
+            [*model_votes, rule_vote],
+            AnnotationConfig(output_dir=Path("unused")),
+        )
+
+        self.assertFalse(annotation["needs_review"])
+        self.assertTrue(annotation["rule_applied"])
+        self.assertEqual(annotation["speaker_display"], "罗伦斯")
+
+    def test_reported_speech_reference_is_not_a_single_model_anchor(self) -> None:
+        dialogue = _annotation_dialogue(
+            "volume_01-d000025",
+            24,
+            132,
+            "异教徒祭典……还真会猜啊。",
+            next_context=[
+                {"text": "离开修道院一会儿后，罗伦斯喃喃念着骑士说的话，苦笑了一下。"}
+            ],
+        )
+        vote = _annotation_vote(dialogue, "char_0003", "骑士", confidence=0.95)
+
+        annotation = _aggregate_votes(
+            dialogue, [vote], AnnotationConfig(output_dir=Path("unused"))
+        )
+
+        self.assertTrue(annotation["needs_review"])
+        self.assertEqual(annotation["review_reason"], "single_model_without_anchor")
 
     def test_dialogue_windows_do_not_cross_scenes(self) -> None:
         dialogues = [
