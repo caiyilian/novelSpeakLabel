@@ -1,0 +1,80 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000699",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.85
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.15
+        }
+      ],
+      "evidence": ["赫萝在前文被提及并主导讨论，语气符合其冷静、策略性特征；罗伦斯未直接发言，但对话内容与罗伦斯的理性分析一致"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000700",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        },
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.1
+        }
+      ],
+      "evidence": ["罗伦斯在前文被描述为理性商人，对话内容符合其谨慎、分析型风格；赫萝未直接发言，但语境中存在对赫萝的质疑，罗伦斯回应了该质疑"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000701",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.8
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.2
+        }
+      ],
+      "evidence": ["赫萝在前文主导对话并表现出情绪化倾向，此句语气符合其略带调侃、情绪化的风格；罗伦斯未发言，但语境中赫萝处于主导地位"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "赫萝主导讨论，罗伦斯回应并分析，最后赫萝总结性发言，对话轮次清晰，符合角色性格与上下文逻辑"
+}

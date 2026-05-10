@@ -1,0 +1,95 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000730",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "场景记忆中提到罗伦斯急躁地向赫萝解释计策，符合此句语气和内容",
+        "上下文显示罗伦斯是主导对话的一方，赫萝未直接发言"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000731",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "紧接上一句，罗伦斯在主导对话，语气急促，符合连续对话逻辑",
+        "场景记忆中提到罗伦斯急躁地向赫萝解释前往米隆商行的计策"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000732",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.8
+        }
+      ],
+      "evidence": [
+        "赫萝在场景中被提及为罗伦斯的对话对象，且表现出疑惑和反应",
+        "此句为对上一句的回应，符合赫萝的反应风格"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000733",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "此句延续了罗伦斯对计策的解释，语气自信且内容与前文一致",
+        "场景记忆中提到罗伦斯急躁地向赫萝解释前往米隆商行的计策"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，罗伦斯主导对话，赫萝作为回应者出现，符合场景记忆中的互动模式。"
+}
+```

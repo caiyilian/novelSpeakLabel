@@ -1,0 +1,33 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001208",
+      "speaker_entity_id": "",
+      "speaker_display": "",
+      "speaker_status": "npc",
+      "confidence": 0.6,
+      "candidate_speakers": [
+        {"entity_id": "", "display": "袭击者", "status": "npc", "score": 0.5}
+      ],
+      "evidence": ["黑影发出的声音"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    },
+    {
+      "dialogue_id": "volume_01-d001209",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {"entity_id": "char_0001", "display": "罗伦斯", "status": "known", "score": 0.8}
+      ],
+      "evidence": ["罗伦斯在黑暗中发现袭击者并受伤"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "第一句对话可能是袭击者的叫声，第二句是罗伦斯的反应。"
+}

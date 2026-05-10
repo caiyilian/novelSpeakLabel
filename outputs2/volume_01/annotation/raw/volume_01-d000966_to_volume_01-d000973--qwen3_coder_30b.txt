@@ -1,0 +1,229 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000966",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        },
+        {
+          "entity_id": "char_0015",
+          "display": "列支敦·马贺特",
+          "status": "known",
+          "score": 0.1
+        }
+      ],
+      "evidence": [
+        "前文罗伦斯情绪激动地提出疑问，语气符合其性格",
+        "对话内容与罗伦斯的焦虑和愤怒情绪一致"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000967",
+      "speaker_entity_id": "char_0015",
+      "speaker_display": "列支敦·马贺特",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0015",
+          "display": "列支敦·马贺特",
+          "status": "known",
+          "score": 0.95
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.05
+        }
+      ],
+      "evidence": [
+        "马贺特冷静回应，符合其理性形象",
+        "对话中使用「请您冷静」，符合马贺特安抚角色设定"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000968",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.85
+        },
+        {
+          "entity_id": "char_0015",
+          "display": "列支敦·马贺特",
+          "status": "known",
+          "score": 0.15
+        }
+      ],
+      "evidence": [
+        "罗伦斯在前文已提出梅迪欧商行的动机，此句延续其逻辑推理",
+        "语气带有质疑和分析，符合罗伦斯性格"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000969",
+      "speaker_entity_id": "char_0015",
+      "speaker_display": "列支敦·马贺特",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0015",
+          "display": "列支敦·马贺特",
+          "status": "known",
+          "score": 0.9
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.1
+        }
+      ],
+      "evidence": [
+        "马贺特在前文已表达对局势的冷静分析，此句延续其风格",
+        "语气沉稳，符合马贺特角色设定"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000970",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        },
+        {
+          "entity_id": "char_0015",
+          "display": "列支敦·马贺特",
+          "status": "known",
+          "score": 0.1
+        }
+      ],
+      "evidence": [
+        "罗伦斯在前文已表达疑问，此句为回应，符合其情绪发展",
+        "语气带有困惑与进一步追问"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000971",
+      "speaker_entity_id": "char_0015",
+      "speaker_display": "列支敦·马贺特",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0015",
+          "display": "列支敦·马贺特",
+          "status": "known",
+          "score": 0.95
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.05
+        }
+      ],
+      "evidence": [
+        "马贺特在前文已表达冷静分析，此句为总结性回应",
+        "语气沉稳，符合其角色设定"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000972",
+      "speaker_entity_id": "char_0015",
+      "speaker_display": "列支敦·马贺特",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0015",
+          "display": "列支敦·马贺特",
+          "status": "known",
+          "score": 0.9
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.1
+        }
+      ],
+      "evidence": [
+        "马贺特在前文已表达冷静分析，此句为深入推理",
+        "语气理性、沉稳，符合马贺特角色设定"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000973",
+      "speaker_entity_id": "char_0015",
+      "speaker_display": "列支敦·马贺特",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0015",
+          "display": "列支敦·马贺特",
+          "status": "known",
+          "score": 0.95
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.05
+        }
+      ],
+      "evidence": [
+        "马贺特在前文已表达冷静分析，此句为解释性回应",
+        "语气理性、沉稳，符合其角色设定"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，罗伦斯提出疑问，马贺特冷静回应并分析，符合角色性格与上下文逻辑。"
+}

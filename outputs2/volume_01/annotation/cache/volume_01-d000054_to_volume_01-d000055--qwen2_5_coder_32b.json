@@ -1,0 +1,53 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000054",
+      "speaker_entity_id": "char_0005",
+      "speaker_display": "叶勒",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0005",
+          "display": "叶勒",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "嗷呜～～～～～～～ 是叶勒的 speech_marker"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000055",
+      "speaker_entity_id": "",
+      "speaker_display": "",
+      "speaker_status": "review",
+      "confidence": 0.2,
+      "candidate_speakers": [
+        {
+          "entity_id": "",
+          "display": "",
+          "status": "npc",
+          "score": 0.1
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.2
+        }
+      ],
+      "evidence": [
+        "对话内嵌引号，无法独立判断说话人"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    }
+  ],
+  "window_notes": "第一句是叶勒的狼嚎声，第二句是内嵌引号，无法独立判断说话人。"
+}

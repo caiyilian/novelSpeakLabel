@@ -1,0 +1,181 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000457",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "对话中提到‘贵行’，并提及‘麦子的交易’，与场景记忆中罗伦斯与米隆商行的交易历史一致。",
+        "对话内容为商业谈判的开场白，符合罗伦斯的理性商人形象。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000458",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "这是对前一句的礼貌回应，符合对话轮次逻辑，罗伦斯作为谈判者继续发言。",
+        "‘那时’指代前文提到的麦子交易，符合罗伦斯的说话风格。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000459",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "延续前两句的商业谈判语气，符合罗伦斯的说话风格。",
+        "‘贵行’再次出现，表明说话人是与商行谈判的罗伦斯。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000460",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "对话轮次延续，罗伦斯作为谈判者继续发言。",
+        "‘您’指代采购人员，符合罗伦斯的谈判策略。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000461",
+      "speaker_entity_id": "char_0011",
+      "speaker_display": "采购人员",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0011",
+          "display": "采购人员",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "‘本商行’表明说话人是代表商行的采购人员。",
+        "符合采购人员的正式、礼貌、直接的说话风格。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000462",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.8
+        }
+      ],
+      "evidence": [
+        "‘这么说定’是罗伦斯打算结束谈判的常用表达。",
+        "上下文显示罗伦斯正准备回应，赫萝突然插话。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000463",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "赫萝突然插话，打断罗伦斯的发言，符合她的行为模式。",
+        "‘失陪一下’是赫萝常用的打断方式。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000464",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "‘咱’是赫萝的典型自称，符合她的说话风格。",
+        "赫萝在插话后继续提出问题，符合她的行为模式。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，罗伦斯与采购人员进行交易谈判，赫萝在关键时刻插话，打断谈判节奏。整体对话符合场景记忆中的角色行为模式。"
+}

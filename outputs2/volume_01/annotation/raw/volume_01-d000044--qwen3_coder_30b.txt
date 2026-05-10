@@ -1,0 +1,28 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000044",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 1.0
+        }
+      ],
+      "evidence": [
+        "前文描述罗伦斯因叶勒之事感到困扰，此句为叹息式表达，符合其理性中带焦虑的说话风格",
+        "罗伦斯是该段落唯一出现的主角角色，且上下文明确其情绪状态",
+        "台词中的「算了……」与罗伦斯的 speech_markers 中的「算了……」一致"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "该句为罗伦斯在面对叶勒威胁时的内心表达，结合上下文情绪和角色行为逻辑，确认为罗伦斯所言"
+}

@@ -1,0 +1,30 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000846",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.85
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.15
+        }
+      ],
+      "evidence": ["前文赫萝在看图并说话，且上下文描述赫萝对罗伦斯的画作做出反应；罗伦斯未直接发言，且无明确自我介绍或口癖证据支持其说话。"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "赫萝在看图并做出评价，罗伦斯未直接发言，结合上下文判断为赫萝说话。"
+}

@@ -1,0 +1,57 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001032",
+      "speaker_entity_id": "char_0015",
+      "speaker_display": "列支敦·马贺特",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0015",
+          "display": "列支敦·马贺特",
+          "status": "known",
+          "score": 0.9
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.1
+        }
+      ],
+      "evidence": [
+        "前文提到马贺特抬起头说",
+        "对话内容符合马贺特理性、沉稳的说话风格",
+        "与后一句对话形成问答轮次"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001033",
+      "speaker_entity_id": "char_0015",
+      "speaker_display": "列支敦·马贺特",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0015",
+          "display": "列支敦·马贺特",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "与前一句形成问答轮次",
+        "符合马贺特沉稳、理性、略带质疑的说话风格",
+        "前文已明确马贺特为说话人"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "马贺特与罗伦斯的对话轮次清晰，前句为马贺特提出策略问题，后句为马贺特回应并点头确认，符合其角色特征。"
+}

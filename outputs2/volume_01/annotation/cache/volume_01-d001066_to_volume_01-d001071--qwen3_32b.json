@@ -1,0 +1,167 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001066",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        },
+        {
+          "entity_id": "char_0020",
+          "display": "米隆商行人员",
+          "status": "known",
+          "score": 0.6
+        }
+      ],
+      "evidence": [
+        "上下文显示罗伦斯正在与米隆商行人员确认路线，符合其理性、谨慎的说话风格。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001067",
+      "speaker_entity_id": "char_0020",
+      "speaker_display": "米隆商行人员",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0020",
+          "display": "米隆商行人员",
+          "status": "known",
+          "score": 0.85
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.5
+        }
+      ],
+      "evidence": [
+        "此句包含明确的战术指令，符合米隆商行人员的理性、冷静风格。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001068",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.8
+        },
+        {
+          "entity_id": "char_0020",
+          "display": "米隆商行人员",
+          "status": "known",
+          "score": 0.4
+        }
+      ],
+      "evidence": [
+        "此句是对前一句的回应，符合罗伦斯的对话风格，语气略带调侃。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001069",
+      "speaker_entity_id": "char_0020",
+      "speaker_display": "米隆商行人员",
+      "speaker_status": "known",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0020",
+          "display": "米隆商行人员",
+          "status": "known",
+          "score": 0.8
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.5
+        }
+      ],
+      "evidence": [
+        "此句是对前一句的回应，语气简洁，符合米隆商行人员的冷静风格。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001070",
+      "speaker_entity_id": "char_0020",
+      "speaker_display": "米隆商行人员",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0020",
+          "display": "米隆商行人员",
+          "status": "known",
+          "score": 0.85
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.5
+        }
+      ],
+      "evidence": [
+        "此句是行动指令，符合米隆商行人员的理性、冷静风格。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001071",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.85
+        },
+        {
+          "entity_id": "char_0020",
+          "display": "米隆商行人员",
+          "status": "known",
+          "score": 0.5
+        }
+      ],
+      "evidence": [
+        "此句是罗伦斯对行动的评价，语气中带有惊讶和理性分析，符合其风格。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，罗伦斯与米隆商行人员交替发言，符合战术合作场景的对话模式。"
+}

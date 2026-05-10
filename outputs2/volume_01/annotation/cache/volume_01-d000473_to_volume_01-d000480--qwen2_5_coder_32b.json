@@ -1,0 +1,185 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000473",
+      "speaker_entity_id": "",
+      "speaker_display": "",
+      "speaker_status": "review",
+      "confidence": 0.0,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.5
+        },
+        {
+          "entity_id": "",
+          "display": "npc:旁白",
+          "status": "npc",
+          "score": 0.3
+        }
+      ],
+      "evidence": [
+        "对话内容是引用，无法确定说话人"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    },
+    {
+      "dialogue_id": "volume_01-d000474",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 1.0
+        }
+      ],
+      "evidence": [
+        "对话内容符合赫萝的风格和情境"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000475",
+      "speaker_entity_id": "char_0011",
+      "speaker_display": "采购人员",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0011",
+          "display": "采购人员",
+          "status": "known",
+          "score": 1.0
+        }
+      ],
+      "evidence": [
+        "对话内容符合采购人员的风格和情境"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000476",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 1.0
+        }
+      ],
+      "evidence": [
+        "对话内容符合赫萝的风格和情境"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000477",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        },
+        {
+          "entity_id": "",
+          "display": "npc:旁白",
+          "status": "npc",
+          "score": 0.1
+        }
+      ],
+      "evidence": [
+        "对话内容符合罗伦斯的风格和情境"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000478",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 1.0
+        }
+      ],
+      "evidence": [
+        "对话内容符合罗伦斯的风格和情境"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000479",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 1.0
+        }
+      ],
+      "evidence": [
+        "对话内容符合赫萝的风格和情境"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000480",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 1.0
+        }
+      ],
+      "evidence": [
+        "对话内容符合罗伦斯的风格和情境"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，主要角色为赫萝、采购人员和罗伦斯。"
+}

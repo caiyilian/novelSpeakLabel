@@ -1,0 +1,183 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000064",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "使用自称‘咱’，符合赫萝的speech_marker",
+        "上下文显示女孩在回应罗伦斯的提问，符合赫萝的对话风格"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000065",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "对话轮次显示为对前一句的回应，符合罗伦斯的语气和态度",
+        "上下文显示罗伦斯对赫萝的回应表现出质疑"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000066",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "对话轮次显示为对罗伦斯的回应，符合赫萝的说话风格",
+        "提到‘那匹马’，暗示她对场景的观察和描述"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000067",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "对话轮次显示为对赫萝的回应，符合罗伦斯的沉默或犹豫态度",
+        "上下文显示罗伦斯拔出短剑，可能处于紧张状态"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000068",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "对话轮次显示为对沉默的回应，符合罗伦斯的理性提问风格",
+        "上下文显示罗伦斯对赫萝的身份仍有疑问"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000069",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "使用自称‘咱’，符合赫萝的speech_marker",
+        "语气带有调侃和自信，符合赫萝的说话风格"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000070",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "对话轮次显示为对赫萝的回应，符合罗伦斯的理性反应",
+        "上下文显示罗伦斯对赫萝的回应感到困惑"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000071",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "使用自称‘咱’，符合赫萝的speech_marker",
+        "语气天真、带有自嘲，符合赫萝的性格"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，罗伦斯与赫萝交替发言，符合两人在场景中的互动模式。赫萝使用自称‘咱’，是判断其发言的关键依据。"
+}
+```

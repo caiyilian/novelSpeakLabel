@@ -1,0 +1,137 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000481",
+      "speaker_entity_id": "char_0011",
+      "speaker_display": "采购人员",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0011",
+          "display": "采购人员",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "台词『谢谢。那么，先生啊。』符合采购人员的礼貌开场白，且与上下文中的交易场景一致。",
+        "采购人员的 speech_markers 包含『谢谢。那么，先生啊。』，与台词完全匹配。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000482",
+      "speaker_entity_id": "char_0011",
+      "speaker_display": "采购人员",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0011",
+          "display": "采购人员",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "台词『如先生所见，这是一件优质皮草。』是采购人员在介绍商品，符合其角色职责。",
+        "上下文显示采购人员正在鉴定皮草，因此说话人应为他。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000483",
+      "speaker_entity_id": "char_0011",
+      "speaker_display": "采购人员",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0011",
+          "display": "采购人员",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "台词『是的，我完全赞同。』是对前一句的回应，符合采购人员的礼貌回应风格。",
+        "采购人员的 speech_markers 包含『是的，我完全赞同。』，与台词完全匹配。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000484",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "台词『嗯，这是多年难得一见的皮草。或许咱应该这么说：这是多年难得一闻的皮草。』中使用了赫萝的自称『咱』，符合其 speech_marker。",
+        "上下文显示赫萝在调侃皮草的气味，符合她的性格和行为模式。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000485",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "台词『明明是『气味』，但却成了『盲点』，很有趣呗？』延续了赫萝对气味的调侃，符合她的发言风格。",
+        "上下文显示赫萝在制造幽默，符合她的行为模式。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000486",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "台词『所谓百闻不如一见，先生不妨拿在手上闻闻看。』是赫萝引导采购人员嗅闻皮草，符合她的主导行为。",
+        "上下文显示赫萝在推动交易气氛，符合她的角色行为。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，采购人员开场，赫萝随后主导气氛，符合场景记忆中赫萝引导交易的设定。"
+}

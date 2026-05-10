@@ -1,0 +1,80 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001211",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        },
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.1
+        }
+      ],
+      "evidence": ["上下文描述罗伦斯遭遇袭击，该台词为罗伦斯在被刺伤后所言，符合其理性、略带悔恨的说话风格"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001212",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.85
+        },
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.15
+        }
+      ],
+      "evidence": ["罗伦斯在反击中说话，结合前文动作描写，符合其理性、略带策略性的说话风格"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001213",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        },
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.1
+        }
+      ],
+      "evidence": ["罗伦斯在反击中说话，结合上下文动作和语气，符合其理性、略带愤怒的说话风格"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "三句台词连续出现于罗伦斯与袭击者交战的场景中，说话人一致为罗伦斯，语气由悔恨到反击再到愤怒，符合角色行为逻辑。"
+}

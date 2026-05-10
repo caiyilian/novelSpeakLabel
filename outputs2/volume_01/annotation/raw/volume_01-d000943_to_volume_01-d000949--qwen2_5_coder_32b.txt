@@ -1,0 +1,105 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000943",
+      "speaker_entity_id": "",
+      "speaker_display": "",
+      "speaker_status": "ambiguous",
+      "confidence": 0.2,
+      "candidate_speakers": [
+        {"entity_id": "char_0001", "display": "罗伦斯", "status": "known", "score": 0.3},
+        {"entity_id": "char_0019", "display": "老卸货工", "status": "known", "score": 0.2}
+      ],
+      "evidence": ["对话轮次依据"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    },
+    {
+      "dialogue_id": "volume_01-d000944",
+      "speaker_entity_id": "",
+      "speaker_display": "",
+      "speaker_status": "ambiguous",
+      "confidence": 0.2,
+      "candidate_speakers": [
+        {"entity_id": "char_0001", "display": "罗伦斯", "status": "known", "score": 0.3},
+        {"entity_id": "char_0019", "display": "老卸货工", "status": "known", "score": 0.2}
+      ],
+      "evidence": ["对话轮次依据"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    },
+    {
+      "dialogue_id": "volume_01-d000945",
+      "speaker_entity_id": "char_0019",
+      "speaker_display": "老卸货工",
+      "speaker_status": "known",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {"entity_id": "char_0019", "display": "老卸货工", "status": "known", "score": 0.8}
+      ],
+      "evidence": ["沉稳、幽默的语气"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000946",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {"entity_id": "char_0001", "display": "罗伦斯", "status": "known", "score": 0.8}
+      ],
+      "evidence": ["对话轮次依据"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000947",
+      "speaker_entity_id": "char_0019",
+      "speaker_display": "老卸货工",
+      "speaker_status": "known",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {"entity_id": "char_0019", "display": "老卸货工", "status": "known", "score": 0.8}
+      ],
+      "evidence": ["沉稳、幽默的语气"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000948",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {"entity_id": "char_0001", "display": "罗伦斯", "status": "known", "score": 0.8}
+      ],
+      "evidence": ["对话轮次依据"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000949",
+      "speaker_entity_id": "char_0015",
+      "speaker_display": "列支敦·马贺特",
+      "speaker_status": "known",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {"entity_id": "char_0015", "display": "列支敦·马贺特", "status": "known", "score": 0.8}
+      ],
+      "evidence": ["对话轮次依据"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "前两句对话的说话人难以确定，根据上下文和语气判断后续对话的说话人。"
+}

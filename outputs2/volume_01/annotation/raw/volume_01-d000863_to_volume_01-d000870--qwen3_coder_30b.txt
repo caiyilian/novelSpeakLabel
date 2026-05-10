@@ -1,0 +1,156 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000863",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.9
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.1
+        }
+      ],
+      "evidence": ["赫萝在前文被提及并回应罗伦斯的提问，语气符合其调皮、情绪化特征"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000864",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": ["上下文明确为罗伦斯在解释旅行商人生活，语气理性、冷静"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000865",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": ["承接上一句罗伦斯的叙述，语气一致，内容符合其理性分析风格"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000866",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": ["继续承接前文罗伦斯的叙述，语气轻松但带有自嘲意味，符合其性格"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000867",
+      "speaker_entity_id": "volume_01-d000867",
+      "speaker_display": "旅行商人",
+      "speaker_status": "review",
+      "confidence": 0.0,
+      "candidate_speakers": [],
+      "evidence": ["为 inline 引号，非独立对白，需结合上下文判断说话人"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    },
+    {
+      "dialogue_id": "volume_01-d000868",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": ["承接赫萝的反应，语气继续由罗伦斯表达，符合其对赫萝情绪的敏感"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000869",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": ["赫萝回应罗伦斯的担忧，语气符合其调皮、略带调侃的特征"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000870",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": ["承接赫萝的提问，语气继续由罗伦斯表达，符合其关心与犹豫的情绪"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，赫萝提出疑问，罗伦斯回应并解释，赫萝再回应，罗伦斯继续表达担忧，整体情绪递进，符合两人关系与性格特征。"
+}

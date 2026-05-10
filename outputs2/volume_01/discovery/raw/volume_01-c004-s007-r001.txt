@@ -1,0 +1,56 @@
+```json
+{
+  "scene_id": "volume_01-c004-s007",
+  "scene_summary": "罗伦斯与赫萝来到帕兹欧的一条运河边，前往桥上寻找熟悉的兑换商怀兹。桥上布满兑换商和金属工匠的地摊，热闹非凡。罗伦斯与怀兹重逢，怀兹对赫萝的来历表示好奇。",
+  "active_characters": ["罗伦斯", "赫萝", "怀兹"],
+  "character_candidates": [
+    {
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": ["商人", "旅行商人", "行商人"],
+      "description": "理性、谨慎的商人，与赫萝同行，正在寻找熟悉的兑换商怀兹。他与怀兹有长期合作关系，两人关系如同朋友。",
+      "speech_style": "理性、温和、略带无奈",
+      "speech_markers": ["昨天到的，我从约连那边沿路行商过来。", "嗯，老实说，我有事想请你帮……怎么了？"],
+      "relationship_hints": ["与怀兹是朋友，有长期合作关系", "与赫萝同行，关系亲密"],
+      "evidence": ["volume_01-d000636", "volume_01-d000641", "volume_01-c004-s007-p001410"],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "赫萝",
+      "aliases": [],
+      "titles": ["丰收之神", "狼", "贤狼"],
+      "description": "神秘少女，与罗伦斯同行。她被怀兹询问来历，罗伦斯称她是「在帕斯罗村来这里的路上捡到的」。",
+      "speech_style": "狡黠、调皮",
+      "speech_markers": ["喔，她是我从帕斯罗村来这里的路上捡到的。", "算是捡到的没错。对吧？"],
+      "relationship_hints": ["与罗伦斯同行，关系亲密", "被怀兹询问来历"],
+      "evidence": ["volume_01-d000643", "volume_01-d000645", "volume_01-c004-s007-p001426"],
+      "confidence": 0.9
+    },
+    {
+      "display_name": "怀兹",
+      "aliases": [],
+      "titles": ["兑换商"],
+      "description": "帕兹欧的兑换商，与罗伦斯关系良好。他比罗伦斯年轻几岁，两人因师父相识而成为朋友。",
+      "speech_style": "热情、略带幽默",
+      "speech_markers": ["哟，罗伦斯！好久不见啊！什么时候来的？", "嘿嘿，我也得了痔疮。还传染了师父的口头禅，屁股好痛啊！"],
+      "relationship_hints": ["与罗伦斯是朋友，有长期合作关系", "对赫萝的来历感到好奇"],
+      "evidence": ["volume_01-d000634", "volume_01-d000639", "volume_01-c004-s007-p001410"],
+      "confidence": 0.9
+    }
+  ],
+  "mystery_entities": [
+    {
+      "temporary_name": "帕斯罗村女孩",
+      "description": "被罗伦斯称为「在帕斯罗村来这里的路上捡到的」的神秘女孩，身份不明，但被怀兹询问来历。",
+      "evidence": ["volume_01-d000643", "volume_01-d000645", "volume_01-c004-s007-p001426"],
+      "confidence": 0.7
+    }
+  ],
+  "relationships": [
+    "罗伦斯与怀兹是朋友，有长期合作关系",
+    "罗伦斯与赫萝同行，关系亲密",
+    "怀兹对赫萝的来历感到好奇"
+  ],
+  "notes": "赫萝的身份仍存疑，罗伦斯称其为「捡到的」，暗示其来历不明。怀兹对赫萝的出现表现出兴趣，可能为后续剧情埋下伏笔。"
+}
+```

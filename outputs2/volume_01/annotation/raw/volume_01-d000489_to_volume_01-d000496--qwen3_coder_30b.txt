@@ -1,0 +1,169 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000489",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.95
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.03
+        }
+      ],
+      "evidence": ["赫萝在前文描述貂皮来源，语气自信且富有知识性；提及果实、气味、肌肉紧实等细节符合赫萝对自然的熟悉度"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000490",
+      "speaker_entity_id": "char_0011",
+      "speaker_display": "采购人员",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0011",
+          "display": "采购人员",
+          "status": "known",
+          "score": 0.9
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.05
+        }
+      ],
+      "evidence": ["上下文明确指出是鉴定员在回应赫萝说明后作出反应；该角色有明确身份与行为描述"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000491",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": ["赫萝继续以专业口吻解释皮草价值，语气与前文一致；内容涉及皮草加工、实用性等细节，符合赫萝的叙述风格"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000492",
+      "speaker_entity_id": "char_0011",
+      "speaker_display": "采购人员",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0011",
+          "display": "采购人员",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": ["采购人员在赫萝说明后回应，符合上下文逻辑；语气简洁、正式，符合其身份"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000493",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": ["赫萝继续描述貂皮的特性，语气自信、专业，与前文一致；提及剥皮过程、肌肉紧实等细节符合赫萝的叙述风格"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000494",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": ["赫萝继续以富有感染力的方式推销皮草，强调其强韧、保暖、芳香等优点，符合其性格与叙述风格"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000495",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": ["赫萝提出问题，语气自然、自信，符合其主导谈判的风格；上下文显示她正在引导交易进程"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000496",
+      "speaker_entity_id": "char_0011",
+      "speaker_display": "采购人员",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0011",
+          "display": "采购人员",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": ["采购人员在赫萝提出价格后回应，符合交易流程；语气正式、直接，符合其身份与职责"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话围绕貂皮交易展开，赫萝主导叙述与推销，采购人员负责回应与鉴定，罗伦斯在旁观察。"
+}

@@ -1,0 +1,73 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000982",
+      "speaker_entity_id": "char_0015",
+      "speaker_display": "列支敦·马贺特",
+      "speaker_status": "known",
+      "confidence": 0.98,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0015",
+          "display": "列支敦·马贺特",
+          "status": "known",
+          "score": 0.98
+        }
+      ],
+      "evidence": [
+        "上下文明确提到马贺特在发言，且台词内容与他对罗伦斯的立场一致，强调商行已掌握情报，不承担罗伦斯的安危责任。",
+        "上下文描述中提到“马贺特露出了一丝丝悲伤的表情轻轻点头”，随后引出该台词，符合其发言逻辑。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000983",
+      "speaker_entity_id": "char_0015",
+      "speaker_display": "列支敦·马贺特",
+      "speaker_status": "known",
+      "confidence": 0.97,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0015",
+          "display": "列支敦·马贺特",
+          "status": "known",
+          "score": 0.97
+        }
+      ],
+      "evidence": [
+        "上下文明确提到“马贺特叹了一口气，沉稳地说：”，紧接着是该台词，符合其发言逻辑。",
+        "台词内容延续了前一句的立场，强调商行已投入大量资金，必须优先考虑利益，符合马贺特的理性与冷静风格。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000984",
+      "speaker_entity_id": "char_0015",
+      "speaker_display": "列支敦·马贺特",
+      "speaker_status": "known",
+      "confidence": 0.96,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0015",
+          "display": "列支敦·马贺特",
+          "status": "known",
+          "score": 0.96
+        }
+      ],
+      "evidence": [
+        "上下文明确提到“马贺特叹了一口气，沉稳地说：”，紧接着是该台词，符合其发言逻辑。",
+        "台词内容延续了前两句的立场，明确表示选择商行利益，符合马贺特的理性与冷静风格。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "三句台词连续出现，均来自同一说话人列支敦·马贺特，上下文明确表明其发言，符合对话轮次和叙述线索的一致性。"
+}
+```

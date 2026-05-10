@@ -1,0 +1,181 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000809",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "赫萝趴在桌上，罗伦斯主动开口询问她的状态，符合两人对话轮次的开始",
+        "罗伦斯在场景中是主动的一方，常以关心或调侃的语气说话"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000810",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.98,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.98
+        }
+      ],
+      "evidence": [
+        "赫萝趴在桌上回答，上下文明确指出是她回应罗伦斯的提问",
+        "使用了赫萝的典型自称‘汝’，符合她的说话风格"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000811",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "对话轮次由罗伦斯继续推进，符合上下文的对话节奏",
+        "罗伦斯在场景中主动询问赫萝的计划，符合他的性格"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000812",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.97,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.97
+        }
+      ],
+      "evidence": [
+        "赫萝回应罗伦斯的问题，上下文明确指出是她说话",
+        "使用了赫萝的自称‘我’，符合她的说话风格"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000813",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "罗伦斯回应赫萝的计划，上下文明确指出是他在说话",
+        "使用了罗伦斯的自称‘咱’，符合他的说话风格"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000814",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.96,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.96
+        }
+      ],
+      "evidence": [
+        "赫萝继续对话，上下文明确指出是她说话",
+        "使用了赫萝的自称‘咱’，符合她的说话风格"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000815",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.94,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.94
+        }
+      ],
+      "evidence": [
+        "赫萝对罗伦斯的提议表示不满，上下文明确指出是她说话",
+        "语气符合赫萝的调皮和情绪化风格"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000816",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "罗伦斯回应赫萝的抱怨，上下文明确指出是他在说话",
+        "语气温和，符合罗伦斯的理性风格"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，罗伦斯与赫萝交替发言，符合两人在场景中的互动模式。所有台词均可通过上下文和说话风格明确归属。"
+}

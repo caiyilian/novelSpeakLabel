@@ -1,0 +1,183 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000265",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.92,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.92
+        }
+      ],
+      "evidence": [
+        "赫萝在上下文中频繁使用自称「咱」，符合角色口癖",
+        "上下文显示赫萝在谈论自己吃东西的方式，符合说话人身份"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000266",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.93,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.93
+        }
+      ],
+      "evidence": [
+        "延续上一句的说话人，符合赫萝的说话风格和自称「咱」",
+        "上下文显示赫萝在谈论自己吃马铃薯的经历"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000267",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.91,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.91
+        }
+      ],
+      "evidence": [
+        "延续上一句的说话人，符合赫萝的说话风格",
+        "上下文显示赫萝在回应罗伦斯的对话"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000268",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.90,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.90
+        }
+      ],
+      "evidence": [
+        "延续上一句的说话人，符合赫萝的说话风格和自称「咱」",
+        "上下文显示赫萝在继续谈论自己与马铃薯的关系"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000269",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.94,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.94
+        }
+      ],
+      "evidence": [
+        "上下文显示罗伦斯在对话中提问，符合说话人轮次",
+        "罗伦斯在前文刚刚开始与赫萝对话"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000270",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "延续上一句的说话人，符合罗伦斯的说话风格",
+        "上下文显示罗伦斯在继续与赫萝对话"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000271",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.88,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.88
+        }
+      ],
+      "evidence": [
+        "上下文显示赫萝在回应罗伦斯的提问",
+        "赫萝的说话风格和自称「咱」符合角色特征"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000272",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.90,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.90
+        }
+      ],
+      "evidence": [
+        "延续上一句的说话人，符合赫萝的说话风格",
+        "上下文显示赫萝在继续对话"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，赫萝与罗伦斯交替发言，符合上下文中的互动模式。赫萝使用自称「咱」，罗伦斯则使用「你」称呼赫萝，符合角色特征。"
+}
+```

@@ -1,0 +1,299 @@
+你是轻小说说话人标注项目的阶段 1：角色发现与建库助手。
+你的任务不是给每句台词最终打标签，而是从当前场景中发现角色、别名、称谓、关系线索、说话风格线索、场景摘要，以及尚未命名但可追踪的神秘人物。
+
+规则：
+1. 只输出严格 JSON，不要 Markdown，不要解释性前后缀。
+2. scene_id 必须填写输入 scene.request_id。
+3. 不要编造没有文本证据的人名。
+4. 如果人物未命名但看起来可在后文追踪，放入 mystery_entities。
+5. character_candidates 只放可以从文本中看到名字、称谓或稳定身份线索的人物。
+6. titles 只放身份/职业/称谓，不要把职业称谓当成人物别名。
+7. speech_markers 只记录高区分度口癖/自称/固定句尾/固定短语；普通词不要记录，也不要把口癖放进 aliases/titles。
+8. evidence 使用 paragraph_id 或 dialogue_id 相关的短证据，不要长篇复制原文。
+
+输出 JSON 结构：
+{
+  "scene_id": "string",
+  "scene_summary": "string",
+  "active_characters": ["string"],
+  "character_candidates": [
+    {
+      "display_name": "string",
+      "aliases": ["string"],
+      "titles": ["string"],
+      "description": "string",
+      "speech_style": "string",
+      "speech_markers": ["string"],
+      "relationship_hints": ["string"],
+      "evidence": ["string"],
+      "confidence": 0.0
+    }
+  ],
+  "mystery_entities": [
+    {
+      "temporary_name": "string",
+      "description": "string",
+      "evidence": ["string"],
+      "confidence": 0.0
+    }
+  ],
+  "relationships": ["string"],
+  "notes": "string"
+}
+
+输入场景 JSON：
+{
+  "volume_id": "volume_01",
+  "scene": {
+    "request_id": "volume_01-c002-s003-r001",
+    "scene_id": "volume_01-c002-s003",
+    "chapter_id": "volume_01-c002",
+    "chapter_title": "第一幕",
+    "chunk_index": 1,
+    "chunk_count": 3
+  },
+  "paragraphs": [
+    {
+      "paragraph_id": "volume_01-c002-s003-p000235",
+      "text": "罗伦斯是只身行走各地的商人，已经有过不只一、两次被无赖或盗贼包围的经验。他相信自己的胆识和魄力都比一般人高。虽然头上有着人类不可能有的动物耳朵，但面对区区一名女孩，不足以让罗伦斯感到害怕。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s003-p000236",
+      "text": "然而，尽管女孩没有回答罗伦斯，罗伦斯却没再继续发问。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s003-p000237",
+      "text": "那是因为缓缓站起身子的赤裸女孩美丽得让人发不出声音来。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s003-p000238",
+      "text": "货台上，被月光照射的毛发如丝绸般滑溜，就像一件高质感的斗篷垂在背上。从颈部到锁骨，并向下延伸到肩膀的线条，犹如绝代艺术家所雕刻的圣母雕像般美丽，手腕则仿佛冰雕品般光滑细致。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s003-p000239",
+      "text": "完美如无机物质的美丽身躯中间，露出一对不算大的乳房，散发着一股奇妙的动物腥味，教人不寒而栗的魅力中蕴含着温暖。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s003-p000240",
+      "text": "然而，如此引人垂涎的光景，却霎时转为令人双眉紧蹙的诡异模样。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s003-p000241",
+      "text": "女孩缓缓张开嘴巴，闭起双眼朝天空发出长嚎声："
+    },
+    {
+      "paragraph_id": "volume_01-c002-s003-p000242",
+      "text": "「嗷呜～～～～～～～」"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s003-p000243",
+      "text": "莫大的恐惧袭上罗伦斯心头，仿佛突来的冷风「唰唰唰唰唰」窜入身体般。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s003-p000244",
+      "text": "长嚎是狼群或狗儿呼唤同伴，准备攻击人类的前奏曲。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s003-p000245",
+      "text": "罗伦斯惊觉那不像叶勒发出的模仿狼嚎声，而是真正的狼嚎。他吓得掉落口中的肉干，马儿也因惊吓而跳了起来。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s003-p000246",
+      "text": "然后才猛然惊觉。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s003-p000247",
+      "text": "笼罩在月光下的女孩身影，女孩头上的耳朵，那对动物的耳朵。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s003-p000248",
+      "text": "「……呼，真是好月色，有没有酒啊？」"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s003-p000249",
+      "text": "女孩把狼嚎余音慢慢收回闭起的口中，压低下腭微笑着说。女孩的声音让罗伦斯回过神来。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s003-p000250",
+      "text": "眼前看到的既不是狼，也不是狗，只是有着类似他们耳朵的美丽女孩。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s003-p000251",
+      "text": "「没有。话说你究竟是谁？为何在我的马车上睡觉？该不会是因为不想被卖到城里，所以逃了出来吧？」"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s003-p000252",
+      "text": "罗伦斯试图努力表现得咄咄逼人，然而女孩却全然不为所动。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s003-p000253",
+      "text": "「搞什么，没酒啊。那食物……哦哟，真浪费。」"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s003-p000254",
+      "text": "女孩懒洋洋地说着，皱起小鼻子嗅了嗅，似乎发现刚刚罗伦斯咬在口中的肉干，她捡起掉落在货台上的肉干往嘴里放。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s003-p000255",
+      "text": "在女孩咬肉干的时候，罗伦斯没漏看女孩嘴唇内侧的两根锐利尖牙。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s003-p000256",
+      "text": "「你该不会是被恶魔附身的妖怪吧。」"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s003-p000257",
+      "text": "罗伦斯一边说，一边把手摸向绑在腰际的短剑上。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s003-p000258",
+      "text": "因为货币价值的变动太大，所以旅行商人会把赚来的钱换成物品携带在身，银短剑就是此类物品之一。银是属于神的金属，能够打倒所有妖魔鬼怪。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s003-p000259",
+      "text": "听见罗伦斯说的话，女孩先是愣住，然后突然笑了出来："
+    },
+    {
+      "paragraph_id": "volume_01-c002-s003-p000260",
+      "text": "「哈哈哈哈哈，咱是恶魔？」"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s003-p000261",
+      "text": "女孩口中的肉干都快掉下来了，她咧嘴大笑的模样可爱得教人有些招架不住。两根锐利的尖牙在此刻反而显得迷人。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s003-p000262",
+      "text": "然而，正因为女孩的模样迷人，所以感觉像被取笑似地令人生气。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s003-p000263",
+      "text": "「喂！有什么好笑的？」"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s003-p000264",
+      "text": "「当然好笑啊，咱还是第一次被说是恶魔呢。」"
+    }
+  ],
+  "dialogues": [
+    {
+      "dialogue_id": "volume_01-d000054",
+      "paragraph_id": "volume_01-c002-s003-p000242",
+      "text": "嗷呜～～～～～～～"
+    },
+    {
+      "dialogue_id": "volume_01-d000055",
+      "paragraph_id": "volume_01-c002-s003-p000243",
+      "text": "唰唰唰唰唰"
+    },
+    {
+      "dialogue_id": "volume_01-d000056",
+      "paragraph_id": "volume_01-c002-s003-p000248",
+      "text": "……呼，真是好月色，有没有酒啊？"
+    },
+    {
+      "dialogue_id": "volume_01-d000057",
+      "paragraph_id": "volume_01-c002-s003-p000251",
+      "text": "没有。话说你究竟是谁？为何在我的马车上睡觉？该不会是因为不想被卖到城里，所以逃了出来吧？"
+    },
+    {
+      "dialogue_id": "volume_01-d000058",
+      "paragraph_id": "volume_01-c002-s003-p000253",
+      "text": "搞什么，没酒啊。那食物……哦哟，真浪费。"
+    },
+    {
+      "dialogue_id": "volume_01-d000059",
+      "paragraph_id": "volume_01-c002-s003-p000256",
+      "text": "你该不会是被恶魔附身的妖怪吧。"
+    },
+    {
+      "dialogue_id": "volume_01-d000060",
+      "paragraph_id": "volume_01-c002-s003-p000260",
+      "text": "哈哈哈哈哈，咱是恶魔？"
+    },
+    {
+      "dialogue_id": "volume_01-d000061",
+      "paragraph_id": "volume_01-c002-s003-p000263",
+      "text": "喂！有什么好笑的？"
+    },
+    {
+      "dialogue_id": "volume_01-d000062",
+      "paragraph_id": "volume_01-c002-s003-p000264",
+      "text": "当然好笑啊，咱还是第一次被说是恶魔呢。"
+    }
+  ],
+  "known_characters": [
+    {
+      "entity_id": "char_0001",
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": [
+        "旅行商人",
+        "行商人"
+      ],
+      "description": "一位行商人，发现并收留了赫萝，决定与她一同旅行。 / 二十五岁，行商七年，性格理性、谨慎，与修道院和骑士互动时表现出职业习惯性的冷静。 / 一位行商人，发现并收留了赫萝，决定与她一同旅行。 / 二十五岁，行商七年，性格理性、谨慎，与修道院和骑士互动时表现出职业习惯性的冷静。 / 一位理性、谨慎的商人，对宗教仪式不感兴趣，但因叶勒被选为「狼赫萝」而感到困扰。 / 二十五岁的旅行商人，独自旅行，思考未来与孤独感，对马儿有深厚感情。 / 理性、谨慎的商人，独自旅行，对陌生人的出现感到警惕。",
+      "speech_style": "理性、怀疑、谨慎 / 理性、怀疑、略带无奈 / 理性、略带感伤、自省",
+      "speech_markers": [
+        "……骑士？",
+        "有什么能为您效劳的吗？",
+        "算了……",
+        "糟糕",
+        "……",
+        "喂！",
+        "喂！起床啊！"
+      ]
+    },
+    {
+      "entity_id": "char_0002",
+      "display_name": "赫萝",
+      "aliases": [],
+      "titles": [
+        "丰收之神"
+      ],
+      "description": "自称是丰收之神的少女，拥有狼的耳朵和尾巴，说话狡诈。",
+      "speech_style": "狡诈、自信、神气",
+      "speech_markers": [
+        "咱"
+      ]
+    },
+    {
+      "entity_id": "char_0003",
+      "display_name": "骑士",
+      "aliases": [
+        "下级骑士",
+        "年轻骑士"
+      ],
+      "titles": [
+        "骑士"
+      ],
+      "description": "年轻的下级骑士，穿着灰色大衣和刻有红色十字架的银制胸甲，刚成为骑士不久，态度傲慢但容易被甜食收买。",
+      "speech_style": "傲慢、迟疑、逐渐放松",
+      "speech_markers": [
+        "呃……",
+        "嗯……真好吃"
+      ]
+    },
+    {
+      "entity_id": "char_0004",
+      "display_name": "农夫",
+      "aliases": [],
+      "titles": [],
+      "description": "帕斯罗村的农夫，正在麦田中劳作，与罗伦斯有简短对话。 / 麦田中的村民，与罗伦斯有简短互动，表现出朴实的性格。",
+      "speech_style": "朴实、直接",
+      "speech_markers": [
+        "喔？",
+        "喔！"
+      ]
+    },
+    {
+      "entity_id": "char_0005",
+      "display_name": "叶勒",
+      "aliases": [],
+      "titles": [],
+      "description": "麦田中割下最后一束麦子的村民，被选为「狼赫萝」的化身，将被关在谷仓中一周。",
+      "speech_style": "朴实、紧张",
+      "speech_markers": [
+        "嗷呜～～～～～～～"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,183 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000587",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "上下文显示罗伦斯在回应赫萝的请求，语气理性且略带讽刺，符合其性格。",
+        "赫萝随后提出交易，符合对话轮次逻辑。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000588",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "使用自称‘咱’，符合赫萝的口癖。",
+        "对话内容是关于交易面包，与前一句罗伦斯的回应形成对话轮次。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000589",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "罗伦斯在上下文中主动提供零钱，符合其理性、谨慎的性格。",
+        "对话轮次上紧接赫萝的提问，符合两人互动模式。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000590",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "使用自称‘汝’，符合赫萝的口癖。",
+        "对话轮次上是对罗伦斯提供零钱的回应，符合两人互动模式。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000591",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "罗伦斯在上下文中对赫萝的质疑作出回应，语气略带无奈，符合其性格。",
+        "对话轮次上紧接赫萝的质疑，符合两人互动模式。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000592",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "罗伦斯在上下文中对赫萝的行为提出警告，语气理性，符合其性格。",
+        "对话轮次上紧接赫萝的回应，符合两人互动模式。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000593",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "使用自称‘汝’，符合赫萝的口癖。",
+        "对话轮次上是对罗伦斯的回应，符合两人互动模式。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000594",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "罗伦斯在上下文中对赫萝的行为作出调侃，语气略带无奈，符合其性格。",
+        "对话轮次上紧接赫萝的回应，符合两人互动模式。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，罗伦斯与赫萝交替发言，符合两人互动模式。赫萝使用‘咱’自称，罗伦斯语气理性，符合角色设定。"
+}
+```

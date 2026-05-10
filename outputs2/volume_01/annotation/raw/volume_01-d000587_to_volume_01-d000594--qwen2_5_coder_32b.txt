@@ -1,0 +1,117 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000587",
+      "speaker_entity_id": "",
+      "speaker_display": "",
+      "speaker_status": "npc",
+      "confidence": 0.6,
+      "candidate_speakers": [
+        {"entity_id": "", "display": "路人", "status": "npc", "score": 0.6}
+      ],
+      "evidence": ["对话轮次推断，但没有明确的叙述锚点"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    },
+    {
+      "dialogue_id": "volume_01-d000588",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {"entity_id": "char_0002", "display": "赫萝", "status": "known", "score": 0.9}
+      ],
+      "evidence": ["使用了“咱”作为自称"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000589",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {"entity_id": "char_0001", "display": "罗伦斯", "status": "known", "score": 0.9}
+      ],
+      "evidence": ["对话内容符合罗伦斯的理性、谨慎性格"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000590",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {"entity_id": "char_0002", "display": "赫萝", "status": "known", "score": 0.8}
+      ],
+      "evidence": ["对话轮次推断，且内容符合赫萝的性格"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000591",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {"entity_id": "char_0001", "display": "罗伦斯", "status": "known", "score": 0.8}
+      ],
+      "evidence": ["对话轮次推断，且内容符合罗伦斯的性格"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000592",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {"entity_id": "char_0001", "display": "罗伦斯", "status": "known", "score": 0.8}
+      ],
+      "evidence": ["对话轮次推断，且内容符合罗伦斯的性格"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000593",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {"entity_id": "char_0002", "display": "赫萝", "status": "known", "score": 0.8}
+      ],
+      "evidence": ["对话轮次推断，且内容符合赫萝的性格"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000594",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {"entity_id": "char_0001", "display": "罗伦斯", "status": "known", "score": 0.8}
+      ],
+      "evidence": ["对话轮次推断，且内容符合罗伦斯的性格"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次和叙述线索表明罗伦斯和赫萝在进行互动。第一句台词的说话人难以确定，但后续对话中两人角色明确。"
+}

@@ -1,0 +1,122 @@
+{
+  "scene_id": "volume_01-c003-s002",
+  "scene_summary": "罗伦斯在教会中与一位贵族男子及其妻子交谈，随后与同行的赫萝一起接待了一位名叫杰廉的年轻商人。贵族男子未透露姓名，但被暗示是佩连佐地区的葡萄园领主。杰廉对罗伦斯表示敬佩，并试图获取情报。",
+  "active_characters": [
+    "罗伦斯",
+    "赫萝",
+    "贵族男子",
+    "杰廉"
+  ],
+  "character_candidates": [
+    {
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": [
+        "旅行商人"
+      ],
+      "description": "理性、谨慎的商人，与赫萝同行，正在教会中与贵族男子交谈，并接待了年轻商人杰廉。",
+      "speech_style": "理性、谨慎、略带无奈",
+      "speech_markers": [
+        "我不过是个随处可见的旅行商人罢了。",
+        "凡事靠努力啊。"
+      ],
+      "relationship_hints": [
+        "与赫萝同行",
+        "与贵族男子交谈",
+        "与杰廉互动"
+      ],
+      "evidence": [
+        "volume_01-d000237",
+        "volume_01-d000246",
+        "volume_01-d000248"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "赫萝",
+      "aliases": [],
+      "titles": [
+        "贤狼"
+      ],
+      "description": "罗伦斯的同行者，被描述为狼的化身，与罗伦斯有亲密互动。",
+      "speech_style": "狡黠、自信",
+      "speech_markers": [],
+      "relationship_hints": [
+        "与罗伦斯同行",
+        "被杰廉询问身份"
+      ],
+      "evidence": [
+        "volume_01-d000248",
+        "volume_01-c003-s002-p000698"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "display_name": "贵族男子",
+      "aliases": [
+        "葡萄园领主",
+        "佩连佐领主"
+      ],
+      "titles": [
+        "贵族",
+        "葡萄园领主"
+      ],
+      "description": "未透露姓名的贵族男子，与妻子一同出现在教会中，与罗伦斯交谈，被暗示是佩连佐地区的葡萄园领主。",
+      "speech_style": "高傲、含蓄",
+      "speech_markers": [
+        "欢迎你来寒舍拜访。",
+        "希望神能指引我们再次相逢。"
+      ],
+      "relationship_hints": [
+        "与妻子同行",
+        "与罗伦斯交谈"
+      ],
+      "evidence": [
+        "volume_01-d000237",
+        "volume_01-d000239",
+        "volume_01-d000240"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "display_name": "杰廉",
+      "aliases": [],
+      "titles": [
+        "旅行商人"
+      ],
+      "description": "年轻的旅行商人，刚入行，试图与罗伦斯建立联系，表现出对罗伦斯的敬佩。",
+      "speech_style": "热情、略带笨拙",
+      "speech_markers": [
+        "嘿嘿，我说老板，您真是了不起的人物！",
+        "小的名叫杰廉，我想您应该看出来了，小的是刚入行的旅行商人，还请多多关照。"
+      ],
+      "relationship_hints": [
+        "与罗伦斯互动",
+        "试图获取情报"
+      ],
+      "evidence": [
+        "volume_01-d000241",
+        "volume_01-d000245"
+      ],
+      "confidence": 0.8
+    }
+  ],
+  "mystery_entities": [
+    {
+      "temporary_name": "贵族男子的妻子",
+      "description": "与贵族男子一同出现在教会中，未有台词，但被提及为「妻子」。",
+      "evidence": [
+        "volume_01-d000239",
+        "volume_01-c003-s002-p000679"
+      ],
+      "confidence": 0.7
+    }
+  ],
+  "relationships": [
+    "罗伦斯与赫萝同行",
+    "罗伦斯与贵族男子交谈",
+    "罗伦斯与杰廉互动",
+    "贵族男子与妻子同行"
+  ],
+  "notes": "贵族男子未透露姓名，但被暗示是佩连佐地区的葡萄园领主。杰廉是新入行的商人，试图与罗伦斯建立联系。赫萝的身份在本场景中未进一步揭示。"
+}

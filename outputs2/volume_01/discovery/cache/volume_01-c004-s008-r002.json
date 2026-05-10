@@ -1,0 +1,90 @@
+{
+  "scene_id": "volume_01-c004-s008",
+  "scene_summary": "赫萝与罗伦斯在讨论杰廉提出的交易，赫萝指出杰廉可能在说谎，并暗示罗伦斯可能被骗。两人分析崔尼银币含银量变化的经济影响，赫萝表现出对商业和人性的敏锐洞察。",
+  "active_characters": [
+    "赫萝",
+    "罗伦斯"
+  ],
+  "character_candidates": [
+    {
+      "display_name": "赫萝",
+      "aliases": [],
+      "titles": [
+        "丰收之神",
+        "狼",
+        "贤狼"
+      ],
+      "description": "赫萝在本场景中展现出她对商业谈判的了解，暗示她曾接触过高明的商人。她以自信和狡黠的态度与罗伦斯对话，表现出对商业策略的深刻理解。",
+      "speech_style": "狡诈、自信、略带挑衅",
+      "speech_markers": [
+        "咱",
+        "咱只要轻轻一摇咱可爱的尾巴",
+        "呵呵呵"
+      ],
+      "relationship_hints": [
+        "与罗伦斯同行",
+        "对罗伦斯的判断有影响"
+      ],
+      "evidence": [
+        "volume_01-d000692",
+        "volume_01-d000694",
+        "volume_01-d000707",
+        "volume_01-d000711"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": [
+        "商人",
+        "旅行商人",
+        "行商人"
+      ],
+      "description": "罗伦斯在本场景中表现出理性与谨慎，对赫萝的发言表现出一定的认同，同时也在内心反思自己的言行。他试图理解赫萝的判断，并思考商业情报的获取。",
+      "speech_style": "理性、怀疑、谨慎",
+      "speech_markers": [
+        "嗯……可是",
+        "我也这么觉得",
+        "被骗？"
+      ],
+      "relationship_hints": [
+        "与赫萝同行",
+        "对赫萝的判断持开放态度"
+      ],
+      "evidence": [
+        "volume_01-d000698",
+        "volume_01-d000700",
+        "volume_01-d000708"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "杰廉",
+      "aliases": [],
+      "titles": [
+        "旅行商人"
+      ],
+      "description": "年轻的旅行商人，试图与罗伦斯达成情报交易。赫萝认为他在说谎，但罗伦斯并未完全否定他的说法。",
+      "speech_style": "未直接发言，但被提及为信息来源",
+      "speech_markers": [],
+      "relationship_hints": [
+        "与罗伦斯有商业联系",
+        "被赫萝质疑真实性"
+      ],
+      "evidence": [
+        "volume_01-d000699",
+        "volume_01-d000702",
+        "volume_01-d000704"
+      ],
+      "confidence": 0.85
+    }
+  ],
+  "mystery_entities": [],
+  "relationships": [
+    "赫萝与罗伦斯同行并讨论商业问题",
+    "赫萝质疑杰廉的真实性",
+    "罗伦斯对杰廉的动机保持怀疑"
+  ],
+  "notes": "赫萝在本场景中表现出对商业和人性的敏锐洞察，罗伦斯则表现出理性与谨慎。杰廉虽未直接发言，但其动机和真实性成为讨论焦点。"
+}

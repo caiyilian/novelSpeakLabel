@@ -1,0 +1,33 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000181",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {"entity_id": "char_0001", "display": "罗伦斯", "status": "known", "score": 0.9}
+      ],
+      "evidence": ["喂！那是我的东西耶！", "罗伦斯一向很早起床。为了善用一整天的时间好多赚取一些利益，商人们每天都会一大早起床。"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000182",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {"entity_id": "char_0002", "display": "赫萝", "status": "known", "score": 0.9}
+      ],
+      "evidence": ["「嗯？醒了啊。咱穿起来如何？合适吗？」", "赫萝完全不理会罗伦斯说的话，她张开双臂，对罗伦斯问道。"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，第一句是罗伦斯发现赫萝擅自穿他的衣物时的反应，第二句是赫萝回应罗伦斯。"
+}

@@ -1,0 +1,52 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000871",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "上下文显示罗伦斯在安抚赫萝的情绪，此句是罗伦斯对赫萝的提问，符合对话轮次。",
+        "场景记忆中提到罗伦斯试图安抚赫萝的情绪，符合说话人身份。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000872",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "上下文明确指出赫萝小声地说道，符合说话人身份。",
+        "赫萝的台词使用了「咱」这一自称，与角色库中的 speech_marker 一致。",
+        "场景记忆中提到赫萝表现出脆弱与依赖，符合此句情绪表达。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，罗伦斯提问后赫萝回应，符合角色互动模式。"
+}
+```

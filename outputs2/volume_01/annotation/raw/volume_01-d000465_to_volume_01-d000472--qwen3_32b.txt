@@ -1,0 +1,175 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000465",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "上下文显示罗伦斯在与采购人员谈判，此句为他对貂皮价格的简短评价"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000466",
+      "speaker_entity_id": "char_0011",
+      "speaker_display": "采购人员",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0011",
+          "display": "采购人员",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "上下文显示采购人员在与罗伦斯谈判，此句为他询问罗伦斯是否接受报价"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000467",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "上下文明确指出赫萝插嘴打断了罗伦斯的回应"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000468",
+      "speaker_entity_id": "char_0011",
+      "speaker_display": "采购人员",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0011",
+          "display": "采购人员",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "上下文显示采购人员对赫萝的插嘴感到惊讶，此句为他的反应"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000469",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "上下文明确指出赫萝继续质疑采购人员的报价"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000470",
+      "speaker_entity_id": "char_0011",
+      "speaker_display": "采购人员",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0011",
+          "display": "采购人员",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "上下文显示采购人员对赫萝的质疑感到困惑，此句为他的回应"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000471",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "上下文显示赫萝继续追问，语气中带有挑衅和自信"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000472",
+      "speaker_entity_id": "char_0011",
+      "speaker_display": "采购人员",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0011",
+          "display": "采购人员",
+          "status": "known",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "上下文显示采购人员因赫萝的质疑而道歉，此句为他的回应"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，罗伦斯、赫萝与采购人员交替发言，符合谈判场景的互动模式。赫萝的插嘴打断了罗伦斯的回应，随后主导了对话节奏。"
+}
+```

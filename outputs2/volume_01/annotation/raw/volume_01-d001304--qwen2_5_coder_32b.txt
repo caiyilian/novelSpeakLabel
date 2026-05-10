@@ -1,0 +1,20 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001304",
+      "speaker_entity_id": "",
+      "speaker_display": "",
+      "speaker_status": "ambiguous",
+      "confidence": 0.6,
+      "candidate_speakers": [
+        {"entity_id": "char_0015", "display": "列支敦·马贺特", "status": "known", "score": 0.4},
+        {"entity_id": "", "display": "npc:商人代表", "status": "npc", "score": 0.3}
+      ],
+      "evidence": ["对话内容符合商业结算的语气，但没有明确的自我介绍或称呼"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    }
+  ],
+  "window_notes": "根据上下文和对话内容判断，说话人可能是列支敦·马贺特或其他米隆商行代表。缺乏明确的自我介绍或称呼，因此需要进一步确认。"
+}

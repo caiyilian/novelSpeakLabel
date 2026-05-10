@@ -1,0 +1,477 @@
+你是轻小说说话人标注项目的阶段 2：正式标注助手。
+你的任务是判断输入 target_dialogues 中每一句台词的说话人，不要改写原文。
+必须把这些台词当作同一个连续片段来判断，优先保持对话轮次和叙述线索的一致性。
+
+规则：
+1. 只输出严格 JSON，不要 Markdown，不要解释性前后缀。
+2. 如果说话人是候选角色，speaker_entity_id 必须使用 candidate_characters 里的 entity_id，speaker_status 填 known。
+3. 如果说话人像某个未知人物，speaker_entity_id 使用 candidate_mysteries 里的 mystery_id，speaker_status 填 mystery。
+4. 如果只是无法追踪的路人/群体，speaker_status 填 npc，speaker_entity_id 可为空或使用 npc:简短称呼。
+5. 证据不足时不要硬猜，speaker_status 填 ambiguous 或 review，并把 needs_review 设为 true。
+6. candidate_speakers 至少列出 1 个候选；如果无法判断，列出最可能的候选和不确定原因。
+7. confidence 使用 0 到 1 之间的小数，表示你对最终判断的把握。
+8. 不要只因为台词里提到某个名字、职业、地点，就把说话人标成那个实体；被称呼的人通常不是说话人。
+9. 连续问答、交易寒暄、命令/回答等场景要按上下句轮次判断；同一人连续说话必须有叙述或语气证据支持。
+10. 如果当前上下文显示某角色还没有登场，不要因为角色库或后文记忆里有这个角色就提前标给他/她。
+
+11. target_dialogues 中 dialogue_kind=inline 的项目是正文内嵌引号，不要当作独立对白；标为 review，needs_review=true。
+12. candidate_mysteries 只是可选候选；如果候选名称和当前段落地点/人物不一致，必须改用 npc 或 review。
+13. 如果只有轮次推断、没有叙述锚点或自我介绍，请降低 confidence，并在 evidence 里说明轮次依据。
+
+14. candidate_characters.speech_markers 是阶段 1 提取的高区分度口癖/自称/固定短语；命中时可作为证据，但如果多个角色共享或上下文反证明显，必须进入复核。
+
+输出 JSON 结构：
+{
+  "annotations": [
+    {
+      "dialogue_id": "必须来自 target_dialogue_ids",
+      "speaker_entity_id": "string",
+      "speaker_display": "string",
+      "speaker_status": "known|mystery|npc|ambiguous|review",
+      "confidence": 0.0,
+      "candidate_speakers": [
+        {"entity_id": "string", "display": "string", "status": "known|mystery|npc|ambiguous|review", "score": 0.0}
+      ],
+      "evidence": ["短证据，不要大段复制原文"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "可选，简短说明整体轮次判断"
+}
+必须为 target_dialogue_ids 中每个 dialogue_id 输出且只输出一条 annotation。
+
+输入 JSON：
+{
+  "volume": {
+    "volume_id": "volume_01",
+    "volume": 1
+  },
+  "target_dialogue_ids": [
+    "volume_01-d000966",
+    "volume_01-d000967",
+    "volume_01-d000968",
+    "volume_01-d000969",
+    "volume_01-d000970",
+    "volume_01-d000971",
+    "volume_01-d000972",
+    "volume_01-d000973"
+  ],
+  "dialogues": [
+    {
+      "dialogue_id": "volume_01-d000966",
+      "dialogue_index": 965,
+      "window_position": 1,
+      "chapter_id": "volume_01-c005",
+      "chapter_title": "第四幕",
+      "scene_id": "volume_01-c005-s007",
+      "paragraph_id": "volume_01-c005-s007-p002090",
+      "paragraph_index": 2089,
+      "local_dialogue_index": 1,
+      "text": "有哪里奇怪！",
+      "quote_text": "「有哪里奇怪！」",
+      "paragraph_text": "「有哪里奇怪！」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 8
+    },
+    {
+      "dialogue_id": "volume_01-d000967",
+      "dialogue_index": 966,
+      "window_position": 2,
+      "chapter_id": "volume_01-c005",
+      "chapter_title": "第四幕",
+      "scene_id": "volume_01-c005-s007",
+      "paragraph_id": "volume_01-c005-s007-p002092",
+      "paragraph_index": 2091,
+      "local_dialogue_index": 1,
+      "text": "请您冷静。有点奇怪，真的很奇怪。",
+      "quote_text": "「请您冷静。有点奇怪，真的很奇怪。」",
+      "paragraph_text": "「请您冷静。有点奇怪，真的很奇怪。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 18
+    },
+    {
+      "dialogue_id": "volume_01-d000968",
+      "dialogue_index": 967,
+      "window_position": 3,
+      "chapter_id": "volume_01-c005",
+      "chapter_title": "第四幕",
+      "scene_id": "volume_01-c005-s007",
+      "paragraph_id": "volume_01-c005-s007-p002093",
+      "paragraph_index": 2092,
+      "local_dialogue_index": 1,
+      "text": "为什么！就像贵商行能够轻易查出杰廉的背后关系一样，梅迪欧商行如果察觉你们想要妨碍他们，当然也能够轻易查出是谁造成这个原因，不是吗？",
+      "quote_text": "「为什么！就像贵商行能够轻易查出杰廉的背后关系一样，梅迪欧商行如果察觉你们想要妨碍他们，当然也能够轻易查出是谁造成这个原因，不是吗？」",
+      "paragraph_text": "「为什么！就像贵商行能够轻易查出杰廉的背后关系一样，梅迪欧商行如果察觉你们想要妨碍他们，当然也能够轻易查出是谁造成这个原因，不是吗？」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 67
+    },
+    {
+      "dialogue_id": "volume_01-d000969",
+      "dialogue_index": 968,
+      "window_position": 4,
+      "chapter_id": "volume_01-c005",
+      "chapter_title": "第四幕",
+      "scene_id": "volume_01-c005-s007",
+      "paragraph_id": "volume_01-c005-s007-p002094",
+      "paragraph_index": 2093,
+      "local_dialogue_index": 1,
+      "text": "……确实，因为这里是他们的大本营，所以办得到……",
+      "quote_text": "「……确实，因为这里是他们的大本营，所以办得到……」",
+      "paragraph_text": "「……确实，因为这里是他们的大本营，所以办得到……」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 26
+    },
+    {
+      "dialogue_id": "volume_01-d000970",
+      "dialogue_index": 969,
+      "window_position": 5,
+      "chapter_id": "volume_01-c005",
+      "chapter_title": "第四幕",
+      "scene_id": "volume_01-c005-s007",
+      "paragraph_id": "volume_01-c005-s007-p002095",
+      "paragraph_index": 2094,
+      "local_dialogue_index": 1,
+      "text": "那这样是哪里奇怪了呢？",
+      "quote_text": "「那这样是哪里奇怪了呢？」",
+      "paragraph_text": "「那这样是哪里奇怪了呢？」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 13
+    },
+    {
+      "dialogue_id": "volume_01-d000971",
+      "dialogue_index": 970,
+      "window_position": 6,
+      "chapter_id": "volume_01-c005",
+      "chapter_title": "第四幕",
+      "scene_id": "volume_01-c005-s007",
+      "paragraph_id": "volume_01-c005-s007-p002096",
+      "paragraph_index": 2095,
+      "local_dialogue_index": 1,
+      "text": "是的，我懂了，这明显很奇怪。",
+      "quote_text": "「是的，我懂了，这明显很奇怪。」",
+      "paragraph_text": "「是的，我懂了，这明显很奇怪。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 16
+    },
+    {
+      "dialogue_id": "volume_01-d000972",
+      "dialogue_index": 971,
+      "window_position": 7,
+      "chapter_id": "volume_01-c005",
+      "chapter_title": "第四幕",
+      "scene_id": "volume_01-c005-s007",
+      "paragraph_id": "volume_01-c005-s007-p002098",
+      "paragraph_index": 2097,
+      "local_dialogue_index": 1,
+      "text": "我在想，究竟对方是如何知道罗伦斯先生与本商行联手合作的。",
+      "quote_text": "「我在想，究竟对方是如何知道罗伦斯先生与本商行联手合作的。」",
+      "paragraph_text": "「我在想，究竟对方是如何知道罗伦斯先生与本商行联手合作的。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 30
+    },
+    {
+      "dialogue_id": "volume_01-d000973",
+      "dialogue_index": 972,
+      "window_position": 8,
+      "chapter_id": "volume_01-c005",
+      "chapter_title": "第四幕",
+      "scene_id": "volume_01-c005-s007",
+      "paragraph_id": "volume_01-c005-s007-p002099",
+      "paragraph_index": 2098,
+      "local_dialogue_index": 1,
+      "text": "那是因为我经常到访这里的缘故吧。还有，他们或许也发现贵商行恰巧在这时开始收集崔尼银币了。只要把这两件事情凑在一起，就很容易猜测得到。",
+      "quote_text": "「那是因为我经常到访这里的缘故吧。还有，他们或许也发现贵商行恰巧在这时开始收集崔尼银币了。只要把这两件事情凑在一起，就很容易猜测得到。」",
+      "paragraph_text": "「那是因为我经常到访这里的缘故吧。还有，他们或许也发现贵商行恰巧在这时开始收集崔尼银币了。只要把这两件事情凑在一起，就很容易猜测得到。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 68
+    }
+  ],
+  "context": {
+    "paragraphs": [
+      {
+        "paragraph_id": "volume_01-c005-s007-p002087",
+        "paragraph_index": 2086,
+        "text": "「我想那是因为梅迪欧商行，想阻止我们与贵商行联手破坏他们的好事。」",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c005-s007-p002088",
+        "paragraph_index": 2087,
+        "text": "即使听见了罗伦斯近乎低吼的声音，马贺特依旧不改表情，他轻轻点头后，把视线落在桌上陷入沉思，一旁焦急的罗伦斯不停地抖脚。就在罗伦斯差点按捺不住，想要站起来大吼时，马贺特开口说：",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c005-s007-p002089",
+        "paragraph_index": 2088,
+        "text": "「这不是有些奇怪吗？」",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c005-s007-p002090",
+        "paragraph_index": 2089,
+        "text": "「有哪里奇怪！」",
+        "target_dialogue_ids": [
+          "volume_01-d000966"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c005-s007-p002091",
+        "paragraph_index": 2090,
+        "text": "罗伦斯猛力站起来，让马贺特不禁眨眨眼睛，但立即又恢复冷静的表情，伸手制止一副要向前扑来的罗伦斯说：",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c005-s007-p002092",
+        "paragraph_index": 2091,
+        "text": "「请您冷静。有点奇怪，真的很奇怪。」",
+        "target_dialogue_ids": [
+          "volume_01-d000967"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c005-s007-p002093",
+        "paragraph_index": 2092,
+        "text": "「为什么！就像贵商行能够轻易查出杰廉的背后关系一样，梅迪欧商行如果察觉你们想要妨碍他们，当然也能够轻易查出是谁造成这个原因，不是吗？」",
+        "target_dialogue_ids": [
+          "volume_01-d000968"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c005-s007-p002094",
+        "paragraph_index": 2093,
+        "text": "「……确实，因为这里是他们的大本营，所以办得到……」",
+        "target_dialogue_ids": [
+          "volume_01-d000969"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c005-s007-p002095",
+        "paragraph_index": 2094,
+        "text": "「那这样是哪里奇怪了呢？」",
+        "target_dialogue_ids": [
+          "volume_01-d000970"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c005-s007-p002096",
+        "paragraph_index": 2095,
+        "text": "「是的，我懂了，这明显很奇怪。」",
+        "target_dialogue_ids": [
+          "volume_01-d000971"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c005-s007-p002097",
+        "paragraph_index": 2096,
+        "text": "马贺特直视罗伦斯说道，就算罗伦斯再焦急，也不得不继续听他说话。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c005-s007-p002098",
+        "paragraph_index": 2097,
+        "text": "「我在想，究竟对方是如何知道罗伦斯先生与本商行联手合作的。」",
+        "target_dialogue_ids": [
+          "volume_01-d000972"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c005-s007-p002099",
+        "paragraph_index": 2098,
+        "text": "「那是因为我经常到访这里的缘故吧。还有，他们或许也发现贵商行恰巧在这时开始收集崔尼银币了。只要把这两件事情凑在一起，就很容易猜测得到。」",
+        "target_dialogue_ids": [
+          "volume_01-d000973"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c005-s007-p002100",
+        "paragraph_index": 2099,
+        "text": "「这非常奇怪。因为罗伦斯先生您是旅行商人，您多次前来本商行洽谈，是很正常的事。」",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c005-s007-p002101",
+        "paragraph_index": 2100,
+        "text": "「因此我说，要加上贵商行在这个时候开始收集银币的事实，然后再把与杰廉有过交易的人联想起来。」",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c005-s007-p002102",
+        "paragraph_index": 2101,
+        "text": "「不，即便如此还是很奇怪。」",
+        "target_dialogue_ids": []
+      }
+    ]
+  },
+  "scene_memory": [
+    {
+      "scene_id": "volume_01-c005-s007-r001",
+      "parent_scene_id": "volume_01-c005-s007",
+      "chunk_index": 1,
+      "chunk_count": 3,
+      "scene_summary": "罗伦斯焦急地向米隆商行的马贺特请求协助营救被捉的伙伴赫萝，并解释梅迪欧商行可能的动机。马贺特则冷静分析，指出其中的异常之处。",
+      "active_characters": [
+        "罗伦斯",
+        "列支敦·马贺特"
+      ],
+      "relationships": [
+        "罗伦斯与赫萝是亲密的伙伴。",
+        "罗伦斯与米隆商行有商业合作。",
+        "米隆商行与梅迪欧商行存在竞争关系。"
+      ],
+      "notes": "赫萝虽然未直接发言，但她是本场景的核心人物之一。梅迪欧商行的动机和行动仍需进一步追踪。"
+    }
+  ],
+  "candidate_characters": [
+    {
+      "entity_id": "char_0001",
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": [
+        "商人",
+        "旅行商人",
+        "行商人"
+      ],
+      "description": "理性、谨慎的商人，试图分析局势并保持冷静。他与赫萝同行，面对叶勒的威胁时表现出坚定。 / 理性、坚定的商人，坚持遵守与赫萝的合约，拒绝背叛她。面对叶勒的威胁保持冷静，表现出对赫萝的忠诚。 / 理性、谨慎的商人，身受重伤但仍试图保持冷静并等待救援。他表现出对赫萝的依赖和信任。 / 罗伦斯目睹赫萝的变身过程，表现出震惊和无力。他试图抓住赫萝留下的皮袋，但最终面对巨大的狼形生物，感到无法应对。 / 理性、谨慎的商人，与赫萝在地下通道中遭遇叶勒的威胁。他试图安抚赫萝的情绪，并表现出对环境变化的敏感。 / 在赫萝的威压下感…",
+      "speech_style": "温和、理性、略带担忧 / 理性、略带策略性、温和 / 理性、担忧、略带冲动 / 虚弱、低沉、略带困惑 / 虚弱、低沉、焦虑 / 理性、坚定、略带焦虑 / 理性、焦虑、略带冲动 / 虚弱、低沉、焦虑 / 虚弱、焦虑、略带愤怒 / 愤怒、理性、略带冲动 / 虚弱、焦虑、略带悔恨 / 理性、冷静、略带焦虑",
+      "speech_markers": [
+        "……骑士？",
+        "有什么能为您效劳的吗？",
+        "算了……",
+        "糟糕",
+        "……",
+        "喂！",
+        "喂！起床啊！",
+        "喂！有什么好笑的？"
+      ],
+      "relationship_hints": [
+        "与赫萝一同旅行",
+        "对赫萝的身份持怀疑态度",
+        "与修道院有生意期望但未成功",
+        "与骑士初次互动",
+        "与赫萝有密切关系",
+        "与教会和骑士有互动",
+        "与叶勒有交集，计划与他交谈但被祭典打断",
+        "与叶勒有过去的交易关系。"
+      ],
+      "first_seen_scene_id": "volume_01-c000-s003-r001",
+      "latest_seen_scene_id": "volume_01-c008-s003-r001",
+      "confidence": 1.0
+    },
+    {
+      "entity_id": "char_0015",
+      "display_name": "列支敦·马贺特",
+      "aliases": [
+        "列支敦·马贺特",
+        "马贺特"
+      ],
+      "titles": [
+        "米隆商行帕兹欧分行行长",
+        "行长"
+      ],
+      "description": "米隆商行的行长，试图说服罗伦斯提供线索，以应对梅迪欧商行的威胁。 / 米隆商行的行长，收到神秘信件后与罗伦斯互动，表现出对局势的冷静分析。 / 冷静、理性的米隆商行行长，正在分析罗伦斯的请求，并指出其中的异常之处。他表现出对局势的掌控和对细节的关注。 / 米隆商行的行长，正在与罗伦斯讨论崔尼银币交易的策略。他对罗伦斯的提议表现出兴趣，但也意识到其中的风险。 / 冷静、理性的米隆商行行长，正在与罗伦斯讨论应对梅迪欧商行的策略。他认同罗伦斯的计划，但也指出必须抢先行动。 / 冷静、理性的米隆商行行长，正在与罗伦斯讨论…",
+      "speech_style": "沉稳、自信 / 冷静、理性、略带质疑 / 沉稳、理性、略带质疑 / 沉稳、理性、略带安抚 / 沉稳、理性",
+      "speech_markers": [
+        "我们愿意接受这次交易。",
+        "我也这么认为。",
+        "这不是有些奇怪吗？",
+        "请您冷静。",
+        "给狼……与狼的森林？",
+        "马贺特露出惊讶的表情",
+        "马贺特轻抚他的下巴",
+        "马贺特抬起头说"
+      ],
+      "relationship_hints": [
+        "与罗伦斯谈判",
+        "代表米隆商行",
+        "与罗伦斯和老卸货工有商业联系。",
+        "对梅迪欧商行的行动表示担忧。",
+        "与罗伦斯有商业合作。",
+        "与梅迪欧商行存在竞争关系。",
+        "与罗伦斯有商业交易，但立场明确，不承担罗伦斯的安危责任。",
+        "试图安抚罗伦斯的情绪，但立场坚定。"
+      ],
+      "first_seen_scene_id": "volume_01-c005-s002-r001",
+      "latest_seen_scene_id": "volume_01-c008-s002-r003",
+      "confidence": 0.95
+    },
+    {
+      "entity_id": "char_0008",
+      "display_name": "杰廉",
+      "aliases": [],
+      "titles": [
+        "旅行商人"
+      ],
+      "description": "杰廉是本场景中被提及的年轻商人，他向罗伦斯提出货币投机的机会。赫萝认为他在说谎，但罗伦斯并未完全否定他的说法。 / 年轻的旅行商人，试图与罗伦斯建立联系，表现出对罗伦斯的敬佩。在本场景中与罗伦斯达成初步协议。 / 被罗伦斯寻找的旅行商人，据称会在日落后出现。 / 年轻的旅行商人，与罗伦斯有商业联系，表现出热情和对罗伦斯的敬佩。 / 年轻的旅行商人，试图与罗伦斯达成银币含银量变动的情报交易。他表现出热情和一定的商业技巧，但罗伦斯对其真实性存疑。 / 年轻的旅行商人，与罗伦斯达成情报交易。在本场景中未直接发言，但被提…",
+      "speech_style": "热情、略带笨拙 / 未直接发言，但被提及为信息来源。 / 未直接发言，但被提及为信息来源 / 未直接发言",
+      "speech_markers": [
+        "嘿嘿……",
+        "小的想……",
+        "那么，小的就先走一步了。",
+        "庆祝我们的重逢！",
+        "皮草卖得如何？"
+      ],
+      "relationship_hints": [
+        "与罗伦斯互动",
+        "试图获取情报",
+        "试图与罗伦斯建立联系",
+        "对赫萝表现出好奇",
+        "试图接近罗伦斯和赫萝",
+        "被赫萝认为在说谎",
+        "与罗伦斯有商业往来",
+        "与罗伦斯有联系"
+      ],
+      "first_seen_scene_id": "volume_01-c003-s002-r001",
+      "latest_seen_scene_id": "volume_01-c006-s004-r003",
+      "confidence": 0.9
+    },
+    {
+      "entity_id": "char_0014",
+      "display_name": "米隆商行",
+      "aliases": [],
+      "titles": [
+        "商行"
+      ],
+      "description": "被罗伦斯说服调查杰廉的商行，被认为在情报收集方面非常优秀。",
+      "speech_style": "未直接发言",
+      "speech_markers": [],
+      "relationship_hints": [
+        "被罗伦斯说服",
+        "与杰廉有潜在冲突"
+      ],
+      "first_seen_scene_id": "volume_01-c005-s001-r001",
+      "latest_seen_scene_id": "volume_01-c005-s001-r001",
+      "confidence": 0.8
+    }
+  ],
+  "candidate_mysteries": [
+    {
+      "mystery_id": "mystery_volume_01_c005_s007_r001_梅迪欧商行人员",
+      "temporary_name": "梅迪欧商行人员",
+      "description": "疑似绑架赫萝的商行人员，动机可能是阻止罗伦斯与米隆商行的合作。",
+      "evidence": [
+        "volume_01-c005-s007-p002087",
+        "volume_01-c005-s007-p002098"
+      ],
+      "source_scene_id": "volume_01-c005-s007-r001",
+      "confidence": 0.8
+    }
+  ]
+}

@@ -1,0 +1,175 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000437",
+      "speaker_entity_id": "char_0009",
+      "speaker_display": "店员",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0009",
+          "display": "店员",
+          "status": "known",
+          "score": 0.95
+        },
+        {
+          "entity_id": "char_0010",
+          "display": "彪形大汉",
+          "status": "known",
+          "score": 0.05
+        }
+      ],
+      "evidence": ["台词为标准欢迎语，与店员的speech_markers匹配"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000438",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        },
+        {
+          "entity_id": "char_0010",
+          "display": "彪形大汉",
+          "status": "known",
+          "score": 0.1
+        }
+      ],
+      "evidence": ["说话人提到自己曾在此卖麦子，与罗伦斯身份一致；且上下文为推销皮草，符合罗伦斯行为"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000439",
+      "speaker_entity_id": "char_0009",
+      "speaker_display": "店员",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0009",
+          "display": "店员",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": ["回应前文推销请求，语气一致，符合店员职责"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000440",
+      "speaker_entity_id": "char_0010",
+      "speaker_display": "彪形大汉",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0010",
+          "display": "彪形大汉",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": ["使用「老板」称呼，符合其搬运工身份；且台词中提到「上哪儿去」，与前文罗伦斯驾车进入卸货场一致"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000441",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.85
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.15
+        }
+      ],
+      "evidence": ["赫萝在段落中被提及小声说这句话，且上下文描述她对大汉的反应"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000442",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": ["说话人提到自己是推销皮草的，与罗伦斯身份一致；且上下文为罗伦斯与彪形大汉互动"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000443",
+      "speaker_entity_id": "char_0010",
+      "speaker_display": "彪形大汉",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0010",
+          "display": "彪形大汉",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": ["说话人引导罗伦斯停车，符合其搬运工身份；且与前文对话轮次一致"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000444",
+      "speaker_entity_id": "char_0010",
+      "speaker_display": "彪形大汉",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0010",
+          "display": "彪形大汉",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": ["说话人对马儿的反应表现出热情与直接，符合其性格；且与前文对话轮次一致"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，罗伦斯与店员、彪形大汉互动明确，赫萝在段落中被提及但未直接发言。"
+}

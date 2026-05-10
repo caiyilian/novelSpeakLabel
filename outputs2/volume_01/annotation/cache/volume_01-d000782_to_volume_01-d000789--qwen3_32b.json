@@ -1,0 +1,181 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000782",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "赫萝在前文被描述为虚弱地趴在桌上，说话人可能是她",
+        "上下文显示赫萝是主要角色之一，且是唯一虚弱的说话人"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000783",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "「真是的」是罗伦斯的典型语气，出现在他无奈地评价赫萝时",
+        "上下文明确指出是罗伦斯无奈地说了这句话"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000784",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.8
+        }
+      ],
+      "evidence": [
+        "罗伦斯是点餐的人，上下文显示他正在与店老板互动",
+        "对话轮次上，罗伦斯在前一句被提及，符合对话顺序"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000785",
+      "speaker_entity_id": "char_0016",
+      "speaker_display": "店老板",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0016",
+          "display": "店老板",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "店老板是唯一在场的第三方角色，且上下文显示他回应了点餐",
+        "「马上来！」是店老板的典型回应"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000786",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "罗伦斯是唯一在场的说话人，且上下文显示他正在与赫萝对话",
+        "对话轮次上，赫萝在前一句有反应，符合对话顺序"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000787",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "赫萝趴在桌上发出「恶」的声音，上下文明确指出是她",
+        "对话轮次上，罗伦斯在前一句说话，符合对话顺序"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000788",
+      "speaker_entity_id": "char_0016",
+      "speaker_display": "店老板",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0016",
+          "display": "店老板",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "店老板是唯一在场的第三方角色，且上下文显示他正在提供餐点",
+        "对话轮次上，罗伦斯在前一句说话，符合对话顺序"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000789",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "罗伦斯是唯一在场的说话人，且上下文显示他正在与店老板互动",
+        "对话轮次上，店老板在前一句说话，符合对话顺序"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，主要围绕罗伦斯、赫萝和店老板三人展开。赫萝状态虚弱，罗伦斯照顾她，店老板提供服务。对话顺序合理，无明显歧义。"
+}

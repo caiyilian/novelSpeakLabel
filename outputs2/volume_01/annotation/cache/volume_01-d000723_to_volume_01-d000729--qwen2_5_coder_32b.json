@@ -1,0 +1,170 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000723",
+      "speaker_entity_id": "",
+      "speaker_display": "",
+      "speaker_status": "ambiguous",
+      "confidence": 0.4,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.3
+        },
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.3
+        }
+      ],
+      "evidence": [
+        "对话轮次依据"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    },
+    {
+      "dialogue_id": "volume_01-d000724",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 1.0
+        }
+      ],
+      "evidence": [
+        "贤狼赫萝的脸上带着奸诈的笑容，一边露出左边的尖牙，一边说道"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000725",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 1.0
+        }
+      ],
+      "evidence": [
+        "罗伦斯感觉头部像受了重重一击"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000726",
+      "speaker_entity_id": "",
+      "speaker_display": "",
+      "speaker_status": "ambiguous",
+      "confidence": 0.4,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.3
+        },
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.3
+        }
+      ],
+      "evidence": [
+        "对话轮次依据"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    },
+    {
+      "dialogue_id": "volume_01-d000727",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 1.0
+        }
+      ],
+      "evidence": [
+        "明明矮了罗伦斯两个头的赫萝，看起来却像巨人般高大"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000728",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 1.0
+        }
+      ],
+      "evidence": [
+        "明明矮了罗伦斯两个头的赫萝，看起来却像巨人般高大"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000729",
+      "speaker_entity_id": "",
+      "speaker_display": "",
+      "speaker_status": "review",
+      "confidence": 0.0,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.5
+        },
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.5
+        }
+      ],
+      "evidence": [
+        "对话轮次依据"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    }
+  ],
+  "window_notes": "对话轮次和叙述线索显示罗伦斯和赫萝在交替发言，但部分句子的说话人难以确定。"
+}

@@ -1,0 +1,105 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001300",
+      "speaker_entity_id": "char_0015",
+      "speaker_display": "列支敦·马贺特",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0015",
+          "display": "列支敦·马贺特",
+          "status": "known",
+          "score": 0.95
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.05
+        }
+      ],
+      "evidence": ["前文提到马贺特把纸递给罗伦斯，此句为马贺特所说；符合马贺特的说话风格"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001301",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        },
+        {
+          "entity_id": "char_0015",
+          "display": "列支敦·马贺特",
+          "status": "known",
+          "score": 0.1
+        }
+      ],
+      "evidence": ["前文描述罗伦斯看到纸上的数字后反应，此句为罗伦斯的疑问；符合罗伦斯的说话风格"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001302",
+      "speaker_entity_id": "char_0015",
+      "speaker_display": "列支敦·马贺特",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0015",
+          "display": "列支敦·马贺特",
+          "status": "known",
+          "score": 0.95
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.05
+        }
+      ],
+      "evidence": ["此句为马贺特解释金额来源，符合其理性、沉稳的说话风格；上下文明确为马贺特发言"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001303",
+      "speaker_entity_id": "char_0015",
+      "speaker_display": "列支敦·马贺特",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0015",
+          "display": "列支敦·马贺特",
+          "status": "known",
+          "score": 0.9
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.1
+        }
+      ],
+      "evidence": ["此句为马贺特对国王策略的分析，语气与前文一致，符合马贺特的说话风格；上下文明确为马贺特发言"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，马贺特作为米隆商行代表与罗伦斯进行交易结算，解释了金额减少的原因。罗伦斯在听到金额后表示疑问，马贺特随后详细说明。"
+}

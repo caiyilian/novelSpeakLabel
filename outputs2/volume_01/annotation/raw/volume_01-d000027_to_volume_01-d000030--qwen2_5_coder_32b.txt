@@ -1,0 +1,61 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000027",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {"entity_id": "char_0001", "display": "罗伦斯", "status": "known", "score": 0.9}
+      ],
+      "evidence": ["对话轮次推断"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000028",
+      "speaker_entity_id": "char_0004",
+      "speaker_display": "农夫",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {"entity_id": "char_0004", "display": "农夫", "status": "known", "score": 0.9}
+      ],
+      "evidence": ["对话轮次推断"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000029",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {"entity_id": "char_0001", "display": "罗伦斯", "status": "known", "score": 0.8}
+      ],
+      "evidence": ["对话轮次推断"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000030",
+      "speaker_entity_id": "char_0004",
+      "speaker_display": "农夫",
+      "speaker_status": "known",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {"entity_id": "char_0004", "display": "农夫", "status": "known", "score": 0.8}
+      ],
+      "evidence": ["对话轮次推断"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "根据对话轮次和上下文，判断罗伦斯和农夫之间的对话。"
+}

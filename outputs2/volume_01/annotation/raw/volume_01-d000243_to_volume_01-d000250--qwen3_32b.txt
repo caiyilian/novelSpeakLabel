@@ -1,0 +1,191 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000243",
+      "speaker_entity_id": "char_0008",
+      "speaker_display": "杰廉",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0008",
+          "display": "杰廉",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "对话中自称「小的」，并提到「老板您」，是对罗伦斯的称呼，符合杰廉的说话风格。",
+        "对话内容提到「刚入行的旅行商人」，与杰廉的背景一致。",
+        "上下文显示该对话发生在杰廉与罗伦斯的互动中。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000244",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.98,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.98
+        }
+      ],
+      "evidence": [
+        "对话内容是对杰廉的回应，符合罗伦斯的说话风格。",
+        "上下文显示罗伦斯在回应杰廉的赞美，符合对话轮次。",
+        "「妖怪」一词是罗伦斯常用的比喻，符合其语言习惯。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000245",
+      "speaker_entity_id": "char_0008",
+      "speaker_display": "杰廉",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0008",
+          "display": "杰廉",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "对话中自称「小的」，并自我介绍为「杰廉」，明确表明说话人身份。",
+        "上下文显示这是杰廉的自我介绍，符合对话轮次。",
+        "「刚入行的旅行商人」与杰廉的背景一致。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000246",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.98,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.98
+        }
+      ],
+      "evidence": [
+        "对话内容是对杰廉的回应，符合罗伦斯的说话风格。",
+        "上下文显示这是罗伦斯的自我介绍，符合对话轮次。",
+        "「罗伦斯」是其常用自称。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000247",
+      "speaker_entity_id": "char_0008",
+      "speaker_display": "杰廉",
+      "speaker_status": "known",
+      "confidence": 0.92,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0008",
+          "display": "杰廉",
+          "status": "known",
+          "score": 0.92
+        }
+      ],
+      "evidence": [
+        "对话中继续与罗伦斯互动，符合对话轮次。",
+        "「那位是您的同伴吗？」是对罗伦斯和赫萝的提问，符合杰廉的说话风格。",
+        "上下文显示杰廉在继续获取情报。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000248",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.98,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.98
+        }
+      ],
+      "evidence": [
+        "对话内容是对杰廉的回应，符合罗伦斯的说话风格。",
+        "「我妻子赫萝」表明说话人是罗伦斯。",
+        "上下文显示这是罗伦斯对杰廉的介绍。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000249",
+      "speaker_entity_id": "char_0008",
+      "speaker_display": "杰廉",
+      "speaker_status": "known",
+      "confidence": 0.92,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0008",
+          "display": "杰廉",
+          "status": "known",
+          "score": 0.92
+        }
+      ],
+      "evidence": [
+        "对话中继续与罗伦斯互动，符合对话轮次。",
+        "「夫妻俩一同行商啊？」是对罗伦斯和赫萝的提问，符合杰廉的说话风格。",
+        "上下文显示杰廉在继续获取情报。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000250",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.98,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.98
+        }
+      ],
+      "evidence": [
+        "对话内容是对杰廉的回应，符合罗伦斯的说话风格。",
+        "「妻子生性古怪」表明说话人是罗伦斯。",
+        "上下文显示这是罗伦斯对杰廉的进一步介绍。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，杰廉与罗伦斯之间形成问答互动，符合场景中杰廉试图获取情报的设定。所有对话均围绕两人展开，无其他说话人介入。"
+}
+```

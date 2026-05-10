@@ -1,0 +1,427 @@
+你是轻小说说话人标注项目的阶段 2：正式标注助手。
+你的任务是判断输入 target_dialogues 中每一句台词的说话人，不要改写原文。
+必须把这些台词当作同一个连续片段来判断，优先保持对话轮次和叙述线索的一致性。
+
+规则：
+1. 只输出严格 JSON，不要 Markdown，不要解释性前后缀。
+2. 如果说话人是候选角色，speaker_entity_id 必须使用 candidate_characters 里的 entity_id，speaker_status 填 known。
+3. 如果说话人像某个未知人物，speaker_entity_id 使用 candidate_mysteries 里的 mystery_id，speaker_status 填 mystery。
+4. 如果只是无法追踪的路人/群体，speaker_status 填 npc，speaker_entity_id 可为空或使用 npc:简短称呼。
+5. 证据不足时不要硬猜，speaker_status 填 ambiguous 或 review，并把 needs_review 设为 true。
+6. candidate_speakers 至少列出 1 个候选；如果无法判断，列出最可能的候选和不确定原因。
+7. confidence 使用 0 到 1 之间的小数，表示你对最终判断的把握。
+8. 不要只因为台词里提到某个名字、职业、地点，就把说话人标成那个实体；被称呼的人通常不是说话人。
+9. 连续问答、交易寒暄、命令/回答等场景要按上下句轮次判断；同一人连续说话必须有叙述或语气证据支持。
+10. 如果当前上下文显示某角色还没有登场，不要因为角色库或后文记忆里有这个角色就提前标给他/她。
+
+11. target_dialogues 中 dialogue_kind=inline 的项目是正文内嵌引号，不要当作独立对白；标为 review，needs_review=true。
+12. candidate_mysteries 只是可选候选；如果候选名称和当前段落地点/人物不一致，必须改用 npc 或 review。
+13. 如果只有轮次推断、没有叙述锚点或自我介绍，请降低 confidence，并在 evidence 里说明轮次依据。
+
+14. candidate_characters.speech_markers 是阶段 1 提取的高区分度口癖/自称/固定短语；命中时可作为证据，但如果多个角色共享或上下文反证明显，必须进入复核。
+
+输出 JSON 结构：
+{
+  "annotations": [
+    {
+      "dialogue_id": "必须来自 target_dialogue_ids",
+      "speaker_entity_id": "string",
+      "speaker_display": "string",
+      "speaker_status": "known|mystery|npc|ambiguous|review",
+      "confidence": 0.0,
+      "candidate_speakers": [
+        {"entity_id": "string", "display": "string", "status": "known|mystery|npc|ambiguous|review", "score": 0.0}
+      ],
+      "evidence": ["短证据，不要大段复制原文"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "可选，简短说明整体轮次判断"
+}
+必须为 target_dialogue_ids 中每个 dialogue_id 输出且只输出一条 annotation。
+
+输入 JSON：
+{
+  "volume": {
+    "volume_id": "volume_01",
+    "volume": 1
+  },
+  "target_dialogue_ids": [
+    "volume_01-d000100",
+    "volume_01-d000101",
+    "volume_01-d000102",
+    "volume_01-d000103",
+    "volume_01-d000104",
+    "volume_01-d000105",
+    "volume_01-d000106",
+    "volume_01-d000107"
+  ],
+  "dialogues": [
+    {
+      "dialogue_id": "volume_01-d000100",
+      "dialogue_index": 99,
+      "window_position": 1,
+      "chapter_id": "volume_01-c002",
+      "chapter_title": "第一幕",
+      "scene_id": "volume_01-c002-s004",
+      "paragraph_id": "volume_01-c002-s004-p000342",
+      "paragraph_index": 341,
+      "local_dialogue_index": 1,
+      "text": "你说你是赫萝，对吧？",
+      "quote_text": "「你说你是赫萝，对吧？」",
+      "paragraph_text": "「你说你是赫萝，对吧？」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 12
+    },
+    {
+      "dialogue_id": "volume_01-d000101",
+      "dialogue_index": 100,
+      "window_position": 2,
+      "chapter_id": "volume_01-c002",
+      "chapter_title": "第一幕",
+      "scene_id": "volume_01-c002-s004",
+      "paragraph_id": "volume_01-c002-s004-p000343",
+      "paragraph_index": 342,
+      "local_dialogue_index": 1,
+      "text": "嗯？",
+      "quote_text": "「嗯？」",
+      "paragraph_text": "「嗯？」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 4
+    },
+    {
+      "dialogue_id": "volume_01-d000102",
+      "dialogue_index": 101,
+      "window_position": 3,
+      "chapter_id": "volume_01-c002",
+      "chapter_title": "第一幕",
+      "scene_id": "volume_01-c002-s004",
+      "paragraph_id": "volume_01-c002-s004-p000344",
+      "paragraph_index": 343,
+      "local_dialogue_index": 1,
+      "text": "你还说自己是狼。",
+      "quote_text": "「你还说自己是狼。」",
+      "paragraph_text": "「你还说自己是狼。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 10
+    },
+    {
+      "dialogue_id": "volume_01-d000103",
+      "dialogue_index": 102,
+      "window_position": 4,
+      "chapter_id": "volume_01-c002",
+      "chapter_title": "第一幕",
+      "scene_id": "volume_01-c002-s004",
+      "paragraph_id": "volume_01-c002-s004-p000345",
+      "paragraph_index": 344,
+      "local_dialogue_index": 1,
+      "text": "嗯。",
+      "quote_text": "「嗯。」",
+      "paragraph_text": "「嗯。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 4
+    },
+    {
+      "dialogue_id": "volume_01-d000104",
+      "dialogue_index": 103,
+      "window_position": 5,
+      "chapter_id": "volume_01-c002",
+      "chapter_title": "第一幕",
+      "scene_id": "volume_01-c002-s004",
+      "paragraph_id": "volume_01-c002-s004-p000346",
+      "paragraph_index": 345,
+      "local_dialogue_index": 1,
+      "text": "可是你身上只有狼耳朵和尾巴啊。如果你真的是狼的化身，应该还是可以变成狼吧？",
+      "quote_text": "「可是你身上只有狼耳朵和尾巴啊。如果你真的是狼的化身，应该还是可以变成狼吧？」",
+      "paragraph_text": "「可是你身上只有狼耳朵和尾巴啊。如果你真的是狼的化身，应该还是可以变成狼吧？」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 39
+    },
+    {
+      "dialogue_id": "volume_01-d000105",
+      "dialogue_index": 104,
+      "window_position": 6,
+      "chapter_id": "volume_01-c002",
+      "chapter_title": "第一幕",
+      "scene_id": "volume_01-c002-s004",
+      "paragraph_id": "volume_01-c002-s004-p000348",
+      "paragraph_index": 347,
+      "local_dialogue_index": 1,
+      "text": "喔喔，汝的意思是要咱变成狼给汝看，是呗？",
+      "quote_text": "「喔喔，汝的意思是要咱变成狼给汝看，是呗？」",
+      "paragraph_text": "「喔喔，汝的意思是要咱变成狼给汝看，是呗？」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 22
+    },
+    {
+      "dialogue_id": "volume_01-d000106",
+      "dialogue_index": 105,
+      "window_position": 7,
+      "chapter_id": "volume_01-c002",
+      "chapter_title": "第一幕",
+      "scene_id": "volume_01-c002-s004",
+      "paragraph_id": "volume_01-c002-s004-p000352",
+      "paragraph_index": 351,
+      "local_dialogue_index": 1,
+      "text": "咱不要。",
+      "quote_text": "「咱不要。」",
+      "paragraph_text": "「咱不要。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 6
+    },
+    {
+      "dialogue_id": "volume_01-d000107",
+      "dialogue_index": 106,
+      "window_position": 8,
+      "chapter_id": "volume_01-c002",
+      "chapter_title": "第一幕",
+      "scene_id": "volume_01-c002-s004",
+      "paragraph_id": "volume_01-c002-s004-p000353",
+      "paragraph_index": 352,
+      "local_dialogue_index": 1,
+      "text": "为什么？",
+      "quote_text": "「为什么？」",
+      "paragraph_text": "「为什么？」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 6
+    }
+  ],
+  "context": {
+    "paragraphs": [
+      {
+        "paragraph_id": "volume_01-c002-s004-p000339",
+        "paragraph_index": 338,
+        "text": "但是，如果赫萝是由动物变身的话，许多古老传说或民间故事中，都叙述着他们会为人类带来好运、或让奇迹发生。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s004-p000340",
+        "paragraph_index": 339,
+        "text": "事实上，如果赫萝真是丰收之神赫萝的话，对做麦子交易的人来说，那会是最有力的帮手。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s004-p000341",
+        "paragraph_index": 340,
+        "text": "罗伦斯把自己的意识从脑海里拉向赫萝。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s004-p000342",
+        "paragraph_index": 341,
+        "text": "「你说你是赫萝，对吧？」",
+        "target_dialogue_ids": [
+          "volume_01-d000100"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c002-s004-p000343",
+        "paragraph_index": 342,
+        "text": "「嗯？」",
+        "target_dialogue_ids": [
+          "volume_01-d000101"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c002-s004-p000344",
+        "paragraph_index": 343,
+        "text": "「你还说自己是狼。」",
+        "target_dialogue_ids": [
+          "volume_01-d000102"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c002-s004-p000345",
+        "paragraph_index": 344,
+        "text": "「嗯。」",
+        "target_dialogue_ids": [
+          "volume_01-d000103"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c002-s004-p000346",
+        "paragraph_index": 345,
+        "text": "「可是你身上只有狼耳朵和尾巴啊。如果你真的是狼的化身，应该还是可以变成狼吧？」",
+        "target_dialogue_ids": [
+          "volume_01-d000104"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c002-s004-p000347",
+        "paragraph_index": 346,
+        "text": "听到罗伦斯这么说，赫萝先是愣了一会儿，随即脸上又浮现像是搞懂了似的表情。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s004-p000348",
+        "paragraph_index": 347,
+        "text": "「喔喔，汝的意思是要咱变成狼给汝看，是呗？」",
+        "target_dialogue_ids": [
+          "volume_01-d000105"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c002-s004-p000349",
+        "paragraph_index": 348,
+        "text": "罗伦斯点头表示回答，但其实他内心吃了一惊。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s004-p000350",
+        "paragraph_index": 349,
+        "text": "罗伦斯原以为赫萝的反应不是露出困扰的表情，就是用很容易被识破的谎言来敷衍他。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s004-p000351",
+        "paragraph_index": 350,
+        "text": "然而，赫萝的反应却是两者皆非，她露出厌恶的表情。比起用个烂借口解释自己原本可以轻松变成狼的谎言，厌恶的表情更具说服力。不仅表情显得厌恶，赫萝甚至直截了当地说：",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s004-p000352",
+        "paragraph_index": 351,
+        "text": "「咱不要。」",
+        "target_dialogue_ids": [
+          "volume_01-d000106"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c002-s004-p000353",
+        "paragraph_index": 352,
+        "text": "「为什么？」",
+        "target_dialogue_ids": [
+          "volume_01-d000107"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c002-s004-p000354",
+        "paragraph_index": 353,
+        "text": "「咱还想问汝为什么非得要看呢？」",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s004-p000355",
+        "paragraph_index": 354,
+        "text": "赫萝带着不悦的表情如此反问，罗伦斯不禁被她的气势压住。然而，对罗伦斯来说，赫萝究竟是不是人类确实是很重要的问题。罗伦斯重新振作起来，为了尽量让对话的主导权掌握在自己手中，他提足力量开口说：",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s004-p000356",
+        "paragraph_index": 355,
+        "text": "「假如你是人类的话，我打算把你交给教会，毕竟恶魔附身者总是灾祸的根源。不过，如果你真的是丰收之神赫萝，又是狼的化身的话，或许我可以考虑一下。」",
+        "target_dialogue_ids": []
+      }
+    ]
+  },
+  "scene_memory": [
+    {
+      "scene_id": "volume_01-c002-s004-r002",
+      "parent_scene_id": "volume_01-c002-s004",
+      "chunk_index": 2,
+      "chunk_count": 3,
+      "scene_summary": "罗伦斯试图确认赫萝是否真的是狼的化身，并要求她变身。赫萝表现出厌恶和不情愿，但最终透露了变身所需的代价——麦子或鲜血。罗伦斯因此感到震惊，而赫萝则对他的反应感到失望。",
+      "active_characters": [
+        "罗伦斯",
+        "赫萝"
+      ],
+      "relationships": [
+        "罗伦斯试图确认赫萝的身份",
+        "赫萝对罗伦斯的反应感到失望",
+        "赫萝不愿轻易变身，要求代价"
+      ],
+      "notes": "赫萝表现出对教会的强烈反感，暗示她与教会之间有复杂的历史。她要求的变身代价（麦子或鲜血）暗示她可能具有某种超自然身份。罗伦斯的理性态度与赫萝的狡诈形成鲜明对比。"
+    }
+  ],
+  "candidate_characters": [
+    {
+      "entity_id": "char_0002",
+      "display_name": "赫萝",
+      "aliases": [],
+      "titles": [
+        "丰收之神",
+        "狼",
+        "贤狼"
+      ],
+      "description": "神秘少女，拥有狼的特征。在本场景中协助罗伦斯击退袭击者，表现出冷静和对环境的高度感知能力。 / 在地下道中不断呼喊罗伦斯，试图唤醒他并指引方向。表现出担忧和责任感。 / 神秘少女，拥有狼的特征，情绪波动明显，对罗伦斯表现出依赖和担忧。 / 神秘少女，拥有狼的特征。在本场景中表现出脆弱和依赖，对独自旅行感到不安。她对叶勒的言语感到愤怒与悲伤。 / 情绪波动明显的贤狼，因叶勒的言语感到悲伤。她表现出对罗伦斯的依赖，并在关键时刻流露出脆弱。 / 情绪波动明显的贤狼，因叶勒的言语感到愤怒与悲伤。她吸食罗伦斯的血液以施展某…",
+      "speech_style": "未直接发言，但被频繁提及 / 冷静、自信、略带调侃 / 调皮、略带挑衅、情绪化 / 略带孩子气、情绪化、略带调侃 / 冷静、简短、略带策略性 / 关切、坚定、略带责备 / 情绪化、略带孩子气 / 冷静、略带情绪化 / 脆弱、情绪化、略带孩子气 / 冷静、自信、略带策略性 / 冷静、简短、略带威严 / 未直接发言",
+      "speech_markers": [
+        "咱",
+        "哈哈哈哈哈，咱是恶魔？",
+        "好名字呗？",
+        "咱没听过。",
+        "咱不要。",
+        "或是鲜血。",
+        "如何？愿意相信咱了呗？",
+        "汝要温柔一些呐。"
+      ],
+      "relationship_hints": [
+        "与罗伦斯一同旅行",
+        "捉弄罗伦斯",
+        "与罗伦斯展开对话",
+        "表现出对罗伦斯的调侃",
+        "与罗伦斯有初步互动，可能是他未来的旅伴",
+        "与罗伦斯进行对话，表现出信任与坦率",
+        "提到出生地时流露出真实情感",
+        "与罗伦斯有互动，被罗伦斯收留并一同旅行"
+      ],
+      "first_seen_scene_id": "volume_01-c000-s003-r001",
+      "latest_seen_scene_id": "volume_01-c008-s003-r001",
+      "confidence": 0.95
+    },
+    {
+      "entity_id": "char_0001",
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": [
+        "商人",
+        "旅行商人",
+        "行商人"
+      ],
+      "description": "理性、谨慎的商人，试图分析局势并保持冷静。他与赫萝同行，面对叶勒的威胁时表现出坚定。 / 理性、坚定的商人，坚持遵守与赫萝的合约，拒绝背叛她。面对叶勒的威胁保持冷静，表现出对赫萝的忠诚。 / 理性、谨慎的商人，身受重伤但仍试图保持冷静并等待救援。他表现出对赫萝的依赖和信任。 / 罗伦斯目睹赫萝的变身过程，表现出震惊和无力。他试图抓住赫萝留下的皮袋，但最终面对巨大的狼形生物，感到无法应对。 / 理性、谨慎的商人，与赫萝在地下通道中遭遇叶勒的威胁。他试图安抚赫萝的情绪，并表现出对环境变化的敏感。 / 在赫萝的威压下感…",
+      "speech_style": "温和、理性、略带担忧 / 理性、略带策略性、温和 / 理性、担忧、略带冲动 / 虚弱、低沉、略带困惑 / 虚弱、低沉、焦虑 / 理性、坚定、略带焦虑 / 理性、焦虑、略带冲动 / 虚弱、低沉、焦虑 / 虚弱、焦虑、略带愤怒 / 愤怒、理性、略带冲动 / 虚弱、焦虑、略带悔恨 / 理性、冷静、略带焦虑",
+      "speech_markers": [
+        "……骑士？",
+        "有什么能为您效劳的吗？",
+        "算了……",
+        "糟糕",
+        "……",
+        "喂！",
+        "喂！起床啊！",
+        "喂！有什么好笑的？"
+      ],
+      "relationship_hints": [
+        "与赫萝一同旅行",
+        "对赫萝的身份持怀疑态度",
+        "与修道院有生意期望但未成功",
+        "与骑士初次互动",
+        "与赫萝有密切关系",
+        "与教会和骑士有互动",
+        "与叶勒有交集，计划与他交谈但被祭典打断",
+        "与叶勒有过去的交易关系。"
+      ],
+      "first_seen_scene_id": "volume_01-c000-s003-r001",
+      "latest_seen_scene_id": "volume_01-c008-s003-r001",
+      "confidence": 1.0
+    }
+  ],
+  "candidate_mysteries": []
+}

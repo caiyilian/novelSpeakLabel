@@ -1,0 +1,34 @@
+```json
+{
+  "scene_id": "volume_01-c004-s001",
+  "scene_summary": "罗伦斯与赫萝抵达帕兹欧，一个由斯拉乌德河孕育的繁华城镇。赫萝对城镇的规模和治理方式感到好奇，两人在热闹的街道上交谈。",
+  "active_characters": ["罗伦斯", "赫萝"],
+  "character_candidates": [
+    {
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": ["商人", "旅行商人"],
+      "description": "理性、谨慎的商人，与赫萝同行，对城镇的治理方式和赫萝的发言表现出一定的思考。",
+      "speech_style": "理性、谨慎、略带无奈",
+      "speech_markers": ["喂。", "你不用把脸遮起来吗？"],
+      "relationship_hints": ["与赫萝同行，对赫萝的言行表现出包容与理解"],
+      "evidence": ["volume_01-d000364", "volume_01-d000366"],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "赫萝",
+      "aliases": [],
+      "titles": ["丰收之神", "狼", "贤狼"],
+      "description": "自称是丰收之神的神秘少女，拥有狼的特征，对城镇的治理方式和罗伦斯的提醒表现出调皮和自信。",
+      "speech_style": "调皮、自信、略带挑衅",
+      "speech_markers": ["这里真的有国王啊？", "嗯……这不是祭典呗？", "哼，原来是在说这个呀。"],
+      "relationship_hints": ["与罗伦斯同行，对罗伦斯的提醒表现出调皮和自信"],
+      "evidence": ["volume_01-d000357", "volume_01-d000361", "volume_01-d000369"],
+      "confidence": 0.95
+    }
+  ],
+  "mystery_entities": [],
+  "relationships": ["罗伦斯与赫萝同行，赫萝对罗伦斯的提醒表现出调皮和自信"],
+  "notes": "本场景中未出现新的神秘人物，主要聚焦于罗伦斯与赫萝的互动。赫萝对城镇的治理方式表现出好奇，罗伦斯则表现出理性与谨慎。"
+}
+```

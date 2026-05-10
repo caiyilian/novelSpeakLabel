@@ -1,0 +1,30 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001157",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "上下文显示罗伦斯在背对赫萝，用害羞的口吻说话，符合该句台词的语气和行为描述。",
+        "该段落前文提到罗伦斯在计划让赫萝动摇，然后耻笑她，暗示他即将发言。",
+        "没有其他角色在此段落中发言，且赫萝的台词风格通常包含自称「咱」，而此句没有。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "该段落中只有罗伦斯的发言，赫萝未直接发言，且上下文明确描述罗伦斯的行动和语气，因此判断为罗伦斯的台词。"
+}
+```

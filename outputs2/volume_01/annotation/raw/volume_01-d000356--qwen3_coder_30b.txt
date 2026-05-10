@@ -1,0 +1,24 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000356",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 1.0
+        }
+      ],
+      "evidence": ["自称「咱」，符合赫萝的speech_markers；前文提到赫萝在马车中说话；语境符合赫萝的调皮与自信风格"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "赫萝在马车中对罗伦斯说话，语气带有调侃与自信，符合其角色特征。"
+}

@@ -1,0 +1,36 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001072",
+      "speaker_entity_id": "ambiguous",
+      "speaker_display": "未知说话人",
+      "speaker_status": "ambiguous",
+      "confidence": 0.3,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.4
+        },
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.3
+        }
+      ],
+      "evidence": [
+        "上下文提到罗伦斯在地下道中行动，但没有明确的叙述线索表明他在此处说话。",
+        "赫萝在场景中被提及为主动行动者，但没有明确证据表明她在此处说话。",
+        "对话为孤立对白，缺乏上下文轮次推断依据。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    }
+  ],
+  "window_notes": "对话孤立，缺乏明确说话人线索，需结合上下文进一步确认说话人。"
+}
+```

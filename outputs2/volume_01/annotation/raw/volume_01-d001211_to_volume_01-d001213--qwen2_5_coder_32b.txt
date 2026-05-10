@@ -1,0 +1,48 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001211",
+      "speaker_entity_id": "",
+      "speaker_display": "",
+      "speaker_status": "ambiguous",
+      "confidence": 0.3,
+      "candidate_speakers": [
+        {"entity_id": "char_0001", "display": "罗伦斯", "status": "known", "score": 0.2},
+        {"entity_id": "char_0002", "display": "赫萝", "status": "known", "score": 0.2}
+      ],
+      "evidence": ["轮次依据"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    },
+    {
+      "dialogue_id": "volume_01-d001212",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {"entity_id": "char_0001", "display": "罗伦斯", "status": "known", "score": 0.8}
+      ],
+      "evidence": ["轮次依据"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001213",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {"entity_id": "char_0001", "display": "罗伦斯", "status": "known", "score": 0.8}
+      ],
+      "evidence": ["轮次依据"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次显示罗伦斯在忏悔和命令，但第一句的说话人不明确。"
+}

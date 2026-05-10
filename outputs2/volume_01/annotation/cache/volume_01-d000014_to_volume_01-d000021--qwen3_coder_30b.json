@@ -1,0 +1,185 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000014",
+      "speaker_entity_id": "char_0003",
+      "speaker_display": "骑士",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0003",
+          "display": "骑士",
+          "status": "known",
+          "score": 0.95
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.05
+        }
+      ],
+      "evidence": [
+        "对话内容符合骑士身份特征，语气带有审视与好奇；罗伦斯未提及盐或货物细节"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000015",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        },
+        {
+          "entity_id": "char_0003",
+          "display": "骑士",
+          "status": "known",
+          "score": 0.1
+        }
+      ],
+      "evidence": [
+        "回应骑士提问并解释货物性质，符合罗伦斯商人身份；上下文显示罗伦斯在展示货物"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000016",
+      "speaker_entity_id": "char_0003",
+      "speaker_display": "骑士",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0003",
+          "display": "骑士",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "继续询问皮草来源，符合骑士角色行为模式；上下文显示其对货物感兴趣"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000017",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "解释麦子来源，符合罗伦斯商人身份；上下文显示其在介绍货物"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000018",
+      "speaker_entity_id": "char_0003",
+      "speaker_display": "骑士",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0003",
+          "display": "骑士",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "回应罗伦斯展示货物后作出简短回应，符合骑士角色行为模式"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000019",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "句中描述罗伦斯动作与心理活动，但台词本身为内嵌引号，需结合上下文判断；句末“是”为罗伦斯所言"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    },
+    {
+      "dialogue_id": "volume_01-d000020",
+      "speaker_entity_id": "char_0003",
+      "speaker_display": "骑士",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0003",
+          "display": "骑士",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "提出疑问，符合骑士角色行为模式；上下文显示其对环境和人物关系的观察"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000021",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "表达对食物的满意并表示感谢，符合罗伦斯商人性格；上下文显示其在与骑士互动"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，骑士与罗伦斯交替发言，角色行为与言语一致。"
+}

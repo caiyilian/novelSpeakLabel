@@ -1,0 +1,57 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000052",
+      "speaker_entity_id": "mystery_volume_01_c002_s002_r003_神秘女孩",
+      "speaker_display": "神秘女孩",
+      "speaker_status": "mystery",
+      "confidence": 0.75,
+      "candidate_speakers": [
+        {
+          "entity_id": "mystery_volume_01_c002_s002_r003_神秘女孩",
+          "display": "神秘女孩",
+          "status": "mystery",
+          "score": 0.8
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.2
+        }
+      ],
+      "evidence": [
+        "前文描述女孩头部有小狗耳朵，当前台词为女孩发出的含糊声音",
+        "罗伦斯在前文已抓住女孩头部并拉扯，说明女孩处于被唤醒状态",
+        "该句为非明确语言表达，更像是生理反应而非主动发言"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000053",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 1.0
+        }
+      ],
+      "evidence": [
+        "该句为典型的罗伦斯口癖用语“喂！”",
+        "前文明确描述罗伦斯在马车上与女孩互动",
+        "罗伦斯是商人角色，具备主动询问行为的动机和性格特征"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "第一句为女孩发出的含糊声音，第二句为罗伦斯的质问，对话轮次清晰，符合上下文逻辑"
+}

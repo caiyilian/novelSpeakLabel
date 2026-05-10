@@ -1,0 +1,29 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001274",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "上下文显示罗伦斯在思考赫萝的举动，随后提出问题「拿麦子要做什么？」，符合他理性、谨慎的性格。",
+        "该句是独立对白，且上下文没有其他角色直接发言，因此推断为罗伦斯提问。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "该句为罗伦斯在赫萝威压下的反应，上下文无其他角色发言，因此判断为罗伦斯提问。"
+}
+```

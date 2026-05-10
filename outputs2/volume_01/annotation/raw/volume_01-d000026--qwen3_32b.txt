@@ -1,0 +1,35 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000026",
+      "speaker_entity_id": "char_0004",
+      "speaker_display": "农夫",
+      "speaker_status": "known",
+      "confidence": 0.75,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0004",
+          "display": "农夫",
+          "status": "known",
+          "score": 0.75
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.25
+        }
+      ],
+      "evidence": [
+        "对话出现在罗伦斯与农夫互动的场景中，且上下文显示罗伦斯在苦笑并吃蜂蜜糖，说明他并未说话。",
+        "农夫是该场景中唯一明确提到的对话角色，且符合朴实、直接的说话风格。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话出现在罗伦斯与农夫的互动场景中，上下文显示罗伦斯在苦笑并吃蜂蜜糖，因此该句台词更可能是农夫所说。"
+}
+```

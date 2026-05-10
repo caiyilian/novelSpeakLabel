@@ -1,0 +1,63 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000183",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.9
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.1
+        }
+      ],
+      "evidence": [
+        "使用自称'咱'，符合赫萝的speech_markers",
+        "内容涉及衣物搭配与尾巴阻碍，符合赫萝的体型特征",
+        "语气轻松，符合赫萝调皮自信的性格"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000184",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.85
+        },
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.15
+        }
+      ],
+      "evidence": [
+        "前句为赫萝发言，后句为对前句的回应，符合对话轮次",
+        "语气带有无奈与妥协，符合罗伦斯理性但略带担忧的性格",
+        "内容涉及裤子尺寸与穿法，符合罗伦斯作为商人的细致观察"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "赫萝先发言，表达对衣物的评价和剪洞的想法；罗伦斯随后回应，表现出无奈但理解的态度，符合两人互动逻辑"
+}

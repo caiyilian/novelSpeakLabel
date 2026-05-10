@@ -1,0 +1,43 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001004",
+      "speaker_entity_id": "mystery_volume_01_c005_s008_r001_神秘信件寄件者",
+      "speaker_display": "神秘信件寄件者",
+      "speaker_status": "mystery",
+      "confidence": 0.6,
+      "candidate_speakers": [
+        {
+          "entity_id": "mystery_volume_01_c005_s008_r001_神秘信件寄件者",
+          "display": "神秘信件寄件者",
+          "status": "mystery",
+          "score": 0.6
+        }
+      ],
+      "evidence": ["轮次依据"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    },
+    {
+      "dialogue_id": "volume_01-d001005",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": ["轮次依据"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "第一句台词来自神秘信件，第二句台词由罗伦斯说出。"
+}

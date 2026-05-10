@@ -1,0 +1,28 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000001",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.98,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.98
+        }
+      ],
+      "evidence": [
+        "台词中使用了‘咱’，这是赫萝的高区分度自称，符合 candidate_characters 中的 speech_markers。",
+        "上下文明确指出该角色自称是丰收之神赫萝，且拥有狼的特征，与 candidate_characters 中的描述一致。",
+        "该台词是赫萝首次登场时的自我介绍，符合叙述线索和角色登场顺序。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "该台词是赫萝的首次登场台词，上下文明确表明说话人身份，且符合赫萝的自称特征，判断为赫萝。"
+}

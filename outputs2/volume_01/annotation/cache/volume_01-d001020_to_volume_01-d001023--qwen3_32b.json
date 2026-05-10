@@ -1,0 +1,93 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001020",
+      "speaker_entity_id": "char_0015",
+      "speaker_display": "列支敦·马贺特",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0015",
+          "display": "列支敦·马贺特",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "上下文显示这是罗伦斯与马贺特的对话场景，马贺特作为米隆商行的行长，正在表达对崔尼银币交易的担忧。",
+        "对话内容提到「放弃这个特权实在……」，符合马贺特对交易利益的评估语气。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001021",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "这是对前一句的回应，符合对话轮次逻辑，罗伦斯作为提议者回应马贺特的担忧。",
+        "「要用这个特权换取我的伙伴当然不相称」，语气理性，符合罗伦斯的说话风格。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001022",
+      "speaker_entity_id": "char_0015",
+      "speaker_display": "列支敦·马贺特",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0015",
+          "display": "列支敦·马贺特",
+          "status": "known",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "这是对罗伦斯的回应，符合对话轮次逻辑，马贺特继续提问以理解罗伦斯的策略。",
+        "「您的意思是要对方用钱来买吗？」语气符合马贺特的理性提问风格。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001023",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "这是对马贺特提问的回应，符合对话轮次逻辑，罗伦斯继续解释他的策略。",
+        "内容涉及梅迪欧商行和崔尼国王的交易，符合罗伦斯的商业策略分析风格。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，罗伦斯与马贺特交替发言，符合场景中两人讨论崔尼银币交易的设定。"
+}

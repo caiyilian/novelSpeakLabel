@@ -1,0 +1,183 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000750",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.98,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.98
+        }
+      ],
+      "evidence": [
+        "上下文显示罗伦斯在试图形容赫萝，符合其理性、谨慎的性格。",
+        "赫萝尚未回应，因此说话人不可能是她。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000751",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.97,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.97
+        }
+      ],
+      "evidence": [
+        "上下文明确指出「赫萝的耳朵终于动了一下，随即又传来『呵』的笑声」，表明是赫萝说话。",
+        "赫萝在此场景中情绪波动明显，符合说话风格。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000752",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.99,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.99
+        }
+      ],
+      "evidence": [
+        "上下文明确指出「赫萝翻过身来并坐起身子，一副难以置信的表情对罗伦斯笑着说」，表明是赫萝说话。",
+        "台词中使用了赫萝的典型自称「咱」，符合其语言风格。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000753",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "上下文显示这是罗伦斯的反应，他因赫萝的讽刺而感到尴尬。",
+        "对话轮次显示罗伦斯在回应赫萝的讽刺。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000754",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.98,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.98
+        }
+      ],
+      "evidence": [
+        "上下文明确指出「目光敏锐的狼立刻察觉到罗伦斯在想什么，她一副难以置信的表情说了句『果然呐』」，表明是赫萝说话。",
+        "赫萝在此场景中表现出敏锐的观察力和情绪反应。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000755",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.99,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.99
+        }
+      ],
+      "evidence": [
+        "上下文明确指出「赫萝接着说出道歉的话语」，表明是赫萝说话。",
+        "台词中使用了赫萝的典型自称「咱」，符合其语言风格。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000756",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.96,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.96
+        }
+      ],
+      "evidence": [
+        "上下文明确指出「罗伦斯的态度也软化下来，再说了次『抱歉』」，表明是罗伦斯说话。",
+        "对话轮次显示罗伦斯在回应赫萝的道歉。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000757",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.99,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.99
+        }
+      ],
+      "evidence": [
+        "上下文明确指出「赫萝先把视线拉往远处，又再把视线拉回自己的手上说」，表明是赫萝说话。",
+        "台词中使用了赫萝的典型自称「咱」，符合其语言风格。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，罗伦斯与赫萝交替发言，符合场景中两人互动的节奏。赫萝多次使用自称「咱」，有助于确认说话人。"
+}
+```

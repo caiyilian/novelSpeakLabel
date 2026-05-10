@@ -1,0 +1,91 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000699",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.85
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.15
+        }
+      ],
+      "evidence": [
+        "赫萝在本场景中频繁发言，且语气带有推测和判断，符合「这很难断定」的语气风格",
+        "罗伦斯的发言通常更理性、谨慎，较少使用「汝」这种古风敬语"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000700",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.8
+        },
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.2
+        }
+      ],
+      "evidence": [
+        "此句语气理性、分析性强，符合罗伦斯的发言风格",
+        "赫萝的发言通常更情绪化或带有调侃语气，与此句不符"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000701",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.75,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.75
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.25
+        }
+      ],
+      "evidence": [
+        "赫萝在本场景中多次表达对事态的感叹，语气带有「不可思议」的倾向",
+        "罗伦斯虽然也会表达困惑，但更倾向于理性分析，较少使用感叹语气"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "三句对话构成一个对话轮次：赫萝提出推测，罗伦斯回应支持并分析，赫萝再次感叹事态。符合角色发言风格和上下文逻辑。"
+}
+```

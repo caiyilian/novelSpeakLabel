@@ -1,0 +1,92 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000982",
+      "speaker_entity_id": "char_0015",
+      "speaker_display": "列支敦·马贺特",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0015",
+          "display": "列支敦·马贺特",
+          "status": "known",
+          "score": 0.95
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.03
+        }
+      ],
+      "evidence": [
+        "提到罗伦斯先生，符合马贺特的说话风格",
+        "语气沉稳，符合马贺特的理性形象",
+        "对话内容与马贺特立场一致，不承担罗伦斯安危责任"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000983",
+      "speaker_entity_id": "char_0015",
+      "speaker_display": "列支敦·马贺特",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0015",
+          "display": "列支敦·马贺特",
+          "status": "known",
+          "score": 0.9
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.05
+        }
+      ],
+      "evidence": [
+        "继续使用“罗伦斯先生”称呼，符合马贺特的礼貌语气",
+        "内容与前句一致，为同一人表达立场",
+        "语气沉稳，符合马贺特的说话风格"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000984",
+      "speaker_entity_id": "char_0015",
+      "speaker_display": "列支敦·马贺特",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0015",
+          "display": "列支敦·马贺特",
+          "status": "known",
+          "score": 0.85
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.1
+        }
+      ],
+      "evidence": [
+        "前文马贺特已明确立场，此句为继续表达",
+        "“可是……”为马贺特语气转折，符合其沉稳但略带遗憾的表达方式",
+        "无其他角色发言，上下文一致"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "三句台词连续，均为马贺特对罗伦斯的谈判回应，语气一致，符合其理性、沉稳的说话风格。"
+}

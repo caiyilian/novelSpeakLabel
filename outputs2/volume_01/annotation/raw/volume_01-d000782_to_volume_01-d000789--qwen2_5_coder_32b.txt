@@ -1,0 +1,117 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000782",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {"entity_id": "char_0002", "display": "赫萝", "status": "known", "score": 0.9}
+      ],
+      "evidence": ["对话轮次推断，赫萝刚刚回应罗伦斯"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000783",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {"entity_id": "char_0001", "display": "罗伦斯", "status": "known", "score": 0.9}
+      ],
+      "evidence": ["对话轮次推断，罗伦斯刚刚说完「真是的」"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    },
+    {
+      "dialogue_id": "volume_01-d000784",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {"entity_id": "char_0002", "display": "赫萝", "status": "known", "score": 0.9}
+      ],
+      "evidence": ["对话轮次推断，赫萝刚刚回应罗伦斯"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000785",
+      "speaker_entity_id": "char_0016",
+      "speaker_display": "店老板",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {"entity_id": "char_0016", "display": "店老板", "status": "known", "score": 0.9}
+      ],
+      "evidence": ["对话轮次推断，店老板刚刚回应赫萝的点餐"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000786",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {"entity_id": "char_0001", "display": "罗伦斯", "status": "known", "score": 0.9}
+      ],
+      "evidence": ["对话轮次推断，罗伦斯刚刚点餐"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000787",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {"entity_id": "char_0002", "display": "赫萝", "status": "known", "score": 0.9}
+      ],
+      "evidence": ["对话轮次推断，赫萝刚刚回应罗伦斯"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000788",
+      "speaker_entity_id": "char_0016",
+      "speaker_display": "店老板",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {"entity_id": "char_0016", "display": "店老板", "status": "known", "score": 0.9}
+      ],
+      "evidence": ["对话轮次推断，店老板刚刚回应赫萝的点餐"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000789",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {"entity_id": "char_0002", "display": "赫萝", "status": "known", "score": 0.9}
+      ],
+      "evidence": ["对话轮次推断，赫萝刚刚回应店老板"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，主要角色为罗伦斯、赫萝和店老板。"
+}

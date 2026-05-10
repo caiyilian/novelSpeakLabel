@@ -1,0 +1,201 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001282",
+      "speaker_entity_id": "char_0015",
+      "speaker_display": "列支敦·马贺特",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0015",
+          "display": "列支敦·马贺特",
+          "status": "known",
+          "score": 0.95
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.03
+        }
+      ],
+      "evidence": [
+        "上下文明确提到马贺特出现在房门另一头",
+        "对话内容符合马贺特关心罗伦斯伤势的语境",
+        "马贺特是米隆商行行长，有救援罗伦斯的动机"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001283",
+      "speaker_entity_id": "char_0015",
+      "speaker_display": "列支敦·马贺特",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0015",
+          "display": "列支敦·马贺特",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "与前一句对话为连续轮次",
+        "马贺特在场并关心罗伦斯伤势",
+        "语境符合马贺特的理性、沉稳风格"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001284",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        },
+        {
+          "entity_id": "char_0015",
+          "display": "列支敦·马贺特",
+          "status": "known",
+          "score": 0.05
+        }
+      ],
+      "evidence": [
+        "回应马贺特的关心，语气符合罗伦斯虚弱但理性状态",
+        "使用「托您的福」表明回应对象为马贺特",
+        "上下文显示罗伦斯正在恢复中"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001285",
+      "speaker_entity_id": "char_0015",
+      "speaker_display": "列支敦·马贺特",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0015",
+          "display": "列支敦·马贺特",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "回应罗伦斯的回应，语境符合马贺特的沉稳风格",
+        "表达对罗伦斯遭遇危险的歉意，符合其角色设定",
+        "与前句为连续对话轮次"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001286",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "回应马贺特的道歉，语气符合罗伦斯的理性与责任感",
+        "提到「我的伙伴」，符合罗伦斯与赫萝的关系",
+        "语境中罗伦斯处于恢复状态，有发言能力"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001287",
+      "speaker_entity_id": "char_0015",
+      "speaker_display": "列支敦·马贺特",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0015",
+          "display": "列支敦·马贺特",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "回应罗伦斯的解释，语境符合马贺特冷静分析的风格",
+        "提到教会与火刑，符合马贺特对局势的掌控感",
+        "与前句为连续对话轮次"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001288",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "反问马贺特是否见过赫萝，符合罗伦斯对赫萝的关心",
+        "语境中罗伦斯处于恢复状态，有发言能力",
+        "赫萝是罗伦斯的伙伴，问题指向赫萝"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001289",
+      "speaker_entity_id": "char_0015",
+      "speaker_display": "列支敦·马贺特",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0015",
+          "display": "列支敦·马贺特",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "回应罗伦斯的询问，语境符合马贺特的理性与冷静",
+        "提到赫萝的狼形，符合马贺特对局势的分析",
+        "与前句为连续对话轮次"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话围绕罗伦斯醒来后与马贺特的交流展开，马贺特作为米隆商行代表，表现出对罗伦斯的关心和对局势的掌控。罗伦斯则表现出虚弱但理性，对赫萝的安危十分关注。"
+}

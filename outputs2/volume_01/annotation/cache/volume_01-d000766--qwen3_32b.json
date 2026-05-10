@@ -1,0 +1,28 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000766",
+      "speaker_entity_id": "mystery_volume_01_c005_s001_r003_帕斯罗村的村民",
+      "speaker_display": "帕斯罗村的村民",
+      "speaker_status": "mystery",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "mystery_volume_01_c005_s001_r003_帕斯罗村的村民",
+          "display": "帕斯罗村的村民",
+          "status": "mystery",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "赫萝在对话中多次提到「那家伙」，并描述其性格为「少根筋」、「极其开朗」、「看到咱变身成狼也不吃惊」，符合神秘人物的描述。",
+        "上下文显示说话人是赫萝在回忆中提到的朋友，而非罗伦斯或赫萝本人。",
+        "该台词与赫萝的叙述视角一致，属于她对朋友的评价。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "该段对话为赫萝对过去朋友的回忆，说话人应为她提到的「那家伙」，即帕斯罗村的村民。上下文未出现其他说话人，因此判断为回忆中的神秘人物。"
+}

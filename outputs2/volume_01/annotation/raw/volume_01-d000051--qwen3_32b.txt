@@ -1,0 +1,30 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000051",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "上下文显示罗伦斯在试图叫醒马车上的女孩，符合说话人行为动机。",
+        "台词『喂！起床啊！你在我的马车上做什么？』与罗伦斯的 speech_markers 中的『喂！起床啊！』高度匹配。",
+        "场景记忆中提到罗伦斯与神秘女孩初次相遇，表现出警惕和好奇，符合说话人身份。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "该对话为场景中首次对话，上下文明确显示罗伦斯是说话人，无其他角色发言。"
+}
+```

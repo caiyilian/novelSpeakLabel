@@ -1,0 +1,163 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000661",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.85
+        },
+        {
+          "entity_id": "char_0013",
+          "display": "怀兹",
+          "status": "known",
+          "score": 0.15
+        }
+      ],
+      "evidence": ["上下文显示罗伦斯在质疑怀兹是否察觉到货币变化，语气符合罗伦斯的理性与困惑"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000662",
+      "speaker_entity_id": "char_0013",
+      "speaker_display": "怀兹",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0013",
+          "display": "怀兹",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": ["怀兹从木箱中取出银币并说明其发行时间，符合其角色设定与行为逻辑"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000663",
+      "speaker_entity_id": "char_0013",
+      "speaker_display": "怀兹",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0013",
+          "display": "怀兹",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": ["怀兹提到自己一整天都在触摸货币，符合其角色设定中的谨慎与专业"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000664",
+      "speaker_entity_id": "char_0013",
+      "speaker_display": "怀兹",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0013",
+          "display": "怀兹",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": ["怀兹说“没有用的啦”，符合其角色设定中的幽默与轻松态度"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000665",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.85
+        }
+      ],
+      "evidence": ["罗伦斯叹息并试图找出差异，符合其理性、谨慎的性格"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000666",
+      "speaker_entity_id": "char_0013",
+      "speaker_display": "怀兹",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0013",
+          "display": "怀兹",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": ["怀兹提出熔毁银币的建议，符合其角色设定中的轻松与幽默"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000667",
+      "speaker_entity_id": "char_0013",
+      "speaker_display": "怀兹",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0013",
+          "display": "怀兹",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": ["怀兹说“说什么傻话”，符合其角色设定中的轻松与调侃"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000668",
+      "speaker_entity_id": "char_0013",
+      "speaker_display": "怀兹",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0013",
+          "display": "怀兹",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": ["怀兹笑着带过“愚蠢极了”，符合其角色设定中的轻松与幽默"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，罗伦斯提出疑问，怀兹回应并给出解释，随后提出建议，怀兹否定建议，整体对话围绕货币变化展开，符合角色性格与场景设定。"
+}

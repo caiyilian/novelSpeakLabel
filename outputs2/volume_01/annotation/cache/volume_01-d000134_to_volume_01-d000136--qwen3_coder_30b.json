@@ -1,0 +1,80 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000134",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 1.0
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.1
+        }
+      ],
+      "evidence": [
+        "赫萝正在变身过程中，前文描述其手臂变大，此句为她对变化的反应；符合赫萝的说话风格和情绪化表达"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000135",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 1.0
+        }
+      ],
+      "evidence": [
+        "赫萝在变身之后，以挑衅语气问罗伦斯是否相信她；符合赫萝的说话风格和语境；前文提到赫萝仰头看着罗伦斯说话"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000136",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        },
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.1
+        }
+      ],
+      "evidence": [
+        "罗伦斯对赫萝变身感到震惊，无法回应；前文描述他揉眼、甩头、反复看脚，表现出困惑和无力；符合罗伦斯理性、困惑的说话风格"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "赫萝先表达对变身的惊讶，接着挑衅性地询问罗伦斯是否相信她，随后罗伦斯因震惊而无法回应。对话轮次清晰，符合角色性格与上下文。"
+}

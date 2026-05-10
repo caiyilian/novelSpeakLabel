@@ -1,0 +1,140 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001242",
+      "speaker_entity_id": "char_0005",
+      "speaker_display": "叶勒",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0005",
+          "display": "叶勒",
+          "status": "known",
+          "score": 0.95
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.03
+        }
+      ],
+      "evidence": [
+        "台词中提到'把那家伙交给我们'，与叶勒代表村庄对赫萝的行动一致；'与旧时代诀别'符合叶勒的立场。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001243",
+      "speaker_entity_id": "char_0005",
+      "speaker_display": "叶勒",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0005",
+          "display": "叶勒",
+          "status": "known",
+          "score": 0.95
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.02
+        }
+      ],
+      "evidence": [
+        "直接称呼'罗伦斯'，并以'我们村落'为视角，符合叶勒作为村民代表的身份；提及'米隆商行'和'撤销关税'，与叶勒的经济诉求一致。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001244",
+      "speaker_entity_id": "char_0005",
+      "speaker_display": "叶勒",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0005",
+          "display": "叶勒",
+          "status": "known",
+          "score": 0.95
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.02
+        }
+      ],
+      "evidence": [
+        "继续以'罗伦斯'为对象，语气带有劝说和情感诉求，符合叶勒试图说服罗伦斯的场景；'我俩的交情'也符合叶勒与罗伦斯的旧识关系。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001245",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        },
+        {
+          "entity_id": "char_0005",
+          "display": "叶勒",
+          "status": "known",
+          "score": 0.05
+        }
+      ],
+      "evidence": [
+        "回应叶勒的劝说，语气坚定，符合罗伦斯理性、坚定的说话风格；'我当然懂得计算损益'是典型的罗伦斯式表达。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001246",
+      "speaker_entity_id": "char_0005",
+      "speaker_display": "叶勒",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0005",
+          "display": "叶勒",
+          "status": "known",
+          "score": 0.9
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.05
+        }
+      ],
+      "evidence": [
+        "'喔，罗伦斯。'是叶勒对罗伦斯的称呼，语气带有轻松和胜利感，符合叶勒在劝说成功后的态度。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，叶勒作为村民代表劝说罗伦斯交出赫萝，罗伦斯回应坚定，叶勒则以胜利语气收尾。"
+}

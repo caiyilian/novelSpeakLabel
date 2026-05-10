@@ -1,0 +1,24 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000051",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": ["喂！起床啊！", "罗伦斯开口说"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "根据上下文和对话内容，可以推断出说话人是罗伦斯。"
+}

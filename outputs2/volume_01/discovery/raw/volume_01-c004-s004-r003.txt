@@ -1,0 +1,68 @@
+```json
+{
+  "scene_id": "volume_01-c004-s004",
+  "scene_summary": "罗伦斯与赫萝在酒吧中寻找名为杰廉的旅行商人。女店员告知杰廉将在日落后出现，罗伦斯决定留在酒吧等待。",
+  "active_characters": ["罗伦斯", "赫萝", "女店员", "杰廉"],
+  "character_candidates": [
+    {
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": ["商人", "旅行商人"],
+      "description": "理性、谨慎的商人，正在酒吧中寻找名为杰廉的商人。",
+      "speech_style": "理性、谨慎",
+      "speech_markers": ["这样啊。", "那就听你的吧！"],
+      "relationship_hints": ["与赫萝同行", "试图与杰廉建立联系"],
+      "evidence": ["volume_01-c004-s004-p001221", "volume_01-c004-s004-p001226", "volume_01-c004-s004-p001235"],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "赫萝",
+      "aliases": [],
+      "titles": ["丰收之神", "狼", "贤狼"],
+      "description": "与罗伦斯同行的神秘少女，拥有狼的特征。",
+      "speech_style": "狡黠、自信",
+      "speech_markers": [],
+      "relationship_hints": ["与罗伦斯同行"],
+      "evidence": ["volume_01-c004-s004-p001221"],
+      "confidence": 0.9
+    },
+    {
+      "display_name": "女店员",
+      "aliases": [],
+      "titles": [],
+      "description": "酒吧的女店员，开朗且有生意头脑，对杰廉有了解。",
+      "speech_style": "开朗、有生意头脑",
+      "speech_markers": ["啊，您是说杰廉先生吗？", "是，请您慢用。"],
+      "relationship_hints": ["与杰廉有联系"],
+      "evidence": ["volume_01-c004-s004-p001224", "volume_01-c004-s004-p001225", "volume_01-c004-s004-p001229", "volume_01-c004-s004-p001236"],
+      "confidence": 0.85
+    },
+    {
+      "display_name": "杰廉",
+      "aliases": [],
+      "titles": ["旅行商人"],
+      "description": "被罗伦斯寻找的旅行商人，据称会在日落后出现。",
+      "speech_style": "热情、略带笨拙",
+      "speech_markers": [],
+      "relationship_hints": ["与罗伦斯有联系"],
+      "evidence": ["volume_01-c004-s004-p001226", "volume_01-c004-s004-p001229", "volume_01-c004-s004-p001231"],
+      "confidence": 0.8
+    }
+  ],
+  "mystery_entities": [
+    {
+      "temporary_name": "两名退休老工匠",
+      "description": "在酒吧中消磨时间的两名老人，未参与对话。",
+      "evidence": ["volume_01-c004-s004-p001221"],
+      "confidence": 0.6
+    }
+  ],
+  "relationships": [
+    "罗伦斯与赫萝同行",
+    "罗伦斯试图与杰廉建立联系",
+    "女店员对杰廉有了解",
+    "女店员与罗伦斯有互动"
+  ],
+  "notes": "场景中提及的杰廉是目标人物，但尚未出现。女店员提供了关键信息，表明她与杰廉有联系。两名退休老工匠未参与对话，但存在场景中。"
+}
+```

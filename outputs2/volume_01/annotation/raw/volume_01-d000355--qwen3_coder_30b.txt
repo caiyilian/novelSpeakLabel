@@ -1,0 +1,24 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000355",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 1.0
+        }
+      ],
+      "evidence": ["前文提到赫萝脸上露出笑容并说：「这样就算扯平了呗。」，符合赫萝的说话风格和情绪表达；赫萝在场景中表现出自信与狡黠，且其自称「咱」等口癖特征与上下文一致。"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "赫萝在前文表现出笑容后说出此句台词，语气轻松且带有调侃意味，符合其角色性格。罗伦斯未发言，无其他可能说话人。"
+}

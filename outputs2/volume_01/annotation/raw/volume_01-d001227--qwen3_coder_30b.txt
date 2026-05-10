@@ -1,0 +1,34 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001227",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.85
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.15
+        }
+      ],
+      "evidence": [
+        "前文描述赫萝催促罗伦斯并引导方向",
+        "赫萝声音恢复活力，暗示她刚说完话",
+        "台词内容符合赫萝冷静、简短的说话风格"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "赫萝在前文引导罗伦斯前进，其声音恢复活力，符合她刚说完话的语境。罗伦斯虽在场但无直接发言，结合上下文判断为赫萝所说。"
+}

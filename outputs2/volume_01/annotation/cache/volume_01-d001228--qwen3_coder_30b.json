@@ -1,0 +1,32 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001228",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.85
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.15
+        }
+      ],
+      "evidence": [
+        "前文提到赫萝泫然欲泣的声音，且该台词为感叹句，符合赫萝情绪化表达风格；罗伦斯虽在场但无直接发言记录"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "赫萝在前文已表现出情绪波动，此句感叹符合其情感状态，罗伦斯虽在场但未发言，推测为赫萝所言"
+}

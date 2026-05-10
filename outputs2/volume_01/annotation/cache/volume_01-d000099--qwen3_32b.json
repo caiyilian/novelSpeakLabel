@@ -1,0 +1,33 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000099",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        },
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.1
+        }
+      ],
+      "evidence": [
+        "上下文显示罗伦斯正在对赫萝的非人类特征进行理性分析，台词「不，不可能。」符合他怀疑和理性判断的语气。",
+        "该段落中没有赫萝的直接发言，也没有符合她口癖的表达。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "该段对话为罗伦斯的理性回应，符合他怀疑赫萝身份的语境，上下文无其他说话人线索。"
+}

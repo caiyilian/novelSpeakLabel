@@ -1,0 +1,30 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000132",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.85
+        },
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.15
+        }
+      ],
+      "evidence": ["上下文显示罗伦斯在观察赫萝的行为并提出疑问；赫萝刚刚展示变身能力，罗伦斯的提问符合其理性性格；赫萝未直接发言，但罗伦斯的反应表明他正在试图理解赫萝的行为。"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "罗伦斯在赫萝展示变身能力后提出疑问，符合其理性、谨慎的性格特征，且上下文明确显示赫萝刚完成动作，罗伦斯是合理说话人。"
+}

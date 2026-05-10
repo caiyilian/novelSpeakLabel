@@ -1,0 +1,34 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001072",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.85
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.15
+        }
+      ],
+      "evidence": [
+        "前文描述赫萝在地下道中不断呼喊罗伦斯，试图唤醒并指引方向",
+        "赫萝对罗伦斯表现出关切和责任感，符合其说话风格",
+        "罗伦斯处于等待和焦虑状态，更可能是在回应赫萝的行动而非主动发问"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "赫萝在地下道中引导罗伦斯，台词符合其冷静、略带责备的说话风格，且前文已建立其主导行动的设定"
+}

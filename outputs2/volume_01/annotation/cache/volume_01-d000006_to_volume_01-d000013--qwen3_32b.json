@@ -1,0 +1,173 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000006",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "上下文显示罗伦斯是主动接近修道院的人，且该句是罗伦斯对骑士挥手的反应。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000007",
+      "speaker_entity_id": "mystery_volume_01_c002_s001_r001_修道院骑士",
+      "speaker_display": "修道院骑士",
+      "speaker_status": "mystery",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "mystery_volume_01_c002_s001_r001_修道院骑士",
+          "display": "修道院骑士",
+          "status": "mystery",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "上下文显示这是骑士对罗伦斯的回应，且骑士尚未自我介绍。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000008",
+      "speaker_entity_id": "mystery_volume_01_c002_s001_r001_修道院骑士",
+      "speaker_display": "修道院骑士",
+      "speaker_status": "mystery",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "mystery_volume_01_c002_s001_r001_修道院骑士",
+          "display": "修道院骑士",
+          "status": "mystery",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "上下文显示这是骑士对罗伦斯的进一步提问，符合对话轮次。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000009",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.98,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.98
+        }
+      ],
+      "evidence": [
+        "罗伦斯自我介绍为旅行商人，符合其角色设定。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000010",
+      "speaker_entity_id": "mystery_volume_01_c002_s001_r001_修道院骑士",
+      "speaker_display": "修道院骑士",
+      "speaker_status": "mystery",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "mystery_volume_01_c002_s001_r001_修道院骑士",
+          "display": "修道院骑士",
+          "status": "mystery",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "上下文显示这是骑士对罗伦斯的回答，符合对话轮次。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000011",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "上下文显示罗伦斯拿出蜂蜜糖递给骑士，这是他主动提出分享。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000012",
+      "speaker_entity_id": "mystery_volume_01_c002_s001_r001_修道院骑士",
+      "speaker_display": "修道院骑士",
+      "speaker_status": "mystery",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {
+          "entity_id": "mystery_volume_01_c002_s001_r001_修道院骑士",
+          "display": "修道院骑士",
+          "status": "mystery",
+          "score": 0.8
+        }
+      ],
+      "evidence": [
+        "上下文显示这是骑士对罗伦斯提议的反应，符合对话轮次。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000013",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "上下文显示这是罗伦斯对骑士的进一步解释，符合对话轮次。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，罗伦斯与骑士交替发言，符合上下文中的互动逻辑。"
+}

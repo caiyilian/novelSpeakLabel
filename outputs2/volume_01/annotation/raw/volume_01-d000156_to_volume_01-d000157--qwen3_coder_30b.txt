@@ -1,0 +1,63 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000156",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.9
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.1
+        }
+      ],
+      "evidence": [
+        "台词中使用'咱'自称，符合赫萝的speech_markers",
+        "前文描述赫萝露出背叛表情，情绪变化明显，符合此台词语境",
+        "罗伦斯在前文被赫萝情绪影响，但此句为赫萝回应，非罗伦斯话语"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000157",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.85
+        },
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.15
+        }
+      ],
+      "evidence": [
+        "前文描述罗伦斯试图争取时间，随口回答，符合此句语境",
+        "赫萝刚表达情绪，罗伦斯回应，符合对话轮次",
+        "罗伦斯在前文被赫萝情绪影响，内心动摇，此句为他试图稳定情绪的回应"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "赫萝先发问，表达情绪，罗伦斯随后回应，符合对话轮次和上下文情绪变化"
+}

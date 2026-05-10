@@ -1,0 +1,28 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000046",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 1.0
+        }
+      ],
+      "evidence": [
+        "台词为「糟糕」，与罗伦斯的 speech_markers 匹配",
+        "上下文描述罗伦斯在河边思考露宿，情绪与台词一致",
+        "该段落属于罗伦斯的内心独白或自我反思场景"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "该句台词为罗伦斯的内心独白，结合上下文其情绪和行为逻辑一致，且与角色口癖匹配"
+}

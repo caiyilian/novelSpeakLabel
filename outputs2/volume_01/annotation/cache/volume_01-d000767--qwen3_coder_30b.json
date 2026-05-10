@@ -1,0 +1,34 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000767",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.85
+        },
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.15
+        }
+      ],
+      "evidence": [
+        "前文描述罗伦斯在赫萝床边动作，符合其行为逻辑",
+        "赫萝处于回忆状态，未直接发言",
+        "台词语气与罗伦斯的喃喃自语一致"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "根据上下文，罗伦斯在赫萝床边进行动作并喃喃自语，符合其行为逻辑。赫萝处于回忆状态，未直接发言，因此该台词应为罗伦斯所言。"
+}

@@ -1,0 +1,53 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000302",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.98,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.98
+        }
+      ],
+      "evidence": [
+        "上下文显示赫萝在对话中主动发言，且使用了赫萝的典型自称'咱'，符合其说话风格。",
+        "前一句描述赫萝从床上伸手拿马铃薯，紧接着是该台词，符合连续对话轮次。",
+        "场景记忆中赫萝是活跃角色，与罗伦斯有频繁互动。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000303",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.99,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.99
+        }
+      ],
+      "evidence": [
+        "台词中明确自称'咱是贤狼赫萝呐'，直接表明说话人身份。",
+        "上下文显示赫萝在对话中持续发言，符合对话轮次。",
+        "符合赫萝的典型说话风格和自称方式。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "两句话为赫萝连续发言，符合上下文对话轮次和角色行为模式。"
+}
+```

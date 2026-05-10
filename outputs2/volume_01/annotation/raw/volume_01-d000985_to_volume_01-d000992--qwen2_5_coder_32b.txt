@@ -1,0 +1,118 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000985",
+      "speaker_entity_id": "",
+      "speaker_display": "",
+      "speaker_status": "ambiguous",
+      "confidence": 0.3,
+      "candidate_speakers": [
+        {"entity_id": "char_0001", "display": "罗伦斯", "status": "known", "score": 0.4},
+        {"entity_id": "char_0015", "display": "列支敦·马贺特", "status": "known", "score": 0.3}
+      ],
+      "evidence": ["对话轮次依据"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    },
+    {
+      "dialogue_id": "volume_01-d000986",
+      "speaker_entity_id": "char_0015",
+      "speaker_display": "列支敦·马贺特",
+      "speaker_status": "known",
+      "confidence": 0.7,
+      "candidate_speakers": [
+        {"entity_id": "char_0015", "display": "列支敦·马贺特", "status": "known", "score": 0.9}
+      ],
+      "evidence": ["冷静、理性的语气符合马贺特"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000987",
+      "speaker_entity_id": "char_0015",
+      "speaker_display": "列支敦·马贺特",
+      "speaker_status": "known",
+      "confidence": 0.6,
+      "candidate_speakers": [
+        {"entity_id": "char_0015", "display": "列支敦·马贺特", "status": "known", "score": 0.8}
+      ],
+      "evidence": ["对话轮次依据"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    },
+    {
+      "dialogue_id": "volume_01-d000988",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.7,
+      "candidate_speakers": [
+        {"entity_id": "char_0001", "display": "罗伦斯", "status": "known", "score": 0.9}
+      ],
+      "evidence": ["对话轮次依据"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000989",
+      "speaker_entity_id": "char_0015",
+      "speaker_display": "列支敦·马贺特",
+      "speaker_status": "known",
+      "confidence": 0.7,
+      "candidate_speakers": [
+        {"entity_id": "char_0015", "display": "列支敦·马贺特", "status": "known", "score": 0.9}
+      ],
+      "evidence": ["冷静、理性的语气符合马贺特"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000990",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.7,
+      "candidate_speakers": [
+        {"entity_id": "char_0001", "display": "罗伦斯", "status": "known", "score": 0.9}
+      ],
+      "evidence": ["对话轮次依据"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000991",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.7,
+      "candidate_speakers": [
+        {"entity_id": "char_0001", "display": "罗伦斯", "status": "known", "score": 0.9}
+      ],
+      "evidence": ["对话轮次依据"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000992",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.7,
+      "candidate_speakers": [
+        {"entity_id": "char_0001", "display": "罗伦斯", "status": "known", "score": 0.9}
+      ],
+      "evidence": ["对话轮次依据"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次推断为主要判断依据，部分对话缺乏明确的叙述锚点。"
+}

@@ -1,0 +1,81 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000027",
+      "speaker_entity_id": "char_0004",
+      "speaker_display": "农夫",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0004",
+          "display": "农夫",
+          "status": "known",
+          "score": 1.0
+        }
+      ],
+      "evidence": ["对话发生在罗伦斯与农夫之间，农夫有‘喔？’‘喔！’等口癖，符合其说话风格"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000028",
+      "speaker_entity_id": "char_0004",
+      "speaker_display": "农夫",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0004",
+          "display": "农夫",
+          "status": "known",
+          "score": 1.0
+        }
+      ],
+      "evidence": ["与前一句‘嗨！辛苦了。’形成连续对话，且农夫有‘喔？’‘喔！’等口癖"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000029",
+      "speaker_entity_id": "char_0004",
+      "speaker_display": "农夫",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0004",
+          "display": "农夫",
+          "status": "known",
+          "score": 1.0
+        }
+      ],
+      "evidence": ["农夫在对话中提及叶勒，且上下文为罗伦斯与农夫的互动，符合其角色定位"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000030",
+      "speaker_entity_id": "char_0004",
+      "speaker_display": "农夫",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0004",
+          "display": "农夫",
+          "status": "known",
+          "score": 1.0
+        }
+      ],
+      "evidence": ["农夫在对话中提及叶勒、赫萝、麦田等信息，且前文已明确其为帕斯罗村的农夫，与上下文一致"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "罗伦斯与农夫之间的对话轮次清晰，农夫表现出朴实、直接的说话风格，且其发言内容与上下文高度一致，确认为同一角色。"
+}

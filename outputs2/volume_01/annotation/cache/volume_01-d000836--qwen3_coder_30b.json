@@ -1,0 +1,32 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000836",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.85
+        },
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.15
+        }
+      ],
+      "evidence": [
+        "上下文描述罗伦斯在推测赫萝的行为，且用责备口吻说话；赫萝未直接发言，但前文有罗伦斯对赫萝情绪的预判；赫萝的反应显示她并未说话"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "罗伦斯在推测赫萝的行为并以责备口吻说话，赫萝未直接发言，上下文支持罗伦斯为说话人"
+}

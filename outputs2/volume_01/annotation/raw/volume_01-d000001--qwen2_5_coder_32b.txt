@@ -1,0 +1,19 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000001",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {"entity_id": "char_0002", "display": "赫萝", "status": "known", "score": 0.9}
+      ],
+      "evidence": ["自称‘咱’，符合赫萝的口癖"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "根据上下文和口癖判断，这句台词很可能是赫萝所说。"
+}

@@ -1,0 +1,28 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000001",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "自称'咱'，符合赫萝的speech_markers",
+        "内容与赫萝作为丰收之神的身份一致",
+        "上下文已引入赫萝角色，且为首次对白"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "赫萝首次登场并自我介绍，语气自信且带有调侃，符合其角色设定"
+}

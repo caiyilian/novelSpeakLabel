@@ -1,0 +1,84 @@
+{
+  "scene_id": "volume_01-c005-s003",
+  "scene_summary": "罗伦斯正在为自己的开店计划做准备，赫萝因宿醉而虚弱，但逐渐恢复。两人在房间中互动，赫萝对罗伦斯的计划表示兴趣。",
+  "active_characters": [
+    "罗伦斯",
+    "赫萝",
+    "店老板"
+  ],
+  "character_candidates": [
+    {
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": [
+        "商人",
+        "旅行商人"
+      ],
+      "description": "理性、谨慎的商人，正在为开店计划做准备。他表现出对赫萝的关心，并与她进行轻松的对话。",
+      "speech_style": "理性、温和、略带调侃",
+      "speech_markers": [
+        "有食欲就表示没问题了。",
+        "那儿不是有水壶吗？"
+      ],
+      "relationship_hints": [
+        "与赫萝关系亲密，照顾她的状态。"
+      ],
+      "evidence": [
+        "volume_01-c005-s003-p001816",
+        "volume_01-c005-s003-p001825",
+        "volume_01-c005-s003-p001829"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "赫萝",
+      "aliases": [],
+      "titles": [
+        "贤狼",
+        "丰收之神"
+      ],
+      "description": "宿醉的贤狼，表现出虚弱和调皮的混合状态。与罗伦斯互动频繁，提到与熊一起喝酒的经历。",
+      "speech_style": "调皮、略带慵懒",
+      "speech_markers": [
+        "嗯，好多了。不过，肚子有点饿。",
+        "有没有喝的……"
+      ],
+      "relationship_hints": [
+        "与罗伦斯关系亲密，依赖他照顾。"
+      ],
+      "evidence": [
+        "volume_01-c005-s003-p001815",
+        "volume_01-c005-s003-p001824",
+        "volume_01-c005-s003-p001828"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "店老板",
+      "aliases": [],
+      "titles": [
+        "餐馆老板"
+      ],
+      "description": "热情的店老板，为罗伦斯和赫萝提供果汁，并对赫萝的宿醉表示理解。",
+      "speech_style": "热情、幽默",
+      "speech_markers": [
+        "宿醉啊？",
+        "年轻时总会有这些失误。"
+      ],
+      "relationship_hints": [
+        "与罗伦斯有互动，提供服务。"
+      ],
+      "evidence": [
+        "volume_01-c005-s003-p001816",
+        "volume_01-c005-s003-p001820"
+      ],
+      "confidence": 0.8
+    }
+  ],
+  "mystery_entities": [],
+  "relationships": [
+    "罗伦斯与赫萝关系亲密，赫萝依赖罗伦斯照顾。",
+    "罗伦斯与店老板有互动，店老板提供服务。"
+  ],
+  "notes": "赫萝和罗伦斯的互动表现出亲密关系，赫萝的宿醉状态和罗伦斯的关心是本场景的重点。"
+}

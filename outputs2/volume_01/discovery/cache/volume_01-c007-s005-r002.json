@@ -1,0 +1,62 @@
+{
+  "scene_id": "volume_01-c007-s005",
+  "scene_summary": "罗伦斯试图用愤怒和金钱的理由留住赫萝，但赫萝仍然离开。罗伦斯情绪崩溃，几乎失去意识，而赫萝则坚定地继续前行。",
+  "active_characters": [
+    "罗伦斯",
+    "赫萝"
+  ],
+  "character_candidates": [
+    {
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": [
+        "商人",
+        "旅行商人",
+        "行商人"
+      ],
+      "description": "理性、谨慎的商人，试图用愤怒和金钱的理由留住赫萝，但最终失败。他情绪崩溃，几乎失去意识。",
+      "speech_style": "愤怒、理性、略带冲动",
+      "speech_markers": [
+        "我会拼命追的……一路追到北方的森林去！"
+      ],
+      "relationship_hints": [
+        "试图留住赫萝",
+        "对赫萝有强烈的情感依赖"
+      ],
+      "evidence": [
+        "volume_01-c007-s005-p002906",
+        "volume_01-c007-s005-p002909",
+        "volume_01-c007-s005-p002917"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "赫萝",
+      "aliases": [],
+      "titles": [
+        "丰收之神",
+        "狼",
+        "贤狼"
+      ],
+      "description": "神秘少女，拥有狼的特征。她坚定地离开罗伦斯，表现出决绝和独立。",
+      "speech_style": "未直接发言，但被提及为讨论对象",
+      "speech_markers": [],
+      "relationship_hints": [
+        "与罗伦斯有强烈的情感联系",
+        "最终选择离开"
+      ],
+      "evidence": [
+        "volume_01-c007-s005-p002911",
+        "volume_01-c007-s005-p002914",
+        "volume_01-c007-s005-p002915"
+      ],
+      "confidence": 0.95
+    }
+  ],
+  "mystery_entities": [],
+  "relationships": [
+    "罗伦斯试图留住赫萝但失败",
+    "赫萝坚定地离开罗伦斯"
+  ],
+  "notes": "赫萝的离开是本场景的关键转折点，罗伦斯的情绪崩溃暗示了两人关系的复杂性。"
+}

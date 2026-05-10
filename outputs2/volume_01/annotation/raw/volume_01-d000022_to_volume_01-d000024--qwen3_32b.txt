@@ -1,0 +1,73 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000022",
+      "speaker_entity_id": "char_0003",
+      "speaker_display": "骑士",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0003",
+          "display": "骑士",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "上下文显示这是骑士对罗伦斯提出的问题，符合骑士的立场和语气。",
+        "骑士在前文提到防卫任务，与异教徒祭典相关，符合说话人身份。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000023",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.98,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.98
+        }
+      ],
+      "evidence": [
+        "上下文明确指出「罗伦斯假装想了好一会儿后，回答说：」，直接表明说话人是罗伦斯。",
+        "罗伦斯在前文与骑士互动，符合对话轮次。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000024",
+      "speaker_entity_id": "char_0003",
+      "speaker_display": "骑士",
+      "speaker_status": "known",
+      "confidence": 0.92,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0003",
+          "display": "骑士",
+          "status": "known",
+          "score": 0.92
+        }
+      ],
+      "evidence": [
+        "这是对罗伦斯回答的回应，符合骑士的立场和语气。",
+        "骑士对异教徒的评价与前文态度一致，符合角色设定。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，骑士与罗伦斯交替发言，符合上下文逻辑。"
+}
+```

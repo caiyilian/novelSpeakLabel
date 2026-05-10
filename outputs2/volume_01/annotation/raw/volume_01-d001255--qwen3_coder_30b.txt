@@ -1,0 +1,34 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001255",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        },
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.1
+        }
+      ],
+      "evidence": [
+        "上下文描述罗伦斯被赫萝抱住并摔倒，台词为罗伦斯的疑问",
+        "罗伦斯是当前场景中唯一能发出疑问的行动者",
+        "赫萝的举动出乎罗伦斯意料，符合罗伦斯的反应逻辑"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "罗伦斯在被赫萝抱住后发出疑问，符合其理性、谨慎的性格，且赫萝的举动出乎其意料，应为罗伦斯本人发出的疑问"
+}

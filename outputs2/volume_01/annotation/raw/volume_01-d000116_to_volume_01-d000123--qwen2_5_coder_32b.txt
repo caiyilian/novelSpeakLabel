@@ -1,0 +1,119 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000116",
+      "speaker_entity_id": "",
+      "speaker_display": "",
+      "speaker_status": "ambiguous",
+      "confidence": 0.3,
+      "candidate_speakers": [
+        {"entity_id": "char_0002", "display": "赫萝", "status": "known", "score": 0.4},
+        {"entity_id": "char_0001", "display": "罗伦斯", "status": "known", "score": 0.3}
+      ],
+      "evidence": ["对话轮次依据"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    },
+    {
+      "dialogue_id": "volume_01-d000117",
+      "speaker_entity_id": "",
+      "speaker_display": "",
+      "speaker_status": "ambiguous",
+      "confidence": 0.3,
+      "candidate_speakers": [
+        {"entity_id": "char_0002", "display": "赫萝", "status": "known", "score": 0.4},
+        {"entity_id": "char_0001", "display": "罗伦斯", "status": "known", "score": 0.3}
+      ],
+      "evidence": ["对话轮次依据"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    },
+    {
+      "dialogue_id": "volume_01-d000118",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {"entity_id": "char_0002", "display": "赫萝", "status": "known", "score": 1.0}
+      ],
+      "evidence": ["对话轮次依据"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000119",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {"entity_id": "char_0001", "display": "罗伦斯", "status": "known", "score": 1.0}
+      ],
+      "evidence": ["对话轮次依据"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000120",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {"entity_id": "char_0002", "display": "赫萝", "status": "known", "score": 1.0}
+      ],
+      "evidence": ["对话轮次依据"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000121",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {"entity_id": "char_0001", "display": "罗伦斯", "status": "known", "score": 1.0}
+      ],
+      "evidence": ["对话轮次依据"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000122",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {"entity_id": "char_0002", "display": "赫萝", "status": "known", "score": 1.0}
+      ],
+      "evidence": ["对话轮次依据"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000123",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {"entity_id": "char_0001", "display": "罗伦斯", "status": "known", "score": 1.0}
+      ],
+      "evidence": ["对话轮次依据"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "前两句对话轮次不明确，需要进一步确认说话人。"
+}

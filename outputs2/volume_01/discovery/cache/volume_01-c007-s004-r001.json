@@ -1,0 +1,119 @@
+{
+  "scene_id": "volume_01-c007-s004",
+  "scene_summary": "罗伦斯在梅迪欧商行手下逼近的情况下，试图争取时间等待米隆商行的救援。赫萝突然抱住罗伦斯并吸食他的血液，引发旁观者的惊呼。叶勒指挥手下继续逼近，局势紧张。",
+  "active_characters": [
+    "罗伦斯",
+    "赫萝",
+    "叶勒",
+    "梅迪欧商行手下"
+  ],
+  "character_candidates": [
+    {
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": [
+        "商人",
+        "旅行商人",
+        "行商人"
+      ],
+      "description": "理性、谨慎的商人，身受重伤但仍试图保持冷静并等待救援。他表现出对赫萝的依赖和信任。",
+      "speech_style": "虚弱、低沉、焦虑",
+      "speech_markers": [
+        "赫萝……捡起短剑。"
+      ],
+      "relationship_hints": [
+        "与赫萝有亲密互动",
+        "试图等待米隆商行救援"
+      ],
+      "evidence": [
+        "volume_01-c007-s004-p002797",
+        "volume_01-c007-s004-p002805",
+        "volume_01-c007-s004-p002804"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "赫萝",
+      "aliases": [],
+      "titles": [
+        "丰收之神",
+        "狼",
+        "贤狼"
+      ],
+      "description": "情绪波动明显的贤狼，因叶勒的言语感到愤怒与悲伤。她吸食罗伦斯的血液以施展某种能力，表现出脆弱与依赖。",
+      "speech_style": "冷静、略带情绪化",
+      "speech_markers": [
+        "可能会有些痛，忍耐一下。",
+        "已经够了。"
+      ],
+      "relationship_hints": [
+        "与罗伦斯有强烈情感联系",
+        "对叶勒的言语感到愤怒"
+      ],
+      "evidence": [
+        "volume_01-c007-s004-p002801",
+        "volume_01-c007-s004-p002806",
+        "volume_01-c007-s004-p002818"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "叶勒",
+      "aliases": [],
+      "titles": [],
+      "description": "村民，代表梅迪欧商行试图活捉赫萝。他指挥手下逼近，并对赫萝的吸血行为表示愤怒。",
+      "speech_style": "理性、略带策略性",
+      "speech_markers": [
+        "在等什么！还不快抓起来！"
+      ],
+      "relationship_hints": [
+        "与梅迪欧商行有关联",
+        "对赫萝有敌意"
+      ],
+      "evidence": [
+        "volume_01-c007-s004-p002796",
+        "volume_01-c007-s004-p002816",
+        "volume_01-c007-s004-p002824"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "display_name": "梅迪欧商行手下",
+      "aliases": [],
+      "titles": [
+        "梅迪欧商行人员",
+        "追捕者"
+      ],
+      "description": "试图抓捕赫萝的梅迪欧商行人员，因赫萝的怪异举动而短暂迟疑。",
+      "speech_style": "强硬、命令式",
+      "speech_markers": [],
+      "relationship_hints": [
+        "受叶勒指挥",
+        "与梅迪欧商行有关"
+      ],
+      "evidence": [
+        "volume_01-c007-s004-p002796",
+        "volume_01-c007-s004-p002817"
+      ],
+      "confidence": 0.8
+    }
+  ],
+  "mystery_entities": [
+    {
+      "temporary_name": "短剑持有者",
+      "description": "罗伦斯持有的银短剑，被赫萝的举动导致掉落。短剑在剧情中可能具有象征意义或后续用途。",
+      "evidence": [
+        "volume_01-c007-s004-p002797",
+        "volume_01-c007-s004-p002803"
+      ],
+      "confidence": 0.7
+    }
+  ],
+  "relationships": [
+    "罗伦斯与赫萝之间有亲密的情感联系",
+    "叶勒与梅迪欧商行有关联",
+    "赫萝与叶勒之间存在敌意",
+    "罗伦斯试图等待米隆商行的救援"
+  ],
+  "notes": "赫萝吸血行为引发旁观者恐慌，暗示她可能具有非人类的特质。罗伦斯的虚弱状态可能影响后续剧情发展。"
+}

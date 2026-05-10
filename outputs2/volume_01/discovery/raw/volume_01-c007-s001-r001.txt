@@ -1,0 +1,71 @@
+```json
+{
+  "scene_id": "volume_01-c007-s001",
+  "scene_summary": "罗伦斯与赫萝在一条地下通道中行走，赫萝察觉到异常的空气震动和水声，推测有追捕者接近。两人决定撤退，并讨论通道的结构。赫萝提到对方可能放狗追捕，罗伦斯感到紧张。",
+  "active_characters": [
+    "罗伦斯",
+    "赫萝"
+  ],
+  "character_candidates": [
+    {
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": [
+        "商人",
+        "旅行商人"
+      ],
+      "description": "正在地下通道中与赫萝同行，表现出对赫萝的依赖和保护欲。他理性、谨慎，对环境变化敏感，但对赫萝的判断持怀疑态度。",
+      "speech_style": "理性、担忧、略带无奈",
+      "speech_markers": [
+        "这样不行，往后退。"
+      ],
+      "relationship_hints": [
+        "牵着赫萝的手，表现出亲密关系",
+        "对赫萝的判断持怀疑态度"
+      ],
+      "evidence": [
+        "volume_01-d001168",
+        "volume_01-d001166"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "赫萝",
+      "aliases": [],
+      "titles": [
+        "贤狼",
+        "狼"
+      ],
+      "description": "敏锐地察觉到空气震动和水声，推测有追捕者接近。她表现出冷静和自信，对环境有高度感知能力。",
+      "speech_style": "调皮、自信、略带挑衅",
+      "speech_markers": [
+        "呵呵，这叫声听来似乎挺笨的。"
+      ],
+      "relationship_hints": [
+        "与罗伦斯有亲密互动，牵着手",
+        "对罗伦斯的判断提出质疑"
+      ],
+      "evidence": [
+        "volume_01-d001162",
+        "volume_01-d001175"
+      ],
+      "confidence": 0.95
+    }
+  ],
+  "mystery_entities": [
+    {
+      "temporary_name": "猎犬",
+      "description": "被赫萝指出对方可能放狗追捕，暗示有猎犬在追踪罗伦斯与赫萝。",
+      "evidence": [
+        "volume_01-d001174"
+      ],
+      "confidence": 0.7
+    }
+  ],
+  "relationships": [
+    "罗伦斯与赫萝之间有亲密互动，牵着手，表现出信任与依赖",
+    "赫萝对罗伦斯的判断提出质疑，显示她有独立判断能力"
+  ],
+  "notes": "场景中未出现新角色，主要聚焦于罗伦斯与赫萝的互动。赫萝的敏锐感知和罗伦斯的理性判断形成对比。场景中暗示有追捕者接近，为后续剧情埋下伏笔。"
+}
+```

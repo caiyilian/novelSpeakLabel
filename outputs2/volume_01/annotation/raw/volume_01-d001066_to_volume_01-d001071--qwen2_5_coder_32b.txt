@@ -1,0 +1,93 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001066",
+      "speaker_entity_id": "",
+      "speaker_display": "",
+      "speaker_status": "ambiguous",
+      "confidence": 0.3,
+      "candidate_speakers": [
+        {"entity_id": "char_0001", "display": "罗伦斯", "status": "known", "score": 0.2},
+        {"entity_id": "char_0020", "display": "米隆商行人员", "status": "known", "score": 0.3}
+      ],
+      "evidence": ["对话轮次依据"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    },
+    {
+      "dialogue_id": "volume_01-d001067",
+      "speaker_entity_id": "",
+      "speaker_display": "",
+      "speaker_status": "ambiguous",
+      "confidence": 0.3,
+      "candidate_speakers": [
+        {"entity_id": "char_0001", "display": "罗伦斯", "status": "known", "score": 0.2},
+        {"entity_id": "char_0020", "display": "米隆商行人员", "status": "known", "score": 0.3}
+      ],
+      "evidence": ["对话轮次依据"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    },
+    {
+      "dialogue_id": "volume_01-d001068",
+      "speaker_entity_id": "",
+      "speaker_display": "",
+      "speaker_status": "ambiguous",
+      "confidence": 0.3,
+      "candidate_speakers": [
+        {"entity_id": "char_0001", "display": "罗伦斯", "status": "known", "score": 0.2},
+        {"entity_id": "char_0020", "display": "米隆商行人员", "status": "known", "score": 0.3}
+      ],
+      "evidence": ["对话轮次依据"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    },
+    {
+      "dialogue_id": "volume_01-d001069",
+      "speaker_entity_id": "",
+      "speaker_display": "",
+      "speaker_status": "ambiguous",
+      "confidence": 0.3,
+      "candidate_speakers": [
+        {"entity_id": "char_0001", "display": "罗伦斯", "status": "known", "score": 0.2},
+        {"entity_id": "char_0020", "display": "米隆商行人员", "status": "known", "score": 0.3}
+      ],
+      "evidence": ["对话轮次依据"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    },
+    {
+      "dialogue_id": "volume_01-d001070",
+      "speaker_entity_id": "char_0020",
+      "speaker_display": "米隆商行人员",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {"entity_id": "char_0020", "display": "米隆商行人员", "status": "known", "score": 1.0}
+      ],
+      "evidence": ["「那么，差不多该行动了。」是米隆商行人员的speech_marker"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001071",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {"entity_id": "char_0001", "display": "罗伦斯", "status": "known", "score": 1.0}
+      ],
+      "evidence": ["对话轮次依据"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "前四句对话轮次不明确，无法确定说话人；第五句是米隆商行人员的speech_marker，第六句根据轮次推断为罗伦斯。"
+}

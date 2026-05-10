@@ -1,0 +1,117 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001195",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "上下文显示罗伦斯正在引导赫萝，符合「好，在这里右转……」的语气和行为",
+        "该台词出现在罗伦斯引导赫萝的段落中，且没有其他角色登场"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001196",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "「等一下。」是罗伦斯在发现异常时的典型反应",
+        "上下文显示罗伦斯在引导赫萝时突然停下，符合该台词的语境"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001197",
+      "speaker_entity_id": "mystery_volume_01_c007_s001_r003_追捕者",
+      "speaker_display": "追捕者",
+      "speaker_status": "mystery",
+      "confidence": 0.75,
+      "candidate_speakers": [
+        {
+          "entity_id": "mystery_volume_01_c007_s001_r003_追捕者",
+          "display": "追捕者",
+          "status": "mystery",
+          "score": 0.75
+        }
+      ],
+      "evidence": [
+        "「找到了！」出现在地下道另一头，与追捕者相关",
+        "上下文提到「灯光」和「声音」，暗示是追捕者接近"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001198",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.8
+        }
+      ],
+      "evidence": [
+        "「汝，这路？」是罗伦斯在确认方向时的语气",
+        "上下文显示罗伦斯在地下道中寻找正确路线，符合该台词的语境"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001199",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "「我认得，没问题。」是罗伦斯在确认自己方向感的表达",
+        "上下文显示罗伦斯在地下道中试图安抚赫萝并继续前进"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，罗伦斯连续发言符合上下文逻辑，追捕者的台词出现在另一头，符合场景设定。"
+}
+```

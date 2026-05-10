@@ -1,0 +1,110 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000914",
+      "speaker_entity_id": "",
+      "speaker_display": "",
+      "speaker_status": "npc",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {
+          "entity_id": "",
+          "display": "路人",
+          "status": "npc",
+          "score": 0.8
+        }
+      ],
+      "evidence": [
+        "对话轮次推断"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000915",
+      "speaker_entity_id": "",
+      "speaker_display": "",
+      "speaker_status": "npc",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {
+          "entity_id": "",
+          "display": "路人",
+          "status": "npc",
+          "score": 0.8
+        }
+      ],
+      "evidence": [
+        "对话轮次推断"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000916",
+      "speaker_entity_id": "",
+      "speaker_display": "",
+      "speaker_status": "npc",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {
+          "entity_id": "",
+          "display": "路人",
+          "status": "npc",
+          "score": 0.8
+        }
+      ],
+      "evidence": [
+        "对话轮次推断"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000917",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "使用了「咱」作为自称"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000918",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.75,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.75
+        }
+      ],
+      "evidence": [
+        "对话轮次推断"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    }
+  ],
+  "window_notes": "前几句话的说话人难以确定，但根据「咱」的自称判断为赫萝。最后一句可能是罗伦斯，但需要进一步确认。"
+}

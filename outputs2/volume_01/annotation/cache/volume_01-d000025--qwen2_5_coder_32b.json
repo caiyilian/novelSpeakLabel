@@ -1,0 +1,32 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000025",
+      "speaker_entity_id": "",
+      "speaker_display": "",
+      "speaker_status": "review",
+      "confidence": 0.3,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.4
+        },
+        {
+          "entity_id": "char_0003",
+          "display": "骑士",
+          "status": "known",
+          "score": 0.3
+        }
+      ],
+      "evidence": [
+        "对话轮次推断，但没有明确的叙述锚点"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    }
+  ],
+  "window_notes": "根据上下文，这句话可能是罗伦斯或骑士在独自思考时说出的话。由于缺乏明确的对话轮次和叙述线索，难以确定说话人。"
+}

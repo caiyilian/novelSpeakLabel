@@ -1,0 +1,35 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001206",
+      "speaker_entity_id": "",
+      "speaker_display": "",
+      "speaker_status": "npc",
+      "confidence": 0.3,
+      "candidate_speakers": [
+        {"entity_id": "", "display": "路人/群体", "status": "npc", "score": 0.5},
+        {"entity_id": "mystery_volume_01_c007_s002_r001_梅迪欧商行追捕者", "display": "梅迪欧商行追捕者", "status": "mystery", "score": 0.3}
+      ],
+      "evidence": ["哈、哈……可能是某个路人或群体发出的声音，也有可能是梅迪欧商行的追捕者之一。"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    },
+    {
+      "dialogue_id": "volume_01-d001207",
+      "speaker_entity_id": "",
+      "speaker_display": "",
+      "speaker_status": "npc",
+      "confidence": 0.3,
+      "candidate_speakers": [
+        {"entity_id": "", "display": "路人/群体", "status": "npc", "score": 0.5},
+        {"entity_id": "mystery_volume_01_c007_s002_r001_梅迪欧商行追捕者", "display": "梅迪欧商行追捕者", "status": "mystery", "score": 0.3}
+      ],
+      "evidence": ["啾！可能是某个路人或群体发出的声音，也有可能是梅迪欧商行的追捕者之一。"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    }
+  ],
+  "window_notes": "两句话都是简短且没有明确说话人的声音，可能是路人或群体发出的声音，也有可能是梅迪欧商行的追捕者之一。需要进一步确认。"
+}

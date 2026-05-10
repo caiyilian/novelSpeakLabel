@@ -1,0 +1,178 @@
+你是轻小说说话人标注项目的阶段 2：正式标注助手。
+你的任务是判断输入 target_dialogues 中每一句台词的说话人，不要改写原文。
+必须把这些台词当作同一个连续片段来判断，优先保持对话轮次和叙述线索的一致性。
+
+规则：
+1. 只输出严格 JSON，不要 Markdown，不要解释性前后缀。
+2. 如果说话人是候选角色，speaker_entity_id 必须使用 candidate_characters 里的 entity_id，speaker_status 填 known。
+3. 如果说话人像某个未知人物，speaker_entity_id 使用 candidate_mysteries 里的 mystery_id，speaker_status 填 mystery。
+4. 如果只是无法追踪的路人/群体，speaker_status 填 npc，speaker_entity_id 可为空或使用 npc:简短称呼。
+5. 证据不足时不要硬猜，speaker_status 填 ambiguous 或 review，并把 needs_review 设为 true。
+6. candidate_speakers 至少列出 1 个候选；如果无法判断，列出最可能的候选和不确定原因。
+7. confidence 使用 0 到 1 之间的小数，表示你对最终判断的把握。
+8. 不要只因为台词里提到某个名字、职业、地点，就把说话人标成那个实体；被称呼的人通常不是说话人。
+9. 连续问答、交易寒暄、命令/回答等场景要按上下句轮次判断；同一人连续说话必须有叙述或语气证据支持。
+10. 如果当前上下文显示某角色还没有登场，不要因为角色库或后文记忆里有这个角色就提前标给他/她。
+
+11. target_dialogues 中 dialogue_kind=inline 的项目是正文内嵌引号，不要当作独立对白；标为 review，needs_review=true。
+12. candidate_mysteries 只是可选候选；如果候选名称和当前段落地点/人物不一致，必须改用 npc 或 review。
+13. 如果只有轮次推断、没有叙述锚点或自我介绍，请降低 confidence，并在 evidence 里说明轮次依据。
+
+14. candidate_characters.speech_markers 是阶段 1 提取的高区分度口癖/自称/固定短语；命中时可作为证据，但如果多个角色共享或上下文反证明显，必须进入复核。
+
+输出 JSON 结构：
+{
+  "annotations": [
+    {
+      "dialogue_id": "必须来自 target_dialogue_ids",
+      "speaker_entity_id": "string",
+      "speaker_display": "string",
+      "speaker_status": "known|mystery|npc|ambiguous|review",
+      "confidence": 0.0,
+      "candidate_speakers": [
+        {"entity_id": "string", "display": "string", "status": "known|mystery|npc|ambiguous|review", "score": 0.0}
+      ],
+      "evidence": ["短证据，不要大段复制原文"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "可选，简短说明整体轮次判断"
+}
+必须为 target_dialogue_ids 中每个 dialogue_id 输出且只输出一条 annotation。
+
+输入 JSON：
+{
+  "volume": {
+    "volume_id": "volume_01",
+    "volume": 1
+  },
+  "target_dialogue_ids": [
+    "volume_01-d000045"
+  ],
+  "dialogues": [
+    {
+      "dialogue_id": "volume_01-d000045",
+      "dialogue_index": 44,
+      "window_position": 1,
+      "chapter_id": "volume_01-c002",
+      "chapter_title": "第一幕",
+      "scene_id": "volume_01-c002-s002",
+      "paragraph_id": "volume_01-c002-s002-p000198",
+      "paragraph_index": 197,
+      "local_dialogue_index": 1,
+      "text": "这种事不可能发生在我身上。",
+      "quote_text": "「这种事不可能发生在我身上。」",
+      "paragraph_text": "对于整年都一个人在马车上度过的旅行商人来说，希望有人陪伴的毛病可算是一种职业病。但罗伦斯是到了最近，才开始有这样的感觉。在这之前，罗伦斯总是夸口说：「这种事不可能发生在我身上。」",
+      "dialogue_kind": "inline",
+      "outside_quote_text": "对于整年都一个人在马车上度过的旅行商人来说，希望有人陪伴的毛病可算是一种职业病。但罗伦斯是到了最近，才开始有这样的感觉。在这之前，罗伦斯总是夸口说：",
+      "char_start": 74,
+      "char_end": 89
+    }
+  ],
+  "context": {
+    "paragraphs": [
+      {
+        "paragraph_id": "volume_01-c002-s002-p000195",
+        "paragraph_index": 194,
+        "text": "具体来说，罗伦斯在想一路上所认识的人们。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s002-p000196",
+        "paragraph_index": 195,
+        "text": "每次行商都会前往的城镇所混熟的商人们、或是采买地区熟识的村民们、还有因大雪困住而久留旅馆时喜欢上的女子等等。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s002-p000197",
+        "paragraph_index": 196,
+        "text": "也就是说，罗伦斯希望有人陪伴的感觉增强了。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s002-p000198",
+        "paragraph_index": 197,
+        "text": "对于整年都一个人在马车上度过的旅行商人来说，希望有人陪伴的毛病可算是一种职业病。但罗伦斯是到了最近，才开始有这样的感觉。在这之前，罗伦斯总是夸口说：「这种事不可能发生在我身上。」",
+        "target_dialogue_ids": [
+          "volume_01-d000045"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c002-s002-p000199",
+        "paragraph_index": 198,
+        "text": "然而，孤单一个人和马儿相处好几天下来，甚至会觉得要是马儿能说话该有多好。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s002-p000200",
+        "paragraph_index": 199,
+        "text": "所以，在旅行商人之间的谈话中，时有耳闻马儿变成人类的故事。罗伦斯起初听到时会觉得无稽而大笑不已，但是到了最近，他不自觉地开始相信这种事情真的会发生。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s002-p000201",
+        "paragraph_index": 200,
+        "text": "有些贩马商的老板看见年轻的旅行商人前来买马时，甚至会认真建议客人选择母马，以免马儿变成人类时，后悔就来不及了。",
+        "target_dialogue_ids": []
+      }
+    ]
+  },
+  "scene_memory": [
+    {
+      "scene_id": "volume_01-c002-s002-r002",
+      "parent_scene_id": "volume_01-c002-s002",
+      "chunk_index": 2,
+      "chunk_count": 3,
+      "scene_summary": "罗伦斯离开村庄后，独自踏上旅途，回忆过往经历并思考未来。他感到孤独，甚至开始幻想马儿变成人类的可能。最终他决定在河边露宿。",
+      "active_characters": [
+        "罗伦斯"
+      ],
+      "relationships": [
+        "罗伦斯与叶勒有过去的交易关系。",
+        "罗伦斯与村民有互动但被疏离。",
+        "罗伦斯与马儿有长期的伙伴关系。"
+      ],
+      "notes": "本场景中罗伦斯表现出强烈的孤独感，暗示他可能在后文寻找伙伴。神秘麦苗的出现可能是剧情伏笔，需持续追踪。"
+    }
+  ],
+  "candidate_characters": [
+    {
+      "entity_id": "char_0001",
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": [
+        "商人",
+        "旅行商人",
+        "行商人"
+      ],
+      "description": "理性、谨慎的商人，试图分析局势并保持冷静。他与赫萝同行，面对叶勒的威胁时表现出坚定。 / 理性、坚定的商人，坚持遵守与赫萝的合约，拒绝背叛她。面对叶勒的威胁保持冷静，表现出对赫萝的忠诚。 / 理性、谨慎的商人，身受重伤但仍试图保持冷静并等待救援。他表现出对赫萝的依赖和信任。 / 罗伦斯目睹赫萝的变身过程，表现出震惊和无力。他试图抓住赫萝留下的皮袋，但最终面对巨大的狼形生物，感到无法应对。 / 理性、谨慎的商人，与赫萝在地下通道中遭遇叶勒的威胁。他试图安抚赫萝的情绪，并表现出对环境变化的敏感。 / 在赫萝的威压下感…",
+      "speech_style": "温和、理性、略带担忧 / 理性、略带策略性、温和 / 理性、担忧、略带冲动 / 虚弱、低沉、略带困惑 / 虚弱、低沉、焦虑 / 理性、坚定、略带焦虑 / 理性、焦虑、略带冲动 / 虚弱、低沉、焦虑 / 虚弱、焦虑、略带愤怒 / 愤怒、理性、略带冲动 / 虚弱、焦虑、略带悔恨 / 理性、冷静、略带焦虑",
+      "speech_markers": [
+        "……骑士？",
+        "有什么能为您效劳的吗？",
+        "算了……",
+        "糟糕",
+        "……",
+        "喂！",
+        "喂！起床啊！",
+        "喂！有什么好笑的？"
+      ],
+      "relationship_hints": [
+        "与赫萝一同旅行",
+        "对赫萝的身份持怀疑态度",
+        "与修道院有生意期望但未成功",
+        "与骑士初次互动",
+        "与赫萝有密切关系",
+        "与教会和骑士有互动",
+        "与叶勒有交集，计划与他交谈但被祭典打断",
+        "与叶勒有过去的交易关系。"
+      ],
+      "first_seen_scene_id": "volume_01-c000-s003-r001",
+      "latest_seen_scene_id": "volume_01-c008-s003-r001",
+      "confidence": 1.0
+    }
+  ],
+  "candidate_mysteries": []
+}

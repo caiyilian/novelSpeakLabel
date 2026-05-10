@@ -1,0 +1,110 @@
+{
+  "scene_id": "volume_01-c006-s004",
+  "scene_summary": "罗伦斯与赫萝在室内对话，赫萝因话题被打断而情绪低落。她随后解释了自己在村庄中的角色和经历，包括被村民视为丰收之神，以及被村民拘留的仪式。罗伦斯试图安抚她，并继续追问细节。",
+  "active_characters": [
+    "罗伦斯",
+    "赫萝"
+  ],
+  "character_candidates": [
+    {
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": [
+        "商人"
+      ],
+      "description": "理性、谨慎的商人，正在安抚赫萝的情绪，并试图理解她与村庄之间的复杂关系。",
+      "speech_style": "温和、理性、略带担忧",
+      "speech_markers": [
+        "打断你的话题很抱歉。"
+      ],
+      "relationship_hints": [
+        "与赫萝有长期的旅行伙伴关系",
+        "试图理解赫萝的过去和情绪"
+      ],
+      "evidence": [
+        "volume_01-c006-s004-p002449",
+        "volume_01-c006-s004-p002457",
+        "volume_01-c006-s004-p002468"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "赫萝",
+      "aliases": [],
+      "titles": [
+        "贤狼",
+        "丰收之神"
+      ],
+      "description": "情绪波动明显的贤狼，因话题被打断而表现出不满。她解释了自己在村庄中的角色，包括被村民视为丰收之神，以及被村民拘留的仪式。",
+      "speech_style": "略带孩子气、情绪化、略带调侃",
+      "speech_markers": [
+        "咱",
+        "没什么"
+      ],
+      "relationship_hints": [
+        "与罗伦斯有长期的旅行伙伴关系",
+        "对罗伦斯表现出依赖和信任"
+      ],
+      "evidence": [
+        "volume_01-c006-s004-p002449",
+        "volume_01-c006-s004-p002459",
+        "volume_01-c006-s004-p002469",
+        "volume_01-c006-s004-p002471"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "叶勒",
+      "aliases": [],
+      "titles": [],
+      "description": "村庄中的村民，与赫萝有过交集，可能是她与村庄之间冲突的导火索。",
+      "speech_style": "未直接发言",
+      "speech_markers": [],
+      "relationship_hints": [
+        "与赫萝有冲突",
+        "与梅迪欧商行有联系"
+      ],
+      "evidence": [
+        "volume_01-c006-s004-p002461",
+        "volume_01-c006-s004-p002463"
+      ],
+      "confidence": 0.75
+    },
+    {
+      "display_name": "杰廉",
+      "aliases": [],
+      "titles": [
+        "旅行商人"
+      ],
+      "description": "年轻商人，可能是叶勒与赫萝之间信息传递的中介。",
+      "speech_style": "未直接发言",
+      "speech_markers": [],
+      "relationship_hints": [
+        "与叶勒有联系",
+        "可能是赫萝信息来源之一"
+      ],
+      "evidence": [
+        "volume_01-c006-s004-p002463"
+      ],
+      "confidence": 0.65
+    }
+  ],
+  "mystery_entities": [
+    {
+      "temporary_name": "梅迪欧商行",
+      "description": "赫萝提到的商行，与叶勒有密切关系，可能是村庄与赫萝之间冲突的幕后推手。",
+      "evidence": [
+        "volume_01-c006-s004-p002461",
+        "volume_01-c006-s004-p002464"
+      ],
+      "confidence": 0.7
+    }
+  ],
+  "relationships": [
+    "罗伦斯与赫萝是长期旅行伙伴",
+    "赫萝与叶勒有冲突",
+    "叶勒与梅迪欧商行有联系",
+    "杰廉可能是叶勒与赫萝之间的信息中介"
+  ],
+  "notes": "赫萝表现出强烈的情绪波动，暗示她与村庄之间存在复杂关系。叶勒和梅迪欧商行的出现为后续剧情埋下伏笔。"
+}

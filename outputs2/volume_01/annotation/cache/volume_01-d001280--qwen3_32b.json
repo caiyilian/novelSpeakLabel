@@ -1,0 +1,28 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001280",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.98,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.98
+        }
+      ],
+      "evidence": [
+        "上下文显示罗伦斯正在用愤怒的语气试图阻止赫萝离开，符合台词中表达的愤怒和威胁语气。",
+        "场景记忆中提到罗伦斯试图用金钱的理由留住赫萝，台词中提到“积蓄”和“衣物”符合这一动机。",
+        "该段落紧接着描述罗伦斯大喊，声音在地下道内回响，表明说话人是罗伦斯。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "该段对话为罗伦斯在试图留住赫萝时的激烈表达，语气和上下文均指向罗伦斯，轮次清晰，无其他说话人介入。"
+}

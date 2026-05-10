@@ -1,0 +1,95 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001300",
+      "speaker_entity_id": "char_0015",
+      "speaker_display": "列支敦·马贺特",
+      "speaker_status": "known",
+      "confidence": 0.98,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0015",
+          "display": "列支敦·马贺特",
+          "status": "known",
+          "score": 0.98
+        }
+      ],
+      "evidence": [
+        "上下文显示马贺特正在与罗伦斯进行交易结算，且此句是马贺特递给罗伦斯文件后的确认语句",
+        "场景记忆中明确指出马贺特代表米隆商行处理交易"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001301",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.97,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.97
+        }
+      ],
+      "evidence": [
+        "上下文显示罗伦斯在看到文件后表现出震惊，此句是他的反应",
+        "场景记忆中明确指出罗伦斯与马贺特进行交易结算"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001302",
+      "speaker_entity_id": "char_0015",
+      "speaker_display": "列支敦·马贺特",
+      "speaker_status": "known",
+      "confidence": 0.98,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0015",
+          "display": "列支敦·马贺特",
+          "status": "known",
+          "score": 0.98
+        }
+      ],
+      "evidence": [
+        "上下文显示马贺特在解释金额的计算方式",
+        "场景记忆中明确指出马贺特代表米隆商行处理交易"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001303",
+      "speaker_entity_id": "char_0015",
+      "speaker_display": "列支敦·马贺特",
+      "speaker_status": "known",
+      "confidence": 0.97,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0015",
+          "display": "列支敦·马贺特",
+          "status": "known",
+          "score": 0.97
+        }
+      ],
+      "evidence": [
+        "上下文显示马贺特在详细解释国王如何利用合约条款削减罗伦斯的应得利益",
+        "场景记忆中明确指出马贺特代表米隆商行处理交易"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，马贺特与罗伦斯交替发言，符合商业谈判场景的对话模式。"
+}
+```

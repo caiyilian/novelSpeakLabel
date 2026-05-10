@@ -1,0 +1,99 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000158",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.98,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.98
+        }
+      ],
+      "evidence": [
+        "上下文明确提到赫萝用哀求的眼神看着罗伦斯，随后说出了这句台词",
+        "台词中使用了赫萝的典型自称「咱」的变体「汝」，符合她的说话风格",
+        "上下文显示赫萝是当前场景中唯一主动提出请求的角色"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000159",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.97,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.97
+        }
+      ],
+      "evidence": [
+        "上下文明确提到罗伦斯缓慢把头转向赫萝并开口说话",
+        "台词语气理性、正式，符合罗伦斯的说话风格",
+        "对话轮次上，这是对赫萝请求的回应，符合罗伦斯的反应模式"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000160",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.96,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.96
+        }
+      ],
+      "evidence": [
+        "对话轮次上，这是对罗伦斯提问的回应",
+        "赫萝在前一句中刚刚提出请求，罗伦斯回应后，赫萝做出简短回应符合对话逻辑",
+        "台词简短，符合赫萝在紧张或犹豫时的说话方式"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000161",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "上下文显示罗伦斯在专心等待赫萝回答，随后他继续提问",
+        "台词语气理性、略带试探，符合罗伦斯的说话风格",
+        "对话轮次上，这是罗伦斯在赫萝回应后的进一步提问"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰：赫萝提出请求 → 罗伦斯回应 → 赫萝回应 → 罗伦斯继续提问。上下文明确，说话人判断稳定。"
+}
+```

@@ -1,0 +1,191 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000056",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "对话内容与赫萝的口癖「咱」相符",
+        "上下文描述中提到「女孩」，与赫萝的特征一致",
+        "赫萝在场景中被描述为在马车上睡觉"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000057",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "对话内容与罗伦斯的口吻一致，如「话说你究竟是谁？」",
+        "上下文明确指出这是罗伦斯对女孩的质问",
+        "罗伦斯是场景中唯一明确的提问者"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000058",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "对话内容与赫萝的口癖「咱」相符",
+        "上下文描述中提到女孩对食物的反应，与赫萝的行为一致",
+        "对话轮次上紧接罗伦斯的提问，符合对话交替"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000059",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "对话内容与罗伦斯的语气一致，如「你该不会是被恶魔附身的妖怪吧」",
+        "上下文明确指出这是罗伦斯对女孩的质疑",
+        "对话轮次上紧接赫萝的回应，符合对话交替"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000060",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "对话内容与赫萝的口癖「咱」相符",
+        "上下文描述中提到女孩的笑声和反应，与赫萝的行为一致",
+        "对话轮次上紧接罗伦斯的质疑，符合对话交替"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000061",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "对话内容与罗伦斯的语气一致，如「喂！有什么好笑的？」",
+        "上下文明确指出这是罗伦斯对赫萝笑声的反应",
+        "对话轮次上紧接赫萝的回应，符合对话交替"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000062",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "对话内容与赫萝的口癖「咱」相符",
+        "上下文描述中提到女孩的回应，与赫萝的行为一致",
+        "对话轮次上紧接罗伦斯的质问，符合对话交替"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000063",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "对话内容与罗伦斯的语气一致，如「你是谁？」",
+        "上下文明确指出这是罗伦斯对女孩的进一步质问",
+        "对话轮次上紧接赫萝的回应，符合对话交替"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，罗伦斯与赫萝交替发言，符合两人在场景中的互动模式。赫萝使用「咱」作为自称，罗伦斯则使用直接提问和质问的语气。"
+}
+```

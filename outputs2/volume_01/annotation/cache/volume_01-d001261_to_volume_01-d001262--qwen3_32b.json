@@ -1,0 +1,63 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001261",
+      "speaker_entity_id": "char_0005",
+      "speaker_display": "叶勒",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0005",
+          "display": "叶勒",
+          "status": "known",
+          "score": 0.9
+        },
+        {
+          "entity_id": "char_0024",
+          "display": "梅迪欧商行手下",
+          "status": "known",
+          "score": 0.3
+        }
+      ],
+      "evidence": [
+        "叶勒的台词风格包含命令式语气，且其 speech_markers 中明确包含「在等什么！还不快抓起来！」",
+        "上下文提到「叶勒的声音响起」，直接表明说话人是叶勒",
+        "梅迪欧商行手下通常执行命令，而非发出命令"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001262",
+      "speaker_entity_id": "char_0024",
+      "speaker_display": "梅迪欧商行手下",
+      "speaker_status": "known",
+      "confidence": 0.75,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0024",
+          "display": "梅迪欧商行手下",
+          "status": "known",
+          "score": 0.75
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.1
+        }
+      ],
+      "evidence": [
+        "该句为对赫萝行为的反应，语气慌张，符合梅迪欧商行手下在场时的反应",
+        "上下文提到「出现喊叫声」，暗示说话人是旁观者而非赫萝或罗伦斯",
+        "罗伦斯此时处于虚弱状态，不太可能发出如此慌张的台词"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次为叶勒发出命令，随后由梅迪欧商行手下发出反应，符合上下文中的角色行为模式。"
+}

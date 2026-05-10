@@ -1,0 +1,33 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001065",
+      "speaker_entity_id": "char_0020",
+      "speaker_display": "米隆商行人员",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0020",
+          "display": "米隆商行人员",
+          "status": "known",
+          "score": 0.85
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.15
+        }
+      ],
+      "evidence": [
+        "前文有战术沟通和暗号使用，米隆商行人员角色更符合上下文",
+        "罗伦斯在前文有类似承诺但未直接发言，此句语气更像商行人员"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "根据上下文，前文为米隆商行人员与罗伦斯的战术沟通，该句台词符合其角色语气和情境，推测为米隆商行人员所说。"
+}

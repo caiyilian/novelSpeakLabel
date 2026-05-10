@@ -1,0 +1,34 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001024",
+      "speaker_entity_id": "mystery_volume_01_c006_s001_r002_梅迪欧商行",
+      "speaker_display": "梅迪欧商行",
+      "speaker_status": "mystery",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {
+          "entity_id": "mystery_volume_01_c006_s001_r002_梅迪欧商行",
+          "display": "梅迪欧商行",
+          "status": "mystery",
+          "score": 0.8
+        },
+        {
+          "entity_id": "mystery_volume_01_c006_s001_r003_梅迪欧商行",
+          "display": "梅迪欧商行",
+          "status": "mystery",
+          "score": 0.75
+        }
+      ],
+      "evidence": [
+        "前文提到梅迪欧商行正在准备大量崔尼银币与王族交涉，并计划回收市面上的银币。",
+        "该段落紧接着『他们会在国王的面前低头说』，暗示说话人是商行代表。",
+        "台词内容为交易提议，符合商行的动机和行为模式。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "该段对话为梅迪欧商行代表在国王面前提出的交易提议，上下文明确指向商行，无其他角色直接发言。"
+}

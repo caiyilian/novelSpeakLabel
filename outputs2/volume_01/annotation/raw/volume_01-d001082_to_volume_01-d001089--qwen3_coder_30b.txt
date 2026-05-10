@@ -1,0 +1,157 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001082",
+      "speaker_entity_id": "volume_01-d001082",
+      "speaker_display": "里昂",
+      "speaker_status": "review",
+      "confidence": 0.0,
+      "candidate_speakers": [
+        {
+          "entity_id": "volume_01-d001082",
+          "display": "里昂",
+          "status": "review",
+          "score": 0.0
+        }
+      ],
+      "evidence": ["inline 引号，非独立对白"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    },
+    {
+      "dialogue_id": "volume_01-d001083",
+      "speaker_entity_id": "volume_01-d001083",
+      "speaker_display": "奴马",
+      "speaker_status": "review",
+      "confidence": 0.0,
+      "candidate_speakers": [
+        {
+          "entity_id": "volume_01-d001083",
+          "display": "奴马",
+          "status": "review",
+          "score": 0.0
+        }
+      ],
+      "evidence": ["inline 引号，非独立对白"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    },
+    {
+      "dialogue_id": "volume_01-d001084",
+      "speaker_entity_id": "char_0021",
+      "speaker_display": "商行的人",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0021",
+          "display": "商行的人",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": ["上下文为商行人员在马车内说话，语气冷静理性"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001085",
+      "speaker_entity_id": "char_0021",
+      "speaker_display": "商行的人",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0021",
+          "display": "商行的人",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": ["上下文为商行人员在马车内说话，语气冷静理性"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001086",
+      "speaker_entity_id": "char_0021",
+      "speaker_display": "商行的人",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0021",
+          "display": "商行的人",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": ["上下文为商行人员在马车内说话，语气冷静理性"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001087",
+      "speaker_entity_id": "char_0021",
+      "speaker_display": "商行的人",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0021",
+          "display": "商行的人",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": ["上下文为商行人员在马车内说话，语气冷静理性"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001088",
+      "speaker_entity_id": "char_0021",
+      "speaker_display": "商行的人",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0021",
+          "display": "商行的人",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": ["上下文为商行人员在马车内说话，语气冷静理性，且有 speech_marker \"那么，祝您们成功\""],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001089",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.85
+        }
+      ],
+      "evidence": ["上下文为罗伦斯在赫萝面前说话，语气关切，符合其理性中带担忧的说话风格"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，商行人员在马车内连续发言，罗伦斯在赫萝面前说话，符合角色性格与上下文逻辑"
+}

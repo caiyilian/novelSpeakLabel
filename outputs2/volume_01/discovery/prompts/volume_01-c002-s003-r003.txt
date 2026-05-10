@@ -1,0 +1,278 @@
+你是轻小说说话人标注项目的阶段 1：角色发现与建库助手。
+你的任务不是给每句台词最终打标签，而是从当前场景中发现角色、别名、称谓、关系线索、说话风格线索、场景摘要，以及尚未命名但可追踪的神秘人物。
+
+规则：
+1. 只输出严格 JSON，不要 Markdown，不要解释性前后缀。
+2. scene_id 必须填写输入 scene.request_id。
+3. 不要编造没有文本证据的人名。
+4. 如果人物未命名但看起来可在后文追踪，放入 mystery_entities。
+5. character_candidates 只放可以从文本中看到名字、称谓或稳定身份线索的人物。
+6. titles 只放身份/职业/称谓，不要把职业称谓当成人物别名。
+7. speech_markers 只记录高区分度口癖/自称/固定句尾/固定短语；普通词不要记录，也不要把口癖放进 aliases/titles。
+8. evidence 使用 paragraph_id 或 dialogue_id 相关的短证据，不要长篇复制原文。
+
+输出 JSON 结构：
+{
+  "scene_id": "string",
+  "scene_summary": "string",
+  "active_characters": ["string"],
+  "character_candidates": [
+    {
+      "display_name": "string",
+      "aliases": ["string"],
+      "titles": ["string"],
+      "description": "string",
+      "speech_style": "string",
+      "speech_markers": ["string"],
+      "relationship_hints": ["string"],
+      "evidence": ["string"],
+      "confidence": 0.0
+    }
+  ],
+  "mystery_entities": [
+    {
+      "temporary_name": "string",
+      "description": "string",
+      "evidence": ["string"],
+      "confidence": 0.0
+    }
+  ],
+  "relationships": ["string"],
+  "notes": "string"
+}
+
+输入场景 JSON：
+{
+  "volume_id": "volume_01",
+  "scene": {
+    "request_id": "volume_01-c002-s003-r003",
+    "scene_id": "volume_01-c002-s003",
+    "chapter_id": "volume_01-c002",
+    "chapter_title": "第一幕",
+    "chunk_index": 3,
+    "chunk_count": 3
+  },
+  "paragraphs": [
+    {
+      "paragraph_id": "volume_01-c002-s003-p000295",
+      "text": "「不。」"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s003-p000296",
+      "text": "女孩的回答让罗伦斯感到意外。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s003-p000297",
+      "text": "「咱的出生地是在更遥远的北方大地。」"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s003-p000298",
+      "text": "「北方？」"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s003-p000299",
+      "text": "「嗯。那儿夏季短暂，冬季漫长，是个银白色的世界呢。」"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s003-p000300",
+      "text": "赫萝突然瞇起眼睛看向远方，她的模样实在不像在说谎。她思念起遥远北方大地的神情如果真是演技的话，那未免也太过自然了。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s003-p000301",
+      "text": "「汝曾去过吗？」"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s003-p000302",
+      "text": "女孩反问罗伦斯。罗伦斯虽然觉得被反将一军，不过顺着话题继续聊下去的话，就能够马上看出赫萝是否撒谎，还是随口把听来的故事说出来。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s003-p000303",
+      "text": "因为罗伦斯的行商经验可是远及极北地区。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s003-p000304",
+      "text": "「我去过最北端的地方是亚罗西史托，那是全年吹着暴风雪的恐怖地方。」"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s003-p000305",
+      "text": "听到罗伦斯这么说，赫萝微微倾着头想了一下，回答说："
+    },
+    {
+      "paragraph_id": "volume_01-c002-s003-p000306",
+      "text": "「喔，咱没听过。」"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s003-p000307",
+      "text": "罗伦斯原以为女孩会假装知道，没料到她会有令人意外的反应。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s003-p000308",
+      "text": "「那你曾去过哪里呢？」"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s003-p000309",
+      "text": "「咱去过约伊兹，怎么着？」"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s003-p000310",
+      "text": "罗伦斯回答一声「没事」后，硬是掩饰住内心的动摇。罗伦斯曾听过约伊兹这个地名，不过，那是在北方大地的旅馆听来的古老传说里，所出现的地名。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s003-p000311",
+      "text": "「你是在那里出生的吗？」"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s003-p000312",
+      "text": "「没错。不知道约伊兹现在变成什么样了，大伙儿过得好不好呢？」"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s003-p000313",
+      "text": "赫萝说罢，稍稍垂了垂肩膀，她的样子看起来很空虚，实在不像在演戏。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s003-p000314",
+      "text": "罗伦斯根本无法相信女孩说的话。"
+    }
+  ],
+  "dialogues": [
+    {
+      "dialogue_id": "volume_01-d000080",
+      "paragraph_id": "volume_01-c002-s003-p000295",
+      "text": "不。"
+    },
+    {
+      "dialogue_id": "volume_01-d000081",
+      "paragraph_id": "volume_01-c002-s003-p000297",
+      "text": "咱的出生地是在更遥远的北方大地。"
+    },
+    {
+      "dialogue_id": "volume_01-d000082",
+      "paragraph_id": "volume_01-c002-s003-p000298",
+      "text": "北方？"
+    },
+    {
+      "dialogue_id": "volume_01-d000083",
+      "paragraph_id": "volume_01-c002-s003-p000299",
+      "text": "嗯。那儿夏季短暂，冬季漫长，是个银白色的世界呢。"
+    },
+    {
+      "dialogue_id": "volume_01-d000084",
+      "paragraph_id": "volume_01-c002-s003-p000301",
+      "text": "汝曾去过吗？"
+    },
+    {
+      "dialogue_id": "volume_01-d000085",
+      "paragraph_id": "volume_01-c002-s003-p000304",
+      "text": "我去过最北端的地方是亚罗西史托，那是全年吹着暴风雪的恐怖地方。"
+    },
+    {
+      "dialogue_id": "volume_01-d000086",
+      "paragraph_id": "volume_01-c002-s003-p000306",
+      "text": "喔，咱没听过。"
+    },
+    {
+      "dialogue_id": "volume_01-d000087",
+      "paragraph_id": "volume_01-c002-s003-p000308",
+      "text": "那你曾去过哪里呢？"
+    },
+    {
+      "dialogue_id": "volume_01-d000088",
+      "paragraph_id": "volume_01-c002-s003-p000309",
+      "text": "咱去过约伊兹，怎么着？"
+    },
+    {
+      "dialogue_id": "volume_01-d000089",
+      "paragraph_id": "volume_01-c002-s003-p000310",
+      "text": "没事"
+    },
+    {
+      "dialogue_id": "volume_01-d000090",
+      "paragraph_id": "volume_01-c002-s003-p000311",
+      "text": "你是在那里出生的吗？"
+    },
+    {
+      "dialogue_id": "volume_01-d000091",
+      "paragraph_id": "volume_01-c002-s003-p000312",
+      "text": "没错。不知道约伊兹现在变成什么样了，大伙儿过得好不好呢？"
+    }
+  ],
+  "known_characters": [
+    {
+      "entity_id": "char_0001",
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": [
+        "旅行商人",
+        "行商人"
+      ],
+      "description": "一位行商人，发现并收留了赫萝，决定与她一同旅行。 / 二十五岁，行商七年，性格理性、谨慎，与修道院和骑士互动时表现出职业习惯性的冷静。 / 一位行商人，发现并收留了赫萝，决定与她一同旅行。 / 二十五岁，行商七年，性格理性、谨慎，与修道院和骑士互动时表现出职业习惯性的冷静。 / 一位理性、谨慎的商人，对宗教仪式不感兴趣，但因叶勒被选为「狼赫萝」而感到困扰。 / 二十五岁的旅行商人，独自旅行，思考未来与孤独感，对马儿有深厚感情。 / 理性、谨慎的商人，独自旅行，对陌生人的出现感到警惕。 / 理性、谨慎的商人，独自旅行，对神秘女孩表现出警惕但逐渐放松。 / 一位理性、谨慎的商人，对神秘女孩赫萝表现出警惕，但逐渐放松，可能成为她的旅伴。",
+      "speech_style": "理性、怀疑、谨慎 / 理性、怀疑、略带无奈 / 理性、略带感伤、自省",
+      "speech_markers": [
+        "……骑士？",
+        "有什么能为您效劳的吗？",
+        "算了……",
+        "糟糕",
+        "……",
+        "喂！",
+        "喂！起床啊！",
+        "喂！有什么好笑的？",
+        "你到底是谁？"
+      ]
+    },
+    {
+      "entity_id": "char_0002",
+      "display_name": "赫萝",
+      "aliases": [],
+      "titles": [
+        "丰收之神"
+      ],
+      "description": "自称是丰收之神的少女，拥有狼的耳朵和尾巴，说话狡诈。 / 拥有动物耳朵的神秘女孩，发出狼嚎，但随后表现出人性的一面，说话狡诈自信。 / 自称是丰收之神的神秘女孩，拥有狼的耳朵和尖牙，行为天真但言语狡诈，自称名字为赫萝。",
+      "speech_style": "狡诈、自信、神气 / 天真、狡诈、自信",
+      "speech_markers": [
+        "咱",
+        "哈哈哈哈哈，咱是恶魔？",
+        "好名字呗？"
+      ]
+    },
+    {
+      "entity_id": "char_0003",
+      "display_name": "骑士",
+      "aliases": [
+        "下级骑士",
+        "年轻骑士"
+      ],
+      "titles": [
+        "骑士"
+      ],
+      "description": "年轻的下级骑士，穿着灰色大衣和刻有红色十字架的银制胸甲，刚成为骑士不久，态度傲慢但容易被甜食收买。",
+      "speech_style": "傲慢、迟疑、逐渐放松",
+      "speech_markers": [
+        "呃……",
+        "嗯……真好吃"
+      ]
+    },
+    {
+      "entity_id": "char_0004",
+      "display_name": "农夫",
+      "aliases": [],
+      "titles": [],
+      "description": "帕斯罗村的农夫，正在麦田中劳作，与罗伦斯有简短对话。 / 麦田中的村民，与罗伦斯有简短互动，表现出朴实的性格。",
+      "speech_style": "朴实、直接",
+      "speech_markers": [
+        "喔？",
+        "喔！"
+      ]
+    },
+    {
+      "entity_id": "char_0005",
+      "display_name": "叶勒",
+      "aliases": [],
+      "titles": [],
+      "description": "麦田中割下最后一束麦子的村民，被选为「狼赫萝」的化身，将被关在谷仓中一周。",
+      "speech_style": "朴实、紧张",
+      "speech_markers": [
+        "嗷呜～～～～～～～"
+      ]
+    }
+  ]
+}

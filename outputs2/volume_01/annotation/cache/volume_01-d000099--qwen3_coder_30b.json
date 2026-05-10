@@ -1,0 +1,32 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000099",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.85
+        },
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.15
+        }
+      ],
+      "evidence": [
+        "上下文描述罗伦斯在自言自语，且前文提到他怀疑赫萝身份；台词“不，不可能”符合罗伦斯理性怀疑的语气；赫萝未直接发言，无明确自称证据"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "罗伦斯在思考赫萝的真实身份，此句为他自言自语的反应，符合其理性怀疑的性格"
+}

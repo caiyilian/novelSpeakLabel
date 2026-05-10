@@ -1,0 +1,455 @@
+你是轻小说说话人标注项目的阶段 2：正式标注助手。
+你的任务是判断输入 target_dialogues 中每一句台词的说话人，不要改写原文。
+必须把这些台词当作同一个连续片段来判断，优先保持对话轮次和叙述线索的一致性。
+
+规则：
+1. 只输出严格 JSON，不要 Markdown，不要解释性前后缀。
+2. 如果说话人是候选角色，speaker_entity_id 必须使用 candidate_characters 里的 entity_id，speaker_status 填 known。
+3. 如果说话人像某个未知人物，speaker_entity_id 使用 candidate_mysteries 里的 mystery_id，speaker_status 填 mystery。
+4. 如果只是无法追踪的路人/群体，speaker_status 填 npc，speaker_entity_id 可为空或使用 npc:简短称呼。
+5. 证据不足时不要硬猜，speaker_status 填 ambiguous 或 review，并把 needs_review 设为 true。
+6. candidate_speakers 至少列出 1 个候选；如果无法判断，列出最可能的候选和不确定原因。
+7. confidence 使用 0 到 1 之间的小数，表示你对最终判断的把握。
+8. 不要只因为台词里提到某个名字、职业、地点，就把说话人标成那个实体；被称呼的人通常不是说话人。
+9. 连续问答、交易寒暄、命令/回答等场景要按上下句轮次判断；同一人连续说话必须有叙述或语气证据支持。
+10. 如果当前上下文显示某角色还没有登场，不要因为角色库或后文记忆里有这个角色就提前标给他/她。
+
+11. target_dialogues 中 dialogue_kind=inline 的项目是正文内嵌引号，不要当作独立对白；标为 review，needs_review=true。
+12. candidate_mysteries 只是可选候选；如果候选名称和当前段落地点/人物不一致，必须改用 npc 或 review。
+13. 如果只有轮次推断、没有叙述锚点或自我介绍，请降低 confidence，并在 evidence 里说明轮次依据。
+
+14. candidate_characters.speech_markers 是阶段 1 提取的高区分度口癖/自称/固定短语；命中时可作为证据，但如果多个角色共享或上下文反证明显，必须进入复核。
+
+输出 JSON 结构：
+{
+  "annotations": [
+    {
+      "dialogue_id": "必须来自 target_dialogue_ids",
+      "speaker_entity_id": "string",
+      "speaker_display": "string",
+      "speaker_status": "known|mystery|npc|ambiguous|review",
+      "confidence": 0.0,
+      "candidate_speakers": [
+        {"entity_id": "string", "display": "string", "status": "known|mystery|npc|ambiguous|review", "score": 0.0}
+      ],
+      "evidence": ["短证据，不要大段复制原文"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "可选，简短说明整体轮次判断"
+}
+必须为 target_dialogue_ids 中每个 dialogue_id 输出且只输出一条 annotation。
+
+输入 JSON：
+{
+  "volume": {
+    "volume_id": "volume_01",
+    "volume": 1
+  },
+  "target_dialogue_ids": [
+    "volume_01-d000214",
+    "volume_01-d000215",
+    "volume_01-d000216",
+    "volume_01-d000217",
+    "volume_01-d000218",
+    "volume_01-d000219",
+    "volume_01-d000220",
+    "volume_01-d000221"
+  ],
+  "dialogues": [
+    {
+      "dialogue_id": "volume_01-d000214",
+      "dialogue_index": 213,
+      "window_position": 1,
+      "chapter_id": "volume_01-c003",
+      "chapter_title": "第二幕",
+      "scene_id": "volume_01-c003-s001",
+      "paragraph_id": "volume_01-c003-s001-p000624",
+      "paragraph_index": 623,
+      "local_dialogue_index": 1,
+      "text": "是吗？那么，你会怎么想呢？",
+      "quote_text": "「是吗？那么，你会怎么想呢？」",
+      "paragraph_text": "「是吗？那么，你会怎么想呢？」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 15
+    },
+    {
+      "dialogue_id": "volume_01-d000215",
+      "dialogue_index": 214,
+      "window_position": 2,
+      "chapter_id": "volume_01-c003",
+      "chapter_title": "第二幕",
+      "scene_id": "volume_01-c003-s001",
+      "paragraph_id": "volume_01-c003-s001-p000626",
+      "paragraph_index": 625,
+      "local_dialogue_index": 1,
+      "text": "如果脸上有灼伤，那也属于咱。就像咱的耳朵和尾巴一样，都是独一无二的证明。",
+      "quote_text": "「如果脸上有灼伤，那也属于咱。就像咱的耳朵和尾巴一样，都是独一无二的证明。」",
+      "paragraph_text": "「如果脸上有灼伤，那也属于咱。就像咱的耳朵和尾巴一样，都是独一无二的证明。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 38
+    },
+    {
+      "dialogue_id": "volume_01-d000216",
+      "dialogue_index": 215,
+      "window_position": 3,
+      "chapter_id": "volume_01-c003",
+      "chapter_title": "第二幕",
+      "scene_id": "volume_01-c003-s001",
+      "paragraph_id": "volume_01-c003-s001-p000629",
+      "paragraph_index": 628,
+      "local_dialogue_index": 1,
+      "text": "咱知道汝在想什么。",
+      "quote_text": "「咱知道汝在想什么。」",
+      "paragraph_text": "「咱知道汝在想什么。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 11
+    },
+    {
+      "dialogue_id": "volume_01-d000217",
+      "dialogue_index": 216,
+      "window_position": 4,
+      "chapter_id": "volume_01-c003",
+      "chapter_title": "第二幕",
+      "scene_id": "volume_01-c003-s001",
+      "paragraph_id": "volume_01-c003-s001-p000631",
+      "paragraph_index": 630,
+      "local_dialogue_index": 1,
+      "text": "要不要试着让咱受伤看看呢？",
+      "quote_text": "「要不要试着让咱受伤看看呢？」",
+      "paragraph_text": "「要不要试着让咱受伤看看呢？」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 15
+    },
+    {
+      "dialogue_id": "volume_01-d000218",
+      "dialogue_index": 217,
+      "window_position": 5,
+      "chapter_id": "volume_01-c003",
+      "chapter_title": "第二幕",
+      "scene_id": "volume_01-c003-s001",
+      "paragraph_id": "volume_01-c003-s001-p000634",
+      "paragraph_index": 633,
+      "local_dialogue_index": 1,
+      "text": "我是个男人，怎么可能把那么漂亮的脸蛋划伤。",
+      "quote_text": "「我是个男人，怎么可能把那么漂亮的脸蛋划伤。」",
+      "paragraph_text": "「我是个男人，怎么可能把那么漂亮的脸蛋划伤。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 23
+    },
+    {
+      "dialogue_id": "volume_01-d000219",
+      "dialogue_index": 218,
+      "window_position": 6,
+      "chapter_id": "volume_01-c003",
+      "chapter_title": "第二幕",
+      "scene_id": "volume_01-c003-s001",
+      "paragraph_id": "volume_01-c003-s001-p000637",
+      "paragraph_index": 636,
+      "local_dialogue_index": 1,
+      "text": "汝被雨淋过，身上还这么臭啊。咱这只狼都这么说了，错不了。",
+      "quote_text": "「汝被雨淋过，身上还这么臭啊。咱这只狼都这么说了，错不了。」",
+      "paragraph_text": "「汝被雨淋过，身上还这么臭啊。咱这只狼都这么说了，错不了。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 30
+    },
+    {
+      "dialogue_id": "volume_01-d000220",
+      "dialogue_index": 219,
+      "window_position": 7,
+      "chapter_id": "volume_01-c003",
+      "chapter_title": "第二幕",
+      "scene_id": "volume_01-c003-s001",
+      "paragraph_id": "volume_01-c003-s001-p000638",
+      "paragraph_index": 637,
+      "local_dialogue_index": 1,
+      "text": "你说什么！",
+      "quote_text": "「你说什么！」",
+      "paragraph_text": "「你说什么！」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 7
+    },
+    {
+      "dialogue_id": "volume_01-d000221",
+      "dialogue_index": 220,
+      "window_position": 8,
+      "chapter_id": "volume_01-c003",
+      "chapter_title": "第二幕",
+      "scene_id": "volume_01-c003-s001",
+      "paragraph_id": "volume_01-c003-s001-p000640",
+      "paragraph_index": 639,
+      "local_dialogue_index": 1,
+      "text": "就算是狼，也会整理自己的毛。汝是长得挺不错，但好歹要把自己梳洗干净些。",
+      "quote_text": "「就算是狼，也会整理自己的毛。汝是长得挺不错，但好歹要把自己梳洗干净些。」",
+      "paragraph_text": "「就算是狼，也会整理自己的毛。汝是长得挺不错，但好歹要把自己梳洗干净些。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 37
+    }
+  ],
+  "context": {
+    "paragraphs": [
+      {
+        "paragraph_id": "volume_01-c003-s001-p000621",
+        "paragraph_index": 620,
+        "text": "赫萝说完后套上外套，盖住整个头，接着又咯咯笑了起来。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c003-s001-p000622",
+        "paragraph_index": 621,
+        "text": "「有什么好笑的？」",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c003-s001-p000623",
+        "paragraph_index": 622,
+        "text": "「呵呵，被火灼伤所以要遮住脸。要是咱啊，绝对不会想到这个。」",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c003-s001-p000624",
+        "paragraph_index": 623,
+        "text": "「是吗？那么，你会怎么想呢？」",
+        "target_dialogue_ids": [
+          "volume_01-d000214"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c003-s001-p000625",
+        "paragraph_index": 624,
+        "text": "赫萝稍稍拉高外套露出脸来，然后骄傲地说：",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c003-s001-p000626",
+        "paragraph_index": 625,
+        "text": "「如果脸上有灼伤，那也属于咱。就像咱的耳朵和尾巴一样，都是独一无二的证明。」",
+        "target_dialogue_ids": [
+          "volume_01-d000215"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c003-s001-p000627",
+        "paragraph_index": 626,
+        "text": "罗伦斯心想，这种说法果然非常符合赫萝的作风。但另一方面也认为，那是因为赫萝没有真的被灼伤，所以才能够表现得如此轻松。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c003-s001-p000628",
+        "paragraph_index": 627,
+        "text": "这时，赫萝的声音打断了罗伦斯的思绪。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c003-s001-p000629",
+        "paragraph_index": 628,
+        "text": "「咱知道汝在想什么。」",
+        "target_dialogue_ids": [
+          "volume_01-d000216"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c003-s001-p000630",
+        "paragraph_index": 629,
+        "text": "外套底下的赫萝不怀好意地笑着，上扬的嘴角右侧露出尖牙。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c003-s001-p000631",
+        "paragraph_index": 630,
+        "text": "「要不要试着让咱受伤看看呢？」",
+        "target_dialogue_ids": [
+          "volume_01-d000217"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c003-s001-p000632",
+        "paragraph_index": 631,
+        "text": "看着赫萝充满挑衅的表情，罗伦斯虽想对上她，但又觉得如果现在意气用事拔出短剑，事态真的会变得难以收场。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c003-s001-p000633",
+        "paragraph_index": 632,
+        "text": "赫萝刚刚说的话很有可能是发自真心，只不过这种刻意挑衅的态度，应该是她天生爱恶作剧使然吧。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c003-s001-p000634",
+        "paragraph_index": 633,
+        "text": "「我是个男人，怎么可能把那么漂亮的脸蛋划伤。」",
+        "target_dialogue_ids": [
+          "volume_01-d000218"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c003-s001-p000635",
+        "paragraph_index": 634,
+        "text": "听到罗伦斯这么一说，赫萝像是收到期待已久的礼物似地露出笑容，然后刻意贴近过去。一阵香甜的气味随着赫萝飘来，刺激着罗伦斯的身体，让他差点伸手抱住赫萝。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c003-s001-p000636",
+        "paragraph_index": 635,
+        "text": "没料到赫萝根本不在意罗伦斯的反应，她用鼻子嗅了嗅罗伦斯，然后稍微挪开身子说：",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c003-s001-p000637",
+        "paragraph_index": 636,
+        "text": "「汝被雨淋过，身上还这么臭啊。咱这只狼都这么说了，错不了。」",
+        "target_dialogue_ids": [
+          "volume_01-d000219"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c003-s001-p000638",
+        "paragraph_index": 637,
+        "text": "「你说什么！」",
+        "target_dialogue_ids": [
+          "volume_01-d000220"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c003-s001-p000639",
+        "paragraph_index": 638,
+        "text": "罗伦斯半认真地挥出拳头，却被赫萝轻松躲过而挥了个空。赫萝一边嗤嗤笑，一边微微倾着头继续说：",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c003-s001-p000640",
+        "paragraph_index": 639,
+        "text": "「就算是狼，也会整理自己的毛。汝是长得挺不错，但好歹要把自己梳洗干净些。」",
+        "target_dialogue_ids": [
+          "volume_01-d000221"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c003-s001-p000641",
+        "paragraph_index": 640,
+        "text": "虽然不知道赫萝是开玩笑还是认真的，但被她这种女孩一说，罗伦斯不禁也认同起来。一直以来，罗伦斯只会注意梳洗干净是否对谈生意有帮助，从来没想过梳洗干净可以讨女孩子喜欢。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c003-s001-p000642",
+        "paragraph_index": 641,
+        "text": "谈生意的对手如果是女人，或许罗伦斯还会有梳洗干净的念头。然而很可惜，他从未见过女性商人。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c003-s001-p000643",
+        "paragraph_index": 642,
+        "text": "罗伦斯不知该怎么回答，于是别过脸去，沉默不语。",
+        "target_dialogue_ids": []
+      }
+    ]
+  },
+  "scene_memory": [
+    {
+      "scene_id": "volume_01-c003-s001-r002",
+      "parent_scene_id": "volume_01-c003-s001",
+      "chunk_index": 2,
+      "chunk_count": 3,
+      "scene_summary": "赫萝与罗伦斯在对话中互动，赫萝表现出调皮和自信，罗伦斯则显得理性且略带无奈。赫萝提到自己脸上的灼伤，并以挑衅和玩笑的方式与罗伦斯互动，同时对罗伦斯的外表提出意见。",
+      "active_characters": [
+        "赫萝",
+        "罗伦斯"
+      ],
+      "relationships": [
+        "赫萝与罗伦斯之间存在互动，赫萝表现出调皮和挑衅，罗伦斯则表现出理性与无奈"
+      ],
+      "notes": "赫萝的说话风格中带有明显的自称「咱」，以及调皮的语气，如「呵呵」和「像这样，像狼一样的胡子」。罗伦斯的反应显示出他理性且略带无奈的态度。"
+    }
+  ],
+  "candidate_characters": [
+    {
+      "entity_id": "char_0001",
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": [
+        "商人",
+        "旅行商人",
+        "行商人"
+      ],
+      "description": "理性、谨慎的商人，试图分析局势并保持冷静。他与赫萝同行，面对叶勒的威胁时表现出坚定。 / 理性、坚定的商人，坚持遵守与赫萝的合约，拒绝背叛她。面对叶勒的威胁保持冷静，表现出对赫萝的忠诚。 / 理性、谨慎的商人，身受重伤但仍试图保持冷静并等待救援。他表现出对赫萝的依赖和信任。 / 罗伦斯目睹赫萝的变身过程，表现出震惊和无力。他试图抓住赫萝留下的皮袋，但最终面对巨大的狼形生物，感到无法应对。 / 理性、谨慎的商人，与赫萝在地下通道中遭遇叶勒的威胁。他试图安抚赫萝的情绪，并表现出对环境变化的敏感。 / 在赫萝的威压下感…",
+      "speech_style": "温和、理性、略带担忧 / 理性、略带策略性、温和 / 理性、担忧、略带冲动 / 虚弱、低沉、略带困惑 / 虚弱、低沉、焦虑 / 理性、坚定、略带焦虑 / 理性、焦虑、略带冲动 / 虚弱、低沉、焦虑 / 虚弱、焦虑、略带愤怒 / 愤怒、理性、略带冲动 / 虚弱、焦虑、略带悔恨 / 理性、冷静、略带焦虑",
+      "speech_markers": [
+        "……骑士？",
+        "有什么能为您效劳的吗？",
+        "算了……",
+        "糟糕",
+        "……",
+        "喂！",
+        "喂！起床啊！",
+        "喂！有什么好笑的？"
+      ],
+      "relationship_hints": [
+        "与赫萝一同旅行",
+        "对赫萝的身份持怀疑态度",
+        "与修道院有生意期望但未成功",
+        "与骑士初次互动",
+        "与赫萝有密切关系",
+        "与教会和骑士有互动",
+        "与叶勒有交集，计划与他交谈但被祭典打断",
+        "与叶勒有过去的交易关系。"
+      ],
+      "first_seen_scene_id": "volume_01-c000-s003-r001",
+      "latest_seen_scene_id": "volume_01-c008-s003-r001",
+      "confidence": 1.0
+    },
+    {
+      "entity_id": "char_0002",
+      "display_name": "赫萝",
+      "aliases": [],
+      "titles": [
+        "丰收之神",
+        "狼",
+        "贤狼"
+      ],
+      "description": "神秘少女，拥有狼的特征。在本场景中协助罗伦斯击退袭击者，表现出冷静和对环境的高度感知能力。 / 在地下道中不断呼喊罗伦斯，试图唤醒他并指引方向。表现出担忧和责任感。 / 神秘少女，拥有狼的特征，情绪波动明显，对罗伦斯表现出依赖和担忧。 / 神秘少女，拥有狼的特征。在本场景中表现出脆弱和依赖，对独自旅行感到不安。她对叶勒的言语感到愤怒与悲伤。 / 情绪波动明显的贤狼，因叶勒的言语感到悲伤。她表现出对罗伦斯的依赖，并在关键时刻流露出脆弱。 / 情绪波动明显的贤狼，因叶勒的言语感到愤怒与悲伤。她吸食罗伦斯的血液以施展某…",
+      "speech_style": "未直接发言，但被频繁提及 / 冷静、自信、略带调侃 / 调皮、略带挑衅、情绪化 / 略带孩子气、情绪化、略带调侃 / 冷静、简短、略带策略性 / 关切、坚定、略带责备 / 情绪化、略带孩子气 / 冷静、略带情绪化 / 脆弱、情绪化、略带孩子气 / 冷静、自信、略带策略性 / 冷静、简短、略带威严 / 未直接发言",
+      "speech_markers": [
+        "咱",
+        "哈哈哈哈哈，咱是恶魔？",
+        "好名字呗？",
+        "咱没听过。",
+        "咱不要。",
+        "或是鲜血。",
+        "如何？愿意相信咱了呗？",
+        "汝要温柔一些呐。"
+      ],
+      "relationship_hints": [
+        "与罗伦斯一同旅行",
+        "捉弄罗伦斯",
+        "与罗伦斯展开对话",
+        "表现出对罗伦斯的调侃",
+        "与罗伦斯有初步互动，可能是他未来的旅伴",
+        "与罗伦斯进行对话，表现出信任与坦率",
+        "提到出生地时流露出真实情感",
+        "与罗伦斯有互动，被罗伦斯收留并一同旅行"
+      ],
+      "first_seen_scene_id": "volume_01-c000-s003-r001",
+      "latest_seen_scene_id": "volume_01-c008-s003-r001",
+      "confidence": 0.95
+    }
+  ],
+  "candidate_mysteries": []
+}

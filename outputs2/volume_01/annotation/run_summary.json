@@ -1,0 +1,21 @@
+{
+  "volume_id": "volume_01",
+  "models": [
+    "qwen3:32b",
+    "qwen3-coder:30b",
+    "qwen2.5-coder:32b"
+  ],
+  "dry_run": false,
+  "cache_only": false,
+  "dialogue_count": 1345,
+  "window_count": 256,
+  "annotation_window_size": 8,
+  "max_dialogue_paragraph_gap": 4,
+  "request_count": 768,
+  "prompt_count": 768,
+  "rule_vote_count": 756,
+  "vote_count": 4791,
+  "annotation_count": 1345,
+  "review_count": 449,
+  "failed_request_count": 0
+}

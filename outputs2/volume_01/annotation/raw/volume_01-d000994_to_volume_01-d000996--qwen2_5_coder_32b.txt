@@ -1,0 +1,48 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000994",
+      "speaker_entity_id": "",
+      "speaker_display": "",
+      "speaker_status": "ambiguous",
+      "confidence": 0.3,
+      "candidate_speakers": [
+        {"entity_id": "char_0001", "display": "罗伦斯", "status": "known", "score": 0.4},
+        {"entity_id": "char_0015", "display": "列支敦·马贺特", "status": "known", "score": 0.3}
+      ],
+      "evidence": ["对话轮次依据"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    },
+    {
+      "dialogue_id": "volume_01-d000995",
+      "speaker_entity_id": "char_0015",
+      "speaker_display": "列支敦·马贺特",
+      "speaker_status": "known",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {"entity_id": "char_0015", "display": "列支敦·马贺特", "status": "known", "score": 0.9}
+      ],
+      "evidence": ["对话轮次依据"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000996",
+      "speaker_entity_id": "char_0015",
+      "speaker_display": "列支敦·马贺特",
+      "speaker_status": "known",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {"entity_id": "char_0015", "display": "列支敦·马贺特", "status": "known", "score": 0.9}
+      ],
+      "evidence": ["对话轮次依据"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "根据上下文和对话轮次，第二句和第三句的说话人很可能是列支敦·马贺特。第一句的说话人无法确定，但罗伦斯是可能的候选人之一。"
+}

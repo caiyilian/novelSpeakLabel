@@ -1,0 +1,69 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000487",
+      "speaker_entity_id": "char_0011",
+      "speaker_display": "采购人员",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0011",
+          "display": "采购人员",
+          "status": "known",
+          "score": 0.85
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.1
+        },
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.05
+        }
+      ],
+      "evidence": [
+        "上下文描写采购人员正在嗅闻貂皮，对话内容符合其专业行为",
+        "采购人员在前文被描述为“被彪形大汉唤来的男子，外表文雅，负责商品鉴定”",
+        "罗伦斯和赫萝未直接参与嗅闻动作，且无明确自我介绍或口癖证据"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000488",
+      "speaker_entity_id": "char_0011",
+      "speaker_display": "采购人员",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0011",
+          "display": "采购人员",
+          "status": "known",
+          "score": 0.9
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.05
+        }
+      ],
+      "evidence": [
+        "采购人员在前文已开始嗅闻貂皮，且对话内容与其专业行为一致",
+        "采购人员在前文被描述为“负责商品鉴定”，其反应符合对气味的惊讶与确认",
+        "罗伦斯未直接参与嗅闻，且无明确证据表明其说话"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "采购人员连续进行嗅闻动作并回应问题，符合其专业角色设定。罗伦斯与赫萝未直接参与对话，无明确证据表明其为说话人。"
+}

@@ -1,0 +1,114 @@
+{
+  "scene_id": "volume_01-c006-s004",
+  "scene_summary": "罗伦斯与赫萝在马车内进行对话，赫萝透露她曾被叶勒捉住，并表现出愤怒与不安。罗伦斯推测梅迪欧商行背后有亚伦多伯爵的支持，并向马夫传达信息，希望米隆商行协助应对。赫萝的狼性特征和身份成为关键线索。",
+  "active_characters": [
+    "罗伦斯",
+    "赫萝"
+  ],
+  "character_candidates": [
+    {
+      "display_name": "赫萝",
+      "aliases": [],
+      "titles": [
+        "狼",
+        "贤狼",
+        "丰收之神"
+      ],
+      "description": "神秘少女，拥有狼的特征。在本场景中表现出脆弱和依赖，对独自旅行感到不安。她提到被叶勒捉住，情绪波动明显，表现出愤怒与不安。",
+      "speech_style": "调皮、略带挑衅、情绪化",
+      "speech_markers": [
+        "咱",
+        "呵呵呵",
+        "小心命根子"
+      ],
+      "relationship_hints": [
+        "与罗伦斯有亲密互动",
+        "被叶勒捉住"
+      ],
+      "evidence": [
+        "volume_01-d001103",
+        "volume_01-d001104",
+        "volume_01-d001106",
+        "volume_01-d001108"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": [
+        "商人",
+        "旅行商人",
+        "行商人"
+      ],
+      "description": "理性、谨慎的商人，正在分析梅迪欧商行的动机，并怀疑赫萝的真实身份是关键。他试图说服米隆商行协助营救赫萝。",
+      "speech_style": "理性、焦虑、略带冲动",
+      "speech_markers": [
+        "怎……",
+        "我懂了！",
+        "对了！"
+      ],
+      "relationship_hints": [
+        "与赫萝有强烈的情感联系",
+        "试图保护赫萝"
+      ],
+      "evidence": [
+        "volume_01-d001109",
+        "volume_01-d001111",
+        "volume_01-d001112"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "叶勒",
+      "aliases": [],
+      "titles": [],
+      "description": "赫萝提到的曾捉住她的人，可能是村民或与教会有关的人物。",
+      "speech_style": "未直接发言",
+      "speech_markers": [],
+      "relationship_hints": [
+        "曾捉住赫萝"
+      ],
+      "evidence": [
+        "volume_01-d001108"
+      ],
+      "confidence": 0.8
+    },
+    {
+      "display_name": "亚伦多伯爵",
+      "aliases": [],
+      "titles": [
+        "伯爵"
+      ],
+      "description": "被罗伦斯推测为梅迪欧商行背后的资助者，可能与赫萝的被捉有关。",
+      "speech_style": "未直接发言",
+      "speech_markers": [],
+      "relationship_hints": [
+        "与梅迪欧商行有关",
+        "可能与赫萝的被捉有关"
+      ],
+      "evidence": [
+        "volume_01-d001111",
+        "volume_01-d001112"
+      ],
+      "confidence": 0.75
+    }
+  ],
+  "mystery_entities": [
+    {
+      "temporary_name": "梅迪欧商行人员",
+      "description": "赫萝提到的捉住她的人之一，可能是商行的雇员或与教会有关的人员。",
+      "evidence": [
+        "volume_01-d001108"
+      ],
+      "confidence": 0.6
+    }
+  ],
+  "relationships": [
+    "罗伦斯与赫萝有亲密关系，表现出强烈的情感联系。",
+    "赫萝曾被叶勒捉住，表现出愤怒与不安。",
+    "罗伦斯怀疑亚伦多伯爵是梅迪欧商行的幕后支持者。",
+    "赫萝与梅迪欧商行之间存在潜在冲突。"
+  ],
+  "notes": "赫萝的说话风格中频繁使用自称『咱』，并带有挑衅和幽默的语气。罗伦斯表现出理性与焦虑的混合情绪。叶勒和亚伦多伯爵是关键线索人物，但尚未完全揭示其背景。"
+}

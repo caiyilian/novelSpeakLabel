@@ -1,0 +1,121 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000645",
+      "speaker_entity_id": "",
+      "speaker_display": "",
+      "speaker_status": "ambiguous",
+      "confidence": 0.3,
+      "candidate_speakers": [
+        {"entity_id": "", "display": "npc", "status": "npc", "score": 0.1},
+        {"entity_id": "char_0002", "display": "赫萝", "status": "known", "score": 0.4},
+        {"entity_id": "mystery_volume_01_c004_s007_r001_帕斯罗村女孩", "display": "帕斯罗村女孩", "status": "mystery", "score": 0.5}
+      ],
+      "evidence": ["对话轮次依据"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    },
+    {
+      "dialogue_id": "volume_01-d000646",
+      "speaker_entity_id": "",
+      "speaker_display": "",
+      "speaker_status": "ambiguous",
+      "confidence": 0.3,
+      "candidate_speakers": [
+        {"entity_id": "", "display": "npc", "status": "npc", "score": 0.1},
+        {"entity_id": "char_0002", "display": "赫萝", "status": "known", "score": 0.4},
+        {"entity_id": "mystery_volume_01_c004_s007_r001_帕斯罗村女孩", "display": "帕ス罗村女孩", "status": "mystery", "score": 0.5}
+      ],
+      "evidence": ["对话轮次依据"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    },
+    {
+      "dialogue_id": "volume_01-d000647",
+      "speaker_entity_id": "char_0013",
+      "speaker_display": "怀兹",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {"entity_id": "char_0013", "display": "怀兹", "status": "known", "score": 0.9}
+      ],
+      "evidence": ["对话内容符合怀兹的描述"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000648",
+      "speaker_entity_id": "mystery_volume_01_c004_s007_r001_帕ス罗村女孩",
+      "speaker_display": "帕斯罗村女孩",
+      "speaker_status": "mystery",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {"entity_id": "mystery_volume_01_c004_s007_r001_帕斯罗村女孩", "display": "帕ス罗村女孩", "status": "mystery", "score": 0.9}
+      ],
+      "evidence": ["自我介绍"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000649",
+      "speaker_entity_id": "char_0013",
+      "speaker_display": "怀兹",
+      "speaker_status": "known",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {"entity_id": "char_0013", "display": "怀兹", "status": "known", "score": 0.8}
+      ],
+      "evidence": ["对话内容符合怀兹的描述"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000650",
+      "speaker_entity_id": "char_0013",
+      "speaker_display": "怀兹",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {"entity_id": "char_0013", "display": "怀兹", "status": "known", "score": 0.9}
+      ],
+      "evidence": ["对话内容符合怀兹的描述"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000651",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {"entity_id": "char_0001", "display": "罗伦斯", "status": "known", "score": 0.9}
+      ],
+      "evidence": ["对话内容符合罗伦斯的描述"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000652",
+      "speaker_entity_id": "char_0013",
+      "speaker_display": "怀兹",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {"entity_id": "char_0013", "display": "怀兹", "status": "known", "score": 0.9}
+      ],
+      "evidence": ["对话内容符合怀兹的描述"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "前两句话的说话人难以确定，可能是帕斯罗村女孩或赫萝。后续对话中角色身份明确。"
+}

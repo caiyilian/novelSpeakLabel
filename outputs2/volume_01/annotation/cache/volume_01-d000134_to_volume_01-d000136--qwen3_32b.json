@@ -1,0 +1,74 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000134",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "上下文提到赫萝手臂变成野兽前脚，随后出现对白，符合她突然展示能力后表达感受的说话风格。",
+        "台词「嗯……唔，果然很不搭。」语气犹豫，符合赫萝在变身后的自我观察。",
+        "赫萝是当前场景中唯一展示异常行为的角色，且上下文明确指向她。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000135",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "台词「如何？愿意相信咱了呗？」中使用了赫萝的典型自称「咱」，这是她的标志性语言特征。",
+        "上下文显示赫萝在展示变身能力后仰头看着罗伦斯说话，符合说话人轮次。",
+        "赫萝的说话风格中包含挑衅和自信，这句台词符合她的性格。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000136",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "上下文提到罗伦斯无法回答，并反复确认赫萝的变身是否为幻觉，符合他此时的反应。",
+        "台词「唔……嗯……」是犹豫和困惑的表现，符合罗伦斯面对异常时的理性反应。",
+        "赫萝刚说完挑衅的话，罗伦斯作为对话的另一方，最可能做出回应。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "三句台词构成一个完整的对话轮次：赫萝展示变身并表达感受，接着挑衅罗伦斯，罗伦斯以犹豫回应。对话轮次清晰，符合角色性格和上下文逻辑。"
+}

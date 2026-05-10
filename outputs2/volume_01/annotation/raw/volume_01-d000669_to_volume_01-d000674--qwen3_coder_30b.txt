@@ -1,0 +1,155 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000669",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.9
+        },
+        {
+          "entity_id": "char_0013",
+          "display": "怀兹",
+          "status": "known",
+          "score": 0.1
+        }
+      ],
+      "evidence": ["赫萝开口说：「可以让咱瞧瞧吗？」，且上下文为赫萝主动提出查看货币，怀兹随后回应。"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000670",
+      "speaker_entity_id": "char_0013",
+      "speaker_display": "怀兹",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0013",
+          "display": "怀兹",
+          "status": "known",
+          "score": 0.95
+        },
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.05
+        }
+      ],
+      "evidence": ["怀兹听了立刻抬起头，露出再灿烂不过了的笑容说「当然、当然」，并把货币交给赫萝。"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000671",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.85
+        },
+        {
+          "entity_id": "char_0013",
+          "display": "怀兹",
+          "status": "known",
+          "score": 0.15
+        }
+      ],
+      "evidence": ["赫萝在检查货币后说：「这位先生，死相啦。」，语气带有调侃意味，符合赫萝的说话风格。"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000672",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        },
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.1
+        }
+      ],
+      "evidence": ["罗伦斯不理会怀兹，开口问赫萝。上下文明确为罗伦斯提问。"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000673",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.9
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.1
+        }
+      ],
+      "evidence": ["赫萝在检查货币后说：「你就看着吧。」，语气自信，符合赫萝的说话风格。"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000674",
+      "speaker_entity_id": "char_0013",
+      "speaker_display": "怀兹",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0013",
+          "display": "怀兹",
+          "status": "known",
+          "score": 0.9
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.1
+        }
+      ],
+      "evidence": ["怀兹苦笑着说：「哈哈，这太胡闹了。」，符合怀兹的幽默性格。"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，赫萝主动提出查看货币，怀兹回应并交出货币，罗伦斯随后提问，赫萝展示检查方式，怀兹对此表示苦笑。"
+}

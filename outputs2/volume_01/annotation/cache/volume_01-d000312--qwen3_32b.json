@@ -1,0 +1,28 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000312",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "前一句描述赫萝从外套底下探出脸说话，上下文显示是她开口。",
+        "台词中使用自称「咱」，与赫萝的 speech_markers 中的「咱」一致。",
+        "场景记忆中赫萝表现出孩子气和自信，符合台词语气。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "该对话为赫萝的独白，上下文明确指向她本人说话，自称「咱」与角色特征一致。"
+}

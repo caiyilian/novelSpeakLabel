@@ -1,0 +1,34 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001281",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.85
+        },
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.1
+        }
+      ],
+      "evidence": [
+        "前文描述罗伦斯在黑暗中醒来，感到疼痛并回忆起被追杀的经历",
+        "「呜！」是典型的痛苦呻吟，符合罗伦斯的虚弱状态",
+        "赫萝的尾巴消失后，罗伦斯进入陌生房间，情绪紧张，符合罗伦斯的反应"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "根据上下文，罗伦斯在黑暗中醒来，身体受伤并回忆起被追杀的经历，此时发出的「呜！」应为他本人的痛苦呻吟。赫萝虽在场但未直接发言，且其行为与该声音不符。"
+}

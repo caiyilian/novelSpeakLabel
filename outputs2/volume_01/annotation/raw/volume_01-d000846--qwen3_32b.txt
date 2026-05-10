@@ -1,0 +1,36 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000846",
+      "speaker_entity_id": "char_0016",
+      "speaker_display": "店老板",
+      "speaker_status": "known",
+      "confidence": 0.75,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0016",
+          "display": "店老板",
+          "status": "known",
+          "score": 0.75
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.25
+        }
+      ],
+      "evidence": [
+        "上下文显示赫萝正在与罗伦斯互动，但此句是正面评价画作，语气较为热情，符合店老板的风格。",
+        "前文提到赫萝贴近罗伦斯，但没有她说话的迹象，因此此句更可能是旁人（如店老板）的评论。",
+        "场景记忆中提到店老板在本场景中出现，且与罗伦斯和赫萝有互动。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次由赫萝和罗伦斯的互动构成，当前句为旁人评论，推测为店老板。"
+}
+```

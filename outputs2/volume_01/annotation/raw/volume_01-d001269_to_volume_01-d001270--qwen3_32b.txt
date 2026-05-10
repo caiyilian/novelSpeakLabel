@@ -1,0 +1,63 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001269",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.65,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.65
+        },
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.35
+        }
+      ],
+      "evidence": [
+        "上下文提到两人被狼的前足扫开，可能为罗伦斯发出的反应声。",
+        "对话轮次为连续的两个简短声音，符合两人交替反应的场景。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    },
+    {
+      "dialogue_id": "volume_01-d001270",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.6,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.6
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.4
+        }
+      ],
+      "evidence": [
+        "上下文提到两人被狼的前足扫开，可能为赫萝发出的反应声。",
+        "对话轮次为连续的两个简短声音，符合两人交替反应的场景。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    }
+  ],
+  "window_notes": "两个简短声音为连续反应，可能是罗伦斯和赫萝交替发出，但缺乏明确叙述锚点，需复核。"
+}
+```

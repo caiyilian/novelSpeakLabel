@@ -1,0 +1,28 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000045",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 1.0
+        }
+      ],
+      "evidence": [
+        "前文提到罗伦斯是旅行商人，且在回忆过往经历",
+        "台词内容与罗伦斯的性格和叙述语境一致",
+        "上下文明确指向罗伦斯的内心独白"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "该句为罗伦斯的内心独白，结合上下文其表达的孤独感和对陪伴的渴望，符合罗伦斯角色性格与叙述逻辑。"
+}

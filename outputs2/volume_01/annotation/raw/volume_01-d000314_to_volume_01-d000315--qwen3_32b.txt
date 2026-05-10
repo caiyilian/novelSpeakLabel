@@ -1,0 +1,53 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000314",
+      "speaker_entity_id": "char_0008",
+      "speaker_display": "杰廉",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0008",
+          "display": "杰廉",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "台词中使用了「小的」自称，与杰廉的speech_markers中的「小的想……」「那么，小的就先走一步了。」高度匹配。",
+        "上下文显示杰廉与罗伦斯达成协议后离开，并留下联络方式，符合该台词的语境。",
+        "该台词出现在杰廉离开的段落中，且没有其他角色在此时发言。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000315",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "该台词是对前一句「优伦朵」的回应，符合对话轮次逻辑，罗伦斯是前文主要叙述角色。",
+        "上下文显示罗伦斯与杰廉达成协议，且是主要行动者，因此最可能回应杰廉的留言。",
+        "没有其他角色在此时发言，也没有叙述线索指向其他人。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，杰廉先发言，罗伦斯回应，符合上下文逻辑。"
+}
+```

@@ -1,0 +1,66 @@
+{
+  "scene_id": "volume_01-c008-s003",
+  "scene_summary": "罗伦斯拿着高额请款单赶到卸货场，找到正在马车上梳理皮草的赫萝。两人在混乱的卸货场中重逢，赫萝表示会先还清欠债再回北方，暗示他们的旅程还将继续。",
+  "active_characters": [
+    "罗伦斯",
+    "赫萝"
+  ],
+  "character_candidates": [
+    {
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": [
+        "商人",
+        "旅行商人"
+      ],
+      "description": "理性、谨慎的商人，拿着高额请款单赶到卸货场，寻找赫萝。他表现出对赫萝的关心和信任。",
+      "speech_style": "温和、理性、略带担忧",
+      "speech_markers": [
+        "谢谢。"
+      ],
+      "relationship_hints": [
+        "与赫萝是搭档，彼此信任且依赖"
+      ],
+      "evidence": [
+        "volume_01-c008-s003-p003080",
+        "volume_01-c008-s003-p003081",
+        "volume_01-c008-s003-p003088",
+        "volume_01-c008-s003-p003098",
+        "volume_01-c008-s003-p003103"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "赫萝",
+      "aliases": [],
+      "titles": [
+        "贤狼",
+        "丰收之神"
+      ],
+      "description": "神秘少女，拥有狼的特征。坐在马车上梳理皮草，与罗伦斯重逢后表示会先还清欠债再回北方。",
+      "speech_style": "冷静、略带情绪化",
+      "speech_markers": [
+        "咱可不想被人讨债讨到北方来。",
+        "咱会先还清欠债再回北方。"
+      ],
+      "relationship_hints": [
+        "与罗伦斯是搭档，彼此信任且依赖"
+      ],
+      "evidence": [
+        "volume_01-c008-s003-p003093",
+        "volume_01-c008-s003-p003094",
+        "volume_01-c008-s003-p003095",
+        "volume_01-c008-s003-p003096",
+        "volume_01-c008-s003-p003099",
+        "volume_01-c008-s003-p003100",
+        "volume_01-c008-s003-p003101"
+      ],
+      "confidence": 0.95
+    }
+  ],
+  "mystery_entities": [],
+  "relationships": [
+    "罗伦斯与赫萝是搭档，彼此信任且依赖"
+  ],
+  "notes": "本场景中罗伦斯与赫萝重逢，赫萝的台词中使用了自称‘咱’，这是其说话风格的显著特征。两人之间的互动表明他们的旅程尚未结束。"
+}

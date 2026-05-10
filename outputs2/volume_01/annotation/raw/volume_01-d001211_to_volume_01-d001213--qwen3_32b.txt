@@ -1,0 +1,100 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001211",
+      "speaker_entity_id": "",
+      "speaker_display": "",
+      "speaker_status": "review",
+      "confidence": 0.0,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.2
+        },
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.1
+        },
+        {
+          "entity_id": "mystery_0001",
+          "display": "未知袭击者",
+          "status": "mystery",
+          "score": 0.6
+        }
+      ],
+      "evidence": [
+        "上下文显示说话者是袭击者，正在准备攻击罗伦斯",
+        "台词内容为忏悔，符合袭击前的心理描写",
+        "罗伦斯在后文确认对方意图杀害自己"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    },
+    {
+      "dialogue_id": "volume_01-d001212",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.85
+        },
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.1
+        }
+      ],
+      "evidence": [
+        "上下文显示罗伦斯正在反击并说话",
+        "台词出现在罗伦斯踢开袭击者之后",
+        "符合罗伦斯的理性与反击风格"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001213",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.88,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.88
+        },
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.08
+        }
+      ],
+      "evidence": [
+        "这是罗伦斯对袭击者的回应，延续了上一句的对话",
+        "上下文显示罗伦斯在反击并主导对话",
+        "符合罗伦斯的理性与反击风格"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "第一句台词说话人不明确，可能是袭击者；后两句为罗伦斯的连续反击对话，符合上下文逻辑。"
+}
+```

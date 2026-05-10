@@ -1,0 +1,36 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000767",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.9
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.1
+        }
+      ],
+      "evidence": [
+        "上下文显示赫萝刚刚沉醉在回忆中，而罗伦斯只是旁观者，没有说话的迹象。",
+        "赫萝在回忆中表现出情绪波动，而这句话「朋友……啊。」符合她回忆时的语气和情绪。",
+        "该句是段落中唯一一句台词，且赫萝是当前场景中唯一表现出主动情绪的角色。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "该句是段落中唯一一句台词，上下文显示赫萝是回忆的主体，因此判断为赫萝的台词。"
+}
+```

@@ -1,0 +1,175 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000637",
+      "speaker_entity_id": "char_0013",
+      "speaker_display": "怀兹",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0013",
+          "display": "怀兹",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "对话发生在罗伦斯与怀兹重逢的场景中，怀兹是已知的活跃角色，且符合对话语气和上下文的轮次推断。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000638",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "这是对上一句的回应，符合对话轮次，罗伦斯是已知的活跃角色。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000639",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "对话中提到「师父的口头禅」，赫萝是已知角色，且与罗伦斯和怀兹有互动，语气符合其调皮风格。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000640",
+      "speaker_entity_id": "char_0013",
+      "speaker_display": "怀兹",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0013",
+          "display": "怀兹",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "对话轮次回到怀兹，语气和内容符合其角色设定。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000641",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "这是对上一句的回应，符合对话轮次，罗伦斯是已知的活跃角色。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000642",
+      "speaker_entity_id": "char_0013",
+      "speaker_display": "怀兹",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0013",
+          "display": "怀兹",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "对话轮次回到怀兹，他询问女孩身份，符合其对赫萝来历的好奇设定。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000643",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "这是对上一句的回应，符合对话轮次，罗伦斯是已知的活跃角色。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000644",
+      "speaker_entity_id": "char_0013",
+      "speaker_display": "怀兹",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0013",
+          "display": "怀兹",
+          "status": "known",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "这是对上一句的回应，符合对话轮次，语气中带有惊讶，符合怀兹的性格。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，罗伦斯与怀兹交替发言，赫萝偶尔插入。整体对话围绕赫萝的来历展开，符合场景设定。"
+}
+```

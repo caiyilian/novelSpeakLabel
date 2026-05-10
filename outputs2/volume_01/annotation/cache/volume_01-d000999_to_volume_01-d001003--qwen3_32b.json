@@ -1,0 +1,110 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000999",
+      "speaker_entity_id": "char_0020",
+      "speaker_display": "米隆商行人员",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0020",
+          "display": "米隆商行人员",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "上下文显示‘有个米隆商行的人走进房间’，紧接着是‘打扰了。’，符合该角色登场并开场的逻辑。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001000",
+      "speaker_entity_id": "char_0015",
+      "speaker_display": "列支敦·马贺特",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0015",
+          "display": "列支敦·马贺特",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "马贺特是当前场景的主要人物之一，且上下文显示他正在与商行人员互动，‘怎么了？’是典型的回应语气。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001001",
+      "speaker_entity_id": "char_0020",
+      "speaker_display": "米隆商行人员",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0020",
+          "display": "米隆商行人员",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "商行人员刚进入房间并被马贺特问话，接下来继续说明信件内容，符合对话轮次。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001002",
+      "speaker_entity_id": "char_0015",
+      "speaker_display": "列支敦·马贺特",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0015",
+          "display": "列支敦·马贺特",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "‘给狼……与狼的森林？’是马贺特的台词，且上下文显示他正在查看信封内容。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001003",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "罗伦斯是当前场景的另一主要人物，且上下文显示他提出查看信件的请求，符合对话轮次。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，米隆商行人员进入房间后与马贺特互动，罗伦斯随后介入，符合场景逻辑。"
+}

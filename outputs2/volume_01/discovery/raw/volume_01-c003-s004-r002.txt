@@ -1,0 +1,46 @@
+```json
+{
+  "scene_id": "volume_01-c003-s004",
+  "scene_summary": "罗伦斯与赫萝在旅途中进行轻松的对话，赫萝以调皮和挑衅的方式与罗伦斯互动，同时提及狼袭击人类的动机，引发罗伦斯的回忆和情绪波动。",
+  "active_characters": ["罗伦斯", "赫萝"],
+  "character_candidates": [
+    {
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": ["商人", "旅行商人"],
+      "description": "理性、谨慎的商人，与赫萝同行，对她的行为感到无奈但逐渐接受。在本场景中表现出对赫萝情绪的包容与理解。",
+      "speech_style": "理性、谨慎、略带无奈",
+      "speech_markers": ["……", "我认错，别再说了。"],
+      "relationship_hints": ["与赫萝同行", "对赫萝的恶作剧感到无奈但包容"],
+      "evidence": [
+        "volume_01-c003-s004-p000860",
+        "volume_01-c003-s004-p000865",
+        "volume_01-c003-s004-p000879"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "赫萝",
+      "aliases": [],
+      "titles": ["贤狼", "狼"],
+      "description": "自称是丰收之神的神秘少女，拥有狼的特征，行为狡黠自信，喜欢恶作剧，对罗伦斯表现出挑衅和亲近的态度。",
+      "speech_style": "狡黠、自信、略带挑衅",
+      "speech_markers": ["咱", "哈哈哈哈哈", "那是因为狼想吃人类的脑袋……"],
+      "relationship_hints": ["与罗伦斯同行", "对罗伦斯有掌控力", "表现出调皮和孩子气的一面"],
+      "evidence": [
+        "volume_01-c003-s004-p000861",
+        "volume_01-c003-s004-p000862",
+        "volume_01-c003-s004-p000867"
+      ],
+      "confidence": 0.95
+    }
+  ],
+  "mystery_entities": [],
+  "relationships": [
+    "罗伦斯与赫萝同行",
+    "赫萝对罗伦斯有掌控力",
+    "罗伦斯对赫萝的恶作剧感到无奈但包容"
+  ],
+  "notes": "本场景中未出现新的神秘人物，赫萝与罗伦斯的互动延续了已知角色的特征，未发现新的可追踪实体。"
+}
+```

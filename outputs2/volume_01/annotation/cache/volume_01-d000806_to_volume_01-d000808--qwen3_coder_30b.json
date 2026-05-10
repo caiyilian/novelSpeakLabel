@@ -1,0 +1,80 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000806",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.9
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.1
+        }
+      ],
+      "evidence": [
+        "赫萝在前文提到‘咱记得有事要跟汝说’，此句语气符合赫萝的调皮与自嘲风格；上下文显示赫萝宿醉虚弱，符合说话状态。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000807",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.85
+        },
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.15
+        }
+      ],
+      "evidence": [
+        "此句为安慰性话语，语气理性、温和，符合罗伦斯的说话风格；赫萝在前文已表现出虚弱状态，此句为罗伦斯照顾她的行为体现。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000808",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "‘呜呜……真没面子’是情绪化的表达，符合赫萝在宿醉状态下的脆弱与自嘲；前文赫萝表现出羞愧与痛苦，此句为情绪延续。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "三句台词构成连续对话轮次，赫萝先表达虚弱与困惑，罗伦斯安慰并安排后续事务，赫萝再表达羞愧情绪，符合角色性格与场景设定。"
+}

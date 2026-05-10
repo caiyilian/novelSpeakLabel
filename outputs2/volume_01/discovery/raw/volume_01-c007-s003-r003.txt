@@ -1,0 +1,57 @@
+```json
+{
+  "scene_id": "volume_01-c007-s003",
+  "scene_summary": "罗伦斯与赫萝在帕斯罗村与叶勒对峙，叶勒代表梅迪欧商行试图活捉赫萝。罗伦斯坚持遵守与赫萝的合约，拒绝背叛她。双方关系紧张，气氛逐渐升级。",
+  "active_characters": ["罗伦斯", "赫萝", "叶勒"],
+  "character_candidates": [
+    {
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": ["商人", "旅行商人"],
+      "description": "理性、坚定的商人，坚持遵守与赫萝的合约，拒绝背叛她。面对叶勒的威胁保持冷静，表现出对赫萝的忠诚。",
+      "speech_style": "理性、坚定、略带焦虑",
+      "speech_markers": ["可是，遵守合约是当个优良商人的第一条件。", "要我违反合约，我办不到。"],
+      "relationship_hints": ["与赫萝有旅行合约", "与叶勒有商业关系"],
+      "evidence": ["volume_01-d001247", "volume_01-d001249"],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "赫萝",
+      "aliases": [],
+      "titles": ["贤狼", "丰收之神"],
+      "description": "情绪波动明显的贤狼，因叶勒的言语感到悲伤。她表现出对罗伦斯的依赖，并在关键时刻流露出脆弱。",
+      "speech_style": "情绪化、略带孩子气",
+      "speech_markers": ["汝……"],
+      "relationship_hints": ["与罗伦斯有旅行合约", "被叶勒视为目标"],
+      "evidence": ["volume_01-d001250", "volume_01-c007-s003-p002782"],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "叶勒",
+      "aliases": [],
+      "titles": [],
+      "description": "帕斯罗村的村民，代表梅迪欧商行试图活捉赫萝。他与罗伦斯有旧识，但立场对立，表现出对合约的重视。",
+      "speech_style": "理性、略带策略性",
+      "speech_markers": ["那么，我也只能执行我的合约了。"],
+      "relationship_hints": ["与罗伦斯有旧识", "与梅迪欧商行有关联"],
+      "evidence": ["volume_01-d001251", "volume_01-c007-s003-p002792"],
+      "confidence": 0.9
+    }
+  ],
+  "mystery_entities": [
+    {
+      "temporary_name": "梅迪欧商行手下",
+      "description": "叶勒命令下摆出迎战姿态的人员，可能是梅迪欧商行的雇佣兵或员工。尚未明确身份，但可追踪其行动。",
+      "evidence": ["volume_01-c007-s003-p002792"],
+      "confidence": 0.7
+    }
+  ],
+  "relationships": [
+    "罗伦斯与赫萝之间有旅行合约",
+    "罗伦斯与叶勒之间有商业关系",
+    "叶勒与梅迪欧商行有关联",
+    "赫萝是叶勒的目标"
+  ],
+  "notes": "本场景中，罗伦斯与叶勒的对峙揭示了商业与个人忠诚之间的冲突。赫萝的情绪变化暗示了她对罗伦斯的依赖。梅迪欧商行的出现为后续剧情埋下伏笔。"
+}
+```

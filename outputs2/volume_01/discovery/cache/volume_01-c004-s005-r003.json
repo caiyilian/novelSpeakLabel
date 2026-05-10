@@ -1,0 +1,83 @@
+{
+  "scene_id": "volume_01-c004-s005",
+  "scene_summary": "罗伦斯与赫萝在公证人见证下签订合约，以十枚崔尼银币换取杰廉的情报。赫萝对货币的信赖度提出疑问，罗伦斯解释货币的复杂性。两人随后离开，徒步前往市场。",
+  "active_characters": [
+    "罗伦斯",
+    "赫萝",
+    "杰廉"
+  ],
+  "character_candidates": [
+    {
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": [
+        "商人",
+        "旅行商人"
+      ],
+      "description": "理性、谨慎的商人，与赫萝同行，对商业情报有敏锐判断。在本场景中与杰廉签订合约，并解释货币的信赖度。",
+      "speech_style": "理性、温和、略带无奈",
+      "speech_markers": [
+        "那么，敬我们的发财梦。",
+        "这是哪个久远年代的事啊？"
+      ],
+      "relationship_hints": [
+        "与赫萝同行",
+        "与杰廉有商业交易"
+      ],
+      "evidence": [
+        "volume_01-c004-s005-p001302",
+        "volume_01-c004-s005-p001309",
+        "volume_01-c004-s005-p001318"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "赫萝",
+      "aliases": [],
+      "titles": [
+        "贤狼",
+        "丰收之神"
+      ],
+      "description": "神秘少女，与罗伦斯同行，对货币和商业有独特见解。在本场景中对崔尼银币的信赖度提出疑问，并表现出对罗伦斯的信任。",
+      "speech_style": "调皮、自信、略带好奇",
+      "speech_markers": [
+        "那个年轻人指的银币是这个吧？",
+        "信赖度？"
+      ],
+      "relationship_hints": [
+        "与罗伦斯同行",
+        "对罗伦斯的解释感兴趣"
+      ],
+      "evidence": [
+        "volume_01-c004-s005-p001303",
+        "volume_01-c004-s005-p001310",
+        "volume_01-c004-s005-p001314"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "display_name": "杰廉",
+      "aliases": [],
+      "titles": [
+        "旅行商人"
+      ],
+      "description": "年轻的旅行商人，与罗伦斯达成情报交易。在本场景中未直接发言，但被提及为交易对象。",
+      "speech_style": "热情、略带笨拙",
+      "speech_markers": [],
+      "relationship_hints": [
+        "与罗伦斯有商业交易"
+      ],
+      "evidence": [
+        "volume_01-c004-s005-p001300",
+        "volume_01-c004-s005-p001309"
+      ],
+      "confidence": 0.85
+    }
+  ],
+  "mystery_entities": [],
+  "relationships": [
+    "罗伦斯与赫萝同行",
+    "罗伦斯与杰廉有商业交易"
+  ],
+  "notes": "本场景中未出现新角色，主要围绕罗伦斯、赫萝与杰廉的商业交易展开。赫萝对货币的信赖度提出疑问，罗伦斯解释货币的复杂性，显示两人之间有信任与互动。"
+}

@@ -1,0 +1,159 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000527",
+      "speaker_entity_id": "char_0012",
+      "speaker_display": "女店员",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0012",
+          "display": "女店员",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "台词中提到杰廉先生，与上下文女店员对杰廉的了解一致",
+        "符合女店员的口癖：'啊，您是说杰廉先生吗？'"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000528",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "上下文显示罗伦斯是主动提出联络杰廉的人",
+        "符合罗伦斯的对话风格：理性、简洁"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000529",
+      "speaker_entity_id": "char_0012",
+      "speaker_display": "女店员",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0012",
+          "display": "女店员",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "上下文显示女店员在提供关于杰廉的信息",
+        "符合女店员的口癖：'是，请您慢用。'"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000530",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "上下文显示罗伦斯在回应女店员的信息",
+        "符合罗伦斯的对话风格：简洁、理性"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000531",
+      "speaker_entity_id": "char_0012",
+      "speaker_display": "女店员",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0012",
+          "display": "女店员",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "上下文显示女店员在继续提供关于杰廉的建议",
+        "符合女店员的口癖：'是，请您慢用。'"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000532",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "上下文显示罗伦斯在回应女店员的建议",
+        "符合罗伦斯的对话风格：简洁、理性"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000533",
+      "speaker_entity_id": "char_0012",
+      "speaker_display": "女店员",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0012",
+          "display": "女店员",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "上下文显示女店员在结束对话",
+        "符合女店员的口癖：'是，请您慢用。'"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，女店员与罗伦斯交替发言，符合场景中两人互动的叙述线索。"
+}

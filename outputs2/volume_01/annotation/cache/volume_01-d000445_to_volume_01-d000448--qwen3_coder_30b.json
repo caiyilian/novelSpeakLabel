@@ -1,0 +1,117 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000445",
+      "speaker_entity_id": "char_0010",
+      "speaker_display": "彪形大汉",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0010",
+          "display": "彪形大汉",
+          "status": "known",
+          "score": 0.9
+        },
+        {
+          "entity_id": "char_0009",
+          "display": "店员",
+          "status": "known",
+          "score": 0.1
+        }
+      ],
+      "evidence": [
+        "前文描写彪形大汉与马互动，语气符合其热情直接的风格",
+        "上下文为马车停靠场景，符合彪形大汉行为逻辑"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000446",
+      "speaker_entity_id": "char_0010",
+      "speaker_display": "彪形大汉",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0010",
+          "display": "彪形大汉",
+          "status": "known",
+          "score": 0.9
+        },
+        {
+          "entity_id": "char_0009",
+          "display": "店员",
+          "status": "known",
+          "score": 0.1
+        }
+      ],
+      "evidence": [
+        "与前一句对话风格一致，语气轻松调侃",
+        "符合彪形大汉热情直接的性格"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000447",
+      "speaker_entity_id": "char_0010",
+      "speaker_display": "彪形大汉",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0010",
+          "display": "彪形大汉",
+          "status": "known",
+          "score": 0.95
+        },
+        {
+          "entity_id": "char_0009",
+          "display": "店员",
+          "status": "known",
+          "score": 0.05
+        }
+      ],
+      "evidence": [
+        "承接上文对话，语气一致，符合彪形大汉回应习惯",
+        "上下文为马车场景，符合其行为逻辑"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000448",
+      "speaker_entity_id": "char_0011",
+      "speaker_display": "采购人员",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0011",
+          "display": "采购人员",
+          "status": "known",
+          "score": 0.95
+        },
+        {
+          "entity_id": "mystery_volume_01_c004_s002_r003_米隆商行行长",
+          "display": "米隆商行行长",
+          "status": "mystery",
+          "score": 0.05
+        }
+      ],
+      "evidence": [
+        "明确提到“代替行长感谢您”，符合采购人员身份",
+        "采购人员负责接待并代表商行致谢，符合上下文"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，前三个为彪形大汉所言，最后为采购人员。"
+}

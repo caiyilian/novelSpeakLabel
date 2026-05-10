@@ -1,0 +1,119 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000137",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {"entity_id": "char_0002", "display": "赫萝", "status": "known", "score": 0.8}
+      ],
+      "evidence": ["罗伦斯在前文提到自己摸脚的动作，而这句话是对这个动作的回应"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000138",
+      "speaker_entity_id": "",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "npc",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {"entity_id": "char_0001", "display": "罗伦斯", "status": "known", "score": 0.9}
+      ],
+      "evidence": ["对话内容是罗伦斯的内心独白"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    },
+    {
+      "dialogue_id": "volume_01-d000139",
+      "speaker_entity_id": "",
+      "speaker_display": "npc",
+      "speaker_status": "ambiguous",
+      "confidence": 0.2,
+      "candidate_speakers": [
+        {"entity_id": "char_0001", "display": "罗伦斯", "status": "known", "score": 0.3},
+        {"entity_id": "char_0002", "display": "赫萝", "status": "known", "score": 0.4}
+      ],
+      "evidence": ["对话轮次推断，但没有明确证据"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    },
+    {
+      "dialogue_id": "volume_01-d000140",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {"entity_id": "char_0002", "display": "赫萝", "status": "known", "score": 0.8}
+      ],
+      "evidence": ["对话轮次推断，且前文提到赫萝的动作"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000141",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {"entity_id": "char_0001", "display": "罗伦斯", "status": "known", "score": 0.8}
+      ],
+      "evidence": ["对话轮次推断，且前文提到罗伦斯的动作"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000142",
+      "speaker_entity_id": "",
+      "speaker_display": "赫萝",
+      "speaker_status": "npc",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {"entity_id": "char_0002", "display": "赫萝", "status": "known", "score": 0.9}
+      ],
+      "evidence": ["对话内容是罗伦斯的内心独白"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    },
+    {
+      "dialogue_id": "volume_01-d000143",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {"entity_id": "char_0002", "display": "赫萝", "status": "known", "score": 0.8}
+      ],
+      "evidence": ["对话轮次推断，且前文提到赫萝的动作"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000144",
+      "speaker_entity_id": "",
+      "speaker_display": "npc",
+      "speaker_status": "ambiguous",
+      "confidence": 0.2,
+      "candidate_speakers": [
+        {"entity_id": "char_0001", "display": "罗伦斯", "status": "known", "score": 0.3},
+        {"entity_id": "char_0002", "display": "赫萝", "status": "known", "score": 0.4}
+      ],
+      "evidence": ["对话轮次推断，但没有明确证据"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    }
+  ],
+  "window_notes": "对话轮次推断为主，部分对话内容为内心独白或未明确说话人"
+}

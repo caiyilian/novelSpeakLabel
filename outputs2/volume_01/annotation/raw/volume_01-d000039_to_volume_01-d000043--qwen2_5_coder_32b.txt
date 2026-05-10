@@ -1,0 +1,77 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000039",
+      "speaker_entity_id": "char_0005",
+      "speaker_display": "叶勒",
+      "speaker_status": "known",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {"entity_id": "char_0005", "display": "叶勒", "status": "known", "score": 0.8}
+      ],
+      "evidence": ["嗷呜～～～～～～～ 是叶勒的 speech_marker"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000040",
+      "speaker_entity_id": "npc:村民",
+      "speaker_display": "村民",
+      "speaker_status": "npc",
+      "confidence": 0.7,
+      "candidate_speakers": [
+        {"entity_id": "char_0005", "display": "叶勒", "status": "known", "score": 0.3},
+        {"entity_id": "", "display": "村民", "status": "npc", "score": 0.7}
+      ],
+      "evidence": ["赫萝！赫萝！赫萝！ 是对叶勒的称呼，但没有明确说话人"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    },
+    {
+      "dialogue_id": "volume_01-d000041",
+      "speaker_entity_id": "npc:村民",
+      "speaker_display": "村民",
+      "speaker_status": "npc",
+      "confidence": 0.7,
+      "candidate_speakers": [
+        {"entity_id": "char_0005", "display": "叶勒", "status": "known", "score": 0.3},
+        {"entity_id": "", "display": "村民", "status": "npc", "score": 0.7}
+      ],
+      "evidence": ["狼赫萝出现了！狼赫萝出现了！ 是对叶勒的描述，但没有明确说话人"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    },
+    {
+      "dialogue_id": "volume_01-d000042",
+      "speaker_entity_id": "npc:村民",
+      "speaker_display": "村民",
+      "speaker_status": "npc",
+      "confidence": 0.7,
+      "candidate_speakers": [
+        {"entity_id": "", "display": "村民", "status": "npc", "score": 0.7}
+      ],
+      "evidence": ["抓住祂！快抓住！ 是对叶勒的命令，但没有明确说话人"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    },
+    {
+      "dialogue_id": "volume_01-d000043",
+      "speaker_entity_id": "npc:村民",
+      "speaker_display": "村民",
+      "speaker_status": "npc",
+      "confidence": 0.7,
+      "candidate_speakers": [
+        {"entity_id": "", "display": "村民", "status": "npc", "score": 0.7}
+      ],
+      "evidence": ["别让祂逃走了！快追！ 是对叶勒的命令，但没有明确说话人"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    }
+  ],
+  "window_notes": "对话轮次显示村民在呼喊和命令叶勒，但具体说话人不明确。"
+}

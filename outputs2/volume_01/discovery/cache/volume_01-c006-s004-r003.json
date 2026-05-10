@@ -1,0 +1,112 @@
+{
+  "scene_id": "volume_01-c006-s004",
+  "scene_summary": "赫萝因村民叶勒的言语感到愤怒与悲伤，回忆起自己在村庄中的角色与被村民逐渐排斥的经历。罗伦斯试图安抚她的情绪，并展现出坚定与温柔的一面。",
+  "active_characters": [
+    "赫萝",
+    "罗伦斯"
+  ],
+  "character_candidates": [
+    {
+      "display_name": "赫萝",
+      "aliases": [],
+      "titles": [
+        "丰收之神",
+        "狼",
+        "贤狼"
+      ],
+      "description": "情绪波动明显的贤狼，因村民叶勒的言语感到愤怒与悲伤。她回忆起自己在村庄中的角色，并表现出对孤独的恐惧。",
+      "speech_style": "脆弱、情绪化、略带孩子气",
+      "speech_markers": [
+        "咱",
+        "那家伙",
+        "咱虽然觉得没出息"
+      ],
+      "relationship_hints": [
+        "与罗伦斯有强烈的情感联系",
+        "曾与村民有亲密关系"
+      ],
+      "evidence": [
+        "volume_01-c006-s004-p002480",
+        "volume_01-c006-s004-p002482",
+        "volume_01-c006-s004-p002484",
+        "volume_01-c006-s004-p002495"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": [
+        "商人",
+        "旅行商人",
+        "行商人"
+      ],
+      "description": "理性、谨慎的商人，正在安抚赫萝的情绪，并展现出温柔和坚定的一面。他试图理解赫萝与村庄之间的复杂关系。",
+      "speech_style": "温和、理性、略带感性",
+      "speech_markers": [
+        "我们",
+        "咱用后脚踢砂子离开就是了"
+      ],
+      "relationship_hints": [
+        "与赫萝有强烈的情感联系",
+        "试图保护赫萝"
+      ],
+      "evidence": [
+        "volume_01-c006-s004-p002496",
+        "volume_01-c006-s004-p002497",
+        "volume_01-c006-s004-p002498"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "叶勒",
+      "aliases": [],
+      "titles": [],
+      "description": "赫萝提到的村民，曾捉住她并说出让她感到愤怒与悲伤的话。可能是村庄中与赫萝冲突的导火索。",
+      "speech_style": "未直接发言",
+      "speech_markers": [],
+      "relationship_hints": [
+        "与赫萝有冲突",
+        "可能是村庄中反对赫萝的人"
+      ],
+      "evidence": [
+        "volume_01-c006-s004-p002480",
+        "volume_01-c006-s004-p002484"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "display_name": "杰廉",
+      "aliases": [],
+      "titles": [
+        "旅行商人"
+      ],
+      "description": "赫萝提到的中介人物，可能是叶勒与赫萝之间信息传递的桥梁。",
+      "speech_style": "未直接发言",
+      "speech_markers": [],
+      "relationship_hints": [
+        "与赫萝和叶勒有间接联系"
+      ],
+      "evidence": [
+        "volume_01-c006-s004-p002482"
+      ],
+      "confidence": 0.75
+    }
+  ],
+  "mystery_entities": [
+    {
+      "temporary_name": "帕斯罗村村民",
+      "description": "逐渐不再认同赫萝存在的村民群体，可能是导致赫萝情绪低落的背景因素。",
+      "evidence": [
+        "volume_01-c006-s004-p002490"
+      ],
+      "confidence": 0.65
+    }
+  ],
+  "relationships": [
+    "赫萝与罗伦斯之间有强烈的情感联系",
+    "赫萝与叶勒之间有冲突",
+    "赫萝与帕斯罗村村民之间存在疏离"
+  ],
+  "notes": "赫萝在本场景中表现出强烈的情绪波动，罗伦斯则展现出温柔与坚定。叶勒作为触发赫萝情绪的关键人物，其身份和动机值得进一步追踪。"
+}

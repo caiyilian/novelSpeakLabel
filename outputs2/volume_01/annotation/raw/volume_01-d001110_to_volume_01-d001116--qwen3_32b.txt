@@ -1,0 +1,154 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001110",
+      "speaker_entity_id": "",
+      "speaker_display": "",
+      "speaker_status": "review",
+      "confidence": 0.0,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.8
+        }
+      ],
+      "evidence": [
+        "「怎么可能」是罗伦斯未说完的句子，上下文明确指出是罗伦斯的内心活动，但未实际说出。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    },
+    {
+      "dialogue_id": "volume_01-d001111",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "罗伦斯在前一句中未说完「怎么可能」，紧接着他完整说出对亚伦多伯爵的推测，符合对话轮次逻辑。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001112",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "罗伦斯在上一句中表达了对亚伦多伯爵的推测，紧接着继续解释其背后的经济逻辑，符合连续对话轮次。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001113",
+      "speaker_entity_id": "char_0023",
+      "speaker_display": "马夫",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0023",
+          "display": "马夫",
+          "status": "known",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "上下文提到「其中一名马夫摆出侧耳的姿势」，紧接着是「有听到刚刚的话吗？」，符合马夫的提问逻辑。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001114",
+      "speaker_entity_id": "char_0023",
+      "speaker_display": "马夫",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0023",
+          "display": "马夫",
+          "status": "known",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "马夫在上一句中提问，紧接着回答「是的，有听到。」，符合对话轮次逻辑。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001115",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "罗伦斯在前两句中持续分析亚伦多伯爵与梅迪欧商行的关系，此句是其进一步传达信息，符合对话轮次逻辑。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001116",
+      "speaker_entity_id": "char_0023",
+      "speaker_display": "马夫",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0023",
+          "display": "马夫",
+          "status": "known",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "马夫在上一句中回应了罗伦斯的提问，紧接着表示「包在我身上。」，符合对话轮次逻辑。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，罗伦斯与马夫交替发言，符合上下文逻辑。赫萝未在此段对话中发言。"
+}
+```

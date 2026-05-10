@@ -1,0 +1,89 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000481",
+      "speaker_entity_id": "char_0011",
+      "speaker_display": "采购人员",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {"entity_id": "char_0011", "display": "采购人员", "status": "known", "score": 0.95}
+      ],
+      "evidence": ["「谢谢。那么，先生啊。」是采购人员的口吻"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000482",
+      "speaker_entity_id": "char_0011",
+      "speaker_display": "采购人员",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {"entity_id": "char_0011", "display": "采购人员", "status": "known", "score": 0.95}
+      ],
+      "evidence": ["「如先生所见，这是一件优质皮草。」符合采购人员的正式口吻"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000483",
+      "speaker_entity_id": "char_0011",
+      "speaker_display": "采购人员",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {"entity_id": "char_0011", "display": "采购人员", "status": "known", "score": 0.95}
+      ],
+      "evidence": ["「是的，我完全赞同。」符合采购人员的正式口吻"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000484",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {"entity_id": "char_0002", "display": "赫萝", "status": "known", "score": 0.95}
+      ],
+      "evidence": ["「嗯，这是多年难得一见的皮草。或许咱应该这么说：这是多年难得一闻的皮草。」符合赫萝的调皮、略带挑衅风格"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000485",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {"entity_id": "char_0002", "display": "赫萝", "status": "known", "score": 0.95}
+      ],
+      "evidence": ["「明明是『气味』，但却成了『盲点』，很有趣呗？」符合赫萝的调皮、略带挑衅风格"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000486",
+      "speaker_entity_id": "char_0011",
+      "speaker_display": "采购人员",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {"entity_id": "char_0011", "display": "采购人员", "status": "known", "score": 0.95}
+      ],
+      "evidence": ["「所谓百闻不如一见，先生不妨拿在手上闻闻看。」符合采购人员的正式口吻"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次和叙述线索一致，根据角色特征和上下文判断说话人"
+}

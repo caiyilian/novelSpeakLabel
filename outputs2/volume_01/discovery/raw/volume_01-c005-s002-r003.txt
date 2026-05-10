@@ -1,0 +1,99 @@
+```json
+{
+  "scene_id": "volume_01-c005-s002",
+  "scene_summary": "罗伦斯与赫萝在酒吧中，赫萝因宿醉而虚弱，罗伦斯照顾她并与其交谈。赫萝提到与熊一起喝酒的经历，表现出调皮和虚弱的混合状态。店老板提供果汁，赫萝试图回忆某件重要的事但失败。",
+  "active_characters": [
+    "罗伦斯",
+    "赫萝",
+    "店老板"
+  ],
+  "character_candidates": [
+    {
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": [
+        "商人"
+      ],
+      "description": "理性、谨慎的商人，正在照顾宿醉的赫萝，并与她进行轻松的对话。表现出对赫萝的关心和理解。",
+      "speech_style": "温和、理性、略带无奈",
+      "speech_markers": [
+        "汝曾去过吗？",
+        "……是这样啊？"
+      ],
+      "relationship_hints": [
+        "与赫萝关系亲密，表现出关心和理解",
+        "与店老板有互动，但关系不深"
+      ],
+      "evidence": [
+        "volume_01-c005-s002-p001734",
+        "volume_01-c005-s002-p001735",
+        "volume_01-c005-s002-p001746",
+        "volume_01-c005-s002-p001752"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "赫萝",
+      "aliases": [],
+      "titles": [
+        "狼",
+        "贤狼"
+      ],
+      "description": "宿醉的贤狼，表现出虚弱和调皮的混合状态。与罗伦斯互动频繁，提到与熊一起喝酒的经历。",
+      "speech_style": "虚弱、调皮、略带幽默",
+      "speech_markers": [
+        "咱",
+        "呜呜……真没面子。"
+      ],
+      "relationship_hints": [
+        "与罗伦斯关系亲密，表现出依赖和信任",
+        "与熊有共同经历，但熊未出现"
+      ],
+      "evidence": [
+        "volume_01-c005-s002-p001736",
+        "volume_01-c005-s002-p001737",
+        "volume_01-c005-s002-p001742",
+        "volume_01-c005-s002-p001753"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "店老板",
+      "aliases": [],
+      "titles": [
+        "餐馆老板"
+      ],
+      "description": "热情的店老板，为罗伦斯和赫萝提供果汁，并对赫萝的宿醉表示理解。",
+      "speech_style": "热情、幽默",
+      "speech_markers": [
+        "哇哈哈"
+      ],
+      "relationship_hints": [
+        "与罗伦斯有互动，但关系不深",
+        "对赫萝表现出理解"
+      ],
+      "evidence": [
+        "volume_01-c005-s002-p001734",
+        "volume_01-c005-s002-p001735"
+      ],
+      "confidence": 0.85
+    }
+  ],
+  "mystery_entities": [
+    {
+      "temporary_name": "熊",
+      "description": "赫萝提到的常与她一起喝酒的动物，未在场景中出现，但有明确提及。",
+      "evidence": [
+        "volume_01-c005-s002-p001742"
+      ],
+      "confidence": 0.75
+    }
+  ],
+  "relationships": [
+    "罗伦斯与赫萝关系亲密，表现出关心和理解",
+    "赫萝与熊有共同经历，但熊未出现",
+    "罗伦斯与店老板有互动，但关系不深"
+  ],
+  "notes": "赫萝提到的熊是未出现但可追踪的神秘人物。场景中未出现其他已知角色，如怀兹或杰廉。"
+}
+```

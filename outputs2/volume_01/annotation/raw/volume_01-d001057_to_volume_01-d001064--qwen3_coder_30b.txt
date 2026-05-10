@@ -1,0 +1,200 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001057",
+      "speaker_entity_id": "volume_01-d001057",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 1.0
+        }
+      ],
+      "evidence": [
+        "该句为内心独白，与前文罗伦斯的动作一致",
+        "与上下文中的罗伦斯行为和语境相符"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001058",
+      "speaker_entity_id": "char_0015",
+      "speaker_display": "列支敦·马贺特",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0015",
+          "display": "列支敦·马贺特",
+          "status": "known",
+          "score": 1.0
+        }
+      ],
+      "evidence": [
+        "对话内容符合马贺特对商行实力的自信表达",
+        "与前文马贺特与罗伦斯的互动一致",
+        "提及“我们”、“我们比城里任何人都熟悉”等表述符合马贺特身份"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001059",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        },
+        {
+          "entity_id": "char_0015",
+          "display": "列支敦·马贺特",
+          "status": "known",
+          "score": 0.1
+        }
+      ],
+      "evidence": [
+        "问题形式符合罗伦斯的理性、谨慎风格",
+        "上下文为罗伦斯与马贺特讨论教会威胁",
+        "无明确证据表明是马贺特所说"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001060",
+      "speaker_entity_id": "char_0015",
+      "speaker_display": "列支敦·马贺特",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0015",
+          "display": "列支敦·马贺特",
+          "status": "known",
+          "score": 1.0
+        }
+      ],
+      "evidence": [
+        "回应上一句问题，语气符合马贺特的理性、沉稳风格",
+        "提及“教会同样也会前往各个国家的各个城镇”等表述符合马贺特身份",
+        "上下文为马贺特与罗伦斯的战术讨论"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001061",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 1.0
+        }
+      ],
+      "evidence": [
+        "回应马贺特关于教会的说明，语气符合罗伦斯的理性风格",
+        "“确实是神出鬼没”符合罗伦斯对教会的观察",
+        "上下文为罗伦斯与马贺特的对话轮次"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001062",
+      "speaker_entity_id": "char_0015",
+      "speaker_display": "列支敦·马贺特",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0015",
+          "display": "列支敦·马贺特",
+          "status": "known",
+          "score": 1.0
+        }
+      ],
+      "evidence": [
+        "内容为马贺特对局势的分析和应对策略",
+        "“我们打算在事态演变成那样之前把事情解决”符合马贺特的冷静、理性风格",
+        "提及“暗号是皮里昂、奴马”符合马贺特的战术沟通方式"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001063",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        },
+        {
+          "entity_id": "char_0015",
+          "display": "列支敦·马贺特",
+          "status": "known",
+          "score": 0.1
+        }
+      ],
+      "evidence": [
+        "问题形式符合罗伦斯的理性、谨慎风格",
+        "上下文为罗伦斯与马贺特讨论交易细节",
+        "无明确证据表明是马贺特所说"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001064",
+      "speaker_entity_id": "char_0015",
+      "speaker_display": "列支敦·马贺特",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0015",
+          "display": "列支敦·马贺特",
+          "status": "known",
+          "score": 1.0
+        }
+      ],
+      "evidence": [
+        "内容为马贺特对罗伦斯的祝福和鼓励",
+        "“衷心祈祷您们平安无事并成功逃脱”符合马贺特的沉稳风格",
+        "上下文为马贺特与罗伦斯的战术沟通结束"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话围绕罗伦斯与马贺特展开，讨论教会威胁、商行应对策略及交易细节，对话轮次清晰，无其他角色介入。"
+}

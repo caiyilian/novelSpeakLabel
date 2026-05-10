@@ -1,0 +1,477 @@
+你是轻小说说话人标注项目的阶段 2：正式标注助手。
+你的任务是判断输入 target_dialogues 中每一句台词的说话人，不要改写原文。
+必须把这些台词当作同一个连续片段来判断，优先保持对话轮次和叙述线索的一致性。
+
+规则：
+1. 只输出严格 JSON，不要 Markdown，不要解释性前后缀。
+2. 如果说话人是候选角色，speaker_entity_id 必须使用 candidate_characters 里的 entity_id，speaker_status 填 known。
+3. 如果说话人像某个未知人物，speaker_entity_id 使用 candidate_mysteries 里的 mystery_id，speaker_status 填 mystery。
+4. 如果只是无法追踪的路人/群体，speaker_status 填 npc，speaker_entity_id 可为空或使用 npc:简短称呼。
+5. 证据不足时不要硬猜，speaker_status 填 ambiguous 或 review，并把 needs_review 设为 true。
+6. candidate_speakers 至少列出 1 个候选；如果无法判断，列出最可能的候选和不确定原因。
+7. confidence 使用 0 到 1 之间的小数，表示你对最终判断的把握。
+8. 不要只因为台词里提到某个名字、职业、地点，就把说话人标成那个实体；被称呼的人通常不是说话人。
+9. 连续问答、交易寒暄、命令/回答等场景要按上下句轮次判断；同一人连续说话必须有叙述或语气证据支持。
+10. 如果当前上下文显示某角色还没有登场，不要因为角色库或后文记忆里有这个角色就提前标给他/她。
+
+11. target_dialogues 中 dialogue_kind=inline 的项目是正文内嵌引号，不要当作独立对白；标为 review，needs_review=true。
+12. candidate_mysteries 只是可选候选；如果候选名称和当前段落地点/人物不一致，必须改用 npc 或 review。
+13. 如果只有轮次推断、没有叙述锚点或自我介绍，请降低 confidence，并在 evidence 里说明轮次依据。
+
+14. candidate_characters.speech_markers 是阶段 1 提取的高区分度口癖/自称/固定短语；命中时可作为证据，但如果多个角色共享或上下文反证明显，必须进入复核。
+
+输出 JSON 结构：
+{
+  "annotations": [
+    {
+      "dialogue_id": "必须来自 target_dialogue_ids",
+      "speaker_entity_id": "string",
+      "speaker_display": "string",
+      "speaker_status": "known|mystery|npc|ambiguous|review",
+      "confidence": 0.0,
+      "candidate_speakers": [
+        {"entity_id": "string", "display": "string", "status": "known|mystery|npc|ambiguous|review", "score": 0.0}
+      ],
+      "evidence": ["短证据，不要大段复制原文"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "可选，简短说明整体轮次判断"
+}
+必须为 target_dialogue_ids 中每个 dialogue_id 输出且只输出一条 annotation。
+
+输入 JSON：
+{
+  "volume": {
+    "volume_id": "volume_01",
+    "volume": 1
+  },
+  "target_dialogue_ids": [
+    "volume_01-d000316",
+    "volume_01-d000317",
+    "volume_01-d000318",
+    "volume_01-d000319",
+    "volume_01-d000320",
+    "volume_01-d000321",
+    "volume_01-d000322",
+    "volume_01-d000323"
+  ],
+  "dialogues": [
+    {
+      "dialogue_id": "volume_01-d000316",
+      "dialogue_index": 315,
+      "window_position": 1,
+      "chapter_id": "volume_01-c003",
+      "chapter_title": "第二幕",
+      "scene_id": "volume_01-c003-s004",
+      "paragraph_id": "volume_01-c003-s004-p000832",
+      "paragraph_index": 831,
+      "local_dialogue_index": 1,
+      "text": "咱们不跟他一起走吗？",
+      "quote_text": "「咱们不跟他一起走吗？」",
+      "paragraph_text": "「咱们不跟他一起走吗？」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 12
+    },
+    {
+      "dialogue_id": "volume_01-d000317",
+      "dialogue_index": 316,
+      "window_position": 2,
+      "chapter_id": "volume_01-c003",
+      "chapter_title": "第二幕",
+      "scene_id": "volume_01-c003-s004",
+      "paragraph_id": "volume_01-c003-s004-p000835",
+      "paragraph_index": 834,
+      "local_dialogue_index": 1,
+      "text": "昨天下了一天的雨，所以路上变得泥泞，用走的绝对比坐马车还要快。没必要让他跟着马车一起慢慢走吧。",
+      "quote_text": "「昨天下了一天的雨，所以路上变得泥泞，用走的绝对比坐马车还要快。没必要让他跟着马车一起慢慢走吧。」",
+      "paragraph_text": "「昨天下了一天的雨，所以路上变得泥泞，用走的绝对比坐马车还要快。没必要让他跟着马车一起慢慢走吧。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 49
+    },
+    {
+      "dialogue_id": "volume_01-d000318",
+      "dialogue_index": 317,
+      "window_position": 3,
+      "chapter_id": "volume_01-c003",
+      "chapter_title": "第二幕",
+      "scene_id": "volume_01-c003-s004",
+      "paragraph_id": "volume_01-c003-s004-p000836",
+      "paragraph_index": 835,
+      "local_dialogue_index": 1,
+      "text": "说的也是，商人最在乎时间了。",
+      "quote_text": "「说的也是，商人最在乎时间了。」",
+      "paragraph_text": "「说的也是，商人最在乎时间了。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 16
+    },
+    {
+      "dialogue_id": "volume_01-d000319",
+      "dialogue_index": 318,
+      "window_position": 4,
+      "chapter_id": "volume_01-c003",
+      "chapter_title": "第二幕",
+      "scene_id": "volume_01-c003-s004",
+      "paragraph_id": "volume_01-c003-s004-p000837",
+      "paragraph_index": 836,
+      "local_dialogue_index": 1,
+      "text": "时间就是金钱。",
+      "quote_text": "「时间就是金钱。」",
+      "paragraph_text": "「时间就是金钱。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 9
+    },
+    {
+      "dialogue_id": "volume_01-d000320",
+      "dialogue_index": 319,
+      "window_position": 5,
+      "chapter_id": "volume_01-c003",
+      "chapter_title": "第二幕",
+      "scene_id": "volume_01-c003-s004",
+      "paragraph_id": "volume_01-c003-s004-p000838",
+      "paragraph_index": 837,
+      "local_dialogue_index": 1,
+      "text": "呵呵，很有趣的话。时间就是金钱啊。",
+      "quote_text": "「呵呵，很有趣的话。时间就是金钱啊。」",
+      "paragraph_text": "「呵呵，很有趣的话。时间就是金钱啊。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 19
+    },
+    {
+      "dialogue_id": "volume_01-d000321",
+      "dialogue_index": 320,
+      "window_position": 6,
+      "chapter_id": "volume_01-c003",
+      "chapter_title": "第二幕",
+      "scene_id": "volume_01-c003-s004",
+      "paragraph_id": "volume_01-c003-s004-p000839",
+      "paragraph_index": 838,
+      "local_dialogue_index": 1,
+      "text": "只要有时间，就可以多赚钱不是吗？",
+      "quote_text": "「只要有时间，就可以多赚钱不是吗？」",
+      "paragraph_text": "「只要有时间，就可以多赚钱不是吗？」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 18
+    },
+    {
+      "dialogue_id": "volume_01-d000322",
+      "dialogue_index": 321,
+      "window_position": 7,
+      "chapter_id": "volume_01-c003",
+      "chapter_title": "第二幕",
+      "scene_id": "volume_01-c003-s004",
+      "paragraph_id": "volume_01-c003-s004-p000840",
+      "paragraph_index": 839,
+      "local_dialogue_index": 1,
+      "text": "嗯，确实如此。不过，咱就没有这样的想法。",
+      "quote_text": "「嗯，确实如此。不过，咱就没有这样的想法。」",
+      "paragraph_text": "「嗯，确实如此。不过，咱就没有这样的想法。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 22
+    },
+    {
+      "dialogue_id": "volume_01-d000323",
+      "dialogue_index": 322,
+      "window_position": 8,
+      "chapter_id": "volume_01-c003",
+      "chapter_title": "第二幕",
+      "scene_id": "volume_01-c003-s004",
+      "paragraph_id": "volume_01-c003-s004-p000843",
+      "paragraph_index": 842,
+      "local_dialogue_index": 1,
+      "text": "你守护了好几百年的农夫们，应该也对时间很在意吧。",
+      "quote_text": "「你守护了好几百年的农夫们，应该也对时间很在意吧。」",
+      "paragraph_text": "「你守护了好几百年的农夫们，应该也对时间很在意吧。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 26
+    }
+  ],
+  "context": {
+    "paragraphs": [
+      {
+        "paragraph_id": "volume_01-c003-s003-p000829",
+        "paragraph_index": 828,
+        "text": "杰廉露出他那可爱的笑脸敬了个礼，便扛起装满干果的麻袋往前走去。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c003-s004-p000830",
+        "paragraph_index": 829,
+        "text": "初入门的旅行商人首先会做的事情除了生意之外，更重要的是到各地方熟悉当地的人事物，同时让对方记住自己。这个时候最适合带着走的商品就是保存期限久，还可以当成聊天话题在教会或旅馆里兜售的干果或肉干。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c003-s004-p000831",
+        "paragraph_index": 830,
+        "text": "罗伦斯回想起自己拥有这辆车之前的历程，看着杰廉的背影不禁怀念起来。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c003-s004-p000832",
+        "paragraph_index": 831,
+        "text": "「咱们不跟他一起走吗？」",
+        "target_dialogue_ids": [
+          "volume_01-d000316"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c003-s004-p000833",
+        "paragraph_index": 832,
+        "text": "杰廉的身影已远得快要看不见时，赫萝才突然开口问起。至于这段时间赫萝在忙些什么，那就是她看四下无人，便大方地梳理起尾巴的毛。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c003-s004-p000834",
+        "paragraph_index": 833,
+        "text": "可能是因为必须套上外套藏住耳朵的关系，赫萝对于她的栗色长发一点儿也不在乎，只是用细麻绳随便扎起来，以免散乱而已。虽然罗伦斯很想建议赫萝至少用梳子梳一下头发，但可惜罗伦斯并没有梳子。罗伦斯心想：到了帕兹欧后，要替赫萝买把梳子还有帽子。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c003-s004-p000835",
+        "paragraph_index": 834,
+        "text": "「昨天下了一天的雨，所以路上变得泥泞，用走的绝对比坐马车还要快。没必要让他跟着马车一起慢慢走吧。」",
+        "target_dialogue_ids": [
+          "volume_01-d000317"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c003-s004-p000836",
+        "paragraph_index": 835,
+        "text": "「说的也是，商人最在乎时间了。」",
+        "target_dialogue_ids": [
+          "volume_01-d000318"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c003-s004-p000837",
+        "paragraph_index": 836,
+        "text": "「时间就是金钱。」",
+        "target_dialogue_ids": [
+          "volume_01-d000319"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c003-s004-p000838",
+        "paragraph_index": 837,
+        "text": "「呵呵，很有趣的话。时间就是金钱啊。」",
+        "target_dialogue_ids": [
+          "volume_01-d000320"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c003-s004-p000839",
+        "paragraph_index": 838,
+        "text": "「只要有时间，就可以多赚钱不是吗？」",
+        "target_dialogue_ids": [
+          "volume_01-d000321"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c003-s004-p000840",
+        "paragraph_index": 839,
+        "text": "「嗯，确实如此。不过，咱就没有这样的想法。」",
+        "target_dialogue_ids": [
+          "volume_01-d000322"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c003-s004-p000841",
+        "paragraph_index": 840,
+        "text": "赫萝一说完，又把视线拉回尾巴。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c003-s004-p000842",
+        "paragraph_index": 841,
+        "text": "那是一条自然垂下之后，长度足以超过膝盖后头的漂亮尾巴。尾巴的毛发浓密，如果把毛剃下来卖，相信可以卖个不错的价格。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c003-s004-p000843",
+        "paragraph_index": 842,
+        "text": "「你守护了好几百年的农夫们，应该也对时间很在意吧。」",
+        "target_dialogue_ids": [
+          "volume_01-d000323"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c003-s004-p000844",
+        "paragraph_index": 843,
+        "text": "罗伦斯把话说完后，才发现不该提这个话题。赫萝看了罗伦斯一眼，仿佛在说「你欠我一次了」似地不怀好意笑着。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c003-s004-p000845",
+        "paragraph_index": 844,
+        "text": "「哼。汝的眼睛到底长在哪里？那些家伙不是对时间在意，而是对空气在意。」",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c003-s004-p000846",
+        "paragraph_index": 845,
+        "text": "「……不懂。」",
+        "target_dialogue_ids": []
+      }
+    ]
+  },
+  "scene_memory": [
+    {
+      "scene_id": "volume_01-c003-s004-r001",
+      "parent_scene_id": "volume_01-c003-s004",
+      "chunk_index": 1,
+      "chunk_count": 3,
+      "scene_summary": "罗伦斯与赫萝在旅途中讨论时间与金钱的关系，赫萝表现出对自然与空气的敏感，同时展现出她作为「贤狼」的自信与狡黠。一个旅行商人经过，赫萝的尾巴引起他的注意，但未有互动。",
+      "active_characters": [
+        "罗伦斯",
+        "赫萝"
+      ],
+      "relationships": [
+        "罗伦斯与赫萝同行",
+        "赫萝对罗伦斯表现出挑衅与亲近",
+        "罗伦斯对赫萝的行为感到无奈但包容"
+      ],
+      "notes": "赫萝在本场景中展现出她对自然与空气的敏感，与罗伦斯对时间与金钱的重视形成对比。旅行商人虽未直接对话，但其对赫萝尾巴的关注暗示了潜在的互动可能。"
+    }
+  ],
+  "candidate_characters": [
+    {
+      "entity_id": "char_0001",
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": [
+        "商人",
+        "旅行商人",
+        "行商人"
+      ],
+      "description": "理性、谨慎的商人，试图分析局势并保持冷静。他与赫萝同行，面对叶勒的威胁时表现出坚定。 / 理性、坚定的商人，坚持遵守与赫萝的合约，拒绝背叛她。面对叶勒的威胁保持冷静，表现出对赫萝的忠诚。 / 理性、谨慎的商人，身受重伤但仍试图保持冷静并等待救援。他表现出对赫萝的依赖和信任。 / 罗伦斯目睹赫萝的变身过程，表现出震惊和无力。他试图抓住赫萝留下的皮袋，但最终面对巨大的狼形生物，感到无法应对。 / 理性、谨慎的商人，与赫萝在地下通道中遭遇叶勒的威胁。他试图安抚赫萝的情绪，并表现出对环境变化的敏感。 / 在赫萝的威压下感…",
+      "speech_style": "温和、理性、略带担忧 / 理性、略带策略性、温和 / 理性、担忧、略带冲动 / 虚弱、低沉、略带困惑 / 虚弱、低沉、焦虑 / 理性、坚定、略带焦虑 / 理性、焦虑、略带冲动 / 虚弱、低沉、焦虑 / 虚弱、焦虑、略带愤怒 / 愤怒、理性、略带冲动 / 虚弱、焦虑、略带悔恨 / 理性、冷静、略带焦虑",
+      "speech_markers": [
+        "……骑士？",
+        "有什么能为您效劳的吗？",
+        "算了……",
+        "糟糕",
+        "……",
+        "喂！",
+        "喂！起床啊！",
+        "喂！有什么好笑的？"
+      ],
+      "relationship_hints": [
+        "与赫萝一同旅行",
+        "对赫萝的身份持怀疑态度",
+        "与修道院有生意期望但未成功",
+        "与骑士初次互动",
+        "与赫萝有密切关系",
+        "与教会和骑士有互动",
+        "与叶勒有交集，计划与他交谈但被祭典打断",
+        "与叶勒有过去的交易关系。"
+      ],
+      "first_seen_scene_id": "volume_01-c000-s003-r001",
+      "latest_seen_scene_id": "volume_01-c008-s003-r001",
+      "confidence": 1.0
+    },
+    {
+      "entity_id": "char_0002",
+      "display_name": "赫萝",
+      "aliases": [],
+      "titles": [
+        "丰收之神",
+        "狼",
+        "贤狼"
+      ],
+      "description": "神秘少女，拥有狼的特征。在本场景中协助罗伦斯击退袭击者，表现出冷静和对环境的高度感知能力。 / 在地下道中不断呼喊罗伦斯，试图唤醒他并指引方向。表现出担忧和责任感。 / 神秘少女，拥有狼的特征，情绪波动明显，对罗伦斯表现出依赖和担忧。 / 神秘少女，拥有狼的特征。在本场景中表现出脆弱和依赖，对独自旅行感到不安。她对叶勒的言语感到愤怒与悲伤。 / 情绪波动明显的贤狼，因叶勒的言语感到悲伤。她表现出对罗伦斯的依赖，并在关键时刻流露出脆弱。 / 情绪波动明显的贤狼，因叶勒的言语感到愤怒与悲伤。她吸食罗伦斯的血液以施展某…",
+      "speech_style": "未直接发言，但被频繁提及 / 冷静、自信、略带调侃 / 调皮、略带挑衅、情绪化 / 略带孩子气、情绪化、略带调侃 / 冷静、简短、略带策略性 / 关切、坚定、略带责备 / 情绪化、略带孩子气 / 冷静、略带情绪化 / 脆弱、情绪化、略带孩子气 / 冷静、自信、略带策略性 / 冷静、简短、略带威严 / 未直接发言",
+      "speech_markers": [
+        "咱",
+        "哈哈哈哈哈，咱是恶魔？",
+        "好名字呗？",
+        "咱没听过。",
+        "咱不要。",
+        "或是鲜血。",
+        "如何？愿意相信咱了呗？",
+        "汝要温柔一些呐。"
+      ],
+      "relationship_hints": [
+        "与罗伦斯一同旅行",
+        "捉弄罗伦斯",
+        "与罗伦斯展开对话",
+        "表现出对罗伦斯的调侃",
+        "与罗伦斯有初步互动，可能是他未来的旅伴",
+        "与罗伦斯进行对话，表现出信任与坦率",
+        "提到出生地时流露出真实情感",
+        "与罗伦斯有互动，被罗伦斯收留并一同旅行"
+      ],
+      "first_seen_scene_id": "volume_01-c000-s003-r001",
+      "latest_seen_scene_id": "volume_01-c008-s003-r001",
+      "confidence": 0.95
+    },
+    {
+      "entity_id": "char_0008",
+      "display_name": "杰廉",
+      "aliases": [],
+      "titles": [
+        "旅行商人"
+      ],
+      "description": "杰廉是本场景中被提及的年轻商人，他向罗伦斯提出货币投机的机会。赫萝认为他在说谎，但罗伦斯并未完全否定他的说法。 / 年轻的旅行商人，试图与罗伦斯建立联系，表现出对罗伦斯的敬佩。在本场景中与罗伦斯达成初步协议。 / 被罗伦斯寻找的旅行商人，据称会在日落后出现。 / 年轻的旅行商人，与罗伦斯有商业联系，表现出热情和对罗伦斯的敬佩。 / 年轻的旅行商人，试图与罗伦斯达成银币含银量变动的情报交易。他表现出热情和一定的商业技巧，但罗伦斯对其真实性存疑。 / 年轻的旅行商人，与罗伦斯达成情报交易。在本场景中未直接发言，但被提…",
+      "speech_style": "热情、略带笨拙 / 未直接发言，但被提及为信息来源。 / 未直接发言，但被提及为信息来源 / 未直接发言",
+      "speech_markers": [
+        "嘿嘿……",
+        "小的想……",
+        "那么，小的就先走一步了。",
+        "庆祝我们的重逢！",
+        "皮草卖得如何？"
+      ],
+      "relationship_hints": [
+        "与罗伦斯互动",
+        "试图获取情报",
+        "试图与罗伦斯建立联系",
+        "对赫萝表现出好奇",
+        "试图接近罗伦斯和赫萝",
+        "被赫萝认为在说谎",
+        "与罗伦斯有商业往来",
+        "与罗伦斯有联系"
+      ],
+      "first_seen_scene_id": "volume_01-c003-s002-r001",
+      "latest_seen_scene_id": "volume_01-c006-s004-r003",
+      "confidence": 0.9
+    },
+    {
+      "entity_id": "char_0004",
+      "display_name": "农夫",
+      "aliases": [],
+      "titles": [],
+      "description": "帕斯罗村的农夫，正在麦田中劳作，与罗伦斯有简短对话。 / 麦田中的村民，与罗伦斯有简短互动，表现出朴实的性格。",
+      "speech_style": "朴实、直接",
+      "speech_markers": [
+        "喔？",
+        "喔！"
+      ],
+      "relationship_hints": [
+        "与叶勒有关系",
+        "与帕斯罗村的祭典有关",
+        "与罗伦斯有简短对话"
+      ],
+      "first_seen_scene_id": "volume_01-c002-s001-r003",
+      "latest_seen_scene_id": "volume_01-c002-s002-r001",
+      "confidence": 0.8
+    }
+  ],
+  "candidate_mysteries": []
+}

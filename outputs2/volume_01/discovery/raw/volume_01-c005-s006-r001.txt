@@ -1,0 +1,47 @@
+```json
+{
+  "scene_id": "volume_01-c005-s006",
+  "scene_summary": "罗伦斯和赫萝在小巷中遭遇追捕，赫萝建议兵分两路以拖延时间，罗伦斯虽不情愿但最终接受。赫萝表现出自信和冷静，而罗伦斯则担忧赫萝的安全。",
+  "active_characters": ["罗伦斯", "赫萝"],
+  "character_candidates": [
+    {
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": ["商人"],
+      "description": "理性、谨慎的商人，与赫萝在小巷中遭遇追捕，表现出对赫萝安全的担忧。",
+      "speech_style": "理性、担忧、略带无奈",
+      "speech_markers": ["等一下！这怎么可以！", "说什么傻话！"],
+      "relationship_hints": ["与赫萝关系亲密，信任并依赖她"],
+      "evidence": ["volume_01-d000926", "volume_01-d000928", "volume_01-d000932"],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "赫萝",
+      "aliases": [],
+      "titles": ["贤狼"],
+      "description": "自信、冷静的贤狼，与罗伦斯在小巷中遭遇追捕，提出兵分两路的策略。",
+      "speech_style": "自信、冷静、略带调侃",
+      "speech_markers": ["咱是贤狼赫萝呐", "孤独可是要人命呐"],
+      "relationship_hints": ["与罗伦斯关系亲密，信任并依赖他"],
+      "evidence": ["volume_01-d000923", "volume_01-d000930", "volume_01-d000933"],
+      "confidence": 0.95
+    }
+  ],
+  "mystery_entities": [
+    {
+      "temporary_name": "追捕者A",
+      "description": "两名男子之一，怒气冲冲地从小巷狂奔而过，对罗伦斯和赫萝构成威胁。",
+      "evidence": ["volume_01-c005-s006-p001997"],
+      "confidence": 0.7
+    },
+    {
+      "temporary_name": "追捕者B",
+      "description": "另一名男子，与追捕者A一同行动，对罗伦斯和赫萝构成威胁。",
+      "evidence": ["volume_01-c005-s006-p001997"],
+      "confidence": 0.7
+    }
+  ],
+  "relationships": ["罗伦斯与赫萝关系亲密，彼此信任并依赖"],
+  "notes": "赫萝表现出强烈的自信和策略性思维，而罗伦斯则表现出担忧和保护欲。两名追捕者虽未具名，但其行动对剧情发展有重要影响。"
+}
+```

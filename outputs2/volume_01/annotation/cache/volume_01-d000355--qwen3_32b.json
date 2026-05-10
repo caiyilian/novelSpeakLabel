@@ -1,0 +1,28 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000355",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.98,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.98
+        }
+      ],
+      "evidence": [
+        "前一句明确提到「这时赫萝的脸上突然露出笑容说」，直接指明说话人",
+        "赫萝的台词风格中带有「呗」的语气词，符合其 speech_markers 中的「好名字呗？」、「如何？愿意相信咱了呗？」等特征",
+        "场景记忆中提到赫萝的说话风格和自称「咱」具有高区分度，可作为口癖标记"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "该句为赫萝在与罗伦斯的对话中回应，上下文明确，轮次清晰，无歧义。"
+}

@@ -1,0 +1,106 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000039",
+      "speaker_entity_id": "char_0005",
+      "speaker_display": "叶勒",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0005",
+          "display": "叶勒",
+          "status": "known",
+          "score": 0.95
+        },
+        {
+          "entity_id": "char_0004",
+          "display": "农夫",
+          "status": "known",
+          "score": 0.03
+        }
+      ],
+      "evidence": ["与叶勒的 speech_marker '嗷呜～～～～～～～' 完全匹配，且上下文为叶勒割麦后大喊"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000040",
+      "speaker_entity_id": "char_0005",
+      "speaker_display": "叶勒",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0005",
+          "display": "叶勒",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": ["与叶勒的 speech_marker '嗷呜～～～～～～～' 一致，且连续喊出赫萝名字，符合其角色行为"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000041",
+      "speaker_entity_id": "char_0005",
+      "speaker_display": "叶勒",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0005",
+          "display": "叶勒",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": ["与叶勒的 speech_marker 一致，且语境为叶勒在喊出赫萝出现，符合其角色行为"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000042",
+      "speaker_entity_id": "char_0005",
+      "speaker_display": "叶勒",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0005",
+          "display": "叶勒",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": ["与叶勒的 speech_marker 一致，且语境为叶勒在指挥追捕，符合其角色行为"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000043",
+      "speaker_entity_id": "char_0005",
+      "speaker_display": "叶勒",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0005",
+          "display": "叶勒",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": ["与叶勒的 speech_marker 一致，且语境为叶勒在指挥追捕，符合其角色行为"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "连续五句台词均为叶勒发出，行为连贯，符合其作为「狼赫萝」化身的角色设定。"
+}

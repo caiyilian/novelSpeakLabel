@@ -1,0 +1,155 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000251",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.95
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.03
+        }
+      ],
+      "evidence": [
+        "赫萝在前文被提及并回应了杰廉的对话",
+        "语境中赫萝在场且有回应行为",
+        "句中提及‘妻子’，符合赫萝的说话风格"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000252",
+      "speaker_entity_id": "char_0008",
+      "speaker_display": "杰廉",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0008",
+          "display": "杰廉",
+          "status": "known",
+          "score": 0.9
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.05
+        }
+      ],
+      "evidence": [
+        "杰廉在前文被提及并试图接近罗伦斯和赫萝",
+        "句中使用‘嘿嘿’、‘小的’等杰廉常用自称",
+        "语境中杰廉在场，且有主动搭话行为"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000253",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "赫萝在前文被提及并回应了杰廉的对话",
+        "语境中赫萝在场，且有回应行为",
+        "句中使用‘咱’，符合赫萝的说话风格"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000254",
+      "speaker_entity_id": "char_0008",
+      "speaker_display": "杰廉",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0008",
+          "display": "杰廉",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "杰廉在前文被提及并试图接近罗伦斯和赫萝",
+        "句中使用‘嘿嘿’，符合杰廉的说话风格",
+        "语境中杰廉在场，且有回应赫萝行为"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000255",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "前文提到罗伦斯对杰廉的说话态度感到佩服",
+        "句中表达对杰廉行为的无奈与自嘲",
+        "语境中罗伦斯在场，且有回应行为"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000256",
+      "speaker_entity_id": "char_0008",
+      "speaker_display": "杰廉",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0008",
+          "display": "杰廉",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "杰廉在前文被提及并试图接近罗伦斯和赫萝",
+        "句中使用‘小的想’、‘两位’等杰廉常用自称",
+        "语境中杰廉在场，且有主动搭话行为"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，杰廉主动搭话，赫萝回应，罗伦斯表达无奈，整体符合角色互动逻辑。"
+}

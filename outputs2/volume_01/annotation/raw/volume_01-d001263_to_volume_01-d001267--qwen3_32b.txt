@@ -1,0 +1,117 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001263",
+      "speaker_entity_id": "char_0005",
+      "speaker_display": "叶勒",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0005",
+          "display": "叶勒",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "上下文提到叶勒的吆喝声无法迫使男子们前进，说明他正在指挥或呼吁他人行动",
+        "台词内容「不准退缩！她只是个被恶魔附身的女孩！抓住她！」符合叶勒试图说服他人抓捕赫萝的立场"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001264",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "上下文明确指出赫萝正在变身，并且在变身过程中说出「咱会……」，符合她的说话风格和自称「咱」",
+        "赫萝在变身前表达了对罗伦斯的情感，符合台词内容"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001265",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "上下文明确指出赫萝在变身过程中说出这句话，符合她的说话风格和自称「咱」",
+        "台词内容「永远记得汝最后选择了咱」与赫萝对罗伦斯的情感表达一致"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001266",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "上下文明确指出赫萝在变身过程中说出这句话，符合她的说话风格和自称「咱」",
+        "台词内容「汝啊。」是赫萝对罗伦斯的直接称呼，符合她的表达方式"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001267",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "上下文明确指出赫萝在变身过程中说出这句话，符合她的说话风格和自称「咱」",
+        "台词内容「别再看了。」是赫萝对罗伦斯的直接警告，符合她的表达方式"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "五句台词均来自赫萝的变身过程，其中第一句为叶勒的指挥声，其余四句为赫萝在变身前的最后表达。对话轮次清晰，说话人身份明确，无需复核。"
+}
+```

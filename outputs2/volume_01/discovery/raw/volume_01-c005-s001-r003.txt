@@ -1,0 +1,41 @@
+```json
+{
+  "scene_id": "volume_01-c005-s001",
+  "scene_summary": "赫萝与罗伦斯在对话中谈及赫萝的朋友，赫萝提到这位朋友是帕斯罗村的村民，性格开朗但少根筋。赫萝在回忆中表现出对这位朋友的怀念与喜爱，而罗伦斯则感到些许无趣与被遗弃的情绪。",
+  "active_characters": ["赫萝", "罗伦斯"],
+  "character_candidates": [
+    {
+      "display_name": "赫萝",
+      "aliases": [],
+      "titles": ["丰收之神", "狼", "贤狼"],
+      "description": "赫萝在本场景中表现出对朋友的怀念，提到这位朋友是帕斯罗村的村民，性格开朗但少根筋。她对朋友的回忆显得开心又害羞，表现出深厚的情感联系。",
+      "speech_style": "调皮、自信、略带怀念",
+      "speech_markers": ["咱", "那家伙"],
+      "relationship_hints": ["与罗伦斯有亲密关系", "与帕斯罗村的村民有朋友关系"],
+      "evidence": ["volume_01-d000758", "volume_01-d000765", "volume_01-d000766"],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": ["商人", "旅行商人", "行商人"],
+      "description": "罗伦斯在赫萝谈论朋友时表现出些许无趣与被遗弃的情绪，借着喝酒掩饰自己的感受。他对赫萝的回忆表现出复杂的情感。",
+      "speech_style": "理性、略带无奈",
+      "speech_markers": ["那，找到了吗？", "那家伙真的是少根筋"],
+      "relationship_hints": ["与赫萝有亲密关系", "对赫萝的回忆感到复杂"],
+      "evidence": ["volume_01-d000759", "volume_01-d000761", "volume_01-d000763"],
+      "confidence": 0.9
+    }
+  ],
+  "mystery_entities": [
+    {
+      "temporary_name": "帕斯罗村的村民",
+      "description": "赫萝提到的朋友，是帕斯罗村的村民，性格开朗但少根筋。赫萝对他的回忆表现出怀念与喜爱。",
+      "evidence": ["volume_01-d000764", "volume_01-d000765", "volume_01-d000766"],
+      "confidence": 0.85
+    }
+  ],
+  "relationships": ["赫萝与罗伦斯有亲密关系", "赫萝与帕斯罗村的村民有朋友关系"],
+  "notes": "赫萝提到的朋友尚未命名，但可以通过后续对话追踪。罗伦斯对赫萝的回忆表现出复杂情绪，值得进一步观察。"
+}
+```

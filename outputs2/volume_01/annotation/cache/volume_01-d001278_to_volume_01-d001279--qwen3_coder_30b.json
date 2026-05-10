@@ -1,0 +1,59 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001278",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 1.0
+        },
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.1
+        }
+      ],
+      "evidence": [
+        "上下文描述罗伦斯在努力寻找话语留住赫萝，该台词符合其理性、略带愤怒的说话风格；赫萝未直接发言，但罗伦斯情绪崩溃，符合其角色设定"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001279",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 1.0
+        },
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.05
+        }
+      ],
+      "evidence": [
+        "罗伦斯试图用愤怒和金钱的理由留住赫萝，该台词符合其商人身份与情绪表达；赫萝未直接发言，且该句语气与罗伦斯的说话风格一致"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "两句话均为罗伦斯在试图留住赫萝时所说，语气连贯，符合其角色性格与上下文情境"
+}

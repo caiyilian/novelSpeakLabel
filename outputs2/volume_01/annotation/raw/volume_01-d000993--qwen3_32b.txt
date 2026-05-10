@@ -1,0 +1,30 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000993",
+      "speaker_entity_id": "char_0015",
+      "speaker_display": "列支敦·马贺特",
+      "speaker_status": "known",
+      "confidence": 0.92,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0015",
+          "display": "列支敦·马贺特",
+          "status": "known",
+          "score": 0.92
+        }
+      ],
+      "evidence": [
+        "上下文显示罗伦斯正在回应提问，而提问者是对话的发起人，符合马贺特的对话风格和角色定位。",
+        "马贺特是当前场景中唯一明确在场并主动提问的角色。",
+        "台词中使用了「罗伦斯先生您们」的称呼，符合马贺特作为商行代表的礼貌语气。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "当前对话为马贺特向罗伦斯提问，符合上下文对话轮次和角色行为逻辑。"
+}
+```

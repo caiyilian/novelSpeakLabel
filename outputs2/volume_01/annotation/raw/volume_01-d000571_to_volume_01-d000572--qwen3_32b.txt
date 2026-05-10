@@ -1,0 +1,51 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000571",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "上下文显示罗伦斯举起了酒杯并说：「那么，敬我们的发财梦。」",
+        "该句为独立对白，且上下文未出现其他角色发言，符合罗伦斯的对话轮次"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000572",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "上下文提到赫萝看到两人举起酒杯后，也匆忙举起酒杯，随后说：「干杯！」",
+        "符合对话轮次：罗伦斯 → 赫萝，且无其他角色介入"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，罗伦斯先发言，赫萝随后回应，符合上下文叙述逻辑。"
+}
+```

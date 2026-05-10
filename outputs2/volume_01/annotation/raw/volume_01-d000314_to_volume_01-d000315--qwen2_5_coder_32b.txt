@@ -1,0 +1,33 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000314",
+      "speaker_entity_id": "char_0008",
+      "speaker_display": "杰廉",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {"entity_id": "char_0008", "display": "杰廉", "status": "known", "score": 0.95}
+      ],
+      "evidence": ["「那么，小的就先走一步了。」是杰廉的标志性台词之一"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000315",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {"entity_id": "char_0001", "display": "罗伦斯", "status": "known", "score": 0.8}
+      ],
+      "evidence": ["对话轮次判断，杰廉说完后罗伦斯回应"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    }
+  ],
+  "window_notes": "根据上下文和对话轮次判断，第一句是杰廉的台词，第二句最可能是罗伦斯的回应。但需要进一步确认罗伦斯是否已经登场并参与对话。"
+}

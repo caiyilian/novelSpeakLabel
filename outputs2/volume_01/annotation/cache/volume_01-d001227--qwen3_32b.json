@@ -1,0 +1,34 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001227",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.9
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.1
+        }
+      ],
+      "evidence": [
+        "上下文显示赫萝在逃亡中表现出活力和引导性，而罗伦斯则处于被动状态。",
+        "该句台词语气积极，符合赫萝在场景中表现出的主动和乐观性格。",
+        "前文提到“赫萝的声音恢复活力”，暗示接下来的台词来自她。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "该句台词为赫萝在逃亡中引导罗伦斯的对话，语气积极，符合其性格特征。上下文支持赫萝为说话人。"
+}

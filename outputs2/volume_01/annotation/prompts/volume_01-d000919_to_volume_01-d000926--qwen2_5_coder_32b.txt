@@ -1,0 +1,479 @@
+你是轻小说说话人标注项目的阶段 2：正式标注助手。
+你的任务是判断输入 target_dialogues 中每一句台词的说话人，不要改写原文。
+必须把这些台词当作同一个连续片段来判断，优先保持对话轮次和叙述线索的一致性。
+
+规则：
+1. 只输出严格 JSON，不要 Markdown，不要解释性前后缀。
+2. 如果说话人是候选角色，speaker_entity_id 必须使用 candidate_characters 里的 entity_id，speaker_status 填 known。
+3. 如果说话人像某个未知人物，speaker_entity_id 使用 candidate_mysteries 里的 mystery_id，speaker_status 填 mystery。
+4. 如果只是无法追踪的路人/群体，speaker_status 填 npc，speaker_entity_id 可为空或使用 npc:简短称呼。
+5. 证据不足时不要硬猜，speaker_status 填 ambiguous 或 review，并把 needs_review 设为 true。
+6. candidate_speakers 至少列出 1 个候选；如果无法判断，列出最可能的候选和不确定原因。
+7. confidence 使用 0 到 1 之间的小数，表示你对最终判断的把握。
+8. 不要只因为台词里提到某个名字、职业、地点，就把说话人标成那个实体；被称呼的人通常不是说话人。
+9. 连续问答、交易寒暄、命令/回答等场景要按上下句轮次判断；同一人连续说话必须有叙述或语气证据支持。
+10. 如果当前上下文显示某角色还没有登场，不要因为角色库或后文记忆里有这个角色就提前标给他/她。
+
+11. target_dialogues 中 dialogue_kind=inline 的项目是正文内嵌引号，不要当作独立对白；标为 review，needs_review=true。
+12. candidate_mysteries 只是可选候选；如果候选名称和当前段落地点/人物不一致，必须改用 npc 或 review。
+13. 如果只有轮次推断、没有叙述锚点或自我介绍，请降低 confidence，并在 evidence 里说明轮次依据。
+
+14. candidate_characters.speech_markers 是阶段 1 提取的高区分度口癖/自称/固定短语；命中时可作为证据，但如果多个角色共享或上下文反证明显，必须进入复核。
+
+输出 JSON 结构：
+{
+  "annotations": [
+    {
+      "dialogue_id": "必须来自 target_dialogue_ids",
+      "speaker_entity_id": "string",
+      "speaker_display": "string",
+      "speaker_status": "known|mystery|npc|ambiguous|review",
+      "confidence": 0.0,
+      "candidate_speakers": [
+        {"entity_id": "string", "display": "string", "status": "known|mystery|npc|ambiguous|review", "score": 0.0}
+      ],
+      "evidence": ["短证据，不要大段复制原文"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "可选，简短说明整体轮次判断"
+}
+必须为 target_dialogue_ids 中每个 dialogue_id 输出且只输出一条 annotation。
+
+输入 JSON：
+{
+  "volume": {
+    "volume_id": "volume_01",
+    "volume": 1
+  },
+  "target_dialogue_ids": [
+    "volume_01-d000919",
+    "volume_01-d000920",
+    "volume_01-d000921",
+    "volume_01-d000922",
+    "volume_01-d000923",
+    "volume_01-d000924",
+    "volume_01-d000925",
+    "volume_01-d000926"
+  ],
+  "dialogues": [
+    {
+      "dialogue_id": "volume_01-d000919",
+      "dialogue_index": 918,
+      "window_position": 1,
+      "chapter_id": "volume_01-c005",
+      "chapter_title": "第四幕",
+      "scene_id": "volume_01-c005-s006",
+      "paragraph_id": "volume_01-c005-s006-p001996",
+      "paragraph_index": 1995,
+      "local_dialogue_index": 1,
+      "text": "看到人没？应该就在这附近！给我找出来！",
+      "quote_text": "「看到人没？应该就在这附近！给我找出来！」",
+      "paragraph_text": "「看到人没？应该就在这附近！给我找出来！」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 21
+    },
+    {
+      "dialogue_id": "volume_01-d000920",
+      "dialogue_index": 919,
+      "window_position": 2,
+      "chapter_id": "volume_01-c005",
+      "chapter_title": "第四幕",
+      "scene_id": "volume_01-c005-s006",
+      "paragraph_id": "volume_01-c005-s006-p001998",
+      "paragraph_index": 1997,
+      "local_dialogue_index": 1,
+      "text": "妈的，对方派出来的人数众多，而且对地形也十分熟悉。",
+      "quote_text": "「妈的，对方派出来的人数众多，而且对地形也十分熟悉。」",
+      "paragraph_text": "「妈的，对方派出来的人数众多，而且对地形也十分熟悉。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 27
+    },
+    {
+      "dialogue_id": "volume_01-d000921",
+      "dialogue_index": 920,
+      "window_position": 3,
+      "chapter_id": "volume_01-c005",
+      "chapter_title": "第四幕",
+      "scene_id": "volume_01-c005-s006",
+      "paragraph_id": "volume_01-c005-s006-p001999",
+      "paragraph_index": 1998,
+      "local_dialogue_index": 1,
+      "text": "嗯……目前的局势不妙呐。",
+      "quote_text": "「嗯……目前的局势不妙呐。」",
+      "paragraph_text": "「嗯……目前的局势不妙呐。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 14
+    },
+    {
+      "dialogue_id": "volume_01-d000922",
+      "dialogue_index": 921,
+      "window_position": 4,
+      "chapter_id": "volume_01-c005",
+      "chapter_title": "第四幕",
+      "scene_id": "volume_01-c005-s006",
+      "paragraph_id": "volume_01-c005-s006-p002001",
+      "paragraph_index": 2000,
+      "local_dialogue_index": 1,
+      "text": "要不兵分两路？",
+      "quote_text": "「要不兵分两路？」",
+      "paragraph_text": "「要不兵分两路？」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 9
+    },
+    {
+      "dialogue_id": "volume_01-d000923",
+      "dialogue_index": 922,
+      "window_position": 5,
+      "chapter_id": "volume_01-c005",
+      "chapter_title": "第四幕",
+      "scene_id": "volume_01-c005-s006",
+      "paragraph_id": "volume_01-c005-s006-p002002",
+      "paragraph_index": 2001,
+      "local_dialogue_index": 1,
+      "text": "汝的主意不错。不过，咱也有一些想法。",
+      "quote_text": "「汝的主意不错。不过，咱也有一些想法。」",
+      "paragraph_text": "「汝的主意不错。不过，咱也有一些想法。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 20
+    },
+    {
+      "dialogue_id": "volume_01-d000924",
+      "dialogue_index": 923,
+      "window_position": 6,
+      "chapter_id": "volume_01-c005",
+      "chapter_title": "第四幕",
+      "scene_id": "volume_01-c005-s006",
+      "paragraph_id": "volume_01-c005-s006-p002003",
+      "paragraph_index": 2002,
+      "local_dialogue_index": 1,
+      "text": "比如说？",
+      "quote_text": "「比如说？」",
+      "paragraph_text": "「比如说？」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 6
+    },
+    {
+      "dialogue_id": "volume_01-d000925",
+      "dialogue_index": 924,
+      "window_position": 7,
+      "chapter_id": "volume_01-c005",
+      "chapter_title": "第四幕",
+      "scene_id": "volume_01-c005-s006",
+      "paragraph_id": "volume_01-c005-s006-p002005",
+      "paragraph_index": 2004,
+      "local_dialogue_index": 1,
+      "text": "咱会尽可能在大街道上奔跑好拖延时间，汝就趁这段时间——",
+      "quote_text": "「咱会尽可能在大街道上奔跑好拖延时间，汝就趁这段时间——」",
+      "paragraph_text": "「咱会尽可能在大街道上奔跑好拖延时间，汝就趁这段时间——」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 29
+    },
+    {
+      "dialogue_id": "volume_01-d000926",
+      "dialogue_index": 925,
+      "window_position": 8,
+      "chapter_id": "volume_01-c005",
+      "chapter_title": "第四幕",
+      "scene_id": "volume_01-c005-s006",
+      "paragraph_id": "volume_01-c005-s006-p002006",
+      "paragraph_index": 2005,
+      "local_dialogue_index": 1,
+      "text": "等一下！这怎么可以！",
+      "quote_text": "「等一下！这怎么可以！」",
+      "paragraph_text": "「等一下！这怎么可以！」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 12
+    }
+  ],
+  "context": {
+    "paragraphs": [
+      {
+        "paragraph_id": "volume_01-c005-s005-p001993",
+        "paragraph_index": 1992,
+        "text": "罗伦斯折回原路，并在途中右转。他打算先进到另一个区段的小巷子，绕一段远路后再往米隆商行的方向前进。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c005-s006-p001994",
+        "paragraph_index": 1993,
+        "text": "然而，罗伦斯右转后却停下脚步。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c005-s006-p001995",
+        "paragraph_index": 1994,
+        "text": "那是因为赫萝拉住罗伦斯的衣服，把他压在墙上。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c005-s006-p001996",
+        "paragraph_index": 1995,
+        "text": "「看到人没？应该就在这附近！给我找出来！」",
+        "target_dialogue_ids": [
+          "volume_01-d000919"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c005-s006-p001997",
+        "paragraph_index": 1996,
+        "text": "自从在森林里遭到狼的袭击后，罗伦斯就不曾有过这样胆颤心惊的感觉。两名男子怒气冲冲地从距离不远的小巷子狂奔而过。如果没有停下脚步，势必会与对方撞个正着。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c005-s006-p001998",
+        "paragraph_index": 1997,
+        "text": "「妈的，对方派出来的人数众多，而且对地形也十分熟悉。」",
+        "target_dialogue_ids": [
+          "volume_01-d000920"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c005-s006-p001999",
+        "paragraph_index": 1998,
+        "text": "「嗯……目前的局势不妙呐。」",
+        "target_dialogue_ids": [
+          "volume_01-d000921"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c005-s006-p002000",
+        "paragraph_index": 1999,
+        "text": "赫萝脱去外套露出狼耳朵，一边不停转向，一边说道。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c005-s006-p002001",
+        "paragraph_index": 2000,
+        "text": "「要不兵分两路？」",
+        "target_dialogue_ids": [
+          "volume_01-d000922"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c005-s006-p002002",
+        "paragraph_index": 2001,
+        "text": "「汝的主意不错。不过，咱也有一些想法。」",
+        "target_dialogue_ids": [
+          "volume_01-d000923"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c005-s006-p002003",
+        "paragraph_index": 2002,
+        "text": "「比如说？」",
+        "target_dialogue_ids": [
+          "volume_01-d000924"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c005-s006-p002004",
+        "paragraph_index": 2003,
+        "text": "远处传来一阵仓促的脚步声，想必每条大街道上都有人看守。对方应该是打算等罗伦斯两人从小巷子出现时，再行进逼吧。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c005-s006-p002005",
+        "paragraph_index": 2004,
+        "text": "「咱会尽可能在大街道上奔跑好拖延时间，汝就趁这段时间——」",
+        "target_dialogue_ids": [
+          "volume_01-d000925"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c005-s006-p002006",
+        "paragraph_index": 2005,
+        "text": "「等一下！这怎么可以！」",
+        "target_dialogue_ids": [
+          "volume_01-d000926"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c005-s006-p002007",
+        "paragraph_index": 2006,
+        "text": "「汝听好，贸然兵分两路会被捉到的人是汝。咱一个人不会被捉到，但汝会。到时候谁去跟那家商行的人求救？难不成要咱露出耳朵及尾巴求人救汝吗？不可能呗？」",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c005-s006-p002008",
+        "paragraph_index": 2007,
+        "text": "罗伦斯无法反驳。他已经把这次将降低含银量的银币种类告诉米隆商行，说不定米隆商行会弃罗伦斯两人于不顾。到时候罗伦斯两人只能拿自己当王牌，也就是以背叛投敌威胁米隆商行。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c005-s006-p002009",
+        "paragraph_index": 2008,
+        "text": "而且，只有罗伦斯能够交涉这些事情。",
+        "target_dialogue_ids": []
+      }
+    ]
+  },
+  "scene_memory": [
+    {
+      "scene_id": "volume_01-c005-s006-r001",
+      "parent_scene_id": "volume_01-c005-s006",
+      "chunk_index": 1,
+      "chunk_count": 3,
+      "scene_summary": "罗伦斯和赫萝在小巷中遭遇追捕，赫萝建议兵分两路以拖延时间，罗伦斯虽不情愿但最终接受。赫萝表现出自信和冷静，而罗伦斯则担忧赫萝的安全。",
+      "active_characters": [
+        "罗伦斯",
+        "赫萝"
+      ],
+      "relationships": [
+        "罗伦斯与赫萝关系亲密，彼此信任并依赖"
+      ],
+      "notes": "赫萝表现出强烈的自信和策略性思维，而罗伦斯则表现出担忧和保护欲。两名追捕者虽未具名，但其行动对剧情发展有重要影响。"
+    }
+  ],
+  "candidate_characters": [
+    {
+      "entity_id": "char_0001",
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": [
+        "商人",
+        "旅行商人",
+        "行商人"
+      ],
+      "description": "理性、谨慎的商人，试图分析局势并保持冷静。他与赫萝同行，面对叶勒的威胁时表现出坚定。 / 理性、坚定的商人，坚持遵守与赫萝的合约，拒绝背叛她。面对叶勒的威胁保持冷静，表现出对赫萝的忠诚。 / 理性、谨慎的商人，身受重伤但仍试图保持冷静并等待救援。他表现出对赫萝的依赖和信任。 / 罗伦斯目睹赫萝的变身过程，表现出震惊和无力。他试图抓住赫萝留下的皮袋，但最终面对巨大的狼形生物，感到无法应对。 / 理性、谨慎的商人，与赫萝在地下通道中遭遇叶勒的威胁。他试图安抚赫萝的情绪，并表现出对环境变化的敏感。 / 在赫萝的威压下感…",
+      "speech_style": "温和、理性、略带担忧 / 理性、略带策略性、温和 / 理性、担忧、略带冲动 / 虚弱、低沉、略带困惑 / 虚弱、低沉、焦虑 / 理性、坚定、略带焦虑 / 理性、焦虑、略带冲动 / 虚弱、低沉、焦虑 / 虚弱、焦虑、略带愤怒 / 愤怒、理性、略带冲动 / 虚弱、焦虑、略带悔恨 / 理性、冷静、略带焦虑",
+      "speech_markers": [
+        "……骑士？",
+        "有什么能为您效劳的吗？",
+        "算了……",
+        "糟糕",
+        "……",
+        "喂！",
+        "喂！起床啊！",
+        "喂！有什么好笑的？"
+      ],
+      "relationship_hints": [
+        "与赫萝一同旅行",
+        "对赫萝的身份持怀疑态度",
+        "与修道院有生意期望但未成功",
+        "与骑士初次互动",
+        "与赫萝有密切关系",
+        "与教会和骑士有互动",
+        "与叶勒有交集，计划与他交谈但被祭典打断",
+        "与叶勒有过去的交易关系。"
+      ],
+      "first_seen_scene_id": "volume_01-c000-s003-r001",
+      "latest_seen_scene_id": "volume_01-c008-s003-r001",
+      "confidence": 1.0
+    },
+    {
+      "entity_id": "char_0002",
+      "display_name": "赫萝",
+      "aliases": [],
+      "titles": [
+        "丰收之神",
+        "狼",
+        "贤狼"
+      ],
+      "description": "神秘少女，拥有狼的特征。在本场景中协助罗伦斯击退袭击者，表现出冷静和对环境的高度感知能力。 / 在地下道中不断呼喊罗伦斯，试图唤醒他并指引方向。表现出担忧和责任感。 / 神秘少女，拥有狼的特征，情绪波动明显，对罗伦斯表现出依赖和担忧。 / 神秘少女，拥有狼的特征。在本场景中表现出脆弱和依赖，对独自旅行感到不安。她对叶勒的言语感到愤怒与悲伤。 / 情绪波动明显的贤狼，因叶勒的言语感到悲伤。她表现出对罗伦斯的依赖，并在关键时刻流露出脆弱。 / 情绪波动明显的贤狼，因叶勒的言语感到愤怒与悲伤。她吸食罗伦斯的血液以施展某…",
+      "speech_style": "未直接发言，但被频繁提及 / 冷静、自信、略带调侃 / 调皮、略带挑衅、情绪化 / 略带孩子气、情绪化、略带调侃 / 冷静、简短、略带策略性 / 关切、坚定、略带责备 / 情绪化、略带孩子气 / 冷静、略带情绪化 / 脆弱、情绪化、略带孩子气 / 冷静、自信、略带策略性 / 冷静、简短、略带威严 / 未直接发言",
+      "speech_markers": [
+        "咱",
+        "哈哈哈哈哈，咱是恶魔？",
+        "好名字呗？",
+        "咱没听过。",
+        "咱不要。",
+        "或是鲜血。",
+        "如何？愿意相信咱了呗？",
+        "汝要温柔一些呐。"
+      ],
+      "relationship_hints": [
+        "与罗伦斯一同旅行",
+        "捉弄罗伦斯",
+        "与罗伦斯展开对话",
+        "表现出对罗伦斯的调侃",
+        "与罗伦斯有初步互动，可能是他未来的旅伴",
+        "与罗伦斯进行对话，表现出信任与坦率",
+        "提到出生地时流露出真实情感",
+        "与罗伦斯有互动，被罗伦斯收留并一同旅行"
+      ],
+      "first_seen_scene_id": "volume_01-c000-s003-r001",
+      "latest_seen_scene_id": "volume_01-c008-s003-r001",
+      "confidence": 0.95
+    },
+    {
+      "entity_id": "char_0014",
+      "display_name": "米隆商行",
+      "aliases": [],
+      "titles": [
+        "商行"
+      ],
+      "description": "被罗伦斯说服调查杰廉的商行，被认为在情报收集方面非常优秀。",
+      "speech_style": "未直接发言",
+      "speech_markers": [],
+      "relationship_hints": [
+        "被罗伦斯说服",
+        "与杰廉有潜在冲突"
+      ],
+      "first_seen_scene_id": "volume_01-c005-s001-r001",
+      "latest_seen_scene_id": "volume_01-c005-s001-r001",
+      "confidence": 0.8
+    },
+    {
+      "entity_id": "char_0021",
+      "display_name": "商行的人",
+      "aliases": [],
+      "titles": [
+        "商行人员",
+        "米隆商行员工"
+      ],
+      "description": "协助罗伦斯与赫萝的米隆商行人员，表现出高度的效率和专业性。他负责安排马车、协助撤离，并与罗伦斯进行战术沟通。",
+      "speech_style": "理性、冷静",
+      "speech_markers": [
+        "那么，祝您们成功"
+      ],
+      "relationship_hints": [
+        "与罗伦斯有合作关系",
+        "与赫萝有互动"
+      ],
+      "first_seen_scene_id": "volume_01-c006-s003-r002",
+      "latest_seen_scene_id": "volume_01-c006-s003-r002",
+      "confidence": 0.85
+    }
+  ],
+  "candidate_mysteries": [
+    {
+      "mystery_id": "mystery_volume_01_c005_s006_r001_追捕者A",
+      "temporary_name": "追捕者A",
+      "description": "两名男子之一，怒气冲冲地从小巷狂奔而过，对罗伦斯和赫萝构成威胁。",
+      "evidence": [
+        "volume_01-c005-s006-p001997"
+      ],
+      "source_scene_id": "volume_01-c005-s006-r001",
+      "confidence": 0.7
+    },
+    {
+      "mystery_id": "mystery_volume_01_c005_s006_r001_追捕者B",
+      "temporary_name": "追捕者B",
+      "description": "另一名男子，与追捕者A一同行动，对罗伦斯和赫萝构成威胁。",
+      "evidence": [
+        "volume_01-c005-s006-p001997"
+      ],
+      "source_scene_id": "volume_01-c005-s006-r001",
+      "confidence": 0.7
+    }
+  ]
+}

@@ -1,0 +1,433 @@
+你是轻小说说话人标注项目的阶段 2：正式标注助手。
+你的任务是判断输入 target_dialogues 中每一句台词的说话人，不要改写原文。
+必须把这些台词当作同一个连续片段来判断，优先保持对话轮次和叙述线索的一致性。
+
+规则：
+1. 只输出严格 JSON，不要 Markdown，不要解释性前后缀。
+2. 如果说话人是候选角色，speaker_entity_id 必须使用 candidate_characters 里的 entity_id，speaker_status 填 known。
+3. 如果说话人像某个未知人物，speaker_entity_id 使用 candidate_mysteries 里的 mystery_id，speaker_status 填 mystery。
+4. 如果只是无法追踪的路人/群体，speaker_status 填 npc，speaker_entity_id 可为空或使用 npc:简短称呼。
+5. 证据不足时不要硬猜，speaker_status 填 ambiguous 或 review，并把 needs_review 设为 true。
+6. candidate_speakers 至少列出 1 个候选；如果无法判断，列出最可能的候选和不确定原因。
+7. confidence 使用 0 到 1 之间的小数，表示你对最终判断的把握。
+8. 不要只因为台词里提到某个名字、职业、地点，就把说话人标成那个实体；被称呼的人通常不是说话人。
+9. 连续问答、交易寒暄、命令/回答等场景要按上下句轮次判断；同一人连续说话必须有叙述或语气证据支持。
+10. 如果当前上下文显示某角色还没有登场，不要因为角色库或后文记忆里有这个角色就提前标给他/她。
+
+11. target_dialogues 中 dialogue_kind=inline 的项目是正文内嵌引号，不要当作独立对白；标为 review，needs_review=true。
+12. candidate_mysteries 只是可选候选；如果候选名称和当前段落地点/人物不一致，必须改用 npc 或 review。
+13. 如果只有轮次推断、没有叙述锚点或自我介绍，请降低 confidence，并在 evidence 里说明轮次依据。
+
+14. candidate_characters.speech_markers 是阶段 1 提取的高区分度口癖/自称/固定短语；命中时可作为证据，但如果多个角色共享或上下文反证明显，必须进入复核。
+
+输出 JSON 结构：
+{
+  "annotations": [
+    {
+      "dialogue_id": "必须来自 target_dialogue_ids",
+      "speaker_entity_id": "string",
+      "speaker_display": "string",
+      "speaker_status": "known|mystery|npc|ambiguous|review",
+      "confidence": 0.0,
+      "candidate_speakers": [
+        {"entity_id": "string", "display": "string", "status": "known|mystery|npc|ambiguous|review", "score": 0.0}
+      ],
+      "evidence": ["短证据，不要大段复制原文"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "可选，简短说明整体轮次判断"
+}
+必须为 target_dialogue_ids 中每个 dialogue_id 输出且只输出一条 annotation。
+
+输入 JSON：
+{
+  "volume": {
+    "volume_id": "volume_01",
+    "volume": 1
+  },
+  "target_dialogue_ids": [
+    "volume_01-d000336",
+    "volume_01-d000337",
+    "volume_01-d000338",
+    "volume_01-d000339",
+    "volume_01-d000340",
+    "volume_01-d000341",
+    "volume_01-d000342",
+    "volume_01-d000343"
+  ],
+  "dialogues": [
+    {
+      "dialogue_id": "volume_01-d000336",
+      "dialogue_index": 335,
+      "window_position": 1,
+      "chapter_id": "volume_01-c003",
+      "chapter_title": "第二幕",
+      "scene_id": "volume_01-c003-s004",
+      "paragraph_id": "volume_01-c003-s004-p000871",
+      "paragraph_index": 870,
+      "local_dialogue_index": 1,
+      "text": "汝还太嫩了，根本不是咱的对手。",
+      "quote_text": "「汝还太嫩了，根本不是咱的对手。」",
+      "paragraph_text": "「汝还太嫩了，根本不是咱的对手。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 17
+    },
+    {
+      "dialogue_id": "volume_01-d000337",
+      "dialogue_index": 336,
+      "window_position": 2,
+      "chapter_id": "volume_01-c003",
+      "chapter_title": "第二幕",
+      "scene_id": "volume_01-c003-s004",
+      "paragraph_id": "volume_01-c003-s004-p000873",
+      "paragraph_index": 872,
+      "local_dialogue_index": 1,
+      "text": "话说，汝曾经在山里头被狼袭击过吗？",
+      "quote_text": "「话说，汝曾经在山里头被狼袭击过吗？」",
+      "paragraph_text": "「话说，汝曾经在山里头被狼袭击过吗？」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 19
+    },
+    {
+      "dialogue_id": "volume_01-d000338",
+      "dialogue_index": 337,
+      "window_position": 3,
+      "chapter_id": "volume_01-c003",
+      "chapter_title": "第二幕",
+      "scene_id": "volume_01-c003-s004",
+      "paragraph_id": "volume_01-c003-s004-p000875",
+      "paragraph_index": 874,
+      "local_dialogue_index": 1,
+      "text": "有。嗯……八次左右吧。",
+      "quote_text": "「有。嗯……八次左右吧。」",
+      "paragraph_text": "「有。嗯……八次左右吧。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 13
+    },
+    {
+      "dialogue_id": "volume_01-d000339",
+      "dialogue_index": 338,
+      "window_position": 4,
+      "chapter_id": "volume_01-c003",
+      "chapter_title": "第二幕",
+      "scene_id": "volume_01-c003-s004",
+      "paragraph_id": "volume_01-c003-s004-p000876",
+      "paragraph_index": 875,
+      "local_dialogue_index": 1,
+      "text": "很难对付是呗？",
+      "quote_text": "「很难对付是呗？」",
+      "paragraph_text": "「很难对付是呗？」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 9
+    },
+    {
+      "dialogue_id": "volume_01-d000340",
+      "dialogue_index": 339,
+      "window_position": 5,
+      "chapter_id": "volume_01-c003",
+      "chapter_title": "第二幕",
+      "scene_id": "volume_01-c003-s004",
+      "paragraph_id": "volume_01-c003-s004-p000877",
+      "paragraph_index": 876,
+      "local_dialogue_index": 1,
+      "text": "是啊。如果是野狗群还好，狼群就难对付了。",
+      "quote_text": "「是啊。如果是野狗群还好，狼群就难对付了。」",
+      "paragraph_text": "「是啊。如果是野狗群还好，狼群就难对付了。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 22
+    },
+    {
+      "dialogue_id": "volume_01-d000341",
+      "dialogue_index": 340,
+      "window_position": 6,
+      "chapter_id": "volume_01-c003",
+      "chapter_title": "第二幕",
+      "scene_id": "volume_01-c003-s004",
+      "paragraph_id": "volume_01-c003-s004-p000878",
+      "paragraph_index": 877,
+      "local_dialogue_index": 1,
+      "text": "那是因为狼想尽量多吃点人类，好得到……",
+      "quote_text": "「那是因为狼想尽量多吃点人类，好得到……」",
+      "paragraph_text": "「那是因为狼想尽量多吃点人类，好得到……」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 21
+    },
+    {
+      "dialogue_id": "volume_01-d000342",
+      "dialogue_index": 341,
+      "window_position": 7,
+      "chapter_id": "volume_01-c003",
+      "chapter_title": "第二幕",
+      "scene_id": "volume_01-c003-s004",
+      "paragraph_id": "volume_01-c003-s004-p000879",
+      "paragraph_index": 878,
+      "local_dialogue_index": 1,
+      "text": "我认错，别再说了。",
+      "quote_text": "「我认错，别再说了。」",
+      "paragraph_text": "「我认错，别再说了。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 11
+    },
+    {
+      "dialogue_id": "volume_01-d000343",
+      "dialogue_index": 342,
+      "window_position": 8,
+      "chapter_id": "volume_01-c003",
+      "chapter_title": "第二幕",
+      "scene_id": "volume_01-c003-s004",
+      "paragraph_id": "volume_01-c003-s004-p000883",
+      "paragraph_index": 882,
+      "local_dialogue_index": 1,
+      "text": "啊……",
+      "quote_text": "「啊……」",
+      "paragraph_text": "「啊……」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 5
+    }
+  ],
+  "context": {
+    "paragraphs": [
+      {
+        "paragraph_id": "volume_01-c003-s004-p000868",
+        "paragraph_index": 867,
+        "text": "赫萝奸笑着说道，嘴里露出两根闪亮的尖牙。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c003-s004-p000869",
+        "paragraph_index": 868,
+        "text": "就算赫萝是在开玩笑，仍然让罗伦斯感到毛骨悚然，倒抽了一口气。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c003-s004-p000870",
+        "paragraph_index": 869,
+        "text": "过了几秒钟，罗伦斯知道自己输了。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c003-s004-p000871",
+        "paragraph_index": 870,
+        "text": "「汝还太嫩了，根本不是咱的对手。」",
+        "target_dialogue_ids": [
+          "volume_01-d000336"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c003-s004-p000872",
+        "paragraph_index": 871,
+        "text": "赫萝轻轻叹了口气，丢下这句话。罗伦斯握紧手中的缰绳，控制自己不露出悔恨的表情。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c003-s004-p000873",
+        "paragraph_index": 872,
+        "text": "「话说，汝曾经在山里头被狼袭击过吗？」",
+        "target_dialogue_ids": [
+          "volume_01-d000337"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c003-s004-p000874",
+        "paragraph_index": 873,
+        "text": "被有着狼耳朵、尾巴及尖牙的赫萝这么一问，让罗伦斯觉得十分不可思议。既蛮横又恐怖的深山野狼，就在他的身边跟他说话。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c003-s004-p000875",
+        "paragraph_index": 874,
+        "text": "「有。嗯……八次左右吧。」",
+        "target_dialogue_ids": [
+          "volume_01-d000338"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c003-s004-p000876",
+        "paragraph_index": 875,
+        "text": "「很难对付是呗？」",
+        "target_dialogue_ids": [
+          "volume_01-d000339"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c003-s004-p000877",
+        "paragraph_index": 876,
+        "text": "「是啊。如果是野狗群还好，狼群就难对付了。」",
+        "target_dialogue_ids": [
+          "volume_01-d000340"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c003-s004-p000878",
+        "paragraph_index": 877,
+        "text": "「那是因为狼想尽量多吃点人类，好得到……」",
+        "target_dialogue_ids": [
+          "volume_01-d000341"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c003-s004-p000879",
+        "paragraph_index": 878,
+        "text": "「我认错，别再说了。」",
+        "target_dialogue_ids": [
+          "volume_01-d000342"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c003-s004-p000880",
+        "paragraph_index": 879,
+        "text": "罗伦斯第三次遭狼袭击，是在组成商队的时候。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c003-s004-p000881",
+        "paragraph_index": 880,
+        "text": "商队里的两名成员终究无法下山，那时的哀号声至今仍在罗伦斯的耳中盘旋着。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c003-s004-p000882",
+        "paragraph_index": 881,
+        "text": "罗伦斯脸上不自觉地变得毫无表情。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c003-s004-p000883",
+        "paragraph_index": 882,
+        "text": "「啊……」",
+        "target_dialogue_ids": [
+          "volume_01-d000343"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c003-s004-p000884",
+        "paragraph_index": 883,
+        "text": "聪明的贤狼似乎察觉到异状了。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c003-s004-p000885",
+        "paragraph_index": 884,
+        "text": "「抱歉……」",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c003-s004-p000886",
+        "paragraph_index": 885,
+        "text": "一脸歉意的赫萝垂下肩膀，缩着身体小声地说。",
+        "target_dialogue_ids": []
+      }
+    ]
+  },
+  "scene_memory": [
+    {
+      "scene_id": "volume_01-c003-s004-r002",
+      "parent_scene_id": "volume_01-c003-s004",
+      "chunk_index": 2,
+      "chunk_count": 3,
+      "scene_summary": "罗伦斯与赫萝在旅途中进行轻松的对话，赫萝以调皮和挑衅的方式与罗伦斯互动，同时提及狼袭击人类的动机，引发罗伦斯的回忆和情绪波动。",
+      "active_characters": [
+        "罗伦斯",
+        "赫萝"
+      ],
+      "relationships": [
+        "罗伦斯与赫萝同行",
+        "赫萝对罗伦斯有掌控力",
+        "罗伦斯对赫萝的恶作剧感到无奈但包容"
+      ],
+      "notes": "本场景中未出现新的神秘人物，赫萝与罗伦斯的互动延续了已知角色的特征，未发现新的可追踪实体。"
+    }
+  ],
+  "candidate_characters": [
+    {
+      "entity_id": "char_0002",
+      "display_name": "赫萝",
+      "aliases": [],
+      "titles": [
+        "丰收之神",
+        "狼",
+        "贤狼"
+      ],
+      "description": "神秘少女，拥有狼的特征。在本场景中协助罗伦斯击退袭击者，表现出冷静和对环境的高度感知能力。 / 在地下道中不断呼喊罗伦斯，试图唤醒他并指引方向。表现出担忧和责任感。 / 神秘少女，拥有狼的特征，情绪波动明显，对罗伦斯表现出依赖和担忧。 / 神秘少女，拥有狼的特征。在本场景中表现出脆弱和依赖，对独自旅行感到不安。她对叶勒的言语感到愤怒与悲伤。 / 情绪波动明显的贤狼，因叶勒的言语感到悲伤。她表现出对罗伦斯的依赖，并在关键时刻流露出脆弱。 / 情绪波动明显的贤狼，因叶勒的言语感到愤怒与悲伤。她吸食罗伦斯的血液以施展某…",
+      "speech_style": "未直接发言，但被频繁提及 / 冷静、自信、略带调侃 / 调皮、略带挑衅、情绪化 / 略带孩子气、情绪化、略带调侃 / 冷静、简短、略带策略性 / 关切、坚定、略带责备 / 情绪化、略带孩子气 / 冷静、略带情绪化 / 脆弱、情绪化、略带孩子气 / 冷静、自信、略带策略性 / 冷静、简短、略带威严 / 未直接发言",
+      "speech_markers": [
+        "咱",
+        "哈哈哈哈哈，咱是恶魔？",
+        "好名字呗？",
+        "咱没听过。",
+        "咱不要。",
+        "或是鲜血。",
+        "如何？愿意相信咱了呗？",
+        "汝要温柔一些呐。"
+      ],
+      "relationship_hints": [
+        "与罗伦斯一同旅行",
+        "捉弄罗伦斯",
+        "与罗伦斯展开对话",
+        "表现出对罗伦斯的调侃",
+        "与罗伦斯有初步互动，可能是他未来的旅伴",
+        "与罗伦斯进行对话，表现出信任与坦率",
+        "提到出生地时流露出真实情感",
+        "与罗伦斯有互动，被罗伦斯收留并一同旅行"
+      ],
+      "first_seen_scene_id": "volume_01-c000-s003-r001",
+      "latest_seen_scene_id": "volume_01-c008-s003-r001",
+      "confidence": 0.95
+    },
+    {
+      "entity_id": "char_0001",
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": [
+        "商人",
+        "旅行商人",
+        "行商人"
+      ],
+      "description": "理性、谨慎的商人，试图分析局势并保持冷静。他与赫萝同行，面对叶勒的威胁时表现出坚定。 / 理性、坚定的商人，坚持遵守与赫萝的合约，拒绝背叛她。面对叶勒的威胁保持冷静，表现出对赫萝的忠诚。 / 理性、谨慎的商人，身受重伤但仍试图保持冷静并等待救援。他表现出对赫萝的依赖和信任。 / 罗伦斯目睹赫萝的变身过程，表现出震惊和无力。他试图抓住赫萝留下的皮袋，但最终面对巨大的狼形生物，感到无法应对。 / 理性、谨慎的商人，与赫萝在地下通道中遭遇叶勒的威胁。他试图安抚赫萝的情绪，并表现出对环境变化的敏感。 / 在赫萝的威压下感…",
+      "speech_style": "温和、理性、略带担忧 / 理性、略带策略性、温和 / 理性、担忧、略带冲动 / 虚弱、低沉、略带困惑 / 虚弱、低沉、焦虑 / 理性、坚定、略带焦虑 / 理性、焦虑、略带冲动 / 虚弱、低沉、焦虑 / 虚弱、焦虑、略带愤怒 / 愤怒、理性、略带冲动 / 虚弱、焦虑、略带悔恨 / 理性、冷静、略带焦虑",
+      "speech_markers": [
+        "……骑士？",
+        "有什么能为您效劳的吗？",
+        "算了……",
+        "糟糕",
+        "……",
+        "喂！",
+        "喂！起床啊！",
+        "喂！有什么好笑的？"
+      ],
+      "relationship_hints": [
+        "与赫萝一同旅行",
+        "对赫萝的身份持怀疑态度",
+        "与修道院有生意期望但未成功",
+        "与骑士初次互动",
+        "与赫萝有密切关系",
+        "与教会和骑士有互动",
+        "与叶勒有交集，计划与他交谈但被祭典打断",
+        "与叶勒有过去的交易关系。"
+      ],
+      "first_seen_scene_id": "volume_01-c000-s003-r001",
+      "latest_seen_scene_id": "volume_01-c008-s003-r001",
+      "confidence": 1.0
+    }
+  ],
+  "candidate_mysteries": []
+}

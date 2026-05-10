@@ -1,0 +1,107 @@
+{
+  "scene_id": "volume_01-c003-s001",
+  "scene_summary": "罗伦斯和赫萝躲雨进入一间教会，与一对夫妻交谈。赫萝以人类形态隐藏身份，罗伦斯则试图通过对话获取信息。教会中聚集了不同职业的客人，罗伦斯利用这个机会与人交流。",
+  "active_characters": [
+    "罗伦斯",
+    "赫萝",
+    "夫妻"
+  ],
+  "character_candidates": [
+    {
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": [
+        "商人",
+        "旅行商人"
+      ],
+      "description": "理性、谨慎的商人，与赫萝同行，正在教会中与人交谈，试图获取商业情报。",
+      "speech_style": "理性、谨慎、温和",
+      "speech_markers": [
+        "这就得靠商人的智慧了。"
+      ],
+      "relationship_hints": [
+        "与赫萝同行，信任她的伪装能力"
+      ],
+      "evidence": [
+        "volume_01-c003-s001-p000650",
+        "volume_01-c003-s001-p000651",
+        "volume_01-c003-s001-p000654",
+        "volume_01-c003-s001-p000660",
+        "volume_01-c003-s001-p000663",
+        "volume_01-c003-s001-p000665"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "赫萝",
+      "aliases": [],
+      "titles": [
+        "贤狼",
+        "丰收之神"
+      ],
+      "description": "以人类形态隐藏身份的狼，与罗伦斯同行，擅长伪装和伪装语言，表现出自信和狡黠。",
+      "speech_style": "狡黠、自信、略带挑衅",
+      "speech_markers": [
+        "咱是贤狼赫萝呐。",
+        "放心放心！"
+      ],
+      "relationship_hints": [
+        "与罗伦斯同行，依赖他的掩护"
+      ],
+      "evidence": [
+        "volume_01-c003-s001-p000653",
+        "volume_01-c003-s001-p000654"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "display_name": "夫妻",
+      "aliases": [
+        "有钱夫妻",
+        "教会中的夫妻"
+      ],
+      "titles": [],
+      "description": "一对富裕的夫妻，住在教会中，与罗伦斯交谈，对商业话题表现出兴趣。",
+      "speech_style": "自然、开放、略带好奇",
+      "speech_markers": [
+        "这样啊，所以你是从约连那边过来的？",
+        "喔喔？有意思，说来听听如何？"
+      ],
+      "relationship_hints": [
+        "与罗伦斯有短暂的对话互动"
+      ],
+      "evidence": [
+        "volume_01-c003-s001-p000657",
+        "volume_01-c003-s001-p000658",
+        "volume_01-c003-s001-p000662",
+        "volume_01-c003-s001-p000664",
+        "volume_01-c003-s001-p000669"
+      ],
+      "confidence": 0.75
+    }
+  ],
+  "mystery_entities": [
+    {
+      "temporary_name": "教会客人1",
+      "description": "教会中的一位客人，未被明确提及身份，但可能与罗伦斯的商业对话有关。",
+      "evidence": [
+        "volume_01-c003-s001-p000656"
+      ],
+      "confidence": 0.6
+    },
+    {
+      "temporary_name": "教会客人2",
+      "description": "另一位教会中的客人，未被明确提及身份，但可能在对话中扮演听众角色。",
+      "evidence": [
+        "volume_01-c003-s001-p000656"
+      ],
+      "confidence": 0.6
+    }
+  ],
+  "relationships": [
+    "罗伦斯与赫萝同行，依赖她的伪装能力",
+    "罗伦斯与夫妻有短暂的商业对话",
+    "赫萝隐藏身份，协助罗伦斯的行动"
+  ],
+  "notes": "场景中出现了未明确命名的教会客人，可能在后续情节中扮演重要角色。赫萝的伪装行为和罗伦斯的商业智慧是本场景的关键线索。"
+}

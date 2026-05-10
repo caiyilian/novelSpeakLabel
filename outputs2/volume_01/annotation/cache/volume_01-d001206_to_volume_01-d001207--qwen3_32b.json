@@ -1,0 +1,49 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001206",
+      "speaker_entity_id": "mystery_volume_01_c007_s002_r001_梅迪欧商行追捕者",
+      "speaker_display": "梅迪欧商行追捕者",
+      "speaker_status": "mystery",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "mystery_volume_01_c007_s002_r001_梅迪欧商行追捕者",
+          "display": "梅迪欧商行追捕者",
+          "status": "mystery",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "上下文提到有人发出脚步声和呼吸声，疑似追捕者，与梅迪欧商行有关",
+        "罗伦斯判断这声音是老天爷赐下的福音，暗示说话人不是罗伦斯或赫萝"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001207",
+      "speaker_entity_id": "mystery_volume_01_c007_s002_r001_梅迪欧商行追捕者",
+      "speaker_display": "梅迪欧商行追捕者",
+      "speaker_status": "mystery",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "mystery_volume_01_c007_s002_r001_梅迪欧商行追捕者",
+          "display": "梅迪欧商行追捕者",
+          "status": "mystery",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "上下文提到对方似乎也自觉不妙，努力用手摀住嘴巴，暗示说话人是追捕者",
+        "与前一句对话为同一方向传来的声音，符合追捕者的身份"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "两句话为连续的追捕者发出的声音，符合上下文中的追捕者身份，未出现罗伦斯或赫萝的直接发言。"
+}

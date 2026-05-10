@@ -1,0 +1,117 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001326",
+      "speaker_entity_id": "",
+      "speaker_display": "",
+      "speaker_status": "npc",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {"entity_id": "", "display": "商人", "status": "npc", "score": 0.8}
+      ],
+      "evidence": ["商人花钱连同修道院买下男孩，并立即献给恶魔。"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001327",
+      "speaker_entity_id": "",
+      "speaker_display": "",
+      "speaker_status": "npc",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {"entity_id": "", "display": "恶魔", "status": "npc", "score": 0.8}
+      ],
+      "evidence": ["世上最好吃的人类就在你面前。那人就是日复一日扛着辛香料赚取财利，辛香料为他肥大的灵魂做了完美调味的男子啊。"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001328",
+      "speaker_entity_id": "char_0015",
+      "speaker_display": "列支敦·马贺特",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {"entity_id": "char_0015", "display": "列支敦·马贺特", "status": "known", "score": 0.9}
+      ],
+      "evidence": ["这是教会以商行为对象，劝说做生意必须有所节制的宗教戏剧；我就是想起这里面的情节。"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001329",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {"entity_id": "char_0001", "display": "罗伦斯", "status": "known", "score": 0.8}
+      ],
+      "evidence": ["希望我的身体也能早日有辛香料的完美调味。"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001330",
+      "speaker_entity_id": "char_0015",
+      "speaker_display": "列支敦·马贺特",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {"entity_id": "char_0015", "display": "列支敦·马贺特", "status": "known", "score": 0.9}
+      ],
+      "evidence": ["我会拭目以待。今后也请多关照本商行啊，罗伦斯先生。"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001331",
+      "speaker_entity_id": "char_0015",
+      "speaker_display": "列支敦·马贺特",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {"entity_id": "char_0015", "display": "列支敦·马贺特", "status": "known", "score": 0.9}
+      ],
+      "evidence": ["那么，我会为您准备好胡椒的。我还有工作要忙，先失陪了。"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001332",
+      "speaker_entity_id": "",
+      "speaker_display": "",
+      "speaker_status": "npc",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {"entity_id": "", "display": "敲门者", "status": "npc", "score": 0.8}
+      ],
+      "evidence": ["是您的伙伴吗？"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001333",
+      "speaker_entity_id": "mystery_volume_01_c008_s002_r002_商行员工",
+      "speaker_display": "商行员工",
+      "speaker_status": "mystery",
+      "confidence": 0.7,
+      "candidate_speakers": [
+        {"entity_id": "mystery_volume_01_c008_s002_r002_商行员工", "display": "商行员工", "status": "mystery", "score": 0.7}
+      ],
+      "evidence": ["行长，有一张这样的请款单。"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次和叙述线索一致，商人、恶魔、罗伦斯和马贺特的角色明确；敲门者和请款单递送者的身份需要进一步确认。"
+}

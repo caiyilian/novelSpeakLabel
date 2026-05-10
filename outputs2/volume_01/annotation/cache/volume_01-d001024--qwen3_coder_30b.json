@@ -1,0 +1,34 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001024",
+      "speaker_entity_id": "mystery_volume_01_c006_s001_r002_梅迪欧商行",
+      "speaker_display": "梅迪欧商行",
+      "speaker_status": "mystery",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "mystery_volume_01_c006_s001_r002_梅迪欧商行",
+          "display": "梅迪欧商行",
+          "status": "mystery",
+          "score": 0.85
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.1
+        }
+      ],
+      "evidence": [
+        "台词内容与梅迪欧商行的策略一致，提及银币与特权交易",
+        "前文提到梅迪欧商行正准备与王族交涉",
+        "罗伦斯虽提出策略，但未直接发言，且此台词为交涉条件表述"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "该台词为梅迪欧商行向王族提出的交涉条件，符合其策略背景，罗伦斯虽参与策略制定但未直接发言，因此判断为梅迪欧商行所言。"
+}

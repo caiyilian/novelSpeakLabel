@@ -1,0 +1,49 @@
+```json
+{
+  "scene_id": "volume_01-c004-s008",
+  "scene_summary": "罗伦斯与赫萝讨论杰廉提出的银币交易，赫萝指出这是一场精心设计的诈欺，罗伦斯对此感到震惊并反思自己的判断。杰廉的交易策略被分析，赫萝表现出对商业的深刻理解，而罗伦斯则在自尊与理性之间挣扎。",
+  "active_characters": ["罗伦斯", "赫萝", "杰廉"],
+  "character_candidates": [
+    {
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": ["商人", "行商人"],
+      "description": "理性、谨慎的商人，对赫萝的分析感到震惊并反思自己的判断。他试图理解杰廉的动机，并在自尊与理性之间挣扎。",
+      "speech_style": "理性、怀疑、略带无奈",
+      "speech_markers": ["……", "唔……", "……是这样啊？"],
+      "relationship_hints": ["与赫萝同行", "对杰廉的交易持怀疑态度"],
+      "evidence": ["volume_01-c004-s008-p001539", "volume_01-c004-s008-p001543", "volume_01-c004-s008-p001549"],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "赫萝",
+      "aliases": [],
+      "titles": ["贤狼", "丰收之神"],
+      "description": "神秘少女，拥有狼的特征，对商业策略有深刻理解。她指出杰廉的交易是诈欺，并表现出对罗伦斯情绪的洞察。",
+      "speech_style": "狡黠、自信、略带挑衅",
+      "speech_markers": ["可是呐。", "呵，人类真是聪明呐。", "世上没有什么事情比必然与偶然更难懂了"],
+      "relationship_hints": ["与罗伦斯同行", "对杰廉的交易持怀疑态度"],
+      "evidence": ["volume_01-c004-s008-p001540", "volume_01-c004-s008-p001546", "volume_01-c004-s008-p001558"],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "杰廉",
+      "aliases": [],
+      "titles": ["旅行商人"],
+      "description": "年轻的旅行商人，提出银币交易策略，被赫萝指出为诈欺。罗伦斯对其动机持怀疑态度。",
+      "speech_style": "未直接发言，但被提及为信息来源",
+      "speech_markers": [],
+      "relationship_hints": ["与罗伦斯有商业联系", "被赫萝质疑"],
+      "evidence": ["volume_01-c004-s008-p001542", "volume_01-c004-s008-p001545"],
+      "confidence": 0.85
+    }
+  ],
+  "mystery_entities": [],
+  "relationships": [
+    "罗伦斯与赫萝同行，赫萝对罗伦斯的判断有影响",
+    "罗伦斯与杰廉有商业联系，但对其动机持怀疑态度",
+    "赫萝对杰廉的交易持怀疑态度，认为其为诈欺"
+  ],
+  "notes": "赫萝的发言显示出她对商业策略的深刻理解，罗伦斯在自尊与理性之间挣扎。杰廉的交易策略被分析，但未直接发言。"
+}
+```

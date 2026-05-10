@@ -1,0 +1,175 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001073",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "上下文显示罗伦斯在地下道中等待，且该句是他的直接反应。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001074",
+      "speaker_entity_id": "mystery_volume_01_c006_s003_r001_神秘说话者1",
+      "speaker_display": "神秘说话者1",
+      "speaker_status": "mystery",
+      "confidence": 0.7,
+      "candidate_speakers": [
+        {
+          "entity_id": "mystery_volume_01_c006_s003_r001_神秘说话者1",
+          "display": "神秘说话者1",
+          "status": "mystery",
+          "score": 0.7
+        }
+      ],
+      "evidence": [
+        "上下文提到说话声从正上方传来，可能是米隆商行的联络人员。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001075",
+      "speaker_entity_id": "mystery_volume_01_c006_s003_r001_神秘说话者1",
+      "speaker_display": "神秘说话者1",
+      "speaker_status": "mystery",
+      "confidence": 0.7,
+      "candidate_speakers": [
+        {
+          "entity_id": "mystery_volume_01_c006_s003_r001_神秘说话者1",
+          "display": "神秘说话者1",
+          "status": "mystery",
+          "score": 0.7
+        }
+      ],
+      "evidence": [
+        "上下文提到说话声从正上方传来，可能是米隆商行的联络人员。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001076",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "上下文明确提到罗伦斯回答「奴马」。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001077",
+      "speaker_entity_id": "mystery_volume_01_c006_s003_r001_神秘说话者2",
+      "speaker_display": "神秘说话者2",
+      "speaker_status": "mystery",
+      "confidence": 0.7,
+      "candidate_speakers": [
+        {
+          "entity_id": "mystery_volume_01_c006_s003_r001_神秘说话者2",
+          "display": "神秘说话者2",
+          "status": "mystery",
+          "score": 0.7
+        }
+      ],
+      "evidence": [
+        "上下文提到门盖打开时传来「皮里昂」，可能是米隆商行的联络人员。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001078",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "上下文明确提到赫萝的脸出现，且她对罗伦斯说话。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001079",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "上下文明确提到赫萝对罗伦斯说话，语气简短且带有命令性质。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001080",
+      "speaker_entity_id": "char_0021",
+      "speaker_display": "商行的人",
+      "speaker_status": "known",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0021",
+          "display": "商行的人",
+          "status": "known",
+          "score": 0.8
+        }
+      ],
+      "evidence": [
+        "上下文提到赫萝与商行的人互动，且该句语气符合商行人员的理性冷静风格。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，罗伦斯与赫萝为主要说话人，神秘说话者1和2为米隆商行联络人员，商行的人在最后出现。"
+}
+```

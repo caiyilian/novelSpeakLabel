@@ -1,0 +1,150 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000999",
+      "speaker_entity_id": "char_0020",
+      "speaker_display": "米隆商行人员",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0020",
+          "display": "米隆商行人员",
+          "status": "known",
+          "score": 0.9
+        },
+        {
+          "entity_id": "char_0015",
+          "display": "列支敦·马贺特",
+          "status": "known",
+          "score": 0.1
+        }
+      ],
+      "evidence": [
+        "进入房间并递交信件",
+        "符合商行人员行为特征"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001000",
+      "speaker_entity_id": "char_0015",
+      "speaker_display": "列支敦·马贺特",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0015",
+          "display": "列支敦·马贺特",
+          "status": "known",
+          "score": 0.95
+        },
+        {
+          "entity_id": "char_0020",
+          "display": "米隆商行人员",
+          "status": "known",
+          "score": 0.05
+        }
+      ],
+      "evidence": [
+        "回应商行人员的打扰",
+        "符合马贺特冷静理性风格",
+        "对话轮次符合上下文"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001001",
+      "speaker_entity_id": "char_0020",
+      "speaker_display": "米隆商行人员",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0020",
+          "display": "米隆商行人员",
+          "status": "known",
+          "score": 0.9
+        },
+        {
+          "entity_id": "char_0015",
+          "display": "列支敦·马贺特",
+          "status": "known",
+          "score": 0.1
+        }
+      ],
+      "evidence": [
+        "递交信件并说明内容",
+        "符合商行人员职责",
+        "与前一句形成对话轮次"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001002",
+      "speaker_entity_id": "char_0015",
+      "speaker_display": "列支敦·马贺特",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0015",
+          "display": "列支敦·马贺特",
+          "status": "known",
+          "score": 0.9
+        },
+        {
+          "entity_id": "char_0020",
+          "display": "米隆商行人员",
+          "status": "known",
+          "score": 0.1
+        }
+      ],
+      "evidence": [
+        "对信件内容表示惊讶",
+        "符合马贺特反应特征",
+        "与前一句形成对话轮次"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001003",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.85
+        },
+        {
+          "entity_id": "char_0015",
+          "display": "列支敦·马贺特",
+          "status": "known",
+          "score": 0.15
+        }
+      ],
+      "evidence": [
+        "请求查看信件",
+        "符合罗伦斯理性、谨慎风格",
+        "与前一句形成对话轮次",
+        "马贺特递信给罗伦斯"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，商行人员先入室并递交信件，马贺特回应并表现出惊讶，随后罗伦斯请求查看信件。"
+}

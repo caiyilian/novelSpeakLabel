@@ -1,0 +1,54 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000092",
+      "speaker_entity_id": "",
+      "speaker_display": "",
+      "speaker_status": "ambiguous",
+      "confidence": 0.4,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.6
+        },
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.4
+        }
+      ],
+      "evidence": [
+        "上下文显示罗伦斯和赫萝正在进行对话，但此句没有明确的说话人提示，需结合下一句判断轮次"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    },
+    {
+      "dialogue_id": "volume_01-d000093",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "使用自称‘咱’，符合赫萝的 speech_marker",
+        "上下文显示这是对上一句提问的回应，符合对话轮次"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，第一句提问者未明确，第二句为赫萝回应，需结合上下文判断第一句说话人。"
+}

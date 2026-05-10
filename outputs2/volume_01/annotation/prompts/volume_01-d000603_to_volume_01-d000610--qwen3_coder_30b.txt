@@ -1,0 +1,462 @@
+你是轻小说说话人标注项目的阶段 2：正式标注助手。
+你的任务是判断输入 target_dialogues 中每一句台词的说话人，不要改写原文。
+必须把这些台词当作同一个连续片段来判断，优先保持对话轮次和叙述线索的一致性。
+
+规则：
+1. 只输出严格 JSON，不要 Markdown，不要解释性前后缀。
+2. 如果说话人是候选角色，speaker_entity_id 必须使用 candidate_characters 里的 entity_id，speaker_status 填 known。
+3. 如果说话人像某个未知人物，speaker_entity_id 使用 candidate_mysteries 里的 mystery_id，speaker_status 填 mystery。
+4. 如果只是无法追踪的路人/群体，speaker_status 填 npc，speaker_entity_id 可为空或使用 npc:简短称呼。
+5. 证据不足时不要硬猜，speaker_status 填 ambiguous 或 review，并把 needs_review 设为 true。
+6. candidate_speakers 至少列出 1 个候选；如果无法判断，列出最可能的候选和不确定原因。
+7. confidence 使用 0 到 1 之间的小数，表示你对最终判断的把握。
+8. 不要只因为台词里提到某个名字、职业、地点，就把说话人标成那个实体；被称呼的人通常不是说话人。
+9. 连续问答、交易寒暄、命令/回答等场景要按上下句轮次判断；同一人连续说话必须有叙述或语气证据支持。
+10. 如果当前上下文显示某角色还没有登场，不要因为角色库或后文记忆里有这个角色就提前标给他/她。
+
+11. target_dialogues 中 dialogue_kind=inline 的项目是正文内嵌引号，不要当作独立对白；标为 review，needs_review=true。
+12. candidate_mysteries 只是可选候选；如果候选名称和当前段落地点/人物不一致，必须改用 npc 或 review。
+13. 如果只有轮次推断、没有叙述锚点或自我介绍，请降低 confidence，并在 evidence 里说明轮次依据。
+
+14. candidate_characters.speech_markers 是阶段 1 提取的高区分度口癖/自称/固定短语；命中时可作为证据，但如果多个角色共享或上下文反证明显，必须进入复核。
+
+输出 JSON 结构：
+{
+  "annotations": [
+    {
+      "dialogue_id": "必须来自 target_dialogue_ids",
+      "speaker_entity_id": "string",
+      "speaker_display": "string",
+      "speaker_status": "known|mystery|npc|ambiguous|review",
+      "confidence": 0.0,
+      "candidate_speakers": [
+        {"entity_id": "string", "display": "string", "status": "known|mystery|npc|ambiguous|review", "score": 0.0}
+      ],
+      "evidence": ["短证据，不要大段复制原文"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "可选，简短说明整体轮次判断"
+}
+必须为 target_dialogue_ids 中每个 dialogue_id 输出且只输出一条 annotation。
+
+输入 JSON：
+{
+  "volume": {
+    "volume_id": "volume_01",
+    "volume": 1
+  },
+  "target_dialogue_ids": [
+    "volume_01-d000603",
+    "volume_01-d000604",
+    "volume_01-d000605",
+    "volume_01-d000606",
+    "volume_01-d000607",
+    "volume_01-d000608",
+    "volume_01-d000609",
+    "volume_01-d000610"
+  ],
+  "dialogues": [
+    {
+      "dialogue_id": "volume_01-d000603",
+      "dialogue_index": 602,
+      "window_position": 1,
+      "chapter_id": "volume_01-c004",
+      "chapter_title": "第三幕",
+      "scene_id": "volume_01-c004-s006",
+      "paragraph_id": "volume_01-c004-s006-p001357",
+      "paragraph_index": 1356,
+      "local_dialogue_index": 1,
+      "text": "原则上崔尼银币有理由提高含银量。我看看……就是这个，这枚银币叫做菲林银币。这是往南边走，过了三条河才能抵达的国家所发行的。这个银币的含银量相当高，在市场上颇受欢迎。算是崔尼银币的对手吧。",
+      "quote_text": "「原则上崔尼银币有理由提高含银量。我看看……就是这个，这枚银币叫做菲林银币。这是往南边走，过了三条河才能抵达的国家所发行的。这个银币的含银量相当高，在市场上颇受欢迎。算是崔尼银币的对手吧。」",
+      "paragraph_text": "「原则上崔尼银币有理由提高含银量。我看看……就是这个，这枚银币叫做菲林银币。这是往南边走，过了三条河才能抵达的国家所发行的。这个银币的含银量相当高，在市场上颇受欢迎。算是崔尼银币的对手吧。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 95
+    },
+    {
+      "dialogue_id": "volume_01-d000604",
+      "dialogue_index": 603,
+      "window_position": 2,
+      "chapter_id": "volume_01-c004",
+      "chapter_title": "第三幕",
+      "scene_id": "volume_01-c004-s006",
+      "paragraph_id": "volume_01-c004-s006-p001358",
+      "paragraph_index": 1357,
+      "local_dialogue_index": 1,
+      "text": "嗯，无论在哪一个时代，货币永远代表一个国家的势力。",
+      "quote_text": "「嗯，无论在哪一个时代，货币永远代表一个国家的势力。」",
+      "paragraph_text": "「嗯，无论在哪一个时代，货币永远代表一个国家的势力。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 27
+    },
+    {
+      "dialogue_id": "volume_01-d000605",
+      "dialogue_index": 604,
+      "window_position": 3,
+      "chapter_id": "volume_01-c004",
+      "chapter_title": "第三幕",
+      "scene_id": "volume_01-c004-s006",
+      "paragraph_id": "volume_01-c004-s006-p001360",
+      "paragraph_index": 1359,
+      "local_dialogue_index": 1,
+      "text": "没错！国与国之间的战争，并非只有派出士兵打仗。当外国货币席卷本国市场时，这个国家就等于打了败仗。只要外国的国王宣布减少货币流通量，本国的市场就会因此动弹不得。物品的买卖交易都少不了货币，这可说是整个国家的经济活动都被控制住。",
+      "quote_text": "「没错！国与国之间的战争，并非只有派出士兵打仗。当外国货币席卷本国市场时，这个国家就等于打了败仗。只要外国的国王宣布减少货币流通量，本国的市场就会因此动弹不得。物品的买卖交易都少不了货币，这可说是整个国家的经济活动都被控制住。」",
+      "paragraph_text": "「没错！国与国之间的战争，并非只有派出士兵打仗。当外国货币席卷本国市场时，这个国家就等于打了败仗。只要外国的国王宣布减少货币流通量，本国的市场就会因此动弹不得。物品的买卖交易都少不了货币，这可说是整个国家的经济活动都被控制住。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 114
+    },
+    {
+      "dialogue_id": "volume_01-d000606",
+      "dialogue_index": 605,
+      "window_position": 4,
+      "chapter_id": "volume_01-c004",
+      "chapter_title": "第三幕",
+      "scene_id": "volume_01-c004-s006",
+      "paragraph_id": "volume_01-c004-s006-p001361",
+      "paragraph_index": 1360,
+      "local_dialogue_index": 1,
+      "text": "也就是说，提高含银量的理由是为了打倒对手？",
+      "quote_text": "「也就是说，提高含银量的理由是为了打倒对手？」",
+      "paragraph_text": "「也就是说，提高含银量的理由是为了打倒对手？」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 23
+    },
+    {
+      "dialogue_id": "volume_01-d000607",
+      "dialogue_index": 606,
+      "window_position": 5,
+      "chapter_id": "volume_01-c004",
+      "chapter_title": "第三幕",
+      "scene_id": "volume_01-c004-s006",
+      "paragraph_id": "volume_01-c004-s006-p001364",
+      "paragraph_index": 1363,
+      "local_dialogue_index": 1,
+      "text": "哎，毕竟咱的耳朵不是万能的。",
+      "quote_text": "「哎，毕竟咱的耳朵不是万能的。」",
+      "paragraph_text": "「哎，毕竟咱的耳朵不是万能的。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 16
+    },
+    {
+      "dialogue_id": "volume_01-d000608",
+      "dialogue_index": 607,
+      "window_position": 6,
+      "chapter_id": "volume_01-c004",
+      "chapter_title": "第三幕",
+      "scene_id": "volume_01-c004-s006",
+      "paragraph_id": "volume_01-c004-s006-p001366",
+      "paragraph_index": 1365,
+      "local_dialogue_index": 1,
+      "text": "杰廉还是有可能没说谎。",
+      "quote_text": "「杰廉还是有可能没说谎。」",
+      "paragraph_text": "「杰廉还是有可能没说谎。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 13
+    },
+    {
+      "dialogue_id": "volume_01-d000609",
+      "dialogue_index": 608,
+      "window_position": 7,
+      "chapter_id": "volume_01-c004",
+      "chapter_title": "第三幕",
+      "scene_id": "volume_01-c004-s006",
+      "paragraph_id": "volume_01-c004-s006-p001367",
+      "paragraph_index": 1366,
+      "local_dialogue_index": 1,
+      "text": "嗯，咱赞成汝的说法。",
+      "quote_text": "「嗯，咱赞成汝的说法。」",
+      "paragraph_text": "「嗯，咱赞成汝的说法。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 12
+    },
+    {
+      "dialogue_id": "volume_01-d000610",
+      "dialogue_index": 609,
+      "window_position": 8,
+      "chapter_id": "volume_01-c004",
+      "chapter_title": "第三幕",
+      "scene_id": "volume_01-c004-s006",
+      "paragraph_id": "volume_01-c004-s006-p001369",
+      "paragraph_index": 1368,
+      "local_dialogue_index": 1,
+      "text": "怎么着？汝以为咱会生气啊？",
+      "quote_text": "「怎么着？汝以为咱会生气啊？」",
+      "paragraph_text": "「怎么着？汝以为咱会生气啊？」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 15
+    }
+  ],
+  "context": {
+    "paragraphs": [
+      {
+        "paragraph_id": "volume_01-c004-s006-p001354",
+        "paragraph_index": 1353,
+        "text": "在赫萝令人不愉快的纠正之前，还是赶紧回到刚刚的话题好。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s006-p001355",
+        "paragraph_index": 1354,
+        "text": "「如果那件事指的是崔尼银币的话，那么，杰廉所说的话可能不假。」",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s006-p001356",
+        "paragraph_index": 1355,
+        "text": "「喔？」",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s006-p001357",
+        "paragraph_index": 1356,
+        "text": "「原则上崔尼银币有理由提高含银量。我看看……就是这个，这枚银币叫做菲林银币。这是往南边走，过了三条河才能抵达的国家所发行的。这个银币的含银量相当高，在市场上颇受欢迎。算是崔尼银币的对手吧。」",
+        "target_dialogue_ids": [
+          "volume_01-d000603"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c004-s006-p001358",
+        "paragraph_index": 1357,
+        "text": "「嗯，无论在哪一个时代，货币永远代表一个国家的势力。」",
+        "target_dialogue_ids": [
+          "volume_01-d000604"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c004-s006-p001359",
+        "paragraph_index": 1358,
+        "text": "很快进入状况的贤狼咬了一口面包说。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s006-p001360",
+        "paragraph_index": 1359,
+        "text": "「没错！国与国之间的战争，并非只有派出士兵打仗。当外国货币席卷本国市场时，这个国家就等于打了败仗。只要外国的国王宣布减少货币流通量，本国的市场就会因此动弹不得。物品的买卖交易都少不了货币，这可说是整个国家的经济活动都被控制住。」",
+        "target_dialogue_ids": [
+          "volume_01-d000605"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c004-s006-p001361",
+        "paragraph_index": 1360,
+        "text": "「也就是说，提高含银量的理由是为了打倒对手？」",
+        "target_dialogue_ids": [
+          "volume_01-d000606"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c004-s006-p001362",
+        "paragraph_index": 1361,
+        "text": "转眼间赫萝已吃完面包，她舔着手指头这么说。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s006-p001363",
+        "paragraph_index": 1362,
+        "text": "罗伦斯心想只要说到这儿，赫萝自然会察觉到他想说的话。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s006-p001364",
+        "paragraph_index": 1363,
+        "text": "「哎，毕竟咱的耳朵不是万能的。」",
+        "target_dialogue_ids": [
+          "volume_01-d000607"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c004-s006-p001365",
+        "paragraph_index": 1364,
+        "text": "赫萝果然察觉到了。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s006-p001366",
+        "paragraph_index": 1365,
+        "text": "「杰廉还是有可能没说谎。」",
+        "target_dialogue_ids": [
+          "volume_01-d000608"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c004-s006-p001367",
+        "paragraph_index": 1366,
+        "text": "「嗯，咱赞成汝的说法。」",
+        "target_dialogue_ids": [
+          "volume_01-d000609"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c004-s006-p001368",
+        "paragraph_index": 1367,
+        "text": "罗伦斯有些吃惊，赫萝的反应竟意外平淡。罗伦斯以为就算赫萝曾表示过自己并非百发百中，一旦遭到怀疑，她还是会生气地指责罗伦斯怀疑她的耳朵。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s006-p001369",
+        "paragraph_index": 1368,
+        "text": "「怎么着？汝以为咱会生气啊？」",
+        "target_dialogue_ids": [
+          "volume_01-d000610"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c004-s006-p001370",
+        "paragraph_index": 1369,
+        "text": "「是啊。」",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s006-p001371",
+        "paragraph_index": 1370,
+        "text": "「如果汝认为咱是这样的人，咱或许会生气。」",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s006-p001372",
+        "paragraph_index": 1371,
+        "text": "赫萝露出恶作剧的笑容说。",
+        "target_dialogue_ids": []
+      }
+    ]
+  },
+  "scene_memory": [
+    {
+      "scene_id": "volume_01-c004-s006-r002",
+      "parent_scene_id": "volume_01-c004-s006",
+      "chunk_index": 2,
+      "chunk_count": 3,
+      "scene_summary": "罗伦斯与赫萝讨论崔尼银币与菲林银币之间的竞争关系，分析货币对国家经济的影响。赫萝表现出对罗伦斯的信任，并对杰廉的诚实提出质疑，但最终接受罗伦斯的判断。两人决定前往兑换商处调查。",
+      "active_characters": [
+        "罗伦斯",
+        "赫萝"
+      ],
+      "relationships": [
+        "罗伦斯与赫萝是长期合作的伙伴，赫萝对罗伦斯的判断表现出信任。",
+        "罗伦斯与杰廉有商业联系，杰廉提供货币情报，但其真实性受到赫萝质疑。"
+      ],
+      "notes": "本场景中，罗伦斯与赫萝的互动表现出他们之间深厚的合作关系。杰廉虽未直接发言，但其提供的信息成为讨论核心。赫萝的反应显示她对罗伦斯的信任，而罗伦斯则试图说服她接受杰廉可能说真话的观点。"
+    }
+  ],
+  "candidate_characters": [
+    {
+      "entity_id": "char_0002",
+      "display_name": "赫萝",
+      "aliases": [],
+      "titles": [
+        "丰收之神",
+        "狼",
+        "贤狼"
+      ],
+      "description": "神秘少女，拥有狼的特征。在本场景中协助罗伦斯击退袭击者，表现出冷静和对环境的高度感知能力。 / 在地下道中不断呼喊罗伦斯，试图唤醒他并指引方向。表现出担忧和责任感。 / 神秘少女，拥有狼的特征，情绪波动明显，对罗伦斯表现出依赖和担忧。 / 神秘少女，拥有狼的特征。在本场景中表现出脆弱和依赖，对独自旅行感到不安。她对叶勒的言语感到愤怒与悲伤。 / 情绪波动明显的贤狼，因叶勒的言语感到悲伤。她表现出对罗伦斯的依赖，并在关键时刻流露出脆弱。 / 情绪波动明显的贤狼，因叶勒的言语感到愤怒与悲伤。她吸食罗伦斯的血液以施展某…",
+      "speech_style": "未直接发言，但被频繁提及 / 冷静、自信、略带调侃 / 调皮、略带挑衅、情绪化 / 略带孩子气、情绪化、略带调侃 / 冷静、简短、略带策略性 / 关切、坚定、略带责备 / 情绪化、略带孩子气 / 冷静、略带情绪化 / 脆弱、情绪化、略带孩子气 / 冷静、自信、略带策略性 / 冷静、简短、略带威严 / 未直接发言",
+      "speech_markers": [
+        "咱",
+        "哈哈哈哈哈，咱是恶魔？",
+        "好名字呗？",
+        "咱没听过。",
+        "咱不要。",
+        "或是鲜血。",
+        "如何？愿意相信咱了呗？",
+        "汝要温柔一些呐。"
+      ],
+      "relationship_hints": [
+        "与罗伦斯一同旅行",
+        "捉弄罗伦斯",
+        "与罗伦斯展开对话",
+        "表现出对罗伦斯的调侃",
+        "与罗伦斯有初步互动，可能是他未来的旅伴",
+        "与罗伦斯进行对话，表现出信任与坦率",
+        "提到出生地时流露出真实情感",
+        "与罗伦斯有互动，被罗伦斯收留并一同旅行"
+      ],
+      "first_seen_scene_id": "volume_01-c000-s003-r001",
+      "latest_seen_scene_id": "volume_01-c008-s003-r001",
+      "confidence": 0.95
+    },
+    {
+      "entity_id": "char_0001",
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": [
+        "商人",
+        "旅行商人",
+        "行商人"
+      ],
+      "description": "理性、谨慎的商人，试图分析局势并保持冷静。他与赫萝同行，面对叶勒的威胁时表现出坚定。 / 理性、坚定的商人，坚持遵守与赫萝的合约，拒绝背叛她。面对叶勒的威胁保持冷静，表现出对赫萝的忠诚。 / 理性、谨慎的商人，身受重伤但仍试图保持冷静并等待救援。他表现出对赫萝的依赖和信任。 / 罗伦斯目睹赫萝的变身过程，表现出震惊和无力。他试图抓住赫萝留下的皮袋，但最终面对巨大的狼形生物，感到无法应对。 / 理性、谨慎的商人，与赫萝在地下通道中遭遇叶勒的威胁。他试图安抚赫萝的情绪，并表现出对环境变化的敏感。 / 在赫萝的威压下感…",
+      "speech_style": "温和、理性、略带担忧 / 理性、略带策略性、温和 / 理性、担忧、略带冲动 / 虚弱、低沉、略带困惑 / 虚弱、低沉、焦虑 / 理性、坚定、略带焦虑 / 理性、焦虑、略带冲动 / 虚弱、低沉、焦虑 / 虚弱、焦虑、略带愤怒 / 愤怒、理性、略带冲动 / 虚弱、焦虑、略带悔恨 / 理性、冷静、略带焦虑",
+      "speech_markers": [
+        "……骑士？",
+        "有什么能为您效劳的吗？",
+        "算了……",
+        "糟糕",
+        "……",
+        "喂！",
+        "喂！起床啊！",
+        "喂！有什么好笑的？"
+      ],
+      "relationship_hints": [
+        "与赫萝一同旅行",
+        "对赫萝的身份持怀疑态度",
+        "与修道院有生意期望但未成功",
+        "与骑士初次互动",
+        "与赫萝有密切关系",
+        "与教会和骑士有互动",
+        "与叶勒有交集，计划与他交谈但被祭典打断",
+        "与叶勒有过去的交易关系。"
+      ],
+      "first_seen_scene_id": "volume_01-c000-s003-r001",
+      "latest_seen_scene_id": "volume_01-c008-s003-r001",
+      "confidence": 1.0
+    },
+    {
+      "entity_id": "char_0008",
+      "display_name": "杰廉",
+      "aliases": [],
+      "titles": [
+        "旅行商人"
+      ],
+      "description": "杰廉是本场景中被提及的年轻商人，他向罗伦斯提出货币投机的机会。赫萝认为他在说谎，但罗伦斯并未完全否定他的说法。 / 年轻的旅行商人，试图与罗伦斯建立联系，表现出对罗伦斯的敬佩。在本场景中与罗伦斯达成初步协议。 / 被罗伦斯寻找的旅行商人，据称会在日落后出现。 / 年轻的旅行商人，与罗伦斯有商业联系，表现出热情和对罗伦斯的敬佩。 / 年轻的旅行商人，试图与罗伦斯达成银币含银量变动的情报交易。他表现出热情和一定的商业技巧，但罗伦斯对其真实性存疑。 / 年轻的旅行商人，与罗伦斯达成情报交易。在本场景中未直接发言，但被提…",
+      "speech_style": "热情、略带笨拙 / 未直接发言，但被提及为信息来源。 / 未直接发言，但被提及为信息来源 / 未直接发言",
+      "speech_markers": [
+        "嘿嘿……",
+        "小的想……",
+        "那么，小的就先走一步了。",
+        "庆祝我们的重逢！",
+        "皮草卖得如何？"
+      ],
+      "relationship_hints": [
+        "与罗伦斯互动",
+        "试图获取情报",
+        "试图与罗伦斯建立联系",
+        "对赫萝表现出好奇",
+        "试图接近罗伦斯和赫萝",
+        "被赫萝认为在说谎",
+        "与罗伦斯有商业往来",
+        "与罗伦斯有联系"
+      ],
+      "first_seen_scene_id": "volume_01-c003-s002-r001",
+      "latest_seen_scene_id": "volume_01-c006-s004-r003",
+      "confidence": 0.9
+    }
+  ],
+  "candidate_mysteries": []
+}

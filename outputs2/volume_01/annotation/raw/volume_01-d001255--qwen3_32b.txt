@@ -1,0 +1,30 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001255",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "上下文显示罗伦斯正在与赫萝互动，且是当前场景中唯一明确在场并能说话的男性角色。",
+        "台词中直接称呼「赫萝」，符合罗伦斯的说话风格和与赫萝的互动方式。",
+        "前文描述罗伦斯在努力移动身体，暗示他处于清醒状态并能说话。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "当前对话为罗伦斯对赫萝行为的反应，符合上下文中的互动逻辑，无其他说话人线索。"
+}
+```

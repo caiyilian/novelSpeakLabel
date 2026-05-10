@@ -1,0 +1,73 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000806",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "赫萝在前文提到“记得是挺重要的事”，随后表示“脑袋完全转不动”，符合她宿醉虚弱、说话断续的语气和状态",
+        "场景记忆中提到赫萝因宿醉虚弱，罗伦斯在照顾她，因此说话人应为赫萝"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000807",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "台词中提到“米隆商行”，与罗伦斯的对话内容一致，他正在安排后续事务",
+        "场景记忆中罗伦斯在照顾赫萝，因此说话人应为罗伦斯",
+        "语气理性、温和，符合罗伦斯的说话风格"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000808",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "“呜呜……真没面子”符合赫萝虚弱、情绪化的语气",
+        "上下文显示赫萝刚刚被罗伦斯安慰，因此说话人应为她",
+        "场景记忆中赫萝因宿醉虚弱，符合说话人状态"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "三句对话构成一个完整的对话轮次：赫萝虚弱地回应，罗伦斯安慰她，赫萝再次表达情绪。说话人轮次清晰，符合上下文逻辑。"
+}

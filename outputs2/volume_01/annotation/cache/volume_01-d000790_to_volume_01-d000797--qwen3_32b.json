@@ -1,0 +1,181 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000790",
+      "speaker_entity_id": "char_0016",
+      "speaker_display": "店老板",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0016",
+          "display": "店老板",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "台词内容与店老板的口癖『要先付啊？』相符",
+        "上下文显示这是店老板在报价"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000791",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "上下文显示罗伦斯正在准备付款，因此回应『好，请等等』应为他",
+        "对话轮次显示店老板先报价，罗伦斯回应"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000792",
+      "speaker_entity_id": "char_0016",
+      "speaker_display": "店老板",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0016",
+          "display": "店老板",
+          "status": "known",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "台词『宿醉啊？』是店老板的口癖之一",
+        "上下文显示店老板在观察赫萝的状态"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000793",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.8
+        }
+      ],
+      "evidence": [
+        "上下文显示赫萝因宿醉而虚弱，因此回应『喝了太多葡萄酒』应为她",
+        "对话轮次显示店老板提问后，赫萝回应"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000794",
+      "speaker_entity_id": "char_0016",
+      "speaker_display": "店老板",
+      "speaker_status": "known",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0016",
+          "display": "店老板",
+          "status": "known",
+          "score": 0.8
+        }
+      ],
+      "evidence": [
+        "台词内容与店老板的口吻相符，带有经验性的总结语气",
+        "上下文显示店老板在评论年轻旅行商人的常见状况"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000795",
+      "speaker_entity_id": "char_0016",
+      "speaker_display": "店老板",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0016",
+          "display": "店老板",
+          "status": "known",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "台词『来！三十二路特。』与前文店老板报价一致",
+        "上下文显示店老板在完成交易"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000796",
+      "speaker_entity_id": "char_0016",
+      "speaker_display": "店老板",
+      "speaker_status": "known",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0016",
+          "display": "店老板",
+          "status": "known",
+          "score": 0.8
+        }
+      ],
+      "evidence": [
+        "上下文显示店老板在确认金额后提出建议",
+        "对话轮次显示店老板在完成交易后继续发言"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000797",
+      "speaker_entity_id": "char_0016",
+      "speaker_display": "店老板",
+      "speaker_status": "known",
+      "confidence": 0.75,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0016",
+          "display": "店老板",
+          "status": "known",
+          "score": 0.75
+        }
+      ],
+      "evidence": [
+        "上下文显示店老板在罗伦斯点头后大笑",
+        "台词『哇哈哈』是店老板的口癖之一"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，店老板、罗伦斯和赫萝交替发言，符合场景中三人互动的设定。"
+}

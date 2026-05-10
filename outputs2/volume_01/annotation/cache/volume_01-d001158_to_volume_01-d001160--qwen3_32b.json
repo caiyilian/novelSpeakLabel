@@ -1,0 +1,71 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001158",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.98,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.98
+        }
+      ],
+      "evidence": [
+        "上下文明确指出是赫萝说话，且使用了她的标志性自称「咱」",
+        "前文提到赫萝纤细的小手滑进罗伦斯手中，随后是她的发言"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001159",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.97,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.97
+        }
+      ],
+      "evidence": [
+        "上下文明确指出是赫萝说话，且使用了她的标志性自称「汝」",
+        "前文提到赫萝说话带点受不了罗伦斯似的口吻，与该句语气一致"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001160",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.96,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.96
+        }
+      ],
+      "evidence": [
+        "上下文提到「仅管如此，罗伦斯还是在心里暗自说」，紧接着是该句台词",
+        "该句语气与罗伦斯理性、略带悔恨的风格一致"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "三句台词构成一个完整的对话轮次：赫萝先表达开心，接着以调侃语气评价罗伦斯，罗伦斯最后以略带自责的语气回应。上下文明确指出了说话人，因此判断较为直接。"
+}

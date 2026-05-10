@@ -1,0 +1,34 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000993",
+      "speaker_entity_id": "char_0015",
+      "speaker_display": "列支敦·马贺特",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0015",
+          "display": "列支敦·马贺特",
+          "status": "known",
+          "score": 0.85
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.15
+        }
+      ],
+      "evidence": [
+        "对话内容涉及对梅迪欧商行的分析，符合马贺特作为商行行长的理性风格",
+        "提到罗伦斯先生您们，符合马贺特对罗伦斯的称呼习惯",
+        "语境中罗伦斯处于思考状态，而该句为分析性陈述，更可能出自马贺特"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "该段对话为马贺特对罗伦斯的提问，内容围绕梅迪欧商行的动机展开，符合马贺特作为商行代表的理性分析风格。"
+}

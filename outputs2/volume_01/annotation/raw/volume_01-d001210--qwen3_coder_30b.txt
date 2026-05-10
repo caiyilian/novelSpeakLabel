@@ -1,0 +1,41 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001210",
+      "speaker_entity_id": "volume_01-d001210",
+      "speaker_display": "袭击者",
+      "speaker_status": "mystery",
+      "confidence": 0.7,
+      "candidate_speakers": [
+        {
+          "entity_id": "mystery_volume_01_c007_s002_r002_袭击者",
+          "display": "袭击者",
+          "status": "mystery",
+          "score": 0.8
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.15
+        },
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.05
+        }
+      ],
+      "evidence": [
+        "「喀啦」声来自被罗伦斯击中的袭击者",
+        "袭击者被赫萝咬住手臂后发出声音",
+        "罗伦斯挥拳击中袭击者嘴巴上方",
+        "上下文描述袭击者倒下并发出声音"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "根据上下文，声音来自被罗伦斯击中的袭击者，虽未明确身份，但可推断为已知神秘角色"
+}
