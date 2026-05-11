@@ -7,19 +7,14 @@
       "speaker_status": "review",
       "confidence": 0.3,
       "candidate_speakers": [
-        {
-          "entity_id": "char_0001",
-          "display": "罗伦斯",
-          "status": "known",
-          "score": 0.4
-        }
+        {"entity_id": "char_0001", "display": "罗伦斯", "score": 0.6},
+        {"entity_id": "", "display": "村民", "score": 0.4}
       ],
       "evidence": [
-        "无明确说话人，但上下文显示为交易场景，可能是罗伦斯询问对方",
-        "未发现明确反证据"
+        "无明确说话人",
+        "上下文为交易场景",
+        "可能是罗伦斯询问"
       ],
-      "should_create_new_entity": false,
-      "new_entity_hint": "",
       "needs_review": true
     },
     {
@@ -27,21 +22,16 @@
       "speaker_entity_id": "",
       "speaker_display": "",
       "speaker_status": "review",
-      "confidence": 0.3,
+      "confidence": 0.4,
       "candidate_speakers": [
-        {
-          "entity_id": "char_0001",
-          "display": "罗伦斯",
-          "status": "known",
-          "score": 0.4
-        }
+        {"entity_id": "", "display": "村民", "score": 0.6},
+        {"entity_id": "char_0001", "display": "罗伦斯", "score": 0.3}
       ],
       "evidence": [
-        "回应了前一句，语气符合交易场景，可能是村民或店主",
-        "未发现明确反证据"
+        "回应前一句，语气符合交易",
+        "可能是村民或店主",
+        "无明确说话人"
       ],
-      "should_create_new_entity": false,
-      "new_entity_hint": "",
       "needs_review": true
     },
     {
@@ -49,21 +39,16 @@
       "speaker_entity_id": "",
       "speaker_display": "",
       "speaker_status": "review",
-      "confidence": 0.4,
+      "confidence": 0.5,
       "candidate_speakers": [
-        {
-          "entity_id": "char_0001",
-          "display": "罗伦斯",
-          "status": "known",
-          "score": 0.5
-        }
+        {"entity_id": "", "display": "村民", "score": 0.7},
+        {"entity_id": "char_0001", "display": "罗伦斯", "score": 0.2}
       ],
       "evidence": [
-        "明确称呼罗伦斯先生，可能是村民或店主",
-        "说话人被称呼，通常不是说话人"
+        "明确称呼罗伦斯先生",
+        "语气符合村民回应",
+        "可能是村民或店主"
       ],
-      "should_create_new_entity": false,
-      "new_entity_hint": "",
       "needs_review": true
     },
     {
@@ -71,23 +56,17 @@
       "speaker_entity_id": "char_0001",
       "speaker_display": "罗伦斯",
       "speaker_status": "known",
-      "confidence": 0.7,
+      "confidence": 0.8,
       "candidate_speakers": [
-        {
-          "entity_id": "char_0001",
-          "display": "罗伦斯",
-          "status": "known",
-          "score": 0.8
-        }
+        {"entity_id": "char_0001", "display": "罗伦斯", "score": 0.9}
       ],
       "evidence": [
-        "语气自信，符合罗伦斯的说话风格",
-        "与前文罗伦斯的语境一致，且无反证"
+        "语气自信，符合罗伦斯风格",
+        "与前文罗伦斯行为一致",
+        "无反证证据"
       ],
-      "should_create_new_entity": false,
-      "new_entity_hint": "",
       "needs_review": false
     }
   ],
-  "window_notes": "对话发生在深山村落交易结束后，罗伦斯在草原上赶路时。前两句无明确说话人，后两句中第四句明确为村民或店主对罗伦斯的回应，第五句为罗伦斯本人自述。"
+  "window_notes": "对话场景为交易结束后的交流，罗伦斯在深山村落完成交易后离开，后续对话中罗伦斯表现出自信和理性，符合其角色设定。"
 }

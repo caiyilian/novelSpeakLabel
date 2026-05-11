@@ -1,6 +1,8 @@
 你是轻小说说话人标注项目的 Stage 2.5 反证检查器。
 你的任务不是重新标注所有台词，而是检查 proposed_annotations 有没有明显矛盾。强反证时必须要求复核；弱反证只记录说明。
 
+只有 severity=strong 时 needs_review 才能为 true；severity=weak/none 时 needs_review 必须为 false。
+
 强反证示例：
 - 标成某角色，但台词用第三人称介绍这个角色的名字。
 - 标成 A，但台词命中唯一属于 B 的高区分度口癖。
@@ -230,27 +232,19 @@
         {
           "entity_id": "char_0001",
           "display": "罗伦斯",
-          "status": "known",
-          "score": 0.43,
-          "models": [
-            "rule:context"
-          ]
+          "score": 0.43
         },
         {
           "entity_id": "char_0003",
           "display": "骑士",
-          "status": "known",
-          "score": 0.425,
-          "models": [
-            "judge:qwen3-coder:30b"
-          ]
+          "score": 0.375
         }
       ],
       "evidence": [
         "规则：台词命中罗伦斯的角色记忆口癖"
       ],
       "needs_review": true,
-      "review_reason": "low_agreement:0.43;margin:0.01;support:1"
+      "review_reason": "low_agreement:0.43;margin:0.05;support:1"
     }
   ]
 }

@@ -7,12 +7,14 @@
       "speaker_status": "known",
       "confidence": 0.95,
       "candidate_speakers": [
-        {"entity_id": "char_0003", "display": "骑士", "status": "known", "score": 0.95},
-        {"entity_id": "char_0001", "display": "罗伦斯", "status": "known", "score": 0.05}
+        {"entity_id": "char_0003", "display": "骑士", "score": 0.95},
+        {"entity_id": "char_0001", "display": "罗伦斯", "score": 0.05}
       ],
-      "evidence": ["对话内容为对车上货物的提问，暗示说话人是骑士", "被称呼的人通常不是说话人，此处称呼罗伦斯"],
-      "should_create_new_entity": false,
-      "new_entity_hint": "",
+      "evidence": [
+        "对话内容为对车上货物的提问",
+        " addressed_to 罗伦斯",
+        "暗示说话人是骑士"
+      ],
       "needs_review": false
     },
     {
@@ -22,12 +24,14 @@
       "speaker_status": "known",
       "confidence": 0.95,
       "candidate_speakers": [
-        {"entity_id": "char_0001", "display": "罗伦斯", "status": "known", "score": 0.95},
-        {"entity_id": "char_0003", "display": "骑士", "status": "known", "score": 0.05}
+        {"entity_id": "char_0001", "display": "罗伦斯", "score": 0.95},
+        {"entity_id": "char_0003", "display": "骑士", "score": 0.05}
       ],
-      "evidence": ["对话内容为对车上货物的回应，暗示说话人是罗伦斯", "被称呼的人通常不是说话人，此处称呼骑士"],
-      "should_create_new_entity": false,
-      "new_entity_hint": "",
+      "evidence": [
+        "对话内容为对车上货物的回应",
+        " addressed_to 骑士",
+        "暗示说话人是罗伦斯"
+      ],
       "needs_review": false
     },
     {
@@ -37,12 +41,14 @@
       "speaker_status": "known",
       "confidence": 0.95,
       "candidate_speakers": [
-        {"entity_id": "char_0003", "display": "骑士", "status": "known", "score": 0.95},
-        {"entity_id": "char_0001", "display": "罗伦斯", "status": "known", "score": 0.05}
+        {"entity_id": "char_0003", "display": "骑士", "score": 0.95},
+        {"entity_id": "char_0001", "display": "罗伦斯", "score": 0.05}
       ],
-      "evidence": ["对话内容为对车上另一货物的提问，暗示说话人是骑士", "被称呼的人通常不是说话人，此处称呼罗伦斯"],
-      "should_create_new_entity": false,
-      "new_entity_hint": "",
+      "evidence": [
+        "对话内容为对车上另一货物的提问",
+        " addressed_to 罗伦斯",
+        "暗示说话人是骑士"
+      ],
       "needs_review": false
     },
     {
@@ -52,12 +58,14 @@
       "speaker_status": "known",
       "confidence": 0.95,
       "candidate_speakers": [
-        {"entity_id": "char_0001", "display": "罗伦斯", "status": "known", "score": 0.95},
-        {"entity_id": "char_0003", "display": "骑士", "status": "known", "score": 0.05}
+        {"entity_id": "char_0001", "display": "罗伦斯", "score": 0.95},
+        {"entity_id": "char_0003", "display": "骑士", "score": 0.05}
       ],
-      "evidence": ["对话内容为对车上另一货物的回应，暗示说话人是罗伦斯", "被称呼的人通常不是说话人，此处称呼骑士"],
-      "should_create_new_entity": false,
-      "new_entity_hint": "",
+      "evidence": [
+        "对话内容为对车上另一货物的回应",
+        " addressed_to 骑士",
+        "暗示说话人是罗伦斯"
+      ],
       "needs_review": false
     },
     {
@@ -67,12 +75,14 @@
       "speaker_status": "known",
       "confidence": 0.95,
       "candidate_speakers": [
-        {"entity_id": "char_0003", "display": "骑士", "status": "known", "score": 0.95},
-        {"entity_id": "char_0001", "display": "罗伦斯", "status": "known", "score": 0.05}
+        {"entity_id": "char_0003", "display": "骑士", "score": 0.95},
+        {"entity_id": "char_0001", "display": "罗伦斯", "score": 0.05}
       ],
-      "evidence": ["对话内容为对罗伦斯的指示，暗示说话人是骑士", "被称呼的人通常不是说话人，此处称呼罗伦斯"],
-      "should_create_new_entity": false,
-      "new_entity_hint": "",
+      "evidence": [
+        "对话内容为对罗伦斯的指示",
+        " addressed_to 罗伦斯",
+        "暗示说话人是骑士"
+      ],
       "needs_review": false
     },
     {
@@ -82,12 +92,14 @@
       "speaker_status": "known",
       "confidence": 0.95,
       "candidate_speakers": [
-        {"entity_id": "char_0001", "display": "罗伦斯", "status": "known", "score": 0.95},
-        {"entity_id": "char_0003", "display": "骑士", "status": "known", "score": 0.05}
+        {"entity_id": "char_0001", "display": "罗伦斯", "score": 0.95},
+        {"entity_id": "char_0003", "display": "骑士", "score": 0.05}
       ],
-      "evidence": ["对话内容为对骑士的回应，暗示说话人是罗伦斯", "被称呼的人通常不是说话人，此处称呼骑士"],
-      "should_create_new_entity": false,
-      "new_entity_hint": "",
+      "evidence": [
+        "对话内容为对骑士的回应",
+        " addressed_to 骑士",
+        "暗示说话人是罗伦斯"
+      ],
       "needs_review": false
     },
     {
@@ -97,12 +109,14 @@
       "speaker_status": "known",
       "confidence": 0.95,
       "candidate_speakers": [
-        {"entity_id": "char_0003", "display": "骑士", "status": "known", "score": 0.95},
-        {"entity_id": "char_0001", "display": "罗伦斯", "status": "known", "score": 0.05}
+        {"entity_id": "char_0003", "display": "骑士", "score": 0.95},
+        {"entity_id": "char_0001", "display": "罗伦斯", "score": 0.05}
       ],
-      "evidence": ["对话内容为对罗伦斯的提问，暗示说话人是骑士", "被称呼的人通常不是说话人，此处称呼罗伦斯"],
-      "should_create_new_entity": false,
-      "new_entity_hint": "",
+      "evidence": [
+        "对话内容为对罗伦斯的提问",
+        " addressed_to 罗伦斯",
+        "暗示说话人是骑士"
+      ],
       "needs_review": false
     },
     {
@@ -112,14 +126,16 @@
       "speaker_status": "known",
       "confidence": 0.95,
       "candidate_speakers": [
-        {"entity_id": "char_0001", "display": "罗伦斯", "status": "known", "score": 0.95},
-        {"entity_id": "char_0003", "display": "骑士", "status": "known", "score": 0.05}
+        {"entity_id": "char_0001", "display": "罗伦斯", "score": 0.95},
+        {"entity_id": "char_0003", "display": "骑士", "score": 0.05}
       ],
-      "evidence": ["对话内容为对骑士的回应，暗示说话人是罗伦斯", "口癖“嗯……真好吃”属于骑士，但此处为回应，说明说话人是罗伦斯"],
-      "should_create_new_entity": false,
-      "new_entity_hint": "",
+      "evidence": [
+        "对话内容为对骑士的回应",
+        " speech_marker: 嗯……真好吃",
+        "暗示说话人是罗伦斯"
+      ],
       "needs_review": false
     }
   ],
-  "window_notes": "所有对话均在修道院附近与骑士互动的场景中，角色关系明确。连续对话符合角色行为逻辑，无明显冲突或模糊之处。"
+  "window_notes": "对话围绕罗伦斯与骑士之间的互动展开，通过货物询问与回应判断说话人身份。所有对话均符合角色行为逻辑，无明显矛盾或不确定之处。"
 }

@@ -8,7 +8,13 @@
 4. 如果台词说“她/他/它的名字是 X”，通常不是 X 本人在自我介绍。
 5. 输出 speaker、正证据、反证据、needs_review。
 
-只输出严格 JSON，结构与 Stage 2 annotations 相同：
+只输出严格 JSON。输出必须紧凑，避免截断：
+- 每个 dialogue_id 只输出 1 条 annotation。
+- candidate_speakers 最多 2 个候选；如果 needs_review=true，也列出最可能的 1-2 个。
+- evidence 最多 3 条，每条不超过 30 字；不要重复长段原文。
+- 不要输出 should_create_new_entity / new_entity_hint，除非确实要新建未知人物。
+
+JSON 结构：
 {
   "annotations": [
     {
@@ -18,11 +24,9 @@
       "speaker_status": "known|mystery|npc|ambiguous|review",
       "confidence": 0.0,
       "candidate_speakers": [
-        {"entity_id": "string", "display": "string", "status": "known|mystery|npc|ambiguous|review", "score": 0.0}
+        {"entity_id": "string", "display": "string", "score": 0.0}
       ],
-      "evidence": ["正证据和必要反证，短句"],
-      "should_create_new_entity": false,
-      "new_entity_hint": "",
+      "evidence": ["短证据"],
       "needs_review": false
     }
   ],

@@ -1,6 +1,8 @@
 你是轻小说说话人标注项目的 Stage 2.5 反证检查器。
 你的任务不是重新标注所有台词，而是检查 proposed_annotations 有没有明显矛盾。强反证时必须要求复核；弱反证只记录说明。
 
+只有 severity=strong 时 needs_review 才能为 true；severity=weak/none 时 needs_review 必须为 false。
+
 强反证示例：
 - 标成某角色，但台词用第三人称介绍这个角色的名字。
 - 标成 A，但台词命中唯一属于 B 的高区分度口癖。
@@ -654,16 +656,13 @@
         {
           "entity_id": "char_0001",
           "display": "罗伦斯",
-          "status": "known",
-          "score": 0.95,
-          "models": [
-            "judge:qwen3-coder:30b"
-          ]
+          "score": 0.95
         }
       ],
       "evidence": [
-        "罗伦斯是场景中唯一已知的说话人",
-        "上下文明确罗伦斯在修道院附近与骑士互动"
+        "罗伦斯是场景中唯一已知说话人",
+        "上下文明确罗伦斯在场",
+        "无反证据"
       ],
       "needs_review": true,
       "review_reason": "single_model_without_anchor"
@@ -678,25 +677,18 @@
         {
           "entity_id": "char_0003",
           "display": "骑士",
-          "status": "known",
-          "score": 0.45,
-          "models": [
-            "judge:qwen3-coder:30b"
-          ]
+          "score": 0.45
         },
         {
           "entity_id": "char_0001",
           "display": "罗伦斯",
-          "status": "known",
-          "score": 0.43,
-          "models": [
-            "rule:context"
-          ]
+          "score": 0.43
         }
       ],
       "evidence": [
-        "对话对象为罗伦斯，可能是骑士回应",
-        "骑士在修道院附近出现，态度傲慢"
+        "对话对象为罗伦斯，符合骑士回应",
+        "骑士态度傲慢，符合角色设定",
+        "无反证据"
       ],
       "needs_review": true,
       "review_reason": "speaker_contradiction:speech_marker:罗伦斯"
@@ -711,20 +703,12 @@
         {
           "entity_id": "char_0003",
           "display": "骑士",
-          "status": "known",
-          "score": 0.49,
-          "models": [
-            "rule:context"
-          ]
+          "score": 0.49
         },
         {
           "entity_id": "char_0001",
           "display": "罗伦斯",
-          "status": "known",
-          "score": 0.45,
-          "models": [
-            "judge:qwen3-coder:30b"
-          ]
+          "score": 0.475
         }
       ],
       "evidence": [
@@ -743,18 +727,13 @@
         {
           "entity_id": "char_0001",
           "display": "罗伦斯",
-          "status": "known",
-          "score": 0.965,
-          "models": [
-            "judge:qwen3-coder:30b",
-            "rule:context"
-          ]
+          "score": 0.98
         }
       ],
       "evidence": [
         "明确自称罗伦斯，符合角色设定",
-        "罗伦斯在场景中主动递糖，符合上下文",
-        "规则：自我介绍提到罗伦斯"
+        "罗伦斯在场景中持续对话",
+        "无反证据"
       ],
       "needs_review": false,
       "review_reason": ""
@@ -769,18 +748,13 @@
         {
           "entity_id": "char_0003",
           "display": "骑士",
-          "status": "known",
-          "score": 0.94,
-          "models": [
-            "judge:qwen3-coder:30b",
-            "rule:context"
-          ]
+          "score": 0.94
         }
       ],
       "evidence": [
-        "对话对象为罗伦斯，可能是骑士回应",
+        "对话对象为罗伦斯，符合骑士回应",
         "骑士态度傲慢，符合角色设定",
-        "规则：上下文叙述把台词归给骑士"
+        "无反证据"
       ],
       "needs_review": false,
       "review_reason": ""
@@ -795,16 +769,13 @@
         {
           "entity_id": "char_0001",
           "display": "罗伦斯",
-          "status": "known",
-          "score": 0.95,
-          "models": [
-            "judge:qwen3-coder:30b"
-          ]
+          "score": 0.95
         }
       ],
       "evidence": [
         "罗伦斯在场景中主动递糖，符合上下文",
-        "罗伦斯在场景中持续对话，符合上下文"
+        "罗伦斯在场并持续对话",
+        "无反证据"
       ],
       "needs_review": true,
       "review_reason": "single_model_without_anchor"
@@ -819,16 +790,13 @@
         {
           "entity_id": "char_0003",
           "display": "骑士",
-          "status": "known",
-          "score": 0.95,
-          "models": [
-            "judge:qwen3-coder:30b"
-          ]
+          "score": 0.95
         }
       ],
       "evidence": [
         "符合骑士的迟疑语气",
-        "骑士在场景中出现并回应罗伦斯"
+        "对话对象为罗伦斯",
+        "无反证据"
       ],
       "needs_review": true,
       "review_reason": "speaker_contradiction:speech_marker:罗伦斯"
@@ -843,16 +811,13 @@
         {
           "entity_id": "char_0001",
           "display": "罗伦斯",
-          "status": "known",
-          "score": 0.95,
-          "models": [
-            "judge:qwen3-coder:30b"
-          ]
+          "score": 0.95
         }
       ],
       "evidence": [
         "罗伦斯在场景中持续对话，符合上下文",
-        "罗伦斯在场景中主动递糖，符合上下文"
+        "罗伦斯在场并持续对话",
+        "无反证据"
       ],
       "needs_review": true,
       "review_reason": "single_model_without_anchor"

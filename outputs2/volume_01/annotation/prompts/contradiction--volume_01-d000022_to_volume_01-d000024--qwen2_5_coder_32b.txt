@@ -1,6 +1,8 @@
 你是轻小说说话人标注项目的 Stage 2.5 反证检查器。
 你的任务不是重新标注所有台词，而是检查 proposed_annotations 有没有明显矛盾。强反证时必须要求复核；弱反证只记录说明。
 
+只有 severity=strong 时 needs_review 才能为 true；severity=weak/none 时 needs_review 必须为 false。
+
 强反证示例：
 - 标成某角色，但台词用第三人称介绍这个角色的名字。
 - 标成 A，但台词命中唯一属于 B 的高区分度口癖。
@@ -313,25 +315,22 @@
       "dialogue_id": "volume_01-d000022",
       "speaker_entity_id": "char_0003",
       "speaker_display": "骑士",
-      "speaker_status": "review",
+      "speaker_status": "known",
       "confidence": 0.85,
       "candidate_speakers": [
         {
           "entity_id": "char_0003",
           "display": "骑士",
-          "status": "known",
-          "score": 0.85,
-          "models": [
-            "judge:qwen3-coder:30b"
-          ]
+          "score": 0.85
         }
       ],
       "evidence": [
-        "对话中提问对象为罗伦斯，暗示说话人不是罗伦斯",
-        "骑士是唯一在场且有互动的已知角色"
+        "提问对象为罗伦斯，暗示说话人不是罗伦斯",
+        "骑士态度傲慢，符合提问者身份",
+        "上下文暗示为骑士提问"
       ],
-      "needs_review": true,
-      "review_reason": "single_model_without_anchor"
+      "needs_review": false,
+      "review_reason": ""
     },
     {
       "dialogue_id": "volume_01-d000023",
@@ -343,17 +342,13 @@
         {
           "entity_id": "char_0001",
           "display": "罗伦斯",
-          "status": "known",
-          "score": 0.95,
-          "models": [
-            "judge:qwen3-coder:30b"
-          ]
+          "score": 0.95
         }
       ],
       "evidence": [
         "明确指出罗伦斯回答",
-        "命中罗伦斯的口癖'我不知道耶。'",
-        "上下文描述罗伦斯撒谎并假装思考"
+        "命中罗伦斯口癖'我不知道耶。'",
+        "上下文描述为罗伦斯撒谎"
       ],
       "needs_review": true,
       "review_reason": "non_standalone_quote"
@@ -368,17 +363,13 @@
         {
           "entity_id": "char_0003",
           "display": "骑士",
-          "status": "known",
-          "score": 0.8,
-          "models": [
-            "judge:qwen3-coder:30b"
-          ]
+          "score": 0.8
         }
       ],
       "evidence": [
-        "无明确说话人，但语气带有批评意味，可能为骑士",
-        "骑士是唯一在场角色，且前文有互动",
-        "罗伦斯未在该句中出现，无直接证据指向其说话"
+        "语气带有批评意味，符合骑士性格",
+        "与前文对话形成对比，可能为骑士回应",
+        "无明确说话人但上下文暗示为骑士"
       ],
       "needs_review": true,
       "review_reason": "single_model_without_anchor"

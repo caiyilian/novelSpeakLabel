@@ -1,6 +1,8 @@
 你是轻小说说话人标注项目的 Stage 2.5 反证检查器。
 你的任务不是重新标注所有台词，而是检查 proposed_annotations 有没有明显矛盾。强反证时必须要求复核；弱反证只记录说明。
 
+只有 severity=strong 时 needs_review 才能为 true；severity=weak/none 时 needs_review 必须为 false。
+
 强反证示例：
 - 标成某角色，但台词用第三人称介绍这个角色的名字。
 - 标成 A，但台词命中唯一属于 B 的高区分度口癖。
@@ -333,20 +335,12 @@
         {
           "entity_id": "npc:小村落的村民",
           "display": "小村落的村民",
-          "status": "npc",
-          "score": 0.46,
-          "models": [
-            "rule:context"
-          ]
+          "score": 0.46
         },
         {
           "entity_id": "review:unknown",
           "display": "待复核",
-          "status": "review",
-          "score": 0.15,
-          "models": [
-            "judge:qwen3-coder:30b"
-          ]
+          "score": 0.15
         }
       ],
       "evidence": [
@@ -367,20 +361,12 @@
         {
           "entity_id": "char_0001",
           "display": "罗伦斯",
-          "status": "known",
-          "score": 0.43,
-          "models": [
-            "rule:context"
-          ]
+          "score": 0.43
         },
         {
           "entity_id": "review:unknown",
           "display": "待复核",
-          "status": "review",
-          "score": 0.15,
-          "models": [
-            "judge:qwen3-coder:30b"
-          ]
+          "score": 0.2
         }
       ],
       "evidence": [
@@ -399,20 +385,12 @@
         {
           "entity_id": "npc:小村落的村民",
           "display": "小村落的村民",
-          "status": "npc",
-          "score": 0.49,
-          "models": [
-            "rule:context"
-          ]
+          "score": 0.49
         },
         {
           "entity_id": "review:unknown",
           "display": "待复核",
-          "status": "review",
-          "score": 0.2,
-          "models": [
-            "judge:qwen3-coder:30b"
-          ]
+          "score": 0.25
         }
       ],
       "evidence": [
@@ -432,19 +410,13 @@
         {
           "entity_id": "char_0001",
           "display": "罗伦斯",
-          "status": "known",
-          "score": 0.81,
-          "models": [
-            "judge:qwen3-coder:30b",
-            "rule:context"
-          ]
+          "score": 0.86
         }
       ],
       "evidence": [
-        "语气自信，符合罗伦斯的说话风格",
-        "与前文罗伦斯的语境一致，且无反证",
-        "规则：相邻两人连续对白按轮次交替",
-        "规则：台词命中罗伦斯的角色记忆口癖"
+        "语气自信，符合罗伦斯风格",
+        "与前文罗伦斯行为一致",
+        "无反证证据"
       ],
       "needs_review": false,
       "review_reason": ""

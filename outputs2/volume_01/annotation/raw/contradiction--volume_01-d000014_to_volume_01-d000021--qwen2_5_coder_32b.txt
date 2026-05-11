@@ -43,27 +43,27 @@
     {
       "dialogue_id": "volume_01-d000019",
       "has_contradiction": true,
-      "severity": "strong",
-      "reason": "标成罗伦斯，但台词命中唯一属于骑士的高区分度口癖「嗯……真好吃」。",
-      "counter_evidence": ["对话内容为对骑士的回应，暗示说话人是罗伦斯", "被称呼的人通常不是说话人，此处称呼骑士"],
-      "needs_review": true
+      "severity": "weak",
+      "reason": "对话内容为对骑士的回应，但对话形式为 inline，且 outside_quote_text 中包含罗伦斯的行为描述。",
+      "counter_evidence": ["对话形式为 inline，outside_quote_text 包含罗伦斯的行为描述"],
+      "needs_review": false
     },
     {
       "dialogue_id": "volume_01-d000020",
-      "has_contradiction": false,
-      "severity": "none",
-      "reason": "",
-      "counter_evidence": [],
+      "has_contradiction": true,
+      "severity": "weak",
+      "reason": "对话内容为对罗伦斯的提问，但 candidate_speakers 中骑士和罗伦斯的得分接近。",
+      "counter_evidence": ["candidate_speakers 中骑士和罗伦斯的得分接近"],
       "needs_review": false
     },
     {
       "dialogue_id": "volume_01-d000021",
       "has_contradiction": true,
       "severity": "weak",
-      "reason": "标成骑士，但候选角色得分接近。",
-      "counter_evidence": ["规则：相邻两人连续对白按轮次交替", "规则：同一小段只有两个本地说话候选"],
+      "reason": "对话内容为对骑士的回应，但 candidate_speakers 中骑士和罗伦斯的得分接近。",
+      "counter_evidence": ["candidate_speakers 中骑士和罗伦斯的得分接近"],
       "needs_review": false
     }
   ],
-  "window_notes": "对话19存在强反证，需要复核。对话21存在弱反证，记录说明即可。"
+  "window_notes": "volume_01-d000019 的对话形式为 inline，且 outside_quote_text 包含罗伦斯的行为描述，这可能影响了说话人的判断。volume_01-d000020 和 volume_01-d000021 中 candidate_speakers 的得分接近，可能存在混淆。"
 }

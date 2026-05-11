@@ -12,9 +12,9 @@
       "dialogue_id": "volume_01-d000007",
       "has_contradiction": true,
       "severity": "weak",
-      "reason": "对话对象为罗伦斯，可能是骑士回应，但模型对角色的区分度不高。",
+      "reason": "对话对象为罗伦斯，但标注为骑士。虽然有高区分度的口癖支持骑士，但没有明确反证。",
       "counter_evidence": [
-        "confidence score for both characters is low"
+        "对话对象为罗伦斯"
       ],
       "needs_review": false
     },
@@ -44,30 +44,34 @@
     },
     {
       "dialogue_id": "volume_01-d000011",
-      "has_contradiction": false,
-      "severity": "none",
-      "reason": "",
-      "counter_evidence": [],
+      "has_contradiction": true,
+      "severity": "weak",
+      "reason": "对话对象为罗伦斯，但标注为罗伦斯。虽然有高区分度的口癖支持罗伦斯，但没有明确反证。",
+      "counter_evidence": [
+        "对话对象为罗伦斯"
+      ],
       "needs_review": false
     },
     {
       "dialogue_id": "volume_01-d000012",
       "has_contradiction": true,
       "severity": "weak",
-      "reason": "符合骑士的迟疑语气，但模型对角色的区分度不高。",
+      "reason": "标注为骑士，但有高区分度的口癖支持罗伦斯。",
       "counter_evidence": [
-        "confidence score for both characters is low"
+        "符合骑士的迟疑语气"
       ],
       "needs_review": false
     },
     {
       "dialogue_id": "volume_01-d000013",
-      "has_contradiction": false,
-      "severity": "none",
-      "reason": "",
-      "counter_evidence": [],
+      "has_contradiction": true,
+      "severity": "weak",
+      "reason": "对话对象为罗伦斯，但标注为罗伦斯。虽然有高区分度的口癖支持罗伦斯，但没有明确反证。",
+      "counter_evidence": [
+        "对话对象为罗伦斯"
+      ],
       "needs_review": false
     }
   ],
-  "window_notes": "对话中存在一些角色区分度不高的情况，但没有明显的强反证。"
+  "window_notes": "多处标注依赖于上下文和角色设定，但缺乏明确的说话人锚点。部分标注存在弱反证，但不足以要求复核。"
 }

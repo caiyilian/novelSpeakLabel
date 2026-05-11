@@ -1,6 +1,8 @@
 你是轻小说说话人标注项目的 Stage 2.5 反证检查器。
 你的任务不是重新标注所有台词，而是检查 proposed_annotations 有没有明显矛盾。强反证时必须要求复核；弱反证只记录说明。
 
+只有 severity=strong 时 needs_review 才能为 true；severity=weak/none 时 needs_review 必须为 false。
+
 强反证示例：
 - 标成某角色，但台词用第三人称介绍这个角色的名字。
 - 标成 A，但台词命中唯一属于 B 的高区分度口癖。
@@ -313,22 +315,18 @@
       "speaker_entity_id": "review:unknown",
       "speaker_display": "待复核",
       "speaker_status": "review",
-      "confidence": 0.0,
+      "confidence": 0.3,
       "candidate_speakers": [
         {
           "entity_id": "review:unknown",
           "display": "待复核",
-          "status": "review",
-          "score": 0.0,
-          "models": [
-            "judge:qwen3-coder:30b"
-          ]
+          "score": 0.3
         }
       ],
       "evidence": [
-        "「嗷呜～～～～～～～」可能是狼的叫声，暗示赫萝的出现",
-        "没有明确说话人，无法直接确认说话人身份",
-        "该台词可能是赫萝的化身或象征，但无明确说话人，需结合上下文进一步判断"
+        "「嗷呜～～～～～～～」可能是狼的叫声",
+        "赫萝化身或象征的暗示",
+        "无明确说话人确认"
       ],
       "needs_review": true,
       "review_reason": "model_requested_review"
@@ -338,22 +336,18 @@
       "speaker_entity_id": "review:unknown",
       "speaker_display": "待复核",
       "speaker_status": "review",
-      "confidence": 0.0,
+      "confidence": 0.4,
       "candidate_speakers": [
         {
           "entity_id": "review:unknown",
           "display": "待复核",
-          "status": "review",
-          "score": 0.0,
-          "models": [
-            "judge:qwen3-coder:30b"
-          ]
+          "score": 0.4
         }
       ],
       "evidence": [
-        "「赫萝！赫萝！赫萝！」可能是村民对「狼赫萝」化身的回应，暗示说话人是村民群体",
-        "没有明确说话人，无法确认是否为赫萝本人说话",
-        "台词中重复「赫萝」，可能是村民对「狼赫萝」化身的欢呼，但无明确说话人，需结合上下文进一步判断"
+        "重复呼唤赫萝，村民欢呼可能",
+        "「狼赫萝出现了」提及赫萝",
+        "无明确说话人确认"
       ],
       "needs_review": true,
       "review_reason": "model_requested_review"

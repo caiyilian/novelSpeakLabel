@@ -1,6 +1,8 @@
 你是轻小说说话人标注项目的 Stage 2.5 反证检查器。
 你的任务不是重新标注所有台词，而是检查 proposed_annotations 有没有明显矛盾。强反证时必须要求复核；弱反证只记录说明。
 
+只有 severity=strong 时 needs_review 才能为 true；severity=weak/none 时 needs_review 必须为 false。
+
 强反证示例：
 - 标成某角色，但台词用第三人称介绍这个角色的名字。
 - 标成 A，但台词命中唯一属于 B 的高区分度口癖。
@@ -618,91 +620,171 @@
   "proposed_annotations": [
     {
       "dialogue_id": "volume_01-d000031",
-      "speaker_entity_id": "review:no_vote",
-      "speaker_display": "待复核",
+      "speaker_entity_id": "村民群体",
+      "speaker_display": "村民群体",
       "speaker_status": "review",
-      "confidence": 0.0,
-      "candidate_speakers": [],
-      "evidence": [],
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "村民群体",
+          "display": "村民群体",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "集体喊叫，符合村民群体行为",
+        "无明确说话人",
+        "场景描述为村民聚集叫喊"
+      ],
       "needs_review": true,
-      "review_reason": "no_valid_votes"
+      "review_reason": "single_model_mystery_candidate"
     },
     {
       "dialogue_id": "volume_01-d000032",
-      "speaker_entity_id": "review:no_vote",
-      "speaker_display": "待复核",
+      "speaker_entity_id": "村民群体",
+      "speaker_display": "村民群体",
       "speaker_status": "review",
-      "confidence": 0.0,
-      "candidate_speakers": [],
-      "evidence": [],
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "村民群体",
+          "display": "村民群体",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "集体喊叫，符合村民群体行为",
+        "无明确说话人",
+        "场景描述为村民聚集叫喊"
+      ],
       "needs_review": true,
-      "review_reason": "no_valid_votes"
+      "review_reason": "single_model_mystery_candidate"
     },
     {
       "dialogue_id": "volume_01-d000033",
-      "speaker_entity_id": "review:no_vote",
-      "speaker_display": "待复核",
+      "speaker_entity_id": "村民群体",
+      "speaker_display": "村民群体",
       "speaker_status": "review",
-      "confidence": 0.0,
-      "candidate_speakers": [],
-      "evidence": [],
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "村民群体",
+          "display": "村民群体",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "集体喊叫，符合村民群体行为",
+        "无明确说话人",
+        "场景描述为村民聚集叫喊"
+      ],
       "needs_review": true,
-      "review_reason": "no_valid_votes"
+      "review_reason": "single_model_mystery_candidate"
     },
     {
       "dialogue_id": "volume_01-d000034",
-      "speaker_entity_id": "review:no_vote",
-      "speaker_display": "待复核",
+      "speaker_entity_id": "村民群体",
+      "speaker_display": "村民群体",
       "speaker_status": "review",
-      "confidence": 0.0,
-      "candidate_speakers": [],
-      "evidence": [],
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "村民群体",
+          "display": "村民群体",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "集体喊叫，符合村民群体行为",
+        "无明确说话人",
+        "场景描述为村民聚集叫喊"
+      ],
       "needs_review": true,
-      "review_reason": "no_valid_votes"
+      "review_reason": "single_model_mystery_candidate"
     },
     {
       "dialogue_id": "volume_01-d000035",
-      "speaker_entity_id": "review:no_vote",
-      "speaker_display": "待复核",
+      "speaker_entity_id": "村民群体",
+      "speaker_display": "村民群体",
       "speaker_status": "review",
-      "confidence": 0.0,
-      "candidate_speakers": [],
-      "evidence": [],
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "村民群体",
+          "display": "村民群体",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "集体喊叫，符合村民群体行为",
+        "无明确说话人",
+        "场景描述为村民聚集叫喊"
+      ],
       "needs_review": true,
-      "review_reason": "no_valid_votes"
+      "review_reason": "single_model_mystery_candidate"
     },
     {
       "dialogue_id": "volume_01-d000036",
-      "speaker_entity_id": "review:no_vote",
-      "speaker_display": "待复核",
+      "speaker_entity_id": "村民群体",
+      "speaker_display": "村民群体",
       "speaker_status": "review",
-      "confidence": 0.0,
-      "candidate_speakers": [],
-      "evidence": [],
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "村民群体",
+          "display": "村民群体",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "集体喊叫，符合村民群体行为",
+        "无明确说话人",
+        "场景描述为村民聚集叫喊"
+      ],
       "needs_review": true,
-      "review_reason": "no_valid_votes"
+      "review_reason": "single_model_mystery_candidate"
     },
     {
       "dialogue_id": "volume_01-d000037",
-      "speaker_entity_id": "review:no_vote",
-      "speaker_display": "待复核",
+      "speaker_entity_id": "村民群体",
+      "speaker_display": "村民群体",
       "speaker_status": "review",
-      "confidence": 0.0,
-      "candidate_speakers": [],
-      "evidence": [],
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "村民群体",
+          "display": "村民群体",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "集体喊叫，符合村民群体行为",
+        "无明确说话人",
+        "场景描述为村民聚集叫喊"
+      ],
       "needs_review": true,
-      "review_reason": "no_valid_votes"
+      "review_reason": "single_model_mystery_candidate"
     },
     {
       "dialogue_id": "volume_01-d000038",
-      "speaker_entity_id": "review:no_vote",
-      "speaker_display": "待复核",
+      "speaker_entity_id": "村民群体",
+      "speaker_display": "村民群体",
       "speaker_status": "review",
-      "confidence": 0.0,
-      "candidate_speakers": [],
-      "evidence": [],
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "村民群体",
+          "display": "村民群体",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "集体喊叫，符合村民群体行为",
+        "无明确说话人",
+        "场景描述为村民聚集叫喊"
+      ],
       "needs_review": true,
-      "review_reason": "no_valid_votes"
+      "review_reason": "single_model_mystery_candidate"
     }
   ]
 }

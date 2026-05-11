@@ -7,29 +7,16 @@
       "speaker_status": "known",
       "confidence": 0.75,
       "candidate_speakers": [
-        {
-          "entity_id": "char_0001",
-          "display": "罗伦斯",
-          "status": "known",
-          "score": 0.8
-        },
-        {
-          "entity_id": "char_0004",
-          "display": "农夫",
-          "status": "known",
-          "score": 0.2
-        }
+        {"entity_id": "char_0001", "display": "罗伦斯", "score": 0.8},
+        {"entity_id": "char_0004", "display": "农夫", "score": 0.2}
       ],
       "evidence": [
-        "对话出现在罗伦斯与农夫互动的场景中",
-        "下一句描述罗伦斯的动作，暗示说话人可能是罗伦斯",
-        "农夫没有明确的口癖或自称证据",
-        "对话内容与罗伦斯理性、略带担忧的说话风格相符"
+        "对话出现在罗伦斯与农夫互动场景中",
+        "下一句描述罗伦斯的动作",
+        "罗伦斯理性语气符合语境"
       ],
-      "should_create_new_entity": false,
-      "new_entity_hint": "",
       "needs_review": false
     }
   ],
-  "window_notes": "该段对话处于罗伦斯与农夫互动的场景中，且下一句描述罗伦斯的动作，结合其理性说话风格和上下文情境，倾向于判断为罗伦斯所说。但因缺乏直接证据，存在不确定性，故需谨慎处理。"
+  "window_notes": "对话孤立，但结合上下文罗伦斯在场且语境合理，倾向于罗伦斯说话。"
 }

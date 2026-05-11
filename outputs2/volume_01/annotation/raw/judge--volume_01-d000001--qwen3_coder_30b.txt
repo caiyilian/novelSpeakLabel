@@ -7,29 +7,16 @@
       "speaker_status": "known",
       "confidence": 0.95,
       "candidate_speakers": [
-        {
-          "entity_id": "char_0002",
-          "display": "赫萝",
-          "status": "known",
-          "score": 0.95
-        },
-        {
-          "entity_id": "char_0001",
-          "display": "罗伦斯",
-          "status": "known",
-          "score": 0.05
-        }
+        {"entity_id": "char_0002", "display": "赫萝", "score": 0.95},
+        {"entity_id": "char_0001", "display": "罗伦斯", "score": 0.05}
       ],
       "evidence": [
         "台词中明确自称‘咱是赫萝’",
         "上下文提到‘自称是丰收之神赫萝的美丽少女’",
-        "台词风格与赫萝的‘咱’自称一致",
-        "‘咱’是赫萝的标志性自称，符合其说话风格"
+        "台词风格与赫萝的‘咱’自称一致"
       ],
-      "should_create_new_entity": false,
-      "new_entity_hint": "",
       "needs_review": false
     }
   ],
-  "window_notes": "该段对话明确由赫萝说出，自称‘咱’并表明身份为赫萝，上下文与角色描述一致，无反证。"
+  "window_notes": "赫萝明确自称‘咱是赫萝’，且上下文支持其身份，证据充分。"
 }

@@ -5,27 +5,16 @@
       "speaker_entity_id": "",
       "speaker_display": "",
       "speaker_status": "review",
-      "confidence": 0.0,
+      "confidence": 0.3,
       "candidate_speakers": [
-        {
-          "entity_id": "char_0004",
-          "display": "农夫",
-          "status": "known",
-          "score": 0.6
-        },
-        {
-          "entity_id": "char_0001",
-          "display": "罗伦斯",
-          "status": "known",
-          "score": 0.4
-        }
+        {"entity_id": "char_0004", "display": "农夫", "score": 0.6},
+        {"entity_id": "char_0001", "display": "罗伦斯", "score": 0.4}
       ],
       "evidence": [
-        "对话语气友好，可能是罗伦斯向农夫打招呼",
-        "无明确说话人线索"
+        "语气友好，似打招呼",
+        "无明确说话人线索",
+        "罗伦斯在场，但未被指明"
       ],
-      "should_create_new_entity": false,
-      "new_entity_hint": "",
       "needs_review": true
     },
     {
@@ -33,27 +22,16 @@
       "speaker_entity_id": "",
       "speaker_display": "",
       "speaker_status": "review",
-      "confidence": 0.0,
+      "confidence": 0.25,
       "candidate_speakers": [
-        {
-          "entity_id": "char_0004",
-          "display": "农夫",
-          "status": "known",
-          "score": 0.7
-        },
-        {
-          "entity_id": "char_0001",
-          "display": "罗伦斯",
-          "status": "known",
-          "score": 0.3
-        }
+        {"entity_id": "char_0004", "display": "农夫", "score": 0.55},
+        {"entity_id": "char_0001", "display": "罗伦斯", "score": 0.45}
       ],
       "evidence": [
-        "可能是农夫对罗伦斯的回应",
-        "无明确说话人线索"
+        "短促回应，似对罗伦斯提问",
+        "无明确说话人线索",
+        "罗伦斯在场，但未被指明"
       ],
-      "should_create_new_entity": false,
-      "new_entity_hint": "",
       "needs_review": true
     },
     {
@@ -61,27 +39,16 @@
       "speaker_entity_id": "",
       "speaker_display": "",
       "speaker_status": "review",
-      "confidence": 0.0,
+      "confidence": 0.35,
       "candidate_speakers": [
-        {
-          "entity_id": "char_0001",
-          "display": "罗伦斯",
-          "status": "known",
-          "score": 0.8
-        },
-        {
-          "entity_id": "char_0004",
-          "display": "农夫",
-          "status": "known",
-          "score": 0.2
-        }
+        {"entity_id": "char_0001", "display": "罗伦斯", "score": 0.6},
+        {"entity_id": "char_0004", "display": "农夫", "score": 0.4}
       ],
       "evidence": [
-        "明确提到“叶勒”，可能是罗伦斯提问",
-        "无明确说话人线索"
+        "明确提到“叶勒”，似罗伦斯询问",
+        "无明确说话人线索",
+        "罗伦斯在场，但未被指明"
       ],
-      "should_create_new_entity": false,
-      "new_entity_hint": "",
       "needs_review": true
     },
     {
@@ -91,27 +58,15 @@
       "speaker_status": "known",
       "confidence": 0.9,
       "candidate_speakers": [
-        {
-          "entity_id": "char_0004",
-          "display": "农夫",
-          "status": "known",
-          "score": 0.9
-        },
-        {
-          "entity_id": "char_0001",
-          "display": "罗伦斯",
-          "status": "known",
-          "score": 0.1
-        }
+        {"entity_id": "char_0004", "display": "农夫", "score": 0.95}
       ],
       "evidence": [
-        "描述符合农夫的说话风格，可能是农夫回答",
-        "上下文明确指出是农夫回答"
+        "描述符合农夫说话风格",
+        "上下文明确指出是农夫",
+        "语气朴实，符合农夫性格"
       ],
-      "should_create_new_entity": false,
-      "new_entity_hint": "",
       "needs_review": false
     }
   ],
-  "window_notes": "前三个对话均无明确说话人线索，需结合上下文和角色关系判断。第四个对话通过上下文明确为农夫所说，证据充分。"
+  "window_notes": "前四句对话中，前三句说话人不确定，第四句明确为农夫。"
 }

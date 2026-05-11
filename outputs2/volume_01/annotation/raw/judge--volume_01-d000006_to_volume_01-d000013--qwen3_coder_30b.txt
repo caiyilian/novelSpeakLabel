@@ -7,25 +7,14 @@
       "speaker_status": "known",
       "confidence": 0.95,
       "candidate_speakers": [
-        {
-          "entity_id": "char_0001",
-          "display": "罗伦斯",
-          "status": "known",
-          "score": 0.95
-        },
-        {
-          "entity_id": "char_0003",
-          "display": "骑士",
-          "status": "known",
-          "score": 0.05
-        }
+        {"entity_id": "char_0001", "display": "罗伦斯", "score": 0.95},
+        {"entity_id": "char_0003", "display": "骑士", "score": 0.05}
       ],
       "evidence": [
-        "罗伦斯是场景中唯一已知的说话人",
-        "上下文明确罗伦斯在修道院附近与骑士互动"
+        "罗伦斯是场景中唯一已知说话人",
+        "上下文明确罗伦斯在场",
+        "无反证据"
       ],
-      "should_create_new_entity": false,
-      "new_entity_hint": "",
       "needs_review": false
     },
     {
@@ -35,25 +24,14 @@
       "speaker_status": "known",
       "confidence": 0.9,
       "candidate_speakers": [
-        {
-          "entity_id": "char_0003",
-          "display": "骑士",
-          "status": "known",
-          "score": 0.9
-        },
-        {
-          "entity_id": "char_0001",
-          "display": "罗伦斯",
-          "status": "known",
-          "score": 0.1
-        }
+        {"entity_id": "char_0003", "display": "骑士", "score": 0.9},
+        {"entity_id": "char_0001", "display": "罗伦斯", "score": 0.1}
       ],
       "evidence": [
-        "对话对象为罗伦斯，可能是骑士回应",
-        "骑士在修道院附近出现，态度傲慢"
+        "对话对象为罗伦斯，符合骑士回应",
+        "骑士态度傲慢，符合角色设定",
+        "无反证据"
       ],
-      "should_create_new_entity": false,
-      "new_entity_hint": "",
       "needs_review": false
     },
     {
@@ -61,27 +39,16 @@
       "speaker_entity_id": "char_0001",
       "speaker_display": "罗伦斯",
       "speaker_status": "known",
-      "confidence": 0.9,
+      "confidence": 0.95,
       "candidate_speakers": [
-        {
-          "entity_id": "char_0001",
-          "display": "罗伦斯",
-          "status": "known",
-          "score": 0.9
-        },
-        {
-          "entity_id": "char_0003",
-          "display": "骑士",
-          "status": "known",
-          "score": 0.1
-        }
+        {"entity_id": "char_0001", "display": "罗伦斯", "score": 0.95},
+        {"entity_id": "char_0003", "display": "骑士", "score": 0.05}
       ],
       "evidence": [
         "罗伦斯已出现，此句可能是他对骑士的回应",
-        "罗伦斯在场景中持续对话，符合上下文"
+        "上下文明确罗伦斯在场",
+        "无反证据"
       ],
-      "should_create_new_entity": false,
-      "new_entity_hint": "",
       "needs_review": false
     },
     {
@@ -89,27 +56,16 @@
       "speaker_entity_id": "char_0001",
       "speaker_display": "罗伦斯",
       "speaker_status": "known",
-      "confidence": 0.95,
+      "confidence": 0.98,
       "candidate_speakers": [
-        {
-          "entity_id": "char_0001",
-          "display": "罗伦斯",
-          "status": "known",
-          "score": 0.95
-        },
-        {
-          "entity_id": "char_0003",
-          "display": "骑士",
-          "status": "known",
-          "score": 0.05
-        }
+        {"entity_id": "char_0001", "display": "罗伦斯", "score": 0.98},
+        {"entity_id": "char_0003", "display": "骑士", "score": 0.02}
       ],
       "evidence": [
         "明确自称罗伦斯，符合角色设定",
-        "罗伦斯在场景中主动递糖，符合上下文"
+        "罗伦斯在场景中持续对话",
+        "无反证据"
       ],
-      "should_create_new_entity": false,
-      "new_entity_hint": "",
       "needs_review": false
     },
     {
@@ -119,25 +75,14 @@
       "speaker_status": "known",
       "confidence": 0.9,
       "candidate_speakers": [
-        {
-          "entity_id": "char_0003",
-          "display": "骑士",
-          "status": "known",
-          "score": 0.9
-        },
-        {
-          "entity_id": "char_0001",
-          "display": "罗伦斯",
-          "status": "known",
-          "score": 0.1
-        }
+        {"entity_id": "char_0003", "display": "骑士", "score": 0.9},
+        {"entity_id": "char_0001", "display": "罗伦斯", "score": 0.1}
       ],
       "evidence": [
-        "对话对象为罗伦斯，可能是骑士回应",
-        "骑士态度傲慢，符合角色设定"
+        "对话对象为罗伦斯，符合骑士回应",
+        "骑士态度傲慢，符合角色设定",
+        "无反证据"
       ],
-      "should_create_new_entity": false,
-      "new_entity_hint": "",
       "needs_review": false
     },
     {
@@ -147,25 +92,14 @@
       "speaker_status": "known",
       "confidence": 0.95,
       "candidate_speakers": [
-        {
-          "entity_id": "char_0001",
-          "display": "罗伦斯",
-          "status": "known",
-          "score": 0.95
-        },
-        {
-          "entity_id": "char_0003",
-          "display": "骑士",
-          "status": "known",
-          "score": 0.05
-        }
+        {"entity_id": "char_0001", "display": "罗伦斯", "score": 0.95},
+        {"entity_id": "char_0003", "display": "骑士", "score": 0.05}
       ],
       "evidence": [
         "罗伦斯在场景中主动递糖，符合上下文",
-        "罗伦斯在场景中持续对话，符合上下文"
+        "罗伦斯在场并持续对话",
+        "无反证据"
       ],
-      "should_create_new_entity": false,
-      "new_entity_hint": "",
       "needs_review": false
     },
     {
@@ -175,25 +109,14 @@
       "speaker_status": "known",
       "confidence": 0.95,
       "candidate_speakers": [
-        {
-          "entity_id": "char_0003",
-          "display": "骑士",
-          "status": "known",
-          "score": 0.95
-        },
-        {
-          "entity_id": "char_0001",
-          "display": "罗伦斯",
-          "status": "known",
-          "score": 0.05
-        }
+        {"entity_id": "char_0003", "display": "骑士", "score": 0.95},
+        {"entity_id": "char_0001", "display": "罗伦斯", "score": 0.05}
       ],
       "evidence": [
         "符合骑士的迟疑语气",
-        "骑士在场景中出现并回应罗伦斯"
+        "对话对象为罗伦斯",
+        "无反证据"
       ],
-      "should_create_new_entity": false,
-      "new_entity_hint": "",
       "needs_review": false
     },
     {
@@ -203,27 +126,16 @@
       "speaker_status": "known",
       "confidence": 0.95,
       "candidate_speakers": [
-        {
-          "entity_id": "char_0001",
-          "display": "罗伦斯",
-          "status": "known",
-          "score": 0.95
-        },
-        {
-          "entity_id": "char_0003",
-          "display": "骑士",
-          "status": "known",
-          "score": 0.05
-        }
+        {"entity_id": "char_0001", "display": "罗伦斯", "score": 0.95},
+        {"entity_id": "char_0003", "display": "骑士", "score": 0.05}
       ],
       "evidence": [
         "罗伦斯在场景中持续对话，符合上下文",
-        "罗伦斯在场景中主动递糖，符合上下文"
+        "罗伦斯在场并持续对话",
+        "无反证据"
       ],
-      "should_create_new_entity": false,
-      "new_entity_hint": "",
       "needs_review": false
     }
   ],
-  "window_notes": "所有对话均在修道院附近发生，罗伦斯与骑士互动明确，无其他角色参与。"
+  "window_notes": "所有对话均基于上下文明确角色行为，无需要复核项。"
 }
