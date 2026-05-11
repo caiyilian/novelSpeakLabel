@@ -8,7 +8,7 @@
 - 阶段 1：发现与建库，用 Ollama 扫描场景，生成角色候选、未知人物、场景摘要和记忆文件。
 - 阶段 2：正式标注，基于阶段 1 记忆逐句判断说话人，生成投票、聚合结果、复核队列和标注文本。
 
-原文不会被原地修改，所有产物默认写到 `outputs/volume_XX/`。
+原文不会被原地修改，所有产物默认写到 `outputs/volume_XX/`。如果想保存到另一套目录，可以给所有阶段传 `--output-root outputs2`，输出会变成 `outputs2/volume_XX/`；也可以用 `--output outputs2/volume_01` 指定完整卷目录。cache 读取也跟随这个输出目录。
 
 ## 运行第一卷
 
@@ -86,6 +86,28 @@ python -m novel_speaker_label annotate \
   --scene-summary-radius 1
 ```
 
+也可以启用新版结构化 Stage 2，让流程拆成“证据抽取 -> 裁判 -> 反证检查”三步。单模型显存有限时可以让同一个模型分三次扮演不同角色：
+
+```bash
+python -m novel_speaker_label annotate \
+  --volume 1 \
+  --pipeline structured \
+  --model qwen3:32b
+```
+
+如果有多模型资源，可以显式分工：
+
+```bash
+python -m novel_speaker_label annotate \
+  --volume 1 \
+  --pipeline structured \
+  --evidence-model qwen3:32b \
+  --judge-model qwen3-coder:30b \
+  --contradiction-model qwen2.5-coder:32b
+```
+
+结构化模式会额外写出 `annotation/evidence.jsonl`、`annotation/judgements.jsonl` 和 `annotation/contradiction_checks.jsonl`，对应的 cache 目录是 `evidence_cache/`、`judgement_cache/`、`contradiction_cache/`。
+
 如果只想检查阶段 2 prompt，不调用 Ollama：
 
 ```bash
@@ -101,6 +123,9 @@ outputs/volume_01/
     cache/
     raw/
     failures/
+    evidence.jsonl
+    judgements.jsonl
+    contradiction_checks.jsonl
     votes.jsonl
     annotations.jsonl
     review_queue.jsonl
@@ -180,6 +205,12 @@ python -m novel_speaker_label rebuild-memory \
 
 ```bash
 python -m novel_speaker_label annotate --volume 1 --model qwen3:32b --cache-only
+```
+
+如果要读取 `outputs2` 里的 cache：
+
+```bash
+python -m novel_speaker_label annotate --volume 1 --output-root outputs2 --model qwen3:32b --cache-only
 ```
 
 窗口级标注会生成新的 cache 文件名。若需要复用旧版逐句标注 cache，请显式使用单句窗口：

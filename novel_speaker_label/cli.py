@@ -101,6 +101,33 @@ def main(argv: list[str] | None = None) -> int:
         default=None,
         help="Ollama model to use. Repeat for multi-model voting.",
     )
+    annotate_parser.add_argument(
+        "--pipeline",
+        choices=("vote", "structured"),
+        default="vote",
+        help="Stage 2 pipeline. structured runs evidence -> judge -> contradiction.",
+    )
+    annotate_parser.add_argument(
+        "--evidence-model",
+        dest="evidence_models",
+        action="append",
+        default=None,
+        help="Model for structured evidence extraction. Repeat to ensemble.",
+    )
+    annotate_parser.add_argument(
+        "--judge-model",
+        dest="judge_models",
+        action="append",
+        default=None,
+        help="Model for structured adjudication. Repeat to ensemble.",
+    )
+    annotate_parser.add_argument(
+        "--contradiction-model",
+        dest="contradiction_models",
+        action="append",
+        default=None,
+        help="Model for structured contradiction checks. Repeat to ensemble.",
+    )
     annotate_parser.add_argument("--ollama-host", default="http://127.0.0.1:11434")
     annotate_parser.add_argument(
         "--timeout",
@@ -263,6 +290,10 @@ def main(argv: list[str] | None = None) -> int:
             AnnotationConfig(
                 output_dir=_resolve_output(args),
                 models=tuple(args.models or ["qwen3:32b"]),
+                pipeline=args.pipeline,
+                evidence_models=tuple(args.evidence_models or ()),
+                judge_models=tuple(args.judge_models or ()),
+                contradiction_models=tuple(args.contradiction_models or ()),
                 ollama_host=args.ollama_host,
                 timeout=args.timeout,
                 temperature=args.temperature,
@@ -361,6 +392,12 @@ def _add_common_volume_args(
         default=None,
         help="Output directory. Defaults to outputs/volume_XX.",
     )
+    parser.add_argument(
+        "--output-root",
+        type=Path,
+        default=Path("outputs"),
+        help="Root output directory used when --output is omitted.",
+    )
     parser.set_defaults(require_input=require_input)
 
 
@@ -373,7 +410,7 @@ def _resolve_input(args: argparse.Namespace) -> Path:
 def _resolve_output(args: argparse.Namespace) -> Path:
     if args.output:
         return args.output
-    return Path("outputs") / f"volume_{args.volume:02d}"
+    return args.output_root / f"volume_{args.volume:02d}"
 
 
 def _print_summary(stage: str, summary: dict) -> None:

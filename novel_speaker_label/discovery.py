@@ -46,6 +46,26 @@ GENERIC_MERGE_KEYS = {
     "汝",
 }
 
+SPEECH_MARKER_MAX_LENGTH = 8
+SPEECH_MARKER_SENTENCE_CHARS = set("。！？!?；;：:“”\"「」『』")
+SPEECH_MARKER_PRONOUN_ALLOWLIST = {
+    "咱",
+    "汝",
+    "俺",
+    "吾",
+    "吾辈",
+    "妾身",
+    "在下",
+    "小生",
+    "本座",
+    "本王",
+    "朕",
+    "老身",
+    "奴家",
+    "鄙人",
+    "贫道",
+}
+
 
 @dataclass(frozen=True)
 class DiscoveryConfig:
@@ -675,9 +695,15 @@ def _clean_speech_markers(value: Any, limit: int = 20) -> list[str]:
 def _is_useful_speech_marker(value: str) -> bool:
     if not value:
         return False
-    if len(value) > 12:
+    if value in SPEECH_MARKER_PRONOUN_ALLOWLIST:
+        return True
+    if len(value) > SPEECH_MARKER_MAX_LENGTH:
         return False
-    if value in GENERIC_MERGE_KEYS and value not in {"咱", "汝", "俺", "吾"}:
+    if any(char in value for char in SPEECH_MARKER_SENTENCE_CHARS):
+        return False
+    if value in GENERIC_MERGE_KEYS:
+        return False
+    if any(pronoun in value for pronoun in ("你", "您", "我", "他", "她", "它")) and len(value) > 4:
         return False
     return True
 

@@ -2,8 +2,10 @@ from __future__ import annotations
 
 import tempfile
 import unittest
+from argparse import Namespace
 from pathlib import Path
 
+from novel_speaker_label.cli import _resolve_output
 from novel_speaker_label.annotation import (
     AnnotationConfig,
     _aggregate_votes,
@@ -234,6 +236,18 @@ class CharacterStoreTests(unittest.TestCase):
             store.snapshot_for_prompt(1)[0]["speech_markers"],
             ["妾身", "也罢", "罢了"],
         )
+
+    def test_sentence_like_speech_markers_are_filtered(self) -> None:
+        store = CharacterStore()
+        store.add_or_update(
+            {
+                "display_name": "阿晴",
+                "speech_markers": ["妾身", "你到底是谁？", "好名字呗？", "也罢"],
+            },
+            "scene-1",
+        )
+
+        self.assertEqual(store.characters[0]["speech_markers"], ["妾身", "也罢"])
 
 
 class OllamaClientTests(unittest.TestCase):
@@ -1064,6 +1078,155 @@ class AnnotationTests(unittest.TestCase):
             self.assertEqual(summary["request_count"], 1)
             self.assertEqual(summary["vote_count"], 2)
             self.assertEqual([row["speaker_display"] for row in annotations], ["罗伦斯", "赫萝"])
+
+    def test_structured_annotate_cache_only_reads_role_caches(self) -> None:
+        with tempfile.TemporaryDirectory(dir=Path.cwd()) as tmp:
+            output_dir = Path(tmp) / "outputs2" / "volume_01"
+            write_json(
+                output_dir / "volume.json",
+                {"volume_id": "volume_01", "volume": 1},
+            )
+            paragraph = "罗伦斯说：「你好。」"
+            write_jsonl(
+                output_dir / "preprocess" / "paragraphs.jsonl",
+                [{"paragraph_id": "p1", "paragraph_index": 0, "text": paragraph}],
+            )
+            write_jsonl(
+                output_dir / "preprocess" / "dialogues.jsonl",
+                [
+                    {
+                        "dialogue_id": "volume_01-d000001",
+                        "dialogue_index": 0,
+                        "volume_id": "volume_01",
+                        "chapter_id": "volume_01-c001",
+                        "chapter_index": 1,
+                        "chapter_title": "第一幕",
+                        "scene_id": "volume_01-c001-s001",
+                        "scene_index": 1,
+                        "paragraph_id": "p1",
+                        "paragraph_index": 0,
+                        "local_dialogue_index": 1,
+                        "text": "你好。",
+                        "quote_text": "「你好。」",
+                        "dialogue_kind": "standalone",
+                        "paragraph_text": paragraph,
+                        "char_start": paragraph.index("「"),
+                        "char_end": len(paragraph),
+                        "prev_context": [],
+                        "next_context": [],
+                    }
+                ],
+            )
+            write_jsonl(
+                output_dir / "memory" / "semantic" / "characters.jsonl",
+                [
+                    {
+                        "entity_id": "char_0001",
+                        "display_name": "罗伦斯",
+                        "aliases": [],
+                        "titles": ["旅行商人"],
+                        "description": "旅行商人",
+                        "speech_style": "冷静",
+                        "speech_markers": [],
+                        "relationship_hints": [],
+                        "confidence": 0.9,
+                    }
+                ],
+            )
+
+            write_json(
+                output_dir
+                / "annotation"
+                / "evidence_cache"
+                / "evidence--volume_01-d000001--fake_model.json",
+                {
+                    "evidence": [
+                        {
+                            "dialogue_id": "volume_01-d000001",
+                            "explicit_attribution": {
+                                "speaker_display": "罗伦斯",
+                                "text": "罗伦斯说",
+                            },
+                            "positive_evidence": ["叙述明确罗伦斯说话"],
+                        }
+                    ]
+                },
+            )
+            write_json(
+                output_dir
+                / "annotation"
+                / "judgement_cache"
+                / "judge--volume_01-d000001--fake_model.json",
+                {
+                    "annotations": [
+                        {
+                            "dialogue_id": "volume_01-d000001",
+                            "speaker_entity_id": "char_0001",
+                            "speaker_display": "罗伦斯",
+                            "speaker_status": "known",
+                            "confidence": 0.9,
+                            "evidence": ["叙述明确罗伦斯说"],
+                        }
+                    ]
+                },
+            )
+            write_json(
+                output_dir
+                / "annotation"
+                / "contradiction_cache"
+                / "contradiction--volume_01-d000001--fake_model.json",
+                {
+                    "checks": [
+                        {
+                            "dialogue_id": "volume_01-d000001",
+                            "has_contradiction": False,
+                            "severity": "none",
+                            "reason": "",
+                            "needs_review": False,
+                        }
+                    ]
+                },
+            )
+
+            summary = annotate_volume(
+                AnnotationConfig(
+                    output_dir=output_dir,
+                    models=("fake-model",),
+                    pipeline="structured",
+                    cache_only=True,
+                    write_prompts=False,
+                )
+            )
+
+            annotations = list(read_jsonl(output_dir / "annotation" / "annotations.jsonl"))
+            self.assertEqual(summary["pipeline"], "structured")
+            self.assertEqual(summary["prompt_count"], 3)
+            self.assertEqual(summary["evidence_count"], 1)
+            self.assertEqual(summary["judgement_count"], 1)
+            self.assertEqual(summary["contradiction_check_count"], 1)
+            self.assertEqual(annotations[0]["speaker_display"], "罗伦斯")
+            self.assertFalse(annotations[0]["needs_review"])
+            self.assertTrue((output_dir / "annotation" / "evidence.jsonl").exists())
+            self.assertTrue((output_dir / "annotation" / "judgements.jsonl").exists())
+            self.assertTrue(
+                (output_dir / "annotation" / "contradiction_checks.jsonl").exists()
+            )
+
+
+class CliOutputPathTests(unittest.TestCase):
+    def test_output_root_selects_volume_directory(self) -> None:
+        args = Namespace(output=None, output_root=Path("outputs2"), volume=1)
+
+        self.assertEqual(_resolve_output(args), Path("outputs2") / "volume_01")
+
+    def test_explicit_output_overrides_output_root(self) -> None:
+        args = Namespace(
+            output=Path("custom") / "book01",
+            output_root=Path("outputs2"),
+            volume=1,
+        )
+
+        self.assertEqual(_resolve_output(args), Path("custom") / "book01")
 
 
 if __name__ == "__main__":

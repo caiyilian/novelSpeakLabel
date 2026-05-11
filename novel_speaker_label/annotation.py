@@ -91,6 +91,10 @@ VILLAGE_NPC_DISPLAY = "小村落的村民"
 class AnnotationConfig:
     output_dir: Path
     models: tuple[str, ...] = ("qwen3:32b",)
+    pipeline: str = "vote"
+    evidence_models: tuple[str, ...] = ()
+    judge_models: tuple[str, ...] = ()
+    contradiction_models: tuple[str, ...] = ()
     ollama_host: str = "http://127.0.0.1:11434"
     timeout: int = 1800
     temperature: float = 0.0
@@ -144,12 +148,24 @@ def annotate_volume(config: AnnotationConfig) -> dict:
         max_paragraph_gap=config.max_dialogue_paragraph_gap,
     )
 
+    pipeline = _annotation_pipeline(config)
     annotation_dir = config.output_dir / "annotation"
     cache_dir = annotation_dir / "cache"
+    evidence_cache_dir = annotation_dir / "evidence_cache"
+    judgement_cache_dir = annotation_dir / "judgement_cache"
+    contradiction_cache_dir = annotation_dir / "contradiction_cache"
     prompt_dir = annotation_dir / "prompts"
     raw_dir = annotation_dir / "raw"
     failure_dir = annotation_dir / "failures"
-    for path in (cache_dir, prompt_dir, raw_dir, failure_dir):
+    for path in (
+        cache_dir,
+        evidence_cache_dir,
+        judgement_cache_dir,
+        contradiction_cache_dir,
+        prompt_dir,
+        raw_dir,
+        failure_dir,
+    ):
         path.mkdir(parents=True, exist_ok=True)
 
     clients = {
@@ -162,11 +178,14 @@ def annotate_volume(config: AnnotationConfig) -> dict:
                 num_predict=config.num_predict,
             )
         )
-        for model in config.models
+        for model in _all_annotation_models(config)
     }
 
     votes: list[dict] = []
     annotations: list[dict] = []
+    evidence_rows: list[dict] = []
+    judgement_rows: list[dict] = []
+    contradiction_rows: list[dict] = []
     failed_requests: list[dict] = []
     prompt_count = 0
     rule_vote_count = 0
@@ -195,6 +214,29 @@ def annotate_volume(config: AnnotationConfig) -> dict:
         dialogue_votes_by_id: dict[str, list[dict]] = {
             dialogue["dialogue_id"]: [] for dialogue in dialogue_window
         }
+
+        if pipeline == "structured":
+            structured = _annotate_structured_window(
+                dialogue_window=dialogue_window,
+                payload=payload,
+                config=config,
+                clients=clients,
+                prompt_dir=prompt_dir,
+                raw_dir=raw_dir,
+                failure_dir=failure_dir,
+                evidence_cache_dir=evidence_cache_dir,
+                judgement_cache_dir=judgement_cache_dir,
+                contradiction_cache_dir=contradiction_cache_dir,
+            )
+            votes.extend(structured["votes"])
+            annotations.extend(structured["annotations"])
+            evidence_rows.extend(structured["evidence_rows"])
+            judgement_rows.extend(structured["judgement_rows"])
+            contradiction_rows.extend(structured["contradiction_rows"])
+            failed_requests.extend(structured["failed_requests"])
+            prompt_count += structured["prompt_count"]
+            rule_vote_count += structured["rule_vote_count"]
+            continue
 
         for model in config.models:
             request_id = f"{_dialogue_window_id(dialogue_window)}--{_safe_model_name(model)}"
@@ -285,6 +327,10 @@ def annotate_volume(config: AnnotationConfig) -> dict:
             {
                 "volume_id": volume_meta["volume_id"],
                 "models": list(config.models),
+                "pipeline": pipeline,
+                "evidence_models": list(_role_models(config, "evidence")),
+                "judge_models": list(_role_models(config, "judge")),
+                "contradiction_models": list(_role_models(config, "contradiction")),
                 "dialogue_count": len(dialogues),
                 "window_count": len(dialogue_windows),
                 "annotation_window_size": max(1, config.annotation_window_size),
@@ -295,6 +341,12 @@ def annotate_volume(config: AnnotationConfig) -> dict:
             },
         )
     else:
+        if evidence_rows:
+            write_jsonl(annotation_dir / "evidence.jsonl", evidence_rows)
+        if judgement_rows:
+            write_jsonl(annotation_dir / "judgements.jsonl", judgement_rows)
+        if contradiction_rows:
+            write_jsonl(annotation_dir / "contradiction_checks.jsonl", contradiction_rows)
         write_jsonl(annotation_dir / "votes.jsonl", votes)
         write_jsonl(annotation_dir / "annotations.jsonl", annotations)
         write_jsonl(
@@ -312,6 +364,8 @@ def annotate_volume(config: AnnotationConfig) -> dict:
     summary = {
         "volume_id": volume_meta["volume_id"],
         "models": list(config.models),
+        "pipeline": pipeline,
+        "output_dir": _output_path_for_log(config.output_dir),
         "dry_run": config.dry_run,
         "cache_only": config.cache_only,
         "dialogue_count": len(dialogues),
@@ -321,6 +375,9 @@ def annotate_volume(config: AnnotationConfig) -> dict:
         "request_count": prompt_count,
         "prompt_count": prompt_count,
         "rule_vote_count": rule_vote_count,
+        "evidence_count": len(evidence_rows),
+        "judgement_count": len(judgement_rows),
+        "contradiction_check_count": len(contradiction_rows),
         "vote_count": len(votes),
         "annotation_count": len(annotations),
         "review_count": review_count,
@@ -337,6 +394,632 @@ def annotate_volume(config: AnnotationConfig) -> dict:
         flush=True,
     )
     return summary
+
+
+def _annotation_pipeline(config: AnnotationConfig) -> str:
+    pipeline = _clean_text(config.pipeline).lower()
+    if pipeline in {"structured", "stage2.5", "stage-2.5", "evidence"}:
+        return "structured"
+    return "vote"
+
+
+def _role_models(config: AnnotationConfig, role: str) -> tuple[str, ...]:
+    base = tuple(config.models or ("qwen3:32b",))
+    if role == "evidence" and config.evidence_models:
+        return tuple(config.evidence_models)
+    if role == "judge" and config.judge_models:
+        return tuple(config.judge_models)
+    if role == "contradiction" and config.contradiction_models:
+        return tuple(config.contradiction_models)
+    if len(base) == 1:
+        return base
+    if role == "evidence":
+        return (base[0],)
+    if role == "judge":
+        return (base[1],)
+    if role == "contradiction":
+        return (base[2] if len(base) > 2 else base[-1],)
+    return base
+
+
+def _all_annotation_models(config: AnnotationConfig) -> tuple[str, ...]:
+    models: list[str] = []
+    for model in (
+        list(config.models or ())
+        + list(_role_models(config, "evidence"))
+        + list(_role_models(config, "judge"))
+        + list(_role_models(config, "contradiction"))
+    ):
+        if model not in models:
+            models.append(model)
+    return tuple(models or ("qwen3:32b",))
+
+
+def _annotate_structured_window(
+    *,
+    dialogue_window: list[dict],
+    payload: dict,
+    config: AnnotationConfig,
+    clients: dict[str, OllamaClient],
+    prompt_dir: Path,
+    raw_dir: Path,
+    failure_dir: Path,
+    evidence_cache_dir: Path,
+    judgement_cache_dir: Path,
+    contradiction_cache_dir: Path,
+) -> dict:
+    window_id = _dialogue_window_id(dialogue_window)
+    prompt_count = 0
+    votes: list[dict] = []
+    annotations: list[dict] = []
+    evidence_rows: list[dict] = []
+    judgement_rows: list[dict] = []
+    contradiction_rows: list[dict] = []
+    failed_requests: list[dict] = []
+    dialogue_votes_by_id: dict[str, list[dict]] = {
+        dialogue["dialogue_id"]: [] for dialogue in dialogue_window
+    }
+
+    for model in _role_models(config, "evidence"):
+        request_id = f"evidence--{window_id}--{_safe_model_name(model)}"
+        prompt = _build_evidence_prompt(payload)
+        prompt_count += 1
+        if config.write_prompts or config.dry_run:
+            (prompt_dir / f"{request_id}.txt").write_text(
+                prompt, encoding="utf-8", newline="\n"
+            )
+        if config.dry_run:
+            continue
+        try:
+            parsed_response = _read_or_generate_json(
+                request_id=request_id,
+                prompt=prompt,
+                model=model,
+                client=clients[model],
+                cache_dir=evidence_cache_dir,
+                raw_dir=raw_dir,
+                config=config,
+            )
+        except Exception as exc:
+            _record_annotation_failure(
+                failed_requests=failed_requests,
+                failure_dir=failure_dir,
+                request_id=request_id,
+                dialogue_window=dialogue_window,
+                model=model,
+                role="evidence",
+                prompt_path=prompt_dir / f"{request_id}.txt",
+                exc=exc,
+                config=config,
+            )
+            continue
+
+        parsed_rows = _extract_evidence_rows(parsed_response, dialogue_window)
+        for dialogue in dialogue_window:
+            raw_row = parsed_rows.get(dialogue["dialogue_id"], {})
+            evidence_rows.append(
+                _normalize_evidence_row(raw_row, dialogue, model, request_id)
+            )
+
+    judge_payload = _payload_with_evidence(payload, evidence_rows)
+    for model in _role_models(config, "judge"):
+        request_id = f"judge--{window_id}--{_safe_model_name(model)}"
+        prompt = _build_judge_prompt(judge_payload)
+        prompt_count += 1
+        if config.write_prompts or config.dry_run:
+            (prompt_dir / f"{request_id}.txt").write_text(
+                prompt, encoding="utf-8", newline="\n"
+            )
+        if config.dry_run:
+            continue
+        try:
+            parsed_response = _read_or_generate_json(
+                request_id=request_id,
+                prompt=prompt,
+                model=model,
+                client=clients[model],
+                cache_dir=judgement_cache_dir,
+                raw_dir=raw_dir,
+                config=config,
+            )
+        except Exception as exc:
+            _record_annotation_failure(
+                failed_requests=failed_requests,
+                failure_dir=failure_dir,
+                request_id=request_id,
+                dialogue_window=dialogue_window,
+                model=model,
+                role="judge",
+                prompt_path=prompt_dir / f"{request_id}.txt",
+                exc=exc,
+                config=config,
+            )
+            continue
+
+        parsed_votes = _extract_parsed_votes(parsed_response, dialogue_window)
+        for dialogue in dialogue_window:
+            parsed_vote = parsed_votes.get(dialogue["dialogue_id"])
+            if parsed_vote is None:
+                parsed_vote = _missing_dialogue_vote(dialogue, request_id)
+            vote = _normalize_vote(
+                parsed_vote=parsed_vote,
+                dialogue=dialogue,
+                model=f"judge:{model}",
+                weight=_model_weight(config, "judge", model),
+            )
+            votes.append(vote)
+            judgement_rows.append(
+                {
+                    "request_id": request_id,
+                    "model": model,
+                    "dialogue_id": dialogue["dialogue_id"],
+                    "vote": vote,
+                }
+            )
+            dialogue_votes_by_id[dialogue["dialogue_id"]].append(vote)
+
+    rule_vote_count = 0
+    if not config.dry_run:
+        rule_votes = _rule_votes_for_window(dialogue_window, payload)
+        rule_vote_count = len(rule_votes)
+        for vote in rule_votes:
+            votes.append(vote)
+            dialogue_votes_by_id[vote["dialogue_id"]].append(vote)
+
+        speaker_options = _known_speaker_options(payload)
+        for dialogue in dialogue_window:
+            annotations.append(
+                _aggregate_votes(
+                    dialogue,
+                    dialogue_votes_by_id[dialogue["dialogue_id"]],
+                    config,
+                    speaker_options=speaker_options,
+                )
+            )
+
+    check_payload = _payload_with_annotations_and_evidence(
+        payload, annotations, evidence_rows
+    )
+    for model in _role_models(config, "contradiction"):
+        request_id = f"contradiction--{window_id}--{_safe_model_name(model)}"
+        prompt = _build_contradiction_prompt(check_payload)
+        prompt_count += 1
+        if config.write_prompts or config.dry_run:
+            (prompt_dir / f"{request_id}.txt").write_text(
+                prompt, encoding="utf-8", newline="\n"
+            )
+        if config.dry_run:
+            continue
+        try:
+            parsed_response = _read_or_generate_json(
+                request_id=request_id,
+                prompt=prompt,
+                model=model,
+                client=clients[model],
+                cache_dir=contradiction_cache_dir,
+                raw_dir=raw_dir,
+                config=config,
+            )
+        except Exception as exc:
+            _record_annotation_failure(
+                failed_requests=failed_requests,
+                failure_dir=failure_dir,
+                request_id=request_id,
+                dialogue_window=dialogue_window,
+                model=model,
+                role="contradiction",
+                prompt_path=prompt_dir / f"{request_id}.txt",
+                exc=exc,
+                config=config,
+            )
+            continue
+
+        checks = _extract_contradiction_checks(parsed_response, dialogue_window)
+        for dialogue in dialogue_window:
+            check = _normalize_contradiction_check(
+                checks.get(dialogue["dialogue_id"], {}),
+                dialogue,
+                model,
+                request_id,
+            )
+            contradiction_rows.append(check)
+
+    if contradiction_rows:
+        annotations = _apply_contradiction_checks(annotations, contradiction_rows)
+
+    return {
+        "votes": votes,
+        "annotations": annotations,
+        "evidence_rows": evidence_rows,
+        "judgement_rows": judgement_rows,
+        "contradiction_rows": contradiction_rows,
+        "failed_requests": failed_requests,
+        "prompt_count": prompt_count,
+        "rule_vote_count": rule_vote_count,
+    }
+
+
+def _model_weight(config: AnnotationConfig, role: str, model: str) -> float:
+    role_key = f"{role}:{model}"
+    if role_key in config.model_weights:
+        return config.model_weights[role_key]
+    return config.model_weights.get(model, 1.0)
+
+
+def _read_or_generate_json(
+    *,
+    request_id: str,
+    prompt: str,
+    model: str,
+    client: OllamaClient,
+    cache_dir: Path,
+    raw_dir: Path,
+    config: AnnotationConfig,
+) -> Any:
+    cached_path = cache_dir / f"{request_id}.json"
+    if cached_path.exists() and not config.overwrite_cache:
+        return read_json(cached_path)
+    if config.cache_only:
+        raise FileNotFoundError(f"Cached structured annotation response not found: {cached_path}")
+    response_text = client.generate(prompt)
+    (raw_dir / f"{request_id}.txt").write_text(
+        response_text, encoding="utf-8", newline="\n"
+    )
+    parsed_response = _parse_json_response(response_text)
+    write_json(cached_path, parsed_response)
+    return parsed_response
+
+
+def _record_annotation_failure(
+    *,
+    failed_requests: list[dict],
+    failure_dir: Path,
+    request_id: str,
+    dialogue_window: list[dict],
+    model: str,
+    role: str,
+    prompt_path: Path,
+    exc: Exception,
+    config: AnnotationConfig,
+) -> None:
+    failure = {
+        "request_id": request_id,
+        "dialogue_ids": [row["dialogue_id"] for row in dialogue_window],
+        "model": model,
+        "role": role,
+        "error_type": exc.__class__.__name__,
+        "error": str(exc),
+        "prompt_path": str(prompt_path),
+    }
+    write_json(failure_dir / f"{request_id}.json", failure)
+    failed_requests.append(failure)
+    print(
+        "[annotate] failed "
+        f"{request_id}: {failure['error_type']}: {failure['error']}",
+        flush=True,
+    )
+    if not config.continue_on_error:
+        raise RuntimeError(
+            f"Structured annotation request failed: {request_id}. "
+            f"Prompt is saved at {prompt_path}"
+        ) from exc
+
+
+def _build_evidence_prompt(payload: dict) -> str:
+    return (
+        "你是轻小说说话人标注项目的 Stage 2.5 局部证据抽取器。\n"
+        "你只抽取证据，不直接决定最终说话人。必须只看输入里的目标窗口、局部上下文和候选角色。\n\n"
+        "请为每个 target_dialogue_ids 输出一条 evidence，字段含义：\n"
+        "- explicit_attribution: 叙述里是否有“某人说/问/回答/喊”的明确锚点。\n"
+        "- addressed_to: 当前台词明显在称呼谁；被称呼者通常不是说话人。\n"
+        "- turn_relation: 与上一句/下一句的问答、回应、打断、连续独白等关系。\n"
+        "- same_speaker_allowed: 是否允许与上一句或下一句同一人连续说话，不能机械交替。\n"
+        "- speech_markers: 命中的口癖/自称/固定句尾，以及它对应的候选角色。\n"
+        "- third_person_name_references: “她的名字是 X”这类第三人称介绍或排除本人说话的反证。\n"
+        "- positive_evidence / negative_evidence: 支持或反对某候选的短证据。\n"
+        "- needs_review_hint: 证据不足或互相冲突时为 true。\n\n"
+        "只输出严格 JSON：\n"
+        "{\n"
+        '  "evidence": [\n'
+        "    {\n"
+        '      "dialogue_id": "必须来自 target_dialogue_ids",\n'
+        '      "explicit_attribution": {"speaker_display": "", "text": ""},\n'
+        '      "addressed_to": ["string"],\n'
+        '      "turn_relation": "string",\n'
+        '      "same_speaker_allowed": true,\n'
+        '      "speech_markers": [{"marker": "string", "owner_display": "string"}],\n'
+        '      "third_person_name_references": [{"display": "string", "text": "string"}],\n'
+        '      "positive_evidence": ["短证据"],\n'
+        '      "negative_evidence": ["短反证"],\n'
+        '      "needs_review_hint": false,\n'
+        '      "notes": "string"\n'
+        "    }\n"
+        "  ],\n"
+        '  "window_notes": "string"\n'
+        "}\n\n"
+        "输入 JSON：\n"
+        f"{json.dumps(payload, ensure_ascii=False, indent=2)}\n"
+    )
+
+
+def _build_judge_prompt(payload: dict) -> str:
+    return (
+        "你是轻小说说话人标注项目的 Stage 2.5 裁判模型。\n"
+        "你只拿目标窗口、候选角色和 structured_evidence 做最终判断。"
+        "必须同时考虑正证据和反证据；不确定就进入复核，不能为了减少复核而硬猜。\n\n"
+        "要求：\n"
+        "1. 连续两句同一人说话是允许的，只要证据支持。\n"
+        "2. 被称呼的人通常不是说话人。\n"
+        "3. candidate_characters.speech_markers 是口癖/自称证据；多个角色共享或上下文反证时不能直接采纳。\n"
+        "4. 如果台词说“她/他/它的名字是 X”，通常不是 X 本人在自我介绍。\n"
+        "5. 输出 speaker、正证据、反证据、needs_review。\n\n"
+        "只输出严格 JSON，结构与 Stage 2 annotations 相同：\n"
+        "{\n"
+        '  "annotations": [\n'
+        "    {\n"
+        '      "dialogue_id": "必须来自 target_dialogue_ids",\n'
+        '      "speaker_entity_id": "string",\n'
+        '      "speaker_display": "string",\n'
+        '      "speaker_status": "known|mystery|npc|ambiguous|review",\n'
+        '      "confidence": 0.0,\n'
+        '      "candidate_speakers": [\n'
+        '        {"entity_id": "string", "display": "string", "status": "known|mystery|npc|ambiguous|review", "score": 0.0}\n'
+        "      ],\n"
+        '      "evidence": ["正证据和必要反证，短句"],\n'
+        '      "should_create_new_entity": false,\n'
+        '      "new_entity_hint": "",\n'
+        '      "needs_review": false\n'
+        "    }\n"
+        "  ],\n"
+        '  "window_notes": "string"\n'
+        "}\n\n"
+        "输入 JSON：\n"
+        f"{json.dumps(payload, ensure_ascii=False, indent=2)}\n"
+    )
+
+
+def _build_contradiction_prompt(payload: dict) -> str:
+    return (
+        "你是轻小说说话人标注项目的 Stage 2.5 反证检查器。\n"
+        "你的任务不是重新标注所有台词，而是检查 proposed_annotations 有没有明显矛盾。"
+        "强反证时必须要求复核；弱反证只记录说明。\n\n"
+        "强反证示例：\n"
+        "- 标成某角色，但台词用第三人称介绍这个角色的名字。\n"
+        "- 标成 A，但台词命中唯一属于 B 的高区分度口癖。\n"
+        "- 标成 A，但同段叙述明确 B 说/问/回答。\n"
+        "- 当前判断主要依赖邻近段落，当前台词本身反而不支持。\n\n"
+        "只输出严格 JSON：\n"
+        "{\n"
+        '  "checks": [\n'
+        "    {\n"
+        '      "dialogue_id": "必须来自 target_dialogue_ids",\n'
+        '      "has_contradiction": false,\n'
+        '      "severity": "none|weak|strong",\n'
+        '      "reason": "string",\n'
+        '      "counter_evidence": ["短反证"],\n'
+        '      "needs_review": false\n'
+        "    }\n"
+        "  ],\n"
+        '  "window_notes": "string"\n'
+        "}\n\n"
+        "输入 JSON：\n"
+        f"{json.dumps(payload, ensure_ascii=False, indent=2)}\n"
+    )
+
+
+def _payload_with_evidence(payload: dict, evidence_rows: list[dict]) -> dict:
+    return {
+        **payload,
+        "structured_evidence": [_evidence_prompt_card(row) for row in evidence_rows],
+    }
+
+
+def _payload_with_annotations_and_evidence(
+    payload: dict, annotations: list[dict], evidence_rows: list[dict]
+) -> dict:
+    return {
+        **_payload_with_evidence(payload, evidence_rows),
+        "proposed_annotations": [_annotation_prompt_card(row) for row in annotations],
+    }
+
+
+def _evidence_prompt_card(row: dict) -> dict:
+    return {
+        "dialogue_id": row.get("dialogue_id"),
+        "source_model": row.get("model"),
+        "explicit_attribution": row.get("explicit_attribution"),
+        "addressed_to": row.get("addressed_to", []),
+        "turn_relation": row.get("turn_relation", ""),
+        "same_speaker_allowed": row.get("same_speaker_allowed"),
+        "speech_markers": row.get("speech_markers", []),
+        "third_person_name_references": row.get("third_person_name_references", []),
+        "positive_evidence": row.get("positive_evidence", []),
+        "negative_evidence": row.get("negative_evidence", []),
+        "needs_review_hint": row.get("needs_review_hint", False),
+        "notes": row.get("notes", ""),
+    }
+
+
+def _annotation_prompt_card(row: dict) -> dict:
+    return {
+        "dialogue_id": row.get("dialogue_id"),
+        "speaker_entity_id": row.get("speaker_entity_id"),
+        "speaker_display": row.get("speaker_display"),
+        "speaker_status": row.get("speaker_status"),
+        "confidence": row.get("confidence"),
+        "candidate_speakers": row.get("candidate_speakers", []),
+        "evidence": row.get("evidence", []),
+        "needs_review": row.get("needs_review"),
+        "review_reason": row.get("review_reason", ""),
+    }
+
+
+def _extract_evidence_rows(parsed_response: Any, dialogues: list[dict]) -> dict[str, dict]:
+    if isinstance(parsed_response, list):
+        rows = parsed_response
+    elif isinstance(parsed_response, dict):
+        rows = _first_list_value(
+            parsed_response,
+            ("evidence", "evidence_by_dialogue", "items", "results"),
+        )
+        if rows is None and parsed_response.get("dialogue_id"):
+            rows = [parsed_response]
+    else:
+        rows = None
+    by_id: dict[str, dict] = {}
+    for row in rows or []:
+        if not isinstance(row, dict):
+            continue
+        dialogue_id = _clean_text(row.get("dialogue_id"))
+        if dialogue_id:
+            by_id[dialogue_id] = row
+    if not by_id and len(dialogues) == 1 and isinstance(parsed_response, dict):
+        by_id[dialogues[0]["dialogue_id"]] = parsed_response
+    return by_id
+
+
+def _normalize_evidence_row(
+    row: dict, dialogue: dict, model: str, request_id: str
+) -> dict:
+    return {
+        "request_id": request_id,
+        "model": model,
+        "dialogue_id": dialogue["dialogue_id"],
+        "paragraph_id": dialogue["paragraph_id"],
+        "explicit_attribution": row.get("explicit_attribution") or {},
+        "addressed_to": _unique_strings(_as_list(row.get("addressed_to")), 8),
+        "turn_relation": _truncate(row.get("turn_relation", ""), 120),
+        "same_speaker_allowed": bool(row.get("same_speaker_allowed")),
+        "speech_markers": _normalize_marker_rows(row.get("speech_markers")),
+        "third_person_name_references": _normalize_reference_rows(
+            row.get("third_person_name_references")
+        ),
+        "positive_evidence": _unique_strings(_as_list(row.get("positive_evidence")), 8),
+        "negative_evidence": _unique_strings(_as_list(row.get("negative_evidence")), 8),
+        "needs_review_hint": bool(row.get("needs_review_hint")),
+        "notes": _truncate(row.get("notes", ""), 180),
+        "raw_evidence": row,
+    }
+
+
+def _normalize_marker_rows(value: Any) -> list[dict]:
+    rows = value if isinstance(value, list) else []
+    markers: list[dict] = []
+    for row in rows:
+        if not isinstance(row, dict):
+            marker = _clean_text(row)
+            if marker:
+                markers.append({"marker": marker, "owner_display": ""})
+            continue
+        marker = _clean_text(row.get("marker"))
+        if marker:
+            markers.append(
+                {
+                    "marker": marker,
+                    "owner_display": _clean_text(row.get("owner_display") or row.get("owner")),
+                }
+            )
+    return markers[:8]
+
+
+def _normalize_reference_rows(value: Any) -> list[dict]:
+    rows = value if isinstance(value, list) else []
+    references: list[dict] = []
+    for row in rows:
+        if not isinstance(row, dict):
+            text = _clean_text(row)
+            if text:
+                references.append({"display": "", "text": text})
+            continue
+        references.append(
+            {
+                "display": _clean_text(row.get("display") or row.get("speaker_display")),
+                "text": _truncate(row.get("text", ""), 120),
+            }
+        )
+    return references[:8]
+
+
+def _extract_contradiction_checks(
+    parsed_response: Any, dialogues: list[dict]
+) -> dict[str, dict]:
+    if isinstance(parsed_response, list):
+        rows = parsed_response
+    elif isinstance(parsed_response, dict):
+        rows = _first_list_value(
+            parsed_response,
+            ("checks", "contradiction_checks", "items", "results"),
+        )
+        if rows is None and parsed_response.get("dialogue_id"):
+            rows = [parsed_response]
+    else:
+        rows = None
+    by_id: dict[str, dict] = {}
+    for row in rows or []:
+        if not isinstance(row, dict):
+            continue
+        dialogue_id = _clean_text(row.get("dialogue_id"))
+        if dialogue_id:
+            by_id[dialogue_id] = row
+    if not by_id and len(dialogues) == 1 and isinstance(parsed_response, dict):
+        by_id[dialogues[0]["dialogue_id"]] = parsed_response
+    return by_id
+
+
+def _normalize_contradiction_check(
+    row: dict, dialogue: dict, model: str, request_id: str
+) -> dict:
+    severity = _clean_text(row.get("severity")).lower() or "none"
+    if severity not in {"none", "weak", "strong"}:
+        severity = "strong" if bool(row.get("has_contradiction")) else "weak"
+    has_contradiction = bool(row.get("has_contradiction")) or severity == "strong"
+    needs_review = bool(row.get("needs_review")) or severity == "strong"
+    return {
+        "request_id": request_id,
+        "model": model,
+        "dialogue_id": dialogue["dialogue_id"],
+        "has_contradiction": has_contradiction,
+        "severity": severity,
+        "reason": _truncate(row.get("reason", ""), 160),
+        "counter_evidence": _unique_strings(_as_list(row.get("counter_evidence")), 8),
+        "needs_review": needs_review,
+        "raw_check": row,
+    }
+
+
+def _apply_contradiction_checks(
+    annotations: list[dict], checks: list[dict]
+) -> list[dict]:
+    checks_by_id: dict[str, list[dict]] = {}
+    for check in checks:
+        checks_by_id.setdefault(check["dialogue_id"], []).append(check)
+
+    updated: list[dict] = []
+    for annotation in annotations:
+        row = dict(annotation)
+        row_checks = checks_by_id.get(row["dialogue_id"], [])
+        strong_checks = [check for check in row_checks if check.get("needs_review")]
+        if row_checks:
+            row["contradiction_checks"] = row_checks
+        if strong_checks:
+            reasons = [
+                check.get("reason") or "strong_contradiction"
+                for check in strong_checks
+            ]
+            row["needs_review"] = True
+            row["speaker_status"] = "review"
+            row["review_reason"] = "model_contradiction:" + ";".join(
+                _unique_strings(reasons, 3)
+            )
+            counter_evidence: list[str] = []
+            for check in strong_checks:
+                counter_evidence.extend(_as_list(check.get("counter_evidence")))
+            row["evidence"] = _unique_strings(
+                _as_list(row.get("evidence")) + counter_evidence,
+                8,
+            )
+        updated.append(row)
+    return updated
 
 
 def _select_dialogues(
@@ -1820,6 +2503,8 @@ def _has_speaker_anchor(dialogue: dict, top: dict) -> bool:
         return False
     if _self_intro_mentions(dialogue.get("text", ""), display):
         return True
+    if _evidence_attributes_speech_to(_as_list(top.get("evidence")), display):
+        return True
     return _context_attributes_speech_to(
         dialogue=dialogue,
         display=display,
@@ -1840,6 +2525,14 @@ def _context_attributes_speech_to(dialogue: dict, display: str) -> bool:
         if not cleaned:
             continue
         if _speech_verb_near_name(cleaned, display):
+            return True
+    return False
+
+
+def _evidence_attributes_speech_to(evidence: list[Any], display: str) -> bool:
+    for row in evidence:
+        cleaned = _clean_text(row)
+        if cleaned and _speech_verb_near_name(cleaned, display):
             return True
     return False
 
