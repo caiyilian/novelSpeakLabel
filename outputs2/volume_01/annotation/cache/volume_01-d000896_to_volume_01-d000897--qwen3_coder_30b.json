@@ -1,0 +1,59 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000896",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.9
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.1
+        }
+      ],
+      "evidence": [
+        "赫萝在前文被描述为情绪波动明显，且对话内容符合其调皮、略带挑衅的说话风格；罗伦斯在前文无相关情绪表达，且对话内容更符合赫萝的语气。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000897",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.95
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.05
+        }
+      ],
+      "evidence": [
+        "赫萝在前文被描述为情绪化、略带挑衅，且该句语气符合其说话风格；罗伦斯无相关情绪表达，且前文未出现其说话内容。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "两句话构成连续对话，语气上赫萝情绪明显，符合其性格特征，罗伦斯未直接发言，因此判断为赫萝所言。"
+}

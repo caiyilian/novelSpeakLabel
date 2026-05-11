@@ -1,0 +1,150 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001229",
+      "speaker_entity_id": "mystery_volume_01_c007_s003_r002_未知追踪者",
+      "speaker_display": "未知追踪者",
+      "speaker_status": "mystery",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "mystery_volume_01_c007_s003_r002_未知追踪者",
+          "display": "未知追踪者",
+          "status": "mystery",
+          "score": 0.85
+        },
+        {
+          "entity_id": "char_0032",
+          "display": "梅迪欧商行手下",
+          "status": "known",
+          "score": 0.15
+        }
+      ],
+      "evidence": [
+        "从转角出现并喊出「找到了！」",
+        "与后续对话的语气和情境一致"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001230",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        },
+        {
+          "entity_id": "mystery_volume_01_c007_s003_r003_梅迪欧商行手下",
+          "display": "梅迪欧商行手下",
+          "status": "mystery",
+          "score": 0.1
+        }
+      ],
+      "evidence": [
+        "罗伦斯在前文已拔出短剑挡在赫萝面前",
+        "此句为命令式，符合罗伦斯冷静理性风格",
+        "与前一句「找到了！」形成对话轮次"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001231",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.95
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.05
+        }
+      ],
+      "evidence": [
+        "赫萝在前文被描述为情绪低落，对罗伦斯表现出依赖",
+        "此句语气轻松幽默但略带威胁性，符合赫萝说话风格",
+        "与前一句「退后。」形成对话轮次"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001232",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.85
+        },
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.15
+        }
+      ],
+      "evidence": [
+        "罗伦斯在前文已表现出虚弱状态",
+        "此句为回应赫萝的调侃，符合罗伦斯理性但略带情绪的风格",
+        "与前一句「汝的身体这样不行呗。」形成对话轮次"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001233",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.9
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.1
+        }
+      ],
+      "evidence": [
+        "赫萝在前文被描述为情绪低落，对罗伦斯表现出依赖",
+        "此句语气轻松幽默但略带威胁性，符合赫萝说话风格",
+        "与前一句「胡说什么，我还可以。」形成对话轮次",
+        "赫萝在前文已表现出生气地说道"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，罗伦斯与赫萝之间互动频繁，赫萝对罗伦斯的虚弱状态表现出关心和调侃，而未知追踪者在开场喊出「找到了！」后未再出现，应为神秘角色。"
+}

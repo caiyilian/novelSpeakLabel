@@ -1,0 +1,542 @@
+你是轻小说说话人标注项目的阶段 2：正式标注助手。
+你的任务是判断输入 target_dialogues 中每一句台词的说话人，不要改写原文。
+必须把这些台词当作同一个连续片段来判断，优先保持对话轮次和叙述线索的一致性。
+
+规则：
+1. 只输出严格 JSON，不要 Markdown，不要解释性前后缀。
+2. 如果说话人是候选角色，speaker_entity_id 必须使用 candidate_characters 里的 entity_id，speaker_status 填 known。
+3. 如果说话人像某个未知人物，speaker_entity_id 使用 candidate_mysteries 里的 mystery_id，speaker_status 填 mystery。
+4. 如果只是无法追踪的路人/群体，speaker_status 填 npc，speaker_entity_id 可为空或使用 npc:简短称呼。
+5. 证据不足时不要硬猜，speaker_status 填 ambiguous 或 review，并把 needs_review 设为 true。
+6. candidate_speakers 至少列出 1 个候选；如果无法判断，列出最可能的候选和不确定原因。
+7. confidence 使用 0 到 1 之间的小数，表示你对最终判断的把握。
+8. 不要只因为台词里提到某个名字、职业、地点，就把说话人标成那个实体；被称呼的人通常不是说话人。
+9. 连续问答、交易寒暄、命令/回答等场景要按上下句轮次判断；同一人连续说话必须有叙述或语气证据支持。
+10. 如果当前上下文显示某角色还没有登场，不要因为角色库或后文记忆里有这个角色就提前标给他/她。
+
+11. target_dialogues 中 dialogue_kind=inline 的项目是正文内嵌引号，不要当作独立对白；标为 review，needs_review=true。
+12. candidate_mysteries 只是可选候选；如果候选名称和当前段落地点/人物不一致，必须改用 npc 或 review。
+13. 如果只有轮次推断、没有叙述锚点或自我介绍，请降低 confidence，并在 evidence 里说明轮次依据。
+
+输出 JSON 结构：
+{
+  "annotations": [
+    {
+      "dialogue_id": "必须来自 target_dialogue_ids",
+      "speaker_entity_id": "string",
+      "speaker_display": "string",
+      "speaker_status": "known|mystery|npc|ambiguous|review",
+      "confidence": 0.0,
+      "candidate_speakers": [
+        {"entity_id": "string", "display": "string", "status": "known|mystery|npc|ambiguous|review", "score": 0.0}
+      ],
+      "evidence": ["短证据，不要大段复制原文"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "可选，简短说明整体轮次判断"
+}
+必须为 target_dialogue_ids 中每个 dialogue_id 输出且只输出一条 annotation。
+
+输入 JSON：
+{
+  "volume": {
+    "volume_id": "volume_01",
+    "volume": 1
+  },
+  "target_dialogue_ids": [
+    "volume_01-d000489",
+    "volume_01-d000490",
+    "volume_01-d000491",
+    "volume_01-d000492",
+    "volume_01-d000493",
+    "volume_01-d000494",
+    "volume_01-d000495",
+    "volume_01-d000496"
+  ],
+  "dialogues": [
+    {
+      "dialogue_id": "volume_01-d000489",
+      "dialogue_index": 488,
+      "window_position": 1,
+      "chapter_id": "volume_01-c004",
+      "chapter_title": "第三幕",
+      "scene_id": "volume_01-c004-s004",
+      "paragraph_id": "volume_01-c004-s004-p001159",
+      "paragraph_index": 1158,
+      "local_dialogue_index": 1,
+      "text": "没错。先生刚刚有提到今年因为丰收，所以貂皮的数量很少，其实森林里也是处处可见果实累累。这些貂不久前还在这样的森林里活蹦乱跳，想必他们一定吃了相当多果实，身体才会散发出如此香甜的气味。",
+      "quote_text": "「没错。先生刚刚有提到今年因为丰收，所以貂皮的数量很少，其实森林里也是处处可见果实累累。这些貂不久前还在这样的森林里活蹦乱跳，想必他们一定吃了相当多果实，身体才会散发出如此香甜的气味。」",
+      "paragraph_text": "「没错。先生刚刚有提到今年因为丰收，所以貂皮的数量很少，其实森林里也是处处可见果实累累。这些貂不久前还在这样的森林里活蹦乱跳，想必他们一定吃了相当多果实，身体才会散发出如此香甜的气味。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 93
+    },
+    {
+      "dialogue_id": "volume_01-d000490",
+      "dialogue_index": 489,
+      "window_position": 2,
+      "chapter_id": "volume_01-c004",
+      "chapter_title": "第三幕",
+      "scene_id": "volume_01-c004-s004",
+      "paragraph_id": "volume_01-c004-s004-p001160",
+      "paragraph_index": 1159,
+      "local_dialogue_index": 1,
+      "text": "真的没错",
+      "quote_text": "「真的没错」",
+      "paragraph_text": "鉴定员听着赫萝说明，再度嗅一下味道。男子嗅完后，点了点头回答「真的没错」。",
+      "dialogue_kind": "inline",
+      "outside_quote_text": "鉴定员听着赫萝说明，再度嗅一下味道。男子嗅完后，点了点头回答。",
+      "char_start": 30,
+      "char_end": 36
+    },
+    {
+      "dialogue_id": "volume_01-d000491",
+      "dialogue_index": 490,
+      "window_position": 3,
+      "chapter_id": "volume_01-c004",
+      "chapter_title": "第三幕",
+      "scene_id": "volume_01-c004-s004",
+      "paragraph_id": "volume_01-c004-s004-p001161",
+      "paragraph_index": 1160,
+      "local_dialogue_index": 1,
+      "text": "事实上，就算皮草的色泽多少有好坏之差，但差别也不大吧。皮草在加工、或制成衣服后是否实用，才是重点所在，是呗？好的皮草可以耐久使用，不好的皮草一下子就会走样。",
+      "quote_text": "「事实上，就算皮草的色泽多少有好坏之差，但差别也不大吧。皮草在加工、或制成衣服后是否实用，才是重点所在，是呗？好的皮草可以耐久使用，不好的皮草一下子就会走样。」",
+      "paragraph_text": "「事实上，就算皮草的色泽多少有好坏之差，但差别也不大吧。皮草在加工、或制成衣服后是否实用，才是重点所在，是呗？好的皮草可以耐久使用，不好的皮草一下子就会走样。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 80
+    },
+    {
+      "dialogue_id": "volume_01-d000492",
+      "dialogue_index": 491,
+      "window_position": 4,
+      "chapter_id": "volume_01-c004",
+      "chapter_title": "第三幕",
+      "scene_id": "volume_01-c004-s004",
+      "paragraph_id": "volume_01-c004-s004-p001162",
+      "paragraph_index": 1161,
+      "local_dialogue_index": 1,
+      "text": "您说的一点也没错。",
+      "quote_text": "「您说的一点也没错。」",
+      "paragraph_text": "「您说的一点也没错。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 11
+    },
+    {
+      "dialogue_id": "volume_01-d000493",
+      "dialogue_index": 492,
+      "window_position": 5,
+      "chapter_id": "volume_01-c004",
+      "chapter_title": "第三幕",
+      "scene_id": "volume_01-c004-s004",
+      "paragraph_id": "volume_01-c004-s004-p001164",
+      "paragraph_index": 1163,
+      "local_dialogue_index": 1,
+      "text": "如先生所知，这些皮草是饱尝香甜果实，以至于全身散发出芳香气味的貂皮，因为这些貂的肌肉紧实，在剥貂皮的时候，可是由两名壮汉费了九牛二虎之力，才顺利把皮剥下。",
+      "quote_text": "「如先生所知，这些皮草是饱尝香甜果实，以至于全身散发出芳香气味的貂皮，因为这些貂的肌肉紧实，在剥貂皮的时候，可是由两名壮汉费了九牛二虎之力，才顺利把皮剥下。」",
+      "paragraph_text": "「如先生所知，这些皮草是饱尝香甜果实，以至于全身散发出芳香气味的貂皮，因为这些貂的肌肉紧实，在剥貂皮的时候，可是由两名壮汉费了九牛二虎之力，才顺利把皮剥下。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 79
+    },
+    {
+      "dialogue_id": "volume_01-d000494",
+      "dialogue_index": 493,
+      "window_position": 6,
+      "chapter_id": "volume_01-c004",
+      "chapter_title": "第三幕",
+      "scene_id": "volume_01-c004-s004",
+      "paragraph_id": "volume_01-c004-s004-p001168",
+      "paragraph_index": 1167,
+      "local_dialogue_index": 1,
+      "text": "这件皮草有如猛兽的皮草般强韧，穿在身上有如春天的阳光般暖和，下雨时也可以做到拨水的效果。除此之外，还有它散发出来的芳香。请想像一下：在一堆腥臭不堪的貂皮做成的衣服当中，如果有一件衣服是用散发芳香的貂皮做成，这件衣服想必能够卖得惊人的高价。",
+      "quote_text": "「这件皮草有如猛兽的皮草般强韧，穿在身上有如春天的阳光般暖和，下雨时也可以做到拨水的效果。除此之外，还有它散发出来的芳香。请想像一下：在一堆腥臭不堪的貂皮做成的衣服当中，如果有一件衣服是用散发芳香的貂皮做成，这件衣服想必能够卖得惊人的高价。」",
+      "paragraph_text": "「这件皮草有如猛兽的皮草般强韧，穿在身上有如春天的阳光般暖和，下雨时也可以做到拨水的效果。除此之外，还有它散发出来的芳香。请想像一下：在一堆腥臭不堪的貂皮做成的衣服当中，如果有一件衣服是用散发芳香的貂皮做成，这件衣服想必能够卖得惊人的高价。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 121
+    },
+    {
+      "dialogue_id": "volume_01-d000495",
+      "dialogue_index": 494,
+      "window_position": 7,
+      "chapter_id": "volume_01-c004",
+      "chapter_title": "第三幕",
+      "scene_id": "volume_01-c004-s004",
+      "paragraph_id": "volume_01-c004-s004-p001170",
+      "paragraph_index": 1169,
+      "local_dialogue_index": 1,
+      "text": "那么，不知道先生愿意以多少价格买下这些貂皮呢？",
+      "quote_text": "「那么，不知道先生愿意以多少价格买下这些貂皮呢？」",
+      "paragraph_text": "「那么，不知道先生愿意以多少价格买下这些貂皮呢？」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 25
+    },
+    {
+      "dialogue_id": "volume_01-d000496",
+      "dialogue_index": 495,
+      "window_position": 8,
+      "chapter_id": "volume_01-c004",
+      "chapter_title": "第三幕",
+      "scene_id": "volume_01-c004-s004",
+      "paragraph_id": "volume_01-c004-s004-p001172",
+      "paragraph_index": 1171,
+      "local_dialogue_index": 1,
+      "text": "崔尼银币两百枚，您意下如何？",
+      "quote_text": "「崔尼银币两百枚，您意下如何？」",
+      "paragraph_text": "「崔尼银币两百枚，您意下如何？」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 16
+    }
+  ],
+  "context": {
+    "paragraphs": [
+      {
+        "paragraph_id": "volume_01-c004-s003-p001156",
+        "paragraph_index": 1155,
+        "text": "「如何呢？有闻到什么味道吗？」",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s003-p001157",
+        "paragraph_index": 1156,
+        "text": "「咦？啊！有的。这是水果的芳香吗？」",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s003-p001158",
+        "paragraph_index": 1157,
+        "text": "罗伦斯惊讶地看了看貂皮。水果的芳香？",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s004-p001159",
+        "paragraph_index": 1158,
+        "text": "「没错。先生刚刚有提到今年因为丰收，所以貂皮的数量很少，其实森林里也是处处可见果实累累。这些貂不久前还在这样的森林里活蹦乱跳，想必他们一定吃了相当多果实，身体才会散发出如此香甜的气味。」",
+        "target_dialogue_ids": [
+          "volume_01-d000489"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c004-s004-p001160",
+        "paragraph_index": 1159,
+        "text": "鉴定员听着赫萝说明，再度嗅一下味道。男子嗅完后，点了点头回答「真的没错」。",
+        "target_dialogue_ids": [
+          "volume_01-d000490"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c004-s004-p001161",
+        "paragraph_index": 1160,
+        "text": "「事实上，就算皮草的色泽多少有好坏之差，但差别也不大吧。皮草在加工、或制成衣服后是否实用，才是重点所在，是呗？好的皮草可以耐久使用，不好的皮草一下子就会走样。」",
+        "target_dialogue_ids": [
+          "volume_01-d000491"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c004-s004-p001162",
+        "paragraph_index": 1161,
+        "text": "「您说的一点也没错。」",
+        "target_dialogue_ids": [
+          "volume_01-d000492"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c004-s004-p001163",
+        "paragraph_index": 1162,
+        "text": "这只狼的见识究竟有多广、多深？罗伦斯不禁暗自佩服。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s004-p001164",
+        "paragraph_index": 1163,
+        "text": "「如先生所知，这些皮草是饱尝香甜果实，以至于全身散发出芳香气味的貂皮，因为这些貂的肌肉紧实，在剥貂皮的时候，可是由两名壮汉费了九牛二虎之力，才顺利把皮剥下。」",
+        "target_dialogue_ids": [
+          "volume_01-d000493"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c004-s004-p001165",
+        "paragraph_index": 1164,
+        "text": "男子随着赫萝说的话，试着使劲拉扯手上的皮草。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s004-p001166",
+        "paragraph_index": 1165,
+        "text": "事实上，对于尚未决定购买的商品，买方不会如此用力地拉扯；想必赫萝也知道这一点。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s004-p001167",
+        "paragraph_index": 1166,
+        "text": "赫萝的手段之高，简直是商人的典范。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s004-p001168",
+        "paragraph_index": 1167,
+        "text": "「这件皮草有如猛兽的皮草般强韧，穿在身上有如春天的阳光般暖和，下雨时也可以做到拨水的效果。除此之外，还有它散发出来的芳香。请想像一下：在一堆腥臭不堪的貂皮做成的衣服当中，如果有一件衣服是用散发芳香的貂皮做成，这件衣服想必能够卖得惊人的高价。」",
+        "target_dialogue_ids": [
+          "volume_01-d000494"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c004-s004-p001169",
+        "paragraph_index": 1168,
+        "text": "鉴定员看着远方，想像赫萝描述的画面。罗伦斯也跟着想像起来，这件衣服确实会特别醒目。不，或许该说特别醒味？",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s004-p001170",
+        "paragraph_index": 1169,
+        "text": "「那么，不知道先生愿意以多少价格买下这些貂皮呢？」",
+        "target_dialogue_ids": [
+          "volume_01-d000495"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c004-s004-p001171",
+        "paragraph_index": 1170,
+        "text": "赫萝的话像是把鉴定的男子从梦中叫醒。他挺直背脊，急忙拿起算盘计算。算盘发出木珠互相撞击的清脆声响，数字也跟着出现在算盘上。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s004-p001172",
+        "paragraph_index": 1171,
+        "text": "「崔尼银币两百枚，您意下如何？」",
+        "target_dialogue_ids": [
+          "volume_01-d000496"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c004-s004-p001173",
+        "paragraph_index": 1172,
+        "text": "罗伦斯听到这个金额，不禁倒抽了一口气。一百四十枚已经是相当高的价格，两百枚根本是难以想像的金额。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s004-p001174",
+        "paragraph_index": 1173,
+        "text": "「嗯……」",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s004-p001175",
+        "paragraph_index": 1174,
+        "text": "赫萝发出低吟声。罗伦斯心想该适可而止了吧，于是打算开口阻止赫萝。当然了，赫萝不可能罢手。",
+        "target_dialogue_ids": []
+      }
+    ]
+  },
+  "scene_memory": [
+    {
+      "scene_id": "volume_01-c004-s004-r001",
+      "parent_scene_id": "volume_01-c004-s004",
+      "chunk_index": 1,
+      "chunk_count": 6,
+      "scene_summary": "赫萝与鉴定员进行貂皮交易的谈判，她以生动的描述和策略说服对方，最终提出价格询问，鉴定员给出两百枚崔尼银币的报价。",
+      "active_characters": [
+        "赫萝",
+        "鉴定员",
+        "罗伦斯"
+      ],
+      "relationships": [
+        "赫萝主导交易策略，影响鉴定员态度",
+        "罗伦斯在交易中被赫萝主导，表现出无奈",
+        "鉴定员与罗伦斯进行交易，但被赫萝影响"
+      ],
+      "notes": "赫萝在交易中表现出极强的说服力和策略性，罗伦斯则显得被动。鉴定员的态度从困惑到认同，显示出赫萝的影响力。"
+    }
+  ],
+  "candidate_characters": [
+    {
+      "entity_id": "char_0001",
+      "display_name": "罗伦斯",
+      "aliases": [
+        "罗伦斯",
+        "罗伦斯先生"
+      ],
+      "titles": [
+        "中间人",
+        "交易者",
+        "同行",
+        "商人",
+        "小毛头",
+        "小的",
+        "市井无赖",
+        "年轻人"
+      ],
+      "description": "一位行商人，正在与米隆商行的代表马贺特进行交易谈判。他原本期待获得两千枚银币，但实际只得到一百二十枚，感到震惊和困惑。 / 一位行商人，发现并收留了赫萝，决定与她一同旅行。 / 一位二十五岁的自力更生旅行商人，已有七年行商经验，性格泰然自若。 / 一位冷静理性的旅行商人，对赫萝的身份持怀疑态度，但仍保持互动。他注重外表整洁，对商业制度有深入理解。 / 冷静理性的旅行商人，与赫萝一同旅行。在本场景中与米隆商行的马贺特讨论梅迪欧商行的威胁，提出利用崔尼银币交易作为交涉王牌。 / 一位冷静理性的旅行商人，与赫萝一同旅行…",
+      "speech_style": "理性、坚定、略带情绪化 / 冷静、理性，带有悔恨和自责的语气。 / 冷静、理性，语气中带有对赫萝的关心和些许担忧。 / 冷静、理性、略带失落 / 冷静、理性，对商业制度有深入理解，并能清晰地向他人解释。 / 理性、礼貌、略带谨慎。 / 理性、冷静，带有商业分析倾向。 / 理性、沉稳、略带幽默 / 理性、冷静，但因困惑…",
+      "relationship_hints": [
+        "与赫萝一同旅行",
+        "对赫萝的真实性持怀疑态度",
+        "与深山村落的村民有交易关系",
+        "对修道院抱有商业期望但未成功",
+        "与骑士有短暂互动",
+        "与小村落的村民有交易关系",
+        "与修道院有关联",
+        "对教会和异教徒问题有见解"
+      ],
+      "first_seen_scene_id": "volume_01-c000-s003-r001",
+      "latest_seen_scene_id": "volume_01-c008-s003-r002",
+      "confidence": 1.0
+    },
+    {
+      "entity_id": "char_0002",
+      "display_name": "赫萝",
+      "aliases": [
+        "赫萝"
+      ],
+      "titles": [
+        "丰收之神",
+        "咱",
+        "神秘少女",
+        "约伊兹的贤狼",
+        "贤狼"
+      ],
+      "description": "自称丰收之神的神秘少女，拥有狼的耳朵和尾巴。在本场景中协助罗伦斯，表现出对他的关心和保护。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴，行为举止非人类，表现出轻松幽默但略带威胁性的说话风格。在本场景中，她对罗伦斯的伤口进行吸血，引发旁人惊呼，并表现出悲伤的情绪。 / 自称是丰收之神的神秘少女，拥有狼的耳朵和尾巴。在本场景中逐渐显露出非人类的特征，最终完全变成一只巨大的狼。她与罗伦斯有情感交流，表现出悲伤和决绝的情绪。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴，未直接参与本场景，但罗伦斯的行动可能与她有关…",
+      "speech_style": "轻松幽默但略带威胁性，情绪化且带有调侃语气。 / 轻松幽默、略带调侃和威胁 / 轻松幽默、略带威胁性 / 轻松幽默、略带威胁性、撒娇 / 警觉、神秘 / 轻松幽默但略带威胁性 / 轻松幽默、略带调侃 / 轻松幽默但略带威胁性，语气中透露出对罗伦斯的依赖。 / 轻松幽默、略带威胁性、自信 / 轻松幽默但略带威胁性，情绪…",
+      "relationship_hints": [
+        "与罗伦斯一同旅行",
+        "被罗伦斯怀疑是否为真正的神",
+        "与叶勒有附身关系",
+        "与罗伦斯有潜在互动",
+        "与罗伦斯有互动，似乎是被他发现并收留的。",
+        "与罗伦斯有互动，但尚未明确关系",
+        "与罗伦斯互动频繁，表现出对他的信任和玩笑态度",
+        "与罗伦斯互动密切"
+      ],
+      "first_seen_scene_id": "volume_01-c000-s003-r001",
+      "latest_seen_scene_id": "volume_01-c008-s003-r002",
+      "confidence": 1.0
+    },
+    {
+      "entity_id": "char_0016",
+      "display_name": "鉴定员",
+      "aliases": [],
+      "titles": [
+        "采购人员",
+        "鉴定商品的采购人员"
+      ],
+      "description": "阅历丰富的商人，负责鉴定罗伦斯带来的商品。在赫萝的言辞下表现出真诚的歉意。 / 负责鉴定罗伦斯带来的貂皮，态度专业但对赫萝的插嘴感到困惑。 / 负责鉴定罗伦斯带来的貂皮，态度专业但对赫萝的插嘴感到困惑。在赫萝的言辞下表现出真诚的歉意。",
+      "speech_style": "礼貌、诚恳、略带紧张 / 礼貌、专业、略显困惑 / 礼貌、专业，语气中带有从困惑到认同的变化。",
+      "relationship_hints": [
+        "与罗伦斯进行交易洽谈",
+        "对赫萝的言辞感到惊讶",
+        "被赫萝影响气氛",
+        "被赫萝影响态度"
+      ],
+      "first_seen_scene_id": "volume_01-c004-s003-r004",
+      "latest_seen_scene_id": "volume_01-c004-s004-r001",
+      "confidence": 0.85
+    },
+    {
+      "entity_id": "char_0015",
+      "display_name": "鉴定的男子",
+      "aliases": [],
+      "titles": [
+        "采购人员",
+        "鉴定员"
+      ],
+      "description": "与罗伦斯进行交易洽谈的男子，态度礼貌但对赫萝的插嘴感到困惑。",
+      "speech_style": "礼貌、谨慎",
+      "relationship_hints": [
+        "与罗伦斯进行交易",
+        "对赫萝的突然插嘴感到惊讶"
+      ],
+      "first_seen_scene_id": "volume_01-c004-s003-r003",
+      "latest_seen_scene_id": "volume_01-c004-s003-r003",
+      "confidence": 0.85
+    },
+    {
+      "entity_id": "char_0017",
+      "display_name": "男子",
+      "aliases": [],
+      "titles": [],
+      "description": "一名未命名的男子，正在嗅闻貂皮的气味，表现出从困惑到惊讶的情绪变化。",
+      "speech_style": "未直接说话，但通过行为表现出惊讶",
+      "relationship_hints": [
+        "与罗伦斯互动",
+        "对貂皮的气味有反应"
+      ],
+      "first_seen_scene_id": "volume_01-c004-s003-r006",
+      "latest_seen_scene_id": "volume_01-c004-s003-r006",
+      "confidence": 0.7
+    },
+    {
+      "entity_id": "char_0010",
+      "display_name": "店员",
+      "aliases": [],
+      "titles": [
+        "米隆商行店员",
+        "采购人员",
+        "鉴定员",
+        "鉴定商品的采购人员"
+      ],
+      "description": "在卸货场迎接罗伦斯的店员，穿着整洁，态度专业。 / 商行的店员，负责接待罗伦斯并指引卸货场的位置。",
+      "speech_style": "礼貌、热情、简洁 / 礼貌、略显紧张",
+      "relationship_hints": [
+        "与罗伦斯互动",
+        "引导罗伦斯前往左手边人员",
+        "与罗伦斯有互动",
+        "提供卸货场指引"
+      ],
+      "first_seen_scene_id": "volume_01-c004-s002-r005",
+      "latest_seen_scene_id": "volume_01-c008-s002-r006",
+      "confidence": 0.85
+    },
+    {
+      "entity_id": "char_0022",
+      "display_name": "米隆商行店员",
+      "aliases": [],
+      "titles": [
+        "米隆商行店员",
+        "采购人员",
+        "鉴定员",
+        "鉴定商品的采购人员"
+      ],
+      "description": "在卸货场迎接罗伦斯的店员，穿着整洁，态度专业。",
+      "speech_style": "礼貌、专业。",
+      "relationship_hints": [
+        "与罗伦斯有交易关系。"
+      ],
+      "first_seen_scene_id": "volume_01-c005-s006-r003",
+      "latest_seen_scene_id": "volume_01-c005-s006-r003",
+      "confidence": 0.8
+    },
+    {
+      "entity_id": "char_0025",
+      "display_name": "米隆商行帕兹欧分行店员",
+      "aliases": [],
+      "titles": [
+        "采购人员",
+        "鉴定员"
+      ],
+      "description": "米隆商行帕兹欧分行的工作人员，协助罗伦斯进行交易。",
+      "speech_style": "未直接说话",
+      "relationship_hints": [
+        "与罗伦斯进行交易",
+        "与米隆侯爵有关联"
+      ],
+      "first_seen_scene_id": "volume_01-c005-s006-r004",
+      "latest_seen_scene_id": "volume_01-c005-s006-r004",
+      "confidence": 0.7
+    }
+  ],
+  "candidate_mysteries": []
+}

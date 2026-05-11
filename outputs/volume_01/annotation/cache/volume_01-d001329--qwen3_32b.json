@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d001329",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.98
+    },
+    {
+      "entity_id": "char_0020",
+      "display": "列支敦·马贺特",
+      "status": "known",
+      "score": 0.02
+    }
+  ],
+  "evidence": [
+    "前一段提到罗伦斯听到夸奖后露出灿烂的笑容并说：",
+    "当前段落是罗伦斯的回应，提到「希望我的身体也能早日有辛香料的完美调味」，符合其理性、略带幽默的说话风格。",
+    "场景记忆中，罗伦斯与马贺特的对话围绕交易和辛香料展开，罗伦斯是主要发言者。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

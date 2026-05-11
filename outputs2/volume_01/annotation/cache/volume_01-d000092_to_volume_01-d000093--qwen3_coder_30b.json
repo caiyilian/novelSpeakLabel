@@ -1,0 +1,56 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000092",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.9
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.1
+        }
+      ],
+      "evidence": [
+        "上文赫萝在讲述背景故事，此句为提问，符合赫萝的叙述节奏",
+        "赫萝的说话风格中包含'咱'等自称，与下一句语境一致"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000093",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "使用'咱'作为自称，符合赫萝的说话习惯",
+        "内容与赫萝的背景叙述一致，提到'纽希拉'城镇并描述其温泉特征",
+        "语气轻松、自信，符合赫萝的说话风格"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "赫萝在讲述过往经历，罗伦斯提出问题，赫萝继续回答，对话轮次清晰，无其他角色介入。"
+}

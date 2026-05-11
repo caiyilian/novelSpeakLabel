@@ -1,0 +1,23 @@
+{
+  "dialogue_id": "volume_01-d001095",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    }
+  ],
+  "evidence": [
+    "对话中自称「咱」，与赫萝的自称一致。",
+    "对话内容提及「让咱感到羞耻的人」，与赫萝在场景中对罗伦斯的愤怒情绪相符。",
+    "场景记忆中明确指出赫萝对罗伦斯表现出强烈不满，符合此句台词的情绪表达。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

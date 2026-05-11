@@ -1,0 +1,23 @@
+{
+  "dialogue_id": "volume_01-d001105",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    }
+  ],
+  "evidence": [
+    "前一段描述赫萝笑着说，桃色的嘴唇底下露出两根尖牙。",
+    "当前段落是赫萝的直接引语，且上下文显示她正在表达某种带有情绪的结论。",
+    "后续段落提到赫萝脸上的笑容突然消失，变得面无表情，进一步确认说话人是赫萝。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

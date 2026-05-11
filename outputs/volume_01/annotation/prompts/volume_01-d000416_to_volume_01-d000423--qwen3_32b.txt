@@ -1,0 +1,427 @@
+你是轻小说说话人标注项目的阶段 2：正式标注助手。
+你的任务是判断输入 target_dialogues 中每一句台词的说话人，不要改写原文。
+必须把这些台词当作同一个连续片段来判断，优先保持对话轮次和叙述线索的一致性。
+
+规则：
+1. 只输出严格 JSON，不要 Markdown，不要解释性前后缀。
+2. 如果说话人是候选角色，speaker_entity_id 必须使用 candidate_characters 里的 entity_id，speaker_status 填 known。
+3. 如果说话人像某个未知人物，speaker_entity_id 使用 candidate_mysteries 里的 mystery_id，speaker_status 填 mystery。
+4. 如果只是无法追踪的路人/群体，speaker_status 填 npc，speaker_entity_id 可为空或使用 npc:简短称呼。
+5. 证据不足时不要硬猜，speaker_status 填 ambiguous 或 review，并把 needs_review 设为 true。
+6. candidate_speakers 至少列出 1 个候选；如果无法判断，列出最可能的候选和不确定原因。
+7. confidence 使用 0 到 1 之间的小数，表示你对最终判断的把握。
+8. 不要只因为台词里提到某个名字、职业、地点，就把说话人标成那个实体；被称呼的人通常不是说话人。
+9. 连续问答、交易寒暄、命令/回答等场景要按上下句轮次判断；同一人连续说话必须有叙述或语气证据支持。
+10. 如果当前上下文显示某角色还没有登场，不要因为角色库或后文记忆里有这个角色就提前标给他/她。
+
+11. target_dialogues 中 dialogue_kind=inline 的项目是正文内嵌引号，不要当作独立对白；标为 review，needs_review=true。
+12. candidate_mysteries 只是可选候选；如果候选名称和当前段落地点/人物不一致，必须改用 npc 或 review。
+13. 如果只有轮次推断、没有叙述锚点或自我介绍，请降低 confidence，并在 evidence 里说明轮次依据。
+
+输出 JSON 结构：
+{
+  "annotations": [
+    {
+      "dialogue_id": "必须来自 target_dialogue_ids",
+      "speaker_entity_id": "string",
+      "speaker_display": "string",
+      "speaker_status": "known|mystery|npc|ambiguous|review",
+      "confidence": 0.0,
+      "candidate_speakers": [
+        {"entity_id": "string", "display": "string", "status": "known|mystery|npc|ambiguous|review", "score": 0.0}
+      ],
+      "evidence": ["短证据，不要大段复制原文"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "可选，简短说明整体轮次判断"
+}
+必须为 target_dialogue_ids 中每个 dialogue_id 输出且只输出一条 annotation。
+
+输入 JSON：
+{
+  "volume": {
+    "volume_id": "volume_01",
+    "volume": 1
+  },
+  "target_dialogue_ids": [
+    "volume_01-d000416",
+    "volume_01-d000417",
+    "volume_01-d000418",
+    "volume_01-d000419",
+    "volume_01-d000420",
+    "volume_01-d000421",
+    "volume_01-d000422",
+    "volume_01-d000423"
+  ],
+  "dialogues": [
+    {
+      "dialogue_id": "volume_01-d000416",
+      "dialogue_index": 415,
+      "window_position": 1,
+      "chapter_id": "volume_01-c004",
+      "chapter_title": "第三幕",
+      "scene_id": "volume_01-c004-s002",
+      "paragraph_id": "volume_01-c004-s002-p001022",
+      "paragraph_index": 1021,
+      "local_dialogue_index": 1,
+      "text": "是用我的钱买的吧。",
+      "quote_text": "「是用我的钱买的吧。」",
+      "paragraph_text": "「是用我的钱买的吧。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 11
+    },
+    {
+      "dialogue_id": "volume_01-d000417",
+      "dialogue_index": 416,
+      "window_position": 2,
+      "chapter_id": "volume_01-c004",
+      "chapter_title": "第三幕",
+      "scene_id": "volume_01-c004-s002",
+      "paragraph_id": "volume_01-c004-s002-p001024",
+      "paragraph_index": 1023,
+      "local_dialogue_index": 1,
+      "text": "咱是贤狼赫萝呐，这么点钱一下子就有了。",
+      "quote_text": "「咱是贤狼赫萝呐，这么点钱一下子就有了。」",
+      "paragraph_text": "「咱是贤狼赫萝呐，这么点钱一下子就有了。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 21
+    },
+    {
+      "dialogue_id": "volume_01-d000418",
+      "dialogue_index": 417,
+      "window_position": 3,
+      "chapter_id": "volume_01-c004",
+      "chapter_title": "第三幕",
+      "scene_id": "volume_01-c004-s002",
+      "paragraph_id": "volume_01-c004-s002-p001025",
+      "paragraph_index": 1024,
+      "local_dialogue_index": 1,
+      "text": "拜托你说到做到，我本来是打算拿那枚银币来支付今天的晚餐跟住宿费的。",
+      "quote_text": "「拜托你说到做到，我本来是打算拿那枚银币来支付今天的晚餐跟住宿费的。」",
+      "paragraph_text": "「拜托你说到做到，我本来是打算拿那枚银币来支付今天的晚餐跟住宿费的。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 35
+    },
+    {
+      "dialogue_id": "volume_01-d000419",
+      "dialogue_index": 418,
+      "window_position": 4,
+      "chapter_id": "volume_01-c004",
+      "chapter_title": "第三幕",
+      "scene_id": "volume_01-c004-s002",
+      "paragraph_id": "volume_01-c004-s002-p001026",
+      "paragraph_index": 1025,
+      "local_dialogue_index": 1,
+      "text": "喀滋……嗯……可是扎……喀滋……咱啊……",
+      "quote_text": "「喀滋……嗯……可是扎……喀滋……咱啊……」",
+      "paragraph_text": "「喀滋……嗯……可是扎……喀滋……咱啊……」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 22
+    },
+    {
+      "dialogue_id": "volume_01-d000420",
+      "dialogue_index": 419,
+      "window_position": 5,
+      "chapter_id": "volume_01-c004",
+      "chapter_title": "第三幕",
+      "scene_id": "volume_01-c004-s002",
+      "paragraph_id": "volume_01-c004-s002-p001027",
+      "paragraph_index": 1026,
+      "local_dialogue_index": 1,
+      "text": "吃完再说吧。",
+      "quote_text": "「吃完再说吧。」",
+      "paragraph_text": "「吃完再说吧。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 8
+    },
+    {
+      "dialogue_id": "volume_01-d000421",
+      "dialogue_index": 420,
+      "window_position": 6,
+      "chapter_id": "volume_01-c004",
+      "chapter_title": "第三幕",
+      "scene_id": "volume_01-c004-s002",
+      "paragraph_id": "volume_01-c004-s002-p001030",
+      "paragraph_index": 1029,
+      "local_dialogue_index": 1,
+      "text": "……呼。",
+      "quote_text": "「……呼。」",
+      "paragraph_text": "「……呼。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 6
+    },
+    {
+      "dialogue_id": "volume_01-d000422",
+      "dialogue_index": 421,
+      "window_position": 7,
+      "chapter_id": "volume_01-c004",
+      "chapter_title": "第三幕",
+      "scene_id": "volume_01-c004-s002",
+      "paragraph_id": "volume_01-c004-s002-p001031",
+      "paragraph_index": 1030,
+      "local_dialogue_index": 1,
+      "text": "你真会吃。",
+      "quote_text": "「你真会吃。」",
+      "paragraph_text": "「你真会吃。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 7
+    },
+    {
+      "dialogue_id": "volume_01-d000423",
+      "dialogue_index": 422,
+      "window_position": 8,
+      "chapter_id": "volume_01-c004",
+      "chapter_title": "第三幕",
+      "scene_id": "volume_01-c004-s002",
+      "paragraph_id": "volume_01-c004-s002-p001032",
+      "paragraph_index": 1031,
+      "local_dialogue_index": 1,
+      "text": "苹果是恶魔的果实，充满诱惑咱们的香甜味道。",
+      "quote_text": "「苹果是恶魔的果实，充满诱惑咱们的香甜味道。」",
+      "paragraph_text": "「苹果是恶魔的果实，充满诱惑咱们的香甜味道。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 23
+    }
+  ],
+  "context": {
+    "paragraphs": [
+      {
+        "paragraph_id": "volume_01-c004-s002-p001019",
+        "paragraph_index": 1018,
+        "text": "「能够知道别人心里在想什么，那感觉真是爽快。」",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s002-p001020",
+        "paragraph_index": 1019,
+        "text": "罗伦斯对大口咬着苹果，连苹果芯也不放过的赫萝说完后，伸手打算拿一颗堆在货台上的苹果时，却被叼着第五颗苹果的赫萝打了一下手背。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s002-p001021",
+        "paragraph_index": 1020,
+        "text": "「那是咱的。」",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s002-p001022",
+        "paragraph_index": 1021,
+        "text": "「是用我的钱买的吧。」",
+        "target_dialogue_ids": [
+          "volume_01-d000416"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c004-s002-p001023",
+        "paragraph_index": 1022,
+        "text": "赫萝鼓起脸颊，咀嚼塞满整个嘴巴的苹果。等到把苹果全都吞下后，才开口说：",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s002-p001024",
+        "paragraph_index": 1023,
+        "text": "「咱是贤狼赫萝呐，这么点钱一下子就有了。」",
+        "target_dialogue_ids": [
+          "volume_01-d000417"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c004-s002-p001025",
+        "paragraph_index": 1024,
+        "text": "「拜托你说到做到，我本来是打算拿那枚银币来支付今天的晚餐跟住宿费的。」",
+        "target_dialogue_ids": [
+          "volume_01-d000418"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c004-s002-p001026",
+        "paragraph_index": 1025,
+        "text": "「喀滋……嗯……可是扎……喀滋……咱啊……」",
+        "target_dialogue_ids": [
+          "volume_01-d000419"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c004-s002-p001027",
+        "paragraph_index": 1026,
+        "text": "「吃完再说吧。」",
+        "target_dialogue_ids": [
+          "volume_01-d000420"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c004-s002-p001028",
+        "paragraph_index": 1027,
+        "text": "赫萝点了点头。等到赫萝再次开口说话时，她的胃里已装了八颗苹果。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s002-p001029",
+        "paragraph_index": 1028,
+        "text": "难道赫萝这样还打算吃晚餐不成？",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s002-p001030",
+        "paragraph_index": 1029,
+        "text": "「……呼。」",
+        "target_dialogue_ids": [
+          "volume_01-d000421"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c004-s002-p001031",
+        "paragraph_index": 1030,
+        "text": "「你真会吃。」",
+        "target_dialogue_ids": [
+          "volume_01-d000422"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c004-s002-p001032",
+        "paragraph_index": 1031,
+        "text": "「苹果是恶魔的果实，充满诱惑咱们的香甜味道。」",
+        "target_dialogue_ids": [
+          "volume_01-d000423"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c004-s002-p001033",
+        "paragraph_index": 1032,
+        "text": "听到赫萝夸张的形容，罗伦斯不自觉地笑了出来。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s002-p001034",
+        "paragraph_index": 1033,
+        "text": "「如果你是贤狼，就应该战胜诱惑啊。」",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s002-p001035",
+        "paragraph_index": 1034,
+        "text": "「虽然贪欲会失去很多东西，可是禁欲也不会有任何建设。」",
+        "target_dialogue_ids": []
+      }
+    ]
+  },
+  "scene_memory": [
+    {
+      "scene_id": "volume_01-c004-s002-r002",
+      "parent_scene_id": "volume_01-c004-s002",
+      "chunk_index": 2,
+      "chunk_count": 6,
+      "scene_summary": "赫萝和罗伦斯在场景中互动，赫萝吃了很多苹果，并表现出对金钱的自信，罗伦斯则显得无奈和困扰。",
+      "active_characters": [
+        "罗伦斯",
+        "赫萝"
+      ],
+      "relationships": [
+        "罗伦斯与赫萝之间存在经济互动和相互怀疑",
+        "赫萝表现出对罗伦斯的不信任和挑衅"
+      ],
+      "notes": "赫萝在本场景中表现出对金钱的自信，罗伦斯则显得无奈。两人之间的互动显示出他们之间存在复杂的信任与经济关系。"
+    },
+    {
+      "scene_id": "volume_01-c004-s002-r003",
+      "parent_scene_id": "volume_01-c004-s002",
+      "chunk_index": 3,
+      "chunk_count": 6,
+      "scene_summary": "赫萝与罗伦斯在交谈中讨论苹果的诱惑与禁欲的利弊，赫萝试图说服罗伦斯让她参与生意赚取利益。",
+      "active_characters": [
+        "罗伦斯",
+        "赫萝"
+      ],
+      "relationships": [
+        "罗伦斯与赫萝一同旅行",
+        "赫萝试图影响罗伦斯的商业决策",
+        "罗伦斯对赫萝的提议保持谨慎"
+      ],
+      "notes": "赫萝表现出对食物（尤其是苹果）的强烈兴趣，同时试图说服罗伦斯让她参与商业活动。罗伦斯则表现出理性与克制，对赫萝的提议持怀疑态度。"
+    }
+  ],
+  "candidate_characters": [
+    {
+      "entity_id": "char_0002",
+      "display_name": "赫萝",
+      "aliases": [
+        "赫萝"
+      ],
+      "titles": [
+        "丰收之神",
+        "咱",
+        "神秘少女",
+        "约伊兹的贤狼",
+        "贤狼"
+      ],
+      "description": "自称丰收之神的神秘少女，拥有狼的耳朵和尾巴。在本场景中协助罗伦斯，表现出对他的关心和保护。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴，行为举止非人类，表现出轻松幽默但略带威胁性的说话风格。在本场景中，她对罗伦斯的伤口进行吸血，引发旁人惊呼，并表现出悲伤的情绪。 / 自称是丰收之神的神秘少女，拥有狼的耳朵和尾巴。在本场景中逐渐显露出非人类的特征，最终完全变成一只巨大的狼。她与罗伦斯有情感交流，表现出悲伤和决绝的情绪。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴，未直接参与本场景，但罗伦斯的行动可能与她有关…",
+      "speech_style": "轻松幽默但略带威胁性，情绪化且带有调侃语气。 / 轻松幽默、略带调侃和威胁 / 轻松幽默、略带威胁性 / 轻松幽默、略带威胁性、撒娇 / 警觉、神秘 / 轻松幽默但略带威胁性 / 轻松幽默、略带调侃 / 轻松幽默但略带威胁性，语气中透露出对罗伦斯的依赖。 / 轻松幽默、略带威胁性、自信 / 轻松幽默但略带威胁性，情绪…",
+      "relationship_hints": [
+        "与罗伦斯一同旅行",
+        "被罗伦斯怀疑是否为真正的神",
+        "与叶勒有附身关系",
+        "与罗伦斯有潜在互动",
+        "与罗伦斯有互动，似乎是被他发现并收留的。",
+        "与罗伦斯有互动，但尚未明确关系",
+        "与罗伦斯互动频繁，表现出对他的信任和玩笑态度",
+        "与罗伦斯互动密切"
+      ],
+      "first_seen_scene_id": "volume_01-c000-s003-r001",
+      "latest_seen_scene_id": "volume_01-c008-s003-r002",
+      "confidence": 1.0
+    },
+    {
+      "entity_id": "char_0001",
+      "display_name": "罗伦斯",
+      "aliases": [
+        "罗伦斯",
+        "罗伦斯先生"
+      ],
+      "titles": [
+        "中间人",
+        "交易者",
+        "同行",
+        "商人",
+        "小毛头",
+        "小的",
+        "市井无赖",
+        "年轻人"
+      ],
+      "description": "一位行商人，正在与米隆商行的代表马贺特进行交易谈判。他原本期待获得两千枚银币，但实际只得到一百二十枚，感到震惊和困惑。 / 一位行商人，发现并收留了赫萝，决定与她一同旅行。 / 一位二十五岁的自力更生旅行商人，已有七年行商经验，性格泰然自若。 / 一位冷静理性的旅行商人，对赫萝的身份持怀疑态度，但仍保持互动。他注重外表整洁，对商业制度有深入理解。 / 冷静理性的旅行商人，与赫萝一同旅行。在本场景中与米隆商行的马贺特讨论梅迪欧商行的威胁，提出利用崔尼银币交易作为交涉王牌。 / 一位冷静理性的旅行商人，与赫萝一同旅行…",
+      "speech_style": "理性、坚定、略带情绪化 / 冷静、理性，带有悔恨和自责的语气。 / 冷静、理性，语气中带有对赫萝的关心和些许担忧。 / 冷静、理性、略带失落 / 冷静、理性，对商业制度有深入理解，并能清晰地向他人解释。 / 理性、礼貌、略带谨慎。 / 理性、冷静，带有商业分析倾向。 / 理性、沉稳、略带幽默 / 理性、冷静，但因困惑…",
+      "relationship_hints": [
+        "与赫萝一同旅行",
+        "对赫萝的真实性持怀疑态度",
+        "与深山村落的村民有交易关系",
+        "对修道院抱有商业期望但未成功",
+        "与骑士有短暂互动",
+        "与小村落的村民有交易关系",
+        "与修道院有关联",
+        "对教会和异教徒问题有见解"
+      ],
+      "first_seen_scene_id": "volume_01-c000-s003-r001",
+      "latest_seen_scene_id": "volume_01-c008-s003-r002",
+      "confidence": 1.0
+    }
+  ],
+  "candidate_mysteries": []
+}

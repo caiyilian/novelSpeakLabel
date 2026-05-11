@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d000258",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "赫萝表现出对食物的强烈兴趣，尤其是马铃薯和麦子。",
+    "前一段提到罗伦斯把装满麦粒的皮袋丢给了她，接着是赫萝的反应。",
+    "赫萝的说话风格轻松幽默但略带威胁性，符合台词「哇哇。嗯？是麦子啊。」的语气。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

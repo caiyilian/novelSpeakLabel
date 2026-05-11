@@ -1,0 +1,71 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001269",
+      "speaker_entity_id": "npc:路人甲",
+      "speaker_display": "路人甲",
+      "speaker_status": "npc",
+      "confidence": 0.3,
+      "candidate_speakers": [
+        {
+          "entity_id": "npc:路人甲",
+          "display": "路人甲",
+          "status": "npc",
+          "score": 0.5
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.3
+        },
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.2
+        }
+      ],
+      "evidence": [
+        "声音简短，符合被击倒的路人反应；上下文描述两人被狼攻击；无明确自称或口癖证据"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    },
+    {
+      "dialogue_id": "volume_01-d001270",
+      "speaker_entity_id": "npc:路人乙",
+      "speaker_display": "路人乙",
+      "speaker_status": "npc",
+      "confidence": 0.3,
+      "candidate_speakers": [
+        {
+          "entity_id": "npc:路人乙",
+          "display": "路人乙",
+          "status": "npc",
+          "score": 0.5
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.3
+        },
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.2
+        }
+      ],
+      "evidence": [
+        "与前一句声音一致，符合被击倒的路人反应；上下文描述两人被狼攻击；无明确自称或口癖证据"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    }
+  ],
+  "window_notes": "两句话均为简短的惊呼声，符合被狼攻击后倒地的路人反应，无法确认具体说话人，应归为NPC"
+}

@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d001180",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    }
+  ],
+  "evidence": [
+    "当前段落中提到「咱想吃……苹果呐……咳！」，‘咱’是赫萝常用的自称。",
+    "前一段落提到赫萝在黑暗中频繁咳嗽，说明她刚刚发声的场景与当前台词一致。",
+    "场景记忆中明确指出赫萝在地下道中发出狼嚎，表现出非人类特征，与当前台词中的虚弱语气相符。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d001067",
+  "speaker_entity_id": "char_0020",
+  "speaker_display": "列支敦·马贺特",
+  "speaker_status": "known",
+  "confidence": 0.92,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0020",
+      "display": "列支敦·马贺特",
+      "status": "known",
+      "score": 0.92
+    },
+    {
+      "entity_id": "char_0027",
+      "display": "米隆商行人员",
+      "status": "known",
+      "score": 0.15
+    }
+  ],
+  "evidence": [
+    "场景中提及的暗号和建议与米隆商行代表马贺特的策略性发言风格一致。",
+    "上下文显示罗伦斯与米隆商行人员合作，但具体指示更符合马贺特的冷静、专业语气。",
+    "「拉嘿」和「佩洛索」作为暗号，符合商行内部沟通的特征，而马贺特作为行长更可能掌握此类信息。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

@@ -1,0 +1,51 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000302",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "上下文显示赫萝在对话中表现出自信和调侃语气，符合她的说话风格。",
+        "前一句描述赫萝从床上伸手拿马铃薯，暗示她正在说话。",
+        "对话发生在赫萝和罗伦斯的互动场景中，赫萝是主要发言者。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000303",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.98,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.98
+        }
+      ],
+      "evidence": [
+        "赫萝在对话中明确自我介绍为「贤狼赫萝」，直接表明身份。",
+        "上下文显示赫萝在与罗伦斯互动中占据主导地位，语气带有调侃和自信。",
+        "该句紧接在赫萝拿走马铃薯之后，符合她继续发言的逻辑。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "两句话为赫萝连续发言，符合她在此场景中的主导地位和说话风格。对话轮次清晰，无其他说话人出现。"
+}

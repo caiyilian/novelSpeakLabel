@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000545",
+  "speaker_entity_id": "char_0009",
+  "speaker_display": "杰廉",
+  "speaker_status": "known",
+  "confidence": 0.9,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0009",
+      "display": "杰廉",
+      "status": "known",
+      "score": 0.9
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.1
+    }
+  ],
+  "evidence": [
+    "对话中使用了「老板」一词，暗示说话人是罗伦斯的商业同行或下属，符合杰廉的角色设定。",
+    "对话内容提到「分到的钱」，暗示说话人是交易中的一方，与罗伦斯有利益关系，符合杰廉在场景中与罗伦斯进行交易的背景。",
+    "场景中杰廉是唯一与罗伦斯进行交易的商人，且对话风格符合其谨慎、谦卑但自信的语气。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

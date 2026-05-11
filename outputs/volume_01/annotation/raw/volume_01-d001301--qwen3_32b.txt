@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d001301",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "上下文显示罗伦斯正在与马贺特进行交易谈判，对只获得120枚银币感到震惊和困惑，符合「这……是？」的语气和情绪。",
+    "当前段落是罗伦斯的直接引语，且上下文没有其他角色在此时发言。",
+    "场景记忆中明确指出罗伦斯是本场景的活跃角色之一，且情绪和反应与台词一致。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

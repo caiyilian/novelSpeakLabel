@@ -1,0 +1,47 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000178",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {"entity_id": "char_0001", "display": "罗伦斯", "status": "known", "score": 0.95}
+      ],
+      "evidence": ["罗伦斯思考了一会儿后，缓缓开口说："],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000179",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {"entity_id": "char_0002", "display": "赫萝", "status": "known", "score": 0.95}
+      ],
+      "evidence": ["罗伦斯原以为他的答案会惹来赫萝不满，但看来他的推测似乎错误，赫萝一副很能理解似地点了点头。"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000180",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {"entity_id": "char_0002", "display": "赫萝", "status": "known", "score": 0.95}
+      ],
+      "evidence": ["赫萝的耳朵突然动了一下，她从貂皮之中把头探出来，对罗伦斯说："],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，根据上下文可以明确判断说话人。"
+}

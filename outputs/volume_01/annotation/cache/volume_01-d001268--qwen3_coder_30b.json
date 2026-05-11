@@ -1,0 +1,34 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001268",
+      "speaker_entity_id": "mystery_volume_01_c007_s004_r004_士兵A",
+      "speaker_display": "士兵A",
+      "speaker_status": "mystery",
+      "confidence": 0.65,
+      "candidate_speakers": [
+        {
+          "entity_id": "mystery_volume_01_c007_s004_r004_士兵A",
+          "display": "士兵A",
+          "status": "mystery",
+          "score": 0.65
+        },
+        {
+          "entity_id": "mystery_volume_01_c007_s004_r004_士兵B",
+          "display": "士兵B",
+          "status": "mystery",
+          "score": 0.35
+        }
+      ],
+      "evidence": [
+        "前文描述两人因惊恐丢弃武器",
+        "现场几乎所有人都丢下武器落荒而逃",
+        "台词为惊叫，符合惊恐反应"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "根据上下文，该台词为两名士兵中一人发出的惊叫，因恐惧狼而丢弃武器，无法确定具体是哪位士兵，故标记为mystery。"
+}

@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000999",
+  "speaker_entity_id": "char_0027",
+  "speaker_display": "米隆商行人员",
+  "speaker_status": "known",
+  "confidence": 0.9,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0027",
+      "display": "米隆商行人员",
+      "status": "known",
+      "score": 0.9
+    },
+    {
+      "entity_id": "mystery_volume_01_c005_s008_r001_神秘收信人",
+      "display": "神秘收信人",
+      "status": "mystery",
+      "score": 0.3
+    }
+  ],
+  "evidence": [
+    "「打扰了。」出现在米隆商行人员进入房间的段落前，符合其行为逻辑。",
+    "场景记忆中提到「有个米隆商行的人走进房间」，紧接着是该台词，表明说话人是该人员。",
+    "米隆商行人员在场景中负责传递信件，符合其身份和行为动机。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

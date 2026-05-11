@@ -1,0 +1,30 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001274",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.85
+        },
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.15
+        }
+      ],
+      "evidence": ["前文描述罗伦斯下意识准备递出皮袋，此时突然想到不祥之事，语气转向疑问；赫萝在前文有沉默后踏出前脚的动作，但未直接发言；罗伦斯对赫萝的举动感到不安，符合其理性、谨慎的性格；赫萝的说话风格多为简短或情绪化，而此句为疑问句，更符合罗伦斯的理性表达方式。"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "罗伦斯在赫萝要求交出麦子后产生不祥预感，随即提出疑问，符合其理性、谨慎的性格特征。赫萝虽有沉默动作但未直接发言，因此该句应为罗伦斯所问。"
+}

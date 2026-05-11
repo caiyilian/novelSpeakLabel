@@ -1,0 +1,30 @@
+{
+  "dialogue_id": "volume_01-d000574",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0009",
+      "display": "杰廉",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "上下文显示罗伦斯与杰廉在讨论银币的含银量和交易，罗伦斯是主要的发言者。",
+    "该段对话出现在罗伦斯与杰廉的谈判场景中，罗伦斯对货币有深入理解。",
+    "赫萝未发言，因此排除。",
+    "对话内容与罗伦斯的商业知识和角色设定高度一致。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

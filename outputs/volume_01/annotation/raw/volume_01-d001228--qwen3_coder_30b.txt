@@ -1,0 +1,30 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001228",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.9
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.1
+        }
+      ],
+      "evidence": ["前文提到赫萝泫然欲泣的声音，且该台词出现在赫萝说话之前；罗伦斯在听赫萝说话，符合赫萝情绪表达的语境"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "赫萝在情绪低落时表达困惑，罗伦斯听到她的声音后抬头，说明该台词由赫萝说出"
+}

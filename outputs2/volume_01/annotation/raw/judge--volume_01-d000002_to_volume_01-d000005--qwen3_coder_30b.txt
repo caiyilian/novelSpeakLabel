@@ -1,0 +1,72 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000002",
+      "speaker_entity_id": "",
+      "speaker_display": "",
+      "speaker_status": "review",
+      "confidence": 0.3,
+      "candidate_speakers": [
+        {"entity_id": "char_0001", "display": "罗伦斯", "score": 0.6},
+        {"entity_id": "", "display": "村民", "score": 0.4}
+      ],
+      "evidence": [
+        "无明确说话人",
+        "上下文为交易场景",
+        "可能是罗伦斯询问"
+      ],
+      "needs_review": true
+    },
+    {
+      "dialogue_id": "volume_01-d000003",
+      "speaker_entity_id": "",
+      "speaker_display": "",
+      "speaker_status": "review",
+      "confidence": 0.4,
+      "candidate_speakers": [
+        {"entity_id": "", "display": "村民", "score": 0.6},
+        {"entity_id": "char_0001", "display": "罗伦斯", "score": 0.3}
+      ],
+      "evidence": [
+        "回应前一句，语气符合交易",
+        "可能是村民或店主",
+        "无明确说话人"
+      ],
+      "needs_review": true
+    },
+    {
+      "dialogue_id": "volume_01-d000004",
+      "speaker_entity_id": "",
+      "speaker_display": "",
+      "speaker_status": "review",
+      "confidence": 0.5,
+      "candidate_speakers": [
+        {"entity_id": "", "display": "村民", "score": 0.7},
+        {"entity_id": "char_0001", "display": "罗伦斯", "score": 0.2}
+      ],
+      "evidence": [
+        "明确称呼罗伦斯先生",
+        "语气符合村民回应",
+        "可能是村民或店主"
+      ],
+      "needs_review": true
+    },
+    {
+      "dialogue_id": "volume_01-d000005",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {"entity_id": "char_0001", "display": "罗伦斯", "score": 0.9}
+      ],
+      "evidence": [
+        "语气自信，符合罗伦斯风格",
+        "与前文罗伦斯行为一致",
+        "无反证证据"
+      ],
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话场景为交易结束后的交流，罗伦斯在深山村落完成交易后离开，后续对话中罗伦斯表现出自信和理性，符合其角色设定。"
+}

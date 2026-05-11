@@ -1,0 +1,88 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000324",
+      "speaker_entity_id": "",
+      "speaker_display": "",
+      "speaker_status": "review",
+      "confidence": 0.0,
+      "candidate_speakers": [],
+      "evidence": [
+        "dialogue_kind=inline，是正文内嵌引号，未明确说话人"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    },
+    {
+      "dialogue_id": "volume_01-d000325",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "赫萝是当前场景中活跃角色，且使用了「咱」这一赫萝的典型自称",
+        "上下文显示赫萝对罗伦斯有挑衅态度，符合她的性格"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000326",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "对话轮次上，赫萝说完后紧接着是简短回应，符合罗伦斯的理性性格",
+        "罗伦斯是当前场景中唯一另一个活跃角色，且没有其他说话人出现"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000327",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.92,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.92
+        }
+      ],
+      "evidence": [
+        "赫萝在前一句中刚发言，且此句是她的延续性长篇解释",
+        "使用了「咱」这一赫萝的典型自称",
+        "内容与赫萝对自然和空气的敏感性高度一致"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次为：赫萝 → 罗伦斯 → 赫萝，符合场景中两人互动的节奏。赫萝表现出对自然的敏感，罗伦斯则表现出理性回应。"
+}
+```

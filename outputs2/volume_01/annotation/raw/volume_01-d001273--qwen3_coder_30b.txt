@@ -1,0 +1,30 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001273",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.85
+        },
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.15
+        }
+      ],
+      "evidence": ["前文提到罗伦斯喊赫萝的名字，且赫萝未转身面对罗伦斯；赫萝刚制服叶勒，罗伦斯应为在场者且有情绪反应"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "罗伦斯在赫萝制服叶勒后呼唤其名字，符合上下文情境，且赫萝未转身，推测为罗伦斯发出的感叹或呼唤"
+}

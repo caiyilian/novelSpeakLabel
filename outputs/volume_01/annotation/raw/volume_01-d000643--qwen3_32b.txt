@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000643",
+  "speaker_entity_id": "char_0019",
+  "speaker_display": "怀兹",
+  "speaker_status": "known",
+  "confidence": 0.9,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0019",
+      "display": "怀兹",
+      "status": "known",
+      "score": 0.9
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.1
+    }
+  ],
+  "evidence": [
+    "前一段对话中，怀兹问罗伦斯：「那位女孩是谁？」，紧接着本句是罗伦斯的回答，符合上下文逻辑。",
+    "场景记忆中明确提到怀兹对罗伦斯身旁的神秘女孩表现出好奇，罗伦斯称其为在帕斯罗村路上捡到的，暗示这是罗伦斯对怀兹的回应。",
+    "罗伦斯是主要叙述者，但此句是直接引语，且是针对怀兹提问的回应，因此更可能是罗伦斯在回答怀兹的问题。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

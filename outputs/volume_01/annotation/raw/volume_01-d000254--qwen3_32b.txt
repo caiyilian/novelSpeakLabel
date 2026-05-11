@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000254",
+  "speaker_entity_id": "char_0009",
+  "speaker_display": "杰廉",
+  "speaker_status": "known",
+  "confidence": 0.9,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0009",
+      "display": "杰廉",
+      "status": "known",
+      "score": 0.9
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.1
+    }
+  ],
+  "evidence": [
+    "前一段提到赫萝说完后，杰廉尴尬地笑，罗伦斯佩服赫萝的妙语。",
+    "当前台词「嘿嘿……夫人真是了得。」语气谄媚，符合杰廉试图接近赫萝时的说话风格。",
+    "下一段提到「光是想要怎么不被踩在脚底下，就够我受了。」是罗伦斯的台词，与当前台词风格不符。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

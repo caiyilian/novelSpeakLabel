@@ -1,0 +1,47 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000181",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "上下文提到罗伦斯醒来后发现赫萝穿着他的衣物，因此愤怒地喊出'那是我的东西'，符合罗伦斯的语气和情绪反应。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000182",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.98,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.98
+        }
+      ],
+      "evidence": [
+        "赫萝穿着罗伦斯的衣服，并主动询问'咱穿起来如何？合适吗？'，语气轻松自信，符合赫萝的说话风格和行为模式。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，罗伦斯先表达不满，赫萝随后回应，符合上下文中的互动逻辑。"
+}

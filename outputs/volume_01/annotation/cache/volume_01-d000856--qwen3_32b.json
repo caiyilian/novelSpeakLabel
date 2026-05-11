@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000856",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "前一段对话中赫萝说「咱好久以前遇过的画家也曾说过同样的话」，暗示她是在回应罗伦斯的发言。",
+    "当前对话「因为我觉得只要画出来，总有一天就会是我的。」语气理性且坚定，符合罗伦斯的说话风格。",
+    "场景记忆中显示罗伦斯在本场景中积极表达开店计划和理想，而赫萝多以调侃或冷淡回应。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

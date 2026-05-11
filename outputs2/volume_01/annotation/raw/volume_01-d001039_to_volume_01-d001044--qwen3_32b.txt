@@ -1,0 +1,139 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001039",
+      "speaker_entity_id": "char_0015",
+      "speaker_display": "列支敦·马贺特",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0015",
+          "display": "列支敦·马贺特",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "上下文显示这是罗伦斯与马贺特的对话，马贺特作为米隆商行代表，提出问题符合其角色设定。",
+        "上下文提到“罗伦斯正面接下这句话”，说明前句是马贺特提出的问题。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001040",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "上下文明确提到“罗伦斯正面接下这句话，他不能在此刻表现出缺乏自信的样子”，接着“他深吸一口气，再大口呼气”，然后“直截了当地说”这句话。",
+        "台词内容符合罗伦斯冷静、理性、策略性的说话风格。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001041",
+      "speaker_entity_id": "char_0015",
+      "speaker_display": "列支敦·马贺特",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0015",
+          "display": "列支敦·马贺特",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "上下文提到“马贺特听到的瞬间，倒抽了一口气”，接着“「这太胡闹了。」”是他的回应，符合对话轮次。",
+        "马贺特作为米隆商行代表，对罗伦斯的计划表示质疑，符合其冷静理性的性格。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001042",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "上下文明确提到“接着，直截了当地说”之后是罗伦斯的回应，接着是马贺特的反应，说明对话轮次为罗伦斯→马贺特→罗伦斯。",
+        "台词内容符合罗伦斯理性、策略性的说话风格。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001043",
+      "speaker_entity_id": "char_0015",
+      "speaker_display": "列支敦·马贺特",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0015",
+          "display": "列支敦·马贺特",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "上下文提到“听到罗伦斯说出……马贺特哭丧着脸，嘴巴一张一合地动着”，接着“「不可能！」”是他的回应，符合对话轮次。",
+        "马贺特对罗伦斯的威胁表现出强烈反应，符合其性格。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001044",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "上下文提到“听到罗伦斯说出……马贺特哭丧着脸……”，接着是罗伦斯的进一步威胁，符合对话轮次。",
+        "台词内容符合罗伦斯理性、策略性的说话风格，且包含对米隆商行的直接称呼，符合其立场。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，罗伦斯与马贺特交替发言，符合商业谈判场景的互动模式。"
+}
+```

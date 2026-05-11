@@ -1,0 +1,62 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000047",
+      "speaker_entity_id": "",
+      "speaker_display": "",
+      "speaker_status": "ambiguous",
+      "confidence": 0.2,
+      "candidate_speakers": [
+        {"entity_id": "", "display": "神秘女孩", "status": "mystery", "score": 0.3},
+        {"entity_id": "", "display": "npc:路人", "status": "npc", "score": 0.4}
+      ],
+      "evidence": ["对话轮次依据"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    },
+    {
+      "dialogue_id": "volume_01-d000048",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {"entity_id": "char_0001", "display": "罗伦斯", "status": "known", "score": 0.9}
+      ],
+      "evidence": ["对话轮次依据"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000049",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {"entity_id": "char_0001", "display": "罗伦斯", "status": "known", "score": 0.85}
+      ],
+      "evidence": ["对话轮次依据"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000050",
+      "speaker_entity_id": "mystery_volume_01_c002_s002_r005_神秘女孩",
+      "speaker_display": "神秘女孩",
+      "speaker_status": "mystery",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {"entity_id": "mystery_volume_01_c002_s002_r005_神秘女孩", "display": "神秘女孩", "status": "mystery", "score": 0.8}
+      ],
+      "evidence": ["对话轮次依据"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "根据对话轮次判断，罗伦斯连续发言，神秘女孩在最后一句回应。"
+}

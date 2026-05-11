@@ -1,0 +1,573 @@
+你是轻小说说话人标注项目的阶段 2：正式标注助手。
+你的任务是判断输入 target_dialogues 中每一句台词的说话人，不要改写原文。
+必须把这些台词当作同一个连续片段来判断，优先保持对话轮次和叙述线索的一致性。
+
+规则：
+1. 只输出严格 JSON，不要 Markdown，不要解释性前后缀。
+2. 如果说话人是候选角色，speaker_entity_id 必须使用 candidate_characters 里的 entity_id，speaker_status 填 known。
+3. 如果说话人像某个未知人物，speaker_entity_id 使用 candidate_mysteries 里的 mystery_id，speaker_status 填 mystery。
+4. 如果只是无法追踪的路人/群体，speaker_status 填 npc，speaker_entity_id 可为空或使用 npc:简短称呼。
+5. 证据不足时不要硬猜，speaker_status 填 ambiguous 或 review，并把 needs_review 设为 true。
+6. candidate_speakers 至少列出 1 个候选；如果无法判断，列出最可能的候选和不确定原因。
+7. confidence 使用 0 到 1 之间的小数，表示你对最终判断的把握。
+8. 不要只因为台词里提到某个名字、职业、地点，就把说话人标成那个实体；被称呼的人通常不是说话人。
+9. 连续问答、交易寒暄、命令/回答等场景要按上下句轮次判断；同一人连续说话必须有叙述或语气证据支持。
+10. 如果当前上下文显示某角色还没有登场，不要因为角色库或后文记忆里有这个角色就提前标给他/她。
+
+11. target_dialogues 中 dialogue_kind=inline 的项目是正文内嵌引号，不要当作独立对白；标为 review，needs_review=true。
+12. candidate_mysteries 只是可选候选；如果候选名称和当前段落地点/人物不一致，必须改用 npc 或 review。
+13. 如果只有轮次推断、没有叙述锚点或自我介绍，请降低 confidence，并在 evidence 里说明轮次依据。
+
+输出 JSON 结构：
+{
+  "annotations": [
+    {
+      "dialogue_id": "必须来自 target_dialogue_ids",
+      "speaker_entity_id": "string",
+      "speaker_display": "string",
+      "speaker_status": "known|mystery|npc|ambiguous|review",
+      "confidence": 0.0,
+      "candidate_speakers": [
+        {"entity_id": "string", "display": "string", "status": "known|mystery|npc|ambiguous|review", "score": 0.0}
+      ],
+      "evidence": ["短证据，不要大段复制原文"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "可选，简短说明整体轮次判断"
+}
+必须为 target_dialogue_ids 中每个 dialogue_id 输出且只输出一条 annotation。
+
+输入 JSON：
+{
+  "volume": {
+    "volume_id": "volume_01",
+    "volume": 1
+  },
+  "target_dialogue_ids": [
+    "volume_01-d000222",
+    "volume_01-d000223",
+    "volume_01-d000224",
+    "volume_01-d000225",
+    "volume_01-d000226",
+    "volume_01-d000227",
+    "volume_01-d000228",
+    "volume_01-d000229"
+  ],
+  "dialogues": [
+    {
+      "dialogue_id": "volume_01-d000222",
+      "dialogue_index": 221,
+      "window_position": 1,
+      "chapter_id": "volume_01-c003",
+      "chapter_title": "第二幕",
+      "scene_id": "volume_01-c003-s001",
+      "paragraph_id": "volume_01-c003-s001-p000644",
+      "paragraph_index": 643,
+      "local_dialogue_index": 1,
+      "text": "咱觉得汝的胡子挺好看的。",
+      "quote_text": "「咱觉得汝的胡子挺好看的。」",
+      "paragraph_text": "「咱觉得汝的胡子挺好看的。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 14
+    },
+    {
+      "dialogue_id": "volume_01-d000223",
+      "dialogue_index": 222,
+      "window_position": 2,
+      "chapter_id": "volume_01-c003",
+      "chapter_title": "第二幕",
+      "scene_id": "volume_01-c003-s001",
+      "paragraph_id": "volume_01-c003-s001-p000646",
+      "paragraph_index": 645,
+      "local_dialogue_index": 1,
+      "text": "不过，咱比较喜欢胡子长一些。",
+      "quote_text": "「不过，咱比较喜欢胡子长一些。」",
+      "paragraph_text": "「不过，咱比较喜欢胡子长一些。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 16
+    },
+    {
+      "dialogue_id": "volume_01-d000224",
+      "dialogue_index": 223,
+      "window_position": 3,
+      "chapter_id": "volume_01-c003",
+      "chapter_title": "第二幕",
+      "scene_id": "volume_01-c003-s001",
+      "paragraph_id": "volume_01-c003-s001-p000648",
+      "paragraph_index": 647,
+      "local_dialogue_index": 1,
+      "text": "像这样，像狼一样的胡子。",
+      "quote_text": "「像这样，像狼一样的胡子。」",
+      "paragraph_text": "「像这样，像狼一样的胡子。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 14
+    },
+    {
+      "dialogue_id": "volume_01-d000225",
+      "dialogue_index": 224,
+      "window_position": 4,
+      "chapter_id": "volume_01-c003",
+      "chapter_title": "第二幕",
+      "scene_id": "volume_01-c003-s001",
+      "paragraph_id": "volume_01-c003-s001-p000652",
+      "paragraph_index": 651,
+      "local_dialogue_index": 1,
+      "text": "暖炉那儿还有其他人在，你可别露出马脚啊。",
+      "quote_text": "「暖炉那儿还有其他人在，你可别露出马脚啊。」",
+      "paragraph_text": "「暖炉那儿还有其他人在，你可别露出马脚啊。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 22
+    },
+    {
+      "dialogue_id": "volume_01-d000226",
+      "dialogue_index": 225,
+      "window_position": 5,
+      "chapter_id": "volume_01-c003",
+      "chapter_title": "第二幕",
+      "scene_id": "volume_01-c003-s001",
+      "paragraph_id": "volume_01-c003-s001-p000653",
+      "paragraph_index": 652,
+      "local_dialogue_index": 1,
+      "text": "咱是贤狼赫萝呐。再说，还没到帕斯罗村之前，咱也是以人类的模样一路旅行过来的。放心放心！",
+      "quote_text": "「咱是贤狼赫萝呐。再说，还没到帕斯罗村之前，咱也是以人类的模样一路旅行过来的。放心放心！」",
+      "paragraph_text": "「咱是贤狼赫萝呐。再说，还没到帕斯罗村之前，咱也是以人类的模样一路旅行过来的。放心放心！」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 45
+    },
+    {
+      "dialogue_id": "volume_01-d000227",
+      "dialogue_index": 226,
+      "window_position": 6,
+      "chapter_id": "volume_01-c003",
+      "chapter_title": "第二幕",
+      "scene_id": "volume_01-c003-s001",
+      "paragraph_id": "volume_01-c003-s001-p000657",
+      "paragraph_index": 656,
+      "local_dialogue_index": 1,
+      "text": "这样啊，所以你是从约连那边过来的？",
+      "quote_text": "「这样啊，所以你是从约连那边过来的？」",
+      "paragraph_text": "「这样啊，所以你是从约连那边过来的？」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 19
+    },
+    {
+      "dialogue_id": "volume_01-d000228",
+      "dialogue_index": 227,
+      "window_position": 7,
+      "chapter_id": "volume_01-c003",
+      "chapter_title": "第二幕",
+      "scene_id": "volume_01-c003-s001",
+      "paragraph_id": "volume_01-c003-s001-p000658",
+      "paragraph_index": 657,
+      "local_dialogue_index": 1,
+      "text": "是的。我在约连买了盐之后，随即把盐送到客人那儿，再从客人那儿收了貂皮。",
+      "quote_text": "「是的。我在约连买了盐之后，随即把盐送到客人那儿，再从客人那儿收了貂皮。」",
+      "paragraph_text": "「是的。我在约连买了盐之后，随即把盐送到客人那儿，再从客人那儿收了貂皮。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 37
+    },
+    {
+      "dialogue_id": "volume_01-d000229",
+      "dialogue_index": 228,
+      "window_position": 8,
+      "chapter_id": "volume_01-c003",
+      "chapter_title": "第二幕",
+      "scene_id": "volume_01-c003-s001",
+      "paragraph_id": "volume_01-c003-s001-p000662",
+      "paragraph_index": 661,
+      "local_dialogue_index": 1,
+      "text": "不过，要从这里再回到约连，这不是太折腾人了吗？",
+      "quote_text": "「不过，要从这里再回到约连，这不是太折腾人了吗？」",
+      "paragraph_text": "「不过，要从这里再回到约连，这不是太折腾人了吗？」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 25
+    }
+  ],
+  "context": {
+    "paragraphs": [
+      {
+        "paragraph_id": "volume_01-c003-s001-p000641",
+        "paragraph_index": 640,
+        "text": "虽然不知道赫萝是开玩笑还是认真的，但被她这种女孩一说，罗伦斯不禁也认同起来。一直以来，罗伦斯只会注意梳洗干净是否对谈生意有帮助，从来没想过梳洗干净可以讨女孩子喜欢。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c003-s001-p000642",
+        "paragraph_index": 641,
+        "text": "谈生意的对手如果是女人，或许罗伦斯还会有梳洗干净的念头。然而很可惜，他从未见过女性商人。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c003-s001-p000643",
+        "paragraph_index": 642,
+        "text": "罗伦斯不知该怎么回答，于是别过脸去，沉默不语。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c003-s001-p000644",
+        "paragraph_index": 643,
+        "text": "「咱觉得汝的胡子挺好看的。」",
+        "target_dialogue_ids": [
+          "volume_01-d000222"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c003-s001-p000645",
+        "paragraph_index": 644,
+        "text": "罗伦斯的下巴留着适度的胡子，一向颇受好评。罗伦斯坦率地接受赫萝的夸奖，有些骄傲地转向赫萝。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c003-s001-p000646",
+        "paragraph_index": 645,
+        "text": "「不过，咱比较喜欢胡子长一些。」",
+        "target_dialogue_ids": [
+          "volume_01-d000223"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c003-s001-p000647",
+        "paragraph_index": 646,
+        "text": "罗伦斯听了，反射性想到商人一向不喜欢长胡子。赫萝一边用双手的食指从鼻下的位置划线划到脸颊，一边说：",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c003-s001-p000648",
+        "paragraph_index": 647,
+        "text": "「像这样，像狼一样的胡子。」",
+        "target_dialogue_ids": [
+          "volume_01-d000224"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c003-s001-p000649",
+        "paragraph_index": 648,
+        "text": "这下子罗伦斯总算察觉自己被捉弄。虽然觉得这样做有点没度量，但罗伦斯还是决定不理会赫萝，往房门方向走去。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c003-s001-p000650",
+        "paragraph_index": 649,
+        "text": "赫萝开心地笑着，并跟随在罗伦斯后头。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c003-s001-p000651",
+        "paragraph_index": 650,
+        "text": "事实上，罗伦斯并不讨厌与赫萝的互动。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c003-s001-p000652",
+        "paragraph_index": 651,
+        "text": "「暖炉那儿还有其他人在，你可别露出马脚啊。」",
+        "target_dialogue_ids": [
+          "volume_01-d000225"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c003-s001-p000653",
+        "paragraph_index": 652,
+        "text": "「咱是贤狼赫萝呐。再说，还没到帕斯罗村之前，咱也是以人类的模样一路旅行过来的。放心放心！」",
+        "target_dialogue_ids": [
+          "volume_01-d000226"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c003-s001-p000654",
+        "paragraph_index": 653,
+        "text": "罗伦斯回头一看，发现赫萝已经把头藏好在外套底下，完全进入状况了。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c003-s001-p000655",
+        "paragraph_index": 654,
+        "text": "对商人来说，位置在城镇与城镇间广大距离之中的教会或旅店，是重要的情报站，特别是在教会能够遇到各式各样的人。在旅店通常只能看到老练的商人，或贫穷的旅人，但教会就不同了。从城里的啤酒师傅到富有的人，教会里住着形形色色的投宿客。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c003-s001-p000656",
+        "paragraph_index": 655,
+        "text": "罗伦斯和赫萝进来躲雨的这间教会，前前后后来了十二位客人。其中有几位看来像是商人，其他则像不同职业的人。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c003-s001-p000657",
+        "paragraph_index": 656,
+        "text": "「这样啊，所以你是从约连那边过来的？」",
+        "target_dialogue_ids": [
+          "volume_01-d000227"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c003-s001-p000658",
+        "paragraph_index": 657,
+        "text": "「是的。我在约连买了盐之后，随即把盐送到客人那儿，再从客人那儿收了貂皮。」",
+        "target_dialogue_ids": [
+          "volume_01-d000228"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c003-s001-p000659",
+        "paragraph_index": 658,
+        "text": "大厅里每个人坐在地板上，有的人忙着抓衣服上的跳蚤，有的人在用餐。其中就只有这对夫妻坐在椅子上，并霸占了暖炉正前方的位置。虽说是大厅，但这里的空间并不大。十二个人挤在这个空间里，只要暖炉里烧着满满的薪柴，无论在什么位置都不难把衣服烘干。不过，这对夫妻的衣服不像被雨淋湿过，以此看来，应该是捐赠大笔款项给教会，所以自认可大方出入这间教会的有钱人。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c003-s001-p000660",
+        "paragraph_index": 659,
+        "text": "罗伦斯如此猜测。他竖起耳朵听着这对夫妻容易中断的对话，并伺机顺利加入他们。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c003-s001-p000661",
+        "paragraph_index": 660,
+        "text": "妻子或许是因为旅途劳累而显得沉默，因此稍有年纪的丈夫对于罗伦斯加入他们的对话，自然表现出欢迎态度。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c003-s001-p000662",
+        "paragraph_index": 661,
+        "text": "「不过，要从这里再回到约连，这不是太折腾人了吗？」",
+        "target_dialogue_ids": [
+          "volume_01-d000229"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c003-s001-p000663",
+        "paragraph_index": 662,
+        "text": "「这就得靠商人的智慧了。」",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c003-s001-p000664",
+        "paragraph_index": 663,
+        "text": "「喔喔？有意思，说来听听如何？」",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c003-s001-p000665",
+        "paragraph_index": 664,
+        "text": "「我在约连买盐的时候，并没有当场付钱。我把等金额的麦子，卖给了卖盐那家商行位在另一个城镇的分行。那时候我没有跟分行收取麦子的货款，但也没有支付盐的货款。也就是说，我在没有现金往来的情况下，完成两笔交易。」",
+        "target_dialogue_ids": []
+      }
+    ]
+  },
+  "scene_memory": [
+    {
+      "scene_id": "volume_01-c003-s001-r005",
+      "parent_scene_id": "volume_01-c003-s001",
+      "chunk_index": 5,
+      "chunk_count": 6,
+      "scene_summary": "罗伦斯和赫萝躲雨进入一间教会，赫萝伪装成人类，罗伦斯试图融入对话。教会中聚集了形形色色的客人，罗伦斯与一对夫妻交谈，试图获取情报。",
+      "active_characters": [
+        "罗伦斯",
+        "赫萝"
+      ],
+      "relationships": [
+        "罗伦斯与赫萝一同旅行",
+        "罗伦斯与教会夫妻有短暂对话",
+        "赫萝伪装成人类以避免引起怀疑"
+      ],
+      "notes": "赫萝在教会中伪装成人类，罗伦斯试图融入对话。教会中有多位客人，但只有夫妻与罗伦斯有直接互动。"
+    },
+    {
+      "scene_id": "volume_01-c003-s001-r006",
+      "parent_scene_id": "volume_01-c003-s001",
+      "chunk_index": 6,
+      "chunk_count": 6,
+      "scene_summary": "罗伦斯向一位来自佩连佐的男子解释了汇兑体制的运作方式，男子对此感到惊讶并提出疑问。",
+      "active_characters": [
+        "罗伦斯",
+        "佩连佐男子"
+      ],
+      "relationships": [
+        "罗伦斯与佩连佐男子进行商业知识的交流"
+      ],
+      "notes": "场景中未出现赫萝或其他已知角色，主要聚焦于罗伦斯与一位来自佩连佐的男子之间的对话。"
+    }
+  ],
+  "candidate_characters": [
+    {
+      "entity_id": "char_0002",
+      "display_name": "赫萝",
+      "aliases": [
+        "赫萝"
+      ],
+      "titles": [
+        "丰收之神",
+        "咱",
+        "神秘少女",
+        "约伊兹的贤狼",
+        "贤狼"
+      ],
+      "description": "自称丰收之神的神秘少女，拥有狼的耳朵和尾巴。在本场景中协助罗伦斯，表现出对他的关心和保护。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴，行为举止非人类，表现出轻松幽默但略带威胁性的说话风格。在本场景中，她对罗伦斯的伤口进行吸血，引发旁人惊呼，并表现出悲伤的情绪。 / 自称是丰收之神的神秘少女，拥有狼的耳朵和尾巴。在本场景中逐渐显露出非人类的特征，最终完全变成一只巨大的狼。她与罗伦斯有情感交流，表现出悲伤和决绝的情绪。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴，未直接参与本场景，但罗伦斯的行动可能与她有关…",
+      "speech_style": "轻松幽默但略带威胁性，情绪化且带有调侃语气。 / 轻松幽默、略带调侃和威胁 / 轻松幽默、略带威胁性 / 轻松幽默、略带威胁性、撒娇 / 警觉、神秘 / 轻松幽默但略带威胁性 / 轻松幽默、略带调侃 / 轻松幽默但略带威胁性，语气中透露出对罗伦斯的依赖。 / 轻松幽默、略带威胁性、自信 / 轻松幽默但略带威胁性，情绪…",
+      "relationship_hints": [
+        "与罗伦斯一同旅行",
+        "被罗伦斯怀疑是否为真正的神",
+        "与叶勒有附身关系",
+        "与罗伦斯有潜在互动",
+        "与罗伦斯有互动，似乎是被他发现并收留的。",
+        "与罗伦斯有互动，但尚未明确关系",
+        "与罗伦斯互动频繁，表现出对他的信任和玩笑态度",
+        "与罗伦斯互动密切"
+      ],
+      "first_seen_scene_id": "volume_01-c000-s003-r001",
+      "latest_seen_scene_id": "volume_01-c008-s003-r002",
+      "confidence": 1.0
+    },
+    {
+      "entity_id": "char_0001",
+      "display_name": "罗伦斯",
+      "aliases": [
+        "罗伦斯",
+        "罗伦斯先生"
+      ],
+      "titles": [
+        "中间人",
+        "交易者",
+        "同行",
+        "商人",
+        "小毛头",
+        "小的",
+        "市井无赖",
+        "年轻人"
+      ],
+      "description": "一位行商人，正在与米隆商行的代表马贺特进行交易谈判。他原本期待获得两千枚银币，但实际只得到一百二十枚，感到震惊和困惑。 / 一位行商人，发现并收留了赫萝，决定与她一同旅行。 / 一位二十五岁的自力更生旅行商人，已有七年行商经验，性格泰然自若。 / 一位冷静理性的旅行商人，对赫萝的身份持怀疑态度，但仍保持互动。他注重外表整洁，对商业制度有深入理解。 / 冷静理性的旅行商人，与赫萝一同旅行。在本场景中与米隆商行的马贺特讨论梅迪欧商行的威胁，提出利用崔尼银币交易作为交涉王牌。 / 一位冷静理性的旅行商人，与赫萝一同旅行…",
+      "speech_style": "理性、坚定、略带情绪化 / 冷静、理性，带有悔恨和自责的语气。 / 冷静、理性，语气中带有对赫萝的关心和些许担忧。 / 冷静、理性、略带失落 / 冷静、理性，对商业制度有深入理解，并能清晰地向他人解释。 / 理性、礼貌、略带谨慎。 / 理性、冷静，带有商业分析倾向。 / 理性、沉稳、略带幽默 / 理性、冷静，但因困惑…",
+      "relationship_hints": [
+        "与赫萝一同旅行",
+        "对赫萝的真实性持怀疑态度",
+        "与深山村落的村民有交易关系",
+        "对修道院抱有商业期望但未成功",
+        "与骑士有短暂互动",
+        "与小村落的村民有交易关系",
+        "与修道院有关联",
+        "对教会和异教徒问题有见解"
+      ],
+      "first_seen_scene_id": "volume_01-c000-s003-r001",
+      "latest_seen_scene_id": "volume_01-c008-s003-r002",
+      "confidence": 1.0
+    },
+    {
+      "entity_id": "char_0007",
+      "display_name": "佩连佐男子",
+      "aliases": [],
+      "titles": [
+        "葡萄园主人",
+        "贵族"
+      ],
+      "description": "来自佩连佐的男子，对罗伦斯提到的汇兑体制感到惊讶，并询问是否适用于他的葡萄园。 / 来自佩连佐的男子，是葡萄园的领主，与罗伦斯交谈，未透露姓名，表现出贵族的傲慢与习惯。",
+      "speech_style": "惊讶、好奇、略带困惑 / 礼貌但带有贵族的傲慢，语气沉稳。",
+      "relationship_hints": [
+        "与罗伦斯进行商业知识的交流",
+        "与罗伦斯有短暂互动",
+        "与教会环境有关联"
+      ],
+      "first_seen_scene_id": "volume_01-c003-s001-r006",
+      "latest_seen_scene_id": "volume_01-c003-s002-r001",
+      "confidence": 0.9
+    },
+    {
+      "entity_id": "char_0006",
+      "display_name": "教会夫妻",
+      "aliases": [
+        "有钱人夫妻",
+        "那对夫妻"
+      ],
+      "titles": [],
+      "description": "一对在教会中占据暖炉正前方位置的夫妻，似乎是捐赠大笔款项给教会的有钱人。",
+      "speech_style": "自然、略带欢迎态度",
+      "relationship_hints": [
+        "与罗伦斯有短暂对话",
+        "对罗伦斯的加入表现出欢迎态度"
+      ],
+      "first_seen_scene_id": "volume_01-c003-s001-r005",
+      "latest_seen_scene_id": "volume_01-c003-s001-r005",
+      "confidence": 0.7
+    },
+    {
+      "entity_id": "char_0030",
+      "display_name": "米隆商行",
+      "aliases": [],
+      "titles": [
+        "合作方",
+        "商行",
+        "竞争对手"
+      ],
+      "description": "罗伦斯提出与之合作，抢先与崔尼国王交涉，以阻止梅迪欧商行取得特权。 / 南方国家大商人经营的商行分行，与国王签订合约，但因国王的权势地位而被迫接受不合理条件。",
+      "speech_style": "未直接发言，但其策略被罗伦斯推测为「回收更多银币以取得谈判优势」。 / 未直接说话，但通过被动接受国王的策略体现其处境。",
+      "relationship_hints": [
+        "与罗伦斯有交易关系",
+        "与梅迪欧商行竞争",
+        "试图取得特权",
+        "与国王存在权力关系",
+        "与南方国家大商人有合作关系"
+      ],
+      "first_seen_scene_id": "volume_01-c006-s001-r004",
+      "latest_seen_scene_id": "volume_01-c008-s001-r005",
+      "confidence": 0.9
+    },
+    {
+      "entity_id": "char_0028",
+      "display_name": "梅迪欧商行",
+      "aliases": [],
+      "titles": [
+        "商行",
+        "竞争对手"
+      ],
+      "description": "试图通过回收崔尼银币与国王交涉，以取得特权的商行。",
+      "speech_style": "未直接发言，但策略被罗伦斯分析为「回收银币并换取特权」。",
+      "relationship_hints": [
+        "与崔尼国王有交易关系",
+        "与米隆商行竞争",
+        "试图取得特权"
+      ],
+      "first_seen_scene_id": "volume_01-c006-s001-r004",
+      "latest_seen_scene_id": "volume_01-c006-s001-r004",
+      "confidence": 0.85
+    }
+  ],
+  "candidate_mysteries": [
+    {
+      "mystery_id": "mystery_volume_01_c003_s001_r005_教会客人1",
+      "temporary_name": "教会客人1",
+      "description": "教会中的一位客人，与罗伦斯和赫萝同时在场，但未直接互动。",
+      "evidence": [
+        "volume_01-c003-s001-p000656"
+      ],
+      "source_scene_id": "volume_01-c003-s001-r005",
+      "confidence": 0.6
+    },
+    {
+      "mystery_id": "mystery_volume_01_c003_s001_r005_教会客人2",
+      "temporary_name": "教会客人2",
+      "description": "教会中的一位客人，与罗伦斯和赫萝同时在场，但未直接互动。",
+      "evidence": [
+        "volume_01-c003-s001-p000656"
+      ],
+      "source_scene_id": "volume_01-c003-s001-r005",
+      "confidence": 0.6
+    }
+  ]
+}

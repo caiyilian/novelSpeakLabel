@@ -1,0 +1,156 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001066",
+      "speaker_entity_id": "char_0020",
+      "speaker_display": "米隆商行人员",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0020",
+          "display": "米隆商行人员",
+          "status": "known",
+          "score": 0.9
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.1
+        }
+      ],
+      "evidence": [
+        "对话内容为战术性指令，符合商行人员角色设定",
+        "与后文罗伦斯回应的上下文一致"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001067",
+      "speaker_entity_id": "char_0020",
+      "speaker_display": "米隆商行人员",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0020",
+          "display": "米隆商行人员",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "完整战术说明，符合商行人员角色设定",
+        "使用暗号和明确指令，符合商行人员行为逻辑"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001068",
+      "speaker_entity_id": "char_0020",
+      "speaker_display": "米隆商行人员",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0020",
+          "display": "米隆商行人员",
+          "status": "known",
+          "score": 0.85
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.15
+        }
+      ],
+      "evidence": [
+        "对话内容为确认性问题，符合商行人员角色设定",
+        "与前文战术沟通一致，无明确证据指向罗伦斯"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001069",
+      "speaker_entity_id": "char_0020",
+      "speaker_display": "米隆商行人员",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0020",
+          "display": "米隆商行人员",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "简短确认回应，符合商行人员冷静理性风格",
+        "与前文对话轮次一致，无其他角色介入"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001070",
+      "speaker_entity_id": "char_0020",
+      "speaker_display": "米隆商行人员",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0020",
+          "display": "米隆商行人员",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "明确行动指令，符合商行人员角色设定",
+        "与前文战术沟通一致，使用特定口癖"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001071",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.8
+        },
+        {
+          "entity_id": "char_0020",
+          "display": "米隆商行人员",
+          "status": "known",
+          "score": 0.2
+        }
+      ],
+      "evidence": [
+        "罗伦斯在前文已确认参与行动，且后文描述其回应",
+        "语境为对行动准备的感叹，符合罗伦斯性格",
+        "无明确证据指向商行人员"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，前半段为商行人员战术沟通，后半段为罗伦斯回应。整体上下文一致，无其他角色介入。"
+}

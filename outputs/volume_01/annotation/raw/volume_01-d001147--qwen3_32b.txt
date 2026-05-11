@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d001147",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "前一段提到罗伦斯「刻意用充满信心的语气回答」，紧接着是「嗯，万事俱全。」，符合罗伦斯冷静理性的说话风格。",
+    "场景记忆中显示罗伦斯与赫萝互动频繁，但赫萝的语气通常轻松幽默略带威胁，而这句话语气冷静、简洁，更符合罗伦斯的风格。",
+    "赫萝在前一段中未直接发言，而罗伦斯是当前任务的主导者，因此更可能是他回应马夫的提问。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

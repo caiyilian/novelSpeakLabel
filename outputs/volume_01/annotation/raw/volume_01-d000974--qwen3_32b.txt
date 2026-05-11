@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000974",
+  "speaker_entity_id": "char_0020",
+  "speaker_display": "列支敦·马贺特",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0020",
+      "display": "列支敦·马贺特",
+      "status": "known",
+      "score": 0.98
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.02
+    }
+  ],
+  "evidence": [
+    "对话中提到「罗伦斯先生您是旅行商人，您多次前来本商行洽谈」，表明说话人是商行代表，且熟悉罗伦斯的商业行为。",
+    "上下文显示罗伦斯与马贺特正在讨论梅迪欧商行的威胁，马贺特作为米隆商行的代表，最有可能提出此类分析。",
+    "「本商行」的提及与马贺特的身份一致，他代表商行与罗伦斯进行商业谈判。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

@@ -1,0 +1,62 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001004",
+      "speaker_entity_id": "mystery_volume_01_c005_s008_r002_信件的发送者",
+      "speaker_display": "信件的发送者",
+      "speaker_status": "mystery",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "mystery_volume_01_c005_s008_r002_信件的发送者",
+          "display": "信件的发送者",
+          "status": "mystery",
+          "score": 0.9
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.1
+        }
+      ],
+      "evidence": [
+        "信件内容与赫萝被控制相关，暗示发送者知情",
+        "罗伦斯在读完信后才开口，说明该句非他所说"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001005",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        },
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.05
+        }
+      ],
+      "evidence": [
+        "前文罗伦斯收到信件并交予马贺特，此处为他向马贺特坦白赫萝身份",
+        "马贺特反应强烈，说明此话出自罗伦斯",
+        "罗伦斯对赫萝身份有明确认知，符合其理性冷静的说话风格"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "第一句为神秘信件内容，第二句为罗伦斯向马贺特坦白赫萝身份，对话轮次清晰，符合叙述逻辑"
+}

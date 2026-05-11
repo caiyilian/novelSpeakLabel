@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000778",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "对话中使用了「汝」和「咱」的敬语和自称，符合罗伦斯对赫萝说话的语气风格。",
+    "上下文显示赫萝因宿醉虚弱，罗伦斯表现出关心和担忧，符合罗伦斯的性格和行为模式。",
+    "赫萝在前一段中表现出宿醉状态，但语气轻松，不太可能说出如此担忧的句子。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

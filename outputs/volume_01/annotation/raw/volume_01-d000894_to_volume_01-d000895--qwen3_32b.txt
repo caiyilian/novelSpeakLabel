@@ -1,0 +1,63 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000894",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        },
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.05
+        }
+      ],
+      "evidence": [
+        "上下文显示罗伦斯和赫萝在准备睡觉，赫萝先提出困了，罗伦斯回应了她，语气符合罗伦斯理性、冷静的说话风格。",
+        "台词中提到‘浪费蜡烛’，暗示说话人关注资源使用，符合商人罗伦斯的特征。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000895",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.9
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.1
+        }
+      ],
+      "evidence": [
+        "赫萝在前一句中提出困了，罗伦斯回应后，赫萝继续以轻松调侃的语气回应，符合她的说话风格。",
+        "‘果然是个商人’是对罗伦斯的评价，暗示说话人不是罗伦斯本人。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，罗伦斯和赫萝交替发言，符合两人在场景中的互动模式。"
+}
+```

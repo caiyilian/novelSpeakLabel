@@ -1,0 +1,426 @@
+你是轻小说说话人标注项目的阶段 2：正式标注助手。
+你的任务是判断输入 target_dialogues 中每一句台词的说话人，不要改写原文。
+必须把这些台词当作同一个连续片段来判断，优先保持对话轮次和叙述线索的一致性。
+
+规则：
+1. 只输出严格 JSON，不要 Markdown，不要解释性前后缀。
+2. 如果说话人是候选角色，speaker_entity_id 必须使用 candidate_characters 里的 entity_id，speaker_status 填 known。
+3. 如果说话人像某个未知人物，speaker_entity_id 使用 candidate_mysteries 里的 mystery_id，speaker_status 填 mystery。
+4. 如果只是无法追踪的路人/群体，speaker_status 填 npc，speaker_entity_id 可为空或使用 npc:简短称呼。
+5. 证据不足时不要硬猜，speaker_status 填 ambiguous 或 review，并把 needs_review 设为 true。
+6. candidate_speakers 至少列出 1 个候选；如果无法判断，列出最可能的候选和不确定原因。
+7. confidence 使用 0 到 1 之间的小数，表示你对最终判断的把握。
+8. 不要只因为台词里提到某个名字、职业、地点，就把说话人标成那个实体；被称呼的人通常不是说话人。
+9. 连续问答、交易寒暄、命令/回答等场景要按上下句轮次判断；同一人连续说话必须有叙述或语气证据支持。
+10. 如果当前上下文显示某角色还没有登场，不要因为角色库或后文记忆里有这个角色就提前标给他/她。
+
+11. target_dialogues 中 dialogue_kind=inline 的项目是正文内嵌引号，不要当作独立对白；标为 review，needs_review=true。
+12. candidate_mysteries 只是可选候选；如果候选名称和当前段落地点/人物不一致，必须改用 npc 或 review。
+13. 如果只有轮次推断、没有叙述锚点或自我介绍，请降低 confidence，并在 evidence 里说明轮次依据。
+
+输出 JSON 结构：
+{
+  "annotations": [
+    {
+      "dialogue_id": "必须来自 target_dialogue_ids",
+      "speaker_entity_id": "string",
+      "speaker_display": "string",
+      "speaker_status": "known|mystery|npc|ambiguous|review",
+      "confidence": 0.0,
+      "candidate_speakers": [
+        {"entity_id": "string", "display": "string", "status": "known|mystery|npc|ambiguous|review", "score": 0.0}
+      ],
+      "evidence": ["短证据，不要大段复制原文"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "可选，简短说明整体轮次判断"
+}
+必须为 target_dialogue_ids 中每个 dialogue_id 输出且只输出一条 annotation。
+
+输入 JSON：
+{
+  "volume": {
+    "volume_id": "volume_01",
+    "volume": 1
+  },
+  "target_dialogue_ids": [
+    "volume_01-d000116",
+    "volume_01-d000117",
+    "volume_01-d000118",
+    "volume_01-d000119",
+    "volume_01-d000120",
+    "volume_01-d000121",
+    "volume_01-d000122",
+    "volume_01-d000123"
+  ],
+  "dialogues": [
+    {
+      "dialogue_id": "volume_01-d000116",
+      "dialogue_index": 115,
+      "window_position": 1,
+      "chapter_id": "volume_01-c002",
+      "chapter_title": "第一幕",
+      "scene_id": "volume_01-c002-s004",
+      "paragraph_id": "volume_01-c002-s004-p000368",
+      "paragraph_index": 367,
+      "local_dialogue_index": 1,
+      "text": "鲜……血？",
+      "quote_text": "「鲜……血？」",
+      "paragraph_text": "「鲜……血？」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 7
+    },
+    {
+      "dialogue_id": "volume_01-d000117",
+      "dialogue_index": 116,
+      "window_position": 2,
+      "chapter_id": "volume_01-c002",
+      "chapter_title": "第一幕",
+      "scene_id": "volume_01-c002-s004",
+      "paragraph_id": "volume_01-c002-s004-p000369",
+      "paragraph_index": 368,
+      "local_dialogue_index": 1,
+      "text": "不过，不需要很多。",
+      "quote_text": "「不过，不需要很多。」",
+      "paragraph_text": "「不过，不需要很多。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 11
+    },
+    {
+      "dialogue_id": "volume_01-d000118",
+      "dialogue_index": 117,
+      "window_position": 3,
+      "chapter_id": "volume_01-c002",
+      "chapter_title": "第一幕",
+      "scene_id": "volume_01-c002-s004",
+      "paragraph_id": "volume_01-c002-s004-p000371",
+      "paragraph_index": 370,
+      "local_dialogue_index": 1,
+      "text": "怎么着，怕了啊？",
+      "quote_text": "「怎么着，怕了啊？」",
+      "paragraph_text": "「怎么着，怕了啊？」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 10
+    },
+    {
+      "dialogue_id": "volume_01-d000119",
+      "dialogue_index": 118,
+      "window_position": 4,
+      "chapter_id": "volume_01-c002",
+      "chapter_title": "第一幕",
+      "scene_id": "volume_01-c002-s004",
+      "paragraph_id": "volume_01-c002-s004-p000372",
+      "paragraph_index": 371,
+      "local_dialogue_index": 1,
+      "text": "那怎么可能",
+      "quote_text": "「那怎么可能」",
+      "paragraph_text": "赫萝看着神情胆怯的罗伦斯，苦笑说道。虽然罗伦斯反射性地回答「那怎么可能」，但赫萝很明显地期待着罗伦斯的反应。",
+      "dialogue_kind": "inline",
+      "outside_quote_text": "赫萝看着神情胆怯的罗伦斯，苦笑说道。虽然罗伦斯反射性地回答，但赫萝很明显地期待着罗伦斯的反应。",
+      "char_start": 29,
+      "char_end": 36
+    },
+    {
+      "dialogue_id": "volume_01-d000120",
+      "dialogue_index": 119,
+      "window_position": 5,
+      "chapter_id": "volume_01-c002",
+      "chapter_title": "第一幕",
+      "scene_id": "volume_01-c002-s004",
+      "paragraph_id": "volume_01-c002-s004-p000374",
+      "paragraph_index": 373,
+      "local_dialogue_index": 1,
+      "text": "看见汝的反应，咱就更不想变身了。",
+      "quote_text": "「看见汝的反应，咱就更不想变身了。」",
+      "paragraph_text": "「看见汝的反应，咱就更不想变身了。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 18
+    },
+    {
+      "dialogue_id": "volume_01-d000121",
+      "dialogue_index": 120,
+      "window_position": 6,
+      "chapter_id": "volume_01-c002",
+      "chapter_title": "第一幕",
+      "scene_id": "volume_01-c002-s004",
+      "paragraph_id": "volume_01-c002-s004-p000375",
+      "paragraph_index": 374,
+      "local_dialogue_index": 1,
+      "text": "为、为什么？",
+      "quote_text": "「为、为什么？」",
+      "paragraph_text": "「为、为什么？」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 8
+    },
+    {
+      "dialogue_id": "volume_01-d000122",
+      "dialogue_index": 121,
+      "window_position": 7,
+      "chapter_id": "volume_01-c002",
+      "chapter_title": "第一幕",
+      "scene_id": "volume_01-c002-s004",
+      "paragraph_id": "volume_01-c002-s004-p000377",
+      "paragraph_index": 376,
+      "local_dialogue_index": 1,
+      "text": "因为汝看了准会吓得魂飞魄散。只要看到咱的模样，人类和动物都会带着畏惧的眼神，急忙让出路来。大家总是把咱当成特别的存在，不管对象是人类还是动物，咱都不希望再受到那种对待了。",
+      "quote_text": "「因为汝看了准会吓得魂飞魄散。只要看到咱的模样，人类和动物都会带着畏惧的眼神，急忙让出路来。大家总是把咱当成特别的存在，不管对象是人类还是动物，咱都不希望再受到那种对待了。」",
+      "paragraph_text": "「因为汝看了准会吓得魂飞魄散。只要看到咱的模样，人类和动物都会带着畏惧的眼神，急忙让出路来。大家总是把咱当成特别的存在，不管对象是人类还是动物，咱都不希望再受到那种对待了。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 87
+    },
+    {
+      "dialogue_id": "volume_01-d000123",
+      "dialogue_index": 122,
+      "window_position": 8,
+      "chapter_id": "volume_01-c002",
+      "chapter_title": "第一幕",
+      "scene_id": "volume_01-c002-s004",
+      "paragraph_id": "volume_01-c002-s004-p000378",
+      "paragraph_index": 377,
+      "local_dialogue_index": 1,
+      "text": "我、我怎么可能害怕看到你的模样。",
+      "quote_text": "「我、我怎么可能害怕看到你的模样。」",
+      "paragraph_text": "「我、我怎么可能害怕看到你的模样。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 18
+    }
+  ],
+  "context": {
+    "paragraphs": [
+      {
+        "paragraph_id": "volume_01-c002-s004-p000365",
+        "paragraph_index": 364,
+        "text": "「咱变身需要的东西是一些麦子。」",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s004-p000366",
+        "paragraph_index": 365,
+        "text": "麦子听起来挺像是丰收之神会要的报偿，罗伦斯似乎能够理解这说法。然而，到了下个瞬间，他却被吓住了。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s004-p000367",
+        "paragraph_index": 366,
+        "text": "「或是鲜血。」",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s004-p000368",
+        "paragraph_index": 367,
+        "text": "「鲜……血？」",
+        "target_dialogue_ids": [
+          "volume_01-d000116"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c002-s004-p000369",
+        "paragraph_index": 368,
+        "text": "「不过，不需要很多。」",
+        "target_dialogue_ids": [
+          "volume_01-d000117"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c002-s004-p000370",
+        "paragraph_index": 369,
+        "text": "赫萝回答时那副自然的表情，让罗伦斯难以认为这是她临时编出来的谎言。罗伦斯咽下口中因紧张而产生的唾液，蓦地把视线移到赫萝的嘴角。他想起刚才赫萝捡起掉落的肉干咬下口时，在嘴唇内侧看到的两支尖牙。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s004-p000371",
+        "paragraph_index": 370,
+        "text": "「怎么着，怕了啊？」",
+        "target_dialogue_ids": [
+          "volume_01-d000118"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c002-s004-p000372",
+        "paragraph_index": 371,
+        "text": "赫萝看着神情胆怯的罗伦斯，苦笑说道。虽然罗伦斯反射性地回答「那怎么可能」，但赫萝很明显地期待着罗伦斯的反应。",
+        "target_dialogue_ids": [
+          "volume_01-d000119"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c002-s004-p000373",
+        "paragraph_index": 372,
+        "text": "然而，赫萝脸上的笑容没持续多久就消失了，她把视线从罗伦斯的身上移开，然后开口说：",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s004-p000374",
+        "paragraph_index": 373,
+        "text": "「看见汝的反应，咱就更不想变身了。」",
+        "target_dialogue_ids": [
+          "volume_01-d000120"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c002-s004-p000375",
+        "paragraph_index": 374,
+        "text": "「为、为什么？」",
+        "target_dialogue_ids": [
+          "volume_01-d000121"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c002-s004-p000376",
+        "paragraph_index": 375,
+        "text": "罗伦斯觉得赫萝在嘲讽自己，于是加强语气反问她。赫萝没有把视线拉回罗伦斯身上，她用极尽哀痛的语调回答说：",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s004-p000377",
+        "paragraph_index": 376,
+        "text": "「因为汝看了准会吓得魂飞魄散。只要看到咱的模样，人类和动物都会带着畏惧的眼神，急忙让出路来。大家总是把咱当成特别的存在，不管对象是人类还是动物，咱都不希望再受到那种对待了。」",
+        "target_dialogue_ids": [
+          "volume_01-d000122"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c002-s004-p000378",
+        "paragraph_index": 377,
+        "text": "「我、我怎么可能害怕看到你的模样。」",
+        "target_dialogue_ids": [
+          "volume_01-d000123"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c002-s004-p000379",
+        "paragraph_index": 378,
+        "text": "「如果汝要逞强，先设法控制双手不要发抖呗。」",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s004-p000380",
+        "paragraph_index": 379,
+        "text": "罗伦斯听到赫萝无奈的语气，不禁看看自己的双手，当他发现受骗时已经来不及了。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s004-p000381",
+        "paragraph_index": 380,
+        "text": "「呵，汝真是个老实人呐。」",
+        "target_dialogue_ids": []
+      }
+    ]
+  },
+  "scene_memory": [
+    {
+      "scene_id": "volume_01-c002-s004-r004",
+      "parent_scene_id": "volume_01-c002-s004",
+      "chunk_index": 4,
+      "chunk_count": 6,
+      "scene_summary": "赫萝与罗伦斯继续对话，赫萝透露自己变身所需的代价是麦子或鲜血，并表现出对罗伦斯反应的不满。",
+      "active_characters": [
+        "赫萝",
+        "罗伦斯"
+      ],
+      "relationships": [
+        "赫萝与罗伦斯之间存在信任与怀疑的复杂关系。",
+        "赫萝对教会表现出敌意，不愿被抓住。"
+      ],
+      "notes": "赫萝的台词中透露出她拥有非人类的特征，如狼耳和尖牙，暗示她可能是某种神灵或异界生物。罗伦斯对她的反应表现出紧张，但仍在努力理解她的意图。"
+    },
+    {
+      "scene_id": "volume_01-c002-s004-r005",
+      "parent_scene_id": "volume_01-c002-s004",
+      "chunk_index": 5,
+      "chunk_count": 6,
+      "scene_summary": "罗伦斯与赫萝之间展开一段关于赫萝真实身份的对话。赫萝暗示自己可能是狼，但不愿以狼形示人，罗伦斯则表现出怀疑与不安。赫萝以轻松幽默的语气掌控对话节奏，同时透露出对人类反应的敏感与不满。",
+      "active_characters": [
+        "罗伦斯",
+        "赫萝"
+      ],
+      "relationships": [
+        "罗伦斯与赫萝之间存在信任与怀疑的复杂关系",
+        "赫萝对罗伦斯表现出一定程度的依赖与掌控"
+      ],
+      "notes": "赫萝在对话中多次使用自称‘咱’，暗示其非人类身份。罗伦斯的反应表明他仍对赫萝的真实身份存疑，但已逐渐接受她的存在。"
+    }
+  ],
+  "candidate_characters": [
+    {
+      "entity_id": "char_0002",
+      "display_name": "赫萝",
+      "aliases": [
+        "赫萝"
+      ],
+      "titles": [
+        "丰收之神",
+        "咱",
+        "神秘少女",
+        "约伊兹的贤狼",
+        "贤狼"
+      ],
+      "description": "自称丰收之神的神秘少女，拥有狼的耳朵和尾巴。在本场景中协助罗伦斯，表现出对他的关心和保护。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴，行为举止非人类，表现出轻松幽默但略带威胁性的说话风格。在本场景中，她对罗伦斯的伤口进行吸血，引发旁人惊呼，并表现出悲伤的情绪。 / 自称是丰收之神的神秘少女，拥有狼的耳朵和尾巴。在本场景中逐渐显露出非人类的特征，最终完全变成一只巨大的狼。她与罗伦斯有情感交流，表现出悲伤和决绝的情绪。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴，未直接参与本场景，但罗伦斯的行动可能与她有关…",
+      "speech_style": "轻松幽默但略带威胁性，情绪化且带有调侃语气。 / 轻松幽默、略带调侃和威胁 / 轻松幽默、略带威胁性 / 轻松幽默、略带威胁性、撒娇 / 警觉、神秘 / 轻松幽默但略带威胁性 / 轻松幽默、略带调侃 / 轻松幽默但略带威胁性，语气中透露出对罗伦斯的依赖。 / 轻松幽默、略带威胁性、自信 / 轻松幽默但略带威胁性，情绪…",
+      "relationship_hints": [
+        "与罗伦斯一同旅行",
+        "被罗伦斯怀疑是否为真正的神",
+        "与叶勒有附身关系",
+        "与罗伦斯有潜在互动",
+        "与罗伦斯有互动，似乎是被他发现并收留的。",
+        "与罗伦斯有互动，但尚未明确关系",
+        "与罗伦斯互动频繁，表现出对他的信任和玩笑态度",
+        "与罗伦斯互动密切"
+      ],
+      "first_seen_scene_id": "volume_01-c000-s003-r001",
+      "latest_seen_scene_id": "volume_01-c008-s003-r002",
+      "confidence": 1.0
+    },
+    {
+      "entity_id": "char_0001",
+      "display_name": "罗伦斯",
+      "aliases": [
+        "罗伦斯",
+        "罗伦斯先生"
+      ],
+      "titles": [
+        "中间人",
+        "交易者",
+        "同行",
+        "商人",
+        "小毛头",
+        "小的",
+        "市井无赖",
+        "年轻人"
+      ],
+      "description": "一位行商人，正在与米隆商行的代表马贺特进行交易谈判。他原本期待获得两千枚银币，但实际只得到一百二十枚，感到震惊和困惑。 / 一位行商人，发现并收留了赫萝，决定与她一同旅行。 / 一位二十五岁的自力更生旅行商人，已有七年行商经验，性格泰然自若。 / 一位冷静理性的旅行商人，对赫萝的身份持怀疑态度，但仍保持互动。他注重外表整洁，对商业制度有深入理解。 / 冷静理性的旅行商人，与赫萝一同旅行。在本场景中与米隆商行的马贺特讨论梅迪欧商行的威胁，提出利用崔尼银币交易作为交涉王牌。 / 一位冷静理性的旅行商人，与赫萝一同旅行…",
+      "speech_style": "理性、坚定、略带情绪化 / 冷静、理性，带有悔恨和自责的语气。 / 冷静、理性，语气中带有对赫萝的关心和些许担忧。 / 冷静、理性、略带失落 / 冷静、理性，对商业制度有深入理解，并能清晰地向他人解释。 / 理性、礼貌、略带谨慎。 / 理性、冷静，带有商业分析倾向。 / 理性、沉稳、略带幽默 / 理性、冷静，但因困惑…",
+      "relationship_hints": [
+        "与赫萝一同旅行",
+        "对赫萝的真实性持怀疑态度",
+        "与深山村落的村民有交易关系",
+        "对修道院抱有商业期望但未成功",
+        "与骑士有短暂互动",
+        "与小村落的村民有交易关系",
+        "与修道院有关联",
+        "对教会和异教徒问题有见解"
+      ],
+      "first_seen_scene_id": "volume_01-c000-s003-r001",
+      "latest_seen_scene_id": "volume_01-c008-s003-r002",
+      "confidence": 1.0
+    }
+  ],
+  "candidate_mysteries": []
+}

@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000387",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "对话中提到「咱们狼」，暗示说话者是狼的化身，与赫萝的狼身份相符。",
+    "对话内容涉及水果的处理方式和狼的习性，与赫萝在场景中对甜食和狼的讨论一致。",
+    "赫萝在场景中多次提到狼的特征和行为，与本句台词中的「狼做得来的事」相呼应。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

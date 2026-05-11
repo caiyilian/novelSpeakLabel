@@ -1,0 +1,30 @@
+{
+  "dialogue_id": "volume_01-d000713",
+  "speaker_entity_id": "char_0009",
+  "speaker_display": "杰廉",
+  "speaker_status": "known",
+  "confidence": 0.9,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0009",
+      "display": "杰廉",
+      "status": "known",
+      "score": 0.9
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "ambiguous",
+      "score": 0.1
+    }
+  ],
+  "evidence": [
+    "对话内容提到「那名年轻人」，与杰廉的描述相符，且上下文显示罗伦斯和赫萝正在讨论杰廉的交易策略。",
+    "杰廉在场景中被频繁提及，是当前讨论的核心人物。",
+    "赫萝在对话中分析杰廉的交易方式，暗示说话人并非赫萝本人，而是杰廉。",
+    "「年轻人」是杰廉的常见称呼之一，符合其角色描述。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

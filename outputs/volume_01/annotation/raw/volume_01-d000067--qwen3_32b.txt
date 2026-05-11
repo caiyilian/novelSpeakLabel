@@ -1,0 +1,26 @@
+```json
+{
+  "dialogue_id": "volume_01-d000067",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "上下文对话中，赫萝是主要的神秘角色，拥有狼的特征和轻松幽默但略带威胁的说话风格。",
+    "当前段落是「……」，属于赫萝常见的沉默或停顿表达方式。",
+    "前文提到「那匹马啊。」，而赫萝是主要对话者，因此当前沉默应归于她。",
+    "场景记忆中，赫萝与罗伦斯的对话频繁，且赫萝的说话风格与当前语境一致。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

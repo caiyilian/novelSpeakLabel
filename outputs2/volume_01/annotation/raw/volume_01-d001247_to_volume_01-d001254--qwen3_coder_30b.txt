@@ -1,0 +1,188 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001247",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 1.0
+        }
+      ],
+      "evidence": [
+        "对话内容与罗伦斯的商人身份和理性风格一致",
+        "前文提到罗伦斯在与叶勒对峙"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001248",
+      "speaker_entity_id": "char_0005",
+      "speaker_display": "叶勒",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0005",
+          "display": "叶勒",
+          "status": "known",
+          "score": 1.0
+        }
+      ],
+      "evidence": [
+        "前文提到叶勒反问罗伦斯",
+        "对话内容符合叶勒的立场和语气"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001249",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 1.0
+        }
+      ],
+      "evidence": [
+        "前文提到罗伦斯继续说话",
+        "内容与罗伦斯的商人身份和合约观念一致"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001250",
+      "speaker_entity_id": "char_0005",
+      "speaker_display": "叶勒",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0005",
+          "display": "叶勒",
+          "status": "known",
+          "score": 1.0
+        }
+      ],
+      "evidence": [
+        "赫萝惊讶的声音后，叶勒回应",
+        "对话内容符合叶勒的语气和立场"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001251",
+      "speaker_entity_id": "char_0005",
+      "speaker_display": "叶勒",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0005",
+          "display": "叶勒",
+          "status": "known",
+          "score": 1.0
+        }
+      ],
+      "evidence": [
+        "叶勒在前文已表明立场",
+        "对话内容符合叶勒的语气和立场"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001252",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 1.0
+        }
+      ],
+      "evidence": [
+        "前文提到罗伦斯与赫萝的友情",
+        "语气与罗伦斯的风格相符"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001253",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 1.0
+        }
+      ],
+      "evidence": [
+        "前文提到罗伦斯与赫萝的旅行合约",
+        "语气与罗伦斯的风格相符"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001254",
+      "speaker_entity_id": "mystery_volume_01_c007_s003_r003_梅迪欧商行手下",
+      "speaker_display": "梅迪欧商行手下",
+      "speaker_status": "mystery",
+      "confidence": 0.7,
+      "candidate_speakers": [
+        {
+          "entity_id": "mystery_volume_01_c007_s003_r003_梅迪欧商行手下",
+          "display": "梅迪欧商行手下",
+          "status": "mystery",
+          "score": 0.7
+        },
+        {
+          "entity_id": "char_0005",
+          "display": "叶勒",
+          "status": "known",
+          "score": 0.3
+        }
+      ],
+      "evidence": [
+        "前文提到梅迪欧商行手下摆出迎战姿态",
+        "叶勒命令手下行动，但未直接发言",
+        "语气强硬，符合梅迪欧商行手下特征"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    }
+  ],
+  "window_notes": "罗伦斯与叶勒对峙，叶勒代表梅迪欧商行试图活捉赫萝。罗伦斯坚持遵守合约，叶勒则执行任务。最后梅迪欧商行手下介入，对话轮次清晰，但最后一句说话人身份不确定。"
+}

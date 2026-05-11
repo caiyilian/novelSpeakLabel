@@ -1,0 +1,23 @@
+{
+  "dialogue_id": "volume_01-d000867",
+  "speaker_entity_id": "npc:旅行商人",
+  "speaker_display": "旅行商人",
+  "speaker_status": "npc",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "npc:旅行商人",
+      "display": "旅行商人",
+      "status": "npc",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "对话内容为「找老婆」，是旅行商人对挖掘值钱商品的俚语表达。",
+    "上下文提到「旅行商人会把前往新城镇挖掘值钱的商品说成『找老婆』」，明确指出这是群体性用语，非特定角色。",
+    "当前段落为旁白解释，没有明确说话人，但语境表明是普遍的商人用语。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

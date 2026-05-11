@@ -1,0 +1,32 @@
+```json
+{
+  "dialogue_id": "volume_01-d000660",
+  "speaker_entity_id": "char_0019",
+  "speaker_display": "怀兹",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0019",
+      "display": "怀兹",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "上下文显示对话发生在罗伦斯与怀兹讨论崔尼银币的场景中。",
+    "前一句是「怎么，你抓到调整含量的情报是吗？」，这是怀兹对罗伦斯的提问。",
+    "当前句「我只能说你自己谨慎点就是了，要抢先别人一步没那么容易的。」语气符合怀兹轻松调侃的说话风格。",
+    "后一句提到「怀兹会这样提醒罗伦斯」，明确指出说话人是怀兹。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

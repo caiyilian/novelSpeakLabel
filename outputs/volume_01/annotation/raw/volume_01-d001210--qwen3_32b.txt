@@ -1,0 +1,48 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001210",
+      "speaker_entity_id": "",
+      "speaker_display": "",
+      "speaker_status": "review",
+      "confidence": 0.0,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.2
+        },
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.1
+        },
+        {
+          "entity_id": "mystery_volume_01_c007_s002_r004_伏击者",
+          "display": "伏击者",
+          "status": "mystery",
+          "score": 0.3
+        },
+        {
+          "entity_id": "npc:不明",
+          "display": "不明",
+          "status": "npc",
+          "score": 0.4
+        }
+      ],
+      "evidence": [
+        "该台词是内嵌引语，未明确说话人",
+        "上下文描述的是罗伦斯的拳头发出声音，但未表明他说话",
+        "场景中存在伏击者，但未明确其说话"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    }
+  ],
+  "window_notes": "该台词为内嵌引语，未明确说话人，上下文未提供足够线索判断说话人身份。"
+}
+```

@@ -1,0 +1,145 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001110",
+      "speaker_entity_id": "volume_01-d001110",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "review",
+      "confidence": 0.0,
+      "candidate_speakers": [],
+      "evidence": [
+        "inline 引号，非独立对白"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    },
+    {
+      "dialogue_id": "volume_01-d001111",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 1.0
+        }
+      ],
+      "evidence": [
+        "上下文明确为罗伦斯推理并说出关键信息，语气符合其理性冷静风格"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001112",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 1.0
+        }
+      ],
+      "evidence": [
+        "罗伦斯在前一句中已揭示思路，此句为继续展开分析，语气一致"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001113",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 1.0
+        }
+      ],
+      "evidence": [
+        "罗伦斯在前文推理后，主动询问马夫是否听见，符合其行为逻辑"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001114",
+      "speaker_entity_id": "char_0031",
+      "speaker_display": "马夫",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0031",
+          "display": "马夫",
+          "status": "known",
+          "score": 1.0
+        }
+      ],
+      "evidence": [
+        "回应罗伦斯的提问，符合马夫角色设定，且上下文为马夫回应"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001115",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 1.0
+        }
+      ],
+      "evidence": [
+        "罗伦斯在前文推理后，继续向马夫传达指令，语气一致"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001116",
+      "speaker_entity_id": "char_0031",
+      "speaker_display": "马夫",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0031",
+          "display": "马夫",
+          "status": "known",
+          "score": 1.0
+        }
+      ],
+      "evidence": [
+        "马夫回应罗伦斯指令，语气简洁直接，符合角色设定"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "罗伦斯在推理出梅迪欧商行背后势力后，迅速向马夫传达信息并安排后续行动，马夫作为执行者回应了罗伦斯的指令。"
+}

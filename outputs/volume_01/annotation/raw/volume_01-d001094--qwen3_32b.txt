@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d001094",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    }
+  ],
+  "evidence": [
+    "对话内容「咱是贤狼赫萝。」中明确提到「贤狼赫萝」，与候选角色赫萝的称号和身份完全吻合。",
+    "上下文显示罗伦斯刚刚称呼她为「赫萝」，而她回应时自称「贤狼赫萝」，符合角色一贯的说话风格。",
+    "场景记忆中赫萝是本场景的活跃角色，与罗伦斯有频繁互动，情绪波动明显，符合当前对话的语境。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

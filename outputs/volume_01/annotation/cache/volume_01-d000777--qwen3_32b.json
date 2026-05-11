@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000777",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "前一段提到赫萝因宿醉而虚弱，罗伦斯表现出关心和担忧。",
+    "当前台词中「不舒服就在旅馆里休息吗？」符合罗伦斯对赫萝的语气和态度。",
+    "下一段「如果让汝一个人去，咱担心汝会被对方吃了。」是赫萝的说话风格，进一步确认当前说话人不是赫萝。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

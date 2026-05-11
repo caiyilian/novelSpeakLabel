@@ -1,0 +1,59 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000487",
+      "speaker_entity_id": "",
+      "speaker_display": "",
+      "speaker_status": "ambiguous",
+      "confidence": 0.3,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0011",
+          "display": "采购人员",
+          "status": "known",
+          "score": 0.4
+        },
+        {
+          "entity_id": "",
+          "display": "npc:鉴定员",
+          "status": "npc",
+          "score": 0.3
+        }
+      ],
+      "evidence": [
+        "对话轮次依据"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    },
+    {
+      "dialogue_id": "volume_01-d000488",
+      "speaker_entity_id": "",
+      "speaker_display": "",
+      "speaker_status": "ambiguous",
+      "confidence": 0.3,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0011",
+          "display": "采购人员",
+          "status": "known",
+          "score": 0.4
+        },
+        {
+          "entity_id": "",
+          "display": "npc:鉴定员",
+          "status": "npc",
+          "score": 0.3
+        }
+      ],
+      "evidence": [
+        "对话轮次依据"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    }
+  ],
+  "window_notes": "两句话的对话轮次一致，但没有明确的叙述锚点或自我介绍来确定说话人。采购人员是最可能的候选人之一，但由于缺乏直接证据，需要进一步审查。"
+}

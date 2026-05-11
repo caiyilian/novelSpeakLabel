@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000251",
+  "speaker_entity_id": "char_0009",
+  "speaker_display": "杰廉",
+  "speaker_status": "known",
+  "confidence": 0.9,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0009",
+      "display": "杰廉",
+      "status": "known",
+      "score": 0.9
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.1
+    }
+  ],
+  "evidence": [
+    "对话中提到「老板您让妻子这样套着外套」，暗示说话者是旁观者，而非罗伦斯本人。",
+    "上下文显示杰廉对赫萝表现出浓厚兴趣，并试图接近她，符合说话者的厚颜无耻语气。",
+    "杰廉是场景中唯一新出现的可追踪人物，且在对话中频繁出现，符合说话风格。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

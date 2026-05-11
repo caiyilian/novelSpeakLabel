@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000349",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "前一段明确提到「赫萝终于打破沉默开口说」，紧接着是「『……嗯？』」",
+    "上下文显示赫萝在认真谈论狼与狗的差异，罗伦斯在倾听，因此说话人应为赫萝",
+    "后续段落提到「赫萝的眼神直直看着前方」，进一步确认说话人为赫萝"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

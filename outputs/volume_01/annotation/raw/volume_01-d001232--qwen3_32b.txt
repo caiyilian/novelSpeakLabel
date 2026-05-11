@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d001232",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "前一段提到罗伦斯「双脚的力气似乎已经用尽了」，但此句台词「胡说什么，我还可以。」表现出他试图否认自己的虚弱状态，语气与罗伦斯冷静、略带倔强的风格一致。",
+    "后一段提到「罗伦斯虽然有办法故作轻松地说，但却没有多余的力气回过头看赫萝」，进一步确认说话人是罗伦斯。",
+    "场景记忆中罗伦斯和赫萝是主要角色，且罗伦斯在本场景中表现出虚弱但仍坚持的特征。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

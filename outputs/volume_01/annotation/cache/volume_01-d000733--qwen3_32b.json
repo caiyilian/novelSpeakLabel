@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000733",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.98
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "ambiguous",
+      "score": 0.02
+    }
+  ],
+  "evidence": [
+    "场景记忆中明确指出罗伦斯急躁地向赫萝解释他发现的计策，并提到前往米隆商行。",
+    "对话内容中提到「去米隆商行」，这与罗伦斯在场景中计划前往米隆商行的行动一致。",
+    "前一段落中提到「罗伦斯已经开始小跑步，他急躁地回头回答赫萝」，表明说话人是罗伦斯。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

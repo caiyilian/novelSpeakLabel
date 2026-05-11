@@ -1,0 +1,32 @@
+```json
+{
+  "dialogue_id": "volume_01-d000929",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.02
+    }
+  ],
+  "evidence": [
+    "对话中使用了「咱」和「汝」等赫萝常用的自称和敬称",
+    "提到「耳朵及尾巴」，这是赫萝的标志性特征",
+    "语境中赫萝正在鼓励罗伦斯在限定时间内来救她，符合她主导策略讨论的行为模式",
+    "后续段落明确指出「赫萝笑笑，露出她的尖牙」，进一步确认说话人身份"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

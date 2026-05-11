@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000037",
+  "speaker_entity_id": "mystery_volume_01_c002_s002_r002_村民",
+  "speaker_display": "村民",
+  "speaker_status": "mystery",
+  "confidence": 0.75,
+  "candidate_speakers": [
+    {
+      "entity_id": "mystery_volume_01_c002_s002_r002_村民",
+      "display": "村民",
+      "status": "mystery",
+      "score": 0.75
+    },
+    {
+      "entity_id": "char_0004",
+      "display": "叶勒",
+      "status": "known",
+      "score": 0.2
+    }
+  ],
+  "evidence": [
+    "台词「是谁？是谁？是谁抓到狼呢？」出现在村民举行丰收祭典的场景中，与村民对叶勒的呼喊和追逐行为一致。",
+    "上下文显示村民围绕麦田高声呼喊，庆祝最后割下麦子的人，而叶勒是祭典的中心人物。",
+    "后续段落中村民呼喊「是叶勒！叶勒！叶勒！」，说明当前台词可能是村民集体呼喊的一部分。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000550",
+  "speaker_entity_id": "char_0009",
+  "speaker_display": "杰廉",
+  "speaker_status": "known",
+  "confidence": 0.9,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0009",
+      "display": "杰廉",
+      "status": "known",
+      "score": 0.9
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.1
+    }
+  ],
+  "evidence": [
+    "前一段对话中杰廉说：「那你祈祷错了，你应该祈祷我可以增加投资金额才对。」",
+    "当前段落中「啊，是。」是对杰廉的回应，语气简短且符合杰廉的谨慎性格。",
+    "场景记忆中杰廉是主要谈判角色，与罗伦斯进行银币情报交易，且赫萝未参与对话。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

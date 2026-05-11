@@ -1,0 +1,24 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001072",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 1.0
+        }
+      ],
+      "evidence": ["上下文描述罗伦斯在地下道中思考，且该台词符合其理性冷静的说话风格；无其他角色出现或暗示。"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "根据上下文，罗伦斯正在地下道中思考局势，此句台词符合其心理活动和说话风格，且无其他角色出现，因此判断为罗伦斯所言。"
+}

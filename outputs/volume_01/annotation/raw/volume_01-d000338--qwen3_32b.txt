@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000338",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "前一段赫萝问罗伦斯是否被狼袭击过，罗伦斯正在回忆自己的经历。",
+    "当前对话是「有。嗯……八次左右吧。」，语气中带有回忆和情绪低落，符合罗伦斯的说话风格。",
+    "赫萝的说话风格更轻松幽默，略带调侃，而此句语气更理性、略带悔恨，符合罗伦斯的特征。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

@@ -1,0 +1,30 @@
+```json
+{
+  "dialogue_id": "volume_01-d000013",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "mystery_volume_01_c002_s001_r003_小村落的村民",
+      "display": "小村落的村民",
+      "status": "mystery",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "罗伦斯提到他前往东边山头的小村落卖盐，这与场景记忆中他与小村落村民的交易关系一致。",
+    "当前对话内容与罗伦斯的商业行为和旅行经历相符，且没有其他角色的明显发言线索。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

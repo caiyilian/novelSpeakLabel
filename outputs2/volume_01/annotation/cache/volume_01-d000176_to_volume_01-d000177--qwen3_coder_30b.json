@@ -1,0 +1,59 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000176",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 1.0
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.0
+        }
+      ],
+      "evidence": [
+        "对话开头使用自称'咱'，符合赫萝的speech_markers；前文提到赫萝说罢并回过头看着罗伦斯，说明是她主动发言"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000177",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 1.0
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.0
+        }
+      ],
+      "evidence": [
+        "使用'咱'作为自称，符合赫萝的speech_markers；前文描述赫萝回过头看着罗伦斯并继续说话，且语气像是在和熟悉的人对话"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "两段对话连续，均出自赫萝之口，语气连贯，符合赫萝的性格与说话习惯"
+}

@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000512",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "前文提到罗伦斯脑中浮现疑问，并质疑这是不是诈欺。",
+    "「咱不会说上钩的人自己有错。」是赫萝的说话风格，但当前台词「……应该是吧。」更符合罗伦斯冷静理性的语气。",
+    "后文提到「被骗时只懂得生气的人根本不成对手。」是罗伦斯的商业哲学，进一步支持说话人为罗伦斯。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

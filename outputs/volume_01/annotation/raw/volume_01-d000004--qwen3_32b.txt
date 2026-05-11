@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000004",
+  "speaker_entity_id": "mystery_volume_01_c002_s001_r003_小村落的村民",
+  "speaker_display": "小村落的村民",
+  "speaker_status": "mystery",
+  "confidence": 0.8,
+  "candidate_speakers": [
+    {
+      "entity_id": "mystery_volume_01_c002_s001_r003_小村落的村民",
+      "display": "小村落的村民",
+      "status": "mystery",
+      "score": 0.8
+    },
+    {
+      "entity_id": "char_0004",
+      "display": "叶勒",
+      "status": "known",
+      "score": 0.2
+    }
+  ],
+  "evidence": [
+    "台词中提到「罗伦斯先生你愿意到这深山里来」，表明说话人是深山村落的村民，而非罗伦斯本人。",
+    "场景记忆中提到罗伦斯与小村落的村民有交易关系，但未明确村民的说话人身份。",
+    "台词语气礼貌且感激，符合村民对商人的态度，而非罗伦斯的理性语气。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

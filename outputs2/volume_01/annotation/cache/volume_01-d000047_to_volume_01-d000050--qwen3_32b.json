@@ -1,0 +1,89 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000047",
+      "speaker_entity_id": "mystery_volume_01_c002_s002_r003_神秘女孩",
+      "speaker_display": "神秘女孩",
+      "speaker_status": "mystery",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "mystery_volume_01_c002_s002_r003_神秘女孩",
+          "display": "神秘女孩",
+          "status": "mystery",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "神秘女孩在罗伦斯的马车上睡觉，是第一个说话的人，符合上下文描述"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000048",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "罗伦斯是当前场景中唯一已知的说话角色，且上下文显示他正在试图叫醒神秘女孩"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000049",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "罗伦斯继续对神秘女孩说话，符合对话轮次和上下文逻辑"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000050",
+      "speaker_entity_id": "mystery_volume_01_c002_s002_r003_神秘女孩",
+      "speaker_display": "神秘女孩",
+      "speaker_status": "mystery",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "mystery_volume_01_c002_s002_r003_神秘女孩",
+          "display": "神秘女孩",
+          "status": "mystery",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "神秘女孩在罗伦斯的叫唤下做出回应，符合上下文描述"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰：神秘女孩先说话，罗伦斯回应并继续提问，神秘女孩最后回应。符合场景中两人初次相遇的互动逻辑。"
+}

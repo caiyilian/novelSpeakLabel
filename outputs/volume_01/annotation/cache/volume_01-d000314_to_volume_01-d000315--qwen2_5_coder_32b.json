@@ -1,0 +1,47 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000314",
+      "speaker_entity_id": "char_0009",
+      "speaker_display": "杰廉",
+      "speaker_status": "known",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0009",
+          "display": "杰廉",
+          "status": "known",
+          "score": 0.8
+        }
+      ],
+      "evidence": [
+        "自称小的，提供联络地点"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000315",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.8
+        }
+      ],
+      "evidence": [
+        "对话轮次判断"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "根据对话内容和角色行为，杰廉自称小的并提供联络地点，罗伦斯则回应确认。"
+}

@@ -1,0 +1,30 @@
+```json
+{
+  "scene_id": "volume_01-c002-s002",
+  "scene_summary": "罗伦斯在马车上发现一名神秘女孩，试图叫醒她并询问其意图，但女孩迟迟未完全清醒。女孩拥有类似小狗的耳朵，暗示她可能是非人类的存在。",
+  "active_characters": ["罗伦斯", "神秘女孩"],
+  "character_candidates": [
+    {
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": ["旅行商人"],
+      "description": "理性、谨慎的商人，独自旅行，对陌生人的出现感到警惕。",
+      "speech_style": "理性、怀疑、略带无奈",
+      "speech_markers": ["喂！", "喂！起床啊！", "喂！你擅自坐上别人的马车，想干什么？"],
+      "relationship_hints": ["与神秘女孩初次相遇，表现出警惕和好奇"],
+      "evidence": ["volume_01-c002-s002-p000217", "volume_01-c002-s002-p000221", "volume_01-c002-s002-p000227", "volume_01-c002-s002-p000234"],
+      "confidence": 0.95
+    }
+  ],
+  "mystery_entities": [
+    {
+      "temporary_name": "神秘女孩",
+      "description": "在罗伦斯的马车上睡觉的年轻女孩，拥有类似小狗的耳朵，尚未完全清醒。",
+      "evidence": ["volume_01-c002-s002-p000218", "volume_01-c002-s002-p000219", "volume_01-c002-s002-p000223", "volume_01-c002-s002-p000224", "volume_01-c002-s002-p000231"],
+      "confidence": 0.85
+    }
+  ],
+  "relationships": ["罗伦斯与神秘女孩初次相遇，表现出警惕和好奇"],
+  "notes": "神秘女孩的非人类特征（小狗耳朵）暗示她可能是非人类角色，如赫萝的变体或新角色。罗伦斯的反应显示他理性且谨慎，符合已知角色设定。"
+}
+```

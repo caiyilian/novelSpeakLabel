@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000540",
+  "speaker_entity_id": "char_0009",
+  "speaker_display": "杰廉",
+  "speaker_status": "known",
+  "confidence": 0.9,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0009",
+      "display": "杰廉",
+      "status": "known",
+      "score": 0.9
+    },
+    {
+      "entity_id": "char_0018",
+      "display": "女店员",
+      "status": "known",
+      "score": 0.1
+    }
+  ],
+  "evidence": [
+    "杰廉是场景中已出现的活跃角色，与罗伦斯和赫萝有互动。",
+    "当前段落紧接着杰廉的出场描述，且后续段落提到「在杰廉的开场白下」，暗示他正在说话。",
+    "杰廉在场景中被描述为「能言善道」，符合「庆祝我们的重逢！」这种热情开场白的风格。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

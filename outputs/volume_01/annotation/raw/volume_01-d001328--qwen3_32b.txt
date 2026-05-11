@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d001328",
+  "speaker_entity_id": "char_0020",
+  "speaker_display": "列支敦·马贺特",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0020",
+      "display": "列支敦·马贺特",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "上下文显示该段对话是马贺特在讲述宗教戏剧故事，与前文他讲述商人辛香料比喻的风格一致。",
+    "场景记忆中明确提到马贺特在本场景中通过宗教戏剧暗示辛香料的重要性。",
+    "该段对话中提到的「商人」符合马贺特在场景中扮演的商行代表角色。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

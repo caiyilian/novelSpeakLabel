@@ -1,0 +1,117 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000230",
+      "speaker_entity_id": "char_0006",
+      "speaker_display": "夫妻",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0006",
+          "display": "夫妻",
+          "status": "known",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "上下文提到这对夫妻对商业话题表现出兴趣，且罗伦斯正在与他们交谈",
+        "对话轮次为第一句，符合夫妻主动发言的场景"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000231",
+      "speaker_entity_id": "char_0006",
+      "speaker_display": "夫妻",
+      "speaker_status": "known",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0006",
+          "display": "夫妻",
+          "status": "known",
+          "score": 0.8
+        }
+      ],
+      "evidence": [
+        "这是对前一句的回应，符合夫妻继续对话的轮次",
+        "上下文显示这对夫妻正在与罗伦斯进行商业话题的交流"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000232",
+      "speaker_entity_id": "char_0006",
+      "speaker_display": "夫妻",
+      "speaker_status": "known",
+      "confidence": 0.75,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0006",
+          "display": "夫妻",
+          "status": "known",
+          "score": 0.75
+        }
+      ],
+      "evidence": [
+        "这是对前一句的延续，符合夫妻继续解释的对话轮次",
+        "上下文显示这对夫妻正在详细说明自己的商业经验"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000233",
+      "speaker_entity_id": "char_0006",
+      "speaker_display": "夫妻",
+      "speaker_status": "known",
+      "confidence": 0.7,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0006",
+          "display": "夫妻",
+          "status": "known",
+          "score": 0.7
+        }
+      ],
+      "evidence": [
+        "这是对前一句的回应，符合夫妻表达惊叹的对话轮次",
+        "上下文显示这对夫妻对罗伦斯的解释表示兴趣"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000234",
+      "speaker_entity_id": "char_0006",
+      "speaker_display": "夫妻",
+      "speaker_status": "known",
+      "confidence": 0.65,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0006",
+          "display": "夫妻",
+          "status": "known",
+          "score": 0.65
+        }
+      ],
+      "evidence": [
+        "这是对前一句的延续，符合夫妻继续提问的对话轮次",
+        "上下文显示这对夫妻正在与罗伦斯进行商业话题的交流"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，夫妻作为说话人贯穿整个对话，符合上下文中的互动场景。"
+}
+```

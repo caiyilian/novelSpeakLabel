@@ -1,0 +1,241 @@
+你是轻小说说话人标注项目的 Stage 2.5 裁判模型。
+你只拿目标窗口、候选角色和 structured_evidence 做最终判断。必须同时考虑正证据和反证据；不确定就进入复核，不能为了减少复核而硬猜。
+
+要求：
+1. 连续两句同一人说话是允许的，只要证据支持。
+2. 被称呼的人通常不是说话人。
+3. candidate_characters.speech_markers 是口癖/自称证据；多个角色共享或上下文反证时不能直接采纳。
+4. 如果台词说“她/他/它的名字是 X”，通常不是 X 本人在自我介绍。
+5. 输出 speaker、正证据、反证据、needs_review。
+
+只输出严格 JSON。输出必须紧凑，避免截断：
+- 每个 dialogue_id 只输出 1 条 annotation。
+- candidate_speakers 最多 2 个候选；如果 needs_review=true，也列出最可能的 1-2 个。
+- evidence 最多 3 条，每条不超过 30 字；不要重复长段原文。
+- 不要输出 should_create_new_entity / new_entity_hint，除非确实要新建未知人物。
+
+JSON 结构：
+{
+  "annotations": [
+    {
+      "dialogue_id": "必须来自 target_dialogue_ids",
+      "speaker_entity_id": "string",
+      "speaker_display": "string",
+      "speaker_status": "known|mystery|npc|ambiguous|review",
+      "confidence": 0.0,
+      "candidate_speakers": [
+        {"entity_id": "string", "display": "string", "score": 0.0}
+      ],
+      "evidence": ["短证据"],
+      "needs_review": false
+    }
+  ],
+  "window_notes": "string"
+}
+
+输入 JSON：
+{
+  "volume": {
+    "volume_id": "volume_01",
+    "volume": 1
+  },
+  "target_dialogue_ids": [
+    "volume_01-d000001"
+  ],
+  "dialogues": [
+    {
+      "dialogue_id": "volume_01-d000001",
+      "dialogue_index": 0,
+      "window_position": 1,
+      "chapter_id": "volume_01-c000",
+      "chapter_title": "front_matter",
+      "scene_id": "volume_01-c000-s003",
+      "paragraph_id": "volume_01-c000-s003-p000033",
+      "paragraph_index": 32,
+      "local_dialogue_index": 1,
+      "text": "虽然咱长久以来被尊为神，不过，咱就是咱，咱是赫萝。",
+      "quote_text": "「虽然咱长久以来被尊为神，不过，咱就是咱，咱是赫萝。」",
+      "paragraph_text": "「虽然咱长久以来被尊为神，不过，咱就是咱，咱是赫萝。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 27
+    }
+  ],
+  "context": {
+    "paragraphs": [
+      {
+        "paragraph_id": "volume_01-c000-s003-p000030",
+        "paragraph_index": 29,
+        "text": "简介",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c000-s003-p000031",
+        "paragraph_index": 30,
+        "text": "行商人罗伦斯在马车货台上的麦束堆里，发现睡梦中的少女。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c000-s003-p000032",
+        "paragraph_index": 31,
+        "text": "自称是丰收之神赫萝的美丽少女，长了狼的耳朵及尾巴。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c000-s003-p000033",
+        "paragraph_index": 32,
+        "text": "「虽然咱长久以来被尊为神，不过，咱就是咱，咱是赫萝。」",
+        "target_dialogue_ids": [
+          "volume_01-d000001"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c000-s003-p000034",
+        "paragraph_index": 33,
+        "text": "罗伦斯不断被说话狡诈的赫萝捉弄。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c000-s003-p000035",
+        "paragraph_index": 34,
+        "text": "尽管无法确信赫萝是否是掌控丰收的狼神，罗伦斯还是答应让赫萝与他一同旅行。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c000-s003-p000036",
+        "paragraph_index": 35,
+        "text": "二人展开旅途不久，一个意外的发财机会降临，据说某种银币在不久的将来会升值。",
+        "target_dialogue_ids": []
+      }
+    ]
+  },
+  "scene_memory": [
+    {
+      "scene_id": "volume_01-c000-s003-r001",
+      "parent_scene_id": "volume_01-c000-s003",
+      "chunk_index": 1,
+      "chunk_count": 1,
+      "scene_summary": "行商人罗伦斯在麦束堆中发现自称丰收之神赫萝的少女，赫萝拥有狼的耳朵和尾巴。尽管罗伦斯怀疑赫萝的身份，仍决定与她一同旅行。",
+      "active_characters": [
+        "罗伦斯",
+        "赫萝"
+      ],
+      "relationships": [
+        "罗伦斯与赫萝一同旅行",
+        "赫萝捉弄罗伦斯"
+      ],
+      "notes": "赫萝自称是丰收之神，但罗伦斯对其身份持怀疑态度。赫萝的说话风格具有高区分度，自称‘咱’。"
+    }
+  ],
+  "candidate_characters": [
+    {
+      "entity_id": "char_0002",
+      "display_name": "赫萝",
+      "aliases": [],
+      "titles": [
+        "丰收之神",
+        "狼",
+        "贤狼"
+      ],
+      "description": "神秘少女，拥有狼的特征。在本场景中协助罗伦斯击退袭击者，表现出冷静和对环境的高度感知能力。 / 在地下道中不断呼喊罗伦斯，试图唤醒他并指引方向。表现出担忧和责任感。 / 神秘少女，拥有狼的特征，情绪波动明显，对罗伦斯表现出依赖和担忧。 / 神秘少女，拥有狼的特征。在本场景中表现出脆弱和依赖，对独自旅行感到不安。她对叶勒的言语感到愤怒与悲伤。 / 情绪波动明显的贤狼，因叶勒的言语感到悲伤。她表现出对罗伦斯的依赖，并在关键时刻流露出脆弱。 / 情绪波动明显的贤狼，因叶勒的言语感到愤怒与悲伤。她吸食罗伦斯的血液以施展某…",
+      "speech_style": "未直接发言，但被频繁提及 / 冷静、自信、略带调侃 / 调皮、略带挑衅、情绪化 / 略带孩子气、情绪化、略带调侃 / 冷静、简短、略带策略性 / 关切、坚定、略带责备 / 情绪化、略带孩子气 / 冷静、略带情绪化 / 脆弱、情绪化、略带孩子气 / 冷静、自信、略带策略性 / 冷静、简短、略带威严 / 未直接发言",
+      "speech_markers": [
+        "咱",
+        "咱不会逃跑的",
+        "咱可是贤狼赫萝",
+        "呵呵",
+        "咱是贤狼赫萝呐",
+        "哈哈哈哈哈",
+        "咱希望可以……",
+        "咱不懂行情"
+      ],
+      "relationship_hints": [
+        "与罗伦斯一同旅行",
+        "捉弄罗伦斯",
+        "与罗伦斯展开对话",
+        "表现出对罗伦斯的调侃",
+        "与罗伦斯有初步互动，可能是他未来的旅伴",
+        "与罗伦斯进行对话，表现出信任与坦率",
+        "提到出生地时流露出真实情感",
+        "与罗伦斯有互动，被罗伦斯收留并一同旅行"
+      ],
+      "first_seen_scene_id": "volume_01-c000-s003-r001",
+      "latest_seen_scene_id": "volume_01-c008-s003-r001",
+      "confidence": 0.95
+    },
+    {
+      "entity_id": "char_0001",
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": [
+        "商人",
+        "旅行商人",
+        "行商人"
+      ],
+      "description": "理性、谨慎的商人，试图分析局势并保持冷静。他与赫萝同行，面对叶勒的威胁时表现出坚定。 / 理性、坚定的商人，坚持遵守与赫萝的合约，拒绝背叛她。面对叶勒的威胁保持冷静，表现出对赫萝的忠诚。 / 理性、谨慎的商人，身受重伤但仍试图保持冷静并等待救援。他表现出对赫萝的依赖和信任。 / 罗伦斯目睹赫萝的变身过程，表现出震惊和无力。他试图抓住赫萝留下的皮袋，但最终面对巨大的狼形生物，感到无法应对。 / 理性、谨慎的商人，与赫萝在地下通道中遭遇叶勒的威胁。他试图安抚赫萝的情绪，并表现出对环境变化的敏感。 / 在赫萝的威压下感…",
+      "speech_style": "温和、理性、略带担忧 / 理性、略带策略性、温和 / 理性、担忧、略带冲动 / 虚弱、低沉、略带困惑 / 虚弱、低沉、焦虑 / 理性、坚定、略带焦虑 / 理性、焦虑、略带冲动 / 虚弱、低沉、焦虑 / 虚弱、焦虑、略带愤怒 / 愤怒、理性、略带冲动 / 虚弱、焦虑、略带悔恨 / 理性、冷静、略带焦虑",
+      "speech_markers": [
+        "算了……",
+        "糟糕",
+        "……",
+        "这……",
+        "唔……嗯……",
+        "果然没错",
+        "时间就是金钱",
+        "说的也是"
+      ],
+      "relationship_hints": [
+        "与赫萝一同旅行",
+        "对赫萝的身份持怀疑态度",
+        "与修道院有生意期望但未成功",
+        "与骑士初次互动",
+        "与赫萝有密切关系",
+        "与教会和骑士有互动",
+        "与叶勒有交集，计划与他交谈但被祭典打断",
+        "与叶勒有过去的交易关系。"
+      ],
+      "first_seen_scene_id": "volume_01-c000-s003-r001",
+      "latest_seen_scene_id": "volume_01-c008-s003-r001",
+      "confidence": 1.0
+    }
+  ],
+  "candidate_mysteries": [],
+  "structured_evidence": [
+    {
+      "dialogue_id": "volume_01-d000001",
+      "source_model": "qwen3:32b",
+      "explicit_attribution": {
+        "speaker_display": "赫萝",
+        "text": "「虽然咱长久以来被尊为神，不过，咱就是咱，咱是赫萝。」"
+      },
+      "addressed_to": [],
+      "turn_relation": "standalone",
+      "same_speaker_allowed": true,
+      "speech_markers": [
+        {
+          "marker": "咱",
+          "owner_display": "赫萝"
+        },
+        {
+          "marker": "咱是赫萝",
+          "owner_display": "赫萝"
+        }
+      ],
+      "third_person_name_references": [
+        {
+          "display": "赫萝",
+          "text": "自称是丰收之神赫萝的美丽少女"
+        }
+      ],
+      "positive_evidence": [
+        "台词中明确自称‘咱是赫萝’",
+        "上下文提到‘自称是丰收之神赫萝的美丽少女’",
+        "台词风格与赫萝的‘咱’自称一致"
+      ],
+      "negative_evidence": [],
+      "needs_review_hint": false,
+      "notes": "明确的自称和上下文支持，证据充分。"
+    }
+  ]
+}

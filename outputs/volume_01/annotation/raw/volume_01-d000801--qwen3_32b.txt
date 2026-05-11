@@ -1,0 +1,26 @@
+```json
+{
+  "dialogue_id": "volume_01-d000801",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "说话者使用自称「咱」，这是赫萝的典型说话风格。",
+    "对话内容提及「熊」，与场景中赫萝提到的动物互动一致。",
+    "场景中赫萝处于宿醉状态，与对话中提及的喝酒行为相符。",
+    "赫萝在场景中表现出轻松幽默但略带威胁性的语气，符合台词风格。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000914",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "前文提到赫萝拉着罗伦斯的手不断往前跑，到了三叉路口中央时嘀咕着，罗伦斯抬头确认月亮位置及历法。",
+    "当前台词「这边。」出现在罗伦斯和赫萝在城镇中奔跑、寻找米隆商行的场景中，符合罗伦斯冷静理性、依靠记忆和地图感引导方向的说话风格。",
+    "场景记忆中多次提到罗伦斯在关键时刻提供方向指引，而赫萝则表现出对路线的不熟悉。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

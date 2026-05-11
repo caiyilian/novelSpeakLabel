@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d001247",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.98
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.02
+    }
+  ],
+  "evidence": [
+    "罗伦斯在本场景中坚持商人合约的原则，与台词内容「遵守合约是当个优良商人的第一条件」高度吻合。",
+    "上下文显示罗伦斯在与叶勒的对话中强调合约的重要性，符合说话人身份。",
+    "赫萝在此段对话中未主动发言，且情绪低落，不符合该台词的语气和立场。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

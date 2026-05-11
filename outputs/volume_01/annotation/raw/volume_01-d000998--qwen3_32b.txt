@@ -1,0 +1,30 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000998",
+      "speaker_entity_id": "char_0020",
+      "speaker_display": "列支敦·马贺特",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0020",
+          "display": "列支敦·马贺特",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "前一段提到「罗伦斯在沉思中，被马贺特的声音拉回现实」，说明马贺特刚刚说话，接下来的对话很可能是他继续提问。",
+        "当前对话「您知道原因是吗？」语气符合马贺特在前文中的冷静、理性风格。",
+        "场景记忆中，本段场景围绕罗伦斯与马贺特的对话展开，赫萝并未直接出现。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "当前对话为「您知道原因是吗？」，上下文显示罗伦斯正在被马贺特打断沉思，因此该句台词应为马贺特所说。"
+}
+```

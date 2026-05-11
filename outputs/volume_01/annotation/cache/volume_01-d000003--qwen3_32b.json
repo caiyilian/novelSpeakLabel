@@ -1,0 +1,23 @@
+{
+  "dialogue_id": "volume_01-d000003",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "对话内容提到「七十件」，与罗伦斯在深山村落的交易行为一致。",
+    "上下文显示罗伦斯刚完成交易，离开村落，符合说话人身份。",
+    "罗伦斯是本场景中唯一明确的交易主导者，且与村民有互动。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

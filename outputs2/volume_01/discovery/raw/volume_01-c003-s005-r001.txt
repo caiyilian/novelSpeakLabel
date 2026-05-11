@@ -1,0 +1,44 @@
+```json
+{
+  "scene_id": "volume_01-c003-s005",
+  "scene_summary": "赫萝在旅途中与罗伦斯进行对话，表现出她作为贤狼的自信与狡黠。两人在马车中度过雨后的一天，气氛平静但充满默契。",
+  "active_characters": ["赫萝", "罗伦斯"],
+  "character_candidates": [
+    {
+      "display_name": "赫萝",
+      "aliases": [],
+      "titles": ["贤狼", "丰收之神"],
+      "description": "赫萝在本场景中表现出她作为「贤狼」的自信与狡黠，与罗伦斯进行轻松对话，展现出她对人性和自然的深刻理解。",
+      "speech_style": "狡黠、自信、略带挑衅",
+      "speech_markers": ["咱", "这样就算扯平了呗。", "汝跟咱活着的世界大不相同呐。"],
+      "relationship_hints": ["与罗伦斯同行，关系亲密但带有挑衅意味"],
+      "evidence": [
+        "volume_01-c003-s005-p000911",
+        "volume_01-c003-s005-p000916",
+        "volume_01-c003-s005-p000917"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": ["旅行商人"],
+      "description": "罗伦斯在本场景中表现出理性与谨慎，对赫萝的发言表现出一定的认同，同时也在内心反思自己的言行。",
+      "speech_style": "理性、温和、略带无奈",
+      "speech_markers": [],
+      "relationship_hints": ["与赫萝同行，关系亲密但保持理性距离"],
+      "evidence": [
+        "volume_01-c003-s005-p000912",
+        "volume_01-c003-s005-p000913"
+      ],
+      "confidence": 0.9
+    }
+  ],
+  "mystery_entities": [],
+  "relationships": [
+    "赫萝与罗伦斯同行，关系亲密但带有挑衅意味",
+    "赫萝表现出对罗伦斯的掌控力，同时展现出她作为「贤狼」的自信"
+  ],
+  "notes": "本场景中赫萝的说话风格和自称「咱」具有高区分度，可作为口癖标记。罗伦斯的理性与谨慎在对话中有所体现，但未直接发言。"
+}
+```

@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d000584",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "当前段落中提到「咱想吃那个。」，而「咱」是赫萝常用的自称。",
+    "上下文显示赫萝在集市上对蜂蜜面包表现出浓厚兴趣，并指向面包摊贩。",
+    "场景记忆中明确指出赫萝对蜂蜜面包的喜好，且是本场景中活跃角色之一。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

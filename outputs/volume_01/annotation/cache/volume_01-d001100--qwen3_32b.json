@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d001100",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "上下文显示罗伦斯在安抚赫萝，而赫萝的反应表明她情绪波动，但说话内容「看见你没事，真的太好了。」语气符合罗伦斯一贯的理性、关心风格。",
+    "场景记忆中，罗伦斯多次表现出对赫萝的关心和安抚，而赫萝则情绪化，因此此句更可能是罗伦斯的台词。",
+    "赫萝的台词风格更偏向轻松幽默或情绪化，而此句语气较为平静、理性，符合罗伦斯的说话方式。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

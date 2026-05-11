@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000488",
+  "speaker_entity_id": "mystery_volume_01_c004_s003_r006_神秘回答者",
+  "speaker_display": "神秘回答者",
+  "speaker_status": "mystery",
+  "confidence": 0.6,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0017",
+      "display": "男子",
+      "status": "known",
+      "score": 0.7
+    },
+    {
+      "entity_id": "mystery_volume_01_c004_s003_r006_神秘回答者",
+      "display": "神秘回答者",
+      "status": "mystery",
+      "score": 0.6
+    }
+  ],
+  "evidence": [
+    "对话前文提到男子嗅闻貂皮并表现出惊讶，但未直接表明他回答了问题。",
+    "对话中未明确说话人身份，可能是男子本人，也可能是另一名未命名人物。",
+    "赫萝和罗伦斯在后文对气味表示疑惑，但未直接参与此句对话。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": true
+}
+```

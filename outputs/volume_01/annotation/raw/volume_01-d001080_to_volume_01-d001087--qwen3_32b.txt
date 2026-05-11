@@ -1,0 +1,201 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001080",
+      "speaker_entity_id": "mystery_volume_01_c006_s003_r002_神秘人物A",
+      "speaker_display": "神秘人物A",
+      "speaker_status": "mystery",
+      "confidence": 0.75,
+      "candidate_speakers": [
+        {
+          "entity_id": "mystery_volume_01_c006_s003_r002_神秘人物A",
+          "display": "神秘人物A",
+          "status": "mystery",
+          "score": 0.75
+        },
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "ambiguous",
+          "score": 0.25
+        }
+      ],
+      "evidence": [
+        "台词语气强硬，像是在指挥罗伦斯行动，符合神秘人物A的描述",
+        "上下文显示说话人位于洞口上方，与赫萝互动，但赫萝并未说话"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001081",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "这是对前一句台词的回应，符合罗伦斯的反应风格",
+        "上下文显示罗伦斯正在被推着前进，符合他的行为"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001082",
+      "speaker_entity_id": "mystery_volume_01_c006_s003_r002_神秘人物A",
+      "speaker_display": "神秘人物A",
+      "speaker_status": "mystery",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {
+          "entity_id": "mystery_volume_01_c006_s003_r002_神秘人物A",
+          "display": "神秘人物A",
+          "status": "mystery",
+          "score": 0.8
+        },
+        {
+          "entity_id": "char_0024",
+          "display": "梅迪欧商行的人",
+          "status": "ambiguous",
+          "score": 0.2
+        }
+      ],
+      "evidence": [
+        "台词是「里昂」，与后一句「奴马」形成暗号，符合神秘人物A的行动风格",
+        "上下文显示这是确认身份的暗号，说话人应为协助罗伦斯的同伴"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001083",
+      "speaker_entity_id": "mystery_volume_01_c006_s003_r002_神秘人物A",
+      "speaker_display": "神秘人物A",
+      "speaker_status": "mystery",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {
+          "entity_id": "mystery_volume_01_c006_s003_r002_神秘人物A",
+          "display": "神秘人物A",
+          "status": "mystery",
+          "score": 0.8
+        },
+        {
+          "entity_id": "char_0024",
+          "display": "梅迪欧商行的人",
+          "status": "ambiguous",
+          "score": 0.2
+        }
+      ],
+      "evidence": [
+        "与前一句「里昂」形成暗号，符合神秘人物A的行动风格",
+        "上下文显示这是确认身份的暗号，说话人应为协助罗伦斯的同伴"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001084",
+      "speaker_entity_id": "char_0024",
+      "speaker_display": "梅迪欧商行的人",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0024",
+          "display": "梅迪欧商行的人",
+          "status": "known",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "上下文显示说话人是商行人员，正在确认罗伦斯的身份",
+        "语气专业冷静，符合商行人员的风格"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001085",
+      "speaker_entity_id": "char_0024",
+      "speaker_display": "梅迪欧商行的人",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0024",
+          "display": "梅迪欧商行的人",
+          "status": "known",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "上下文显示说话人是商行人员，正在确认罗伦斯的身份",
+        "语气专业冷静，符合商行人员的风格"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001086",
+      "speaker_entity_id": "char_0024",
+      "speaker_display": "梅迪欧商行的人",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0024",
+          "display": "梅迪欧商行的人",
+          "status": "known",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "上下文显示说话人是商行人员，正在确认罗伦斯的身份",
+        "语气专业冷静，符合商行人员的风格"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001087",
+      "speaker_entity_id": "char_0024",
+      "speaker_display": "梅迪欧商行的人",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0024",
+          "display": "梅迪欧商行的人",
+          "status": "known",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "上下文显示说话人是商行人员，正在确认罗伦斯的身份",
+        "语气专业冷静，符合商行人员的风格"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，前两句为神秘人物A与罗伦斯的互动，随后是商行人员的确认与说明。整体对话符合场景中协助撤离的流程。"
+}
+```

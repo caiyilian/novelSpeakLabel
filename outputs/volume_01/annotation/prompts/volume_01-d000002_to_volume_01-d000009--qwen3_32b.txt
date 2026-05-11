@@ -1,0 +1,522 @@
+你是轻小说说话人标注项目的阶段 2：正式标注助手。
+你的任务是判断输入 target_dialogues 中每一句台词的说话人，不要改写原文。
+必须把这些台词当作同一个连续片段来判断，优先保持对话轮次和叙述线索的一致性。
+
+规则：
+1. 只输出严格 JSON，不要 Markdown，不要解释性前后缀。
+2. 如果说话人是候选角色，speaker_entity_id 必须使用 candidate_characters 里的 entity_id，speaker_status 填 known。
+3. 如果说话人像某个未知人物，speaker_entity_id 使用 candidate_mysteries 里的 mystery_id，speaker_status 填 mystery。
+4. 如果只是无法追踪的路人/群体，speaker_status 填 npc，speaker_entity_id 可为空或使用 npc:简短称呼。
+5. 证据不足时不要硬猜，speaker_status 填 ambiguous 或 review，并把 needs_review 设为 true。
+6. candidate_speakers 至少列出 1 个候选；如果无法判断，列出最可能的候选和不确定原因。
+7. confidence 使用 0 到 1 之间的小数，表示你对最终判断的把握。
+8. 不要只因为台词里提到某个名字、职业、地点，就把说话人标成那个实体；被称呼的人通常不是说话人。
+9. 连续问答、交易寒暄、命令/回答等场景要按上下句轮次判断；同一人连续说话必须有叙述或语气证据支持。
+10. 如果当前上下文显示某角色还没有登场，不要因为角色库或后文记忆里有这个角色就提前标给他/她。
+
+输出 JSON 结构：
+{
+  "annotations": [
+    {
+      "dialogue_id": "必须来自 target_dialogue_ids",
+      "speaker_entity_id": "string",
+      "speaker_display": "string",
+      "speaker_status": "known|mystery|npc|ambiguous|review",
+      "confidence": 0.0,
+      "candidate_speakers": [
+        {"entity_id": "string", "display": "string", "status": "known|mystery|npc|ambiguous|review", "score": 0.0}
+      ],
+      "evidence": ["短证据，不要大段复制原文"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "可选，简短说明整体轮次判断"
+}
+必须为 target_dialogue_ids 中每个 dialogue_id 输出且只输出一条 annotation。
+
+输入 JSON：
+{
+  "volume": {
+    "volume_id": "volume_01",
+    "volume": 1
+  },
+  "target_dialogue_ids": [
+    "volume_01-d000002",
+    "volume_01-d000003",
+    "volume_01-d000004",
+    "volume_01-d000005",
+    "volume_01-d000006",
+    "volume_01-d000007",
+    "volume_01-d000008",
+    "volume_01-d000009"
+  ],
+  "dialogues": [
+    {
+      "dialogue_id": "volume_01-d000002",
+      "dialogue_index": 1,
+      "window_position": 1,
+      "chapter_id": "volume_01-c002",
+      "chapter_title": "第一幕",
+      "scene_id": "volume_01-c002-s001",
+      "paragraph_id": "volume_01-c002-s001-p000079",
+      "paragraph_index": 78,
+      "local_dialogue_index": 1,
+      "text": "这是最后一件了吧？",
+      "quote_text": "「这是最后一件了吧？」",
+      "paragraph_text": "「这是最后一件了吧？」",
+      "char_start": 0,
+      "char_end": 11
+    },
+    {
+      "dialogue_id": "volume_01-d000003",
+      "dialogue_index": 2,
+      "window_position": 2,
+      "chapter_id": "volume_01-c002",
+      "chapter_title": "第一幕",
+      "scene_id": "volume_01-c002-s001",
+      "paragraph_id": "volume_01-c002-s001-p000080",
+      "paragraph_index": 79,
+      "local_dialogue_index": 1,
+      "text": "嗯，这里确实有……七十件。多谢惠顾。",
+      "quote_text": "「嗯，这里确实有……七十件。多谢惠顾。」",
+      "paragraph_text": "「嗯，这里确实有……七十件。多谢惠顾。」",
+      "char_start": 0,
+      "char_end": 20
+    },
+    {
+      "dialogue_id": "volume_01-d000004",
+      "dialogue_index": 3,
+      "window_position": 3,
+      "chapter_id": "volume_01-c002",
+      "chapter_title": "第一幕",
+      "scene_id": "volume_01-c002-s001",
+      "paragraph_id": "volume_01-c002-s001-p000081",
+      "paragraph_index": 80,
+      "local_dialogue_index": 1,
+      "text": "不，我们才要谢谢你呢。只有罗伦斯先生你愿意到这深山里来，真是帮了我们大忙。",
+      "quote_text": "「不，我们才要谢谢你呢。只有罗伦斯先生你愿意到这深山里来，真是帮了我们大忙。」",
+      "paragraph_text": "「不，我们才要谢谢你呢。只有罗伦斯先生你愿意到这深山里来，真是帮了我们大忙。」",
+      "char_start": 0,
+      "char_end": 39
+    },
+    {
+      "dialogue_id": "volume_01-d000005",
+      "dialogue_index": 4,
+      "window_position": 4,
+      "chapter_id": "volume_01-c002",
+      "chapter_title": "第一幕",
+      "scene_id": "volume_01-c002-s001",
+      "paragraph_id": "volume_01-c002-s001-p000082",
+      "paragraph_index": 81,
+      "local_dialogue_index": 1,
+      "text": "不过，我也因此拿到上等的皮草啊，我会再来的。",
+      "quote_text": "「不过，我也因此拿到上等的皮草啊，我会再来的。」",
+      "paragraph_text": "「不过，我也因此拿到上等的皮草啊，我会再来的。」",
+      "char_start": 0,
+      "char_end": 24
+    },
+    {
+      "dialogue_id": "volume_01-d000006",
+      "dialogue_index": 5,
+      "window_position": 5,
+      "chapter_id": "volume_01-c002",
+      "chapter_title": "第一幕",
+      "scene_id": "volume_01-c002-s001",
+      "paragraph_id": "volume_01-c002-s001-p000093",
+      "paragraph_index": 92,
+      "local_dialogue_index": 1,
+      "text": "怎么回事？",
+      "quote_text": "「怎么回事？」",
+      "paragraph_text": "「怎么回事？」",
+      "char_start": 0,
+      "char_end": 7
+    },
+    {
+      "dialogue_id": "volume_01-d000007",
+      "dialogue_index": 6,
+      "window_position": 6,
+      "chapter_id": "volume_01-c002",
+      "chapter_title": "第一幕",
+      "scene_id": "volume_01-c002-s001",
+      "paragraph_id": "volume_01-c002-s001-p000097",
+      "paragraph_index": 96,
+      "local_dialogue_index": 1,
+      "text": "……骑士？",
+      "quote_text": "「……骑士？」",
+      "paragraph_text": "「……骑士？」",
+      "char_start": 0,
+      "char_end": 7
+    },
+    {
+      "dialogue_id": "volume_01-d000008",
+      "dialogue_index": 7,
+      "window_position": 7,
+      "chapter_id": "volume_01-c002",
+      "chapter_title": "第一幕",
+      "scene_id": "volume_01-c002-s001",
+      "paragraph_id": "volume_01-c002-s001-p000099",
+      "paragraph_index": 98,
+      "local_dialogue_index": 1,
+      "text": "你是什么人？",
+      "quote_text": "「你是什么人？」",
+      "paragraph_text": "「你是什么人？」",
+      "char_start": 0,
+      "char_end": 8
+    },
+    {
+      "dialogue_id": "volume_01-d000009",
+      "dialogue_index": 8,
+      "window_position": 8,
+      "chapter_id": "volume_01-c002",
+      "chapter_title": "第一幕",
+      "scene_id": "volume_01-c002-s001",
+      "paragraph_id": "volume_01-c002-s001-p000101",
+      "paragraph_index": 100,
+      "local_dialogue_index": 1,
+      "text": "我是旅行商人罗伦斯，有什么能为您效劳的吗？",
+      "quote_text": "「我是旅行商人罗伦斯，有什么能为您效劳的吗？」",
+      "paragraph_text": "「我是旅行商人罗伦斯，有什么能为您效劳的吗？」",
+      "char_start": 0,
+      "char_end": 23
+    }
+  ],
+  "context": {
+    "paragraphs": [
+      {
+        "paragraph_id": "volume_01-c002-s001-p000076",
+        "paragraph_index": 75,
+        "text": "第",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000077",
+        "paragraph_index": 76,
+        "text": "一",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000078",
+        "paragraph_index": 77,
+        "text": "幕",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000079",
+        "paragraph_index": 78,
+        "text": "「这是最后一件了吧？」",
+        "target_dialogue_ids": [
+          "volume_01-d000002"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000080",
+        "paragraph_index": 79,
+        "text": "「嗯，这里确实有……七十件。多谢惠顾。」",
+        "target_dialogue_ids": [
+          "volume_01-d000003"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000081",
+        "paragraph_index": 80,
+        "text": "「不，我们才要谢谢你呢。只有罗伦斯先生你愿意到这深山里来，真是帮了我们大忙。」",
+        "target_dialogue_ids": [
+          "volume_01-d000004"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000082",
+        "paragraph_index": 81,
+        "text": "「不过，我也因此拿到上等的皮草啊，我会再来的。」",
+        "target_dialogue_ids": [
+          "volume_01-d000005"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000083",
+        "paragraph_index": 82,
+        "text": "结束一如往常的对话，离开深山里的村落已过了五个小时。太阳升起后就立刻动身，下山来到这片草原时已过了中午。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000084",
+        "paragraph_index": 83,
+        "text": "这天的天气晴朗，没有半点风，是个适合坐在马车上，悠哉横越草原的日子。因为这阵子的天气寒冷，原以为冬天就快到了，现在却一点儿也感觉不到。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000085",
+        "paragraph_index": 84,
+        "text": "成为自力更生的旅行商人，只身行商至今已有七个年头，今年二十五岁的罗伦斯坐在马车驾座上，泰然自若地打着呵欠。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000086",
+        "paragraph_index": 85,
+        "text": "这里几乎没有高大的草木会阻碍视线，眼前景色一望无际，也因此可以看清远方的景象。在视野最远处，可看到一所几年前建盖好的修道院。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000087",
+        "paragraph_index": 86,
+        "text": "或许是有某地方的贵族子弟成了他们的修道士吧，尽管在如此偏僻荒远的土地上，但这所修道院不仅是一栋优良的石造建筑物，甚至还使用了铁制门窗，令人难以置信。记得没错的话，修道院里应该有二十多位修道士，另外还有将近同样人数的男仆为他们打点生活。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000088",
+        "paragraph_index": 87,
+        "text": "修道院刚开始建盖时，罗伦斯以为可以招揽到新顾客而满怀期待。可惜修道院似乎不跟民间商人往来，而是以独自的通路调度物资，罗伦斯的期望因而落空。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000089",
+        "paragraph_index": 88,
+        "text": "虽然期望是落了空，但是修道士的生活并不奢侈，他们甚至会下田耕作；就算做成了生意，可能也没有太多利益可图。不仅如此，或许还有可能被迫捐款，或者被倒债。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000090",
+        "paragraph_index": 89,
+        "text": "单纯就买卖的对象来说，修道士比盗贼还要恶劣。不过，只要能够和他们做生意，对商人来说还是有好处。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000091",
+        "paragraph_index": 90,
+        "text": "因为这个缘故，罗伦斯还是恋恋不舍地望着修道院，但是他突然瞇起眼睛。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000092",
+        "paragraph_index": 91,
+        "text": "修道院那头，有人正朝向这边挥手。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000093",
+        "paragraph_index": 92,
+        "text": "「怎么回事？」",
+        "target_dialogue_ids": [
+          "volume_01-d000006"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000094",
+        "paragraph_index": 93,
+        "text": "那人看起来不像男仆，因为男仆身上穿的应该是肮脏的深褐色工作服，而正在挥手的人穿着看似灰色的衣服。虽然要特地走到那头有些麻烦，但就这么漠视的话，恐怕会造成日后的困扰。罗伦斯不得已，只好把马车转向修道院的方向。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000095",
+        "paragraph_index": 94,
+        "text": "马车转向后，原本挥着手的人可能是发现罗伦斯朝自己的方向走来，便停止挥手，但也没有走向罗伦斯的意思。看来，他要等罗伦斯自己走到修道院。教会相关人士的态度傲慢已是司空见惯的事，罗伦斯不会为了这点小事生气。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000096",
+        "paragraph_index": 95,
+        "text": "不过，在缓缓靠近修道院，清楚看见那人的身影后，罗伦斯不禁发出声音说：",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000097",
+        "paragraph_index": 96,
+        "text": "「……骑士？」",
+        "target_dialogue_ids": [
+          "volume_01-d000007"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000098",
+        "paragraph_index": 97,
+        "text": "起初罗伦斯心想：骑士怎么可能会出现在这里？但靠近后他发现确实是名骑士，原来看起来灰灰的衣服是银色的盔甲。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000099",
+        "paragraph_index": 98,
+        "text": "「你是什么人？」",
+        "target_dialogue_ids": [
+          "volume_01-d000008"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000100",
+        "paragraph_index": 99,
+        "text": "骑士在罗伦斯到了两人要交谈还稍嫌远的距离时，便如此大喊。那语气仿佛自己不用报上名来，每个人也该认得他似的。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000101",
+        "paragraph_index": 100,
+        "text": "「我是旅行商人罗伦斯，有什么能为您效劳的吗？」",
+        "target_dialogue_ids": [
+          "volume_01-d000009"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000102",
+        "paragraph_index": 101,
+        "text": "修道院已近在眼前，往南方延伸的田地里，正在耕作的男仆寥寥可数。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000103",
+        "paragraph_index": 102,
+        "text": "罗伦斯发现骑士不止一名，还有一名骑士站在修道院另一头，说不定骑士们是在站岗巡视。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000104",
+        "paragraph_index": 103,
+        "text": "「旅行商人？你来的方向应该没有任何城镇。」",
+        "target_dialogue_ids": []
+      }
+    ]
+  },
+  "scene_memory": [
+    {
+      "scene_id": "volume_01-c002-s001-r001",
+      "parent_scene_id": "volume_01-c002-s001",
+      "chunk_index": 1,
+      "chunk_count": 6,
+      "scene_summary": "罗伦斯完成了一次深山村落的交易，离开后在草原上行驶马车，途中观察到远处的修道院，并回忆起与修道院相关的商业期望落空的经历。",
+      "active_characters": [
+        "罗伦斯"
+      ],
+      "relationships": [
+        "罗伦斯与深山村落的村民有交易关系",
+        "罗伦斯对修道院抱有商业期望但未成功"
+      ],
+      "notes": "场景中未出现赫萝，但罗伦斯的背景与她相关。修道院居民未被命名，但可追踪其行为模式与罗伦斯的互动线索。"
+    },
+    {
+      "scene_id": "volume_01-c002-s001-r002",
+      "parent_scene_id": "volume_01-c002-s001",
+      "chunk_index": 2,
+      "chunk_count": 6,
+      "scene_summary": "罗伦斯在前往修道院的路上，发现一名骑士挥手示意。罗伦斯靠近后确认对方是骑士，并与其对话。骑士态度傲慢，质疑罗伦斯的商人身份。",
+      "active_characters": [
+        "罗伦斯",
+        "骑士"
+      ],
+      "relationships": [
+        "罗伦斯与骑士有短暂互动",
+        "骑士与修道院有关联"
+      ],
+      "notes": "场景中出现了两名骑士，其中一名与罗伦斯对话，另一名未参与对话但存在。骑士身份和目的尚不明确，可能在后文有进一步揭示。"
+    },
+    {
+      "scene_id": "volume_01-c002-s001-r003",
+      "parent_scene_id": "volume_01-c002-s001",
+      "chunk_index": 3,
+      "chunk_count": 6,
+      "scene_summary": "罗伦斯与一名下级骑士在修道院附近对话。骑士态度傲慢，但被罗伦斯用蜂蜜糖和貂皮吸引，最终放行。罗伦斯提到他前往东边山头的小村落卖盐，并计划将麦子带到西北方。",
+      "active_characters": [
+        "罗伦斯",
+        "骑士"
+      ],
+      "relationships": [
+        "罗伦斯与骑士有短暂互动",
+        "罗伦斯与小村落的村民有交易关系"
+      ],
+      "notes": "场景中未出现赫萝，但罗伦斯的行动和对话暗示他可能与她有联系。"
+    }
+  ],
+  "candidate_characters": [
+    {
+      "entity_id": "char_0001",
+      "display_name": "罗伦斯",
+      "aliases": [
+        "罗伦斯",
+        "罗伦斯先生"
+      ],
+      "titles": [
+        "中间人",
+        "交易者",
+        "同行",
+        "商人",
+        "小毛头",
+        "小的",
+        "市井无赖",
+        "年轻人",
+        "开店者",
+        "情报贩子",
+        "提议者",
+        "新手"
+      ],
+      "description": "一位行商人，正在与米隆商行的代表马贺特进行交易谈判。他原本期待获得两千枚银币，但实际只得到一百二十枚，感到震惊和困惑。 / 一位行商人，发现并收留了赫萝，决定与她一同旅行。 / 一位二十五岁的自力更生旅行商人，已有七年行商经验，性格泰然自若。 / 一位冷静理性的旅行商人，对赫萝的身份持怀疑态度，但仍保持互动。他注重外表整洁，对商业制度有深入理解。 / 冷静理性的旅行商人，与赫萝一同旅行。在本场景中与米隆商行的马贺特讨论梅迪欧商行的威胁，提出利用崔尼银币交易作为交涉王牌。 / 一位冷静理性的旅行商人，与赫萝一同旅行。在本场景中与米隆商行的马贺特达成交易，表现出策略性和经验。 / 正在与马贺特讨论交易细节的商人，表现出对辛香料的兴趣。 / 一位冷静理性的旅行商人，正在与米隆商行的马贺特进行交易。他表现出对开店的期待，并思考未来。 / 一位冷静理性的旅行商人，正在处理一份请款单，但对单据内容感到困惑。 / 一位行商人，正在与商行代表进行交易。他表现出冷静和策略性，询问卸货场的位置。 / 一位行商人，发现并收留了赫萝，决定与她一同旅行。他性格冷静理性，对赫萝的身份持怀疑态度，但仍保持互动。他注重外表整洁，对商业制度有深入理解。 / 冷静理性的旅行商人，与赫萝一同旅行。在本场景中试图安抚赫萝的情绪，表现出对她的关心。",
+      "speech_style": "理性、坚定、略带情绪化 / 冷静、理性，带有悔恨和自责的语气。 / 冷静、理性，语气中带有对赫萝的关心和些许担忧。 / 冷静、理性、略带失落 / 冷静、理性，对商业制度有深入理解，并能清晰地向他人解释。 / 理性、礼貌、略带谨慎。 / 理性、冷静，带有商业分析倾向。 / 理性、沉稳、略带幽默 / 理性、冷静，但因困惑而表现出急切。 / 冷静、直接、略带命令语气 / 冷静、理性、简洁 / 冷静、理性、略带幽默",
+      "relationship_hints": [
+        "与赫萝一同旅行",
+        "对赫萝的真实性持怀疑态度",
+        "与深山村落的村民有交易关系",
+        "对修道院抱有商业期望但未成功",
+        "与骑士有短暂互动",
+        "与小村落的村民有交易关系",
+        "与修道院有关联",
+        "对教会和异教徒问题有见解",
+        "与叶勒有联系",
+        "在麦田中与农夫互动",
+        "与农夫有互动",
+        "在村民中保持低调"
+      ],
+      "first_seen_scene_id": "volume_01-c000-s003-r001",
+      "latest_seen_scene_id": "volume_01-c008-s003-r002",
+      "confidence": 1.0
+    },
+    {
+      "entity_id": "char_0003",
+      "display_name": "骑士",
+      "aliases": [],
+      "titles": [],
+      "description": "身穿银色盔甲的骑士，站在修道院附近，态度傲慢，与罗伦斯对话。 / 身穿银色盔甲的下级骑士，态度傲慢但容易被诱惑。他与罗伦斯短暂互动后放行。 / 一位年轻骑士，身穿银色盔甲，态度傲慢但容易被诱惑。他因罗伦斯递给他蜂蜜糖而态度缓和，并询问关于异教徒祭典的消息。 / 身穿银色盔甲的年轻骑士，态度傲慢但容易被诱惑。他因罗伦斯递给他蜂蜜糖而态度缓和，并询问关于异教徒祭典的消息。",
+      "speech_style": "命令式、带有优越感 / 傲慢、迟疑、略带犹豫 / 正式、略带傲慢 / 傲慢、直接",
+      "relationship_hints": [
+        "与修道院有关联",
+        "可能是站岗的骑士之一",
+        "与罗伦斯有短暂互动",
+        "与异教徒祭典有关",
+        "对教会和异教徒问题敏感"
+      ],
+      "first_seen_scene_id": "volume_01-c002-s001-r002",
+      "latest_seen_scene_id": "volume_01-c002-s001-r005",
+      "confidence": 0.85
+    }
+  ],
+  "candidate_mysteries": [
+    {
+      "mystery_id": "mystery_volume_01_c002_s001_r001_修道院居民",
+      "temporary_name": "修道院居民",
+      "description": "修道院中的修道士和男仆，人数约四十人，生活简朴，不与民间商人往来。",
+      "evidence": [
+        "volume_01-c002-s001-p000087",
+        "volume_01-c002-s001-p000088"
+      ],
+      "source_scene_id": "volume_01-c002-s001-r001",
+      "confidence": 0.7
+    },
+    {
+      "mystery_id": "mystery_volume_01_c002_s001_r002_修道院骑士2",
+      "temporary_name": "修道院骑士2",
+      "description": "站在修道院另一头的骑士，疑似与第一骑士一同站岗。",
+      "evidence": [
+        "volume_01-c002-s001-p000103"
+      ],
+      "source_scene_id": "volume_01-c002-s001-r002",
+      "confidence": 0.7
+    },
+    {
+      "mystery_id": "mystery_volume_01_c002_s001_r003_小村落的村民",
+      "temporary_name": "小村落的村民",
+      "description": "罗伦斯提到的小村落的村民，他们种植耐寒且抗虫的麦子，并与罗伦斯有交易关系。",
+      "evidence": [
+        "volume_01-c002-s001-p000118"
+      ],
+      "source_scene_id": "volume_01-c002-s001-r003",
+      "confidence": 0.7
+    }
+  ]
+}

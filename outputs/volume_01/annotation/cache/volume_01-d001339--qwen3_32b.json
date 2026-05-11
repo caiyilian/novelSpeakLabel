@@ -1,0 +1,23 @@
+{
+  "dialogue_id": "volume_01-d001339",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.98
+    }
+  ],
+  "evidence": [
+    "上下文显示罗伦斯刚刚跳下床并朝门的方向奔去，随后说出「让开！」，符合他急切、直接的说话风格。",
+    "场景记忆中提到罗伦斯在商行中与店员交谈并询问卸货场位置，行为与当前场景一致。",
+    "候选角色中罗伦斯的描述和对话风格与当前台词相符。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

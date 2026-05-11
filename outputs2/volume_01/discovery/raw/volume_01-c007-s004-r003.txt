@@ -1,0 +1,45 @@
+```json
+{
+  "scene_id": "volume_01-c007-s004",
+  "scene_summary": "罗伦斯与赫萝在地下通道中遭遇叶勒的威胁。赫萝以狼形出现，制服了叶勒，并要求罗伦斯交出麦子。罗伦斯对赫萝的举动感到不安，但最终选择顺从。",
+  "active_characters": ["罗伦斯", "赫萝", "叶勒"],
+  "character_candidates": [
+    {
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": ["商人", "旅行商人"],
+      "description": "理性、谨慎的商人，与赫萝在地下通道中遭遇叶勒的威胁。他试图安抚赫萝的情绪，并表现出对环境变化的敏感。",
+      "speech_style": "理性、焦虑、略带冲动",
+      "speech_markers": ["赫萝……", "拿麦子要做什么？"],
+      "relationship_hints": ["与赫萝有亲密互动", "对赫萝的举动感到不安"],
+      "evidence": ["volume_01-c007-s004-p002860", "volume_01-c007-s004-p002865", "volume_01-c007-s004-p002875"],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "赫萝",
+      "aliases": [],
+      "titles": ["贤狼", "狼"],
+      "description": "神秘少女，拥有狼的特征。在本场景中完成了从人类形态到狼形态的转变，表现出强大的力量和威压。",
+      "speech_style": "冷静、自信、略带策略性",
+      "speech_markers": ["麦子拿来。"],
+      "relationship_hints": ["与罗伦斯有强烈的情感联系", "对叶勒表现出愤怒与悲伤"],
+      "evidence": ["volume_01-c007-s004-p002863", "volume_01-c007-s004-p002868", "volume_01-c007-s004-p002872"],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "叶勒",
+      "aliases": [],
+      "titles": [],
+      "description": "帕斯罗村的村民，代表梅迪欧商行试图活捉赫萝。他与罗伦斯有旧识，但立场对立，表现出对合约的重视。",
+      "speech_style": "理性、略带策略性",
+      "speech_markers": ["神、神总是这样。总是……总是这么不讲理。"],
+      "relationship_hints": ["与赫萝有冲突", "与罗伦斯有旧识"],
+      "evidence": ["volume_01-c007-s004-p002857", "volume_01-c007-s004-p002858", "volume_01-c007-s004-p002864"],
+      "confidence": 0.9
+    }
+  ],
+  "mystery_entities": [],
+  "relationships": ["罗伦斯与赫萝有亲密互动", "赫萝与叶勒有冲突", "罗伦斯对赫萝的举动感到不安"],
+  "notes": "赫萝在本场景中表现出强大的力量和威压，完成了从人类形态到狼形态的转变。罗伦斯对赫萝的举动感到不安，但最终选择顺从。叶勒代表梅迪欧商行试图活捉赫萝，与罗伦斯有旧识但立场对立。"
+}
+```

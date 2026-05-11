@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d000079",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    }
+  ],
+  "evidence": [
+    "赫萝在前一段落中自称「咱」，并提到「咱长久以来被尊为神」，与当前台词「长久是说打从出生开始吗？」形成直接对话延续。",
+    "当前台词是对赫萝自身身份和出生背景的进一步探讨，符合她一贯的说话风格和主题。",
+    "赫萝是当前场景中唯一明确提到出生和身份的神秘角色，且与罗伦斯有持续对话。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

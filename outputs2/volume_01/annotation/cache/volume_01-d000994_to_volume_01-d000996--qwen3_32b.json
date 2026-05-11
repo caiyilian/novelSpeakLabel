@@ -1,0 +1,71 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000994",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "上下文显示罗伦斯正在思考梅迪欧商行的动机，这是他表达怀疑的自然反应。",
+        "场景记忆中提到罗伦斯与马贺特讨论，罗伦斯是主要发言者之一。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000995",
+      "speaker_entity_id": "char_0015",
+      "speaker_display": "列支敦·马贺特",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0015",
+          "display": "列支敦·马贺特",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "这是对前一句的回应，符合对话轮次逻辑，马贺特作为对话推动者提出问题。",
+        "场景记忆中提到马贺特与罗伦斯有讨论，且他倾向于提出问题以获取信息。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000996",
+      "speaker_entity_id": "char_0015",
+      "speaker_display": "列支敦·马贺特",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0015",
+          "display": "列支敦·马贺特",
+          "status": "known",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "这是对前一句的延续，符合对话轮次逻辑，马贺特继续表达立场和请求。",
+        "台词内容与马贺特作为米隆商行行长的身份相符，他倾向于强调利益和合作。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，罗伦斯先表达怀疑，马贺特随后提出问题并继续表达立场，符合上下文逻辑。"
+}

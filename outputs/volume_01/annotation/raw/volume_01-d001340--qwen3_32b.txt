@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d001340",
+  "speaker_entity_id": "char_0010",
+  "speaker_display": "店员",
+  "speaker_status": "known",
+  "confidence": 0.9,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0010",
+      "display": "店员",
+      "status": "known",
+      "score": 0.9
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.1
+    }
+  ],
+  "evidence": [
+    "场景记忆中明确提到罗伦斯与店员有互动，并询问卸货场的位置。",
+    "当前段落是「请问卸货场在哪边？」，符合店员作为指引者的角色。",
+    "店员的描述中提到其负责接待罗伦斯并指引卸货场位置。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

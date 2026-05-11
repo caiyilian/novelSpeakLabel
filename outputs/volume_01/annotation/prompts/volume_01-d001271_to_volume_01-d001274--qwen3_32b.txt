@@ -1,0 +1,567 @@
+你是轻小说说话人标注项目的阶段 2：正式标注助手。
+你的任务是判断输入 target_dialogues 中每一句台词的说话人，不要改写原文。
+必须把这些台词当作同一个连续片段来判断，优先保持对话轮次和叙述线索的一致性。
+
+规则：
+1. 只输出严格 JSON，不要 Markdown，不要解释性前后缀。
+2. 如果说话人是候选角色，speaker_entity_id 必须使用 candidate_characters 里的 entity_id，speaker_status 填 known。
+3. 如果说话人像某个未知人物，speaker_entity_id 使用 candidate_mysteries 里的 mystery_id，speaker_status 填 mystery。
+4. 如果只是无法追踪的路人/群体，speaker_status 填 npc，speaker_entity_id 可为空或使用 npc:简短称呼。
+5. 证据不足时不要硬猜，speaker_status 填 ambiguous 或 review，并把 needs_review 设为 true。
+6. candidate_speakers 至少列出 1 个候选；如果无法判断，列出最可能的候选和不确定原因。
+7. confidence 使用 0 到 1 之间的小数，表示你对最终判断的把握。
+8. 不要只因为台词里提到某个名字、职业、地点，就把说话人标成那个实体；被称呼的人通常不是说话人。
+9. 连续问答、交易寒暄、命令/回答等场景要按上下句轮次判断；同一人连续说话必须有叙述或语气证据支持。
+10. 如果当前上下文显示某角色还没有登场，不要因为角色库或后文记忆里有这个角色就提前标给他/她。
+
+输出 JSON 结构：
+{
+  "annotations": [
+    {
+      "dialogue_id": "必须来自 target_dialogue_ids",
+      "speaker_entity_id": "string",
+      "speaker_display": "string",
+      "speaker_status": "known|mystery|npc|ambiguous|review",
+      "confidence": 0.0,
+      "candidate_speakers": [
+        {"entity_id": "string", "display": "string", "status": "known|mystery|npc|ambiguous|review", "score": 0.0}
+      ],
+      "evidence": ["短证据，不要大段复制原文"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "可选，简短说明整体轮次判断"
+}
+必须为 target_dialogue_ids 中每个 dialogue_id 输出且只输出一条 annotation。
+
+输入 JSON：
+{
+  "volume": {
+    "volume_id": "volume_01",
+    "volume": 1
+  },
+  "target_dialogue_ids": [
+    "volume_01-d001271",
+    "volume_01-d001272",
+    "volume_01-d001273",
+    "volume_01-d001274"
+  ],
+  "dialogues": [
+    {
+      "dialogue_id": "volume_01-d001271",
+      "dialogue_index": 1270,
+      "window_position": 1,
+      "chapter_id": "volume_01-c007",
+      "chapter_title": "第六幕",
+      "scene_id": "volume_01-c007-s004",
+      "paragraph_id": "volume_01-c007-s004-p002857",
+      "paragraph_index": 2856,
+      "local_dialogue_index": 1,
+      "text": "神、神总是这样。总是……总是这么不讲理。",
+      "quote_text": "「神、神总是这样。总是……总是这么不讲理。」",
+      "paragraph_text": "「神、神总是这样。总是……总是这么不讲理。」",
+      "char_start": 0,
+      "char_end": 22
+    },
+    {
+      "dialogue_id": "volume_01-d001272",
+      "dialogue_index": 1271,
+      "window_position": 2,
+      "chapter_id": "volume_01-c007",
+      "chapter_title": "第六幕",
+      "scene_id": "volume_01-c007-s004",
+      "paragraph_id": "volume_01-c007-s004-p002860",
+      "paragraph_index": 2859,
+      "local_dialogue_index": 1,
+      "text": "赫萝，住手！",
+      "quote_text": "「赫萝，住手！」",
+      "paragraph_text": "「赫萝，住手！」",
+      "char_start": 0,
+      "char_end": 8
+    },
+    {
+      "dialogue_id": "volume_01-d001273",
+      "dialogue_index": 1272,
+      "window_position": 3,
+      "chapter_id": "volume_01-c007",
+      "chapter_title": "第六幕",
+      "scene_id": "volume_01-c007-s004",
+      "paragraph_id": "volume_01-c007-s004-p002865",
+      "paragraph_index": 2864,
+      "local_dialogue_index": 1,
+      "text": "赫萝……",
+      "quote_text": "「赫萝……」",
+      "paragraph_text": "「赫萝……」",
+      "char_start": 0,
+      "char_end": 6
+    },
+    {
+      "dialogue_id": "volume_01-d001274",
+      "dialogue_index": 1273,
+      "window_position": 4,
+      "chapter_id": "volume_01-c007",
+      "chapter_title": "第六幕",
+      "scene_id": "volume_01-c007-s004",
+      "paragraph_id": "volume_01-c007-s004-p002875",
+      "paragraph_index": 2874,
+      "local_dialogue_index": 1,
+      "text": "拿麦子要做什么？",
+      "quote_text": "「拿麦子要做什么？」",
+      "paragraph_text": "「拿麦子要做什么？」",
+      "char_start": 0,
+      "char_end": 10
+    }
+  ],
+  "context": {
+    "paragraphs": [
+      {
+        "paragraph_id": "volume_01-c007-s004-p002854",
+        "paragraph_index": 2853,
+        "text": "粗犷低沉的声音响起，紧接着传来爪子与金属碰撞的声音，以及突然中断的哀号声。罗伦斯死命撑起身子，追了上去。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c007-s004-p002855",
+        "paragraph_index": 2854,
+        "text": "然而，惨剧在一瞬间就结束了。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c007-s004-p002856",
+        "paragraph_index": 2855,
+        "text": "狼一停下动作，随即传来想必是最后一名男子的声音。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c007-s004-p002857",
+        "paragraph_index": 2856,
+        "text": "「神、神总是这样。总是……总是这么不讲理。」",
+        "target_dialogue_ids": [
+          "volume_01-d001271"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c007-s004-p002858",
+        "paragraph_index": 2857,
+        "text": "那是叶勒的声音。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c007-s004-p002859",
+        "paragraph_index": 2858,
+        "text": "没有回答。取而代之的是张开巨大嘴巴的声音，罗伦斯忍不住大叫：",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c007-s004-p002860",
+        "paragraph_index": 2859,
+        "text": "「赫萝，住手！」",
+        "target_dialogue_ids": [
+          "volume_01-d001272"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c007-s004-p002861",
+        "paragraph_index": 2860,
+        "text": "喀锵一声，应该是阖上巨大嘴巴的声音吧。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c007-s004-p002862",
+        "paragraph_index": 2861,
+        "text": "罗伦斯的脑海里不禁浮现叶勒上半身被吃掉的画面，他怎么也无法认为叶勒能够逃开。这就跟被猎犬盯上的鸟儿，绝对无法飞往天空的道理一样。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c007-s004-p002863",
+        "paragraph_index": 2862,
+        "text": "然而，一阵沉默后，赫萝轻松地在狭窄的通道转过身来，她的嘴巴并没有沾上血迹。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c007-s004-p002864",
+        "paragraph_index": 2863,
+        "text": "不过，精疲力尽的叶勒却勾在她的牙齿上晕了过去。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c007-s004-p002865",
+        "paragraph_index": 2864,
+        "text": "「赫萝……」",
+        "target_dialogue_ids": [
+          "volume_01-d001273"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c007-s004-p002866",
+        "paragraph_index": 2865,
+        "text": "罗伦斯喊了一声赫萝的名字，同时安心地呼了口气。赫萝把叶勒丢下地面，但是视线没有移到罗伦斯身上。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c007-s004-p002867",
+        "paragraph_index": 2866,
+        "text": "她简短地说了一句：",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c007-s004-p002868",
+        "paragraph_index": 2867,
+        "text": "『麦子拿来。』",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c007-s004-p002869",
+        "paragraph_index": 2868,
+        "text": "听到与硕大体型相当搭调的低沉声音，罗伦斯吓了一跳，顿时缩了一下身子。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c007-s004-p002870",
+        "paragraph_index": 2869,
+        "text": "即使明白那是赫萝，但罗伦斯就是没办法应付自如。如果被这样的赫萝看上一眼，罗伦斯也不敢断言自己能够保持理智。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c007-s004-p002871",
+        "paragraph_index": 2870,
+        "text": "毕竟这只狼太教人敬畏了。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c007-s004-p002872",
+        "paragraph_index": 2871,
+        "text": "『麦子拿来。』",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c007-s004-p002873",
+        "paragraph_index": 2872,
+        "text": "又听到一次同样的话。罗伦斯下意识地点点头，打算递出手中的皮袋。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c007-s004-p002874",
+        "paragraph_index": 2873,
+        "text": "这时罗伦斯突然想到某件事，不祥的预感涌上他心头。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c007-s004-p002875",
+        "paragraph_index": 2874,
+        "text": "「拿麦子要做什么？」",
+        "target_dialogue_ids": [
+          "volume_01-d001274"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c007-s005-p002876",
+        "paragraph_index": 2875,
+        "text": "听到罗伦斯的询问，赫萝沉默了一会儿，突然踏出前脚。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c007-s005-p002877",
+        "paragraph_index": 2876,
+        "text": "罗伦斯在那一刻，感觉到一股重压迎向自己，不禁挪开身子。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c007-s005-p002878",
+        "paragraph_index": 2877,
+        "text": "当罗伦斯看到赫萝满口牙齿的嘴巴变得有些扭曲，他察觉到自己的举动彻底错了。",
+        "target_dialogue_ids": []
+      }
+    ]
+  },
+  "scene_memory": [
+    {
+      "scene_id": "volume_01-c007-s004-r004",
+      "parent_scene_id": "volume_01-c007-s004",
+      "chunk_index": 4,
+      "chunk_count": 6,
+      "scene_summary": "罗伦斯在面对一只巨大狼的威胁时，目睹了两名士兵因惊恐而丢弃武器，最终被狼轻易击败。狼以低沉的声音警告在场的人无法活着离开，罗伦斯试图追击但惨剧已迅速结束。",
+      "active_characters": [
+        "罗伦斯",
+        "赫萝",
+        "巨大狼"
+      ],
+      "relationships": [
+        "罗伦斯与赫萝一同旅行，但对赫萝的身份持怀疑态度。",
+        "罗伦斯与巨大狼形成对立，巨大狼威胁在场所有人。",
+        "赫萝与巨大狼可能有某种联系，但尚未明确。"
+      ],
+      "notes": "本场景中，巨大狼被描述为「神」，其行为和能力暗示其非人类身份。罗伦斯试图追击，但惨剧迅速结束，暗示他可能处于巨大狼的威胁之下。赫萝未直接参与，但她的存在可能与巨大狼有关联。"
+    },
+    {
+      "scene_id": "volume_01-c007-s004-r005",
+      "parent_scene_id": "volume_01-c007-s004",
+      "chunk_index": 5,
+      "chunk_count": 6,
+      "scene_summary": "罗伦斯目睹赫萝在狭窄通道中制服一名男子叶勒，赫萝要求罗伦斯提供麦子。场景中充满了紧张与不安的气氛，罗伦斯对赫萝的非人类行为感到恐惧，但仍然保持互动。",
+      "active_characters": [
+        "罗伦斯",
+        "赫萝",
+        "叶勒"
+      ],
+      "relationships": [
+        "罗伦斯与赫萝是长期旅行伙伴",
+        "赫萝与叶勒存在冲突",
+        "罗伦斯对赫萝的身份持怀疑态度但保持互动"
+      ],
+      "notes": "赫萝在本场景中表现出非人类的特征，制服叶勒并要求麦子，暗示她与丰收之神的联系。罗伦斯对赫萝的行为感到恐惧，但仍保持互动，显示出两人之间复杂的关系。"
+    },
+    {
+      "scene_id": "volume_01-c007-s004-r006",
+      "parent_scene_id": "volume_01-c007-s004",
+      "chunk_index": 6,
+      "chunk_count": 6,
+      "scene_summary": "罗伦斯在与某人对话时，突然意识到问题并提出疑问，询问拿麦子的用途。场景中存在某种紧张感，暗示麦子可能涉及某种交易或计划。",
+      "active_characters": [
+        "罗伦斯"
+      ],
+      "relationships": [
+        "罗伦斯与神秘说话者之间存在某种交易或协议关系",
+        "罗伦斯对神秘说话者的意图感到不安"
+      ],
+      "notes": "场景中出现的『麦子拿来。』可能是某种交易或计划的关键，罗伦斯对此感到不安，暗示后续情节可能涉及麦子的用途或交易。神秘说话者身份不明，但可能是关键人物。"
+    }
+  ],
+  "candidate_characters": [
+    {
+      "entity_id": "char_0004",
+      "display_name": "叶勒",
+      "aliases": [
+        "叶勒"
+      ],
+      "titles": [
+        "帕斯罗村农夫",
+        "村民代表"
+      ],
+      "description": "帕斯罗村的农夫，今年雇用年轻人种田。 / 帕斯罗村的农夫，今年雇用年轻人种田，是村民丰收祭典的中心人物。 / 帕斯罗村的农夫，今年雇用年轻人种田，是村民丰收祭典的中心人物。他被村民认为是丰收之神附身的载体。 / 帕斯罗村的农夫，曾与罗伦斯交易麦子，对罗伦斯怀有感恩之心。 / 赫萝提及的愤怒对象，可能是帕斯罗村的农夫，曾被认为是丰收之神附身的载体。 / 帕斯罗村的农夫，被认为是丰收之神附身的载体。 / 帕斯罗村的农夫，被认为是丰收之神附身的载体。在本场景中突然出现，与罗伦斯有旧识，并提及帕斯罗村的银币交易计划。 / 帕斯罗村的农夫，被认为是丰收之神附身的载体。他与罗伦斯有旧识，并试图说服罗伦斯参与一项涉及麦子交易和撤销关税的计划。 / 帕斯罗村的农夫，被认为是丰收之神附身的载体。在本场景中试图说服罗伦斯参与一项涉及麦子交易和撤销关税的计划。 / 帕斯罗村的农夫，被认为是丰收之神附身的载体。在本场景中与罗伦斯对峙，试图说服他参与计划。 / 帕斯罗村的农夫，被认为是丰收之神附身的载体。在本场景中指挥手下行动，试图控制赫萝。 / 帕斯罗村的农夫，被认为是丰收之神附身的载体。在本场景中被赫萝制服，失去意识。",
+      "speech_style": "未直接说话，通过他人描述 / 未直接说话，但被村民高声呼喊 / 热情、激动，带有仪式感。 / 未直接说话，但通过他人叙述体现其性格 / 未直接说话 / 未直接发言，但被提及。 / 略带悲伤但坚定 / 理性、策略性、带有说服力 / 热情、说服性强 / 坚定、略带威胁 / 命令式 / 情绪化、不讲理",
+      "relationship_hints": [
+        "与罗伦斯有互动",
+        "雇用年轻人",
+        "是村民活动的组织者",
+        "与农夫有联系",
+        "与罗伦斯有交谈的意图",
+        "被村民追逐",
+        "与罗伦斯有商业交易关系",
+        "被村民视为丰收之神附身的载体",
+        "赫萝对其怀有强烈愤怒",
+        "与赫萝有互动，可能是她愤怒的来源",
+        "与罗伦斯有旧识",
+        "与帕斯罗村的银币交易有关"
+      ],
+      "first_seen_scene_id": "volume_01-c002-s001-r006",
+      "latest_seen_scene_id": "volume_01-c007-s004-r005",
+      "confidence": 0.95
+    },
+    {
+      "entity_id": "char_0001",
+      "display_name": "罗伦斯",
+      "aliases": [
+        "罗伦斯",
+        "罗伦斯先生"
+      ],
+      "titles": [
+        "中间人",
+        "交易者",
+        "同行",
+        "商人",
+        "小毛头",
+        "小的",
+        "市井无赖",
+        "年轻人",
+        "开店者",
+        "情报贩子",
+        "提议者",
+        "新手"
+      ],
+      "description": "一位行商人，正在与米隆商行的代表马贺特进行交易谈判。他原本期待获得两千枚银币，但实际只得到一百二十枚，感到震惊和困惑。 / 一位行商人，发现并收留了赫萝，决定与她一同旅行。 / 一位二十五岁的自力更生旅行商人，已有七年行商经验，性格泰然自若。 / 一位冷静理性的旅行商人，对赫萝的身份持怀疑态度，但仍保持互动。他注重外表整洁，对商业制度有深入理解。 / 冷静理性的旅行商人，与赫萝一同旅行。在本场景中与米隆商行的马贺特讨论梅迪欧商行的威胁，提出利用崔尼银币交易作为交涉王牌。 / 一位冷静理性的旅行商人，与赫萝一同旅行。在本场景中与米隆商行的马贺特达成交易，表现出策略性和经验。 / 正在与马贺特讨论交易细节的商人，表现出对辛香料的兴趣。 / 一位冷静理性的旅行商人，正在与米隆商行的马贺特进行交易。他表现出对开店的期待，并思考未来。 / 一位冷静理性的旅行商人，正在处理一份请款单，但对单据内容感到困惑。 / 一位行商人，正在与商行代表进行交易。他表现出冷静和策略性，询问卸货场的位置。 / 一位行商人，发现并收留了赫萝，决定与她一同旅行。他性格冷静理性，对赫萝的身份持怀疑态度，但仍保持互动。他注重外表整洁，对商业制度有深入理解。 / 冷静理性的旅行商人，与赫萝一同旅行。在本场景中试图安抚赫萝的情绪，表现出对她的关心。",
+      "speech_style": "理性、坚定、略带情绪化 / 冷静、理性，带有悔恨和自责的语气。 / 冷静、理性，语气中带有对赫萝的关心和些许担忧。 / 冷静、理性、略带失落 / 冷静、理性，对商业制度有深入理解，并能清晰地向他人解释。 / 理性、礼貌、略带谨慎。 / 理性、冷静，带有商业分析倾向。 / 理性、沉稳、略带幽默 / 理性、冷静，但因困惑而表现出急切。 / 冷静、直接、略带命令语气 / 冷静、理性、简洁 / 冷静、理性、略带幽默",
+      "relationship_hints": [
+        "与赫萝一同旅行",
+        "对赫萝的真实性持怀疑态度",
+        "与深山村落的村民有交易关系",
+        "对修道院抱有商业期望但未成功",
+        "与骑士有短暂互动",
+        "与小村落的村民有交易关系",
+        "与修道院有关联",
+        "对教会和异教徒问题有见解",
+        "与叶勒有联系",
+        "在麦田中与农夫互动",
+        "与农夫有互动",
+        "在村民中保持低调"
+      ],
+      "first_seen_scene_id": "volume_01-c000-s003-r001",
+      "latest_seen_scene_id": "volume_01-c008-s003-r002",
+      "confidence": 1.0
+    },
+    {
+      "entity_id": "char_0002",
+      "display_name": "赫萝",
+      "aliases": [
+        "赫萝"
+      ],
+      "titles": [
+        "丰收之神",
+        "咱",
+        "神秘少女",
+        "约伊兹的贤狼",
+        "贤狼"
+      ],
+      "description": "自称丰收之神的神秘少女，拥有狼的耳朵和尾巴。在本场景中协助罗伦斯，表现出对他的关心和保护。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴，行为举止非人类，表现出轻松幽默但略带威胁性的说话风格。在本场景中，她对罗伦斯的伤口进行吸血，引发旁人惊呼，并表现出悲伤的情绪。 / 自称是丰收之神的神秘少女，拥有狼的耳朵和尾巴。在本场景中逐渐显露出非人类的特征，最终完全变成一只巨大的狼。她与罗伦斯有情感交流，表现出悲伤和决绝的情绪。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴，未直接参与本场景，但罗伦斯的行动可能与她有关。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴。在本场景中制服叶勒，并要求罗伦斯提供麦子，表现出非人类的特征和威胁性。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴。在本场景中以威胁的方式向罗伦斯索要麦子，表现出非人类的特征和强大的气场。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴。她表现出轻松幽默但略带威胁性的说话风格，对罗伦斯的挽留表现出复杂的情绪。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴，说话轻松幽默但略带威胁性。在本场景中拒绝罗伦斯的挽留，表现出独立和决绝。 / 赫萝的尾巴是罗伦斯追击的目标，她最终离开罗伦斯，留下他独自面对危险。罗伦斯回忆起赫萝离去的场景，表现出对她的依赖和悔恨。 / 自称是丰收之神的神秘少女，拥有狼的耳朵和尾巴。在本场景中独自前往市场为旅行整装，表现出独立和果断的一面。 / 自称是丰收之神的少女，拥有狼的耳朵和尾巴，说话狡诈。她与罗伦斯一同旅行，表现出轻松幽默但略带威胁性的说话风格。 / 自称丰收之神的神秘少女，拥有狼的耳…",
+      "speech_style": "轻松幽默但略带威胁性，情绪化且带有调侃语气。 / 轻松幽默、略带调侃和威胁 / 轻松幽默、略带威胁性 / 轻松幽默、略带威胁性、撒娇 / 警觉、神秘 / 轻松幽默但略带威胁性 / 轻松幽默、略带调侃 / 轻松幽默但略带威胁性，语气中透露出对罗伦斯的依赖。 / 轻松幽默、略带威胁性、自信 / 轻松幽默但略带威胁性，情绪波动明显 / 轻松幽默、略带威胁、情绪波动明显 / 轻松幽默但略带威胁性，表现出自信和调皮的特质。",
+      "relationship_hints": [
+        "与罗伦斯一同旅行",
+        "被罗伦斯怀疑是否为真正的神",
+        "与叶勒有附身关系",
+        "与罗伦斯有潜在互动",
+        "与罗伦斯有互动，似乎是被他发现并收留的。",
+        "与罗伦斯有互动，但尚未明确关系",
+        "与罗伦斯互动频繁，表现出对他的信任和玩笑态度",
+        "与罗伦斯互动密切",
+        "似乎对罗伦斯的反应感到有趣",
+        "与罗伦斯有互动，似乎是被他收留的神秘女孩。",
+        "与帕斯罗村的丰收之神有关联。",
+        "与罗伦斯对话，表现出信任与互动"
+      ],
+      "first_seen_scene_id": "volume_01-c000-s003-r001",
+      "latest_seen_scene_id": "volume_01-c008-s003-r002",
+      "confidence": 1.0
+    },
+    {
+      "entity_id": "char_0033",
+      "display_name": "巨大狼",
+      "aliases": [
+        "北方国度的神"
+      ],
+      "titles": [
+        "无法应付的存在",
+        "神"
+      ],
+      "description": "体型巨大、身手矫健的狼，被描述为「神」，轻易击败了两名士兵。",
+      "speech_style": "低沉、威严",
+      "relationship_hints": [
+        "与罗伦斯和赫萝形成对立",
+        "可能是赫萝的同类或象征"
+      ],
+      "first_seen_scene_id": "volume_01-c007-s004-r004",
+      "latest_seen_scene_id": "volume_01-c007-s004-r004",
+      "confidence": 0.85
+    },
+    {
+      "entity_id": "char_0017",
+      "display_name": "男子",
+      "aliases": [],
+      "titles": [],
+      "description": "一名未命名的男子，正在嗅闻貂皮的气味，表现出从困惑到惊讶的情绪变化。",
+      "speech_style": "未直接说话，但通过行为表现出惊讶",
+      "relationship_hints": [
+        "与罗伦斯互动",
+        "对貂皮的气味有反应"
+      ],
+      "first_seen_scene_id": "volume_01-c004-s003-r006",
+      "latest_seen_scene_id": "volume_01-c004-s003-r006",
+      "confidence": 0.7
+    }
+  ],
+  "candidate_mysteries": [
+    {
+      "mystery_id": "mystery_volume_01_c007_s004_r006_神秘说话者",
+      "temporary_name": "神秘说话者",
+      "description": "未明确身份的说话者，发出『麦子拿来。』的命令，可能是与罗伦斯有交易关系的某人。",
+      "evidence": [
+        "volume_01-c007-s004-p002872"
+      ],
+      "source_scene_id": "volume_01-c007-s004-r006",
+      "confidence": 0.6
+    },
+    {
+      "mystery_id": "mystery_volume_01_c007_s004_r004_士兵A",
+      "temporary_name": "士兵A",
+      "description": "因惊恐丢弃武器的士兵之一，被狼轻易击败。",
+      "evidence": [
+        "volume_01-c007-s004-p002842",
+        "volume_01-c007-s004-p002848",
+        "volume_01-c007-s004-p002850",
+        "volume_01-c007-s004-p002851"
+      ],
+      "source_scene_id": "volume_01-c007-s004-r004",
+      "confidence": 0.7
+    },
+    {
+      "mystery_id": "mystery_volume_01_c007_s004_r004_士兵B",
+      "temporary_name": "士兵B",
+      "description": "因惊恐丢弃武器的另一名士兵，被狼轻易击败。",
+      "evidence": [
+        "volume_01-c007-s004-p002842",
+        "volume_01-c007-s004-p002849",
+        "volume_01-c007-s004-p002850",
+        "volume_01-c007-s004-p002851"
+      ],
+      "source_scene_id": "volume_01-c007-s004-r004",
+      "confidence": 0.7
+    },
+    {
+      "mystery_id": "mystery_volume_01_c002_s005_r004_叶勒",
+      "temporary_name": "叶勒",
+      "description": "帕斯罗村的农夫，曾被认为是丰收之神附身的载体。赫萝提到自己曾进入他的身体。",
+      "evidence": [
+        "volume_01-c002-s005-p000443"
+      ],
+      "source_scene_id": "volume_01-c002-s005-r004",
+      "confidence": 0.85
+    },
+    {
+      "mystery_id": "mystery_volume_01_c006_s004_r005_叶勒",
+      "temporary_name": "叶勒",
+      "description": "帕斯罗村的农夫，被认为是丰收之神附身的载体。他对赫萝的态度引发她的愤怒和悲伤。",
+      "evidence": [
+        "volume_01-c006-s004-p002480",
+        "volume_01-c006-s004-p002482",
+        "volume_01-c006-s004-p002484"
+      ],
+      "source_scene_id": "volume_01-c006-s004-r005",
+      "confidence": 0.85
+    },
+    {
+      "mystery_id": "mystery_volume_01_c008_s001_r002_赫萝",
+      "temporary_name": "赫萝",
+      "description": "罗伦斯的旅伴，拥有狼的特征，曾在地下道中护送罗伦斯，目前下落不明。",
+      "evidence": [
+        "volume_01-c008-s001-p002960",
+        "volume_01-c008-s001-p002961",
+        "volume_01-c008-s001-p002963"
+      ],
+      "source_scene_id": "volume_01-c008-s001-r002",
+      "confidence": 0.85
+    },
+    {
+      "mystery_id": "mystery_volume_01_c002_s002_r001_赫萝",
+      "temporary_name": "赫萝",
+      "description": "传说中的丰收之神，被村民称为狼，是祭典的核心象征。",
+      "evidence": [
+        "volume_01-c002-s002-p000160",
+        "volume_01-c002-s002-p000164"
+      ],
+      "source_scene_id": "volume_01-c002-s002-r001",
+      "confidence": 0.8
+    },
+    {
+      "mystery_id": "mystery_volume_01_c007_s001_r002_猎犬",
+      "temporary_name": "猎犬",
+      "description": "被追捕者放出的猎犬，追踪能力极强，是罗伦斯和赫萝的主要威胁。",
+      "evidence": [
+        "volume_01-c007-s001-p002581",
+        "volume_01-c007-s001-p002585"
+      ],
+      "source_scene_id": "volume_01-c007-s001-r002",
+      "confidence": 0.8
+    }
+  ]
+}

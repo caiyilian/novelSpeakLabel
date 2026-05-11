@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000637",
+  "speaker_entity_id": "char_0019",
+  "speaker_display": "怀兹",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0019",
+      "display": "怀兹",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "前一段对话中罗伦斯被称呼为「罗伦斯」，而当前对话是「喔，看来你还是老样子。最近好吗？」，语气轻松、调侃，符合怀兹的说话风格。",
+    "场景记忆中提到怀兹与罗伦斯是朋友，关系亲密，且怀兹对罗伦斯表现出好奇和调侃的态度。",
+    "当前对话是怀兹对罗伦斯的回应，符合上下文逻辑。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

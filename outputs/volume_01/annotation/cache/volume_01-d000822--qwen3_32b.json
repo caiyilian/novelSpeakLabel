@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000822",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "前一段提到罗伦斯贴近赫萝耳边说话，随后赫萝慌张反应，接着是罗伦斯得意地说出这句话。",
+    "下一段明确提到「罗伦斯得意地说」，说明当前台词是罗伦斯所说。",
+    "场景记忆中罗伦斯与赫萝的互动频繁，且罗伦斯常表现出得意或调侃的语气。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

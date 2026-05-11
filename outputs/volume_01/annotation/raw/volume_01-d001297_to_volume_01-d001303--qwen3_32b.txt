@@ -1,0 +1,154 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001297",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "上下文显示罗伦斯正在与马贺特进行交易谈判，且是对话的接收方。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001298",
+      "speaker_entity_id": "char_0030",
+      "speaker_display": "米隆商行",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0030",
+          "display": "米隆商行",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "对话内容涉及米隆商行回收银币的细节，符合其角色设定。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001299",
+      "speaker_entity_id": "char_0030",
+      "speaker_display": "米隆商行",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0030",
+          "display": "米隆商行",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "对话内容提及合约和利益分配，符合米隆商行的立场。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001300",
+      "speaker_entity_id": "char_0030",
+      "speaker_display": "米隆商行",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0030",
+          "display": "米隆商行",
+          "status": "known",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "对话是米隆商行代表马贺特的延续，符合其发言顺序。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001301",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "罗伦斯对金额感到震惊，符合其情绪反应。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001302",
+      "speaker_entity_id": "char_0030",
+      "speaker_display": "米隆商行",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0030",
+          "display": "米隆商行",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "对话内容解释金额计算，符合米隆商行的立场。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001303",
+      "speaker_entity_id": "char_0030",
+      "speaker_display": "米隆商行",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0030",
+          "display": "米隆商行",
+          "status": "known",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "对话内容解释国王的策略，符合米隆商行的处境。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次由罗伦斯与米隆商行代表马贺特交替进行，符合交易谈判场景的对话模式。"
+}
+```

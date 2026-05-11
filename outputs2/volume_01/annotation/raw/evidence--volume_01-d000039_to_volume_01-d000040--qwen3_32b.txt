@@ -1,0 +1,52 @@
+```json
+{
+  "evidence": [
+    {
+      "dialogue_id": "volume_01-d000039",
+      "explicit_attribution": {
+        "speaker_display": "",
+        "text": ""
+      },
+      "addressed_to": [],
+      "turn_relation": "连续独白",
+      "same_speaker_allowed": true,
+      "speech_markers": [],
+      "third_person_name_references": [],
+      "positive_evidence": [
+        "「嗷呜～～～～～～～」可能是狼的叫声，暗示赫萝的出现。"
+      ],
+      "negative_evidence": [
+        "没有明确说话人，无法直接确认说话人身份。"
+      ],
+      "needs_review_hint": true,
+      "notes": "该台词可能是赫萝的化身或象征，但无明确说话人，需结合上下文进一步判断。"
+    },
+    {
+      "dialogue_id": "volume_01-d000040",
+      "explicit_attribution": {
+        "speaker_display": "",
+        "text": ""
+      },
+      "addressed_to": [],
+      "turn_relation": "回应",
+      "same_speaker_allowed": false,
+      "speech_markers": [],
+      "third_person_name_references": [
+        {
+          "display": "赫萝",
+          "text": "「狼赫萝出现了！狼赫萝出现了！」"
+        }
+      ],
+      "positive_evidence": [
+        "「赫萝！赫萝！赫萝！」可能是村民对「狼赫萝」化身的回应，暗示说话人是村民群体。"
+      ],
+      "negative_evidence": [
+        "没有明确说话人，无法确认是否为赫萝本人说话。"
+      ],
+      "needs_review_hint": true,
+      "notes": "台词中重复「赫萝」，可能是村民对「狼赫萝」化身的欢呼，但无明确说话人，需结合上下文进一步判断。"
+    }
+  ],
+  "window_notes": "当前窗口中两段对话均无明确说话人，但上下文提到「狼赫萝」的化身，可能与赫萝有关。需结合场景记忆和角色关系进一步分析。"
+}
+```

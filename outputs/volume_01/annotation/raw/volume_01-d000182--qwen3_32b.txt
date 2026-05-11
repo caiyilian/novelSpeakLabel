@@ -1,0 +1,26 @@
+```json
+{
+  "dialogue_id": "volume_01-d000182",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    }
+  ],
+  "evidence": [
+    "赫萝在清晨起床后穿着罗伦斯的上等衣物，并得意地展示。",
+    "对话中使用了「咱」自称，这是赫萝一贯的说话风格。",
+    "罗伦斯在前一段对话中提到赫萝擅自翻找他的行李，暗示她刚刚做了类似的事情。",
+    "场景记忆中明确指出赫萝穿着罗伦斯的衣服，并且态度轻松自信。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

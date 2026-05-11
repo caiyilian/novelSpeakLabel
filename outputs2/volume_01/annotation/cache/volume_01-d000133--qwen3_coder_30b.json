@@ -1,0 +1,32 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000133",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.9
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.1
+        }
+      ],
+      "evidence": [
+        "前文描述赫萝吞下麦穗后突然呻吟，且上下文明确为赫萝的反应；罗伦斯在该段落中未发言，仅观察赫萝行为；无其他角色出现或提及。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "赫萝吞下麦穗后突然呻吟并倒下，该台词为赫萝的反应，结合上下文可确认说话人为赫萝。"
+}

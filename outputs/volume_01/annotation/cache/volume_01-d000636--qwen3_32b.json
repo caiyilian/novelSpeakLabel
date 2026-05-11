@@ -1,0 +1,23 @@
+{
+  "dialogue_id": "volume_01-d000636",
+  "speaker_entity_id": "char_0019",
+  "speaker_display": "怀兹",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0019",
+      "display": "怀兹",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "前一段落中提到「名叫怀兹的兑换商抬起头来，一脸疑惑的表情。他一发现是罗伦斯，立刻换以一张笑脸说」，接着是「哟，罗伦斯！好久不见啊！什么时候来的？」，说明当前对话者是怀兹。",
+    "当前对话内容「昨天到的，我从约连那边沿路行商过来。」符合怀兹作为兑换商的说话风格和背景。",
+    "场景记忆中明确提到怀兹与罗伦斯是朋友，且对话内容是怀兹对罗伦斯的回应。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

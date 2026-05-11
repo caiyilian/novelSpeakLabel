@@ -1,0 +1,39 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000039",
+      "speaker_entity_id": "",
+      "speaker_display": "",
+      "speaker_status": "review",
+      "confidence": 0.3,
+      "candidate_speakers": [
+        {"entity_id": "char_0002", "display": "赫萝", "score": 0.6},
+        {"entity_id": "char_0005", "display": "叶勒", "score": 0.4}
+      ],
+      "evidence": [
+        "「嗷呜～～～～～～～」可能是狼的叫声",
+        "赫萝化身或象征的暗示",
+        "无明确说话人确认"
+      ],
+      "needs_review": true
+    },
+    {
+      "dialogue_id": "volume_01-d000040",
+      "speaker_entity_id": "",
+      "speaker_display": "",
+      "speaker_status": "review",
+      "confidence": 0.4,
+      "candidate_speakers": [
+        {"entity_id": "char_0005", "display": "叶勒", "score": 0.5},
+        {"entity_id": "char_0004", "display": "农夫", "score": 0.3}
+      ],
+      "evidence": [
+        "重复呼唤赫萝，村民欢呼可能",
+        "「狼赫萝出现了」提及赫萝",
+        "无明确说话人确认"
+      ],
+      "needs_review": true
+    }
+  ],
+  "window_notes": "两段台词均未明确说话人，需结合上下文判断。赫萝的化身或象征性出现，但无直接证据确认具体说话人。"
+}

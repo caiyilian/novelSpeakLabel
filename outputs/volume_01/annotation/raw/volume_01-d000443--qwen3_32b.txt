@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000443",
+  "speaker_entity_id": "char_0011",
+  "speaker_display": "彪形大汉",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0011",
+      "display": "彪形大汉",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0010",
+      "display": "店员",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "对话内容提到「老板您的马车就寄放在我这里吧」，表明说话人是负责接收马车的搬运工。",
+    "前文提到「彪形大汉」站在卸货场左侧，与罗伦斯互动，符合当前对话的语境。",
+    "后续段落中，彪形大汉抱住马儿并发出指示，进一步确认其身份。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

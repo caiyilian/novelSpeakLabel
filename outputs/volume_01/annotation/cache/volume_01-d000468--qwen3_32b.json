@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000468",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0015",
+      "display": "鉴定的男子",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "赫萝在罗伦斯准备开口前突然插嘴，打断了对话。",
+    "赫萝在交易中表现出对商业的敏锐度和主导地位。",
+    "赫萝的说话风格轻松幽默但略带威胁性，符合该句台词的语气。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

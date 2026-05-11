@@ -1,0 +1,52 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001100",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "上下文提到「罗伦斯这么说」，表明说话人是罗伦斯。",
+        "该对话出现在赫萝情绪缓和的场景中，符合罗伦斯安抚她的语气和行为模式。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001101",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "上下文提到赫萝用手指顶着罗伦斯的口袋说话，表明说话人是赫萝。",
+        "台词中使用了「汝」和「咱」，符合赫萝的自称风格。",
+        "该对话紧接在罗伦斯的台词之后，符合对话轮次交替的逻辑。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，罗伦斯先表达关心，赫萝随后回应，符合两人亲密互动的场景设定。"
+}
+```

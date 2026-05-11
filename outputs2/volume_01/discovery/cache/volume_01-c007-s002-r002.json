@@ -1,0 +1,81 @@
+{
+  "scene_id": "volume_01-c007-s002",
+  "scene_summary": "罗伦斯与赫萝在地下通道中遭遇袭击，赫萝协助罗伦斯击退袭击者。罗伦斯受伤但仍继续逃亡，最终确认对方是故意设下陷阱。",
+  "active_characters": [
+    "罗伦斯",
+    "赫萝"
+  ],
+  "character_candidates": [
+    {
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": [
+        "商人",
+        "旅行商人",
+        "行商人"
+      ],
+      "description": "理性、谨慎的商人，正在与赫萝在地下通道中逃亡。他受伤但仍坚持前进，表现出对赫萝的依赖和保护欲。",
+      "speech_style": "理性、焦虑、略带冲动",
+      "speech_markers": [
+        "忏悔罪过前……",
+        "先忏悔平时的言行吧！"
+      ],
+      "relationship_hints": [
+        "与赫萝有亲密互动",
+        "赫萝协助他击退袭击者"
+      ],
+      "evidence": [
+        "volume_01-c007-s002-p002666",
+        "volume_01-c007-s002-p002670",
+        "volume_01-c007-s002-p002678",
+        "volume_01-c007-s002-p002689",
+        "volume_01-c007-s002-p002691"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "赫萝",
+      "aliases": [],
+      "titles": [
+        "丰收之神",
+        "狼",
+        "贤狼"
+      ],
+      "description": "神秘少女，拥有狼的特征。在本场景中协助罗伦斯击退袭击者，表现出冷静和对环境的高度感知能力。",
+      "speech_style": "冷静、自信、略带调侃",
+      "speech_markers": [
+        "呜噜噜咕噜噜噜噜！"
+      ],
+      "relationship_hints": [
+        "与罗伦斯有亲密互动",
+        "协助罗伦斯击退袭击者"
+      ],
+      "evidence": [
+        "volume_01-c007-s002-p002668",
+        "volume_01-c007-s002-p002672",
+        "volume_01-c007-s002-p002673",
+        "volume_01-c007-s002-p002676"
+      ],
+      "confidence": 0.95
+    }
+  ],
+  "mystery_entities": [
+    {
+      "temporary_name": "袭击者",
+      "description": "在地下通道中袭击罗伦斯与赫萝的黑影，疑似矮小孩童，手持小刀。在战斗中被赫萝咬住手臂，随后被罗伦斯击倒。",
+      "evidence": [
+        "volume_01-c007-s002-p002671",
+        "volume_01-c007-s002-p002674",
+        "volume_01-c007-s002-p002675",
+        "volume_01-c007-s002-p002676",
+        "volume_01-c007-s002-p002681"
+      ],
+      "confidence": 0.85
+    }
+  ],
+  "relationships": [
+    "罗伦斯与赫萝有亲密互动",
+    "赫萝协助罗伦斯击退袭击者"
+  ],
+  "notes": "袭击者身份不明，但疑似是梅迪欧商行的人员。场景中未出现已知角色的直接对话，主要通过动作和描述推断人物关系。"
+}

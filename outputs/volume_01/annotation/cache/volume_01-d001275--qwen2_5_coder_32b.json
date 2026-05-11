@@ -1,0 +1,26 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001275",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.8
+        }
+      ],
+      "evidence": [
+        "罗伦斯突然大喊。或许他的声音不像在喊叫，但他已用尽了全力。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "根据上下文，罗伦斯在赫萝试图离开时突然大喊，因此判断说话人是罗伦斯。"
+}

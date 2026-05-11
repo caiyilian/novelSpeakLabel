@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d000374",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    }
+  ],
+  "evidence": [
+    "对话中提到「赫萝时而以这样的姿态出现在村里」，表明说话人正在描述赫萝的外貌特征。",
+    "上下文显示赫萝刚刚被罗伦斯问及外表的传说，随后她以不耐烦的语气回应，符合赫萝的说话风格。",
+    "「咱」是赫萝常用的自称，符合其语言习惯。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

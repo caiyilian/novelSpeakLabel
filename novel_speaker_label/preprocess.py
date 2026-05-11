@@ -228,6 +228,7 @@ def _extract_dialogues(
                     "text": match.group(1).strip(),
                     "quote_text": match.group(0),
                     "paragraph_text": text,
+                    "dialogue_kind": _dialogue_kind(text, match.start(), match.end()),
                     "char_start": match.start(),
                     "char_end": match.end(),
                     "prev_context": prev_context,
@@ -235,6 +236,15 @@ def _extract_dialogues(
                 }
             )
     return dialogues
+
+
+def _dialogue_kind(paragraph_text: str, char_start: int, char_end: int) -> str:
+    outside_quote = (
+        paragraph_text[:char_start] + paragraph_text[char_end:]
+    ).strip()
+    if not outside_quote:
+        return "standalone"
+    return "inline"
 
 
 def _paragraph_context(paragraphs: list[dict], start: int, stop: int) -> list[dict]:

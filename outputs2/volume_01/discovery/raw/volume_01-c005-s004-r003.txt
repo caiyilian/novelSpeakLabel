@@ -1,0 +1,100 @@
+```json
+{
+  "scene_id": "volume_01-c005-s004",
+  "scene_summary": "罗伦斯安慰因梦中失去朋友而情绪低落的赫萝，两人之间表现出深厚的情感联系。赫萝提到梦中失去悠椰、英堤、巴罗和缪里，罗伦斯则以自身经历回应，试图给予她安慰。",
+  "active_characters": [
+    "罗伦斯",
+    "赫萝"
+  ],
+  "character_candidates": [
+    {
+      "display_name": "赫萝",
+      "aliases": [],
+      "titles": [
+        "贤狼",
+        "丰收之神"
+      ],
+      "description": "赫萝在梦中失去朋友，表现出强烈的情感波动。她提到悠椰、英堤、巴罗和缪里，这些可能是她的狼同伴或神祇相关人物。",
+      "speech_style": "脆弱、情绪化、略带孩子气",
+      "speech_markers": [
+        "咱……",
+        "咱醒来……咱一醒过来……大家都不见了。",
+        "咱不想再碰到醒过来时，都见不到人的状况了……咱受够孤独了。"
+      ],
+      "relationship_hints": [
+        "赫萝对罗伦斯表现出依赖和信任",
+        "罗伦斯对赫萝的情绪反应表现出关心和理解"
+      ],
+      "evidence": [
+        "volume_01-d000883",
+        "volume_01-d000884",
+        "volume_01-d000885"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": [
+        "商人",
+        "旅行商人"
+      ],
+      "description": "罗伦斯安慰赫萝，表现出对她的关心。他提到自己也有类似孤独的梦，试图与赫萝产生共鸣。",
+      "speech_style": "温和、理性、略带感性",
+      "speech_markers": [
+        "你的眼睛会红肿是因为作了什么梦，在梦里哭泣吗？"
+      ],
+      "relationship_hints": [
+        "罗伦斯对赫萝表现出深厚的情感联系",
+        "赫萝对罗伦斯表现出依赖"
+      ],
+      "evidence": [
+        "volume_01-d000880",
+        "volume_01-c005-s004-p001899",
+        "volume_01-c005-s004-p001912"
+      ],
+      "confidence": 0.95
+    }
+  ],
+  "mystery_entities": [
+    {
+      "temporary_name": "悠椰",
+      "description": "赫萝梦中提到的朋友，可能是她的狼同伴或神祇相关人物。",
+      "evidence": [
+        "volume_01-d000883"
+      ],
+      "confidence": 0.7
+    },
+    {
+      "temporary_name": "英堤",
+      "description": "赫萝梦中提到的朋友，可能是她的狼同伴或神祇相关人物。",
+      "evidence": [
+        "volume_01-d000883"
+      ],
+      "confidence": 0.7
+    },
+    {
+      "temporary_name": "巴罗",
+      "description": "赫萝梦中提到的朋友，可能是她的狼同伴或神祇相关人物。",
+      "evidence": [
+        "volume_01-d000883"
+      ],
+      "confidence": 0.7
+    },
+    {
+      "temporary_name": "缪里",
+      "description": "赫萝梦中提到的朋友，可能是她的狼同伴或神祇相关人物。",
+      "evidence": [
+        "volume_01-d000883"
+      ],
+      "confidence": 0.7
+    }
+  ],
+  "relationships": [
+    "罗伦斯与赫萝之间存在深厚的情感联系",
+    "赫萝对罗伦斯表现出依赖和信任",
+    "罗伦斯对赫萝的情绪反应表现出关心和理解"
+  ],
+  "notes": "赫萝提到的悠椰、英堤、巴罗和缪里可能是她的狼同伴或神祇相关人物，需在后续场景中追踪。罗伦斯与赫萝之间的情感互动是本场景的重点。"
+}
+```

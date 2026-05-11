@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000554",
+  "speaker_entity_id": "char_0009",
+  "speaker_display": "杰廉",
+  "speaker_status": "known",
+  "confidence": 0.9,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0009",
+      "display": "杰廉",
+      "status": "known",
+      "score": 0.9
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.1
+    }
+  ],
+  "evidence": [
+    "对话中自称「小的」，符合杰廉的谦卑语气和自称风格。",
+    "对话内容涉及情报推测和商业风险，与杰廉作为情报贩子和商人的身份相符。",
+    "场景记忆中杰廉是与罗伦斯进行情报交易的核心人物，且在当前场景中被提及和互动。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

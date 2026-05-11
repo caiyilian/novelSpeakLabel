@@ -1,0 +1,23 @@
+{
+  "dialogue_id": "volume_01-d001216",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "对话中使用了「咱」自称，符合赫萝的说话风格。",
+    "前一段对话中赫萝对罗伦斯表示关心，语气和上下文一致。",
+    "场景记忆中明确指出赫萝与罗伦斯一同旅行，并在本场景中持续互动。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

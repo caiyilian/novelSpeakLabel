@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000589",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "上下文显示罗伦斯正在处理赫萝的货币问题，包括提供零钱和解释货币价值。",
+    "下一段提到罗伦斯从赫萝手中拿走崔尼银币，并将黑色银币和褐色铜币交给她，说明说话人是罗伦斯。",
+    "赫萝在下一段才提出质疑，说明当前对话是罗伦斯的回应。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

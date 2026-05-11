@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000442",
+  "speaker_entity_id": "char_0010",
+  "speaker_display": "店员",
+  "speaker_status": "known",
+  "confidence": 0.9,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0010",
+      "display": "店员",
+      "status": "known",
+      "score": 0.9
+    },
+    {
+      "entity_id": "char_0012",
+      "display": "采购人员",
+      "status": "known",
+      "score": 0.6
+    }
+  ],
+  "evidence": [
+    "对话内容提到「店员要我们进来后找左手边的人员」，表明说话人是店员或与店员相关。",
+    "场景记忆中提到罗伦斯与店员互动，并被指引到左手边的人员。",
+    "候选角色中「店员」的描述与本句台词高度吻合。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

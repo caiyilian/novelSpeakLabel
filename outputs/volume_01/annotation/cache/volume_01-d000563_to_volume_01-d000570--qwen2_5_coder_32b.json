@@ -1,0 +1,191 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000563",
+      "speaker_entity_id": "",
+      "speaker_display": "",
+      "speaker_status": "ambiguous",
+      "confidence": 0.2,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0009",
+          "display": "杰廉",
+          "status": "known",
+          "score": 0.3
+        },
+        {
+          "entity_id": "",
+          "display": "npc:商人",
+          "status": "npc",
+          "score": 0.2
+        }
+      ],
+      "evidence": [
+        "轮次依据"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    },
+    {
+      "dialogue_id": "volume_01-d000564",
+      "speaker_entity_id": "",
+      "speaker_display": "",
+      "speaker_status": "ambiguous",
+      "confidence": 0.2,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.3
+        },
+        {
+          "entity_id": "",
+          "display": "npc:商人",
+          "status": "npc",
+          "score": 0.2
+        }
+      ],
+      "evidence": [
+        "轮次依据"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    },
+    {
+      "dialogue_id": "volume_01-d000565",
+      "speaker_entity_id": "char_0009",
+      "speaker_display": "杰廉",
+      "speaker_status": "known",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0009",
+          "display": "杰廉",
+          "status": "known",
+          "score": 1.0
+        }
+      ],
+      "evidence": [
+        "交易内容"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000566",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 1.0
+        }
+      ],
+      "evidence": [
+        "轮次依据"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000567",
+      "speaker_entity_id": "char_0009",
+      "speaker_display": "杰廉",
+      "speaker_status": "known",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0009",
+          "display": "杰廉",
+          "status": "known",
+          "score": 1.0
+        }
+      ],
+      "evidence": [
+        "轮次依据"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000568",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.7,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        },
+        {
+          "entity_id": "",
+          "display": "npc:商人",
+          "status": "npc",
+          "score": 0.1
+        }
+      ],
+      "evidence": [
+        "轮次依据"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    },
+    {
+      "dialogue_id": "volume_01-d000569",
+      "speaker_entity_id": "char_0009",
+      "speaker_display": "杰廉",
+      "speaker_status": "known",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0009",
+          "display": "杰廉",
+          "status": "known",
+          "score": 1.0
+        }
+      ],
+      "evidence": [
+        "轮次依据"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000570",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 1.0
+        }
+      ],
+      "evidence": [
+        "轮次依据"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次推断为主，部分对话缺乏明确的叙述锚点。"
+}

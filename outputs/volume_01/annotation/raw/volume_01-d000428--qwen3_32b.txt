@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000428",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "前一段中赫萝说：「咱手头没有本钱，也没有立刻变出钱来的本领。所以，汝谈生意时，咱打算插嘴说一些话好赚取利益。这样可否？」",
+    "当前段落是对此问题的回应，符合赫萝的说话风格和逻辑。",
+    "场景记忆中赫萝多次提出商业建议，表现出对金钱和交易的兴趣。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

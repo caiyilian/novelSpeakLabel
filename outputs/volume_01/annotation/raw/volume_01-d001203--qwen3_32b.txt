@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d001203",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "「多少可以。」是赫萝在回应「还跑得动吗？」的问题，符合她简短、直接的说话风格。",
+    "紧接着的段落「趁着急促的呼吸间隔，赫萝简短地说道。」明确指出说话人是赫萝。",
+    "场景记忆中赫萝和罗伦斯是主要角色，且赫萝在行动中表现出主导地位。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

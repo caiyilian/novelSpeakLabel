@@ -1,0 +1,32 @@
+```json
+{
+  "dialogue_id": "volume_01-d001141",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "前一段中赫萝擦去眼泪并笑着打罗伦斯的胸膛，表现出情绪波动和亲密互动。",
+    "当前段是「要我别会错意。」，语气符合赫萝的轻松幽默但略带调侃的说话风格。",
+    "下一段中赫萝继续在罗伦斯胸前转动拳头，显示她仍处于主导对话的状态。",
+    "场景记忆中赫萝与罗伦斯有亲密互动和情感依赖，且赫萝常以调侃方式回应罗伦斯的举动。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

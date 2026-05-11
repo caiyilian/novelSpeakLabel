@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000526",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0018",
+      "display": "女店员",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "罗伦斯向女店员请求转告老板，表明说话人是罗伦斯。",
+    "前文罗伦斯询问店老板是否在场，接着提出请求，符合说话人逻辑。",
+    "场景中罗伦斯是主要行动者，与女店员互动频繁。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

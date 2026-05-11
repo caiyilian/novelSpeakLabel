@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000255",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.9,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.9
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.1
+    }
+  ],
+  "evidence": [
+    "前一段提到赫萝说完后，杰廉尴尬地笑，罗伦斯佩服赫萝的妙语。",
+    "下一段提到这句话有一半以上是发自罗伦斯的真心，明确指出说话人是罗伦斯。",
+    "罗伦斯的理性、略带失落的语气与这句话的情绪相符。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000651",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0019",
+      "display": "怀兹",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "对话对象是「怀兹」，而说话人称呼对方为「怀兹」，符合罗伦斯的说话风格和场景中与怀兹的互动。",
+    "上下文显示罗伦斯打断了怀兹的话题，表明说话人是罗伦斯。",
+    "场景记忆中罗伦斯与怀兹有长期合作关系，且罗伦斯经常主动提出请求或话题。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

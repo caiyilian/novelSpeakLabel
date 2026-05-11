@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000319",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0009",
+      "display": "杰廉",
+      "status": "known",
+      "score": 0.2
+    }
+  ],
+  "evidence": [
+    "前文提到「商人最在乎时间了」，罗伦斯作为商人多次强调时间与金钱的关系。",
+    "当前场景中罗伦斯与赫萝讨论杰廉的离开，罗伦斯是主要发言者。",
+    "罗伦斯的说话风格理性、冷静，符合「时间就是金钱」的表达方式。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

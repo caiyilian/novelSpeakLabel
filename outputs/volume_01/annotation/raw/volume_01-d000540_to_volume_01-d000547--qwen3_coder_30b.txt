@@ -1,0 +1,205 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000540",
+      "speaker_entity_id": "char_0009",
+      "speaker_display": "杰廉",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0009",
+          "display": "杰廉",
+          "status": "known",
+          "score": 1.0
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.1
+        }
+      ],
+      "evidence": ["开场白为'庆祝我们的重逢！'，符合杰廉与罗伦斯的互动关系；上下文提到杰廉出现并举杯"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000541",
+      "speaker_entity_id": "char_0009",
+      "speaker_display": "杰廉",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0009",
+          "display": "杰廉",
+          "status": "known",
+          "score": 1.0
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.1
+        }
+      ],
+      "evidence": ["问题针对皮草交易，符合杰廉作为商人角色的对话风格；上下文已确认杰廉在场"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000542",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 1.0
+        },
+        {
+          "entity_id": "char_0009",
+          "display": "杰廉",
+          "status": "known",
+          "score": 0.1
+        }
+      ],
+      "evidence": ["回应杰廉关于皮草的问题，语气理性且带有商业分析倾向；上下文明确罗伦斯在场并回答"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000543",
+      "speaker_entity_id": "char_0009",
+      "speaker_display": "杰廉",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0009",
+          "display": "杰廉",
+          "status": "known",
+          "score": 1.0
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.1
+        }
+      ],
+      "evidence": ["表达羡慕并询问诀窍，符合杰廉的商人性格；上下文确认杰廉在场并继续对话"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000544",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 1.0
+        },
+        {
+          "entity_id": "char_0009",
+          "display": "杰廉",
+          "status": "known",
+          "score": 0.1
+        }
+      ],
+      "evidence": ["罗伦斯没有立即回答，而是先喝酒再回答'秘密'，符合其冷静理性性格；上下文明确罗伦斯在场"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000545",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 1.0
+        },
+        {
+          "entity_id": "char_0009",
+          "display": "杰廉",
+          "status": "known",
+          "score": 0.1
+        }
+      ],
+      "evidence": ["使用'老板'称呼，符合罗伦斯对下属的语气；上下文确认罗伦斯在场并继续对话"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000546",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 1.0
+        },
+        {
+          "entity_id": "char_0009",
+          "display": "杰廉",
+          "status": "known",
+          "score": 0.1
+        }
+      ],
+      "evidence": ["使用'虽然资金变多了，但不表示会增加投资的金额'，符合罗伦斯的商业理性语气；上下文确认罗伦斯在场"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000547",
+      "speaker_entity_id": "char_0009",
+      "speaker_display": "杰廉",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0009",
+          "display": "杰廉",
+          "status": "known",
+          "score": 1.0
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.1
+        }
+      ],
+      "evidence": ["使用'小的'自称，符合杰廉的谦卑语气；上下文确认杰廉在场并继续对话"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，杰廉与罗伦斯交替发言，围绕皮草交易展开，杰廉表现得较为主动，罗伦斯则冷静回应。"
+}

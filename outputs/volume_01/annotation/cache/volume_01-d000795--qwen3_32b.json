@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000795",
+  "speaker_entity_id": "char_0021",
+  "speaker_display": "店老板",
+  "speaker_status": "known",
+  "confidence": 0.9,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0021",
+      "display": "店老板",
+      "status": "known",
+      "score": 0.9
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.1
+    }
+  ],
+  "evidence": [
+    "「来！三十二路特。」是店老板在场景中提供果汁和面包时的台词，符合其角色设定。",
+    "场景中提到店老板为罗伦斯和赫萝提供果汁，与该台词的语境相符。",
+    "该台词出现在罗伦斯和赫萝休息的场景中，与店老板的互动相关。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

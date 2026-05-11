@@ -1,0 +1,19 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000044",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {"entity_id": "char_0001", "display": "罗伦斯", "status": "known", "score": 0.8}
+      ],
+      "evidence": ["「算了……」是罗伦斯的典型口癖之一，且上下文提到他感到困扰并决定离开。"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "根据罗伦斯的口癖和上下文中的行动判断，「算了……」很可能是罗伦斯所说。"
+}

@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d000819",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "上下文显示赫萝与罗伦斯在对话中互相调侃，且赫萝的尾巴和耳朵暴露了她的情绪。",
+    "当前段落中赫萝的发言带有典型的轻松幽默但略带威胁性的语气，符合她的说话风格。",
+    "后续段落中罗伦斯贴近赫萝的脸说话，进一步确认了赫萝是当前发言者。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

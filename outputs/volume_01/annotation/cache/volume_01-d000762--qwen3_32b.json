@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000762",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "mystery_volume_01_c005_s001_r004_帕斯罗村朋友",
+      "display": "帕斯罗村朋友",
+      "status": "mystery",
+      "score": 0.2
+    }
+  ],
+  "evidence": [
+    "赫萝在前文表现出对朋友的怀念和情绪波动，当前简短的肯定回答符合她的说话风格。",
+    "场景中只有赫萝和罗伦斯是活跃角色，且赫萝刚刚展露笑容，暗示她对朋友的回应。",
+    "罗伦斯在下一段表现出对赫萝点头的无趣反应，进一步确认说话人是赫萝。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

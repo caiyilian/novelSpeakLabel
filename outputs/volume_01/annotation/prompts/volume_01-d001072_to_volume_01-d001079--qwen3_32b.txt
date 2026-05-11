@@ -1,0 +1,607 @@
+你是轻小说说话人标注项目的阶段 2：正式标注助手。
+你的任务是判断输入 target_dialogues 中每一句台词的说话人，不要改写原文。
+必须把这些台词当作同一个连续片段来判断，优先保持对话轮次和叙述线索的一致性。
+
+规则：
+1. 只输出严格 JSON，不要 Markdown，不要解释性前后缀。
+2. 如果说话人是候选角色，speaker_entity_id 必须使用 candidate_characters 里的 entity_id，speaker_status 填 known。
+3. 如果说话人像某个未知人物，speaker_entity_id 使用 candidate_mysteries 里的 mystery_id，speaker_status 填 mystery。
+4. 如果只是无法追踪的路人/群体，speaker_status 填 npc，speaker_entity_id 可为空或使用 npc:简短称呼。
+5. 证据不足时不要硬猜，speaker_status 填 ambiguous 或 review，并把 needs_review 设为 true。
+6. candidate_speakers 至少列出 1 个候选；如果无法判断，列出最可能的候选和不确定原因。
+7. confidence 使用 0 到 1 之间的小数，表示你对最终判断的把握。
+8. 不要只因为台词里提到某个名字、职业、地点，就把说话人标成那个实体；被称呼的人通常不是说话人。
+9. 连续问答、交易寒暄、命令/回答等场景要按上下句轮次判断；同一人连续说话必须有叙述或语气证据支持。
+10. 如果当前上下文显示某角色还没有登场，不要因为角色库或后文记忆里有这个角色就提前标给他/她。
+
+输出 JSON 结构：
+{
+  "annotations": [
+    {
+      "dialogue_id": "必须来自 target_dialogue_ids",
+      "speaker_entity_id": "string",
+      "speaker_display": "string",
+      "speaker_status": "known|mystery|npc|ambiguous|review",
+      "confidence": 0.0,
+      "candidate_speakers": [
+        {"entity_id": "string", "display": "string", "status": "known|mystery|npc|ambiguous|review", "score": 0.0}
+      ],
+      "evidence": ["短证据，不要大段复制原文"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "可选，简短说明整体轮次判断"
+}
+必须为 target_dialogue_ids 中每个 dialogue_id 输出且只输出一条 annotation。
+
+输入 JSON：
+{
+  "volume": {
+    "volume_id": "volume_01",
+    "volume": 1
+  },
+  "target_dialogue_ids": [
+    "volume_01-d001072",
+    "volume_01-d001073",
+    "volume_01-d001074",
+    "volume_01-d001075",
+    "volume_01-d001076",
+    "volume_01-d001077",
+    "volume_01-d001078",
+    "volume_01-d001079"
+  ],
+  "dialogues": [
+    {
+      "dialogue_id": "volume_01-d001072",
+      "dialogue_index": 1071,
+      "window_position": 1,
+      "chapter_id": "volume_01-c006",
+      "chapter_title": "第五幕",
+      "scene_id": "volume_01-c006-s003",
+      "paragraph_id": "volume_01-c006-s003-p002341",
+      "paragraph_index": 2340,
+      "local_dialogue_index": 1,
+      "text": "这里吗？",
+      "quote_text": "「这里吗？」",
+      "paragraph_text": "「这里吗？」",
+      "char_start": 0,
+      "char_end": 6
+    },
+    {
+      "dialogue_id": "volume_01-d001073",
+      "dialogue_index": 1072,
+      "window_position": 2,
+      "chapter_id": "volume_01-c006",
+      "chapter_title": "第五幕",
+      "scene_id": "volume_01-c006-s003",
+      "paragraph_id": "volume_01-c006-s003-p002355",
+      "paragraph_index": 2354,
+      "local_dialogue_index": 1,
+      "text": "这、怎么可能。",
+      "quote_text": "「这、怎么可能。」",
+      "paragraph_text": "「这、怎么可能。」",
+      "char_start": 0,
+      "char_end": 9
+    },
+    {
+      "dialogue_id": "volume_01-d001074",
+      "dialogue_index": 1073,
+      "window_position": 3,
+      "chapter_id": "volume_01-c006",
+      "chapter_title": "第五幕",
+      "scene_id": "volume_01-c006-s003",
+      "paragraph_id": "volume_01-c006-s003-p002357",
+      "paragraph_index": 2356,
+      "local_dialogue_index": 1,
+      "text": "拉嘿。",
+      "quote_text": "「拉嘿。」",
+      "paragraph_text": "「拉嘿。」",
+      "char_start": 0,
+      "char_end": 5
+    },
+    {
+      "dialogue_id": "volume_01-d001075",
+      "dialogue_index": 1074,
+      "window_position": 4,
+      "chapter_id": "volume_01-c006",
+      "chapter_title": "第五幕",
+      "scene_id": "volume_01-c006-s003",
+      "paragraph_id": "volume_01-c006-s003-p002358",
+      "paragraph_index": 2357,
+      "local_dialogue_index": 1,
+      "text": "拉嘿",
+      "quote_text": "「拉嘿」",
+      "paragraph_text": "说话声从正上方传来，随后听到拆开地板的破裂声。接着又再传来一声「拉嘿」，于是罗伦斯回答「奴马」。门盖打开的那一刻，回答「皮里昂」的声音，随光线传到罗伦斯耳中。",
+      "char_start": 31,
+      "char_end": 35
+    },
+    {
+      "dialogue_id": "volume_01-d001076",
+      "dialogue_index": 1075,
+      "window_position": 5,
+      "chapter_id": "volume_01-c006",
+      "chapter_title": "第五幕",
+      "scene_id": "volume_01-c006-s003",
+      "paragraph_id": "volume_01-c006-s003-p002358",
+      "paragraph_index": 2357,
+      "local_dialogue_index": 2,
+      "text": "奴马",
+      "quote_text": "「奴马」",
+      "paragraph_text": "说话声从正上方传来，随后听到拆开地板的破裂声。接着又再传来一声「拉嘿」，于是罗伦斯回答「奴马」。门盖打开的那一刻，回答「皮里昂」的声音，随光线传到罗伦斯耳中。",
+      "char_start": 43,
+      "char_end": 47
+    },
+    {
+      "dialogue_id": "volume_01-d001077",
+      "dialogue_index": 1076,
+      "window_position": 6,
+      "chapter_id": "volume_01-c006",
+      "chapter_title": "第五幕",
+      "scene_id": "volume_01-c006-s003",
+      "paragraph_id": "volume_01-c006-s003-p002358",
+      "paragraph_index": 2357,
+      "local_dialogue_index": 3,
+      "text": "皮里昂",
+      "quote_text": "「皮里昂」",
+      "paragraph_text": "说话声从正上方传来，随后听到拆开地板的破裂声。接着又再传来一声「拉嘿」，于是罗伦斯回答「奴马」。门盖打开的那一刻，回答「皮里昂」的声音，随光线传到罗伦斯耳中。",
+      "char_start": 59,
+      "char_end": 64
+    },
+    {
+      "dialogue_id": "volume_01-d001078",
+      "dialogue_index": 1077,
+      "window_position": 7,
+      "chapter_id": "volume_01-c006",
+      "chapter_title": "第五幕",
+      "scene_id": "volume_01-c006-s003",
+      "paragraph_id": "volume_01-c006-s003-p002359",
+      "paragraph_index": 2358,
+      "local_dialogue_index": 1,
+      "text": "赫萝！",
+      "quote_text": "「赫萝！」",
+      "paragraph_text": "「赫萝！」",
+      "char_start": 0,
+      "char_end": 5
+    },
+    {
+      "dialogue_id": "volume_01-d001079",
+      "dialogue_index": 1078,
+      "window_position": 8,
+      "chapter_id": "volume_01-c006",
+      "chapter_title": "第五幕",
+      "scene_id": "volume_01-c006-s003",
+      "paragraph_id": "volume_01-c006-s003-p002362",
+      "paragraph_index": 2361,
+      "local_dialogue_index": 1,
+      "text": "汝不让开，要咱怎么下去？",
+      "quote_text": "「汝不让开，要咱怎么下去？」",
+      "paragraph_text": "「汝不让开，要咱怎么下去？」",
+      "char_start": 0,
+      "char_end": 14
+    }
+  ],
+  "context": {
+    "paragraphs": [
+      {
+        "paragraph_id": "volume_01-c006-s002-p002338",
+        "paragraph_index": 2337,
+        "text": "罗伦斯现在非常能体会那种感觉。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c006-s003-p002339",
+        "paragraph_index": 2338,
+        "text": "虽然这里是黑暗且潮湿的地下道，但从地面比路况不好的小巷子还要平整这点看来，地下道维护得相当完善。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c006-s003-p002340",
+        "paragraph_index": 2339,
+        "text": "罗伦斯也因此能够安心，米隆商行的力量确实强大。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c006-s003-p002341",
+        "paragraph_index": 2340,
+        "text": "「这里吗？」",
+        "target_dialogue_ids": [
+          "volume_01-d001072"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c006-s003-p002342",
+        "paragraph_index": 2341,
+        "text": "罗伦斯从脚边水花溅起的声音，判断出已走到尽头，他稍稍把手伸出，立刻就触碰到墙壁。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c006-s003-p002343",
+        "paragraph_index": 2342,
+        "text": "对旅行商人来说，在不见月色的山路上被野狗袭击是习以为常的事。因此，万一出现意外状况，必须在这个地下道快跑，罗伦斯也有自信能够立刻察觉墙壁的位置。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c006-s003-p002344",
+        "paragraph_index": 2343,
+        "text": "这位置的右上方，似乎是一个与梅迪欧商行有往来的杂货商的住家兼仓库，听说赫萝就是被关在这个仓库。正上方是米隆商行未雨绸缪，以他人名义租借的住家，听说他们还私下兴建通往隔壁建筑物的通道。他们周全的准备真是令人毛骨悚然，但或许为了在异国开店并经营生意，就必须有这般准备。罗伦斯告诉自己也要牢记这一点。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c006-s003-p002345",
+        "paragraph_index": 2344,
+        "text": "就在罗伦斯想着这些事情时，远处传来钟响。那是市场开放的钟声。米隆商行的人说过要以这钟声为信号展开突击，或许现在上方正陷入一片激战。如果没有在市场开放的钟声到通知开始工作的钟声之间救出赫萝，状况就会变得棘手。因为到时上方杂货商的交易对象就会陆续前来。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c006-s003-p002346",
+        "paragraph_index": 2345,
+        "text": "虽然这家杂货商必定有受惠于梅迪欧商行，但不管重要的人质是否由杂货商看管，结算日还是会准时到来，他们是不能不做生意的。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c006-s003-p002347",
+        "paragraph_index": 2346,
+        "text": "问题在于监视赫萝的人数。对方也知道要是安排太多人，会被米隆商行一眼识破；但人数太少又觉得不可靠。罗伦斯能做的只有祈祷他们会以藏匿赫萝为第一考量来安排人数。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c006-s003-p002348",
+        "paragraph_index": 2347,
+        "text": "如果监视的人数太多，必定会有一场打斗。到时展开突击的人们手上，可能不会拿遮眼布及绳索，而是利刃及钝器。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c006-s003-p002349",
+        "paragraph_index": 2348,
+        "text": "这么一来，原本就相当复杂的问题会变得更复杂。罗伦斯希望尽量避免这样的事发生。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c006-s003-p002350",
+        "paragraph_index": 2349,
+        "text": "罗伦斯思考着这些问题，也不知道等了多久。虽然一开始他还保持冷静，但不知不觉中脚边竟然因为身体颤抖而发出水声。这仿佛说出罗伦斯内心巨大的不安，他拚命想制止双脚颤抖，却是徒劳无功。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c006-s003-p002351",
+        "paragraph_index": 2350,
+        "text": "罗伦斯试着蹲下又起身几次，但心跳却不断加快，让他的不安情绪更是高涨，无法控制。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c006-s003-p002352",
+        "paragraph_index": 2351,
+        "text": "他看着上方，心想门盖怎么还没打开。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c006-s003-p002353",
+        "paragraph_index": 2352,
+        "text": "罗伦斯的背脊突然僵住了。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c006-s003-p002354",
+        "paragraph_index": 2353,
+        "text": "他心想自己该不会走错地方了吧。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c006-s003-p002355",
+        "paragraph_index": 2354,
+        "text": "「这、怎么可能。」",
+        "target_dialogue_ids": [
+          "volume_01-d001073"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c006-s003-p002356",
+        "paragraph_index": 2355,
+        "text": "就在罗伦斯准备要确认自己是否在死路尽头的那一瞬间，听到有人说：",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c006-s003-p002357",
+        "paragraph_index": 2356,
+        "text": "「拉嘿。」",
+        "target_dialogue_ids": [
+          "volume_01-d001074"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c006-s003-p002358",
+        "paragraph_index": 2357,
+        "text": "说话声从正上方传来，随后听到拆开地板的破裂声。接着又再传来一声「拉嘿」，于是罗伦斯回答「奴马」。门盖打开的那一刻，回答「皮里昂」的声音，随光线传到罗伦斯耳中。",
+        "target_dialogue_ids": [
+          "volume_01-d001075",
+          "volume_01-d001076",
+          "volume_01-d001077"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c006-s003-p002359",
+        "paragraph_index": 2358,
+        "text": "「赫萝！」",
+        "target_dialogue_ids": [
+          "volume_01-d001078"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c006-s003-p002360",
+        "paragraph_index": 2359,
+        "text": "看到赫萝的脸，罗伦斯不自觉叫了出来。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c006-s003-p002361",
+        "paragraph_index": 2360,
+        "text": "然而，赫萝却像没听到罗伦斯的呼唤似的抬高脸，对身旁的人说话。接着才又从洞口往下看，对罗伦斯简短地说：",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c006-s003-p002362",
+        "paragraph_index": 2361,
+        "text": "「汝不让开，要咱怎么下去？」",
+        "target_dialogue_ids": [
+          "volume_01-d001079"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c006-s003-p002363",
+        "paragraph_index": 2362,
+        "text": "如果说赫萝说话的态度跟往常的她没两样，似乎没什么不对。但罗伦斯听了赫萝说的话，才发现原来自己期待看到赫萝高兴的脸，以及听到她兴奋的语调。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c006-s003-p002364",
+        "paragraph_index": 2363,
+        "text": "罗伦斯照赫萝的话让开身体，等赫萝下来。然而，此刻罗伦斯心中感受到的不是看到赫萝的喜悦，而是没能听到她兴奋声音所带来的失望感。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c006-s003-p002365",
+        "paragraph_index": 2364,
+        "text": "当然，罗伦斯知道这完全是他一厢情愿的想法，所以也不能说些什么。然而，看着赫萝伸手接住上方传下来的包袱，一副毫不在意自己的模样，让罗伦斯更觉满腹牢骚难以发泄。",
+        "target_dialogue_ids": []
+      }
+    ]
+  },
+  "scene_memory": [
+    {
+      "scene_id": "volume_01-c006-s003-r001",
+      "parent_scene_id": "volume_01-c006-s003",
+      "chunk_index": 1,
+      "chunk_count": 6,
+      "scene_summary": "罗伦斯在地下道中等待营救赫萝的行动开始，思考着米隆商行的准备、梅迪欧商行的威胁以及赫萝的处境。他感到不安，身体颤抖，内心充满焦虑。",
+      "active_characters": [
+        "罗伦斯"
+      ],
+      "relationships": [
+        "罗伦斯与赫萝一同旅行",
+        "罗伦斯与米隆商行有交易关系",
+        "罗伦斯担忧赫萝的处境",
+        "米隆商行与梅迪欧商行存在竞争"
+      ],
+      "notes": "本场景中没有出现未命名但可追踪的神秘人物。罗伦斯是唯一明确出现并有大量心理描写和行动描述的角色。赫萝虽然被提及，但未直接出现。"
+    },
+    {
+      "scene_id": "volume_01-c006-s003-r002",
+      "parent_scene_id": "volume_01-c006-s003",
+      "chunk_index": 2,
+      "chunk_count": 6,
+      "scene_summary": "罗伦斯在一条地下通道中与赫萝重逢。赫萝从上方的洞口下来，两人之间有微妙的情绪互动。赫萝的语气和态度让罗伦斯感到失望，但他仍配合行动。他们携带伪装成强盗的财宝，继续向通道深处前进。",
+      "active_characters": [
+        "罗伦斯",
+        "赫萝"
+      ],
+      "relationships": [
+        "罗伦斯与赫萝有长期旅行关系",
+        "赫萝与神秘人物A有互动"
+      ],
+      "notes": "赫萝的语气和态度让罗伦斯感到失望，暗示两人之间存在情感波动。神秘人物A的出现表明赫萝可能有其他同伴协助行动。"
+    },
+    {
+      "scene_id": "volume_01-c006-s003-r003",
+      "parent_scene_id": "volume_01-c006-s003",
+      "chunk_index": 3,
+      "chunk_count": 6,
+      "scene_summary": "罗伦斯与赫萝在商行人员的协助下，通过地下通道成功撤离并登上马车。商行人员表现出高度的组织效率和默契，确认身份后迅速协助他们离开。赫萝的狼耳引发了一点小插曲，但整体行动顺利。",
+      "active_characters": [
+        "罗伦斯",
+        "赫萝",
+        "商行的人"
+      ],
+      "relationships": [
+        "罗伦斯与赫萝有亲密关系",
+        "罗伦斯与商行人员有合作关系",
+        "赫萝与商行人员有互动"
+      ],
+      "notes": "本场景中，商行人员表现出高度的组织效率和默契，协助罗伦斯与赫萝撤离。赫萝的狼耳引发了一点小插曲，但整体行动顺利。罗伦斯表现出对赫萝的关心，但因赫萝的狼耳而感到困扰。"
+    }
+  ],
+  "candidate_characters": [
+    {
+      "entity_id": "char_0001",
+      "display_name": "罗伦斯",
+      "aliases": [
+        "罗伦斯",
+        "罗伦斯先生"
+      ],
+      "titles": [
+        "中间人",
+        "交易者",
+        "同行",
+        "商人",
+        "小毛头",
+        "小的",
+        "市井无赖",
+        "年轻人",
+        "开店者",
+        "情报贩子",
+        "提议者",
+        "新手"
+      ],
+      "description": "一位行商人，正在与米隆商行的代表马贺特进行交易谈判。他原本期待获得两千枚银币，但实际只得到一百二十枚，感到震惊和困惑。 / 一位行商人，发现并收留了赫萝，决定与她一同旅行。 / 一位二十五岁的自力更生旅行商人，已有七年行商经验，性格泰然自若。 / 一位冷静理性的旅行商人，对赫萝的身份持怀疑态度，但仍保持互动。他注重外表整洁，对商业制度有深入理解。 / 冷静理性的旅行商人，与赫萝一同旅行。在本场景中与米隆商行的马贺特讨论梅迪欧商行的威胁，提出利用崔尼银币交易作为交涉王牌。 / 一位冷静理性的旅行商人，与赫萝一同旅行。在本场景中与米隆商行的马贺特达成交易，表现出策略性和经验。 / 正在与马贺特讨论交易细节的商人，表现出对辛香料的兴趣。 / 一位冷静理性的旅行商人，正在与米隆商行的马贺特进行交易。他表现出对开店的期待，并思考未来。 / 一位冷静理性的旅行商人，正在处理一份请款单，但对单据内容感到困惑。 / 一位行商人，正在与商行代表进行交易。他表现出冷静和策略性，询问卸货场的位置。 / 一位行商人，发现并收留了赫萝，决定与她一同旅行。他性格冷静理性，对赫萝的身份持怀疑态度，但仍保持互动。他注重外表整洁，对商业制度有深入理解。 / 冷静理性的旅行商人，与赫萝一同旅行。在本场景中试图安抚赫萝的情绪，表现出对她的关心。",
+      "speech_style": "理性、坚定、略带情绪化 / 冷静、理性，带有悔恨和自责的语气。 / 冷静、理性，语气中带有对赫萝的关心和些许担忧。 / 冷静、理性、略带失落 / 冷静、理性，对商业制度有深入理解，并能清晰地向他人解释。 / 理性、礼貌、略带谨慎。 / 理性、冷静，带有商业分析倾向。 / 理性、沉稳、略带幽默 / 理性、冷静，但因困惑而表现出急切。 / 冷静、直接、略带命令语气 / 冷静、理性、简洁 / 冷静、理性、略带幽默",
+      "relationship_hints": [
+        "与赫萝一同旅行",
+        "对赫萝的真实性持怀疑态度",
+        "与深山村落的村民有交易关系",
+        "对修道院抱有商业期望但未成功",
+        "与骑士有短暂互动",
+        "与小村落的村民有交易关系",
+        "与修道院有关联",
+        "对教会和异教徒问题有见解",
+        "与叶勒有联系",
+        "在麦田中与农夫互动",
+        "与农夫有互动",
+        "在村民中保持低调"
+      ],
+      "first_seen_scene_id": "volume_01-c000-s003-r001",
+      "latest_seen_scene_id": "volume_01-c008-s003-r002",
+      "confidence": 1.0
+    },
+    {
+      "entity_id": "char_0002",
+      "display_name": "赫萝",
+      "aliases": [
+        "赫萝"
+      ],
+      "titles": [
+        "丰收之神",
+        "咱",
+        "神秘少女",
+        "约伊兹的贤狼",
+        "贤狼"
+      ],
+      "description": "自称丰收之神的神秘少女，拥有狼的耳朵和尾巴。在本场景中协助罗伦斯，表现出对他的关心和保护。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴，行为举止非人类，表现出轻松幽默但略带威胁性的说话风格。在本场景中，她对罗伦斯的伤口进行吸血，引发旁人惊呼，并表现出悲伤的情绪。 / 自称是丰收之神的神秘少女，拥有狼的耳朵和尾巴。在本场景中逐渐显露出非人类的特征，最终完全变成一只巨大的狼。她与罗伦斯有情感交流，表现出悲伤和决绝的情绪。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴，未直接参与本场景，但罗伦斯的行动可能与她有关。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴。在本场景中制服叶勒，并要求罗伦斯提供麦子，表现出非人类的特征和威胁性。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴。在本场景中以威胁的方式向罗伦斯索要麦子，表现出非人类的特征和强大的气场。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴。她表现出轻松幽默但略带威胁性的说话风格，对罗伦斯的挽留表现出复杂的情绪。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴，说话轻松幽默但略带威胁性。在本场景中拒绝罗伦斯的挽留，表现出独立和决绝。 / 赫萝的尾巴是罗伦斯追击的目标，她最终离开罗伦斯，留下他独自面对危险。罗伦斯回忆起赫萝离去的场景，表现出对她的依赖和悔恨。 / 自称是丰收之神的神秘少女，拥有狼的耳朵和尾巴。在本场景中独自前往市场为旅行整装，表现出独立和果断的一面。 / 自称是丰收之神的少女，拥有狼的耳朵和尾巴，说话狡诈。她与罗伦斯一同旅行，表现出轻松幽默但略带威胁性的说话风格。 / 自称丰收之神的神秘少女，拥有狼的耳…",
+      "speech_style": "轻松幽默但略带威胁性，情绪化且带有调侃语气。 / 轻松幽默、略带调侃和威胁 / 轻松幽默、略带威胁性 / 轻松幽默、略带威胁性、撒娇 / 警觉、神秘 / 轻松幽默但略带威胁性 / 轻松幽默、略带调侃 / 轻松幽默但略带威胁性，语气中透露出对罗伦斯的依赖。 / 轻松幽默、略带威胁性、自信 / 轻松幽默但略带威胁性，情绪波动明显 / 轻松幽默、略带威胁、情绪波动明显 / 轻松幽默但略带威胁性，表现出自信和调皮的特质。",
+      "relationship_hints": [
+        "与罗伦斯一同旅行",
+        "被罗伦斯怀疑是否为真正的神",
+        "与叶勒有附身关系",
+        "与罗伦斯有潜在互动",
+        "与罗伦斯有互动，似乎是被他发现并收留的。",
+        "与罗伦斯有互动，但尚未明确关系",
+        "与罗伦斯互动频繁，表现出对他的信任和玩笑态度",
+        "与罗伦斯互动密切",
+        "似乎对罗伦斯的反应感到有趣",
+        "与罗伦斯有互动，似乎是被他收留的神秘女孩。",
+        "与帕斯罗村的丰收之神有关联。",
+        "与罗伦斯对话，表现出信任与互动"
+      ],
+      "first_seen_scene_id": "volume_01-c000-s003-r001",
+      "latest_seen_scene_id": "volume_01-c008-s003-r002",
+      "confidence": 1.0
+    },
+    {
+      "entity_id": "char_0030",
+      "display_name": "米隆商行",
+      "aliases": [],
+      "titles": [
+        "合作方",
+        "商行",
+        "竞争对手"
+      ],
+      "description": "罗伦斯提出与之合作，抢先与崔尼国王交涉，以阻止梅迪欧商行取得特权。 / 南方国家大商人经营的商行分行，与国王签订合约，但因国王的权势地位而被迫接受不合理条件。",
+      "speech_style": "未直接发言，但其策略被罗伦斯推测为「回收更多银币以取得谈判优势」。 / 未直接说话，但通过被动接受国王的策略体现其处境。",
+      "relationship_hints": [
+        "与罗伦斯有交易关系",
+        "与梅迪欧商行竞争",
+        "试图取得特权",
+        "与国王存在权力关系",
+        "与南方国家大商人有合作关系"
+      ],
+      "first_seen_scene_id": "volume_01-c006-s001-r004",
+      "latest_seen_scene_id": "volume_01-c008-s001-r005",
+      "confidence": 0.9
+    },
+    {
+      "entity_id": "char_0028",
+      "display_name": "梅迪欧商行",
+      "aliases": [],
+      "titles": [
+        "商行",
+        "竞争对手"
+      ],
+      "description": "试图通过回收崔尼银币与国王交涉，以取得特权的商行。",
+      "speech_style": "未直接发言，但策略被罗伦斯分析为「回收银币并换取特权」。",
+      "relationship_hints": [
+        "与崔尼国王有交易关系",
+        "与米隆商行竞争",
+        "试图取得特权"
+      ],
+      "first_seen_scene_id": "volume_01-c006-s001-r004",
+      "latest_seen_scene_id": "volume_01-c006-s001-r004",
+      "confidence": 0.85
+    },
+    {
+      "entity_id": "char_0024",
+      "display_name": "梅迪欧商行的人",
+      "aliases": [],
+      "titles": [
+        "商行人员",
+        "米隆商行代表"
+      ],
+      "description": "试图破坏米隆商行帕兹欧分行的不法分子，与罗伦斯的交易存在竞争关系。 / 协助罗伦斯与赫萝撤离的商行人员，表现出高度的组织效率和默契。确认身份后迅速协助他们离开，并在撤离后祝他们成功。",
+      "speech_style": "未直接说话 / 专业、冷静、有条理",
+      "relationship_hints": [
+        "与罗伦斯存在商业竞争",
+        "袭击米隆商行",
+        "与罗伦斯有合作关系",
+        "与赫萝有互动"
+      ],
+      "first_seen_scene_id": "volume_01-c005-s006-r004",
+      "latest_seen_scene_id": "volume_01-c006-s003-r003",
+      "confidence": 0.9
+    }
+  ],
+  "candidate_mysteries": [
+    {
+      "mystery_id": "mystery_volume_01_c006_s003_r002_神秘人物A",
+      "temporary_name": "神秘人物A",
+      "description": "在洞口上方与赫萝对话的人，可能是协助赫萝行动的同伴。",
+      "evidence": [
+        "volume_01-c006-s003-p002358"
+      ],
+      "source_scene_id": "volume_01-c006-s003-r002",
+      "confidence": 0.6
+    },
+    {
+      "mystery_id": "mystery_volume_01_c008_s001_r002_赫萝",
+      "temporary_name": "赫萝",
+      "description": "罗伦斯的旅伴，拥有狼的特征，曾在地下道中护送罗伦斯，目前下落不明。",
+      "evidence": [
+        "volume_01-c008-s001-p002960",
+        "volume_01-c008-s001-p002961",
+        "volume_01-c008-s001-p002963"
+      ],
+      "source_scene_id": "volume_01-c008-s001-r002",
+      "confidence": 0.85
+    },
+    {
+      "mystery_id": "mystery_volume_01_c002_s002_r001_赫萝",
+      "temporary_name": "赫萝",
+      "description": "传说中的丰收之神，被村民称为狼，是祭典的核心象征。",
+      "evidence": [
+        "volume_01-c002-s002-p000160",
+        "volume_01-c002-s002-p000164"
+      ],
+      "source_scene_id": "volume_01-c002-s002-r001",
+      "confidence": 0.8
+    },
+    {
+      "mystery_id": "mystery_volume_01_c002_s002_r003_赫萝",
+      "temporary_name": "赫萝",
+      "description": "虽然未直接出现，但被提及为祭典的核心人物，与罗伦斯有情感牵连。",
+      "evidence": [
+        "volume_01-c002-s002-p000187",
+        "volume_01-c002-s002-p000195"
+      ],
+      "source_scene_id": "volume_01-c002-s002-r003",
+      "confidence": 0.75
+    }
+  ]
+}

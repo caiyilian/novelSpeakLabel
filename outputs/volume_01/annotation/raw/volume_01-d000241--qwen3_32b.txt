@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000241",
+  "speaker_entity_id": "char_0008",
+  "speaker_display": "年轻商人",
+  "speaker_status": "known",
+  "confidence": 0.85,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0008",
+      "display": "年轻商人",
+      "status": "known",
+      "score": 0.85
+    },
+    {
+      "entity_id": "char_0009",
+      "display": "杰廉",
+      "status": "known",
+      "score": 0.15
+    }
+  ],
+  "evidence": [
+    "上下文提到一名年轻商人靠近罗伦斯搭话，说话风格热情且带有敬意。",
+    "该段对话中「老板」一词符合年轻商人对罗伦斯的称呼方式。",
+    "场景记忆中提到年轻商人对罗伦斯表示钦佩，符合该句台词的语气。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

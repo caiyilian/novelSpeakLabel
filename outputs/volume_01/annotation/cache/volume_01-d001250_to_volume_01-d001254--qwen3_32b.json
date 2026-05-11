@@ -1,0 +1,117 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001250",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "上下文提到赫萝惊讶的声音，紧接着是「汝……」的台词，符合赫萝说话风格"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001251",
+      "speaker_entity_id": "char_0004",
+      "speaker_display": "叶勒",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0004",
+          "display": "叶勒",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "上下文明确提到叶勒「抬头说」，紧接着是「那么，我也只能执行我的合约了。」"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001252",
+      "speaker_entity_id": "char_0004",
+      "speaker_display": "叶勒",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0004",
+          "display": "叶勒",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "叶勒在前一句刚说完，紧接着继续表达对罗伦斯的离别情绪，符合对话轮次"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001253",
+      "speaker_entity_id": "char_0004",
+      "speaker_display": "叶勒",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0004",
+          "display": "叶勒",
+          "status": "known",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "叶勒继续表达对旅行商人的感慨，符合对话轮次和语气"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001254",
+      "speaker_entity_id": "mystery_volume_01_c007_s003_r006_神秘命令者",
+      "speaker_display": "神秘命令者",
+      "speaker_status": "mystery",
+      "confidence": 0.7,
+      "candidate_speakers": [
+        {
+          "entity_id": "mystery_volume_01_c007_s003_r006_神秘命令者",
+          "display": "神秘命令者",
+          "status": "mystery",
+          "score": 0.7
+        },
+        {
+          "entity_id": "char_0004",
+          "display": "叶勒",
+          "status": "known",
+          "score": 0.3
+        }
+      ],
+      "evidence": [
+        "上下文提到「神秘命令者」的存在，且此句为命令式语气，符合其风格",
+        "叶勒在此场景中已开始行动，不太可能再发出命令"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，从赫萝的惊讶开始，叶勒连续回应，最后由神秘命令者下达指令，符合场景发展逻辑。"
+}

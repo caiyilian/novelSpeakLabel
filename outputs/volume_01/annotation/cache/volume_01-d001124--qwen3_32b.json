@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d001124",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "对话内容提及「梅迪欧商行」，这是罗伦斯在场景中频繁讨论的主题。",
+    "对话语气理性、冷静，符合罗伦斯的说话风格。",
+    "上下文显示罗伦斯在分析叶勒与商行的关系，而赫萝更倾向于情绪化表达。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

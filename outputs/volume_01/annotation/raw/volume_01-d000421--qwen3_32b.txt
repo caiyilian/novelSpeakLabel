@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d000421",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "前一段提到赫萝刚吃完八颗苹果，暗示她可能是当前段落的说话人。",
+    "当前段落是「……呼。」，符合赫萝在吃完后可能发出的感叹声。",
+    "后一段提到「你真会吃。」，显然是对赫萝的回应，进一步确认说话人是赫萝。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

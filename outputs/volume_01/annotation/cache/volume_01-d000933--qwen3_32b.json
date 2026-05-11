@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000933",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.02
+    }
+  ],
+  "evidence": [
+    "赫萝在前一段中戳了罗伦斯的胸膛并开始说话，语境显示是她继续发言。",
+    "赫萝的说话风格轻松幽默但略带威胁性，符合台词中的调侃语气。",
+    "场景记忆中赫萝主导策略讨论，并表现出对罗伦斯的调侃和关心。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d001023",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0020",
+      "display": "列支敦·马贺特",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "对话内容涉及商业策略和特权交易，与罗伦斯的理性分析风格一致。",
+    "上下文显示罗伦斯正在与米隆商行的马贺特讨论如何应对梅迪欧商行的威胁。",
+    "罗伦斯在场景中主导了交易策略的提出，符合说话人身份。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

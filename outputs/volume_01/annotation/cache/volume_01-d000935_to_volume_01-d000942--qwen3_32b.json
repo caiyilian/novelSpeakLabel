@@ -1,0 +1,173 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000935",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "罗伦斯在追赶赫萝并试图逃脱追捕者，此句为他奔跑时的观察与报告。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000936",
+      "speaker_entity_id": "mystery_volume_01_c005_s006_r003_追捕者",
+      "speaker_display": "追捕者",
+      "speaker_status": "mystery",
+      "confidence": 0.7,
+      "candidate_speakers": [
+        {
+          "entity_id": "mystery_volume_01_c005_s006_r003_追捕者",
+          "display": "追捕者",
+          "status": "mystery",
+          "score": 0.7
+        }
+      ],
+      "evidence": [
+        "声音从罗伦斯的斜后方传来，暗示是追捕者在对话。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000937",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "罗伦斯左转后听见后方传来「找到了！」的声音，赫萝此前独自行动，最可能发出此声。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000938",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "罗伦斯拍打卸货场的栅栏并喊叫，此句为他请求庇护的直接表达。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000939",
+      "speaker_entity_id": "mystery_volume_01_c005_s006_r003_追捕者",
+      "speaker_display": "追捕者",
+      "speaker_status": "mystery",
+      "confidence": 0.75,
+      "candidate_speakers": [
+        {
+          "entity_id": "mystery_volume_01_c005_s006_r003_追捕者",
+          "display": "追捕者",
+          "status": "mystery",
+          "score": 0.75
+        }
+      ],
+      "evidence": [
+        "说话的男子试图强行拉开栅栏，与追捕者行为一致。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000940",
+      "speaker_entity_id": "char_0026",
+      "speaker_display": "老卸货工",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0026",
+          "display": "老卸货工",
+          "status": "known",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "一名留有胡子、稍稍上了年纪的男子从里面走出来并大喝，符合老卸货工的描述。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000941",
+      "speaker_entity_id": "char_0026",
+      "speaker_display": "老卸货工",
+      "speaker_status": "known",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0026",
+          "display": "老卸货工",
+          "status": "known",
+          "score": 0.8
+        }
+      ],
+      "evidence": [
+        "老卸货工在骚动后开口询问，符合上下文轮次推断。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000942",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "罗伦斯回应老卸货工的提问，符合对话轮次推断。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，罗伦斯、赫萝、老卸货工和追捕者交替发言，符合场景中人物行为和位置推断。"
+}

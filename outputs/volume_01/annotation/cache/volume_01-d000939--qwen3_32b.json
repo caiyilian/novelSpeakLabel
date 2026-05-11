@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000939",
+  "speaker_entity_id": "mystery_volume_01_c005_s006_r003_追捕者",
+  "speaker_display": "追捕者",
+  "speaker_status": "mystery",
+  "confidence": 0.8,
+  "candidate_speakers": [
+    {
+      "entity_id": "mystery_volume_01_c005_s006_r003_追捕者",
+      "display": "追捕者",
+      "status": "mystery",
+      "score": 0.8
+    },
+    {
+      "entity_id": "char_0024",
+      "display": "梅迪欧商行的人",
+      "status": "known",
+      "score": 0.5
+    }
+  ],
+  "evidence": [
+    "对话内容为「等一下！喂，把那名男子交出来！」，语气强硬且带有追捕意图。",
+    "上下文显示罗伦斯刚刚进入米隆商行的栅栏内，而说话的男子试图用蛮力拉开栅栏。",
+    "场景记忆中提到有「追捕者」试图追捕罗伦斯，身份不明，符合当前对话的语气和行为。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

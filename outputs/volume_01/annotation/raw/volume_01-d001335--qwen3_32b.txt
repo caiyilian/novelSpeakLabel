@@ -1,0 +1,30 @@
+```json
+{
+  "dialogue_id": "volume_01-d001335",
+  "speaker_entity_id": "char_0020",
+  "speaker_display": "列支敦·马贺特",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0020",
+      "display": "列支敦·马贺特",
+      "status": "known",
+      "score": 0.98
+    },
+    {
+      "entity_id": "char_0010",
+      "display": "店员",
+      "status": "known",
+      "score": 0.02
+    }
+  ],
+  "evidence": [
+    "上下文显示罗伦斯与马贺特在讨论交易，马贺特刚刚提到「收件者确实是我们商行没错」，接着递上请款单，符合其身份和行为。",
+    "场景记忆中明确提到马贺特协助罗伦斯查看请款单，符合当前台词内容。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

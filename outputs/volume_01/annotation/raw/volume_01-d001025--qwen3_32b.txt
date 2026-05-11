@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d001025",
+  "speaker_entity_id": "char_0020",
+  "speaker_display": "列支敦·马贺特",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0020",
+      "display": "列支敦·马贺特",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "对话内容提到「对方拥有的王牌不仅能够打垮我们这家分行，甚至还能够把我们送上火刑台」，这与米隆商行帕兹欧分行行长马贺特在场景中对梅迪欧商行威胁的担忧相符。",
+    "上下文显示罗伦斯随后发言，而当前对话前的段落是马贺特的分析，因此当前台词应为马贺特的延续。",
+    "场景记忆中，马贺特是米隆商行帕兹欧分行的行长，与罗伦斯讨论梅迪欧商行的威胁，符合当前对话的语境。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

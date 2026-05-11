@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d001084",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0024",
+      "display": "梅迪欧商行的人",
+      "status": "known",
+      "score": 0.1
+    }
+  ],
+  "evidence": [
+    "上下文显示罗伦斯刚刚爬入马车车厢，而这句话出现在他进入车厢后，符合他的视角。",
+    "接下来的段落提到「商行的人坐在马车里一边说...」，说明说话人不是商行人员。",
+    "罗伦斯是本场景中唯一明确的行动主体，且有大量心理和行动描写，符合说话人特征。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

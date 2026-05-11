@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d001330",
+  "speaker_entity_id": "char_0014",
+  "speaker_display": "商行代表",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0014",
+      "display": "商行代表",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0020",
+      "display": "列支敦·马贺特",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "对话中提到「本商行」，与候选角色「商行代表」的描述「与罗伦斯进行貂皮交易谈判的商行代表」相符。",
+    "上下文显示这是罗伦斯与马贺特之间的商业对话，马贺特并未在此句中发言，而是回应或被提及。",
+    "「本商行」的自称符合「商行代表」的说话风格和身份。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

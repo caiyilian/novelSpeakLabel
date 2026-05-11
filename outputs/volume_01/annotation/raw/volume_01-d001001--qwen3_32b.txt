@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d001001",
+  "speaker_entity_id": "char_0027",
+  "speaker_display": "米隆商行人员",
+  "speaker_status": "known",
+  "confidence": 0.9,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0027",
+      "display": "米隆商行人员",
+      "status": "known",
+      "score": 0.9
+    },
+    {
+      "entity_id": "mystery_volume_01_c005_s008_r001_神秘收信人",
+      "display": "神秘收信人",
+      "status": "mystery",
+      "score": 0.3
+    }
+  ],
+  "evidence": [
+    "「刚刚有一封信送到这里来，是与这件事有关的信件。」",
+    "前一段提到「有个米隆商行的人走进房间。」，暗示说话人是该商行人员。",
+    "后续段落提到「商行的人递出一封封缄得漂亮的信件。」，进一步确认说话人身份。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

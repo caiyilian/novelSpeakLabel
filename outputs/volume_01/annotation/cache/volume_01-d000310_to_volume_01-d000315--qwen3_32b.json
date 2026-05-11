@@ -1,0 +1,143 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000310",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "赫萝在不远的地方，回过头来喊罗伦斯（d000313）",
+        "赫萝点了点头，从外套底下探出脸说（p000817）",
+        "赫萝沉默地摇摇头，那动作看来十分孩子气（p000811）"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000311",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "罗伦斯轻轻敲了赫萝的头说（p000808）",
+        "罗伦斯自认已走过不少岁月风霜（p000813）",
+        "罗伦斯踏遍各地，与各种不同人相遇（p000813）"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000312",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "赫萝点了点头，从外套底下探出脸说（p000817）",
+        "赫萝笑着说完，便转身往房间的方向走去（p000818）",
+        "赫萝时而表现出来的孩子气举动（p000820）"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000313",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "赫萝在不远的地方，回过头来喊罗伦斯（p000823）",
+        "赫萝笑着说完，便转身往房间的方向走去（p000818）",
+        "赫萝时而表现出来的孩子气举动（p000820）"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000314",
+      "speaker_entity_id": "char_0009",
+      "speaker_display": "杰廉",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0009",
+          "display": "杰廉",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "罗伦斯与杰廉达成初步协议（scene_memory r006）",
+        "杰廉告知联络地点为帕兹欧的优伦朵酒吧（p000826）",
+        "杰廉露出他那可爱的笑脸敬了个礼，便扛起装满干果的麻袋往前走去（p000829）"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000315",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "罗伦斯与杰廉达成初步协议（scene_memory r006）",
+        "罗伦斯回想起自己拥有这辆车之前的历程（p000831）",
+        "罗伦斯与杰廉之间存在商业合作关系（scene_memory r006）"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，赫萝与罗伦斯交替发言，杰廉在最后加入对话并离开。对话符合角色性格与上下文逻辑。"
+}

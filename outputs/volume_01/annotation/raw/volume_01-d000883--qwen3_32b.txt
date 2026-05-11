@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d000883",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "赫萝在梦中醒来后表达了对朋友消失的担忧，符合她的性格和说话风格。",
+    "上下文提到赫萝在罗伦斯的怀里醒来，随后表达情绪，符合她的行为模式。",
+    "赫萝的台词中提到「悠椰、英堤、巴罗还有缪里」，这些名字在场景记忆中被标记为赫萝的潜在同伴或神灵。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

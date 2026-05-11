@@ -1,0 +1,71 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000352",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "使用自称「咱」，符合赫萝的 speech_marker",
+        "对话发生在赫萝与罗伦斯的互动场景中，赫萝表现出掌控感和调侃语气"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000353",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "对话轮次上紧接赫萝的发言，符合两人交替对话的模式",
+        "语气简短，符合罗伦斯的理性、略带犹豫的说话风格"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000354",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.8
+        }
+      ],
+      "evidence": [
+        "上下文明确指出「罗伦斯在心里一边责备自己……一边说出『抱歉』两字」",
+        "符合罗伦斯的自我反思和道歉语气"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "三句对话构成赫萝与罗伦斯的简短互动，符合两人交替发言的模式。赫萝使用自称「咱」，罗伦斯语气简短，符合角色设定。"
+}

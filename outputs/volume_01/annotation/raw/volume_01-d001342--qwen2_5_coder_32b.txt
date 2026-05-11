@@ -1,0 +1,20 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001342",
+      "speaker_entity_id": "",
+      "speaker_display": "",
+      "speaker_status": "ambiguous",
+      "confidence": 0.6,
+      "candidate_speakers": [
+        {"entity_id": "char_0001", "display": "罗伦斯", "status": "known", "score": 0.5},
+        {"entity_id": "", "display": "npc:商行的人", "status": "npc", "score": 0.3}
+      ],
+      "evidence": ["对话轮次推断，但没有明确的叙述锚点"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    }
+  ],
+  "window_notes": "根据上下文，罗伦斯刚刚询问了商行的人关于卸货场的位置，并得到了回答。随后的「谢谢」可能是对商行人的回应，但没有明确的叙述锚点来确认说话人。"
+}

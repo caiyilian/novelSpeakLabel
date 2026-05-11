@@ -1,0 +1,23 @@
+{
+  "dialogue_id": "volume_01-d000583",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "当前段落紧接着赫萝与摊贩互动的描述，且下一段中赫萝明确指向面包摊贩表达想吃面包。",
+    "场景记忆中赫萝是主要活跃角色，且在本场景中频繁发言。",
+    "赫萝的说话风格轻松幽默略带调侃，符合当前台词「怎么了？」的语气。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

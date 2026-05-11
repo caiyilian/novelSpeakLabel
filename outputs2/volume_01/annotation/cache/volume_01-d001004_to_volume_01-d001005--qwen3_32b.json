@@ -1,0 +1,49 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001004",
+      "speaker_entity_id": "mystery_volume_01_c005_s008_r001_神秘信件寄件者",
+      "speaker_display": "神秘信件寄件者",
+      "speaker_status": "mystery",
+      "confidence": 0.75,
+      "candidate_speakers": [
+        {
+          "entity_id": "mystery_volume_01_c005_s008_r001_神秘信件寄件者",
+          "display": "神秘信件寄件者",
+          "status": "mystery",
+          "score": 0.75
+        }
+      ],
+      "evidence": [
+        "该台词出现在罗伦斯拆开的信件中，信件内容暗示教会与赫萝有关联，但没有署名。",
+        "上下文显示这封信是他人寄给马贺特的，罗伦斯只是代为转交，因此说话人应为信件的寄件者。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001005",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "上下文明确指出罗伦斯把信件交给马贺特后，‘勉强挤出声音说’，紧接着就是该台词。",
+        "该台词是罗伦斯对马贺特的坦白，符合他理性、谨慎的说话风格。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "两句话为连续对话，第一句是信件内容，说话人未知；第二句是罗伦斯对马贺特的坦白，符合上下文逻辑和说话人轮次。"
+}

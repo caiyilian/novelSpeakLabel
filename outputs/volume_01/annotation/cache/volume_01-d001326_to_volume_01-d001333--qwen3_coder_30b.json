@@ -1,0 +1,193 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001326",
+      "speaker_entity_id": "char_0020",
+      "speaker_display": "列支敦·马贺特",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0020",
+          "display": "列支敦·马贺特",
+          "status": "known",
+          "score": 0.95
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.05
+        }
+      ],
+      "evidence": [
+        "上下文为马贺特叙述故事，且前文提到马贺特在讲述宗教戏剧情节",
+        "对话内容与马贺特的叙述风格一致"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001327",
+      "speaker_entity_id": "char_0020",
+      "speaker_display": "列支敦·马贺特",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0020",
+          "display": "列支敦·马贺特",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "继续叙述故事，语气与前句一致",
+        "马贺特在前文已开始讲述该故事"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001328",
+      "speaker_entity_id": "char_0020",
+      "speaker_display": "列支敦·马贺特",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0020",
+          "display": "列支敦·马贺特",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "继续讲述故事，语气一致",
+        "马贺特在前文已开始叙述，且此句为解释性语句"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001329",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.85
+        },
+        {
+          "entity_id": "char_0020",
+          "display": "列支敦·马贺特",
+          "status": "known",
+          "score": 0.15
+        }
+      ],
+      "evidence": [
+        "前文描述罗伦斯听到夸奖后露出笑容并回应",
+        "罗伦斯在故事中表现出对辛香料的期待"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001330",
+      "speaker_entity_id": "char_0020",
+      "speaker_display": "列支敦·马贺特",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0020",
+          "display": "列支敦·马贺特",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "马贺特在前文已结束叙述，此句为回应罗伦斯的回应",
+        "语气符合马贺特的商业礼貌风格"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001331",
+      "speaker_entity_id": "char_0020",
+      "speaker_display": "列支敦·马贺特",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0020",
+          "display": "列支敦·马贺特",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "马贺特在前文已结束叙述，此句为离开前的告别语",
+        "语气符合马贺特的商业礼貌风格"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001332",
+      "speaker_entity_id": "char_0020",
+      "speaker_display": "列支敦·马贺特",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0020",
+          "display": "列支敦·马贺特",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "马贺特开门后问话，符合其角色行为",
+        "前文提到马贺特离开床边去开门"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001333",
+      "speaker_entity_id": "mystery_volume_01_c008_s002_r004_敲门者",
+      "speaker_display": "敲门者",
+      "speaker_status": "mystery",
+      "confidence": 0.6,
+      "candidate_speakers": [
+        {
+          "entity_id": "mystery_volume_01_c008_s002_r004_敲门者",
+          "display": "敲门者",
+          "status": "mystery",
+          "score": 0.6
+        }
+      ],
+      "evidence": [
+        "房门打开时有人说话，且前文提到有人敲门",
+        "说话人身份未知，仅通过行为推断"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，马贺特讲述故事，罗伦斯回应，最后马贺特离开并有人敲门。"
+}

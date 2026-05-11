@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 from pathlib import Path
 
+from .annotation import AnnotationConfig, annotate_volume
 from .discovery import DiscoveryConfig, discover_volume
 from .preprocess import PreprocessConfig, find_volume_file, preprocess_volume
 
@@ -10,7 +11,7 @@ from .preprocess import PreprocessConfig, find_volume_file, preprocess_volume
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(
         prog="novel_speaker_label",
-        description="Stage 0/1 pipeline for light-novel speaker labeling.",
+        description="Stage 0/1/2 pipeline for light-novel speaker labeling.",
     )
     subparsers = parser.add_subparsers(dest="command", required=True)
 
@@ -88,6 +89,118 @@ def main(argv: list[str] | None = None) -> int:
         action="store_true",
         help="Only read existing discovery/cache JSON files; never call Ollama.",
     )
+
+    annotate_parser = subparsers.add_parser(
+        "annotate", help="Stage 2: label each dialogue speaker from memory files."
+    )
+    _add_common_volume_args(annotate_parser, require_input=False)
+    annotate_parser.add_argument(
+        "--model",
+        dest="models",
+        action="append",
+        default=None,
+        help="Ollama model to use. Repeat for multi-model voting.",
+    )
+    annotate_parser.add_argument(
+        "--pipeline",
+        choices=("vote", "structured"),
+        default="vote",
+        help="Stage 2 pipeline. structured runs evidence -> judge -> contradiction.",
+    )
+    annotate_parser.add_argument(
+        "--evidence-model",
+        dest="evidence_models",
+        action="append",
+        default=None,
+        help="Model for structured evidence extraction. Repeat to ensemble.",
+    )
+    annotate_parser.add_argument(
+        "--judge-model",
+        dest="judge_models",
+        action="append",
+        default=None,
+        help="Model for structured adjudication. Repeat to ensemble.",
+    )
+    annotate_parser.add_argument(
+        "--contradiction-model",
+        dest="contradiction_models",
+        action="append",
+        default=None,
+        help="Model for structured contradiction checks. Repeat to ensemble.",
+    )
+    annotate_parser.add_argument("--ollama-host", default="http://127.0.0.1:11434")
+    annotate_parser.add_argument(
+        "--timeout",
+        type=int,
+        default=1800,
+        help="Socket timeout in seconds. Use 0 to disable it for long local runs.",
+    )
+    annotate_parser.add_argument("--temperature", type=float, default=0.0)
+    annotate_parser.add_argument("--num-predict", type=int, default=2048)
+    annotate_parser.add_argument("--dry-run", action="store_true")
+    annotate_parser.add_argument("--overwrite-cache", action="store_true")
+    annotate_parser.add_argument(
+        "--cache-only",
+        action="store_true",
+        help="Only read existing annotation/cache JSON files; never call Ollama.",
+    )
+    annotate_parser.add_argument("--stop-on-error", action="store_true")
+    annotate_parser.add_argument(
+        "--model-weight",
+        action="append",
+        default=[],
+        metavar="MODEL=WEIGHT",
+        help="Optional aggregation weight for a model. Repeat as needed.",
+    )
+    annotate_parser.add_argument("--max-characters", type=int, default=12)
+    annotate_parser.add_argument("--max-mysteries", type=int, default=8)
+    annotate_parser.add_argument("--max-scene-summaries", type=int, default=6)
+    annotate_parser.add_argument(
+        "--annotation-window-size",
+        type=int,
+        default=8,
+        help="Number of same-scene dialogue lines sent in one annotation request.",
+    )
+    annotate_parser.add_argument(
+        "--max-dialogue-paragraph-gap",
+        type=int,
+        default=4,
+        help="Split annotation windows when neighboring dialogues are farther apart.",
+    )
+    annotate_parser.add_argument(
+        "--context-paragraph-radius",
+        type=int,
+        default=3,
+        help="Paragraphs before/after each dialogue window sent as local context.",
+    )
+    annotate_parser.add_argument(
+        "--max-window-paragraphs",
+        type=int,
+        default=48,
+        help="Maximum context paragraphs included in one annotation request.",
+    )
+    annotate_parser.add_argument(
+        "--scene-summary-radius",
+        type=int,
+        default=0,
+        help="Nearby stage-1 scene-memory chunks to include around the dialogue window.",
+    )
+    annotate_parser.add_argument(
+        "--start-dialogue-index",
+        type=int,
+        default=0,
+        help="Zero-based dialogue_index to start from.",
+    )
+    annotate_parser.add_argument(
+        "--dialogue-limit",
+        type=int,
+        default=None,
+        help="Maximum number of dialogues to process.",
+    )
+    annotate_parser.add_argument("--min-confidence", type=float, default=0.75)
+    annotate_parser.add_argument("--min-agreement", type=float, default=0.65)
+    annotate_parser.add_argument("--min-margin", type=float, default=0.20)
+    annotate_parser.add_argument("--min-support-models", type=int, default=2)
 
     rebuild_parser = subparsers.add_parser(
         "rebuild-memory",
@@ -168,6 +281,47 @@ def main(argv: list[str] | None = None) -> int:
         _print_summary("discover", summary)
         return 0
 
+    if args.command == "annotate":
+        try:
+            model_weights = _parse_model_weights(args.model_weight)
+        except ValueError as exc:
+            parser.error(str(exc))
+        summary = annotate_volume(
+            AnnotationConfig(
+                output_dir=_resolve_output(args),
+                models=tuple(args.models or ["qwen3:32b"]),
+                pipeline=args.pipeline,
+                evidence_models=tuple(args.evidence_models or ()),
+                judge_models=tuple(args.judge_models or ()),
+                contradiction_models=tuple(args.contradiction_models or ()),
+                ollama_host=args.ollama_host,
+                timeout=args.timeout,
+                temperature=args.temperature,
+                num_predict=args.num_predict,
+                dry_run=args.dry_run,
+                overwrite_cache=args.overwrite_cache,
+                cache_only=args.cache_only,
+                continue_on_error=not args.stop_on_error,
+                model_weights=model_weights,
+                max_characters=args.max_characters,
+                max_mysteries=args.max_mysteries,
+                max_scene_summaries=args.max_scene_summaries,
+                annotation_window_size=args.annotation_window_size,
+                max_dialogue_paragraph_gap=args.max_dialogue_paragraph_gap,
+                context_paragraph_radius=args.context_paragraph_radius,
+                max_window_paragraphs=args.max_window_paragraphs,
+                scene_summary_radius=args.scene_summary_radius,
+                start_dialogue_index=args.start_dialogue_index,
+                dialogue_limit=args.dialogue_limit,
+                min_confidence=args.min_confidence,
+                min_agreement=args.min_agreement,
+                min_margin=args.min_margin,
+                min_support_models=args.min_support_models,
+            )
+        )
+        _print_summary("annotate", summary)
+        return 0
+
     if args.command == "rebuild-memory":
         summary = discover_volume(
             DiscoveryConfig(
@@ -238,6 +392,12 @@ def _add_common_volume_args(
         default=None,
         help="Output directory. Defaults to outputs/volume_XX.",
     )
+    parser.add_argument(
+        "--output-root",
+        type=Path,
+        default=Path("outputs"),
+        help="Root output directory used when --output is omitted.",
+    )
     parser.set_defaults(require_input=require_input)
 
 
@@ -250,7 +410,7 @@ def _resolve_input(args: argparse.Namespace) -> Path:
 def _resolve_output(args: argparse.Namespace) -> Path:
     if args.output:
         return args.output
-    return Path("outputs") / f"volume_{args.volume:02d}"
+    return args.output_root / f"volume_{args.volume:02d}"
 
 
 def _print_summary(stage: str, summary: dict) -> None:
@@ -258,3 +418,22 @@ def _print_summary(stage: str, summary: dict) -> None:
     for key, value in summary.items():
         if isinstance(value, (str, int, float, bool)):
             print(f"{key}: {value}")
+
+
+def _parse_model_weights(rows: list[str]) -> dict[str, float]:
+    weights: dict[str, float] = {}
+    for row in rows:
+        if "=" not in row:
+            raise ValueError(f"Invalid --model-weight {row!r}; expected MODEL=WEIGHT")
+        model, raw_weight = row.split("=", 1)
+        model = model.strip()
+        if not model:
+            raise ValueError(f"Invalid --model-weight {row!r}; model is empty")
+        try:
+            weight = float(raw_weight)
+        except ValueError as exc:
+            raise ValueError(
+                f"Invalid --model-weight {row!r}; weight must be a number"
+            ) from exc
+        weights[model] = weight
+    return weights

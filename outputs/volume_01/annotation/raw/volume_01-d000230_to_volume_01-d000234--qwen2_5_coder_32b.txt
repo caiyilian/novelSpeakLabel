@@ -1,0 +1,75 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000230",
+      "speaker_entity_id": "",
+      "speaker_display": "",
+      "speaker_status": "npc",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {"entity_id": "", "display": "商人", "status": "npc", "score": 0.8}
+      ],
+      "evidence": ["对话轮次推断"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000231",
+      "speaker_entity_id": "char_0007",
+      "speaker_display": "佩连佐男子",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {"entity_id": "char_0007", "display": "佩连佐男子", "status": "known", "score": 0.9}
+      ],
+      "evidence": ["对话轮次推断"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000232",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {"entity_id": "char_0001", "display": "罗伦斯", "status": "known", "score": 0.9}
+      ],
+      "evidence": ["对话轮次推断"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000233",
+      "speaker_entity_id": "char_0007",
+      "speaker_display": "佩连佐男子",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {"entity_id": "char_0007", "display": "佩连佐男子", "status": "known", "score": 0.9}
+      ],
+      "evidence": ["对话轮次推断"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000234",
+      "speaker_entity_id": "char_0007",
+      "speaker_display": "佩连佐男子",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {"entity_id": "char_0007", "display": "佩连佐男子", "status": "known", "score": 0.9}
+      ],
+      "evidence": ["对话轮次推断"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "根据对话轮次和场景记忆，判断罗伦斯与佩连佐男子之间的对话。"
+}

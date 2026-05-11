@@ -1,0 +1,29 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000355",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "前一句明确提到「这时赫萝的脸上突然露出笑容说」，直接指明说话人是赫萝",
+        "赫萝在本场景中是已知角色，且表现出轻松幽默的说话风格，与台词语气一致"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "该句为赫萝在场景中的直接对白，上下文明确指明说话人，轮次合理，无歧义。"
+}
+```

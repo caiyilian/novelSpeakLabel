@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000247",
+  "speaker_entity_id": "char_0009",
+  "speaker_display": "杰廉",
+  "speaker_status": "known",
+  "confidence": 0.9,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0009",
+      "display": "杰廉",
+      "status": "known",
+      "score": 0.9
+    },
+    {
+      "entity_id": "char_0008",
+      "display": "年轻商人",
+      "status": "known",
+      "score": 0.6
+    }
+  ],
+  "evidence": [
+    "对话内容为「呃……啊，那位是您的同伴吗？」，语气犹豫且带有试探性，符合杰廉试图获取情报的说话风格。",
+    "场景记忆中提到杰廉试图接近赫萝并获取情报，与该句台词的语境相符。",
+    "杰廉是本场景中唯一新出现的可追踪人物，且与罗伦斯有互动，符合说话人身份。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

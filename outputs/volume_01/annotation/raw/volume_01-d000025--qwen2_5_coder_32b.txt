@@ -1,0 +1,20 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000025",
+      "speaker_entity_id": "",
+      "speaker_display": "",
+      "speaker_status": "review",
+      "confidence": 0.3,
+      "candidate_speakers": [
+        {"entity_id": "char_0001", "display": "罗伦斯", "status": "known", "score": 0.4},
+        {"entity_id": "char_0003", "display": "骑士", "status": "known", "score": 0.4}
+      ],
+      "evidence": ["对话轮次不明确，无法判断说话人"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    }
+  ],
+  "window_notes": "根据上下文，罗伦斯和骑士都在场，但没有明确的叙述锚点来确定谁在说话。"
+}

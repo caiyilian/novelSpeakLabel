@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000439",
+  "speaker_entity_id": "char_0010",
+  "speaker_display": "店员",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0010",
+      "display": "店员",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0012",
+      "display": "采购人员",
+      "status": "known",
+      "score": 0.6
+    }
+  ],
+  "evidence": [
+    "对话内容提到「欢迎来到米隆商行」和「可以，可以，当然再欢迎不过了。那么就请直接前进到底，再向左手边的人员询问。」，符合店员接待顾客的语气和职责。",
+    "场景记忆中提到「罗伦斯与赫萝来到米隆商行的卸货场，与店员和一名魁梧的搬运工互动，准备推销皮草。」，说明店员是该场景中接待罗伦斯的人员。",
+    "店员的描述为「穿着整洁，态度专业」，与对话中热情、礼貌的语气一致。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

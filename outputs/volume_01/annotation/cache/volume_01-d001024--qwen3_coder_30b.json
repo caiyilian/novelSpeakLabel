@@ -1,0 +1,34 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001024",
+      "speaker_entity_id": "char_0028",
+      "speaker_display": "梅迪欧商行",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0028",
+          "display": "梅迪欧商行",
+          "status": "known",
+          "score": 0.9
+        },
+        {
+          "entity_id": "char_0029",
+          "display": "崔尼国王",
+          "status": "known",
+          "score": 0.1
+        }
+      ],
+      "evidence": [
+        "梅迪欧商行试图通过回收银币与王族交涉",
+        "该台词内容符合梅迪欧商行的策略描述",
+        "前文提到梅迪欧商行准备大量银币与王族交涉"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "该台词为梅迪欧商行向崔尼国王提出的交涉条件，符合其策略与前文描述一致。"
+}

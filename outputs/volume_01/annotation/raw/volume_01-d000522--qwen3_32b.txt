@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000522",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "对话内容提到「那名年轻人说过到了酒吧就可以联络到他」，与罗伦斯之前提到的杰廉有关，且罗伦斯是当前场景中主要的说话人。",
+    "上下文显示罗伦斯正在等待杰廉，并与女店员互动，符合当前说话人身份。",
+    "赫萝的说话风格轻松幽默，而该句语气理性冷静，更符合罗伦斯的说话风格。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

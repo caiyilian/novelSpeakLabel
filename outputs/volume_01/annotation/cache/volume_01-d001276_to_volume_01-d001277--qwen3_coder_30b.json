@@ -1,0 +1,47 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001276",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 1.0
+        }
+      ],
+      "evidence": [
+        "前文描述罗伦斯因害怕赫萝而反射性挪开身子，此处呼喊赫萝符合其行为逻辑；对话出现在罗伦斯试图挽留赫萝的情境中。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001277",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 1.0
+        }
+      ],
+      "evidence": [
+        "该句为内心独白，明确标注为罗伦斯所想；上下文表明罗伦斯正在试图挽留赫萝，情绪紧张，符合其理性又焦虑的性格。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "罗伦斯在试图挽留赫萝的过程中，先大声呼喊她的名字，随后内心自问是否有效，表现出强烈的情感波动和对赫萝的依恋。"
+}

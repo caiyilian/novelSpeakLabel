@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000561",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0009",
+      "display": "杰廉",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "对话内容「你是指亏损的部分吗？」是对前文「小的希望收取十枚崔尼银币作为情报费，还有老板获利的一成。」的回应，语气理性且带有商业分析倾向，符合罗伦斯的说话风格。",
+    "场景记忆中明确提到罗伦斯正在与杰廉进行情报交易谈判，且罗伦斯是主要分析和回应的一方。",
+    "杰廉的发言风格更偏向谦卑、谨慎，而此句台词更符合罗伦斯冷静、理性、略带质疑的语气。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

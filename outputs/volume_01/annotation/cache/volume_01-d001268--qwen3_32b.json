@@ -1,0 +1,33 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001268",
+      "speaker_entity_id": "mystery_volume_01_c007_s004_r004_士兵A",
+      "speaker_display": "士兵A",
+      "speaker_status": "mystery",
+      "confidence": 0.75,
+      "candidate_speakers": [
+        {
+          "entity_id": "mystery_volume_01_c007_s004_r004_士兵A",
+          "display": "士兵A",
+          "status": "mystery",
+          "score": 0.75
+        },
+        {
+          "entity_id": "mystery_volume_01_c007_s004_r004_士兵B",
+          "display": "士兵B",
+          "status": "mystery",
+          "score": 0.6
+        }
+      ],
+      "evidence": [
+        "在某个人大叫之后，现场几乎所有人都丢下武器落荒而逃",
+        "台词是极度惊恐的喊叫，符合士兵在面对巨大狼时的反应"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "该段对话为场景中士兵在面对巨大狼时的惊恐反应，说话人应为士兵A或士兵B，根据上下文推断为士兵A的可能性更高。"
+}

@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000475",
+  "speaker_entity_id": "char_0016",
+  "speaker_display": "鉴定员",
+  "speaker_status": "known",
+  "confidence": 0.9,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0016",
+      "display": "鉴定员",
+      "status": "known",
+      "score": 0.9
+    },
+    {
+      "entity_id": "char_0015",
+      "display": "鉴定的男子",
+      "status": "known",
+      "score": 0.7
+    }
+  ],
+  "evidence": [
+    "对话中提到「没能察觉到真是让我感到羞愧不已」，语气礼貌且带有真诚的歉意，符合鉴定员在赫萝影响下的态度变化。",
+    "上下文显示赫萝的言辞影响了鉴定员，使其态度从困惑转为诚恳，符合此台词的语气和情境。",
+    "当前段落之后的段落提到「罗伦斯第一次看到负责鉴定的采购人员如此低声下气」，进一步确认说话人是鉴定员。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

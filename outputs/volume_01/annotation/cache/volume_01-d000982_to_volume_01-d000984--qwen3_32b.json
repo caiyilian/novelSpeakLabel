@@ -1,0 +1,74 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000982",
+      "speaker_entity_id": "char_0024",
+      "speaker_display": "梅迪欧商行的人",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0024",
+          "display": "梅迪欧商行的人",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "上下文显示说话人是梅迪欧商行的代表，明确提到「这笔交易」和「商行的利益」，且与罗伦斯对立。",
+        "前文提到「马贺特露出了一丝丝悲伤的表情轻轻点头」，随后是梅迪欧商行代表的发言，符合对话轮次。",
+        "「罗伦斯先生您们有什么下场，与我们一点关系都没有」表明说话人是商行代表，而非罗伦斯或赫萝。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000983",
+      "speaker_entity_id": "char_0024",
+      "speaker_display": "梅迪欧商行的人",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0024",
+          "display": "梅迪欧商行的人",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "与上一句台词为同一角色连续发言，符合对话轮次逻辑。",
+        "「因为罗伦斯先生提出这笔交易，我们已经投入相当大的金额」表明说话人是商行代表。",
+        "「这可以为我们带来无以计算的利益」进一步确认说话人立场与商行一致。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000984",
+      "speaker_entity_id": "char_0024",
+      "speaker_display": "梅迪欧商行的人",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0024",
+          "display": "梅迪欧商行的人",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "与前两句为同一角色连续发言，符合对话轮次逻辑。",
+        "「我会选择商行的利益」再次确认说话人立场与商行一致。",
+        "「可是……」表明说话人尚未结束发言，符合上下文语气。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "三句台词为同一角色连续发言，符合对话轮次逻辑，说话人应为梅迪欧商行代表。"
+}

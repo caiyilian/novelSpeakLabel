@@ -1,0 +1,425 @@
+你是轻小说说话人标注项目的阶段 2：正式标注助手。
+你的任务是判断输入 target_dialogues 中每一句台词的说话人，不要改写原文。
+必须把这些台词当作同一个连续片段来判断，优先保持对话轮次和叙述线索的一致性。
+
+规则：
+1. 只输出严格 JSON，不要 Markdown，不要解释性前后缀。
+2. 如果说话人是候选角色，speaker_entity_id 必须使用 candidate_characters 里的 entity_id，speaker_status 填 known。
+3. 如果说话人像某个未知人物，speaker_entity_id 使用 candidate_mysteries 里的 mystery_id，speaker_status 填 mystery。
+4. 如果只是无法追踪的路人/群体，speaker_status 填 npc，speaker_entity_id 可为空或使用 npc:简短称呼。
+5. 证据不足时不要硬猜，speaker_status 填 ambiguous 或 review，并把 needs_review 设为 true。
+6. candidate_speakers 至少列出 1 个候选；如果无法判断，列出最可能的候选和不确定原因。
+7. confidence 使用 0 到 1 之间的小数，表示你对最终判断的把握。
+8. 不要只因为台词里提到某个名字、职业、地点，就把说话人标成那个实体；被称呼的人通常不是说话人。
+9. 连续问答、交易寒暄、命令/回答等场景要按上下句轮次判断；同一人连续说话必须有叙述或语气证据支持。
+10. 如果当前上下文显示某角色还没有登场，不要因为角色库或后文记忆里有这个角色就提前标给他/她。
+
+输出 JSON 结构：
+{
+  "annotations": [
+    {
+      "dialogue_id": "必须来自 target_dialogue_ids",
+      "speaker_entity_id": "string",
+      "speaker_display": "string",
+      "speaker_status": "known|mystery|npc|ambiguous|review",
+      "confidence": 0.0,
+      "candidate_speakers": [
+        {"entity_id": "string", "display": "string", "status": "known|mystery|npc|ambiguous|review", "score": 0.0}
+      ],
+      "evidence": ["短证据，不要大段复制原文"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "可选，简短说明整体轮次判断"
+}
+必须为 target_dialogue_ids 中每个 dialogue_id 输出且只输出一条 annotation。
+
+输入 JSON：
+{
+  "volume": {
+    "volume_id": "volume_01",
+    "volume": 1
+  },
+  "target_dialogue_ids": [
+    "volume_01-d000841",
+    "volume_01-d000842",
+    "volume_01-d000843",
+    "volume_01-d000844",
+    "volume_01-d000845",
+    "volume_01-d000846"
+  ],
+  "dialogues": [
+    {
+      "dialogue_id": "volume_01-d000841",
+      "dialogue_index": 840,
+      "window_position": 1,
+      "chapter_id": "volume_01-c005",
+      "chapter_title": "第四幕",
+      "scene_id": "volume_01-c005-s003",
+      "paragraph_id": "volume_01-c005-s003-p001825",
+      "paragraph_index": 1824,
+      "local_dialogue_index": 1,
+      "text": "有食欲就表示没问题了。",
+      "quote_text": "「有食欲就表示没问题了。」",
+      "paragraph_text": "「有食欲就表示没问题了。」",
+      "char_start": 0,
+      "char_end": 13
+    },
+    {
+      "dialogue_id": "volume_01-d000842",
+      "dialogue_index": 841,
+      "window_position": 2,
+      "chapter_id": "volume_01-c005",
+      "chapter_title": "第四幕",
+      "scene_id": "volume_01-c005-s003",
+      "paragraph_id": "volume_01-c005-s003-p001828",
+      "paragraph_index": 1827,
+      "local_dialogue_index": 1,
+      "text": "有没有喝的……",
+      "quote_text": "「有没有喝的……」",
+      "paragraph_text": "「有没有喝的……」",
+      "char_start": 0,
+      "char_end": 9
+    },
+    {
+      "dialogue_id": "volume_01-d000843",
+      "dialogue_index": 842,
+      "window_position": 3,
+      "chapter_id": "volume_01-c005",
+      "chapter_title": "第四幕",
+      "scene_id": "volume_01-c005-s003",
+      "paragraph_id": "volume_01-c005-s003-p001829",
+      "paragraph_index": 1828,
+      "local_dialogue_index": 1,
+      "text": "那儿不是有水壶吗？",
+      "quote_text": "「那儿不是有水壶吗？」",
+      "paragraph_text": "「那儿不是有水壶吗？」",
+      "char_start": 0,
+      "char_end": 11
+    },
+    {
+      "dialogue_id": "volume_01-d000844",
+      "dialogue_index": 843,
+      "window_position": 4,
+      "chapter_id": "volume_01-c005",
+      "chapter_title": "第四幕",
+      "scene_id": "volume_01-c005-s003",
+      "paragraph_id": "volume_01-c005-s003-p001831",
+      "paragraph_index": 1830,
+      "local_dialogue_index": 1,
+      "text": "……这是店面构图？",
+      "quote_text": "「……这是店面构图？」",
+      "paragraph_text": "「……这是店面构图？」",
+      "char_start": 0,
+      "char_end": 11
+    },
+    {
+      "dialogue_id": "volume_01-d000845",
+      "dialogue_index": 844,
+      "window_position": 5,
+      "chapter_id": "volume_01-c005",
+      "chapter_title": "第四幕",
+      "scene_id": "volume_01-c005-s003",
+      "paragraph_id": "volume_01-c005-s003-p001832",
+      "paragraph_index": 1831,
+      "local_dialogue_index": 1,
+      "text": "是我的店。",
+      "quote_text": "「是我的店。」",
+      "paragraph_text": "「是我的店。」",
+      "char_start": 0,
+      "char_end": 7
+    },
+    {
+      "dialogue_id": "volume_01-d000846",
+      "dialogue_index": 845,
+      "window_position": 6,
+      "chapter_id": "volume_01-c005",
+      "chapter_title": "第四幕",
+      "scene_id": "volume_01-c005-s003",
+      "paragraph_id": "volume_01-c005-s003-p001833",
+      "paragraph_index": 1832,
+      "local_dialogue_index": 1,
+      "text": "喔，画得不错。",
+      "quote_text": "「喔，画得不错。」",
+      "paragraph_text": "「喔，画得不错。」",
+      "char_start": 0,
+      "char_end": 9
+    }
+  ],
+  "context": {
+    "paragraphs": [
+      {
+        "paragraph_id": "volume_01-c005-s003-p001822",
+        "paragraph_index": 1821,
+        "text": "就在罗伦斯看着自己描绘的商店构图入迷时，赫萝不知何时已从床上坐起身子。虽然她还满脸睡意地揉着眼睛，不过看来已好很多了。赫萝反复眨了几次眼睛看看罗伦斯，然后慢吞吞地爬下床。虽然她的眼睛看来有些红肿，但气色还不错。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c005-s003-p001823",
+        "paragraph_index": 1822,
+        "text": "「感觉怎么样？」",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c005-s003-p001824",
+        "paragraph_index": 1823,
+        "text": "「嗯，好多了。不过，肚子有点饿。」",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c005-s003-p001825",
+        "paragraph_index": 1824,
+        "text": "「有食欲就表示没问题了。」",
+        "target_dialogue_ids": [
+          "volume_01-d000841"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c005-s003-p001826",
+        "paragraph_index": 1825,
+        "text": "罗伦斯笑着说，并告诉赫萝桌上有面包。那是用黑麦做成的黑面包。它又硬又苦，是等级最差的便宜货，不过罗伦斯却因为喜欢它的苦涩味而经常买来吃。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c005-s003-p001827",
+        "paragraph_index": 1826,
+        "text": "不出所料，赫萝咬了一口后，便抱怨起面包难吃，但因为没有其他食物可吃，也只能认了。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c005-s003-p001828",
+        "paragraph_index": 1827,
+        "text": "「有没有喝的……」",
+        "target_dialogue_ids": [
+          "volume_01-d000842"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c005-s003-p001829",
+        "paragraph_index": 1828,
+        "text": "「那儿不是有水壶吗？」",
+        "target_dialogue_ids": [
+          "volume_01-d000843"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c005-s003-p001830",
+        "paragraph_index": 1829,
+        "text": "赫萝朝放在面包旁边的水壶里头望了望，然后一边喝水配面包，一边贴近罗伦斯。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c005-s003-p001831",
+        "paragraph_index": 1830,
+        "text": "「……这是店面构图？」",
+        "target_dialogue_ids": [
+          "volume_01-d000844"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c005-s003-p001832",
+        "paragraph_index": 1831,
+        "text": "「是我的店。」",
+        "target_dialogue_ids": [
+          "volume_01-d000845"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c005-s003-p001833",
+        "paragraph_index": 1832,
+        "text": "「喔，画得不错。」",
+        "target_dialogue_ids": [
+          "volume_01-d000846"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c005-s004-p001834",
+        "paragraph_index": 1833,
+        "text": "赫萝频频看着图说道，然后继续吃面包。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c005-s004-p001835",
+        "paragraph_index": 1834,
+        "text": "在异国遇到语言不通时，罗伦斯偶尔会以画图来进行交易。他常会记不起想买的商品单字，也不是每次都能够找到翻译的人。所以旅行商人大多擅长画图，而每次有大笔获利时，罗伦斯总会动手画出商店的构图。这比喝酒还要令他心旷神怡。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c005-s004-p001836",
+        "paragraph_index": 1835,
+        "text": "虽然罗伦斯对自己画图的技巧本来就相当有自信，但被人褒奖还是令他开心。",
+        "target_dialogue_ids": []
+      }
+    ]
+  },
+  "scene_memory": [
+    {
+      "scene_id": "volume_01-c005-s003-r005",
+      "parent_scene_id": "volume_01-c005-s003",
+      "chunk_index": 5,
+      "chunk_count": 6,
+      "scene_summary": "罗伦斯和赫萝在旅馆中休息。赫萝因宿醉感到不适，罗伦斯照顾她并继续规划自己的开店梦想。赫萝逐渐恢复体力，但抱怨食物难吃。",
+      "active_characters": [
+        "罗伦斯",
+        "赫萝"
+      ],
+      "relationships": [
+        "罗伦斯与赫萝关系亲密，表现出照顾与调侃的互动。",
+        "罗伦斯与店老板有间接互动。"
+      ],
+      "notes": "赫萝表现出宿醉症状，罗伦斯照顾她并继续规划开店计划。场景中未出现新神秘人物。"
+    },
+    {
+      "scene_id": "volume_01-c005-s003-r006",
+      "parent_scene_id": "volume_01-c005-s003",
+      "chunk_index": 6,
+      "chunk_count": 6,
+      "scene_summary": "赫萝与罗伦斯在某个场景中互动，赫萝喝水配面包，并评论罗伦斯的店面构图。",
+      "active_characters": [
+        "赫萝",
+        "罗伦斯"
+      ],
+      "relationships": [
+        "赫萝与罗伦斯一同旅行",
+        "赫萝对罗伦斯的怀疑感到调侃",
+        "罗伦斯对赫萝的身份持怀疑态度"
+      ],
+      "notes": "本场景中赫萝与罗伦斯的互动表现出他们之间的亲密与调侃关系，赫萝的轻松幽默与罗伦斯的理性形成对比。"
+    }
+  ],
+  "candidate_characters": [
+    {
+      "entity_id": "char_0001",
+      "display_name": "罗伦斯",
+      "aliases": [
+        "罗伦斯",
+        "罗伦斯先生"
+      ],
+      "titles": [
+        "中间人",
+        "交易者",
+        "同行",
+        "商人",
+        "小毛头",
+        "小的",
+        "市井无赖",
+        "年轻人",
+        "开店者",
+        "情报贩子",
+        "提议者",
+        "新手"
+      ],
+      "description": "一位行商人，正在与米隆商行的代表马贺特进行交易谈判。他原本期待获得两千枚银币，但实际只得到一百二十枚，感到震惊和困惑。 / 一位行商人，发现并收留了赫萝，决定与她一同旅行。 / 一位二十五岁的自力更生旅行商人，已有七年行商经验，性格泰然自若。 / 一位冷静理性的旅行商人，对赫萝的身份持怀疑态度，但仍保持互动。他注重外表整洁，对商业制度有深入理解。 / 冷静理性的旅行商人，与赫萝一同旅行。在本场景中与米隆商行的马贺特讨论梅迪欧商行的威胁，提出利用崔尼银币交易作为交涉王牌。 / 一位冷静理性的旅行商人，与赫萝一同旅行。在本场景中与米隆商行的马贺特达成交易，表现出策略性和经验。 / 正在与马贺特讨论交易细节的商人，表现出对辛香料的兴趣。 / 一位冷静理性的旅行商人，正在与米隆商行的马贺特进行交易。他表现出对开店的期待，并思考未来。 / 一位冷静理性的旅行商人，正在处理一份请款单，但对单据内容感到困惑。 / 一位行商人，正在与商行代表进行交易。他表现出冷静和策略性，询问卸货场的位置。 / 一位行商人，发现并收留了赫萝，决定与她一同旅行。他性格冷静理性，对赫萝的身份持怀疑态度，但仍保持互动。他注重外表整洁，对商业制度有深入理解。 / 冷静理性的旅行商人，与赫萝一同旅行。在本场景中试图安抚赫萝的情绪，表现出对她的关心。",
+      "speech_style": "理性、坚定、略带情绪化 / 冷静、理性，带有悔恨和自责的语气。 / 冷静、理性，语气中带有对赫萝的关心和些许担忧。 / 冷静、理性、略带失落 / 冷静、理性，对商业制度有深入理解，并能清晰地向他人解释。 / 理性、礼貌、略带谨慎。 / 理性、冷静，带有商业分析倾向。 / 理性、沉稳、略带幽默 / 理性、冷静，但因困惑而表现出急切。 / 冷静、直接、略带命令语气 / 冷静、理性、简洁 / 冷静、理性、略带幽默",
+      "relationship_hints": [
+        "与赫萝一同旅行",
+        "对赫萝的真实性持怀疑态度",
+        "与深山村落的村民有交易关系",
+        "对修道院抱有商业期望但未成功",
+        "与骑士有短暂互动",
+        "与小村落的村民有交易关系",
+        "与修道院有关联",
+        "对教会和异教徒问题有见解",
+        "与叶勒有联系",
+        "在麦田中与农夫互动",
+        "与农夫有互动",
+        "在村民中保持低调"
+      ],
+      "first_seen_scene_id": "volume_01-c000-s003-r001",
+      "latest_seen_scene_id": "volume_01-c008-s003-r002",
+      "confidence": 1.0
+    },
+    {
+      "entity_id": "char_0002",
+      "display_name": "赫萝",
+      "aliases": [
+        "赫萝"
+      ],
+      "titles": [
+        "丰收之神",
+        "咱",
+        "神秘少女",
+        "约伊兹的贤狼",
+        "贤狼"
+      ],
+      "description": "自称丰收之神的神秘少女，拥有狼的耳朵和尾巴。在本场景中协助罗伦斯，表现出对他的关心和保护。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴，行为举止非人类，表现出轻松幽默但略带威胁性的说话风格。在本场景中，她对罗伦斯的伤口进行吸血，引发旁人惊呼，并表现出悲伤的情绪。 / 自称是丰收之神的神秘少女，拥有狼的耳朵和尾巴。在本场景中逐渐显露出非人类的特征，最终完全变成一只巨大的狼。她与罗伦斯有情感交流，表现出悲伤和决绝的情绪。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴，未直接参与本场景，但罗伦斯的行动可能与她有关。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴。在本场景中制服叶勒，并要求罗伦斯提供麦子，表现出非人类的特征和威胁性。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴。在本场景中以威胁的方式向罗伦斯索要麦子，表现出非人类的特征和强大的气场。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴。她表现出轻松幽默但略带威胁性的说话风格，对罗伦斯的挽留表现出复杂的情绪。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴，说话轻松幽默但略带威胁性。在本场景中拒绝罗伦斯的挽留，表现出独立和决绝。 / 赫萝的尾巴是罗伦斯追击的目标，她最终离开罗伦斯，留下他独自面对危险。罗伦斯回忆起赫萝离去的场景，表现出对她的依赖和悔恨。 / 自称是丰收之神的神秘少女，拥有狼的耳朵和尾巴。在本场景中独自前往市场为旅行整装，表现出独立和果断的一面。 / 自称是丰收之神的少女，拥有狼的耳朵和尾巴，说话狡诈。她与罗伦斯一同旅行，表现出轻松幽默但略带威胁性的说话风格。 / 自称丰收之神的神秘少女，拥有狼的耳…",
+      "speech_style": "轻松幽默但略带威胁性，情绪化且带有调侃语气。 / 轻松幽默、略带调侃和威胁 / 轻松幽默、略带威胁性 / 轻松幽默、略带威胁性、撒娇 / 警觉、神秘 / 轻松幽默但略带威胁性 / 轻松幽默、略带调侃 / 轻松幽默但略带威胁性，语气中透露出对罗伦斯的依赖。 / 轻松幽默、略带威胁性、自信 / 轻松幽默但略带威胁性，情绪波动明显 / 轻松幽默、略带威胁、情绪波动明显 / 轻松幽默但略带威胁性，表现出自信和调皮的特质。",
+      "relationship_hints": [
+        "与罗伦斯一同旅行",
+        "被罗伦斯怀疑是否为真正的神",
+        "与叶勒有附身关系",
+        "与罗伦斯有潜在互动",
+        "与罗伦斯有互动，似乎是被他发现并收留的。",
+        "与罗伦斯有互动，但尚未明确关系",
+        "与罗伦斯互动频繁，表现出对他的信任和玩笑态度",
+        "与罗伦斯互动密切",
+        "似乎对罗伦斯的反应感到有趣",
+        "与罗伦斯有互动，似乎是被他收留的神秘女孩。",
+        "与帕斯罗村的丰收之神有关联。",
+        "与罗伦斯对话，表现出信任与互动"
+      ],
+      "first_seen_scene_id": "volume_01-c000-s003-r001",
+      "latest_seen_scene_id": "volume_01-c008-s003-r002",
+      "confidence": 1.0
+    },
+    {
+      "entity_id": "char_0021",
+      "display_name": "店老板",
+      "aliases": [],
+      "titles": [
+        "店主"
+      ],
+      "description": "店中的老板，观察赫萝的宿醉状态并发表评论。 / 旅馆的老板，观察赫萝的宿醉状态并发表评论。",
+      "speech_style": "温和、观察力强 / 轻松、幽默 / 中立、观察性 / 未直接发言，但通过罗伦斯的描述可推测其态度。",
+      "relationship_hints": [
+        "对赫萝的状况表示理解",
+        "对旅行商人有经验",
+        "与罗伦斯互动",
+        "提供果汁",
+        "与赫萝和罗伦斯有互动",
+        "店老板与罗伦斯有互动，但未直接对话。"
+      ],
+      "first_seen_scene_id": "volume_01-c005-s002-r004",
+      "latest_seen_scene_id": "volume_01-c005-s003-r005",
+      "confidence": 0.8
+    }
+  ],
+  "candidate_mysteries": [
+    {
+      "mystery_id": "mystery_volume_01_c008_s001_r002_赫萝",
+      "temporary_name": "赫萝",
+      "description": "罗伦斯的旅伴，拥有狼的特征，曾在地下道中护送罗伦斯，目前下落不明。",
+      "evidence": [
+        "volume_01-c008-s001-p002960",
+        "volume_01-c008-s001-p002961",
+        "volume_01-c008-s001-p002963"
+      ],
+      "source_scene_id": "volume_01-c008-s001-r002",
+      "confidence": 0.85
+    },
+    {
+      "mystery_id": "mystery_volume_01_c002_s002_r001_赫萝",
+      "temporary_name": "赫萝",
+      "description": "传说中的丰收之神，被村民称为狼，是祭典的核心象征。",
+      "evidence": [
+        "volume_01-c002-s002-p000160",
+        "volume_01-c002-s002-p000164"
+      ],
+      "source_scene_id": "volume_01-c002-s002-r001",
+      "confidence": 0.8
+    },
+    {
+      "mystery_id": "mystery_volume_01_c002_s002_r003_赫萝",
+      "temporary_name": "赫萝",
+      "description": "虽然未直接出现，但被提及为祭典的核心人物，与罗伦斯有情感牵连。",
+      "evidence": [
+        "volume_01-c002-s002-p000187",
+        "volume_01-c002-s002-p000195"
+      ],
+      "source_scene_id": "volume_01-c002-s002-r003",
+      "confidence": 0.75
+    }
+  ]
+}

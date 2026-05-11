@@ -1,0 +1,187 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000457",
+      "speaker_entity_id": "char_0014",
+      "speaker_display": "商行代表",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0014",
+          "display": "商行代表",
+          "status": "known",
+          "score": 0.9
+        },
+        {
+          "entity_id": "char_0015",
+          "display": "鉴定的男子",
+          "status": "known",
+          "score": 0.1
+        }
+      ],
+      "evidence": [
+        "提及'贵行'、'麦子的交易'、'品质均一的皮草'等商业术语，符合商行代表身份",
+        "语气正式、礼貌，符合商业谈判场景"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000458",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.85
+        },
+        {
+          "entity_id": "char_0014",
+          "display": "商行代表",
+          "status": "known",
+          "score": 0.15
+        }
+      ],
+      "evidence": [
+        "前一句为商行代表所说，此句为回应，符合对话轮次",
+        "语气谦逊，符合罗伦斯性格"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000459",
+      "speaker_entity_id": "char_0014",
+      "speaker_display": "商行代表",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0014",
+          "display": "商行代表",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "继续使用'贵行'，表明说话人是商行代表",
+        "表达合作意愿，符合商行代表立场"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000460",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.8
+        }
+      ],
+      "evidence": [
+        "前一句为商行代表所说，此句为罗伦斯回应",
+        "语气中带有试探性，符合罗伦斯性格"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000461",
+      "speaker_entity_id": "char_0014",
+      "speaker_display": "商行代表",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0014",
+          "display": "商行代表",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "语气正式、礼貌，符合商行代表身份",
+        "提及'今后彼此的密切关系'，符合商业谈判场景"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000462",
+      "speaker_entity_id": "review",
+      "speaker_display": "",
+      "speaker_status": "review",
+      "confidence": 0.0,
+      "candidate_speakers": [],
+      "evidence": [
+        "为 inline 引号，非独立对白",
+        "上下文显示赫萝拉了罗伦斯的衣角，但未明确说话人"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    },
+    {
+      "dialogue_id": "volume_01-d000463",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "前一句为赫萝拉衣角，此句为罗伦斯回应",
+        "语气中带有困惑和道歉，符合罗伦斯性格"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000464",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "前文赫萝拉罗伦斯衣角，此句为赫萝插话",
+        "语气轻松幽默，符合赫萝说话风格",
+        "提及'咱不懂行情'，符合赫萝自称'咱'的设定"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，罗伦斯与商行代表进行交易谈判，赫萝在其中插话并表达对价格的关注。"
+}

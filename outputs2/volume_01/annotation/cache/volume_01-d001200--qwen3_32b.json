@@ -1,0 +1,33 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001200",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        },
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "ambiguous",
+          "score": 0.1
+        }
+      ],
+      "evidence": [
+        "上下文显示罗伦斯在地下道中感到焦虑并踢了墙壁，符合说话人情绪状态",
+        "赫萝在场景中表现出冷静，不太可能说出焦虑的台词"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "该句为罗伦斯在地下道中迷路时的反应，符合其焦虑情绪，上下文无其他说话人线索，轮次合理。"
+}

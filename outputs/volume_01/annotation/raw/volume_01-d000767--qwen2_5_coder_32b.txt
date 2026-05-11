@@ -1,0 +1,20 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000767",
+      "speaker_entity_id": "",
+      "speaker_display": "",
+      "speaker_status": "review",
+      "confidence": 0.3,
+      "candidate_speakers": [
+        {"entity_id": "char_0002", "display": "赫萝", "status": "known", "score": 0.4},
+        {"entity_id": "", "display": "npc:罗伦斯", "status": "npc", "score": 0.3}
+      ],
+      "evidence": ["对话轮次不明确，无法确定说话人"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    }
+  ],
+  "window_notes": "根据上下文，赫萝和罗伦斯都在场，但没有明确的叙述线索表明谁在说话。"
+}

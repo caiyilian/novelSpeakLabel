@@ -1,0 +1,187 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000558",
+      "speaker_entity_id": "char_0009",
+      "speaker_display": "杰廉",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0009",
+          "display": "杰廉",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "台词中自称「小的」，符合杰廉的谦卑语气和自称风格。",
+        "对话内容涉及情报费和利益分成，与杰廉作为情报贩子的身份相符。",
+        "上下文显示杰廉正在与罗伦斯谈判，是当前对话的主动提出者。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000559",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "台词是对杰廉提议的回应，语气带有讽刺和理性分析，符合罗伦斯的说话风格。",
+        "上下文显示罗伦斯正在冷静评估杰廉的提议，是当前对话的回应者。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000560",
+      "speaker_entity_id": "char_0009",
+      "speaker_display": "杰廉",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0009",
+          "display": "杰廉",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "台词中再次自称「小的」，延续了前一句的说话人风格。",
+        "对话内容继续解释自己的立场，符合杰廉在谈判中的角色。",
+        "上下文显示杰廉在回应罗伦斯的质疑，保持对话轮次。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000561",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "台词是对杰廉解释的回应，符合罗伦斯的理性提问风格。",
+        "上下文显示对话轮次在罗伦斯和杰廉之间交替，此句为罗伦斯的回应。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000562",
+      "speaker_entity_id": "char_0009",
+      "speaker_display": "杰廉",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0009",
+          "display": "杰廉",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "台词中继续解释亏损责任，延续了杰廉的说话风格。",
+        "上下文显示杰廉在回应罗伦斯的质疑，保持对话轮次。",
+        "台词中提到「老板您」，表明说话人是杰廉，称呼罗伦斯为「老板」。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000563",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "台词是对杰廉解释的回应，语气中带有总结和接受的意味，符合罗伦斯的理性风格。",
+        "上下文显示罗伦斯在确认交易条件后表示接受，是当前对话的回应者。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000564",
+      "speaker_entity_id": "char_0009",
+      "speaker_display": "杰廉",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0009",
+          "display": "杰廉",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "台词是对罗伦斯接受提议的回应，表达感谢，符合杰廉的谦卑语气。",
+        "上下文显示对话轮次在罗伦斯和杰廉之间交替，此句为杰廉的回应。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000565",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "台词是对杰廉的确认，语气理性且正式，符合罗伦斯的说话风格。",
+        "上下文显示罗伦斯在确认交易细节，是当前对话的主动发言者。",
+        "台词中使用「你提出」，表明说话人是罗伦斯，称呼杰廉为「你」。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，罗伦斯与杰廉交替发言，符合交易谈判的场景。说话人判断基于对话语气、自称和上下文逻辑，无明显歧义。"
+}
+```

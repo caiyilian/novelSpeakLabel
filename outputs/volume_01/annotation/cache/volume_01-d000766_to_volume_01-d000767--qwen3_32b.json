@@ -1,0 +1,49 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000766",
+      "speaker_entity_id": "mystery_volume_01_c005_s001_r004_帕斯罗村朋友",
+      "speaker_display": "帕斯罗村朋友",
+      "speaker_status": "mystery",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {
+          "entity_id": "mystery_volume_01_c005_s001_r004_帕斯罗村朋友",
+          "display": "帕斯罗村朋友",
+          "status": "mystery",
+          "score": 0.8
+        }
+      ],
+      "evidence": [
+        "赫萝在上下文中多次提到这位朋友，描述其性格和行为特征，表明说话人不是赫萝或罗伦斯。",
+        "该台词与赫萝对朋友的描述一致，语气带有评价性，符合第三人称叙述。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000767",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "上下文显示赫萝已经入睡，而该台词出现在罗伦斯的行动段落之后，符合他喃喃自语的场景。",
+        "该台词语气低沉，带有情绪，符合罗伦斯的性格和行为模式。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "第一句台词是赫萝对朋友的评价，说话人应为该神秘人物；第二句台词出现在罗伦斯的行动段落后，应为罗伦斯的喃喃自语。对话轮次清晰，无冲突。"
+}

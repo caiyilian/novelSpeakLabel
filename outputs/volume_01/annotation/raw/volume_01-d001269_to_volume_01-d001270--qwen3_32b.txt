@@ -1,0 +1,63 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001269",
+      "speaker_entity_id": "mystery_volume_01_c007_s004_r004_士兵A",
+      "speaker_display": "士兵A",
+      "speaker_status": "mystery",
+      "confidence": 0.75,
+      "candidate_speakers": [
+        {
+          "entity_id": "mystery_volume_01_c007_s004_r004_士兵A",
+          "display": "士兵A",
+          "status": "mystery",
+          "score": 0.75
+        },
+        {
+          "entity_id": "mystery_volume_01_c007_s004_r004_士兵B",
+          "display": "士兵B",
+          "status": "mystery",
+          "score": 0.25
+        }
+      ],
+      "evidence": [
+        "丢出武器的两人发出如此简短的声音",
+        "「呜！」是第一个简短声音，推测为士兵A"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001270",
+      "speaker_entity_id": "mystery_volume_01_c007_s004_r004_士兵B",
+      "speaker_display": "士兵B",
+      "speaker_status": "mystery",
+      "confidence": 0.75,
+      "candidate_speakers": [
+        {
+          "entity_id": "mystery_volume_01_c007_s004_r004_士兵B",
+          "display": "士兵B",
+          "status": "mystery",
+          "score": 0.75
+        },
+        {
+          "entity_id": "mystery_volume_01_c007_s004_r004_士兵A",
+          "display": "士兵A",
+          "status": "mystery",
+          "score": 0.25
+        }
+      ],
+      "evidence": [
+        "丢出武器的两人发出如此简短的声音",
+        "「喔！」是第二个简短声音，推测为士兵B"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "两个简短声音「呜！」和「喔！」来自两名士兵，根据上下文推断为士兵A和士兵B，轮次交替合理，无叙述锚点，因此降低置信度。"
+}
+```

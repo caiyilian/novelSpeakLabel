@@ -1,0 +1,87 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000324",
+      "speaker_entity_id": "volume_01-d000324",
+      "speaker_display": "赫萝",
+      "speaker_status": "review",
+      "confidence": 0.0,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": ["inline 引号内容，非独立对白；赫萝看了罗伦斯一眼，仿佛在说似地不怀好意笑着"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    },
+    {
+      "dialogue_id": "volume_01-d000325",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": ["使用自称「咱」，符合赫萝的说话风格；语气挑衅且情绪化；与前文赫萝对罗伦斯的互动一致"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000326",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.85
+        },
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.15
+        }
+      ],
+      "evidence": ["语气简短、带有困惑或无奈；符合罗伦斯理性但略显迟疑的说话风格；赫萝在前一句中提出问题，罗伦斯回应是合理轮次"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000327",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.98,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.98
+        }
+      ],
+      "evidence": ["使用自称「咱」，符合赫萝说话风格；内容连贯、情绪饱满，与赫萝的自信与狡黠性格一致；前文赫萝提出话题并引发罗伦斯回应"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "赫萝提出关于时间与空气的讨论，罗伦斯回应困惑，随后赫萝展开详细解释，对话轮次清晰，符合角色性格与上下文逻辑"
+}

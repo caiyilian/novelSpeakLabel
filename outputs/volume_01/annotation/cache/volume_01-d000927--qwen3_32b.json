@@ -1,0 +1,30 @@
+{
+  "dialogue_id": "volume_01-d000927",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.02
+    }
+  ],
+  "evidence": [
+    "说话者使用了「咱」自称，这是赫萝的典型语言风格。",
+    "对话内容提到「耳朵及尾巴」，暗示说话者拥有非人类特征，与赫萝的设定一致。",
+    "对话中提到「求救」和「被捉到」，符合赫萝在场景中试图说服罗伦斯独自行动的策略。",
+    "赫萝在场景中主导策略讨论，表现出对罗伦斯的调侃和关心，与该段对话语气一致。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

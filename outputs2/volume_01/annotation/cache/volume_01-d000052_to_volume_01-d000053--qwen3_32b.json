@@ -1,0 +1,51 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000052",
+      "speaker_entity_id": "mystery_volume_01_c002_s002_r003_神秘女孩",
+      "speaker_display": "神秘女孩",
+      "speaker_status": "mystery",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "mystery_volume_01_c002_s002_r003_神秘女孩",
+          "display": "神秘女孩",
+          "status": "mystery",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "上下文显示女孩刚刚被叫醒，发出模糊的‘嗯……啊……’，符合刚醒来的反应。",
+        "该段落描述女孩拥有类似小狗的耳朵，暗示她可能是非人类角色，但尚未完全清醒。",
+        "罗伦斯是主动叫醒她的人，因此该台词应来自被叫醒的神秘女孩。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000053",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "上下文明确提到罗伦斯‘提足丹田之力开口说’，紧接着就是该台词。",
+        "台词‘喂！你擅自坐上别人的马车，想干什么？’符合罗伦斯的语气和性格，也与他试图叫醒女孩并质问的动机一致。",
+        "罗伦斯是该场景中唯一明确登场并主动说话的角色。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "两句话构成一个对话轮次：罗伦斯叫醒女孩后，女孩发出模糊回应，随后罗伦斯继续质问。对话顺序清晰，说话人判断明确。"
+}

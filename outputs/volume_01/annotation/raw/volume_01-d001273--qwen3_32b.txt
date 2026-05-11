@@ -1,0 +1,29 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001273",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "前文提到罗伦斯在喊赫萝的名字，此处是紧接着的对赫萝的称呼，符合说话人轮次逻辑",
+        "上下文显示罗伦斯刚刚在观察赫萝的行为，随后发出「赫萝……」的台词，符合其冷静理性的说话风格"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "当前对话为罗伦斯对赫萝的称呼，符合上下文轮次逻辑，无其他说话人介入。"
+}
+```

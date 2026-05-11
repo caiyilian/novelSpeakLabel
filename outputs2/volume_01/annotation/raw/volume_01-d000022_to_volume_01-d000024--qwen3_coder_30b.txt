@@ -1,0 +1,62 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000022",
+      "speaker_entity_id": "char_0003",
+      "speaker_display": "骑士",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0003",
+          "display": "骑士",
+          "status": "known",
+          "score": 1.0
+        }
+      ],
+      "evidence": ["对话内容符合骑士身份与态度，询问消息并表达防卫任务；上下文明确为骑士发问"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000023",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 1.0
+        }
+      ],
+      "evidence": ["上下文明确说明是罗伦斯回答；句中‘事实上，罗伦斯是在撒谎’直接指向说话人"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000024",
+      "speaker_entity_id": "char_0003",
+      "speaker_display": "骑士",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0003",
+          "display": "骑士",
+          "status": "known",
+          "score": 1.0
+        }
+      ],
+      "evidence": ["语气与态度符合骑士性格；前文为骑士提问，后文为骑士推测，逻辑连贯"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，骑士先发问，罗伦斯回答，随后骑士再发言，符合角色行为逻辑"
+}

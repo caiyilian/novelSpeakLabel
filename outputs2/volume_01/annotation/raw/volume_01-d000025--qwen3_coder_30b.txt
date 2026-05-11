@@ -1,0 +1,34 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000025",
+      "speaker_entity_id": "char_0003",
+      "speaker_display": "骑士",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0003",
+          "display": "骑士",
+          "status": "known",
+          "score": 0.9
+        },
+        {
+          "entity_id": "char_0004",
+          "display": "农夫",
+          "status": "known",
+          "score": 0.1
+        }
+      ],
+      "evidence": [
+        "前文提到骑士在分发蜂蜜糖，且对罗伦斯说‘异教徒祭典’是猜测，符合骑士的语气和行为逻辑",
+        "骑士有‘呃……’、‘嗯……真好吃’等说话习惯，与上下文语境相符",
+        "罗伦斯在后文提到‘离开修道院一会儿后，罗伦斯喃喃念着骑士说的话’，说明该台词出自骑士"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "根据上下文，该台词由骑士说出，其行为与言语风格符合前文描述的骑士角色。"
+}

@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d000983",
+  "speaker_entity_id": "char_0020",
+  "speaker_display": "列支敦·马贺特",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0020",
+      "display": "列支敦·马贺特",
+      "status": "known",
+      "score": 0.98
+    }
+  ],
+  "evidence": [
+    "前一段提到「马贺特露出了一丝丝悲伤的表情轻轻点头，然后带着惋惜的口吻说」，紧接着是当前段落的台词。",
+    "下一段提到「马贺特叹了一口气，沉稳地说」，进一步确认说话人是马贺特。",
+    "场景记忆中，马贺特是米隆商行帕兹欧分行的行长，与罗伦斯有商业谈判，且说话风格理性、冷静，强调利益优先。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

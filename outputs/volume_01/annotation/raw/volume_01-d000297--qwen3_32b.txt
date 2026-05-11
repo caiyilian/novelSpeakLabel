@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000297",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "对话内容与赫萝一贯的说话风格一致，轻松幽默但略带威胁性，且在场景中她与罗伦斯的互动频繁。",
+    "前一段对话中赫萝提问「如果咱不在这儿的话，汝会怎么判断？」，显示她正在与罗伦斯进行讨论。",
+    "赫萝在场景中表现出对罗伦斯的调侃和控制欲，符合当前对话中分析局势、提出策略的语气。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

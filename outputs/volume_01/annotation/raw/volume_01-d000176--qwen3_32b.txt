@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d000176",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    }
+  ],
+  "evidence": [
+    "赫萝在场景中表达了对故乡的思念，并提出与罗伦斯一同旅行。",
+    "对话中使用了「咱」这一自称，符合赫萝的说话风格。",
+    "上下文显示赫萝在与罗伦斯对话，且情绪和语气与她的角色设定一致。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

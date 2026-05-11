@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000314",
+  "speaker_entity_id": "char_0009",
+  "speaker_display": "杰廉",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0009",
+      "display": "杰廉",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "mystery_volume_01_c003_s003_r006_优伦朵酒吧老板",
+      "display": "优伦朵酒吧老板",
+      "status": "mystery",
+      "score": 0.1
+    }
+  ],
+  "evidence": [
+    "杰廉在场景中被提及为联络中介，且台词中提到「优伦朵酒吧」，与场景记忆中罗伦斯与杰廉达成协议的场景一致。",
+    "台词中「小的」是杰廉的自称之一，符合其在候选角色中的描述。",
+    "场景记忆中明确指出杰廉告知联络地点为帕兹欧的优伦朵酒吧。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

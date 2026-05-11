@@ -1,0 +1,30 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000025",
+      "speaker_entity_id": "char_0003",
+      "speaker_display": "骑士",
+      "speaker_status": "known",
+      "confidence": 0.75,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0003",
+          "display": "骑士",
+          "score": 0.75
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "score": 0.25
+        }
+      ],
+      "evidence": [
+        "提及「异教徒祭典」与罗伦斯反应呼应",
+        "骑士有提及蜂蜜糖的语境",
+        "无明确自称或口癖证据"
+      ],
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话内容与罗伦斯后续反应形成呼应，但无明确说话人，需结合上下文判断。"
+}

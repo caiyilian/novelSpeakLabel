@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d000061",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "赫萝的说话风格轻松幽默但略带威胁性，与台词「喂！有什么好笑的？」相符。",
+    "场景记忆中赫萝多次表现出被取笑或戏弄时的反应，与当前对话情绪一致。",
+    "赫萝拥有狼耳和尖牙，符合前文描述的「女孩」特征。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

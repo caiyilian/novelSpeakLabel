@@ -1,0 +1,52 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001018",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.98,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.98
+        }
+      ],
+      "evidence": [
+        "上下文提到『罗伦斯现在能做的，就只有动脑思考出一个妙计』，紧接着是该台词，符合说话人逻辑",
+        "场景记忆中罗伦斯是主动提出策略的一方，与该台词内容一致"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001019",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.97,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.97
+        }
+      ],
+      "evidence": [
+        "该台词紧接上一条台词，符合同一人连续发言的对话轮次",
+        "场景记忆中罗伦斯提出具体策略，与该台词内容一致",
+        "上下文提到『罗伦斯切入话题』，紧接着是该台词，符合说话人逻辑"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "两条台词为同一人连续发言，符合上下文逻辑和场景记忆中罗伦斯的主动策略提出者身份。"
+}
+```

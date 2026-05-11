@@ -1,0 +1,175 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001234",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "上下文提到赫萝看到叶勒后叫了出来，紧接着是这句「啊。」，符合她的反应语气。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001235",
+      "speaker_entity_id": "char_0004",
+      "speaker_display": "叶勒",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0004",
+          "display": "叶勒",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "对话中明确称呼「罗伦斯」，且上下文提到叶勒刚刚出现，符合说话人身份。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001236",
+      "speaker_entity_id": "char_0004",
+      "speaker_display": "叶勒",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0004",
+          "display": "叶勒",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "叶勒在前一句刚提到罗伦斯，接下来继续谈论帕斯罗村的交易，符合对话轮次。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001237",
+      "speaker_entity_id": "char_0004",
+      "speaker_display": "叶勒",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0004",
+          "display": "叶勒",
+          "status": "known",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "叶勒继续谈论帕斯罗村的交易细节，符合对话轮次。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001238",
+      "speaker_entity_id": "char_0004",
+      "speaker_display": "叶勒",
+      "speaker_status": "known",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0004",
+          "display": "叶勒",
+          "status": "known",
+          "score": 0.8
+        }
+      ],
+      "evidence": [
+        "叶勒在前几句持续发言，此句为对话轮次的延续。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001239",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "对话中明确称呼「叶勒」，且上下文提到罗伦斯对叶勒的反应，符合说话人身份。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001240",
+      "speaker_entity_id": "char_0004",
+      "speaker_display": "叶勒",
+      "speaker_status": "known",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0004",
+          "display": "叶勒",
+          "status": "known",
+          "score": 0.8
+        }
+      ],
+      "evidence": [
+        "叶勒在前一句刚被罗伦斯回应，此句为对话轮次的延续。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001241",
+      "speaker_entity_id": "char_0004",
+      "speaker_display": "叶勒",
+      "speaker_status": "known",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0004",
+          "display": "叶勒",
+          "status": "known",
+          "score": 0.8
+        }
+      ],
+      "evidence": [
+        "叶勒在前几句持续发言，此句为对话轮次的延续。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，叶勒和罗伦斯交替发言，赫萝在开头有简短反应。所有台词均可通过上下文和角色行为合理分配。"
+}
+```

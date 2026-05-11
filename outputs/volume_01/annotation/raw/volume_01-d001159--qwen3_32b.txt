@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d001159",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    }
+  ],
+  "evidence": [
+    "上下文显示赫萝在罗伦斯的安抚下表现出脆弱和依赖，随后以轻松幽默但略带威胁的语气调侃罗伦斯。",
+    "当前段落中提到「汝真是可爱的男孩呐。」，符合赫萝轻松幽默但略带调侃的说话风格。",
+    "接下来的段落提到赫萝说话带点受不了罗伦斯似的口吻，进一步确认说话人是赫萝。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

@@ -1,0 +1,44 @@
+```json
+{
+  "scene_id": "volume_01-c002-s003",
+  "scene_summary": "罗伦斯在旅途中遇到一个自称赫萝的神秘女孩。她拥有非人类的特征，如尖牙和耳朵，自称是丰收之神，但行为举止天真。罗伦斯对她产生怀疑，但最终收起武器，两人开始交谈。",
+  "active_characters": ["罗伦斯", "赫萝"],
+  "character_candidates": [
+    {
+      "display_name": "赫萝",
+      "aliases": ["丰收之神"],
+      "titles": ["丰收之神"],
+      "description": "自称是丰收之神的神秘女孩，拥有狼的耳朵和尖牙，行为天真但言语狡诈，自称名字为赫萝。",
+      "speech_style": "天真、狡诈、自信",
+      "speech_markers": ["咱", "好名字呗？"],
+      "relationship_hints": ["与罗伦斯有初步互动，可能是他未来的旅伴"],
+      "evidence": [
+        "volume_01-c002-s003-p000265",
+        "volume_01-c002-s003-p000278",
+        "volume_01-c002-s003-p000281",
+        "volume_01-c002-s003-p000292"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": ["旅行商人"],
+      "description": "一位理性、谨慎的商人，对神秘女孩赫萝表现出警惕，但逐渐放松，可能成为她的旅伴。",
+      "speech_style": "理性、怀疑、谨慎",
+      "speech_markers": ["你到底是谁？", "真巧，我也认识一个叫做赫萝的人。"],
+      "relationship_hints": ["与赫萝有初步互动，可能是她未来的旅伴"],
+      "evidence": [
+        "volume_01-c002-s003-p000266",
+        "volume_01-c002-s003-p000272",
+        "volume_01-c002-s003-p000277",
+        "volume_01-c002-s003-p000284"
+      ],
+      "confidence": 0.98
+    }
+  ],
+  "mystery_entities": [],
+  "relationships": ["罗伦斯与赫萝初步建立信任", "赫萝自称是丰收之神，暗示与帕斯罗村有关"],
+  "notes": "赫萝的非人类特征和自称神明的身份暗示她可能是某种超自然存在。罗伦斯的理性态度与她的天真形成对比，两人互动可能发展为长期关系。"
+}
+```

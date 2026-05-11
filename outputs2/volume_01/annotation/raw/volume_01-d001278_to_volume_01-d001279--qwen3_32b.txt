@@ -1,0 +1,50 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001278",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "上下文明确指出这是罗伦斯拼凑出来的话语，用于表达愤怒和试图留住赫萝。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001279",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "上下文提到罗伦斯尽量表现出愤怒，但有一半是真的因为气愤，暗示赫萝的反应引发了罗伦斯的愤怒。",
+        "赫萝是场景中唯一另一个活跃角色，且罗伦斯试图留住她，因此她最可能是回应者。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "两句话构成一个对话轮次，罗伦斯先发问，赫萝回应。上下文明确指出罗伦斯在试图留住赫萝，因此对话顺序和角色分配合理。"
+}
+```

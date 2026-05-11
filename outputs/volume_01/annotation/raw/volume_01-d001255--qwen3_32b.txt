@@ -1,0 +1,30 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001255",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "上下文显示赫萝正在抱住罗伦斯，而罗伦斯对此提出疑问，符合罗伦斯冷静理性的说话风格。",
+        "对话中提到「赫萝」，表明说话人不是赫萝本人，而是罗伦斯在回应她的行为。",
+        "场景记忆中明确指出罗伦斯和赫萝有互动，且罗伦斯处于劣势，正在试图理解赫萝的意图。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，罗伦斯对赫萝的行为提出疑问，符合上下文逻辑和角色性格。"
+}
+```

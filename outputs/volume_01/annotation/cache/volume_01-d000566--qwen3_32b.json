@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000566",
+  "speaker_entity_id": "char_0009",
+  "speaker_display": "杰廉",
+  "speaker_status": "known",
+  "confidence": 0.9,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0009",
+      "display": "杰廉",
+      "status": "known",
+      "score": 0.9
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.1
+    }
+  ],
+  "evidence": [
+    "当前段落是杰廉与罗伦斯进行情报交易谈判的一部分，杰廉提出交易条件并试图说服罗伦斯接受。",
+    "「是的。」是杰廉对罗伦斯提出的交易条件的确认回应，符合其谨慎和不自信的说话风格。",
+    "场景记忆中明确指出杰廉是本场景中提出交易的核心人物，而罗伦斯在赫萝的提醒下保持警惕，但仍决定接受交易。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

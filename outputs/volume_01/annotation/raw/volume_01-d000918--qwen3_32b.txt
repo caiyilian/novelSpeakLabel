@@ -1,0 +1,36 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000918",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        },
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.05
+        }
+      ],
+      "evidence": [
+        "上下文显示罗伦斯正在规划路线并做出决策，语气中带有急迫和理性，符合其冷静理性的说话风格。",
+        "前一句是赫萝的轻松语气，此句语气明显不同，更符合罗伦斯的谨慎和务实风格。",
+        "场景记忆中明确指出罗伦斯与赫萝共同行动，且罗伦斯负责路线规划和决策。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "该句为当前对话片段的首句，语气与前一句赫萝的轻松语气形成对比，更符合罗伦斯的理性与急迫风格，因此判断为罗伦斯所说。"
+}
+```

@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d001213",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "mystery_volume_01_c007_s002_r004_伏击者",
+      "display": "伏击者",
+      "status": "mystery",
+      "score": 0.1
+    }
+  ],
+  "evidence": [
+    "前一段对话是「忏悔罪过前……」，紧接着是罗伦斯的反击动作，符合罗伦斯的说话风格和行为逻辑。",
+    "场景中只有罗伦斯和赫萝是明确的说话角色，而赫萝没有发言记录，因此更可能是罗伦斯的台词。",
+    "罗伦斯在本场景中表现出冷静、理性且略带情绪化的语气，与该句台词的语气一致。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

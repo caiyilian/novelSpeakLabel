@@ -1,0 +1,205 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000006",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        },
+        {
+          "entity_id": "mystery_volume_01_c002_s001_r001_修道院骑士",
+          "display": "修道院骑士",
+          "status": "mystery",
+          "score": 0.05
+        }
+      ],
+      "evidence": [
+        "上下文明确描述罗伦斯在修道院附近遇到骑士，且该句为他发出的疑问",
+        "罗伦斯的说话风格符合其理性、谨慎的性格"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000007",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        },
+        {
+          "entity_id": "mystery_volume_01_c002_s001_r001_修道院骑士",
+          "display": "修道院骑士",
+          "status": "mystery",
+          "score": 0.1
+        }
+      ],
+      "evidence": [
+        "罗伦斯在靠近骑士后发出疑问，符合其观察与反应逻辑",
+        "罗伦斯的说话风格与上下文一致"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000008",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        },
+        {
+          "entity_id": "mystery_volume_01_c002_s001_r001_修道院骑士",
+          "display": "修道院骑士",
+          "status": "mystery",
+          "score": 0.1
+        }
+      ],
+      "evidence": [
+        "罗伦斯在与骑士对话前已确认对方身份，此句为他主动询问",
+        "罗伦斯的说话风格与上下文一致"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000009",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "罗伦斯自我介绍为旅行商人，符合其身份",
+        "罗伦斯的说话风格与上下文一致"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000010",
+      "speaker_entity_id": "char_0003",
+      "speaker_display": "骑士",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0003",
+          "display": "骑士",
+          "status": "known",
+          "score": 0.9
+        },
+        {
+          "entity_id": "mystery_volume_01_c002_s001_r001_修道院骑士",
+          "display": "修道院骑士",
+          "status": "mystery",
+          "score": 0.1
+        }
+      ],
+      "evidence": [
+        "骑士态度傲慢，语气强硬，符合其描述",
+        "上下文明确指出该角色为骑士"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000011",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "罗伦斯拿出蜂蜜糖并主动递出，符合其行为逻辑",
+        "罗伦斯的说话风格与上下文一致"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000012",
+      "speaker_entity_id": "char_0003",
+      "speaker_display": "骑士",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0003",
+          "display": "骑士",
+          "status": "known",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "骑士迟疑的语气与行为符合其性格描述",
+        "上下文明确指出该角色为骑士"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000013",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "罗伦斯解释路线并说明卖盐回来，符合其身份",
+        "罗伦斯的说话风格与上下文一致"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，罗伦斯与骑士交替发言，罗伦斯主动询问并自我介绍，骑士态度傲慢但被糖果收买，最终罗伦斯解释路线并展示货物。"
+}

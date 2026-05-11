@@ -1,0 +1,197 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000935",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.9
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.1
+        }
+      ],
+      "evidence": [
+        "赫萝在前文有类似情绪表达，且语境符合其性格；罗伦斯未在此处出现，但可能在后文登场"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000936",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.85
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.15
+        }
+      ],
+      "evidence": [
+        "赫萝在前文有类似情绪表达，且语境符合其性格；罗伦斯未在此处出现，但可能在后文登场"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000937",
+      "speaker_entity_id": "char_0017",
+      "speaker_display": "米隆商行帕兹欧分行卸货工",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0017",
+          "display": "米隆商行帕兹欧分行卸货工",
+          "status": "known",
+          "score": 0.95
+        },
+        {
+          "entity_id": "char_0019",
+          "display": "老卸货工",
+          "status": "known",
+          "score": 0.05
+        }
+      ],
+      "evidence": [
+        "上下文明确描述为后方传来声音，且该角色在场景中出现；与前文描述一致"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000938",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "罗伦斯在前文已进入场景并奔跑，且台词内容符合其身份；提及中午来过，与罗伦斯行为一致"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000939",
+      "speaker_entity_id": "char_0018",
+      "speaker_display": "梅迪欧商行追捕者",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0018",
+          "display": "梅迪欧商行追捕者",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "明确描述为追捕者，语气强硬，符合其身份；与前文冲突描述一致"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000940",
+      "speaker_entity_id": "char_0017",
+      "speaker_display": "米隆商行帕兹欧分行卸货工",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0017",
+          "display": "米隆商行帕兹欧分行卸货工",
+          "status": "known",
+          "score": 0.95
+        },
+        {
+          "entity_id": "char_0019",
+          "display": "老卸货工",
+          "status": "known",
+          "score": 0.05
+        }
+      ],
+      "evidence": [
+        "明确描述为米隆商行员工，语气强硬，符合其身份；与前文描述一致"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000941",
+      "speaker_entity_id": "char_0019",
+      "speaker_display": "老卸货工",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0019",
+          "display": "老卸货工",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "明确描述为从内部走出的男子，语气沉稳，符合其身份；与前文描述一致"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000942",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "罗伦斯在前文已进入场景并奔跑，且台词内容符合其身份；与前文描述一致"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，罗伦斯在前文已进入场景并奔跑，赫萝可能被捉，后方追捕者出现，米隆商行员工介入，老卸货工出现并安抚罗伦斯。"
+}

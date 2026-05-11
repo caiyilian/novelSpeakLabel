@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d001225",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "当前段落中提到「再一下就到了」，语气冷静理性，符合罗伦斯的说话风格。",
+    "场景记忆中提到罗伦斯在本场景中试图安抚赫萝的情绪，并表现出对她的关心。",
+    "赫萝在前一段落中走在前头，罗伦斯在后方，因此更可能是罗伦斯在指引路线。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

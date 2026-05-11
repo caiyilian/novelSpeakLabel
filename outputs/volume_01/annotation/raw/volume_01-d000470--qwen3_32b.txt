@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000470",
+  "speaker_entity_id": "char_0016",
+  "speaker_display": "鉴定员",
+  "speaker_status": "known",
+  "confidence": 0.9,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0016",
+      "display": "鉴定员",
+      "status": "known",
+      "score": 0.9
+    },
+    {
+      "entity_id": "char_0015",
+      "display": "鉴定的男子",
+      "status": "known",
+      "score": 0.7
+    }
+  ],
+  "evidence": [
+    "前一段中赫萝提问「您提议的是一百四十枚崔尼银币，没错呗？」，当前段回应「咦？啊，是的。确实是一百四十枚崔尼银币。」语气礼貌且略显困惑，符合鉴定员的说话风格。",
+    "场景记忆中提到「鉴定员」对赫萝的突然插嘴感到困惑，但态度保持专业，符合当前回应的语气。",
+    "当前段之后的段落提到「被一直保持沉默的赫萝这么一问，鉴定员虽然感到有些困惑，但仍然礼貌地回答」，进一步确认说话人为鉴定员。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

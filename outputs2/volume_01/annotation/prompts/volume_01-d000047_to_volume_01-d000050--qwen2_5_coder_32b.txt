@@ -1,0 +1,314 @@
+你是轻小说说话人标注项目的阶段 2：正式标注助手。
+你的任务是判断输入 target_dialogues 中每一句台词的说话人，不要改写原文。
+必须把这些台词当作同一个连续片段来判断，优先保持对话轮次和叙述线索的一致性。
+
+规则：
+1. 只输出严格 JSON，不要 Markdown，不要解释性前后缀。
+2. 如果说话人是候选角色，speaker_entity_id 必须使用 candidate_characters 里的 entity_id，speaker_status 填 known。
+3. 如果说话人像某个未知人物，speaker_entity_id 使用 candidate_mysteries 里的 mystery_id，speaker_status 填 mystery。
+4. 如果只是无法追踪的路人/群体，speaker_status 填 npc，speaker_entity_id 可为空或使用 npc:简短称呼。
+5. 证据不足时不要硬猜，speaker_status 填 ambiguous 或 review，并把 needs_review 设为 true。
+6. candidate_speakers 至少列出 1 个候选；如果无法判断，列出最可能的候选和不确定原因。
+7. confidence 使用 0 到 1 之间的小数，表示你对最终判断的把握。
+8. 不要只因为台词里提到某个名字、职业、地点，就把说话人标成那个实体；被称呼的人通常不是说话人。
+9. 连续问答、交易寒暄、命令/回答等场景要按上下句轮次判断；同一人连续说话必须有叙述或语气证据支持。
+10. 如果当前上下文显示某角色还没有登场，不要因为角色库或后文记忆里有这个角色就提前标给他/她。
+
+11. target_dialogues 中 dialogue_kind=inline 的项目是正文内嵌引号，不要当作独立对白；标为 review，needs_review=true。
+12. candidate_mysteries 只是可选候选；如果候选名称和当前段落地点/人物不一致，必须改用 npc 或 review。
+13. 如果只有轮次推断、没有叙述锚点或自我介绍，请降低 confidence，并在 evidence 里说明轮次依据。
+
+14. candidate_characters.speech_markers 是阶段 1 提取的高区分度口癖/自称/固定短语；命中时可作为证据，但如果多个角色共享或上下文反证明显，必须进入复核。
+
+输出 JSON 结构：
+{
+  "annotations": [
+    {
+      "dialogue_id": "必须来自 target_dialogue_ids",
+      "speaker_entity_id": "string",
+      "speaker_display": "string",
+      "speaker_status": "known|mystery|npc|ambiguous|review",
+      "confidence": 0.0,
+      "candidate_speakers": [
+        {"entity_id": "string", "display": "string", "status": "known|mystery|npc|ambiguous|review", "score": 0.0}
+      ],
+      "evidence": ["短证据，不要大段复制原文"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "可选，简短说明整体轮次判断"
+}
+必须为 target_dialogue_ids 中每个 dialogue_id 输出且只输出一条 annotation。
+
+输入 JSON：
+{
+  "volume": {
+    "volume_id": "volume_01",
+    "volume": 1
+  },
+  "target_dialogue_ids": [
+    "volume_01-d000047",
+    "volume_01-d000048",
+    "volume_01-d000049",
+    "volume_01-d000050"
+  ],
+  "dialogues": [
+    {
+      "dialogue_id": "volume_01-d000047",
+      "dialogue_index": 46,
+      "window_position": 1,
+      "chapter_id": "volume_01-c002",
+      "chapter_title": "第一幕",
+      "scene_id": "volume_01-c002-s002",
+      "paragraph_id": "volume_01-c002-s002-p000214",
+      "paragraph_index": 213,
+      "local_dialogue_index": 1,
+      "text": "……",
+      "quote_text": "「……」",
+      "paragraph_text": "「……」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 4
+    },
+    {
+      "dialogue_id": "volume_01-d000048",
+      "dialogue_index": 47,
+      "window_position": 2,
+      "chapter_id": "volume_01-c002",
+      "chapter_title": "第一幕",
+      "scene_id": "volume_01-c002-s002",
+      "paragraph_id": "volume_01-c002-s002-p000216",
+      "paragraph_index": 215,
+      "local_dialogue_index": 1,
+      "text": "喂！",
+      "quote_text": "「喂！」",
+      "paragraph_text": "「喂！」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 4
+    },
+    {
+      "dialogue_id": "volume_01-d000049",
+      "dialogue_index": 48,
+      "window_position": 3,
+      "chapter_id": "volume_01-c002",
+      "chapter_title": "第一幕",
+      "scene_id": "volume_01-c002-s002",
+      "paragraph_id": "volume_01-c002-s002-p000220",
+      "paragraph_index": 219,
+      "local_dialogue_index": 1,
+      "text": "喂！我说你啊！",
+      "quote_text": "「喂！我说你啊！」",
+      "paragraph_text": "「喂！我说你啊！」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 9
+    },
+    {
+      "dialogue_id": "volume_01-d000050",
+      "dialogue_index": 49,
+      "window_position": 4,
+      "chapter_id": "volume_01-c002",
+      "chapter_title": "第一幕",
+      "scene_id": "volume_01-c002-s002",
+      "paragraph_id": "volume_01-c002-s002-p000222",
+      "paragraph_index": 221,
+      "local_dialogue_index": 1,
+      "text": "……嗯唔？",
+      "quote_text": "「……嗯唔？」",
+      "paragraph_text": "「……嗯唔？」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 7
+    }
+  ],
+  "context": {
+    "paragraphs": [
+      {
+        "paragraph_id": "volume_01-c002-s002-p000211",
+        "paragraph_index": 210,
+        "text": "因为来到这里的途中吃了点蔬菜，肚子不饿也不饱。罗伦斯只咬了一块肉干，便爬上货台。平常睡觉时，罗伦斯都是拿覆盖货台的麻布当棉被。不过难得今天有貂皮，当然没道理不睡在貂皮上面。虽然罗伦斯也觉得貂皮的动物腥味难闻，但总比挨冻好。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s002-p000212",
+        "paragraph_index": 211,
+        "text": "罗伦斯因为担心在钻进貂皮被窝之前压坏麦苗，于是他掀开麻布准备把麦苗搬开。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s002-p000213",
+        "paragraph_index": 212,
+        "text": "掀开麻布的那一刻，罗伦斯之所以没有叫出声，或许是因为眼前的光景太教人难以置信了。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s002-p000214",
+        "paragraph_index": 213,
+        "text": "「……」",
+        "target_dialogue_ids": [
+          "volume_01-d000047"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c002-s002-p000215",
+        "paragraph_index": 214,
+        "text": "竟然有人捷足先登。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s002-p000216",
+        "paragraph_index": 215,
+        "text": "「喂！」",
+        "target_dialogue_ids": [
+          "volume_01-d000048"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c002-s002-p000217",
+        "paragraph_index": 216,
+        "text": "罗伦斯不确定自己有没有喊出声。他心想自己可能单纯只是受到惊吓，也或许是过度寂寞而产生幻觉。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s002-p000218",
+        "paragraph_index": 217,
+        "text": "然而，不管他用力甩头还是搓揉眼睛，捷足先登的女孩依旧在眼前。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s002-p000219",
+        "paragraph_index": 218,
+        "text": "有着美丽脸孔的女孩睡得香甜的模样，让人有些不忍心叫醒她。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s002-p000220",
+        "paragraph_index": 219,
+        "text": "「喂！我说你啊！」",
+        "target_dialogue_ids": [
+          "volume_01-d000049"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c002-s002-p000221",
+        "paragraph_index": 220,
+        "text": "尽管不忍心，罗伦斯还是打起精神开口说道。罗伦斯非得搞清楚女孩睡在他的马车上有什么企图。对方说不定是从村落离家出走的女孩，罗伦斯可不想牵涉上麻烦事。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s002-p000222",
+        "paragraph_index": 221,
+        "text": "「……嗯唔？」",
+        "target_dialogue_ids": [
+          "volume_01-d000050"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c002-s002-p000223",
+        "paragraph_index": 222,
+        "text": "随着罗伦斯的声音，女孩闭着双眼、慢了半拍做出反应，她的声音听来显得毫无防备。对于只光顾过城里妓院的旅行商人来说，那是会让他们感到昏眩的甜美声音。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s002-p000224",
+        "paragraph_index": 223,
+        "text": "而且，在月光笼罩下裹着貂皮睡觉的女孩，看起来虽然年轻，却富有惊人的魅力。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s002-p000225",
+        "paragraph_index": 224,
+        "text": "罗伦斯不自觉地咽下口水，不过这反倒让他立刻冷静下来。",
+        "target_dialogue_ids": []
+      }
+    ]
+  },
+  "scene_memory": [
+    {
+      "scene_id": "volume_01-c002-s002-r003",
+      "parent_scene_id": "volume_01-c002-s002",
+      "chunk_index": 3,
+      "chunk_count": 3,
+      "scene_summary": "罗伦斯在马车上发现一名神秘女孩，试图叫醒她并询问其意图，但女孩迟迟未完全清醒。女孩拥有类似小狗的耳朵，暗示她可能是非人类的存在。",
+      "active_characters": [
+        "罗伦斯",
+        "神秘女孩"
+      ],
+      "relationships": [
+        "罗伦斯与神秘女孩初次相遇，表现出警惕和好奇"
+      ],
+      "notes": "神秘女孩的非人类特征（小狗耳朵）暗示她可能是非人类角色，如赫萝的变体或新角色。罗伦斯的反应显示他理性且谨慎，符合已知角色设定。"
+    }
+  ],
+  "candidate_characters": [
+    {
+      "entity_id": "char_0001",
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": [
+        "商人",
+        "旅行商人",
+        "行商人"
+      ],
+      "description": "理性、谨慎的商人，试图分析局势并保持冷静。他与赫萝同行，面对叶勒的威胁时表现出坚定。 / 理性、坚定的商人，坚持遵守与赫萝的合约，拒绝背叛她。面对叶勒的威胁保持冷静，表现出对赫萝的忠诚。 / 理性、谨慎的商人，身受重伤但仍试图保持冷静并等待救援。他表现出对赫萝的依赖和信任。 / 罗伦斯目睹赫萝的变身过程，表现出震惊和无力。他试图抓住赫萝留下的皮袋，但最终面对巨大的狼形生物，感到无法应对。 / 理性、谨慎的商人，与赫萝在地下通道中遭遇叶勒的威胁。他试图安抚赫萝的情绪，并表现出对环境变化的敏感。 / 在赫萝的威压下感…",
+      "speech_style": "温和、理性、略带担忧 / 理性、略带策略性、温和 / 理性、担忧、略带冲动 / 虚弱、低沉、略带困惑 / 虚弱、低沉、焦虑 / 理性、坚定、略带焦虑 / 理性、焦虑、略带冲动 / 虚弱、低沉、焦虑 / 虚弱、焦虑、略带愤怒 / 愤怒、理性、略带冲动 / 虚弱、焦虑、略带悔恨 / 理性、冷静、略带焦虑",
+      "speech_markers": [
+        "……骑士？",
+        "有什么能为您效劳的吗？",
+        "算了……",
+        "糟糕",
+        "……",
+        "喂！",
+        "喂！起床啊！",
+        "喂！有什么好笑的？"
+      ],
+      "relationship_hints": [
+        "与赫萝一同旅行",
+        "对赫萝的身份持怀疑态度",
+        "与修道院有生意期望但未成功",
+        "与骑士初次互动",
+        "与赫萝有密切关系",
+        "与教会和骑士有互动",
+        "与叶勒有交集，计划与他交谈但被祭典打断",
+        "与叶勒有过去的交易关系。"
+      ],
+      "first_seen_scene_id": "volume_01-c000-s003-r001",
+      "latest_seen_scene_id": "volume_01-c008-s003-r001",
+      "confidence": 1.0
+    }
+  ],
+  "candidate_mysteries": [
+    {
+      "mystery_id": "mystery_volume_01_c002_s002_r003_神秘女孩",
+      "temporary_name": "神秘女孩",
+      "description": "在罗伦斯的马车上睡觉的年轻女孩，拥有类似小狗的耳朵，尚未完全清醒。",
+      "evidence": [
+        "volume_01-c002-s002-p000218",
+        "volume_01-c002-s002-p000219",
+        "volume_01-c002-s002-p000223",
+        "volume_01-c002-s002-p000224",
+        "volume_01-c002-s002-p000231"
+      ],
+      "source_scene_id": "volume_01-c002-s002-r003",
+      "confidence": 0.85
+    },
+    {
+      "mystery_id": "mystery_volume_01_c002_s002_r002_神秘麦苗",
+      "temporary_name": "神秘麦苗",
+      "description": "货台上出现的麦苗，掀开麻布后让罗伦斯感到惊讶，可能是某种伏笔。",
+      "evidence": [
+        "volume_01-c002-s002-p000212",
+        "volume_01-c002-s002-p000213"
+      ],
+      "source_scene_id": "volume_01-c002-s002-r002",
+      "confidence": 0.6
+    }
+  ]
+}

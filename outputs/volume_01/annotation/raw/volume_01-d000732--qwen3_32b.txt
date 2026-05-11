@@ -1,0 +1,30 @@
+```json
+{
+  "dialogue_id": "volume_01-d000732",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.85,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.85
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.15
+    }
+  ],
+  "evidence": [
+    "赫萝在本场景中被提及为罗伦斯的对话对象，且说话风格轻松幽默、略带调侃，符合赫萝的特征。",
+    "罗伦斯在后续段落中急躁地向赫萝解释计策，表明当前对话是赫萝对罗伦斯的回应。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

@@ -1,0 +1,449 @@
+你是轻小说说话人标注项目的阶段 2：正式标注助手。
+你的任务是判断输入 target_dialogues 中每一句台词的说话人，不要改写原文。
+必须把这些台词当作同一个连续片段来判断，优先保持对话轮次和叙述线索的一致性。
+
+规则：
+1. 只输出严格 JSON，不要 Markdown，不要解释性前后缀。
+2. 如果说话人是候选角色，speaker_entity_id 必须使用 candidate_characters 里的 entity_id，speaker_status 填 known。
+3. 如果说话人像某个未知人物，speaker_entity_id 使用 candidate_mysteries 里的 mystery_id，speaker_status 填 mystery。
+4. 如果只是无法追踪的路人/群体，speaker_status 填 npc，speaker_entity_id 可为空或使用 npc:简短称呼。
+5. 证据不足时不要硬猜，speaker_status 填 ambiguous 或 review，并把 needs_review 设为 true。
+6. candidate_speakers 至少列出 1 个候选；如果无法判断，列出最可能的候选和不确定原因。
+7. confidence 使用 0 到 1 之间的小数，表示你对最终判断的把握。
+8. 不要只因为台词里提到某个名字、职业、地点，就把说话人标成那个实体；被称呼的人通常不是说话人。
+9. 连续问答、交易寒暄、命令/回答等场景要按上下句轮次判断；同一人连续说话必须有叙述或语气证据支持。
+10. 如果当前上下文显示某角色还没有登场，不要因为角色库或后文记忆里有这个角色就提前标给他/她。
+
+11. target_dialogues 中 dialogue_kind=inline 的项目是正文内嵌引号，不要当作独立对白；标为 review，needs_review=true。
+12. candidate_mysteries 只是可选候选；如果候选名称和当前段落地点/人物不一致，必须改用 npc 或 review。
+13. 如果只有轮次推断、没有叙述锚点或自我介绍，请降低 confidence，并在 evidence 里说明轮次依据。
+
+输出 JSON 结构：
+{
+  "annotations": [
+    {
+      "dialogue_id": "必须来自 target_dialogue_ids",
+      "speaker_entity_id": "string",
+      "speaker_display": "string",
+      "speaker_status": "known|mystery|npc|ambiguous|review",
+      "confidence": 0.0,
+      "candidate_speakers": [
+        {"entity_id": "string", "display": "string", "status": "known|mystery|npc|ambiguous|review", "score": 0.0}
+      ],
+      "evidence": ["短证据，不要大段复制原文"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "可选，简短说明整体轮次判断"
+}
+必须为 target_dialogue_ids 中每个 dialogue_id 输出且只输出一条 annotation。
+
+输入 JSON：
+{
+  "volume": {
+    "volume_id": "volume_01",
+    "volume": 1
+  },
+  "target_dialogue_ids": [
+    "volume_01-d000661",
+    "volume_01-d000662",
+    "volume_01-d000663",
+    "volume_01-d000664",
+    "volume_01-d000665",
+    "volume_01-d000666",
+    "volume_01-d000667",
+    "volume_01-d000668"
+  ],
+  "dialogues": [
+    {
+      "dialogue_id": "volume_01-d000661",
+      "dialogue_index": 660,
+      "window_position": 1,
+      "chapter_id": "volume_01-c004",
+      "chapter_title": "第三幕",
+      "scene_id": "volume_01-c004-s007",
+      "paragraph_id": "volume_01-c004-s007-p001453",
+      "paragraph_index": 1452,
+      "local_dialogue_index": 1,
+      "text": "到底有还是没有？",
+      "quote_text": "「到底有还是没有？」",
+      "paragraph_text": "「到底有还是没有？」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 10
+    },
+    {
+      "dialogue_id": "volume_01-d000662",
+      "dialogue_index": 661,
+      "window_position": 2,
+      "chapter_id": "volume_01-c004",
+      "chapter_title": "第三幕",
+      "scene_id": "volume_01-c004-s007",
+      "paragraph_id": "volume_01-c004-s007-p001454",
+      "paragraph_index": 1453,
+      "local_dialogue_index": 1,
+      "text": "有啊。上个月教会举办降临节时所发行的银币是最新的。再之前的是……有了，是这个。",
+      "quote_text": "「有啊。上个月教会举办降临节时所发行的银币是最新的。再之前的是……有了，是这个。」",
+      "paragraph_text": "「有啊。上个月教会举办降临节时所发行的银币是最新的。再之前的是……有了，是这个。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 41
+    },
+    {
+      "dialogue_id": "volume_01-d000663",
+      "dialogue_index": 662,
+      "window_position": 3,
+      "chapter_id": "volume_01-c004",
+      "chapter_title": "第三幕",
+      "scene_id": "volume_01-c004-s007",
+      "paragraph_id": "volume_01-c004-s007-p001457",
+      "paragraph_index": 1456,
+      "local_dialogue_index": 1,
+      "text": "我一整天都在触摸货币，也没有察觉到什么不同之处。这些应该是用相同模型、相同材料做成的。铸币厂的技师们不曾换过人，也没有发生大政变，没理由改变。",
+      "quote_text": "「我一整天都在触摸货币，也没有察觉到什么不同之处。这些应该是用相同模型、相同材料做成的。铸币厂的技师们不曾换过人，也没有发生大政变，没理由改变。」",
+      "paragraph_text": "「我一整天都在触摸货币，也没有察觉到什么不同之处。这些应该是用相同模型、相同材料做成的。铸币厂的技师们不曾换过人，也没有发生大政变，没理由改变。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 73
+    },
+    {
+      "dialogue_id": "volume_01-d000664",
+      "dialogue_index": 663,
+      "window_position": 4,
+      "chapter_id": "volume_01-c004",
+      "chapter_title": "第三幕",
+      "scene_id": "volume_01-c004-s007",
+      "paragraph_id": "volume_01-c004-s007-p001459",
+      "paragraph_index": 1458,
+      "local_dialogue_index": 1,
+      "text": "没有用的啦！你那样做可以发现不同的话，我们早就发现了。",
+      "quote_text": "「没有用的啦！你那样做可以发现不同的话，我们早就发现了。」",
+      "paragraph_text": "「没有用的啦！你那样做可以发现不同的话，我们早就发现了。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 29
+    },
+    {
+      "dialogue_id": "volume_01-d000665",
+      "dialogue_index": 664,
+      "window_position": 5,
+      "chapter_id": "volume_01-c004",
+      "chapter_title": "第三幕",
+      "scene_id": "volume_01-c004-s007",
+      "paragraph_id": "volume_01-c004-s007-p001461",
+      "paragraph_index": 1460,
+      "local_dialogue_index": 1,
+      "text": "唉……该怎么办好呢。",
+      "quote_text": "「唉……该怎么办好呢。」",
+      "paragraph_text": "「唉……该怎么办好呢。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 12
+    },
+    {
+      "dialogue_id": "volume_01-d000666",
+      "dialogue_index": 665,
+      "window_position": 6,
+      "chapter_id": "volume_01-c004",
+      "chapter_title": "第三幕",
+      "scene_id": "volume_01-c004-s007",
+      "paragraph_id": "volume_01-c004-s007-p001463",
+      "paragraph_index": 1462,
+      "local_dialogue_index": 1,
+      "text": "想不想熔毁银币来调查看看？",
+      "quote_text": "「想不想熔毁银币来调查看看？」",
+      "paragraph_text": "「想不想熔毁银币来调查看看？」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 15
+    },
+    {
+      "dialogue_id": "volume_01-d000667",
+      "dialogue_index": 666,
+      "window_position": 7,
+      "chapter_id": "volume_01-c004",
+      "chapter_title": "第三幕",
+      "scene_id": "volume_01-c004-s007",
+      "paragraph_id": "volume_01-c004-s007-p001464",
+      "paragraph_index": 1463,
+      "local_dialogue_index": 1,
+      "text": "说什么傻话，那怎么可能！",
+      "quote_text": "「说什么傻话，那怎么可能！」",
+      "paragraph_text": "「说什么傻话，那怎么可能！」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 14
+    },
+    {
+      "dialogue_id": "volume_01-d000668",
+      "dialogue_index": 667,
+      "window_position": 8,
+      "chapter_id": "volume_01-c004",
+      "chapter_title": "第三幕",
+      "scene_id": "volume_01-c004-s007",
+      "paragraph_id": "volume_01-c004-s007-p001465",
+      "paragraph_index": 1464,
+      "local_dialogue_index": 1,
+      "text": "愚蠢极了",
+      "quote_text": "「愚蠢极了」",
+      "paragraph_text": "无论在哪一个国家，都不允许熔毁货币。怀兹一副要快说出「愚蠢极了」的表情笑着带过。",
+      "dialogue_kind": "inline",
+      "outside_quote_text": "无论在哪一个国家，都不允许熔毁货币。怀兹一副要快说出的表情笑着带过。",
+      "char_start": 26,
+      "char_end": 32
+    }
+  ],
+  "context": {
+    "paragraphs": [
+      {
+        "paragraph_id": "volume_01-c004-s007-p001450",
+        "paragraph_index": 1449,
+        "text": "「算是吧。」",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s007-p001451",
+        "paragraph_index": 1450,
+        "text": "「我只能说你自己谨慎点就是了，要抢先别人一步没那么容易的。」",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s007-p001452",
+        "paragraph_index": 1451,
+        "text": "怀兹会这样提醒罗伦斯，就表示精通货币的兑换商也没有察觉到调整含量的举动。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s007-p001453",
+        "paragraph_index": 1452,
+        "text": "「到底有还是没有？」",
+        "target_dialogue_ids": [
+          "volume_01-d000661"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c004-s007-p001454",
+        "paragraph_index": 1453,
+        "text": "「有啊。上个月教会举办降临节时所发行的银币是最新的。再之前的是……有了，是这个。」",
+        "target_dialogue_ids": [
+          "volume_01-d000662"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c004-s007-p001455",
+        "paragraph_index": 1454,
+        "text": "怀兹从后方的大木箱中，取出四枚有一半面积夹在木头凿洞做成的架子里的银币，交给罗伦斯。木架上写着发行年份。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s007-p001456",
+        "paragraph_index": 1455,
+        "text": "四枚货币看起来一模一样。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s007-p001457",
+        "paragraph_index": 1456,
+        "text": "「我一整天都在触摸货币，也没有察觉到什么不同之处。这些应该是用相同模型、相同材料做成的。铸币厂的技师们不曾换过人，也没有发生大政变，没理由改变。」",
+        "target_dialogue_ids": [
+          "volume_01-d000663"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c004-s007-p001458",
+        "paragraph_index": 1457,
+        "text": "怀兹说道，想必他早已谨慎比较过货币的重量及色泽。尽管如此，罗伦斯还是试着在阳光底下照射货币，或用不同方法企图找出银币的不同。然而，银币似乎没有不同的地方。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s007-p001459",
+        "paragraph_index": 1458,
+        "text": "「没有用的啦！你那样做可以发现不同的话，我们早就发现了。」",
+        "target_dialogue_ids": [
+          "volume_01-d000664"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c004-s007-p001460",
+        "paragraph_index": 1459,
+        "text": "怀兹双手托着腮，把手肘撑在兑换台上笑着说。他的意思是告诉罗伦斯别试了。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s007-p001461",
+        "paragraph_index": 1460,
+        "text": "「唉……该怎么办好呢。」",
+        "target_dialogue_ids": [
+          "volume_01-d000665"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c004-s007-p001462",
+        "paragraph_index": 1461,
+        "text": "罗伦斯夹杂着叹息声说道，把货币还给仍单手托着腮，并伸出另一只手的怀兹。货币落在怀兹的手掌上，发出清脆悦耳的声响。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s007-p001463",
+        "paragraph_index": 1462,
+        "text": "「想不想熔毁银币来调查看看？」",
+        "target_dialogue_ids": [
+          "volume_01-d000666"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c004-s007-p001464",
+        "paragraph_index": 1463,
+        "text": "「说什么傻话，那怎么可能！」",
+        "target_dialogue_ids": [
+          "volume_01-d000667"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c004-s007-p001465",
+        "paragraph_index": 1464,
+        "text": "无论在哪一个国家，都不允许熔毁货币。怀兹一副要快说出「愚蠢极了」的表情笑着带过。",
+        "target_dialogue_ids": [
+          "volume_01-d000668"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c004-s007-p001466",
+        "paragraph_index": 1465,
+        "text": "然而，这样罗伦斯就不知该如何判断了。他一心以为货币一定早有变化，而怀兹一定有所察觉才对。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s007-p001467",
+        "paragraph_index": 1466,
+        "text": "这是怎么回事？",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s007-p001468",
+        "paragraph_index": 1467,
+        "text": "就在罗伦斯陷入这样的思绪时，赫萝开口说：",
+        "target_dialogue_ids": []
+      }
+    ]
+  },
+  "scene_memory": [
+    {
+      "scene_id": "volume_01-c004-s007-r005",
+      "parent_scene_id": "volume_01-c004-s007",
+      "chunk_index": 5,
+      "chunk_count": 6,
+      "scene_summary": "罗伦斯与怀兹在兑换台前讨论货币是否发生变化，怀兹态度轻松，罗伦斯则感到困扰。赫萝介入，要求查看货币，怀兹立刻答应并表现出对赫萝的迷恋。",
+      "active_characters": [
+        "罗伦斯",
+        "怀兹",
+        "赫萝"
+      ],
+      "relationships": [
+        "罗伦斯与怀兹有长期合作关系",
+        "怀兹对赫萝表现出迷恋",
+        "罗伦斯对赫萝的身份持怀疑态度"
+      ],
+      "notes": "场景中三人互动明显，怀兹对赫萝的态度表现出明显的迷恋，罗伦斯则显得困扰。赫萝的介入改变了对话的走向，显示出她在两人之间的影响力。"
+    }
+  ],
+  "candidate_characters": [
+    {
+      "entity_id": "char_0019",
+      "display_name": "怀兹",
+      "aliases": [
+        "怀兹"
+      ],
+      "titles": [
+        "兑换商"
+      ],
+      "description": "与罗伦斯有长期合作关系的年轻兑换商，金发，工作认真。 / 与罗伦斯有长期合作关系的年轻兑换商，金发，工作认真。他与罗伦斯关系亲密，像朋友一样。 / 与罗伦斯有长期合作关系的年轻兑换商，金发，工作认真。他试图追求赫萝，表现出厚脸皮和直接的态度。",
+      "speech_style": "尚未直接说话，但被罗伦斯称呼，推测为专业且友好 / 轻松、调侃、略带幽默 / 直接、不掩饰情绪，略带挑衅 / 专业、谨慎、略带调侃 / 轻松、幽默、略带谄媚 / 轻松、略带嘲讽 / 热情、直接、略带献媚",
+      "relationship_hints": [
+        "与罗伦斯有长期合作关系",
+        "与罗伦斯是朋友，关系亲密",
+        "对罗伦斯的神秘女孩表现出好奇",
+        "与罗伦斯有竞争关系",
+        "追求赫萝",
+        "与罗伦斯关系亲密",
+        "试图追求赫萝",
+        "对赫萝表现出迷恋"
+      ],
+      "first_seen_scene_id": "volume_01-c004-s007-r001",
+      "latest_seen_scene_id": "volume_01-c004-s008-r001",
+      "confidence": 0.9
+    },
+    {
+      "entity_id": "char_0001",
+      "display_name": "罗伦斯",
+      "aliases": [
+        "罗伦斯",
+        "罗伦斯先生"
+      ],
+      "titles": [
+        "中间人",
+        "交易者",
+        "同行",
+        "商人",
+        "小毛头",
+        "小的",
+        "市井无赖",
+        "年轻人"
+      ],
+      "description": "一位行商人，正在与米隆商行的代表马贺特进行交易谈判。他原本期待获得两千枚银币，但实际只得到一百二十枚，感到震惊和困惑。 / 一位行商人，发现并收留了赫萝，决定与她一同旅行。 / 一位二十五岁的自力更生旅行商人，已有七年行商经验，性格泰然自若。 / 一位冷静理性的旅行商人，对赫萝的身份持怀疑态度，但仍保持互动。他注重外表整洁，对商业制度有深入理解。 / 冷静理性的旅行商人，与赫萝一同旅行。在本场景中与米隆商行的马贺特讨论梅迪欧商行的威胁，提出利用崔尼银币交易作为交涉王牌。 / 一位冷静理性的旅行商人，与赫萝一同旅行…",
+      "speech_style": "理性、坚定、略带情绪化 / 冷静、理性，带有悔恨和自责的语气。 / 冷静、理性，语气中带有对赫萝的关心和些许担忧。 / 冷静、理性、略带失落 / 冷静、理性，对商业制度有深入理解，并能清晰地向他人解释。 / 理性、礼貌、略带谨慎。 / 理性、冷静，带有商业分析倾向。 / 理性、沉稳、略带幽默 / 理性、冷静，但因困惑…",
+      "relationship_hints": [
+        "与赫萝一同旅行",
+        "对赫萝的真实性持怀疑态度",
+        "与深山村落的村民有交易关系",
+        "对修道院抱有商业期望但未成功",
+        "与骑士有短暂互动",
+        "与小村落的村民有交易关系",
+        "与修道院有关联",
+        "对教会和异教徒问题有见解"
+      ],
+      "first_seen_scene_id": "volume_01-c000-s003-r001",
+      "latest_seen_scene_id": "volume_01-c008-s003-r002",
+      "confidence": 1.0
+    },
+    {
+      "entity_id": "char_0002",
+      "display_name": "赫萝",
+      "aliases": [
+        "赫萝"
+      ],
+      "titles": [
+        "丰收之神",
+        "咱",
+        "神秘少女",
+        "约伊兹的贤狼",
+        "贤狼"
+      ],
+      "description": "自称丰收之神的神秘少女，拥有狼的耳朵和尾巴。在本场景中协助罗伦斯，表现出对他的关心和保护。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴，行为举止非人类，表现出轻松幽默但略带威胁性的说话风格。在本场景中，她对罗伦斯的伤口进行吸血，引发旁人惊呼，并表现出悲伤的情绪。 / 自称是丰收之神的神秘少女，拥有狼的耳朵和尾巴。在本场景中逐渐显露出非人类的特征，最终完全变成一只巨大的狼。她与罗伦斯有情感交流，表现出悲伤和决绝的情绪。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴，未直接参与本场景，但罗伦斯的行动可能与她有关…",
+      "speech_style": "轻松幽默但略带威胁性，情绪化且带有调侃语气。 / 轻松幽默、略带调侃和威胁 / 轻松幽默、略带威胁性 / 轻松幽默、略带威胁性、撒娇 / 警觉、神秘 / 轻松幽默但略带威胁性 / 轻松幽默、略带调侃 / 轻松幽默但略带威胁性，语气中透露出对罗伦斯的依赖。 / 轻松幽默、略带威胁性、自信 / 轻松幽默但略带威胁性，情绪…",
+      "relationship_hints": [
+        "与罗伦斯一同旅行",
+        "被罗伦斯怀疑是否为真正的神",
+        "与叶勒有附身关系",
+        "与罗伦斯有潜在互动",
+        "与罗伦斯有互动，似乎是被他发现并收留的。",
+        "与罗伦斯有互动，但尚未明确关系",
+        "与罗伦斯互动频繁，表现出对他的信任和玩笑态度",
+        "与罗伦斯互动密切"
+      ],
+      "first_seen_scene_id": "volume_01-c000-s003-r001",
+      "latest_seen_scene_id": "volume_01-c008-s003-r002",
+      "confidence": 1.0
+    }
+  ],
+  "candidate_mysteries": []
+}

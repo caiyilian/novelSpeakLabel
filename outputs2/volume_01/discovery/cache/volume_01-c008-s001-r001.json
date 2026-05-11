@@ -1,0 +1,92 @@
+{
+  "scene_id": "volume_01-c008-s001",
+  "scene_summary": "罗伦斯在黑暗中醒来，意识到自己身处未知环境。他看到赫萝的尾巴，试图追赶却无法靠近。最终他被带到一个陌生房间，醒来后感到左臂疼痛，并回忆起被梅迪欧商行追杀的经历。",
+  "active_characters": [
+    "罗伦斯",
+    "赫萝",
+    "神秘人物"
+  ],
+  "character_candidates": [
+    {
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": [
+        "商人",
+        "旅行商人",
+        "行商人"
+      ],
+      "description": "罗伦斯在黑暗中醒来，试图追赶赫萝的尾巴，但无法靠近。他回忆起被梅迪欧商行追杀的经历，并因左臂受伤而虚弱。",
+      "speech_style": "虚弱、焦虑、略带悔恨",
+      "speech_markers": [
+        "到底是怎么回事？",
+        "难道就不能再说一些更适合的话了吗？"
+      ],
+      "relationship_hints": [
+        "与赫萝有深厚的情感联系",
+        "被梅迪欧商行追杀"
+      ],
+      "evidence": [
+        "volume_01-c008-s001-p002924",
+        "volume_01-c008-s001-p002936",
+        "volume_01-c008-s001-p002946"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "赫萝",
+      "aliases": [],
+      "titles": [
+        "丰收之神",
+        "狼",
+        "贤狼"
+      ],
+      "description": "赫萝的尾巴在黑暗中出现，罗伦斯试图追赶，但无法靠近。她似乎在离开罗伦斯，留下他独自一人。",
+      "speech_style": "未直接发言",
+      "speech_markers": [],
+      "relationship_hints": [
+        "与罗伦斯有深厚的情感联系",
+        "在关键时刻离开罗伦斯"
+      ],
+      "evidence": [
+        "volume_01-c008-s001-p002935",
+        "volume_01-c008-s001-p002939",
+        "volume_01-c008-s001-p002945"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "display_name": "神秘人物",
+      "aliases": [],
+      "titles": [],
+      "description": "在罗伦斯醒来后向他说话的人，可能是救了他的陌生人。",
+      "speech_style": "温和、关切",
+      "speech_markers": [
+        "您醒过来了啊？"
+      ],
+      "relationship_hints": [
+        "可能是救了罗伦斯的人"
+      ],
+      "evidence": [
+        "volume_01-d001282"
+      ],
+      "confidence": 0.7
+    }
+  ],
+  "mystery_entities": [
+    {
+      "temporary_name": "神秘房间中的陌生人",
+      "description": "在罗伦斯醒来后向他说话的人，可能是救了他的陌生人。",
+      "evidence": [
+        "volume_01-d001282"
+      ],
+      "confidence": 0.7
+    }
+  ],
+  "relationships": [
+    "罗伦斯与赫萝有深厚的情感联系",
+    "罗伦斯被梅迪欧商行追杀",
+    "赫萝在关键时刻离开罗伦斯",
+    "神秘人物可能是救了罗伦斯的人"
+  ],
+  "notes": "本场景中，罗伦斯在黑暗中醒来，试图追赶赫萝的尾巴但失败。赫萝的离开让他感到悔恨。神秘人物的出现暗示他可能被救。"
+}

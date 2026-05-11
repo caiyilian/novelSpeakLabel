@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d000239",
+  "speaker_entity_id": "char_0006",
+  "speaker_display": "教会夫妻",
+  "speaker_status": "known",
+  "confidence": 0.9,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0006",
+      "display": "教会夫妻",
+      "status": "known",
+      "score": 0.9
+    }
+  ],
+  "evidence": [
+    "上下文显示这对夫妻在教会中占据重要位置，且与罗伦斯有短暂互动。",
+    "台词中提到「妻子有些累了」，符合夫妻共同行动的语境。",
+    "后续段落提到这对夫妻离开，与大厅环境和贵族身份相符。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

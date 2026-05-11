@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d000705",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "赫萝在上下文中频繁出现，且在下一段中明确提到「赫萝突然笑了出来」，表明她正在主导对话。",
+    "当前段落「呵。」与赫萝轻松幽默但略带调侃的说话风格一致。",
+    "赫萝在场景记忆中多次与罗伦斯互动，且在本场景中对罗伦斯的判断提出质疑，符合当前语境。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

@@ -1,0 +1,24 @@
+{
+  "volume_id": "volume_01",
+  "models": [
+    "qwen3:32b"
+  ],
+  "pipeline": "structured",
+  "output_dir": "outputs2/volume_01",
+  "dry_run": false,
+  "cache_only": false,
+  "dialogue_count": 40,
+  "window_count": 10,
+  "annotation_window_size": 8,
+  "max_dialogue_paragraph_gap": 4,
+  "request_count": 30,
+  "prompt_count": 30,
+  "rule_vote_count": 21,
+  "evidence_count": 40,
+  "judgement_count": 40,
+  "contradiction_check_count": 40,
+  "vote_count": 61,
+  "annotation_count": 40,
+  "review_count": 22,
+  "failed_request_count": 0
+}

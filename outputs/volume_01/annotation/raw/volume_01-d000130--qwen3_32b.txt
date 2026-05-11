@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d000130",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    }
+  ],
+  "evidence": [
+    "对话中使用自称「咱」，符合赫萝的说话风格。",
+    "上下文显示赫萝在与罗伦斯讨论她是否是狼的问题，并表现出自信和轻松的语气。",
+    "赫萝在场景中多次展示非人类特征，如狼耳和变身能力，符合台词中「不会看走眼」的语气。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

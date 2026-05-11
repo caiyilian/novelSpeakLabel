@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000191",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.02
+    }
+  ],
+  "evidence": [
+    "「尊贵的狼」是赫萝的自称，且上下文提到赫萝鼓着脸生气、咯咯笑，符合她的说话风格和情绪表达。",
+    "「丑态」一词呼应了前文赫萝假装生气后又发笑的情节，符合她情绪多变的特质。",
+    "场景记忆中明确指出赫萝与罗伦斯有互动，且赫萝表现出自信和轻松的态度。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

@@ -1,0 +1,53 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000355",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "上下文提到赫萝在旅途中与罗伦斯对话，且该段落明确指出「这时赫萝的脸上突然露出笑容说」，直接表明说话人是赫萝。",
+        "赫萝的说话风格轻松幽默略带调侃，符合「这样就算扯平了呗」的语气。",
+        "该段落位于赫萝与罗伦斯的对话场景中，且为第一句对话，符合对话轮次逻辑。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000356",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "上下文提到「在诉说着明天也是晴朗好天气的星空下，窝在貂皮堆里的赫萝突然说出这句话」，表明前一句是赫萝说的，下一句应为罗伦斯回应。",
+        "罗伦斯的说话风格理性冷静，符合「汝跟咱活着的世界大不相同呐」的语气。",
+        "对话轮次符合两人交替说话的逻辑，且赫萝刚说完，罗伦斯作为旅伴最可能回应。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，赫萝先说，罗伦斯回应，符合两人交替对话的场景逻辑。"
+}
+```

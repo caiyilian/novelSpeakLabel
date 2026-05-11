@@ -1,0 +1,34 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001280",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.85
+        },
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.15
+        }
+      ],
+      "evidence": [
+        "上下文描述罗伦斯用憎恨的口吻大喊，且前文提到他试图留住赫萝",
+        "台词内容与罗伦斯的理性、略带愤怒的说话风格相符",
+        "赫萝在前文并未直接发言，且该段落为罗伦斯情绪爆发的场景"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "罗伦斯在情绪崩溃状态下对赫萝发出愤怒的喊话，符合其角色性格与上下文情境"
+}

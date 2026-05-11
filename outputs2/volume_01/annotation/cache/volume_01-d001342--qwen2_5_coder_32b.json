@@ -1,0 +1,32 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001342",
+      "speaker_entity_id": "",
+      "speaker_display": "",
+      "speaker_status": "npc",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {
+          "entity_id": "",
+          "display": "商行的人",
+          "status": "npc",
+          "score": 0.6
+        },
+        {
+          "entity_id": "",
+          "display": "罗伦斯",
+          "status": "ambiguous",
+          "score": 0.4
+        }
+      ],
+      "evidence": [
+        "对话轮次推断，前一句是商行的人回答"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    }
+  ],
+  "window_notes": "根据上下文，「谢谢。」这句话最有可能是罗伦斯或商行的人说的，但没有明确证据支持，因此标为 npc 并需要复核。"
+}

@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000361",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "mystery_volume_01_c002_s002_r005_神秘女孩",
+      "display": "神秘女孩",
+      "status": "mystery",
+      "score": 0.1
+    }
+  ],
+  "evidence": [
+    "赫萝在场景中表现出对路边摊贩和祭典的兴趣，说话风格轻松幽默但略带调侃，符合她的角色特征。",
+    "当前段落中提到「嗯……这不是祭典呗？」，语气与赫萝一贯的说话方式一致。",
+    "场景记忆中显示赫萝对帕斯罗村的祭典有复杂情绪，暗示她对祭典的熟悉和关注。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

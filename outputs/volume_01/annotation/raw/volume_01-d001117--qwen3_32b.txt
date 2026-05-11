@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d001117",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "上下文显示赫萝在与罗伦斯对话，表现出情绪波动和简短回应。",
+    "赫萝在场景中多次提及叶勒，并表现出愤怒和不满，符合说话风格。",
+    "「……听不懂。」是赫萝在对话中常见的简短回应方式。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000853",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "前一段对话中赫萝对罗伦斯的计划表现出冷淡态度，且说话风格轻松幽默但略带调侃，符合赫萝的说话风格。",
+    "当前段落中「喔……」是赫萝常见的回应方式，语气简短且带有情绪波动，符合她在场景中表现出的寂寞和脆弱。",
+    "场景记忆中赫萝多次以「喔」开头回应罗伦斯的对话，语气简短但情绪丰富。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

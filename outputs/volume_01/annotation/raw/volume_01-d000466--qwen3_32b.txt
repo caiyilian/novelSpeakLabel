@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000466",
+  "speaker_entity_id": "char_0016",
+  "speaker_display": "鉴定员",
+  "speaker_status": "known",
+  "confidence": 0.9,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0016",
+      "display": "鉴定员",
+      "status": "known",
+      "score": 0.9
+    },
+    {
+      "entity_id": "char_0015",
+      "display": "鉴定的男子",
+      "status": "known",
+      "score": 0.7
+    }
+  ],
+  "evidence": [
+    "「那么，您愿意接受这个金额了吗？」是回应罗伦斯的提问，语气礼貌且专业，符合鉴定员的说话风格。",
+    "上下文显示罗伦斯与鉴定员进行交易洽谈，赫萝插嘴后，鉴定员表现出困惑，但语气仍保持专业。",
+    "该段对话中，说话者是对罗伦斯的交易提议作出回应，符合鉴定员的角色设定。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

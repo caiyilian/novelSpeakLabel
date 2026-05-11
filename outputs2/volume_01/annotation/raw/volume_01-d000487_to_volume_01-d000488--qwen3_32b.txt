@@ -1,0 +1,53 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000487",
+      "speaker_entity_id": "char_0011",
+      "speaker_display": "采购人员",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0011",
+          "display": "采购人员",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "上下文描述男子在嗅闻貂皮后表现出惊讶，符合采购人员作为鉴定员的身份",
+        "对话发生在采购人员与罗伦斯的交易场景中，赫萝在旁引导，但未直接发言",
+        "采购人员是唯一在嗅闻貂皮后有反应的角色"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000488",
+      "speaker_entity_id": "char_0011",
+      "speaker_display": "采购人员",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0011",
+          "display": "采购人员",
+          "status": "known",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "采购人员在嗅闻貂皮后继续回应，符合对话轮次",
+        "赫萝未直接发言，罗伦斯也未在此时回应",
+        "采购人员是唯一在嗅闻貂皮后有反应的角色"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话发生在采购人员嗅闻貂皮后，赫萝在旁引导但未发言，罗伦斯未回应。对话轮次清晰，由采购人员连续发言。"
+}
+```

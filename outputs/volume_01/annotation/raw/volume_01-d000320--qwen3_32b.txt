@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000320",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.9,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.9
+    },
+    {
+      "entity_id": "char_0009",
+      "display": "杰廉",
+      "status": "known",
+      "score": 0.3
+    }
+  ],
+  "evidence": [
+    "对话内容「时间就是金钱」与罗伦斯的理性商人形象高度吻合。",
+    "上下文提到「商人最在乎时间」，暗示说话人可能是商人角色。",
+    "罗伦斯是本场景中主要的商人角色，且与时间、金钱相关话题频繁互动。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

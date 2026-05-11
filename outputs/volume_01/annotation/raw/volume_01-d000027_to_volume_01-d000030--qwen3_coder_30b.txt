@@ -1,0 +1,81 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000027",
+      "speaker_entity_id": "char_0005",
+      "speaker_display": "农夫",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0005",
+          "display": "农夫",
+          "status": "known",
+          "score": 1.0
+        }
+      ],
+      "evidence": ["前文描述罗伦斯向农夫打招呼，且农夫是唯一在场的说话人"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000028",
+      "speaker_entity_id": "char_0005",
+      "speaker_display": "农夫",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0005",
+          "display": "农夫",
+          "status": "known",
+          "score": 1.0
+        }
+      ],
+      "evidence": ["与前一句连续对话，语气承接一致，且为农夫所发"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000029",
+      "speaker_entity_id": "char_0005",
+      "speaker_display": "农夫",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0005",
+          "display": "农夫",
+          "status": "known",
+          "score": 1.0
+        }
+      ],
+      "evidence": ["与前两句连续对话，语气承接一致，且为农夫所发"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000030",
+      "speaker_entity_id": "char_0005",
+      "speaker_display": "农夫",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0005",
+          "display": "农夫",
+          "status": "known",
+          "score": 1.0
+        }
+      ],
+      "evidence": ["前文描述农夫晒得黝黑的脸上堆满了笑容，且后文明确指出是农夫所说"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "连续对话由农夫发出，语气承接自然，符合角色性格与上下文。"
+}

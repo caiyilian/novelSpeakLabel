@@ -1,0 +1,125 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000445",
+      "speaker_entity_id": "",
+      "speaker_display": "",
+      "speaker_status": "ambiguous",
+      "confidence": 0.3,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.2
+        },
+        {
+          "entity_id": "char_0012",
+          "display": "采购人员",
+          "status": "known",
+          "score": 0.2
+        },
+        {
+          "entity_id": "char_0013",
+          "display": "鉴定商品的采购人员",
+          "status": "known",
+          "score": 0.2
+        }
+      ],
+      "evidence": [
+        "对话轮次推断，但没有明确叙述锚点"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    },
+    {
+      "dialogue_id": "volume_01-d000446",
+      "speaker_entity_id": "",
+      "speaker_display": "",
+      "speaker_status": "ambiguous",
+      "confidence": 0.3,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.2
+        },
+        {
+          "entity_id": "char_0012",
+          "display": "采购人员",
+          "status": "known",
+          "score": 0.2
+        },
+        {
+          "entity_id": "char_0013",
+          "display": "鉴定商品的采购人员",
+          "status": "known",
+          "score": 0.2
+        }
+      ],
+      "evidence": [
+        "对话轮次推断，但没有明确叙述锚点"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    },
+    {
+      "dialogue_id": "volume_01-d000447",
+      "speaker_entity_id": "",
+      "speaker_display": "",
+      "speaker_status": "ambiguous",
+      "confidence": 0.3,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.2
+        },
+        {
+          "entity_id": "char_0012",
+          "display": "采购人员",
+          "status": "known",
+          "score": 0.2
+        },
+        {
+          "entity_id": "char_0013",
+          "display": "鉴定商品的采购人员",
+          "status": "known",
+          "score": 0.2
+        }
+      ],
+      "evidence": [
+        "对话轮次推断，但没有明确叙述锚点"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    },
+    {
+      "dialogue_id": "volume_01-d000448",
+      "speaker_entity_id": "char_0020",
+      "speaker_display": "列支敦·马贺特",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0020",
+          "display": "列支敦·马贺特",
+          "status": "known",
+          "score": 1.0
+        }
+      ],
+      "evidence": [
+        "称呼克拉福•罗伦斯先生，符合行长身份"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "前三句对话轮次推断不明确，第四句有明确的叙述锚点。"
+}

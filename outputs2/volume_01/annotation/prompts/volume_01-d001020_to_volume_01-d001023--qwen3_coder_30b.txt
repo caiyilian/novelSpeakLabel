@@ -1,0 +1,359 @@
+你是轻小说说话人标注项目的阶段 2：正式标注助手。
+你的任务是判断输入 target_dialogues 中每一句台词的说话人，不要改写原文。
+必须把这些台词当作同一个连续片段来判断，优先保持对话轮次和叙述线索的一致性。
+
+规则：
+1. 只输出严格 JSON，不要 Markdown，不要解释性前后缀。
+2. 如果说话人是候选角色，speaker_entity_id 必须使用 candidate_characters 里的 entity_id，speaker_status 填 known。
+3. 如果说话人像某个未知人物，speaker_entity_id 使用 candidate_mysteries 里的 mystery_id，speaker_status 填 mystery。
+4. 如果只是无法追踪的路人/群体，speaker_status 填 npc，speaker_entity_id 可为空或使用 npc:简短称呼。
+5. 证据不足时不要硬猜，speaker_status 填 ambiguous 或 review，并把 needs_review 设为 true。
+6. candidate_speakers 至少列出 1 个候选；如果无法判断，列出最可能的候选和不确定原因。
+7. confidence 使用 0 到 1 之间的小数，表示你对最终判断的把握。
+8. 不要只因为台词里提到某个名字、职业、地点，就把说话人标成那个实体；被称呼的人通常不是说话人。
+9. 连续问答、交易寒暄、命令/回答等场景要按上下句轮次判断；同一人连续说话必须有叙述或语气证据支持。
+10. 如果当前上下文显示某角色还没有登场，不要因为角色库或后文记忆里有这个角色就提前标给他/她。
+
+11. target_dialogues 中 dialogue_kind=inline 的项目是正文内嵌引号，不要当作独立对白；标为 review，needs_review=true。
+12. candidate_mysteries 只是可选候选；如果候选名称和当前段落地点/人物不一致，必须改用 npc 或 review。
+13. 如果只有轮次推断、没有叙述锚点或自我介绍，请降低 confidence，并在 evidence 里说明轮次依据。
+
+14. candidate_characters.speech_markers 是阶段 1 提取的高区分度口癖/自称/固定短语；命中时可作为证据，但如果多个角色共享或上下文反证明显，必须进入复核。
+
+输出 JSON 结构：
+{
+  "annotations": [
+    {
+      "dialogue_id": "必须来自 target_dialogue_ids",
+      "speaker_entity_id": "string",
+      "speaker_display": "string",
+      "speaker_status": "known|mystery|npc|ambiguous|review",
+      "confidence": 0.0,
+      "candidate_speakers": [
+        {"entity_id": "string", "display": "string", "status": "known|mystery|npc|ambiguous|review", "score": 0.0}
+      ],
+      "evidence": ["短证据，不要大段复制原文"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "可选，简短说明整体轮次判断"
+}
+必须为 target_dialogue_ids 中每个 dialogue_id 输出且只输出一条 annotation。
+
+输入 JSON：
+{
+  "volume": {
+    "volume_id": "volume_01",
+    "volume": 1
+  },
+  "target_dialogue_ids": [
+    "volume_01-d001020",
+    "volume_01-d001021",
+    "volume_01-d001022",
+    "volume_01-d001023"
+  ],
+  "dialogues": [
+    {
+      "dialogue_id": "volume_01-d001020",
+      "dialogue_index": 1019,
+      "window_position": 1,
+      "chapter_id": "volume_01-c006",
+      "chapter_title": "第五幕",
+      "scene_id": "volume_01-c006-s001",
+      "paragraph_id": "volume_01-c006-s001-p002220",
+      "paragraph_index": 2219,
+      "local_dialogue_index": 1,
+      "text": "……这个崔尼银币的最大利益，就是从国王那里取得特权。根据我们的调查得知，其实王族的财政似乎相当困窘。也就是说，这笔交易如果成功的话，应该可以从王族那里取得相当大的特权。要放弃这个特权实在……",
+      "quote_text": "「……这个崔尼银币的最大利益，就是从国王那里取得特权。根据我们的调查得知，其实王族的财政似乎相当困窘。也就是说，这笔交易如果成功的话，应该可以从王族那里取得相当大的特权。要放弃这个特权实在……」",
+      "paragraph_text": "「……这个崔尼银币的最大利益，就是从国王那里取得特权。根据我们的调查得知，其实王族的财政似乎相当困窘。也就是说，这笔交易如果成功的话，应该可以从王族那里取得相当大的特权。要放弃这个特权实在……」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 97
+    },
+    {
+      "dialogue_id": "volume_01-d001021",
+      "dialogue_index": 1020,
+      "window_position": 2,
+      "chapter_id": "volume_01-c006",
+      "chapter_title": "第五幕",
+      "scene_id": "volume_01-c006-s001",
+      "paragraph_id": "volume_01-c006-s001-p002221",
+      "paragraph_index": 2220,
+      "local_dialogue_index": 1,
+      "text": "要用这个特权换取我的伙伴当然不相称。",
+      "quote_text": "「要用这个特权换取我的伙伴当然不相称。」",
+      "paragraph_text": "「要用这个特权换取我的伙伴当然不相称。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 20
+    },
+    {
+      "dialogue_id": "volume_01-d001022",
+      "dialogue_index": 1021,
+      "window_position": 3,
+      "chapter_id": "volume_01-c006",
+      "chapter_title": "第五幕",
+      "scene_id": "volume_01-c006-s001",
+      "paragraph_id": "volume_01-c006-s001-p002222",
+      "paragraph_index": 2221,
+      "local_dialogue_index": 1,
+      "text": "您的意思是要对方用钱来买吗？",
+      "quote_text": "「您的意思是要对方用钱来买吗？」",
+      "paragraph_text": "「您的意思是要对方用钱来买吗？」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 16
+    },
+    {
+      "dialogue_id": "volume_01-d001023",
+      "dialogue_index": 1022,
+      "window_position": 4,
+      "chapter_id": "volume_01-c006",
+      "chapter_title": "第五幕",
+      "scene_id": "volume_01-c006-s001",
+      "paragraph_id": "volume_01-c006-s001-p002224",
+      "paragraph_index": 2223,
+      "local_dialogue_index": 1,
+      "text": "如果梅迪欧商行可以把打垮米隆商行，以及从国王那里取得特权这两件事放在天秤上一秤，并认为买下特权比较好的话，就可以要求梅迪欧商行支付等价的金额，不是吗？",
+      "quote_text": "「如果梅迪欧商行可以把打垮米隆商行，以及从国王那里取得特权这两件事放在天秤上一秤，并认为买下特权比较好的话，就可以要求梅迪欧商行支付等价的金额，不是吗？」",
+      "paragraph_text": "「如果梅迪欧商行可以把打垮米隆商行，以及从国王那里取得特权这两件事放在天秤上一秤，并认为买下特权比较好的话，就可以要求梅迪欧商行支付等价的金额，不是吗？」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 77
+    }
+  ],
+  "context": {
+    "paragraphs": [
+      {
+        "paragraph_id": "volume_01-c006-s001-p002217",
+        "paragraph_index": 2216,
+        "text": "正因如此，马贺特听了才不禁摀住眼睛。失去这利益，就等于失去亲身骨肉般令人心疼。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c006-s001-p002218",
+        "paragraph_index": 2217,
+        "text": "这个魔法交易的对象，拥有带来如此巨大利益的能力。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c006-s001-p002219",
+        "paragraph_index": 2218,
+        "text": "那正是堂堂一国之王，崔尼国国王。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c006-s001-p002220",
+        "paragraph_index": 2219,
+        "text": "「……这个崔尼银币的最大利益，就是从国王那里取得特权。根据我们的调查得知，其实王族的财政似乎相当困窘。也就是说，这笔交易如果成功的话，应该可以从王族那里取得相当大的特权。要放弃这个特权实在……」",
+        "target_dialogue_ids": [
+          "volume_01-d001020"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c006-s001-p002221",
+        "paragraph_index": 2220,
+        "text": "「要用这个特权换取我的伙伴当然不相称。」",
+        "target_dialogue_ids": [
+          "volume_01-d001021"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c006-s001-p002222",
+        "paragraph_index": 2221,
+        "text": "「您的意思是要对方用钱来买吗？」",
+        "target_dialogue_ids": [
+          "volume_01-d001022"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c006-s001-p002223",
+        "paragraph_index": 2222,
+        "text": "罗伦斯点点头。然而，罗伦斯虽曾经耳闻如此大规模的交易，却没有实际交易过的经验，所以他也没把握一定能成功。不过，他心想只要当成自己生意上的一贯作业，应该就能成功。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c006-s001-p002224",
+        "paragraph_index": 2223,
+        "text": "「如果梅迪欧商行可以把打垮米隆商行，以及从国王那里取得特权这两件事放在天秤上一秤，并认为买下特权比较好的话，就可以要求梅迪欧商行支付等价的金额，不是吗？」",
+        "target_dialogue_ids": [
+          "volume_01-d001023"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c006-s001-p002225",
+        "paragraph_index": 2224,
+        "text": "虽然这些话都是罗伦斯临时想出来的，但这么说应该也合乎情理。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c006-s001-p002226",
+        "paragraph_index": 2225,
+        "text": "话说最初，收集越多已知即将贬值的崔尼银币，就越有钱赚的构想，原本就建立在发行崔尼银币的国家，也就是崔尼国愿意买回崔尼银币的前提上。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c006-s001-p002227",
+        "paragraph_index": 2226,
+        "text": "而说到崔尼国愿意买回银币的原因，那是因为崔尼国打算把目前在市面上流通的货币先熔毁，再降低含银量，以发行更多的银币。当然了，含银量降得越低，就可以使用相同重量的银发行越多银币，而熔毁的银币数量越多，就能够发行越多灌了水的银币。这么一来，假设原本只有十枚的货币就可以变成十三枚，足足多赚三枚货币。",
+        "target_dialogue_ids": []
+      }
+    ]
+  },
+  "scene_memory": [
+    {
+      "scene_id": "volume_01-c006-s001-r002",
+      "parent_scene_id": "volume_01-c006-s001",
+      "chunk_index": 2,
+      "chunk_count": 3,
+      "scene_summary": "罗伦斯向米隆商行的马贺特提出一个策略，建议抢先完成崔尼银币交易，以取得与崔尼国王交涉的王牌地位，从而阻止梅迪欧商行获得特权。场景中涉及货币贬值、国家财政危机、商行竞争等复杂背景。",
+      "active_characters": [
+        "罗伦斯",
+        "马贺特"
+      ],
+      "relationships": [
+        "罗伦斯与马贺特讨论崔尼银币交易策略",
+        "罗伦斯试图说服马贺特采取行动",
+        "罗伦斯与米隆商行有合作关系",
+        "罗伦斯与崔尼国国王存在潜在交涉关系",
+        "米隆商行与梅迪欧商行存在商业竞争"
+      ],
+      "notes": "场景中涉及复杂的商业策略和国家财政背景，罗伦斯的提议围绕崔尼银币交易和国王特权展开。崔尼国国王和梅迪欧商行虽未直接出场，但对剧情发展有重要影响。"
+    }
+  ],
+  "candidate_characters": [
+    {
+      "entity_id": "char_0001",
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": [
+        "商人",
+        "旅行商人",
+        "行商人"
+      ],
+      "description": "理性、谨慎的商人，试图分析局势并保持冷静。他与赫萝同行，面对叶勒的威胁时表现出坚定。 / 理性、坚定的商人，坚持遵守与赫萝的合约，拒绝背叛她。面对叶勒的威胁保持冷静，表现出对赫萝的忠诚。 / 理性、谨慎的商人，身受重伤但仍试图保持冷静并等待救援。他表现出对赫萝的依赖和信任。 / 罗伦斯目睹赫萝的变身过程，表现出震惊和无力。他试图抓住赫萝留下的皮袋，但最终面对巨大的狼形生物，感到无法应对。 / 理性、谨慎的商人，与赫萝在地下通道中遭遇叶勒的威胁。他试图安抚赫萝的情绪，并表现出对环境变化的敏感。 / 在赫萝的威压下感…",
+      "speech_style": "温和、理性、略带担忧 / 理性、略带策略性、温和 / 理性、担忧、略带冲动 / 虚弱、低沉、略带困惑 / 虚弱、低沉、焦虑 / 理性、坚定、略带焦虑 / 理性、焦虑、略带冲动 / 虚弱、低沉、焦虑 / 虚弱、焦虑、略带愤怒 / 愤怒、理性、略带冲动 / 虚弱、焦虑、略带悔恨 / 理性、冷静、略带焦虑",
+      "speech_markers": [
+        "……骑士？",
+        "有什么能为您效劳的吗？",
+        "算了……",
+        "糟糕",
+        "……",
+        "喂！",
+        "喂！起床啊！",
+        "喂！有什么好笑的？"
+      ],
+      "relationship_hints": [
+        "与赫萝一同旅行",
+        "对赫萝的身份持怀疑态度",
+        "与修道院有生意期望但未成功",
+        "与骑士初次互动",
+        "与赫萝有密切关系",
+        "与教会和骑士有互动",
+        "与叶勒有交集，计划与他交谈但被祭典打断",
+        "与叶勒有过去的交易关系。"
+      ],
+      "first_seen_scene_id": "volume_01-c000-s003-r001",
+      "latest_seen_scene_id": "volume_01-c008-s003-r001",
+      "confidence": 1.0
+    },
+    {
+      "entity_id": "char_0014",
+      "display_name": "米隆商行",
+      "aliases": [],
+      "titles": [
+        "商行"
+      ],
+      "description": "被罗伦斯说服调查杰廉的商行，被认为在情报收集方面非常优秀。",
+      "speech_style": "未直接发言",
+      "speech_markers": [],
+      "relationship_hints": [
+        "被罗伦斯说服",
+        "与杰廉有潜在冲突"
+      ],
+      "first_seen_scene_id": "volume_01-c005-s001-r001",
+      "latest_seen_scene_id": "volume_01-c005-s001-r001",
+      "confidence": 0.8
+    },
+    {
+      "entity_id": "char_0015",
+      "display_name": "列支敦·马贺特",
+      "aliases": [
+        "列支敦·马贺特",
+        "马贺特"
+      ],
+      "titles": [
+        "米隆商行帕兹欧分行行长",
+        "行长"
+      ],
+      "description": "米隆商行的行长，试图说服罗伦斯提供线索，以应对梅迪欧商行的威胁。 / 米隆商行的行长，收到神秘信件后与罗伦斯互动，表现出对局势的冷静分析。 / 冷静、理性的米隆商行行长，正在分析罗伦斯的请求，并指出其中的异常之处。他表现出对局势的掌控和对细节的关注。 / 米隆商行的行长，正在与罗伦斯讨论崔尼银币交易的策略。他对罗伦斯的提议表现出兴趣，但也意识到其中的风险。 / 冷静、理性的米隆商行行长，正在与罗伦斯讨论应对梅迪欧商行的策略。他认同罗伦斯的计划，但也指出必须抢先行动。 / 冷静、理性的米隆商行行长，正在与罗伦斯讨论…",
+      "speech_style": "沉稳、自信 / 冷静、理性、略带质疑 / 沉稳、理性、略带质疑 / 沉稳、理性、略带安抚 / 沉稳、理性",
+      "speech_markers": [
+        "我们愿意接受这次交易。",
+        "我也这么认为。",
+        "这不是有些奇怪吗？",
+        "请您冷静。",
+        "给狼……与狼的森林？",
+        "马贺特露出惊讶的表情",
+        "马贺特轻抚他的下巴",
+        "马贺特抬起头说"
+      ],
+      "relationship_hints": [
+        "与罗伦斯谈判",
+        "代表米隆商行",
+        "与罗伦斯和老卸货工有商业联系。",
+        "对梅迪欧商行的行动表示担忧。",
+        "与罗伦斯有商业合作。",
+        "与梅迪欧商行存在竞争关系。",
+        "与罗伦斯有商业交易，但立场明确，不承担罗伦斯的安危责任。",
+        "试图安抚罗伦斯的情绪，但立场坚定。"
+      ],
+      "first_seen_scene_id": "volume_01-c005-s002-r001",
+      "latest_seen_scene_id": "volume_01-c008-s002-r003",
+      "confidence": 0.95
+    }
+  ],
+  "candidate_mysteries": [
+    {
+      "mystery_id": "mystery_volume_01_c006_s001_r002_崔尼国国王",
+      "temporary_name": "崔尼国国王",
+      "description": "未直接出场，但被多次提及为崔尼银币交易的核心人物。罗伦斯的策略围绕与国王交涉展开，国王的财政状况和特权是关键。",
+      "evidence": [
+        "volume_01-c006-s001-p002219",
+        "volume_01-c006-s001-p002220",
+        "volume_01-c006-s001-p002229"
+      ],
+      "source_scene_id": "volume_01-c006-s001-r002",
+      "confidence": 0.85
+    },
+    {
+      "mystery_id": "mystery_volume_01_c006_s001_r002_梅迪欧商行",
+      "temporary_name": "梅迪欧商行",
+      "description": "未直接出场，但被提及为罗伦斯和米隆商行的主要竞争对手。他们试图通过崔尼银币交易取得国王的特权。",
+      "evidence": [
+        "volume_01-c006-s001-p002224",
+        "volume_01-c006-s001-p002229",
+        "volume_01-c006-s001-p002234"
+      ],
+      "source_scene_id": "volume_01-c006-s001-r002",
+      "confidence": 0.8
+    },
+    {
+      "mystery_id": "mystery_volume_01_c006_s001_r003_梅迪欧商行",
+      "temporary_name": "梅迪欧商行",
+      "description": "与罗伦斯和米隆商行对立的商行，试图通过举发罗伦斯来获取优势。",
+      "evidence": [
+        "volume_01-c006-s001-p002240",
+        "volume_01-c006-s001-p002246"
+      ],
+      "source_scene_id": "volume_01-c006-s001-r003",
+      "confidence": 0.85
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000193",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.98
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.02
+    }
+  ],
+  "evidence": [
+    "台词中明确提到「我叫罗伦斯。克拉福•罗伦斯」，与候选角色「罗伦斯」的自我介绍一致。",
+    "上下文显示本段对话是罗伦斯对赫萝的回应，赫萝之前提到「咱会一直传述汝的故事」，而罗伦斯在此表明自己的名字。",
+    "场景记忆中明确指出罗伦斯与赫萝的互动，且罗伦斯是主要角色之一。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

@@ -1,0 +1,24 @@
+```json
+{
+  "dialogue_id": "volume_01-d000148",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "前一段描述罗伦斯咽下唾液并轻声说话，暗示他即将说出这句话。",
+    "场景记忆中明确提到罗伦斯对赫萝的身份持怀疑态度，符合此句台词的语气和内容。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

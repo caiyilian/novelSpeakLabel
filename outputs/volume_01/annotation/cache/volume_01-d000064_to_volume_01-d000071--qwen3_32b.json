@@ -1,0 +1,181 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000064",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "对话中使用自称‘咱’，符合赫萝的说话风格",
+        "上下文提到女孩拥有狼耳和尖牙，非人类特征明显"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000065",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "对话是针对前一句的回应，符合罗伦斯与赫萝的对话轮次",
+        "语气带有情绪化，符合罗伦斯的理性但略带情绪的说话风格"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000066",
+      "speaker_entity_id": "mystery_volume_01_c002_s003_r003_神秘马匹",
+      "speaker_display": "神秘马匹",
+      "speaker_status": "mystery",
+      "confidence": 0.6,
+      "candidate_speakers": [
+        {
+          "entity_id": "mystery_volume_01_c002_s003_r003_神秘马匹",
+          "display": "神秘马匹",
+          "status": "mystery",
+          "score": 0.6
+        }
+      ],
+      "evidence": [
+        "对话内容提及‘那匹马’，与场景记忆中提到的神秘马匹相关",
+        "上下文未出现其他角色提及马匹，因此推测为神秘马匹的回应"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000067",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "沉默的回应符合赫萝在对话中偶尔停顿的风格",
+        "上下文显示赫萝在罗伦斯拔剑后收起笑容，符合她的情绪变化"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000068",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "对话是罗伦斯对赫萝身份的进一步追问，符合他的理性性格",
+        "上下文显示罗伦斯对赫萝身份持怀疑态度"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000069",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "对话中使用自称‘咱’，符合赫萝的说话风格",
+        "语气带有调侃和威胁，符合赫萝的轻松幽默但略带威胁的语气"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000070",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "对话是对赫萝的回应，符合罗伦斯的理性性格",
+        "上下文显示罗伦斯对赫萝的言语感到困惑"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000071",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "对话中使用自称‘咱’，符合赫萝的说话风格",
+        "语气轻松幽默，带有自嘲和调侃，符合赫萝的说话方式"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，赫萝和罗伦斯交替发言，符合两人在场景中的互动模式。赫萝使用自称‘咱’，语气轻松幽默，罗伦斯则理性且略带情绪。‘那匹马啊。’一句因上下文提及神秘马匹，故归为神秘角色。"
+}

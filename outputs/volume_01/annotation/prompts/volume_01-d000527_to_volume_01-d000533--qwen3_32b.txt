@@ -1,0 +1,438 @@
+你是轻小说说话人标注项目的阶段 2：正式标注助手。
+你的任务是判断输入 target_dialogues 中每一句台词的说话人，不要改写原文。
+必须把这些台词当作同一个连续片段来判断，优先保持对话轮次和叙述线索的一致性。
+
+规则：
+1. 只输出严格 JSON，不要 Markdown，不要解释性前后缀。
+2. 如果说话人是候选角色，speaker_entity_id 必须使用 candidate_characters 里的 entity_id，speaker_status 填 known。
+3. 如果说话人像某个未知人物，speaker_entity_id 使用 candidate_mysteries 里的 mystery_id，speaker_status 填 mystery。
+4. 如果只是无法追踪的路人/群体，speaker_status 填 npc，speaker_entity_id 可为空或使用 npc:简短称呼。
+5. 证据不足时不要硬猜，speaker_status 填 ambiguous 或 review，并把 needs_review 设为 true。
+6. candidate_speakers 至少列出 1 个候选；如果无法判断，列出最可能的候选和不确定原因。
+7. confidence 使用 0 到 1 之间的小数，表示你对最终判断的把握。
+8. 不要只因为台词里提到某个名字、职业、地点，就把说话人标成那个实体；被称呼的人通常不是说话人。
+9. 连续问答、交易寒暄、命令/回答等场景要按上下句轮次判断；同一人连续说话必须有叙述或语气证据支持。
+10. 如果当前上下文显示某角色还没有登场，不要因为角色库或后文记忆里有这个角色就提前标给他/她。
+
+11. target_dialogues 中 dialogue_kind=inline 的项目是正文内嵌引号，不要当作独立对白；标为 review，needs_review=true。
+12. candidate_mysteries 只是可选候选；如果候选名称和当前段落地点/人物不一致，必须改用 npc 或 review。
+13. 如果只有轮次推断、没有叙述锚点或自我介绍，请降低 confidence，并在 evidence 里说明轮次依据。
+
+输出 JSON 结构：
+{
+  "annotations": [
+    {
+      "dialogue_id": "必须来自 target_dialogue_ids",
+      "speaker_entity_id": "string",
+      "speaker_display": "string",
+      "speaker_status": "known|mystery|npc|ambiguous|review",
+      "confidence": 0.0,
+      "candidate_speakers": [
+        {"entity_id": "string", "display": "string", "status": "known|mystery|npc|ambiguous|review", "score": 0.0}
+      ],
+      "evidence": ["短证据，不要大段复制原文"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "可选，简短说明整体轮次判断"
+}
+必须为 target_dialogue_ids 中每个 dialogue_id 输出且只输出一条 annotation。
+
+输入 JSON：
+{
+  "volume": {
+    "volume_id": "volume_01",
+    "volume": 1
+  },
+  "target_dialogue_ids": [
+    "volume_01-d000527",
+    "volume_01-d000528",
+    "volume_01-d000529",
+    "volume_01-d000530",
+    "volume_01-d000531",
+    "volume_01-d000532",
+    "volume_01-d000533"
+  ],
+  "dialogues": [
+    {
+      "dialogue_id": "volume_01-d000527",
+      "dialogue_index": 526,
+      "window_position": 1,
+      "chapter_id": "volume_01-c004",
+      "chapter_title": "第三幕",
+      "scene_id": "volume_01-c004-s004",
+      "paragraph_id": "volume_01-c004-s004-p001229",
+      "paragraph_index": 1228,
+      "local_dialogue_index": 1,
+      "text": "啊，您是说杰廉先生吗？他有交代过我们。",
+      "quote_text": "「啊，您是说杰廉先生吗？他有交代过我们。」",
+      "paragraph_text": "「啊，您是说杰廉先生吗？他有交代过我们。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 21
+    },
+    {
+      "dialogue_id": "volume_01-d000528",
+      "dialogue_index": 527,
+      "window_position": 2,
+      "chapter_id": "volume_01-c004",
+      "chapter_title": "第三幕",
+      "scene_id": "volume_01-c004-s004",
+      "paragraph_id": "volume_01-c004-s004-p001230",
+      "paragraph_index": 1229,
+      "local_dialogue_index": 1,
+      "text": "我想与他联络。",
+      "quote_text": "「我想与他联络。」",
+      "paragraph_text": "「我想与他联络。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 9
+    },
+    {
+      "dialogue_id": "volume_01-d000529",
+      "dialogue_index": 528,
+      "window_position": 3,
+      "chapter_id": "volume_01-c004",
+      "chapter_title": "第三幕",
+      "scene_id": "volume_01-c004-s004",
+      "paragraph_id": "volume_01-c004-s004-p001231",
+      "paragraph_index": 1230,
+      "local_dialogue_index": 1,
+      "text": "杰廉先生昨晚已经回到城里来，这阵子他应该每晚都会在这里出现。",
+      "quote_text": "「杰廉先生昨晚已经回到城里来，这阵子他应该每晚都会在这里出现。」",
+      "paragraph_text": "「杰廉先生昨晚已经回到城里来，这阵子他应该每晚都会在这里出现。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 32
+    },
+    {
+      "dialogue_id": "volume_01-d000530",
+      "dialogue_index": 529,
+      "window_position": 4,
+      "chapter_id": "volume_01-c004",
+      "chapter_title": "第三幕",
+      "scene_id": "volume_01-c004-s004",
+      "paragraph_id": "volume_01-c004-s004-p001232",
+      "paragraph_index": 1231,
+      "local_dialogue_index": 1,
+      "text": "这样啊。",
+      "quote_text": "「这样啊。」",
+      "paragraph_text": "「这样啊。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 6
+    },
+    {
+      "dialogue_id": "volume_01-d000531",
+      "dialogue_index": 530,
+      "window_position": 5,
+      "chapter_id": "volume_01-c004",
+      "chapter_title": "第三幕",
+      "scene_id": "volume_01-c004-s004",
+      "paragraph_id": "volume_01-c004-s004-p001233",
+      "paragraph_index": 1232,
+      "local_dialogue_index": 1,
+      "text": "他通常会在日落后没多久就出现，我建议您可以在本店一边消磨时间，一边等候他。",
+      "quote_text": "「他通常会在日落后没多久就出现，我建议您可以在本店一边消磨时间，一边等候他。」",
+      "paragraph_text": "「他通常会在日落后没多久就出现，我建议您可以在本店一边消磨时间，一边等候他。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 39
+    },
+    {
+      "dialogue_id": "volume_01-d000532",
+      "dialogue_index": 531,
+      "window_position": 6,
+      "chapter_id": "volume_01-c004",
+      "chapter_title": "第三幕",
+      "scene_id": "volume_01-c004-s004",
+      "paragraph_id": "volume_01-c004-s004-p001235",
+      "paragraph_index": 1234,
+      "local_dialogue_index": 1,
+      "text": "那就听你的吧！",
+      "quote_text": "「那就听你的吧！」",
+      "paragraph_text": "「那就听你的吧！」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 9
+    },
+    {
+      "dialogue_id": "volume_01-d000533",
+      "dialogue_index": 532,
+      "window_position": 7,
+      "chapter_id": "volume_01-c004",
+      "chapter_title": "第三幕",
+      "scene_id": "volume_01-c004-s004",
+      "paragraph_id": "volume_01-c004-s004-p001236",
+      "paragraph_index": 1235,
+      "local_dialogue_index": 1,
+      "text": "是，请您慢用。",
+      "quote_text": "「是，请您慢用。」",
+      "paragraph_text": "「是，请您慢用。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 9
+    }
+  ],
+  "context": {
+    "paragraphs": [
+      {
+        "paragraph_id": "volume_01-c004-s004-p001226",
+        "paragraph_index": 1225,
+        "text": "「可否请你转告老板，说我想要与一位名为杰廉的男子联络。」",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s004-p001227",
+        "paragraph_index": 1226,
+        "text": "罗伦斯心想如果这家酒吧不认识杰廉，那也无所谓。毕竟以酒吧为联络据点的旅行商人实在太多，店家只会认为罗伦斯找错地方罢了。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s004-p001228",
+        "paragraph_index": 1227,
+        "text": "然而，罗伦斯似乎担忧得太早。本来就相当开朗的女店员听到杰廉的名字后，眼神显得更加炯炯有神。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s004-p001229",
+        "paragraph_index": 1228,
+        "text": "「啊，您是说杰廉先生吗？他有交代过我们。」",
+        "target_dialogue_ids": [
+          "volume_01-d000527"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c004-s004-p001230",
+        "paragraph_index": 1229,
+        "text": "「我想与他联络。」",
+        "target_dialogue_ids": [
+          "volume_01-d000528"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c004-s004-p001231",
+        "paragraph_index": 1230,
+        "text": "「杰廉先生昨晚已经回到城里来，这阵子他应该每晚都会在这里出现。」",
+        "target_dialogue_ids": [
+          "volume_01-d000529"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c004-s004-p001232",
+        "paragraph_index": 1231,
+        "text": "「这样啊。」",
+        "target_dialogue_ids": [
+          "volume_01-d000530"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c004-s004-p001233",
+        "paragraph_index": 1232,
+        "text": "「他通常会在日落后没多久就出现，我建议您可以在本店一边消磨时间，一边等候他。」",
+        "target_dialogue_ids": [
+          "volume_01-d000531"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c004-s004-p001234",
+        "paragraph_index": 1233,
+        "text": "这女孩挺有生意头脑。不过，她说的话也不无道理。距离日落只剩下一、二个小时，只要在这里悠哉喝酒，过不了多久就能够等到杰廉了吧。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s004-p001235",
+        "paragraph_index": 1234,
+        "text": "「那就听你的吧！」",
+        "target_dialogue_ids": [
+          "volume_01-d000532"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c004-s004-p001236",
+        "paragraph_index": 1235,
+        "text": "「是，请您慢用。」",
+        "target_dialogue_ids": [
+          "volume_01-d000533"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c004-s004-p001237",
+        "paragraph_index": 1236,
+        "text": "女店员向罗伦斯点头示意，便朝向坐着两名老人的桌子走去。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s004-p001238",
+        "paragraph_index": 1237,
+        "text": "罗伦斯举起装有葡萄酒的酒杯含了一口酒。微微呛鼻的清爽酸味，加上融入舌头两旁的葡萄甜味。虽然以浓烈口感为卖点的莱姆酒也不错，但罗伦斯还是比较偏好葡萄酒或蜂蜜酒等带有甜味的酒。偶尔喝一些不一样的酒，好比苹果酒或梨子酒也不错。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s005-p001239",
+        "paragraph_index": 1238,
+        "text": "用麦芽酿造的啤酒虽然也不错，但不同啤酒师傅酿造出来的啤酒好坏不一，再加上个人的喜好大大不同，所以罗伦斯不太喜欢啤酒。不同于葡萄酒的价格越高，味道就越香醇，啤酒无法按照价格来评断好喝与否，并不适合旅行商人饮用。如果不是住在当地的居民，就无法找到符合自己口味的啤酒。因此，当旅行商人想要假装成当地居民时，就会点啤酒来喝。",
+        "target_dialogue_ids": []
+      }
+    ]
+  },
+  "scene_memory": [
+    {
+      "scene_id": "volume_01-c004-s004-r006",
+      "parent_scene_id": "volume_01-c004-s004",
+      "chunk_index": 6,
+      "chunk_count": 6,
+      "scene_summary": "罗伦斯在酒吧中等待名为杰廉的男子，与女店员互动，并品尝葡萄酒。场景中提及日落前的等待和对杰廉的期待。",
+      "active_characters": [
+        "罗伦斯",
+        "女店员"
+      ],
+      "relationships": [
+        "罗伦斯与女店员有互动",
+        "罗伦斯正在等待杰廉"
+      ],
+      "notes": "杰廉是当前场景中提及但尚未出现的神秘人物，值得后续追踪。罗伦斯表现出对葡萄酒的偏好，暗示其对饮品的品味和商业经验。"
+    }
+  ],
+  "candidate_characters": [
+    {
+      "entity_id": "char_0001",
+      "display_name": "罗伦斯",
+      "aliases": [
+        "罗伦斯",
+        "罗伦斯先生"
+      ],
+      "titles": [
+        "中间人",
+        "交易者",
+        "同行",
+        "商人",
+        "小毛头",
+        "小的",
+        "市井无赖",
+        "年轻人"
+      ],
+      "description": "一位行商人，正在与米隆商行的代表马贺特进行交易谈判。他原本期待获得两千枚银币，但实际只得到一百二十枚，感到震惊和困惑。 / 一位行商人，发现并收留了赫萝，决定与她一同旅行。 / 一位二十五岁的自力更生旅行商人，已有七年行商经验，性格泰然自若。 / 一位冷静理性的旅行商人，对赫萝的身份持怀疑态度，但仍保持互动。他注重外表整洁，对商业制度有深入理解。 / 冷静理性的旅行商人，与赫萝一同旅行。在本场景中与米隆商行的马贺特讨论梅迪欧商行的威胁，提出利用崔尼银币交易作为交涉王牌。 / 一位冷静理性的旅行商人，与赫萝一同旅行…",
+      "speech_style": "理性、坚定、略带情绪化 / 冷静、理性，带有悔恨和自责的语气。 / 冷静、理性，语气中带有对赫萝的关心和些许担忧。 / 冷静、理性、略带失落 / 冷静、理性，对商业制度有深入理解，并能清晰地向他人解释。 / 理性、礼貌、略带谨慎。 / 理性、冷静，带有商业分析倾向。 / 理性、沉稳、略带幽默 / 理性、冷静，但因困惑…",
+      "relationship_hints": [
+        "与赫萝一同旅行",
+        "对赫萝的真实性持怀疑态度",
+        "与深山村落的村民有交易关系",
+        "对修道院抱有商业期望但未成功",
+        "与骑士有短暂互动",
+        "与小村落的村民有交易关系",
+        "与修道院有关联",
+        "对教会和异教徒问题有见解"
+      ],
+      "first_seen_scene_id": "volume_01-c000-s003-r001",
+      "latest_seen_scene_id": "volume_01-c008-s003-r002",
+      "confidence": 1.0
+    },
+    {
+      "entity_id": "char_0018",
+      "display_name": "女店员",
+      "aliases": [],
+      "titles": [],
+      "description": "酒吧的女店员，对杰廉的名字反应积极，提供有用信息。 / 酒吧的女店员，对顾客礼貌，提供服务，并对杰廉的名字表现出兴趣。 / 酒吧的女店员，对杰廉的名字表现出兴趣，并提供信息。她的行为被罗伦斯和赫萝认为是谎言。",
+      "speech_style": "开朗、直接，语气友好。 / 礼貌、简短，服务导向。 / 礼貌、服务性",
+      "relationship_hints": [
+        "与杰廉有联系",
+        "在酒吧工作",
+        "与罗伦斯有互动",
+        "对杰廉的名字反应积极",
+        "试图拖延罗伦斯与赫萝的时间"
+      ],
+      "first_seen_scene_id": "volume_01-c004-s004-r005",
+      "latest_seen_scene_id": "volume_01-c004-s005-r001",
+      "confidence": 0.85
+    },
+    {
+      "entity_id": "char_0009",
+      "display_name": "杰廉",
+      "aliases": [],
+      "titles": [
+        "中间人",
+        "交易者",
+        "同行",
+        "商人",
+        "小毛头",
+        "小的",
+        "市井无赖",
+        "年轻人"
+      ],
+      "description": "一位能言善道的市井无赖，试图接近赫萝并表现出厚颜无耻的态度。 / 提供货币投机情报的商人，被罗伦斯怀疑其动机。 / 与罗伦斯达成交易的中间人，提供情报服务，自称小人物，但行为谨慎。 / 与罗伦斯和赫萝同行的旅人，已离开队伍。他的离开引发了赫萝和罗伦斯的讨论。 / 提出交易提议的人物，未直接出现，但被赫萝提及。 / 被罗伦斯寻找的男子，据称会在日落后出现。 / 据称会在日落后出现的男子，被罗伦斯和赫萝推测会如女店员所说出现。 / 与罗伦斯和赫萝互动的商人，对皮草交易表现出兴趣。 / 提供银币含银量情报的中间人，表现…",
+      "speech_style": "厚颜无耻、能言善道、带有谄媚语气 / 未直接说话，但被罗伦斯和赫萝评价为「小毛头」和「说谎者」 / 谦卑但自信，带有职业性的谨慎语气。 / 未直接发言，但被提及。 / 未知 / 未直接出现 / 直接、略带调侃 / 谦卑、谨慎、略带紧张 / 谦卑、谨慎、带有讨好语气 / 谨慎、不自信 / 未直接说话，但被罗伦斯提及 /…",
+      "relationship_hints": [
+        "对罗伦斯表示敬佩",
+        "试图获取情报",
+        "与罗伦斯和赫萝互动",
+        "与罗伦斯有亲戚关系",
+        "试图接近赫萝",
+        "向罗伦斯提供情报，但罗伦斯怀疑其真实性",
+        "可能向其他商人提供相同情报",
+        "与罗伦斯有商业合作关系"
+      ],
+      "first_seen_scene_id": "volume_01-c003-s002-r002",
+      "latest_seen_scene_id": "volume_01-c004-s008-r005",
+      "confidence": 0.9
+    },
+    {
+      "entity_id": "char_0010",
+      "display_name": "店员",
+      "aliases": [],
+      "titles": [
+        "米隆商行店员",
+        "采购人员",
+        "鉴定员",
+        "鉴定商品的采购人员"
+      ],
+      "description": "在卸货场迎接罗伦斯的店员，穿着整洁，态度专业。 / 商行的店员，负责接待罗伦斯并指引卸货场的位置。",
+      "speech_style": "礼貌、热情、简洁 / 礼貌、略显紧张",
+      "relationship_hints": [
+        "与罗伦斯互动",
+        "引导罗伦斯前往左手边人员",
+        "与罗伦斯有互动",
+        "提供卸货场指引"
+      ],
+      "first_seen_scene_id": "volume_01-c004-s002-r005",
+      "latest_seen_scene_id": "volume_01-c008-s002-r006",
+      "confidence": 0.85
+    },
+    {
+      "entity_id": "char_0017",
+      "display_name": "男子",
+      "aliases": [],
+      "titles": [],
+      "description": "一名未命名的男子，正在嗅闻貂皮的气味，表现出从困惑到惊讶的情绪变化。",
+      "speech_style": "未直接说话，但通过行为表现出惊讶",
+      "relationship_hints": [
+        "与罗伦斯互动",
+        "对貂皮的气味有反应"
+      ],
+      "first_seen_scene_id": "volume_01-c004-s003-r006",
+      "latest_seen_scene_id": "volume_01-c004-s003-r006",
+      "confidence": 0.7
+    }
+  ],
+  "candidate_mysteries": [
+    {
+      "mystery_id": "mystery_volume_01_c004_s004_r006_杰廉",
+      "temporary_name": "杰廉",
+      "description": "被罗伦斯提及的男子，预计在日落后出现，目前尚未现身。",
+      "evidence": [
+        "volume_01-c004-s004-p001234"
+      ],
+      "source_scene_id": "volume_01-c004-s004-r006",
+      "confidence": 0.7
+    }
+  ]
+}

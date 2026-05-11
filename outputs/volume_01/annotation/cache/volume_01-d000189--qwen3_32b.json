@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000189",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.98
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.02
+    }
+  ],
+  "evidence": [
+    "台词中自称「我只不过是个辛苦做生意的商人」，与罗伦斯的商人身份和台词风格一致。",
+    "上下文显示罗伦斯在与赫萝对话中保持理性态度，并提到「餐费」等商业相关话题。",
+    "赫萝的下一段回应「咱的脸皮没有厚到拿人好处」表明说话人不是赫萝。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

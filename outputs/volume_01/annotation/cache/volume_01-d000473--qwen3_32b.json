@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000473",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0016",
+      "display": "鉴定员",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "「你的眼睛长到那里去了」是赫萝在交易中常用的调侃性言辞，符合她的说话风格。",
+    "上下文提到赫萝的言辞让罗伦斯感到困惑和无奈，符合她插嘴并主导气氛的行为模式。",
+    "赫萝在场景中多次打断罗伦斯的交易，表现出主导和调侃的态度。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

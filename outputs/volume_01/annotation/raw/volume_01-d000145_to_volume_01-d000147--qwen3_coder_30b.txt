@@ -1,0 +1,62 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000145",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 1.0
+        }
+      ],
+      "evidence": ["前文描述赫萝用哀怜的眼神看着罗伦斯并以娇嗲的声音说话", "语境中赫萝正在撒娇并带有调侃语气"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000146",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 1.0
+        }
+      ],
+      "evidence": ["赫萝在前一句后继续用轻松幽默语气说话", "上下文表明赫萝在与罗伦斯互动并带有撒娇语气"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000147",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 1.0
+        }
+      ],
+      "evidence": ["赫萝在前两句后继续用轻松幽默语气说话", "语境中赫萝在试探罗伦斯是否相信她", "上下文表明赫萝在与罗伦斯互动并带有调侃语气"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "三句台词连续，均为赫萝对罗伦斯的撒娇式调侃，语气一致，符合赫萝的性格特征"
+}

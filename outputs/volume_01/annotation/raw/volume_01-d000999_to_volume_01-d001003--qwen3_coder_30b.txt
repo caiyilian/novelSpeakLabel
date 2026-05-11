@@ -1,0 +1,145 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000999",
+      "speaker_entity_id": "char_0027",
+      "speaker_display": "米隆商行人员",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0027",
+          "display": "米隆商行人员",
+          "status": "known",
+          "score": 0.95
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.03
+        }
+      ],
+      "evidence": [
+        "进入房间并递信",
+        "前文描述为商行人员"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001000",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        },
+        {
+          "entity_id": "char_0027",
+          "display": "米隆商行人员",
+          "status": "known",
+          "score": 0.08
+        }
+      ],
+      "evidence": [
+        "对信件内容反应强烈",
+        "前文描述为与马贺特对话"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001001",
+      "speaker_entity_id": "char_0027",
+      "speaker_display": "米隆商行人员",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0027",
+          "display": "米隆商行人员",
+          "status": "known",
+          "score": 0.95
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.03
+        }
+      ],
+      "evidence": [
+        "递出信件",
+        "前文描述为商行人员"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001002",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.85
+        },
+        {
+          "entity_id": "char_0027",
+          "display": "米隆商行人员",
+          "status": "known",
+          "score": 0.1
+        }
+      ],
+      "evidence": [
+        "对收件人名称反应强烈",
+        "前文描述为罗伦斯观察信件"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001003",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        },
+        {
+          "entity_id": "char_0027",
+          "display": "米隆商行人员",
+          "status": "known",
+          "score": 0.08
+        }
+      ],
+      "evidence": [
+        "主动要求查看信件",
+        "前文描述为罗伦斯接过信件"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，由商行人员进入并递信，罗伦斯询问并接过信件，随后对信件内容做出反应。"
+}

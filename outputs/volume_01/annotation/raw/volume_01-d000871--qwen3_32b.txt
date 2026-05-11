@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000871",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "上下文显示罗伦斯在表达对赫萝独自旅行的关心，语气符合罗伦斯冷静理性的风格。",
+    "赫萝在后续回应中表现出情绪波动，暗示她对罗伦斯的提问有反应，符合罗伦斯先提出问题的逻辑。",
+    "场景记忆中罗伦斯多次表达对赫萝的关心，符合此句台词的语气和动机。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

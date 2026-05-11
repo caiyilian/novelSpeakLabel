@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d001316",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.98
+    },
+    {
+      "entity_id": "char_0020",
+      "display": "列支敦·马贺特",
+      "status": "known",
+      "score": 0.02
+    }
+  ],
+  "evidence": [
+    "上下文显示罗伦斯在与马贺特进行交易谈判，且此句为对马贺特的回应。",
+    "罗伦斯在场景中多次被提及，且是主要角色。",
+    "说话内容符合罗伦斯礼貌但略带感激的语气。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

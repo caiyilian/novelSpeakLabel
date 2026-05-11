@@ -1,0 +1,62 @@
+```json
+{
+  "scene_id": "volume_01-c004-s005",
+  "scene_summary": "罗伦斯与赫萝在酒吧中等待杰廉的出现，赫萝指出女店员在撒谎，但罗伦斯并不在意。杰廉最终如预期般出现，与罗伦斯进行轻松对话，暗示后续将有商业合作的可能。",
+  "active_characters": ["罗伦斯", "赫萝", "杰廉", "女店员"],
+  "character_candidates": [
+    {
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": ["商人", "旅行商人"],
+      "description": "理性、谨慎的商人，与赫萝同行，对女店员的谎言不以为意，表现出对商业策略的深思。",
+      "speech_style": "理性、谨慎、略带无奈",
+      "speech_markers": ["嗯……", "这么说，杰廉应该会如那女孩所说出现在这里。", "秘密。"],
+      "relationship_hints": ["与赫萝同行", "与杰廉有商业联系"],
+      "evidence": ["volume_01-c004-s005-p001247", "volume_01-c004-s005-p001259", "volume_01-c004-s005-p001260"],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "赫萝",
+      "aliases": [],
+      "titles": ["贤狼", "丰收之神"],
+      "description": "自称丰收之神的神秘少女，拥有狼的特征，对女店员的谎言有敏锐的直觉，表现出对罗伦斯的掌控力。",
+      "speech_style": "狡黠、自信、略带挑衅",
+      "speech_markers": ["那个女孩在撒谎。", "咱也这么认为。"],
+      "relationship_hints": ["与罗伦斯同行", "对罗伦斯有影响力"],
+      "evidence": ["volume_01-c004-s005-p001241", "volume_01-c004-s005-p001249"],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "杰廉",
+      "aliases": [],
+      "titles": ["旅行商人"],
+      "description": "年轻的旅行商人，与罗伦斯有商业联系，表现出热情和对罗伦斯的敬佩。",
+      "speech_style": "热情、略带笨拙",
+      "speech_markers": ["庆祝我们的重逢！", "皮草卖得如何？"],
+      "relationship_hints": ["与罗伦斯有商业联系", "被女店员提及"],
+      "evidence": ["volume_01-c004-s005-p001254", "volume_01-c004-s005-p001256"],
+      "confidence": 0.9
+    },
+    {
+      "display_name": "女店员",
+      "aliases": [],
+      "titles": [],
+      "description": "酒吧的女店员，开朗且有生意头脑，对杰廉有了解，被赫萝指出在撒谎。",
+      "speech_style": "开朗、有生意头脑",
+      "speech_markers": ["啊，您是说杰廉先生吗？", "是，请您慢用。"],
+      "relationship_hints": ["与杰廉有联系", "对罗伦斯和赫萝有观察"],
+      "evidence": ["volume_01-c004-s005-p001242", "volume_01-c004-s005-p001248"],
+      "confidence": 0.8
+    }
+  ],
+  "mystery_entities": [],
+  "relationships": [
+    "罗伦斯与赫萝同行",
+    "罗伦斯与杰廉有商业联系",
+    "赫萝对罗伦斯有影响力",
+    "女店员对杰廉有了解",
+    "女店员对罗伦斯和赫萝有观察"
+  ],
+  "notes": "本场景中，赫萝对女店员的谎言表现出敏锐的直觉，暗示她对人性和谎言的深刻理解。罗伦斯对谎言持宽容态度，表现出商人对商业策略的深思。杰廉的出现为后续剧情埋下伏笔，暗示商业合作的可能性。"
+}
+```

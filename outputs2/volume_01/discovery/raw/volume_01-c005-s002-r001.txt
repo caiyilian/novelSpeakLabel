@@ -1,0 +1,57 @@
+```json
+{
+  "scene_id": "volume_01-c005-s002",
+  "scene_summary": "罗伦斯与赫萝共处一室，罗伦斯因两人共处一室而感到些许后悔。随后，罗伦斯与米隆商行的行长列支敦·马贺特进行交易谈判，成功达成合作。罗伦斯心情愉快，与赫萝一同离开商行。",
+  "active_characters": ["罗伦斯", "赫萝", "列支敦·马贺特"],
+  "character_candidates": [
+    {
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": ["商人", "旅行商人", "行商人"],
+      "description": "理性、谨慎的商人，与赫萝共处一室时表现出些许犹豫和后悔。随后与米隆商行谈判，成功达成交易，心情愉快。",
+      "speech_style": "理性、自信、略带无奈",
+      "speech_markers": ["那么，我们是否该谈谈如何分配利益了呢？", "这种时候谁会心情不好啊？"],
+      "relationship_hints": ["与赫萝共处一室", "与米隆商行合作"],
+      "evidence": ["volume_01-c005-s002-p001674", "volume_01-c005-s002-p001675", "volume_01-c005-s002-p001678", "volume_01-c005-s002-p001691", "volume_01-c005-s002-p001701"],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "赫萝",
+      "aliases": [],
+      "titles": ["丰收之神", "狼", "贤狼"],
+      "description": "神秘少女，与罗伦斯共处一室，随后一同离开商行。她对罗伦斯的愉快心情表示些许不满。",
+      "speech_style": "轻松、略带调侃",
+      "speech_markers": ["汝心情很好呐。"],
+      "relationship_hints": ["与罗伦斯共处一室", "一同离开商行"],
+      "evidence": ["volume_01-c005-s002-p001675", "volume_01-c005-s002-p001700"],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "列支敦·马贺特",
+      "aliases": [],
+      "titles": ["行长", "米隆商行帕兹欧分行行长"],
+      "description": "米隆商行帕兹欧分行的行长，沉稳且自信，与罗伦斯进行交易谈判，表现出对米隆商行实力的自信。",
+      "speech_style": "沉稳、自信",
+      "speech_markers": ["我们愿意接受这次交易。"],
+      "relationship_hints": ["与罗伦斯谈判", "代表米隆商行"],
+      "evidence": ["volume_01-c005-s002-p001680", "volume_01-c005-s002-p001681", "volume_01-c005-s002-p001687", "volume_01-c005-s002-p001688"],
+      "confidence": 0.9
+    }
+  ],
+  "mystery_entities": [
+    {
+      "temporary_name": "梅迪欧商行",
+      "description": "帕兹欧第二大规模的商行，是杰廉的靠山，被认为背后可能有贵族支持。",
+      "evidence": ["volume_01-c005-s002-p001683", "volume_01-c005-s002-p001684", "volume_01-c005-s002-p001687"],
+      "confidence": 0.85
+    }
+  ],
+  "relationships": [
+    "罗伦斯与赫萝共处一室",
+    "罗伦斯与米隆商行合作",
+    "米隆商行与梅迪欧商行存在竞争或合作关系",
+    "列支敦·马贺特代表米隆商行与罗伦斯谈判"
+  ],
+  "notes": "场景中未出现新的神秘人物，但梅迪欧商行作为背景势力被提及，可能在后续剧情中发挥重要作用。罗伦斯与赫萝的关系稳定，罗伦斯与米隆商行的合作关系明确。"
+}
+```

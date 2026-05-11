@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000394",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "前一段提到赫萝拉了罗伦斯的衣服并指着摊贩，随后对话内容围绕苹果展开，赫萝对苹果表现出浓厚兴趣。",
+    "当前对话「是呗！」语气轻松，符合赫萝一贯的说话风格。",
+    "下一段提到赫萝的尾巴像狗一样发出唰唰声，进一步确认说话人是赫萝。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

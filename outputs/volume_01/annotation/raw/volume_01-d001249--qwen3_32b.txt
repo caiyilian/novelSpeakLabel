@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d001249",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.98
+    },
+    {
+      "entity_id": "char_0004",
+      "display": "叶勒",
+      "status": "known",
+      "score": 0.02
+    }
+  ],
+  "evidence": [
+    "对话中提到「叶勒，要我违反合约，我办不到」，表明说话人正在回应叶勒的请求，且强调自己遵守合约的立场，这与罗伦斯一贯的商人性格和台词风格一致。",
+    "上下文显示叶勒刚刚反问罗伦斯，而当前段落是罗伦斯的回应，符合对话逻辑。",
+    "罗伦斯在场景中多次强调商人合约的重要性，与本句台词内容高度吻合。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

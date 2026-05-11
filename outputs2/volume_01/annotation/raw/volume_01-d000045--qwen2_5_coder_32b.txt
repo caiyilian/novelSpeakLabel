@@ -1,0 +1,19 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000045",
+      "speaker_entity_id": "",
+      "speaker_display": "",
+      "speaker_status": "review",
+      "confidence": 0.2,
+      "candidate_speakers": [
+        {"entity_id": "char_0001", "display": "罗伦斯", "status": "known", "score": 0.6}
+      ],
+      "evidence": ["对话轮次依据不足，对话内容为回忆中的引用"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    }
+  ],
+  "window_notes": "当前对话是正文内嵌引号，无法直接判断说话人。"
+}

@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d001327",
+  "speaker_entity_id": "char_0020",
+  "speaker_display": "列支敦·马贺特",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0020",
+      "display": "列支敦·马贺特",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "马贺特在本场景中讲述宗教戏剧故事，暗示辛香料对商人的重要性，与当前台词内容高度吻合。",
+    "当前段落紧接着马贺特的叙述，且罗伦斯只是沉默点头，未发言。",
+    "马贺特的台词风格包括生动、戏剧性的表达，与当前台词的修辞风格一致。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

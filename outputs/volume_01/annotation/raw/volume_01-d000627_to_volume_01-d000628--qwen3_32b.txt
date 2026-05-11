@@ -1,0 +1,64 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000627",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        },
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.05
+        }
+      ],
+      "evidence": [
+        "上下文显示罗伦斯正在解释商业逻辑，语气理性且略带懊恼，符合其说话风格。",
+        "赫萝的台词通常带有轻松幽默和调侃语气，而此句语气较为严肃，更符合罗伦斯的表达方式。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000628",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.92,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.92
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.08
+        }
+      ],
+      "evidence": [
+        "赫萝在前一句对话后紧接着回应，符合对话轮次逻辑。",
+        "该句语气轻松，带有对人类世界的调侃，符合赫萝的说话风格。",
+        "后文提到赫萝的苦笑和理解力，进一步支持此句为她所说。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "两句话为连续对话，符合罗伦斯解释、赫萝回应的轮次逻辑，上下文支持角色身份判断。"
+}
+```

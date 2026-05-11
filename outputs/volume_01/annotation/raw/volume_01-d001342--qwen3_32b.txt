@@ -1,0 +1,29 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001342",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "前一段落提到罗伦斯刚刚询问了卸货场的位置，并得到指引，接着他简短道谢后快步离开，符合说话人逻辑。",
+        "该段落是罗伦斯离开前的最后回应，符合上下文中的行为模式。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "该段对话为罗伦斯在获得指引后表达感谢，符合上下文中的行为逻辑，说话人判断明确。"
+}
+```

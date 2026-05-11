@@ -1,0 +1,23 @@
+{
+  "dialogue_id": "volume_01-d001047",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.98
+    }
+  ],
+  "evidence": [
+    "对话内容提到「贵商行需要多久时间」，明显是在向米隆商行的代表提问，符合罗伦斯的说话风格和场景中的角色行为。",
+    "场景记忆显示罗伦斯正在与米隆商行的马贺特讨论交易和营救赫萝的策略，符合当前对话的语境。",
+    "罗伦斯在场景中表现出冷静理性和商业分析倾向，与该句台词的语气一致。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

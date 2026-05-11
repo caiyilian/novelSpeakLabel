@@ -1,0 +1,36 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001228",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.9
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.1
+        }
+      ],
+      "evidence": [
+        "前一句提到「赫萝还没用快哭出来的声音说话」，紧接着就是这句台词，符合对话轮次逻辑。",
+        "赫萝在场景中表现出情绪波动，而罗伦斯通常较为理性，这句台词更符合赫萝的语气。",
+        "场景记忆中明确指出赫萝与罗伦斯有强烈的情感联系，且赫萝在逃亡中表现出依赖和脆弱。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "根据上下文推断，赫萝在情绪激动后说出这句台词，符合对话轮次和情绪逻辑。"
+}
+```

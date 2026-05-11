@@ -1,0 +1,34 @@
+```json
+{
+  "scene_id": "volume_01-c002-s004",
+  "scene_summary": "罗伦斯与赫萝在对话中探讨赫萝的身份与背景。赫萝自称是丰收之神，并展示出狼的耳朵与尾巴，表现出自信与狡诈的说话风格。罗伦斯则表现出理性与怀疑的态度。",
+  "active_characters": ["罗伦斯", "赫萝"],
+  "character_candidates": [
+    {
+      "display_name": "赫萝",
+      "aliases": [],
+      "titles": ["丰收之神", "狼"],
+      "description": "自称是丰收之神的神秘少女，拥有狼的耳朵和尾巴，说话狡诈自信，表现出对北方大地的熟悉。",
+      "speech_style": "狡诈、自信、神气",
+      "speech_markers": ["咱"],
+      "relationship_hints": ["与罗伦斯有互动，被罗伦斯收留并一同旅行"],
+      "evidence": ["volume_01-d000093", "volume_01-d000096", "volume_01-d000098"],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": ["旅行商人"],
+      "description": "理性、谨慎的商人，对赫萝的身份表示怀疑，但逐渐接受她的存在。",
+      "speech_style": "理性、怀疑、略带无奈",
+      "speech_markers": ["你刚刚也有提到模样如何又如何的，到底是什么意思啊？"],
+      "relationship_hints": ["与赫萝有互动，收留并一同旅行"],
+      "evidence": ["volume_01-d000092", "volume_01-d000095", "volume_01-d000097", "volume_01-d000100", "volume_01-d000102"],
+      "confidence": 0.98
+    }
+  ],
+  "mystery_entities": [],
+  "relationships": ["罗伦斯与赫萝之间存在旅伴关系，罗伦斯对赫萝的身份持怀疑态度，但逐渐接受"],
+  "notes": "赫萝的狼耳朵和尾巴是明确的非人类特征，暗示她可能是某种神灵或异界生物。罗伦斯的理性态度与赫萝的自信形成鲜明对比。"
+}
+```

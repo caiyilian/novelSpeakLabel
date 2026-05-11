@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000922",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "赫萝脱去外套露出狼耳朵，一边不停转向，一边说道。",
+    "场景中赫萝主导策略讨论，表现出对罗伦斯的调侃和关心。",
+    "赫萝在场景中独自离开，引发罗伦斯的担忧。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

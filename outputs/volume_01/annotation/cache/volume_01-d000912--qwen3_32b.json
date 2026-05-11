@@ -1,0 +1,35 @@
+{
+  "dialogue_id": "volume_01-d000912",
+  "speaker_entity_id": "mystery_volume_01_c005_s005_r005_追踪者",
+  "speaker_display": "追踪者",
+  "speaker_status": "mystery",
+  "confidence": 0.7,
+  "candidate_speakers": [
+    {
+      "entity_id": "mystery_volume_01_c005_s005_r005_追踪者",
+      "display": "追踪者",
+      "status": "mystery",
+      "score": 0.7
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.2
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.1
+    }
+  ],
+  "evidence": [
+    "男子们喊着「米隆商行」",
+    "罗伦斯听到一些男子们叫喊的单字",
+    "数名男子一边叫喊，一边跑过两人后方的道路"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

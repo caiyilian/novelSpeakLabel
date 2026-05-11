@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000662",
+  "speaker_entity_id": "char_0019",
+  "speaker_display": "怀兹",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0019",
+      "display": "怀兹",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "对话内容提到「上个月教会举办降临节时所发行的银币」，这与怀兹作为兑换商的专业知识相关。",
+    "前一段对话中，怀兹提醒罗伦斯「要抢先别人一步没那么容易」，显示他正在与罗伦斯对话。",
+    "下一段对话中，怀兹从木箱中取出银币交给罗伦斯，进一步确认说话人是怀兹。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

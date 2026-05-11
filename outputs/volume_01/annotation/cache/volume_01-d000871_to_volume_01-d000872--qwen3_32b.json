@@ -1,0 +1,49 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000871",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "上下文提到罗伦斯别无他意地说道，暗示他是在回应赫萝的担忧，因此这句话应为罗伦斯所说。",
+        "赫萝随后表现出情绪反应，说明她是在回应罗伦斯的提问，符合对话轮次逻辑。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000872",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.98,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.98
+        }
+      ],
+      "evidence": [
+        "上下文明确提到赫萝小声地说出这句话，直接表明说话人是赫萝。",
+        "赫萝在前一句中被提及为情绪反应的主体，符合对话轮次逻辑。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，罗伦斯提问后赫萝回应，符合上下文叙述逻辑。"
+}

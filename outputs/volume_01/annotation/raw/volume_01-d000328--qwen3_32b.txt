@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000328",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "上下文显示赫萝正在梳理尾巴，而罗伦斯在回忆自己的经验。",
+    "说话风格与罗伦斯冷静、理性、略带自省的语气相符。",
+    "赫萝的说话风格通常轻松幽默或带有威胁性，与此句不符。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

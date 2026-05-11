@@ -1,0 +1,178 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000943",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 1.0
+        },
+        {
+          "entity_id": "char_0019",
+          "display": "老卸货工",
+          "status": "known",
+          "score": 0.3
+        }
+      ],
+      "evidence": [
+        "上下文显示罗伦斯在与老卸货工对话，且该句为对梅迪欧商行的分析",
+        "罗伦斯的说话风格与该句内容一致"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000944",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 1.0
+        }
+      ],
+      "evidence": [
+        "承接上一句，语气和内容一致，符合罗伦斯的说话风格",
+        "罗伦斯在分析梅迪欧商行的动机"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000945",
+      "speaker_entity_id": "char_0019",
+      "speaker_display": "老卸货工",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0019",
+          "display": "老卸货工",
+          "status": "known",
+          "score": 1.0
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.2
+        }
+      ],
+      "evidence": [
+        "老卸货工在前文被描述为沉稳、安抚型角色",
+        "该句为对罗伦斯行为的评价，符合老卸货工的说话风格"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000946",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 1.0
+        }
+      ],
+      "evidence": [
+        "承接上一句，语气和内容一致，符合罗伦斯的说话风格",
+        "罗伦斯在解释自己伙伴的行为"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000947",
+      "speaker_entity_id": "char_0019",
+      "speaker_display": "老卸货工",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0019",
+          "display": "老卸货工",
+          "status": "known",
+          "score": 1.0
+        }
+      ],
+      "evidence": [
+        "老卸货工在前文被描述为沉稳、安抚型角色",
+        "该句为对罗伦斯处境的回应，符合老卸货工的说话风格"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000948",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 1.0
+        }
+      ],
+      "evidence": [
+        "承接上一句，语气和内容一致，符合罗伦斯的说话风格",
+        "罗伦斯在表达对伙伴被捉的担忧"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000949",
+      "speaker_entity_id": "mystery_volume_01_c005_s006_r002_米隆商行帕兹欧分行行长",
+      "speaker_display": "米隆商行帕兹欧分行行长",
+      "speaker_status": "mystery",
+      "confidence": 0.7,
+      "candidate_speakers": [
+        {
+          "entity_id": "mystery_volume_01_c005_s006_r002_米隆商行帕兹欧分行行长",
+          "display": "米隆商行帕兹欧分行行长",
+          "status": "mystery",
+          "score": 1.0
+        },
+        {
+          "entity_id": "char_0019",
+          "display": "老卸货工",
+          "status": "known",
+          "score": 0.3
+        }
+      ],
+      "evidence": [
+        "该句提及“马贺特行长”，与候选神秘人匹配",
+        "该句为对罗伦斯请求的回应，语气专业，符合行长身份",
+        "上下文显示罗伦斯试图联系行长，但行长尚未正式登场"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，罗伦斯与老卸货工交替发言，最后由神秘行长回应罗伦斯的请求。"
+}

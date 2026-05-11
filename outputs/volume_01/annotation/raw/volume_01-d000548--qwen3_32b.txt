@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000548",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0009",
+      "display": "杰廉",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "对话内容涉及投资金额，与罗伦斯在场景中讨论商业交易的语境一致。",
+    "前文提到「老板」和「资金增加」，暗示说话人是罗伦斯。",
+    "罗伦斯在场景中是主导商业谈判的角色，语气理性且带有讽刺意味，符合台词风格。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

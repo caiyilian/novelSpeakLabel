@@ -1,0 +1,28 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000132",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "上下文显示赫萝在摘麦穗并吞下，罗伦斯对此表示疑问，符合他理性、谨慎的性格。",
+        "前文提到罗伦斯不自觉地发问，紧接着就是这句台词，符合对话轮次。",
+        "赫萝没有直接提问的迹象，而罗伦斯是唯一明确的提问者。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，罗伦斯在赫萝展示麦穗后提出疑问，符合上下文逻辑。"
+}

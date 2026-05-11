@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000493",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0016",
+      "display": "鉴定员",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "说话内容与赫萝在交易中主导、生动描述商品的风格一致。",
+    "场景记忆中提到赫萝在交易中表现出极强的说服力和策略性。",
+    "赫萝的说话风格和自称‘咱’的用法是其显著特征，但此句未使用自称，但整体语气与她主导交易时的语气相符。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

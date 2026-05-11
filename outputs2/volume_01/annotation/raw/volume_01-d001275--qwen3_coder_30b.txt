@@ -1,0 +1,30 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001275",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.85
+        },
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.15
+        }
+      ],
+      "evidence": ["前文描述罗伦斯突然大喊，语境为试图挽留赫萝；赫萝未停下脚步，罗伦斯情绪激烈；罗伦斯有speech_marker如'喂！'等，但此句无明显自称或口癖；赫萝的反应显示她未回头，暗示说话人非赫萝。"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "根据上下文，罗伦斯在赫萝离开时情绪激动地喊住她，符合其性格与场景氛围。赫萝未回头，也未回应，因此说话人应为罗伦斯。"
+}

@@ -1,0 +1,173 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001247",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.98,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.98
+        }
+      ],
+      "evidence": [
+        "上下文显示罗伦斯正在与叶勒对峙，并强调商人必须遵守合约，符合其冷静理性的说话风格。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001248",
+      "speaker_entity_id": "char_0004",
+      "speaker_display": "叶勒",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0004",
+          "display": "叶勒",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "叶勒在上下文中刚刚开始与罗伦斯对话，此句是其对罗伦斯的称呼，符合对话轮次。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001249",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.97,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.97
+        }
+      ],
+      "evidence": [
+        "罗伦斯继续回应叶勒的质疑，解释自己与赫萝的合约，符合对话轮次和说话风格。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001250",
+      "speaker_entity_id": "char_0004",
+      "speaker_display": "叶勒",
+      "speaker_status": "known",
+      "confidence": 0.94,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0004",
+          "display": "叶勒",
+          "status": "known",
+          "score": 0.94
+        }
+      ],
+      "evidence": [
+        "叶勒在上一句后继续回应，语气中带有惊讶，符合对话轮次。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001251",
+      "speaker_entity_id": "char_0004",
+      "speaker_display": "叶勒",
+      "speaker_status": "known",
+      "confidence": 0.93,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0004",
+          "display": "叶勒",
+          "status": "known",
+          "score": 0.93
+        }
+      ],
+      "evidence": [
+        "叶勒在上一句后继续发言，表示自己也只能执行合约，符合对话轮次和语气。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001252",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.92,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.92
+        }
+      ],
+      "evidence": [
+        "罗伦斯回应叶勒的感慨，语气中带有无奈，符合对话轮次和说话风格。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001253",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.91,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.91
+        }
+      ],
+      "evidence": [
+        "罗伦斯继续表达对分离的无奈，语气符合其理性、冷静的说话风格。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001254",
+      "speaker_entity_id": "mystery_volume_01_c007_s003_r006_神秘命令者",
+      "speaker_display": "神秘命令者",
+      "speaker_status": "mystery",
+      "confidence": 0.7,
+      "candidate_speakers": [
+        {
+          "entity_id": "mystery_volume_01_c007_s003_r006_神秘命令者",
+          "display": "神秘命令者",
+          "status": "mystery",
+          "score": 0.7
+        }
+      ],
+      "evidence": [
+        "此句为命令式语气，内容涉及活捉女孩，上下文未提及说话人身份，符合神秘命令者的特征。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，罗伦斯与叶勒交替发言，最后由神秘命令者下达命令。整体对话逻辑连贯，符合场景设定。"
+}

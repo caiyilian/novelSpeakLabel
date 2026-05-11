@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d000369",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "前一段提到赫萝刚回过头来回答，接着是她的对话。",
+    "下一段描述赫萝坐回驾座上，面对罗伦斯，符合说话后的动作。",
+    "场景记忆中赫萝是活跃角色，与罗伦斯频繁互动，且是主要对话者之一。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

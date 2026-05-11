@@ -1,0 +1,35 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001065",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        },
+        {
+          "entity_id": "char_0021",
+          "display": "商行的人",
+          "status": "known",
+          "score": 0.6
+        }
+      ],
+      "evidence": [
+        "上下文显示这是罗伦斯与米隆商行人员之间的对话，且罗伦斯是主要行动者，此句是回应对方的嘱咐，语气符合罗伦斯的理性与谨慎风格。",
+        "前一句是米隆商行人员的嘱咐，此句为回应，符合对话轮次逻辑。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，罗伦斯作为回应者，符合上下文逻辑。"
+}
+```

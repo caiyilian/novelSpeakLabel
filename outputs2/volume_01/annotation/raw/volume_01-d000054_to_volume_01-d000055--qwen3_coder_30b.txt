@@ -1,0 +1,57 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000054",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.9
+        },
+        {
+          "entity_id": "char_0005",
+          "display": "叶勒",
+          "status": "known",
+          "score": 0.1
+        }
+      ],
+      "evidence": [
+        "前文描述女孩张嘴长嚎，赫萝是当前场景中唯一出现的有动物特征角色",
+        "赫萝拥有狼的特征，符合嚎叫行为",
+        "叶勒的speech_marker中包含类似嚎叫的表达，但上下文未显示其在场"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000055",
+      "speaker_entity_id": "volume_01-d000054",
+      "speaker_display": "赫萝",
+      "speaker_status": "review",
+      "confidence": 0.0,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.5
+        }
+      ],
+      "evidence": [
+        "该句为内嵌引号，非独立对白",
+        "上下文描述为罗伦斯感受恐惧，非直接说话人",
+        "无法确认是否为赫萝发出的声音"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    }
+  ],
+  "window_notes": "第一句为赫萝发出的狼嚎，第二句为环境描写中的声音，非独立对白，需审慎判断"
+}

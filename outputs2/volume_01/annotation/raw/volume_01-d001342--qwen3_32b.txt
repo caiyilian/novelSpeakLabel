@@ -1,0 +1,29 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001342",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "上下文显示罗伦斯刚刚得到了指引，随后简短道谢并离开，符合说话人逻辑",
+        "该句位于罗伦斯行动描述段落中，是其对指引者的回应"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "该句为罗伦斯在得到指引后的简短致谢，符合上下文逻辑，说话人判断明确。"
+}
+```

@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000740",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "前文提到赫萝已经醉意朦胧，而说话内容是对赫萝酒量的评价，符合罗伦斯冷静理性的说话风格。",
+    "场景中只有罗伦斯和赫萝在场，赫萝醉意较深，不太可能主动评价自己酒量。",
+    "罗伦斯在场景中多次对赫萝的反应和行为进行评论，符合此句台词的语境。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

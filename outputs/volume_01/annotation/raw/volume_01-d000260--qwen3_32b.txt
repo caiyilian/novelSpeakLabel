@@ -1,0 +1,26 @@
+```json
+{
+  "dialogue_id": "volume_01-d000260",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    }
+  ],
+  "evidence": [
+    "赫萝在场景中表现出对食物的强烈兴趣，尤其是马铃薯和麦子。",
+    "前一段描述中赫萝伸手拿马铃薯，随后罗伦斯丢给她麦子，她回应了「哇哇。嗯？是麦子啊。」",
+    "当前对话「嗯，感恩，不过，还是吃饭先！」符合赫萝轻松幽默但略带威胁的说话风格。",
+    "后续段落描述赫萝迅速处理马铃薯，表现出她对食物的急切渴望，与当前台词一致。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

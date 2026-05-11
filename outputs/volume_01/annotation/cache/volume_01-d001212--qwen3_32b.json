@@ -1,0 +1,28 @@
+{
+  "dialogue_id": "volume_01-d001212",
+  "speaker_entity_id": "mystery_volume_01_c007_s002_r004_伏击者",
+  "speaker_display": "伏击者",
+  "speaker_status": "mystery",
+  "confidence": 0.75,
+  "candidate_speakers": [
+    {
+      "entity_id": "mystery_volume_01_c007_s002_r004_伏击者",
+      "display": "伏击者",
+      "status": "mystery",
+      "score": 0.75
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.2
+    }
+  ],
+  "evidence": [
+    "对话出现在罗伦斯被伏击的场景中，伏击者在黑暗中伺机行动。",
+    "上下文显示罗伦斯在反击伏击者时说话，因此该台词应为伏击者所说。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

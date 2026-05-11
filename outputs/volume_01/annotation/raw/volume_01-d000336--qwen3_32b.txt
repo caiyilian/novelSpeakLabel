@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000336",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.02
+    }
+  ],
+  "evidence": [
+    "前一段提到赫萝奸笑并露出尖牙，语气带有挑衅和威胁。",
+    "当前段落是直接引语，语气与赫萝一贯的轻松幽默但略带威胁的风格一致。",
+    "后一段提到赫萝叹气并丢下这句话，进一步确认说话人是赫萝。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

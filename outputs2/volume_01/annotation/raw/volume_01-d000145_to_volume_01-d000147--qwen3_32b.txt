@@ -1,0 +1,73 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000145",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.98,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.98
+        }
+      ],
+      "evidence": [
+        "上下文明确指出赫萝用撒娇的语气说话，且台词「汝要温柔一些呐。」与赫萝的 speech_markers 中的「汝要温柔一些呐。」完全匹配。",
+        "上下文描述「赫萝突然用哀怜的眼神看着罗伦斯，以娇嗲的声音说」，明确指向赫萝说话。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000146",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.97,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.97
+        }
+      ],
+      "evidence": [
+        "上下文描述「罗伦斯看了赫萝一眼，发现赫萝嗤嗤笑着。」，紧接着是「汝真是可爱呐。」，符合赫萝的说话风格和上下文行为。",
+        "台词「汝真是可爱呐。」与赫萝的 speech_markers 中的「汝要温柔一些呐。」风格一致，且上下文明确指向赫萝说话。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000147",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.96,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.96
+        }
+      ],
+      "evidence": [
+        "上下文描述「罗伦斯没理会赫萝，他继续确认手中的触觉。」，紧接着是「如何？愿意相信咱了吗？」，符合赫萝的说话风格和上下文行为。",
+        "台词「如何？愿意相信咱了吗？」与赫萝的 speech_markers 中的「如何？愿意相信咱了呗？」高度相似，且上下文明确指向赫萝说话。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "三句台词连续出现，上下文明确指向赫萝的对话轮次，符合她撒娇、调侃的说话风格，且与 speech_markers 匹配度高。"
+}
+```

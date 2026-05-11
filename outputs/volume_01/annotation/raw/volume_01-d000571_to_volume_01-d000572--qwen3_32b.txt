@@ -1,0 +1,63 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000571",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        },
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.05
+        }
+      ],
+      "evidence": [
+        "前文提到「罗伦斯心想没理由拒绝，于是点点头，并举起酒杯说」，紧接着就是这句台词，明显是罗伦斯所说。",
+        "对话内容「敬我们的发财梦」符合罗伦斯冷静理性、商业导向的说话风格。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000572",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.9
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.1
+        }
+      ],
+      "evidence": [
+        "前一句是罗伦斯的台词，紧接着是「赫萝原本在一旁吃着干豆发呆，她看到两人举起酒杯，也匆忙地举起酒杯」，然后是这句「干杯！」，符合赫萝的反应。",
+        "「干杯！」是典型的轻松幽默、略带调侃的语气，符合赫萝的说话风格。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，罗伦斯先举杯致辞，赫萝随后回应，符合两人互动模式。"
+}
+```

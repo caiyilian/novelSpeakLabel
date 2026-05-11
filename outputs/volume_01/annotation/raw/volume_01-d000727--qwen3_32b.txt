@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000727",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.9,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.9
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.1
+    }
+  ],
+  "evidence": [
+    "对话内容提到「那名年轻人」，与场景记忆中罗伦斯对杰廉的怀疑和分析相符。",
+    "场景记忆中提到罗伦斯正在思考杰廉的动机，而此对话是对这一思考的延续。",
+    "赫萝在此场景中未直接发言，而是通过比喻引导罗伦斯思考，因此此句更可能是罗伦斯的内心推论或发言。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

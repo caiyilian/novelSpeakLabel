@@ -1,0 +1,30 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000767",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        },
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.1
+        }
+      ],
+      "evidence": ["前文描述罗伦斯在赫萝床边动作，结合语境判断为罗伦斯喃喃自语；赫萝未直接说话，且无明确自我介绍或情绪表达支持其说话；罗伦斯有理性、略带情绪化说话风格，符合语境。"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "罗伦斯在赫萝床边为她盖被子，随后喃喃自语，符合其理性冷静但略带情绪的说话风格，且赫萝未直接参与此段对话，因此判断为罗伦斯。"
+}

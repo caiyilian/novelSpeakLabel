@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000092",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.02
+    }
+  ],
+  "evidence": [
+    "赫萝在场景中频繁提问并回忆地名，如约伊兹和纽希拉，符合她的说话风格和角色特征。",
+    "上下文显示赫萝在与罗伦斯对话中主动询问地名，而罗伦斯则表现出怀疑态度，因此说话人更可能是赫萝。",
+    "赫萝的台词中使用了轻松幽默但略带威胁性的语气，符合她的语言风格。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

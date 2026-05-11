@@ -1,0 +1,28 @@
+{
+  "dialogue_id": "volume_01-d001074",
+  "speaker_entity_id": "mystery_volume_01_c006_s003_r002_神秘人物A",
+  "speaker_display": "神秘人物A",
+  "speaker_status": "mystery",
+  "confidence": 0.65,
+  "candidate_speakers": [
+    {
+      "entity_id": "mystery_volume_01_c006_s003_r002_神秘人物A",
+      "display": "神秘人物A",
+      "status": "mystery",
+      "score": 0.65
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.3
+    }
+  ],
+  "evidence": [
+    "说话声从正上方传来，随后听到拆开地板的破裂声。接着又再传来一声「拉嘿」",
+    "赫萝在本场景中出现，但「拉嘿」并非她的典型语气，且上下文暗示说话人来自上方，可能是协助赫萝的神秘人物"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": true
+}

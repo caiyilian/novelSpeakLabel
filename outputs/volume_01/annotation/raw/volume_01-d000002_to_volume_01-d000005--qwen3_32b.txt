@@ -1,0 +1,103 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000002",
+      "speaker_entity_id": "",
+      "speaker_display": "",
+      "speaker_status": "ambiguous",
+      "confidence": 0.4,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.4
+        },
+        {
+          "entity_id": "npc:村民",
+          "display": "村民",
+          "status": "npc",
+          "score": 0.3
+        }
+      ],
+      "evidence": [
+        "对话内容为交易相关，但未明确说话人身份，可能是罗伦斯或村民"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    },
+    {
+      "dialogue_id": "volume_01-d000003",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.8
+        }
+      ],
+      "evidence": [
+        "对话内容为交易回应，符合罗伦斯的商人身份和语气"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000004",
+      "speaker_entity_id": "npc:村民",
+      "speaker_display": "村民",
+      "speaker_status": "npc",
+      "confidence": 0.7,
+      "candidate_speakers": [
+        {
+          "entity_id": "npc:村民",
+          "display": "村民",
+          "status": "npc",
+          "score": 0.7
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.3
+        }
+      ],
+      "evidence": [
+        "对话中称呼对方为‘罗伦斯先生’，表明说话人不是罗伦斯本人，而是村民"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000005",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "对话内容为罗伦斯的交易总结和未来计划，语气和内容符合其角色设定"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次为：提问（模糊）→ 回应（罗伦斯）→ 感谢（村民）→ 总结（罗伦斯）。整体对话符合交易场景的互动模式。"
+}
+```

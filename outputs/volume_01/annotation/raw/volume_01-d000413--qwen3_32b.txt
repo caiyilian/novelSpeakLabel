@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000413",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "赫萝在场景中频繁出现，且表现出对罗伦斯的挑衅和调侃语气，符合台词中「汝……喀滋……刚才是……喀滋……故意假装……嗝……不知道吧。」的说话风格。",
+    "台词中带有「喀滋」的咀嚼声，与前文赫萝吃苹果的描写一致，暗示说话人是赫萝。",
+    "赫萝在场景中表现出对罗伦斯的不信任和挑衅，符合台词中带有挑衅意味的语气。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

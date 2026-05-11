@@ -1,0 +1,140 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001025",
+      "speaker_entity_id": "char_0020",
+      "speaker_display": "列支敦·马贺特",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0020",
+          "display": "列支敦·马贺特",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "上下文显示这是罗伦斯与马贺特的对话，马贺特作为米隆商行帕兹欧分行行长，对梅迪欧商行的威胁表示担忧。"
+      ],
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001026",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "上下文显示罗伦斯在解释如何利用国王与教会的关系来对抗梅迪欧商行，这是他的策略性发言。"
+      ],
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001027",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "这是罗伦斯继续解释其策略的延续性发言，与上一句为同一人连续对话。"
+      ],
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001028",
+      "speaker_entity_id": "char_0020",
+      "speaker_display": "列支敦·马贺特",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0020",
+          "display": "列支敦·马贺特",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "这是对罗伦斯策略的回应，符合马贺特作为对话另一方的身份。"
+      ],
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001029",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "这是对上一句的回应，符合罗伦斯继续解释策略的逻辑。"
+      ],
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001030",
+      "speaker_entity_id": "char_0020",
+      "speaker_display": "列支敦·马贺特",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0020",
+          "display": "列支敦·马贺特",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "这是马贺特对罗伦斯提议的进一步确认，符合对话轮次。"
+      ],
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001031",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "这是对上一句的回应，符合罗伦斯继续确认策略的逻辑。"
+      ],
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，罗伦斯与马贺特交替发言，符合场景中两人讨论策略的设定。"
+}
+```

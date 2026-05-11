@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000926",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.9,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.9
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.1
+    }
+  ],
+  "evidence": [
+    "对话内容「等一下！这怎么可以！」语气中带有情绪化和急切，符合罗伦斯在场景中对赫萝独自行动的担忧和反对态度。",
+    "上下文显示罗伦斯正在与赫萝讨论兵分两路的策略，赫萝提出独自行动，罗伦斯对此表示反对，因此该台词更可能是罗伦斯的反应。",
+    "赫萝在场景中主导策略讨论，语气轻松幽默，而该台词情绪激烈，不符合赫萝的说话风格。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

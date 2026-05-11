@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d001314",
+  "speaker_entity_id": "char_0020",
+  "speaker_display": "列支敦·马贺特",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0020",
+      "display": "列支敦·马贺特",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0024",
+      "display": "梅迪欧商行的人",
+      "status": "known",
+      "score": 0.6
+    }
+  ],
+  "evidence": [
+    "上下文显示对话发生在罗伦斯与马贺特的交易场景中，且马贺特是主要对话者。",
+    "台词中提到「梅迪欧商行」，与马贺特的角色背景和商行竞争关系相符。",
+    "前文提到「马贺特边笑边说」，暗示当前说话人是马贺特。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

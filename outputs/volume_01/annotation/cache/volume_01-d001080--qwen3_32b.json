@@ -1,0 +1,23 @@
+{
+  "dialogue_id": "volume_01-d001080",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "赫萝在本场景中频繁出现，且有明确的互动和情绪描写。",
+    "台词语气符合赫萝一贯的轻松幽默但略带威胁性的风格。",
+    "上下文提到赫萝从洞口下来，并将包袱递给罗伦斯，符合台词中的动作描述。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

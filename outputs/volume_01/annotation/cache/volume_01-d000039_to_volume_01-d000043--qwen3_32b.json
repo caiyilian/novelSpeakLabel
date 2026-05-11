@@ -1,0 +1,110 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000039",
+      "speaker_entity_id": "mystery_volume_01_c002_s002_r002_村民",
+      "speaker_display": "村民",
+      "speaker_status": "mystery",
+      "confidence": 0.75,
+      "candidate_speakers": [
+        {
+          "entity_id": "mystery_volume_01_c002_s002_r002_村民",
+          "display": "村民",
+          "status": "mystery",
+          "score": 0.75
+        }
+      ],
+      "evidence": [
+        "台词是「嗷呜～～～～～～～」，符合村民在祭典中发出的集体声音，而非某个具体角色的台词。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000040",
+      "speaker_entity_id": "mystery_volume_01_c002_s002_r002_村民",
+      "speaker_display": "村民",
+      "speaker_status": "mystery",
+      "confidence": 0.75,
+      "candidate_speakers": [
+        {
+          "entity_id": "mystery_volume_01_c002_s002_r002_村民",
+          "display": "村民",
+          "status": "mystery",
+          "score": 0.75
+        }
+      ],
+      "evidence": [
+        "「赫萝！赫萝！赫萝！」是村民在祭典中对丰收之神的呼喊，属于集体行为，非某个角色的独白。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000041",
+      "speaker_entity_id": "mystery_volume_01_c002_s002_r002_村民",
+      "speaker_display": "村民",
+      "speaker_status": "mystery",
+      "confidence": 0.75,
+      "candidate_speakers": [
+        {
+          "entity_id": "mystery_volume_01_c002_s002_r002_村民",
+          "display": "村民",
+          "status": "mystery",
+          "score": 0.75
+        }
+      ],
+      "evidence": [
+        "「狼赫萝出现了！狼赫萝出现了！」是村民在祭典中对丰收之神的呼喊，属于集体行为，非某个角色的独白。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000042",
+      "speaker_entity_id": "mystery_volume_01_c002_s002_r002_村民",
+      "speaker_display": "村民",
+      "speaker_status": "mystery",
+      "confidence": 0.75,
+      "candidate_speakers": [
+        {
+          "entity_id": "mystery_volume_01_c002_s002_r002_村民",
+          "display": "村民",
+          "status": "mystery",
+          "score": 0.75
+        }
+      ],
+      "evidence": [
+        "「抓住祂！快抓住！」是村民在祭典中对丰收之神附身者的呼喊，属于集体行为，非某个角色的独白。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000043",
+      "speaker_entity_id": "mystery_volume_01_c002_s002_r002_村民",
+      "speaker_display": "村民",
+      "speaker_status": "mystery",
+      "confidence": 0.75,
+      "candidate_speakers": [
+        {
+          "entity_id": "mystery_volume_01_c002_s002_r002_村民",
+          "display": "村民",
+          "status": "mystery",
+          "score": 0.75
+        }
+      ],
+      "evidence": [
+        "「别让祂逃走了！快追！」是村民在祭典中对丰收之神附身者的呼喊，属于集体行为，非某个角色的独白。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "所有台词均为村民在丰收祭典中对丰收之神的呼喊和行动指令，属于集体行为，无明确个体说话人。因此统一标注为 mystery_volume_01_c002_s002_r002_村民。"
+}

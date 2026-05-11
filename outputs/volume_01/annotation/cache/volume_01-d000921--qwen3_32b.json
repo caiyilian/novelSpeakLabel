@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000921",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.9,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.9
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.1
+    }
+  ],
+  "evidence": [
+    "当前段落前文提到罗伦斯在小巷中遭遇追踪者，且场景记忆中明确指出罗伦斯和赫萝是主要角色。",
+    "下一段提到赫萝脱去外套露出狼耳朵，说明当前台词不可能是赫萝所说。",
+    "罗伦斯在场景中表现出对局势的担忧，符合台词语气。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

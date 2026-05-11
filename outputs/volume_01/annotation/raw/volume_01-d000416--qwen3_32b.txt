@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000416",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "上下文显示赫萝在场景中频繁发言，语气轻松幽默且略带威胁性，符合她的说话风格。",
+    "前一段中赫萝说「那是咱的。」，表明她正在争夺苹果的所有权，本句「是用我的钱买的吧。」是她进一步质疑苹果来源的延续。",
+    "场景记忆中明确指出赫萝与罗伦斯在讨论苹果和金钱问题，赫萝表现出对金钱的自信和挑衅态度。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

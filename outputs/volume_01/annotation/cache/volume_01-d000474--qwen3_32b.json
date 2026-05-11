@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000474",
+  "speaker_entity_id": "char_0016",
+  "speaker_display": "鉴定员",
+  "speaker_status": "known",
+  "confidence": 0.9,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0016",
+      "display": "鉴定员",
+      "status": "known",
+      "score": 0.9
+    },
+    {
+      "entity_id": "char_0015",
+      "display": "鉴定的男子",
+      "status": "known",
+      "score": 0.7
+    }
+  ],
+  "evidence": [
+    "对话中提到「嗯，汝应该是相当优秀的商人……难道是这样，所以才假装没发现吗？」，语气礼貌且带有专业判断，符合鉴定员的说话风格。",
+    "前文提到「阅历丰富的老江湖，看来似乎真心向赫萝道歉」，暗示说话人是与赫萝和罗伦斯互动的鉴定员。",
+    "场景记忆中明确指出「鉴定员」是与罗伦斯和赫萝互动的商人，且对赫萝的言辞感到惊讶。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

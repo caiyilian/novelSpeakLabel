@@ -1,0 +1,30 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001157",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 1.0
+        },
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.1
+        }
+      ],
+      "evidence": ["上下文描述罗伦斯背对赫萝，用害羞口吻说话；赫萝被预期会因罗伦斯的回答而沉默；罗伦斯的理性性格与该台词情绪不符，但其策略性行为符合其角色设定。"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "罗伦斯在背对赫萝的情况下以害羞语气说出台词，符合其策略性行为和角色设定，赫萝未直接回应，推测为罗伦斯所言。"
+}

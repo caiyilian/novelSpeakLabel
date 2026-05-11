@@ -1,0 +1,78 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000994",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 1.0
+        }
+      ],
+      "evidence": [
+        "前文描述罗伦斯陷入思考，此句为他内心想法的直接表达",
+        "与后文罗伦斯否决想法、陷入矛盾的叙述一致"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000995",
+      "speaker_entity_id": "char_0015",
+      "speaker_display": "列支敦·马贺特",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0015",
+          "display": "列支敦·马贺特",
+          "status": "known",
+          "score": 1.0
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.1
+        }
+      ],
+      "evidence": [
+        "对话内容为询问对方是否想到原因，符合马贺特作为商行代表与罗伦斯沟通的语境",
+        "前文罗伦斯思考后，马贺特介入讨论，此句为马贺特提出问题的合理延续"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000996",
+      "speaker_entity_id": "char_0015",
+      "speaker_display": "列支敦·马贺特",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0015",
+          "display": "列支敦·马贺特",
+          "status": "known",
+          "score": 1.0
+        }
+      ],
+      "evidence": [
+        "语气为劝说与分析，符合马贺特作为商行行长的理性表达方式",
+        "内容涉及利益、希望得到线索，与马贺特代表商行与罗伦斯沟通的背景一致",
+        "前文马贺特提出问题，此句为对问题的回应和进一步说明"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，罗伦斯先表达怀疑，马贺特随后询问并提出建议，符合两人角色定位与关系。"
+}

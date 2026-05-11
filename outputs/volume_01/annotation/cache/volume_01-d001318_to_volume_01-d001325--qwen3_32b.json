@@ -1,0 +1,181 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001318",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "上下文提到罗伦斯向马贺特表达谢意，随后是罗伦斯的提问，符合对话轮次",
+        "台词内容为交易相关，符合罗伦斯的商人身份和对话风格"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001319",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "上下文显示罗伦斯在考虑交易商品，提出胡椒作为替代品，符合其商人身份",
+        "对话轮次上紧接罗伦斯的上一条台词，符合同一人连续发言的逻辑"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001320",
+      "speaker_entity_id": "char_0030",
+      "speaker_display": "米隆商行",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0030",
+          "display": "米隆商行",
+          "status": "known",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "上下文提到罗伦斯与米隆商行的代表马贺特进行交易谈判",
+        "对话轮次上是对罗伦斯提问的回应，符合马贺特代表商行发言的逻辑"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001321",
+      "speaker_entity_id": "char_0030",
+      "speaker_display": "米隆商行",
+      "speaker_status": "known",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0030",
+          "display": "米隆商行",
+          "status": "known",
+          "score": 0.8
+        }
+      ],
+      "evidence": [
+        "对话轮次上是对米隆商行代表提问的回应",
+        "上下文显示马贺特在回应罗伦斯的提问后，罗伦斯反问"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001322",
+      "speaker_entity_id": "char_0030",
+      "speaker_display": "米隆商行",
+      "speaker_status": "known",
+      "confidence": 0.75,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0030",
+          "display": "米隆商行",
+          "status": "known",
+          "score": 0.75
+        }
+      ],
+      "evidence": [
+        "上下文显示马贺特在讲述宗教戏剧，台词内容为解释戏曲来源",
+        "对话轮次上是米隆商行代表对罗伦斯提问的回应"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001323",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.8
+        }
+      ],
+      "evidence": [
+        "对话轮次上是对米隆商行代表提问的回应",
+        "台词内容为询问戏曲，符合罗伦斯对故事的兴趣"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001324",
+      "speaker_entity_id": "char_0030",
+      "speaker_display": "米隆商行",
+      "speaker_status": "known",
+      "confidence": 0.75,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0030",
+          "display": "米隆商行",
+          "status": "known",
+          "score": 0.75
+        }
+      ],
+      "evidence": [
+        "上下文显示马贺特在讲述宗教戏剧，台词内容为故事叙述",
+        "对话轮次上是米隆商行代表对罗伦斯提问的回应"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001325",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.7,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.7
+        }
+      ],
+      "evidence": [
+        "对话轮次上是对米隆商行代表讲述故事的回应",
+        "台词内容为简短反应，符合罗伦斯的对话风格"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，罗伦斯与米隆商行代表马贺特交替发言，符合商业谈判场景。"
+}

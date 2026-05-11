@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d001046",
+  "speaker_entity_id": "char_0020",
+  "speaker_display": "列支敦·马贺特",
+  "speaker_status": "known",
+  "confidence": 0.85,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0020",
+      "display": "列支敦·马贺特",
+      "status": "known",
+      "score": 0.85
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.15
+    }
+  ],
+  "evidence": [
+    "当前段落是「呃……嗯……」，语气犹豫，与前文罗伦斯自信、理性、策略性的说话风格不符。",
+    "前文罗伦斯正在说服马贺特协助营救赫萝，马贺特表现出震惊和苦恼，因此更可能在此处犹豫回应。",
+    "场景记忆中，马贺特是主要对话对象，且在本场景中频繁出现，而罗伦斯是主动发言者，因此此处更可能是马贺特的回应。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

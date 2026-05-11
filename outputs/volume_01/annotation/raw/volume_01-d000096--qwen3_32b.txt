@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d000096",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    }
+  ],
+  "evidence": [
+    "赫萝从貂皮堆中探出头来回答罗伦斯的问题",
+    "台词中使用了‘咱’这一自称，符合赫萝的说话风格",
+    "上下文显示这是赫萝对罗伦斯关于‘模样’问题的回应"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

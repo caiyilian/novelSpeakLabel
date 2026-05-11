@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d000024",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "对话中提到「异教徒真是一群胆小鬼」，这与罗伦斯在场景中对骑士的回应和讽刺风格一致。",
+    "上下文显示罗伦斯在与骑士对话时表现出讽刺和机智，符合该台词的语气。",
+    "场景记忆中罗伦斯是主要角色，且是唯一持续出现并发表评论的角色。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

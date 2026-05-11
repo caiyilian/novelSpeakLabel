@@ -1,0 +1,23 @@
+{
+  "dialogue_id": "volume_01-d001104",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    }
+  ],
+  "evidence": [
+    "上下文显示赫萝刚刚说：「呵。毕竟咱这么可爱，人类的雄性也会为咱倾倒。不过呐，人类当中没有够资格当咱对象的雄性。」",
+    "当前段落中使用了「咱」自称，这是赫萝的典型说话风格。",
+    "后续段落提到「赫萝笑着说，桃色的嘴唇底下露出两根尖牙」，进一步确认说话人是赫萝。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

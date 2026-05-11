@@ -1,0 +1,36 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001227",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.95
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.05
+        }
+      ],
+      "evidence": [
+        "上下文显示赫萝在催促罗伦斯，语气中带有活力，符合赫萝的说话风格。",
+        "前文提到赫萝用力拉着罗伦斯的右臂，显示她正在主动行动，因此说话人更可能是她。",
+        "后文提到赫萝的声音恢复活力，进一步确认说话人是赫萝。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "该对话为赫萝在通道尽头确认出口时所说，语气积极，符合其性格特征。上下文显示她正在催促罗伦斯，因此判断为赫萝说话。"
+}
+```

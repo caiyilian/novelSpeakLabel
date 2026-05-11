@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d001054",
+  "speaker_entity_id": "char_0020",
+  "speaker_display": "列支敦·马贺特",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0020",
+      "display": "列支敦·马贺特",
+      "status": "known",
+      "score": 0.98
+    },
+    {
+      "entity_id": "char_0027",
+      "display": "米隆商行人员",
+      "status": "known",
+      "score": 0.02
+    }
+  ],
+  "evidence": [
+    "前一段提到马贺特轻轻咳了一下，露出犀利的眼神说",
+    "当前段落是马贺特的直接引语，符合其冷静、自信的说话风格",
+    "场景记忆中明确指出马贺特是米隆商行帕兹欧分行的行长，与罗伦斯进行交易谈判"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

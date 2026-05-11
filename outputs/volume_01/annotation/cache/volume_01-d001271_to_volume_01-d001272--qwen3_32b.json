@@ -1,0 +1,49 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001271",
+      "speaker_entity_id": "char_0004",
+      "speaker_display": "叶勒",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0004",
+          "display": "叶勒",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "前文明确提到『那是叶勒的声音』，直接指明说话人身份",
+        "该段落上下文描述了叶勒被赫萝制服的场景，符合说话人情绪化的语气"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001272",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "该句是对赫萝的直接呼喊，符合罗伦斯在场景中的位置和行为",
+        "上下文提到『罗伦斯忍不住大叫』，紧接着就是这句台词，符合说话人轮次"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "两句话为连续对话，符合叶勒被制服后情绪爆发，随后罗伦斯介入制止的场景逻辑。说话人轮次清晰，无歧义。"
+}

@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000501",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0014",
+      "display": "商行代表",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "对话中提到「卖给本行」，表明说话人是与商行有关的角色。",
+    "前文提到「一件貂皮三枚银币如何呢？也就是两百一十枚。」，这是罗伦斯的报价，随后赫萝回应「唔，呃……」，接着是「主人，其他商行……」，最后是当前对话「啊，哇，没问题！就请以两百一十枚卖给本行！」，语气和风格与罗伦斯的理性、略带情绪化的表达相符。",
+    "场景记忆中提到罗伦斯与商行代表进行交易，赫萝主导谈判，但当前对话更符合罗伦斯的语气和立场。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

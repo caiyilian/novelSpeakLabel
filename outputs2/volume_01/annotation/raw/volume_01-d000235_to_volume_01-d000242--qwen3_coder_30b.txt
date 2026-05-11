@@ -1,0 +1,187 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000235",
+      "speaker_entity_id": "char_0007",
+      "speaker_display": "贵族男子",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0007",
+          "display": "贵族男子",
+          "status": "known",
+          "score": 0.9
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.1
+        }
+      ],
+      "evidence": [
+        "提到葡萄园领主和葡萄酒商的交易方式，符合贵族男子身份",
+        "语境中提到与罗伦斯对话，且为贵族习惯性含蓄表达"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000236",
+      "speaker_entity_id": "char_0007",
+      "speaker_display": "贵族男子",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0007",
+          "display": "贵族男子",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "与前一句对话内容一致，语境中为贵族男子回应罗伦斯的提问",
+        "语气与前句呼应，符合贵族男子的含蓄表达方式"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000237",
+      "speaker_entity_id": "char_0007",
+      "speaker_display": "贵族男子",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0007",
+          "display": "贵族男子",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "称呼对方为罗伦斯先生，符合贵族男子对陌生商人的礼貌称呼",
+        "邀请对方来访寒舍，符合贵族身份和社交习惯"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000238",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "回应贵族男子的邀请，符合罗伦斯的礼貌回应习惯",
+        "语境中罗伦斯为回应贵族男子的对话而发言"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000239",
+      "speaker_entity_id": "char_0007",
+      "speaker_display": "贵族男子",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0007",
+          "display": "贵族男子",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "提到妻子累了，符合贵族男子与妻子同行的描述",
+        "语境中为贵族男子告别时的礼貌表达"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000240",
+      "speaker_entity_id": "char_0007",
+      "speaker_display": "贵族男子",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0007",
+          "display": "贵族男子",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "表达希望再次相逢，符合贵族男子的社交习惯",
+        "语境中为贵族男子告别时的祝福语"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000241",
+      "speaker_entity_id": "char_0008",
+      "speaker_display": "杰廉",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0008",
+          "display": "杰廉",
+          "status": "known",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "称呼罗伦斯为老板，符合年轻商人对资深商人的称呼",
+        "语境中杰廉在罗伦斯收拾椅子后靠近，符合其角色设定"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000242",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "回应杰廉的称赞，符合罗伦斯的冷静回应风格",
+        "语境中罗伦斯在杰廉靠近后回答，符合对话轮次"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，贵族男子与罗伦斯之间有明确的交流，杰廉在罗伦斯与贵族男子对话结束后介入，形成自然的对话过渡。"
+}

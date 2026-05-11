@@ -1,0 +1,246 @@
+你是轻小说说话人标注项目的阶段 2：正式标注助手。
+你的任务是判断输入 target_dialogues 中每一句台词的说话人，不要改写原文。
+必须把这些台词当作同一个连续片段来判断，优先保持对话轮次和叙述线索的一致性。
+
+规则：
+1. 只输出严格 JSON，不要 Markdown，不要解释性前后缀。
+2. 如果说话人是候选角色，speaker_entity_id 必须使用 candidate_characters 里的 entity_id，speaker_status 填 known。
+3. 如果说话人像某个未知人物，speaker_entity_id 使用 candidate_mysteries 里的 mystery_id，speaker_status 填 mystery。
+4. 如果只是无法追踪的路人/群体，speaker_status 填 npc，speaker_entity_id 可为空或使用 npc:简短称呼。
+5. 证据不足时不要硬猜，speaker_status 填 ambiguous 或 review，并把 needs_review 设为 true。
+6. candidate_speakers 至少列出 1 个候选；如果无法判断，列出最可能的候选和不确定原因。
+7. confidence 使用 0 到 1 之间的小数，表示你对最终判断的把握。
+8. 不要只因为台词里提到某个名字、职业、地点，就把说话人标成那个实体；被称呼的人通常不是说话人。
+9. 连续问答、交易寒暄、命令/回答等场景要按上下句轮次判断；同一人连续说话必须有叙述或语气证据支持。
+10. 如果当前上下文显示某角色还没有登场，不要因为角色库或后文记忆里有这个角色就提前标给他/她。
+
+11. target_dialogues 中 dialogue_kind=inline 的项目是正文内嵌引号，不要当作独立对白；标为 review，needs_review=true。
+12. candidate_mysteries 只是可选候选；如果候选名称和当前段落地点/人物不一致，必须改用 npc 或 review。
+13. 如果只有轮次推断、没有叙述锚点或自我介绍，请降低 confidence，并在 evidence 里说明轮次依据。
+
+14. candidate_characters.speech_markers 是阶段 1 提取的高区分度口癖/自称/固定短语；命中时可作为证据，但如果多个角色共享或上下文反证明显，必须进入复核。
+
+输出 JSON 结构：
+{
+  "annotations": [
+    {
+      "dialogue_id": "必须来自 target_dialogue_ids",
+      "speaker_entity_id": "string",
+      "speaker_display": "string",
+      "speaker_status": "known|mystery|npc|ambiguous|review",
+      "confidence": 0.0,
+      "candidate_speakers": [
+        {"entity_id": "string", "display": "string", "status": "known|mystery|npc|ambiguous|review", "score": 0.0}
+      ],
+      "evidence": ["短证据，不要大段复制原文"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "可选，简短说明整体轮次判断"
+}
+必须为 target_dialogue_ids 中每个 dialogue_id 输出且只输出一条 annotation。
+
+输入 JSON：
+{
+  "volume": {
+    "volume_id": "volume_01",
+    "volume": 1
+  },
+  "target_dialogue_ids": [
+    "volume_01-d001024"
+  ],
+  "dialogues": [
+    {
+      "dialogue_id": "volume_01-d001024",
+      "dialogue_index": 1023,
+      "window_position": 1,
+      "chapter_id": "volume_01-c006",
+      "chapter_title": "第五幕",
+      "scene_id": "volume_01-c006-s001",
+      "paragraph_id": "volume_01-c006-s001-p002231",
+      "paragraph_index": 2230,
+      "local_dialogue_index": 1,
+      "text": "如果您愿意以适当的价格买下这些银币，并且把我们想要的特权赏赐给我们的话，我们愿意把银币卖给您。",
+      "quote_text": "「如果您愿意以适当的价格买下这些银币，并且把我们想要的特权赏赐给我们的话，我们愿意把银币卖给您。」",
+      "paragraph_text": "「如果您愿意以适当的价格买下这些银币，并且把我们想要的特权赏赐给我们的话，我们愿意把银币卖给您。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 49
+    }
+  ],
+  "context": {
+    "paragraphs": [
+      {
+        "paragraph_id": "volume_01-c006-s001-p002228",
+        "paragraph_index": 2227,
+        "text": "虽然这样的伎俩最适合用在即时创造资金，但由于这样会减低国家的威信，因此长期来看，会带来更大的不良影响。仅管如此，崔尼国仍执意要采取这种伎俩，表示王家正陷入动弹不得的财务危机。而这时如果没有最重要的银币，就不能创造出让王族喘口气的资金。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c006-s001-p002229",
+        "paragraph_index": 2228,
+        "text": "梅迪欧商行正是因为看出王族如此的窘境，所以打算准备大量的崔尼银币与王族交涉。视情势所需，他们会回收所有流通在市面上的银币，好与王族交涉。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c006-s001-p002230",
+        "paragraph_index": 2229,
+        "text": "接下来，他们会在国王的面前低头说：",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c006-s001-p002231",
+        "paragraph_index": 2230,
+        "text": "「如果您愿意以适当的价格买下这些银币，并且把我们想要的特权赏赐给我们的话，我们愿意把银币卖给您。」",
+        "target_dialogue_ids": [
+          "volume_01-d001024"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c006-s001-p002232",
+        "paragraph_index": 2231,
+        "text": "除了一些国家之外，原则上被称为国王的人，只不过是他的财产或领土比其他贵族来得多，再加上他四处游说，成功让身边的人认同他当国王的正当性罢了。虽然身为国王，但不表示他能够完全支配所有的国家领土。因此，王族并不能擅自处置与其他诸侯共同管理的国家财产。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c006-s001-p002233",
+        "paragraph_index": 2232,
+        "text": "因为这个缘故，王族拥有的财产与其他贵族并无太大差距。要说王族有什么特别之处，就是以国王名义管理的各项特权。也就是采矿权、铸币权、关税设定权、市场管理权、王国城市的市长任命权等。虽然特权并未伴随实体的金钱，但若懂得运用，这些是可以成为摇钱树的特权。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c006-s001-p002234",
+        "paragraph_index": 2233,
+        "text": "想必梅迪欧商行就是想要拿到崔尼国王管理的权力之一。虽然不知道那会是哪一项，但梅迪欧商行计策的交易如果顺利完成，势必可取得能够左右生意的权力。",
+        "target_dialogue_ids": []
+      }
+    ]
+  },
+  "scene_memory": [
+    {
+      "scene_id": "volume_01-c006-s001-r002",
+      "parent_scene_id": "volume_01-c006-s001",
+      "chunk_index": 2,
+      "chunk_count": 3,
+      "scene_summary": "罗伦斯向米隆商行的马贺特提出一个策略，建议抢先完成崔尼银币交易，以取得与崔尼国王交涉的王牌地位，从而阻止梅迪欧商行获得特权。场景中涉及货币贬值、国家财政危机、商行竞争等复杂背景。",
+      "active_characters": [
+        "罗伦斯",
+        "马贺特"
+      ],
+      "relationships": [
+        "罗伦斯与马贺特讨论崔尼银币交易策略",
+        "罗伦斯试图说服马贺特采取行动",
+        "罗伦斯与米隆商行有合作关系",
+        "罗伦斯与崔尼国国王存在潜在交涉关系",
+        "米隆商行与梅迪欧商行存在商业竞争"
+      ],
+      "notes": "场景中涉及复杂的商业策略和国家财政背景，罗伦斯的提议围绕崔尼银币交易和国王特权展开。崔尼国国王和梅迪欧商行虽未直接出场，但对剧情发展有重要影响。"
+    }
+  ],
+  "candidate_characters": [
+    {
+      "entity_id": "char_0001",
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": [
+        "商人",
+        "旅行商人",
+        "行商人"
+      ],
+      "description": "理性、谨慎的商人，试图分析局势并保持冷静。他与赫萝同行，面对叶勒的威胁时表现出坚定。 / 理性、坚定的商人，坚持遵守与赫萝的合约，拒绝背叛她。面对叶勒的威胁保持冷静，表现出对赫萝的忠诚。 / 理性、谨慎的商人，身受重伤但仍试图保持冷静并等待救援。他表现出对赫萝的依赖和信任。 / 罗伦斯目睹赫萝的变身过程，表现出震惊和无力。他试图抓住赫萝留下的皮袋，但最终面对巨大的狼形生物，感到无法应对。 / 理性、谨慎的商人，与赫萝在地下通道中遭遇叶勒的威胁。他试图安抚赫萝的情绪，并表现出对环境变化的敏感。 / 在赫萝的威压下感…",
+      "speech_style": "温和、理性、略带担忧 / 理性、略带策略性、温和 / 理性、担忧、略带冲动 / 虚弱、低沉、略带困惑 / 虚弱、低沉、焦虑 / 理性、坚定、略带焦虑 / 理性、焦虑、略带冲动 / 虚弱、低沉、焦虑 / 虚弱、焦虑、略带愤怒 / 愤怒、理性、略带冲动 / 虚弱、焦虑、略带悔恨 / 理性、冷静、略带焦虑",
+      "speech_markers": [
+        "……骑士？",
+        "有什么能为您效劳的吗？",
+        "算了……",
+        "糟糕",
+        "……",
+        "喂！",
+        "喂！起床啊！",
+        "喂！有什么好笑的？"
+      ],
+      "relationship_hints": [
+        "与赫萝一同旅行",
+        "对赫萝的身份持怀疑态度",
+        "与修道院有生意期望但未成功",
+        "与骑士初次互动",
+        "与赫萝有密切关系",
+        "与教会和骑士有互动",
+        "与叶勒有交集，计划与他交谈但被祭典打断",
+        "与叶勒有过去的交易关系。"
+      ],
+      "first_seen_scene_id": "volume_01-c000-s003-r001",
+      "latest_seen_scene_id": "volume_01-c008-s003-r001",
+      "confidence": 1.0
+    },
+    {
+      "entity_id": "char_0014",
+      "display_name": "米隆商行",
+      "aliases": [],
+      "titles": [
+        "商行"
+      ],
+      "description": "被罗伦斯说服调查杰廉的商行，被认为在情报收集方面非常优秀。",
+      "speech_style": "未直接发言",
+      "speech_markers": [],
+      "relationship_hints": [
+        "被罗伦斯说服",
+        "与杰廉有潜在冲突"
+      ],
+      "first_seen_scene_id": "volume_01-c005-s001-r001",
+      "latest_seen_scene_id": "volume_01-c005-s001-r001",
+      "confidence": 0.8
+    }
+  ],
+  "candidate_mysteries": [
+    {
+      "mystery_id": "mystery_volume_01_c006_s001_r002_梅迪欧商行",
+      "temporary_name": "梅迪欧商行",
+      "description": "未直接出场，但被提及为罗伦斯和米隆商行的主要竞争对手。他们试图通过崔尼银币交易取得国王的特权。",
+      "evidence": [
+        "volume_01-c006-s001-p002224",
+        "volume_01-c006-s001-p002229",
+        "volume_01-c006-s001-p002234"
+      ],
+      "source_scene_id": "volume_01-c006-s001-r002",
+      "confidence": 0.8
+    },
+    {
+      "mystery_id": "mystery_volume_01_c006_s001_r002_崔尼国国王",
+      "temporary_name": "崔尼国国王",
+      "description": "未直接出场，但被多次提及为崔尼银币交易的核心人物。罗伦斯的策略围绕与国王交涉展开，国王的财政状况和特权是关键。",
+      "evidence": [
+        "volume_01-c006-s001-p002219",
+        "volume_01-c006-s001-p002220",
+        "volume_01-c006-s001-p002229"
+      ],
+      "source_scene_id": "volume_01-c006-s001-r002",
+      "confidence": 0.85
+    },
+    {
+      "mystery_id": "mystery_volume_01_c006_s001_r003_梅迪欧商行",
+      "temporary_name": "梅迪欧商行",
+      "description": "与罗伦斯和米隆商行对立的商行，试图通过举发罗伦斯来获取优势。",
+      "evidence": [
+        "volume_01-c006-s001-p002240",
+        "volume_01-c006-s001-p002246"
+      ],
+      "source_scene_id": "volume_01-c006-s001-r003",
+      "confidence": 0.85
+    },
+    {
+      "mystery_id": "mystery_volume_01_c006_s001_r003_崔尼国王",
+      "temporary_name": "崔尼国王",
+      "description": "小国国王，与教会关系密切，可能成为罗伦斯策略中的关键人物。",
+      "evidence": [
+        "volume_01-c006-s001-p002243",
+        "volume_01-c006-s001-p002245"
+      ],
+      "source_scene_id": "volume_01-c006-s001-r003",
+      "confidence": 0.75
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000448",
+      "speaker_entity_id": "char_0013",
+      "speaker_display": "鉴定商品的采购人员",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0013",
+          "display": "鉴定商品的采购人员",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "台词中明确提到「代替行长感谢您莅临本商行」，符合采购人员的身份和职责。",
+        "场景记忆中提到「采购人员向罗伦斯表示感谢，并确认了他的身份」，与当前台词一致。",
+        "台词中未出现罗伦斯或赫萝的说话特征，符合采购人员礼貌、正式的语气。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "该台词为当前对话片段的起始句，符合采购人员迎接罗伦斯并代表商行致谢的场景逻辑。上下文未出现其他说话人，因此判断为采购人员。"
+}
+```

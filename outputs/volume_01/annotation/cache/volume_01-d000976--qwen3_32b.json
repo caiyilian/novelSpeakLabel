@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000976",
+  "speaker_entity_id": "char_0020",
+  "speaker_display": "列支敦·马贺特",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0020",
+      "display": "列支敦·马贺特",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "mystery_volume_01_c005_s007_r002_梅迪欧商行的人",
+      "display": "梅迪欧商行的人",
+      "status": "mystery",
+      "score": 0.2
+    }
+  ],
+  "evidence": [
+    "当前对话出现在罗伦斯与马贺特讨论梅迪欧商行威胁的场景中，符合马贺特的说话风格。",
+    "对话内容与前文马贺特的发言逻辑一致，表现出对局势的分析和担忧。",
+    "场景记忆中明确指出列支敦·马贺特是本场景的活跃角色之一。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

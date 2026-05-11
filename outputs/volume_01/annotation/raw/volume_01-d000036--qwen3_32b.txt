@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000036",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "mystery_volume_01_c002_s002_r001_赫萝",
+      "display": "赫萝",
+      "status": "mystery",
+      "score": 0.8
+    }
+  ],
+  "evidence": [
+    "赫萝是村民祭典的象征，台词中提到「赫萝逃跑」，符合赫萝作为丰收之神的身份。",
+    "赫萝在场景中未直接说话，但通过村民的呼喊和描述体现其存在，台词内容与她的象征意义一致。",
+    "赫萝是罗伦斯旅行中的重要角色，台词语气符合她轻松幽默但略带威胁性的说话风格。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

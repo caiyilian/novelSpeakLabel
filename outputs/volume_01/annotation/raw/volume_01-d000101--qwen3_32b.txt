@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d000101",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "当前段落是「嗯？」，是简短的回应，符合赫萝在对话中轻松幽默但略带调侃的说话风格。",
+    "前一段罗伦斯问「你说你是赫萝，对吧？」，赫萝以「嗯？」回应，符合她对罗伦斯的试探性反应。",
+    "场景记忆中赫萝与罗伦斯频繁互动，且赫萝常以简短语气回应罗伦斯的提问，语气中带有调皮和不耐烦。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

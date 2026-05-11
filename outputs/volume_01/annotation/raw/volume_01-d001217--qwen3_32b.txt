@@ -1,0 +1,32 @@
+```json
+{
+  "dialogue_id": "volume_01-d001217",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.98
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.02
+    }
+  ],
+  "evidence": [
+    "前一段对话中赫萝询问罗伦斯是否没事，罗伦斯回应后靠在石壁上。",
+    "当前对话是罗伦斯的回应，语气疲惫，提到自己只是困了。",
+    "后一段对话中赫萝生气地搥打罗伦斯，表明说话人不是赫萝。",
+    "场景记忆中明确指出罗伦斯和赫萝是主要角色，且当前对话符合罗伦斯的语气和状态。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

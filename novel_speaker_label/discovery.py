@@ -46,6 +46,26 @@ GENERIC_MERGE_KEYS = {
     "汝",
 }
 
+SPEECH_MARKER_MAX_LENGTH = 8
+SPEECH_MARKER_SENTENCE_CHARS = set("。！？!?；;：:“”\"「」『』")
+SPEECH_MARKER_PRONOUN_ALLOWLIST = {
+    "咱",
+    "汝",
+    "俺",
+    "吾",
+    "吾辈",
+    "妾身",
+    "在下",
+    "小生",
+    "本座",
+    "本王",
+    "朕",
+    "老身",
+    "奴家",
+    "鄙人",
+    "贫道",
+}
+
 
 @dataclass(frozen=True)
 class DiscoveryConfig:
@@ -87,6 +107,7 @@ class CharacterStore:
             if _clean_name(title)
         }
         titles.update(alias for alias in raw_aliases if alias not in aliases)
+        speech_markers = _clean_speech_markers(candidate.get("speech_markers"))
         merge_keys = _merge_keys(display_name, aliases)
         existing_id = self._find_existing_id(merge_keys)
 
@@ -98,6 +119,7 @@ class CharacterStore:
                 "titles": sorted(titles)[:20],
                 "description": _clean_text(candidate.get("description")),
                 "speech_style": _clean_text(candidate.get("speech_style")),
+                "speech_markers": speech_markers,
                 "relationship_hints": _unique_strings(
                     _as_list(candidate.get("relationship_hints")), limit=80
                 ),
@@ -111,6 +133,10 @@ class CharacterStore:
             entity = self._by_id(existing_id)
             entity["aliases"] = sorted(set(entity["aliases"]) | aliases)[:20]
             entity["titles"] = sorted(set(entity["titles"]) | titles)[:20]
+            entity["speech_markers"] = _unique_strings(
+                _as_list(entity.get("speech_markers")) + speech_markers,
+                limit=20,
+            )
             entity["relationship_hints"] = _unique_strings(
                 entity["relationship_hints"]
                 + _as_list(candidate.get("relationship_hints")),
@@ -162,6 +188,8 @@ class CharacterStore:
                 "aliases": row["aliases"],
                 "titles": row["titles"],
                 "description": row["description"],
+                "speech_style": row.get("speech_style", ""),
+                "speech_markers": _as_list(row.get("speech_markers")),
             }
             for row in rows
         ]
@@ -513,7 +541,8 @@ def _build_discovery_prompt(payload: dict) -> str:
         "4. 如果人物未命名但看起来可在后文追踪，放入 mystery_entities。\n"
         "5. character_candidates 只放可以从文本中看到名字、称谓或稳定身份线索的人物。\n"
         "6. titles 只放身份/职业/称谓，不要把职业称谓当成人物别名。\n"
-        "7. evidence 使用 paragraph_id 或 dialogue_id 相关的短证据，不要长篇复制原文。\n\n"
+        "7. speech_markers 只记录高区分度口癖/自称/固定句尾/固定短语；普通词不要记录，也不要把口癖放进 aliases/titles。\n"
+        "8. evidence 使用 paragraph_id 或 dialogue_id 相关的短证据，不要长篇复制原文。\n\n"
         "输出 JSON 结构：\n"
         "{\n"
         '  "scene_id": "string",\n'
@@ -526,6 +555,7 @@ def _build_discovery_prompt(payload: dict) -> str:
         '      "titles": ["string"],\n'
         '      "description": "string",\n'
         '      "speech_style": "string",\n'
+        '      "speech_markers": ["string"],\n'
         '      "relationship_hints": ["string"],\n'
         '      "evidence": ["string"],\n'
         '      "confidence": 0.0\n'
@@ -650,6 +680,32 @@ def _join_field(existing: str, new_value: str, max_parts: int = 12) -> str:
     if new_value not in parts:
         parts.append(new_value)
     return " / ".join(parts[-max_parts:])
+
+
+def _clean_speech_markers(value: Any, limit: int = 20) -> list[str]:
+    markers: list[str] = []
+    for marker in _as_list(value):
+        cleaned = _clean_text(marker)
+        if not _is_useful_speech_marker(cleaned):
+            continue
+        markers.append(cleaned)
+    return _unique_strings(markers, limit=limit)
+
+
+def _is_useful_speech_marker(value: str) -> bool:
+    if not value:
+        return False
+    if value in SPEECH_MARKER_PRONOUN_ALLOWLIST:
+        return True
+    if len(value) > SPEECH_MARKER_MAX_LENGTH:
+        return False
+    if any(char in value for char in SPEECH_MARKER_SENTENCE_CHARS):
+        return False
+    if value in GENERIC_MERGE_KEYS:
+        return False
+    if any(pronoun in value for pronoun in ("你", "您", "我", "他", "她", "它")) and len(value) > 4:
+        return False
+    return True
 
 
 def _safe_float(value: Any, default: float) -> float:

@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000919",
+  "speaker_entity_id": "mystery_volume_01_c005_s006_r001_追踪者A",
+  "speaker_display": "追踪者A",
+  "speaker_status": "mystery",
+  "confidence": 0.75,
+  "candidate_speakers": [
+    {
+      "entity_id": "mystery_volume_01_c005_s006_r001_追踪者A",
+      "display": "追踪者A",
+      "status": "mystery",
+      "score": 0.75
+    },
+    {
+      "entity_id": "mystery_volume_01_c005_s006_r001_追踪者B",
+      "display": "追踪者B",
+      "status": "mystery",
+      "score": 0.6
+    }
+  ],
+  "evidence": [
+    "台词中使用命令语气，要求他人寻找人，符合追踪者A的行动风格。",
+    "场景中提到两名男子怒气冲冲地从附近小巷狂奔而过，暗示说话人可能是追踪者之一。",
+    "追踪者A和B在场景中被描述为对地形熟悉且行动迅速，符合台词中「应该就在这附近」的判断语气。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

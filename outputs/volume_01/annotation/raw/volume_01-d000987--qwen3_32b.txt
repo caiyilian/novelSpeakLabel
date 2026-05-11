@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d000987",
+  "speaker_entity_id": "char_0020",
+  "speaker_display": "列支敦·马贺特",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0020",
+      "display": "列支敦·马贺特",
+      "status": "known",
+      "score": 0.98
+    }
+  ],
+  "evidence": [
+    "前一段提到「几秒钟后，罗伦斯开口说」，但紧接着是「『想必对方当然也早已猜到，贵商行会做出这样的判断吧？』」，这表明罗伦斯刚说完，接下来是另一个人的回应。",
+    "当前对话中提到「我会抱着被罗伦斯先生怨恨的决心，选择商行的利益」，这与列支敦·马贺特的角色设定一致，他代表商行，强调利益优先。",
+    "场景记忆中提到列支敦·马贺特冷静地解释商行的立场，强调利益优先，这与当前台词的语气和立场相符。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

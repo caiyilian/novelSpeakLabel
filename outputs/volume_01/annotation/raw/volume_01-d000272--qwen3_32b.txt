@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d000272",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "前一段描述赫萝抓住某物的动作，下一段紧接着她说话，符合她的行为模式。",
+    "赫萝在场景中被多次提及，且有明确的说话风格：轻松幽默但略带威胁性。",
+    "场景记忆中显示赫萝与罗伦斯一同旅行，并在对话中表现出对食物和跳蚤的敏感反应。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

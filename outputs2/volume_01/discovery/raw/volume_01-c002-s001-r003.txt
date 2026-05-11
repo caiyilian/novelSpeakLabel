@@ -1,0 +1,47 @@
+```json
+{
+  "scene_id": "volume_01-c002-s001",
+  "scene_summary": "罗伦斯在麦田中与农夫交谈，讨论即将举行的祭典以及教会与地方的关系。他提到教会的威严正在减弱，同时提到帕斯罗村的麦田和伯爵的赞助。对话中提及了叶勒和『赫萝』的线索。",
+  "active_characters": ["罗伦斯", "农夫"],
+  "character_candidates": [
+    {
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": ["旅行商人", "行商人"],
+      "description": "一位行商人，发现并收留了赫萝，决定与她一同旅行。 / 二十五岁，行商七年，性格理性、谨慎，与修道院和骑士互动时表现出职业习惯性的冷静。",
+      "speech_style": "理性、怀疑、谨慎",
+      "speech_markers": ["……骑士？", "有什么能为您效劳的吗？"],
+      "relationship_hints": ["与赫萝有密切关系", "与教会和骑士有互动"],
+      "evidence": ["volume_01-c002-s001-p000135", "volume_01-c002-s001-p000144", "volume_01-c002-s001-p000145"],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "农夫",
+      "aliases": [],
+      "titles": [],
+      "description": "帕斯罗村的农夫，正在麦田中劳作，与罗伦斯有简短对话。",
+      "speech_style": "朴实、直接",
+      "speech_markers": ["喔？", "喔！"],
+      "relationship_hints": ["与叶勒有关系", "与帕斯罗村的祭典有关"],
+      "evidence": ["volume_01-c002-s001-p000150", "volume_01-c002-s001-p000152", "volume_01-c002-s001-p000154"],
+      "confidence": 0.7
+    }
+  ],
+  "mystery_entities": [
+    {
+      "temporary_name": "叶勒",
+      "description": "帕斯罗村的某位人物，可能是村长或重要人物，负责组织麦田劳作。",
+      "evidence": ["volume_01-c002-s001-p000153", "volume_01-c002-s001-p000154"],
+      "confidence": 0.6
+    },
+    {
+      "temporary_name": "『赫萝』",
+      "description": "可能是祭典中的某种角色或象征，由年轻人扮演。",
+      "evidence": ["volume_01-c002-s001-p000154"],
+      "confidence": 0.5
+    }
+  ],
+  "relationships": ["罗伦斯与农夫有简短互动", "农夫与叶勒有联系", "叶勒与『赫萝』有关"],
+  "notes": "场景中提及了叶勒和『赫萝』，但未提供完整信息，需在后续章节中追踪。罗伦斯的理性语气和对教会的评论表明他对宗教和政治局势有深刻理解。"
+}
+```

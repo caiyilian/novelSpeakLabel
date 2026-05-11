@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000823",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "上下文显示罗伦斯在对话中表现出对赫萝的关心，提到「带把梳子在身边」，符合罗伦斯冷静理性且注重细节的性格。",
+    "赫萝在前一段中慌张地压住外套，罗伦斯随后得意地回应，接着是当前台词，符合罗伦斯的说话风格。",
+    "场景记忆中提到罗伦斯计划为赫萝购买梳子，台词内容与场景记忆一致。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

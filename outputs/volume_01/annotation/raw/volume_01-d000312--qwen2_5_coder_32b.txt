@@ -1,0 +1,19 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000312",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {"entity_id": "char_0002", "display": "赫萝", "status": "known", "score": 0.9}
+      ],
+      "evidence": ["赫萝点了点头，从外套底下探出脸说："],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "根据上下文，赫萝刚刚点头并说话，因此可以判断是她说了这句话。"
+}

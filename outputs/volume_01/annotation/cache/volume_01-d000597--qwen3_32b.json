@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000597",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "前一段中赫萝提问后，罗伦斯掌击赫萝头部，随后本句台词是对赫萝行为的回应。",
+    "下一段中罗伦斯回答「我生性认真」，符合其冷静理性的说话风格。",
+    "场景记忆中明确指出罗伦斯与赫萝的互动模式，罗伦斯常以理性态度回应赫萝的玩笑。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

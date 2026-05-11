@@ -1,0 +1,67 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000445",
+      "speaker_entity_id": "",
+      "speaker_display": "",
+      "speaker_status": "ambiguous",
+      "confidence": 0.3,
+      "candidate_speakers": [
+        {"entity_id": "char_0009", "display": "店员", "status": "known", "score": 0.2},
+        {"entity_id": "char_0010", "display": "彪形大汉", "status": "known", "score": 0.2},
+        {"entity_id": "", "display": "npc:路人", "status": "npc", "score": 0.6}
+      ],
+      "evidence": ["对话轮次依据"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    },
+    {
+      "dialogue_id": "volume_01-d000446",
+      "speaker_entity_id": "",
+      "speaker_display": "",
+      "speaker_status": "ambiguous",
+      "confidence": 0.3,
+      "candidate_speakers": [
+        {"entity_id": "char_0009", "display": "店员", "status": "known", "score": 0.2},
+        {"entity_id": "char_0010", "display": "彪形大汉", "status": "known", "score": 0.2},
+        {"entity_id": "", "display": "npc:路人", "status": "npc", "score": 0.6}
+      ],
+      "evidence": ["对话轮次依据"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    },
+    {
+      "dialogue_id": "volume_01-d000447",
+      "speaker_entity_id": "",
+      "speaker_display": "",
+      "speaker_status": "ambiguous",
+      "confidence": 0.3,
+      "candidate_speakers": [
+        {"entity_id": "char_0009", "display": "店员", "status": "known", "score": 0.2},
+        {"entity_id": "char_0010", "display": "彪形大汉", "status": "known", "score": 0.2},
+        {"entity_id": "", "display": "npc:路人", "status": "npc", "score": 0.6}
+      ],
+      "evidence": ["对话轮次依据"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    },
+    {
+      "dialogue_id": "volume_01-d000448",
+      "speaker_entity_id": "char_0011",
+      "speaker_display": "采购人员",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {"entity_id": "char_0011", "display": "采购人员", "status": "known", "score": 0.9}
+      ],
+      "evidence": ["「您是克拉福•罗伦斯先生吧，我代替行长感谢您莅临本商行。」"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "前三句对话轮次依据明显，但没有明确的叙述锚点或自我介绍，因此难以确定说话人；第四句由采购人员说出，证据充分。"
+}

@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d000502",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "赫萝在场景中频繁出现并主导对话，说话风格轻松幽默且略带威胁性，符合台词「主人，就是这样。」的语气。",
+    "前一段提到「赫萝听了满意地点点头，把身子转向罗伦斯说」，表明她正在主导对话，因此下一句应为她所说。",
+    "场景记忆中明确指出赫萝在交易中主导，且与罗伦斯有频繁互动，符合说话人特征。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

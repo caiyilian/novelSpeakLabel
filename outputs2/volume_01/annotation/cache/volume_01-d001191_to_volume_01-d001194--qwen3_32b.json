@@ -1,0 +1,100 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001191",
+      "speaker_entity_id": "mystery_volume_01_c007_s001_r002_追捕者",
+      "speaker_display": "追捕者",
+      "speaker_status": "mystery",
+      "confidence": 0.75,
+      "candidate_speakers": [
+        {
+          "entity_id": "mystery_volume_01_c007_s001_r002_追捕者",
+          "display": "追捕者",
+          "status": "mystery",
+          "score": 0.75
+        }
+      ],
+      "evidence": [
+        "对话内容提到米隆商行出卖了他们，与场景记忆中提到的追捕者身份相符",
+        "上下文显示这是在地下道中突然出现的声音，非罗伦斯或赫萝的语气"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001192",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "上下文明确指出赫萝在不安地说出这句话",
+        "赫萝是当前场景中唯一可能表达不安的已知角色"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001193",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "上下文显示这是罗伦斯对赫萝的回应",
+        "语气理性且带有策略性，符合罗伦斯的说话风格"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001194",
+      "speaker_entity_id": "char_0015",
+      "speaker_display": "列支敦·马贺特",
+      "speaker_status": "known",
+      "confidence": 0.7,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0015",
+          "display": "列支敦·马贺特",
+          "status": "known",
+          "score": 0.7
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.3
+        }
+      ],
+      "evidence": [
+        "对话内容提到米隆商行分行，与马贺特的职位和利益相关",
+        "语气冷静、理性，符合马贺特的说话风格",
+        "上下文未明确指出说话人，因此存在不确定性"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    }
+  ],
+  "window_notes": "对话轮次为：追捕者 → 赫萝 → 罗伦斯 → 马贺特（或类似身份者）。最后一句说话人存在不确定性，需复核。"
+}

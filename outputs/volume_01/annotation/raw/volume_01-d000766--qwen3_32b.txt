@@ -1,0 +1,29 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000766",
+      "speaker_entity_id": "mystery_volume_01_c005_s001_r004_帕斯罗村朋友",
+      "speaker_display": "帕斯罗村朋友",
+      "speaker_status": "mystery",
+      "confidence": 0.75,
+      "candidate_speakers": [
+        {
+          "entity_id": "mystery_volume_01_c005_s001_r004_帕斯罗村朋友",
+          "display": "帕斯罗村朋友",
+          "status": "mystery",
+          "score": 0.75
+        }
+      ],
+      "evidence": [
+        "赫萝在前文提到「那家伙虽然有些少根筋，不过是个极其开朗的人」，并称其为「那家伙」，暗示说话人不是赫萝或罗伦斯，而是她提到的帕斯罗村朋友。",
+        "当前台词「那家伙真的是少根筋，经常做出令人难以置信的事」与前文描述一致，符合赫萝对朋友的评价语气。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "当前对话为赫萝对帕斯罗村朋友的评价，说话人应为该朋友，因此标注为 mystery。"
+}
+```

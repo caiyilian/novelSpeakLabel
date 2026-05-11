@@ -1,0 +1,24 @@
+```json
+{
+  "dialogue_id": "volume_01-d001235",
+  "speaker_entity_id": "char_0004",
+  "speaker_display": "叶勒",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0004",
+      "display": "叶勒",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "出现在转角的人是叶勒。",
+    "叶勒的出现让两人感到惊讶，他提到帕斯罗村的银币交易计划。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

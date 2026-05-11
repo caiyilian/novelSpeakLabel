@@ -1,0 +1,23 @@
+{
+  "dialogue_id": "volume_01-d001036",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.98
+    }
+  ],
+  "evidence": [
+    "上下文显示罗伦斯正在向马贺特解释梅迪欧商行的策略，且前一段明确提到「罗伦斯按着脑海里组织好的台词说」",
+    "当前段落是罗伦斯对「梅迪欧商行认为贵行已经收集到足够数量的银币」的详细分析，符合其冷静理性的说话风格",
+    "场景记忆中明确指出罗伦斯与马贺特进行商业策略讨论，推测梅迪欧商行的动机"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000541",
+  "speaker_entity_id": "char_0009",
+  "speaker_display": "杰廉",
+  "speaker_status": "known",
+  "confidence": 0.9,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0009",
+      "display": "杰廉",
+      "status": "known",
+      "score": 0.9
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.1
+    }
+  ],
+  "evidence": [
+    "前文提到杰廉已出现并与罗伦斯和赫萝互动，场景中杰廉是主要人物之一。",
+    "对话内容「皮草卖得如何？」符合杰廉作为商人的身份和对话风格。",
+    "后续对话中罗伦斯回答「卖到相当好的价格，你看这酒也明白吧？」表明提问者是杰廉。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

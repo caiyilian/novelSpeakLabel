@@ -1,0 +1,36 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000099",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        },
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.05
+        }
+      ],
+      "evidence": [
+        "上下文显示罗伦斯正在对赫萝的身份进行理性思考和质疑，而赫萝并未在此句中回应或表达类似情绪。",
+        "该句是「不，不可能。」，符合罗伦斯怀疑赫萝身份时的语气和态度。",
+        "前文提到罗伦斯想起狼嚎并怀疑赫萝是否为丰收之神，此句是其自问自答式的反应。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "该句是罗伦斯对赫萝身份的理性否定，符合上下文逻辑和角色性格，判断为罗伦斯的台词。"
+}
+```

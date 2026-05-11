@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d001052",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0020",
+      "display": "列支敦·马贺特",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "对话内容提到与国王交涉、资金路径、梅迪欧商行的背景，这些是罗伦斯与马贺特讨论的核心议题。",
+    "场景记忆显示罗伦斯与马贺特讨论梅迪欧商行的策略，罗伦斯提出分析和计划，语气和内容符合罗伦斯的理性风格。",
+    "上下文显示这是罗伦斯对当前局势的分析，而非马贺特的回应，语气中带有紧迫感和策略性。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

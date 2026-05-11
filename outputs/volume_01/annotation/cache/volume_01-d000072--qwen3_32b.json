@@ -1,0 +1,23 @@
+{
+  "dialogue_id": "volume_01-d000072",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    }
+  ],
+  "evidence": [
+    "对话中自称「咱的名字是赫萝」，与候选角色「赫萝」的自我介绍一致。",
+    "场景记忆中明确提到赫萝的狼耳和非人类特征，与当前台词的说话风格一致。",
+    "上下文显示该角色刚刚提到「咱逃跑成功了」，与赫萝的说话风格和身份相符。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

@@ -1,0 +1,75 @@
+{
+  "checks": [
+    {
+      "dialogue_id": "volume_01-d000014",
+      "has_contradiction": false,
+      "severity": "none",
+      "reason": "",
+      "counter_evidence": [],
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000015",
+      "has_contradiction": false,
+      "severity": "none",
+      "reason": "",
+      "counter_evidence": [],
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000016",
+      "has_contradiction": false,
+      "severity": "none",
+      "reason": "",
+      "counter_evidence": [],
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000017",
+      "has_contradiction": false,
+      "severity": "none",
+      "reason": "",
+      "counter_evidence": [],
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000018",
+      "has_contradiction": false,
+      "severity": "none",
+      "reason": "",
+      "counter_evidence": [],
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000019",
+      "has_contradiction": true,
+      "severity": "weak",
+      "reason": "对话内容为对骑士的回应，但对话形式为 inline，且 outside_quote_text 中包含罗伦斯的行为描述。",
+      "counter_evidence": [
+        "对话形式为 inline，outside_quote_text 包含罗伦斯的行为描述"
+      ],
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000020",
+      "has_contradiction": true,
+      "severity": "weak",
+      "reason": "对话内容为对罗伦斯的提问，但 candidate_speakers 中骑士和罗伦斯的得分接近。",
+      "counter_evidence": [
+        "candidate_speakers 中骑士和罗伦斯的得分接近"
+      ],
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000021",
+      "has_contradiction": true,
+      "severity": "weak",
+      "reason": "对话内容为对骑士的回应，但 candidate_speakers 中骑士和罗伦斯的得分接近。",
+      "counter_evidence": [
+        "candidate_speakers 中骑士和罗伦斯的得分接近"
+      ],
+      "needs_review": false
+    }
+  ],
+  "window_notes": "volume_01-d000019 的对话形式为 inline，且 outside_quote_text 包含罗伦斯的行为描述，这可能影响了说话人的判断。volume_01-d000020 和 volume_01-d000021 中 candidate_speakers 的得分接近，可能存在混淆。"
+}

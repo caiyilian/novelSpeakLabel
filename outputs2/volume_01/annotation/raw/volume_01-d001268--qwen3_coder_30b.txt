@@ -1,0 +1,34 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001268",
+      "speaker_entity_id": "mystery_volume_01_c007_s004_r002_巨大狼",
+      "speaker_display": "巨大狼",
+      "speaker_status": "mystery",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "mystery_volume_01_c007_s004_r002_巨大狼",
+          "display": "巨大狼",
+          "status": "mystery",
+          "score": 0.9
+        },
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.1
+        }
+      ],
+      "evidence": [
+        "前文描述赫萝变身成巨大狼，场景中出现巨大狼的威压和行为",
+        "台词为惊叫，符合巨大狼发出的震慑性声音",
+        "上下文明确显示赫萝已变身，且该声音为变身后的表现"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "根据上下文，赫萝已变身成巨大狼，该台词应为变身后的巨大狼所发出的惊叫，符合其威压和震慑性行为。"
+}

@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000427",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "说话者使用了「咱」和「汝」的自称与称呼，符合赫萝的说话风格。",
+    "对话内容涉及生意和利益分配，赫萝在场景中表现出对商业活动的兴趣和参与。",
+    "前一段对话中赫萝刚刚表现出对苹果的渴望和对金钱的自信，上下文逻辑连贯。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

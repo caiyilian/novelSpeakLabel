@@ -1,0 +1,63 @@
+{
+  "scene_id": "volume_01-c004-s002",
+  "scene_summary": "罗伦斯与赫萝讨论赫萝在交易中插嘴赚取利益的提议。赫萝表现出对苹果的热爱和对交易的自信，罗伦斯则表现出理性与谨慎。两人前往米隆商行，罗伦斯希望获取商业情报。",
+  "active_characters": [
+    "罗伦斯",
+    "赫萝"
+  ],
+  "character_candidates": [
+    {
+      "display_name": "赫萝",
+      "aliases": [],
+      "titles": [
+        "贤狼",
+        "丰收之神"
+      ],
+      "description": "自称丰收之神的神秘少女，拥有狼的特征，行为狡黠自信，喜欢恶作剧，对苹果有强烈偏好。",
+      "speech_style": "狡黠、自信、略带挑衅",
+      "speech_markers": [
+        "咱",
+        "是呗？",
+        "咱希望可以……"
+      ],
+      "relationship_hints": [
+        "与罗伦斯同行，对罗伦斯有掌控力"
+      ],
+      "evidence": [
+        "volume_01-d000423",
+        "volume_01-d000427",
+        "volume_01-d000431"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": [
+        "商人",
+        "旅行商人"
+      ],
+      "description": "理性、谨慎的商人，与赫萝同行，试图理解赫萝的判断，并思考商业情报的获取。",
+      "speech_style": "理性、怀疑、谨慎",
+      "speech_markers": [
+        "汝……",
+        "没问题"
+      ],
+      "relationship_hints": [
+        "与赫萝同行，对赫萝的掌控感到无奈但逐渐接受"
+      ],
+      "evidence": [
+        "volume_01-d000424",
+        "volume_01-d000426",
+        "volume_01-d000432"
+      ],
+      "confidence": 0.95
+    }
+  ],
+  "mystery_entities": [],
+  "relationships": [
+    "罗伦斯与赫萝同行，赫萝对罗伦斯有掌控力",
+    "罗伦斯对赫萝的判断感到困惑但逐渐接受"
+  ],
+  "notes": "赫萝表现出对苹果的强烈偏好，可能是后文的重要线索。罗伦斯前往米隆商行，暗示他可能在寻找商业情报或与杰廉有关的线索。"
+}

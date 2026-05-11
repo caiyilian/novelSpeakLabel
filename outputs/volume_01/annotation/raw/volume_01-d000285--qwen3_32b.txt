@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000285",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0009",
+      "display": "杰廉",
+      "status": "known",
+      "score": 0.1
+    }
+  ],
+  "evidence": [
+    "赫萝的说话风格轻松幽默但略带威胁性，符合「对咱来说，两个都是小毛头。」的语气。",
+    "场景记忆中赫萝多次使用「咱」自称，而杰廉被赫萝称为「小毛头」和「说谎者」，但杰廉未直接发言。",
+    "当前段落中「咱」的自称与赫萝的说话风格一致，且赫萝是场景中活跃角色之一。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

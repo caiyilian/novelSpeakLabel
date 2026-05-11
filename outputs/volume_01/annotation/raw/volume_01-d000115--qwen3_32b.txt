@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d000115",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    }
+  ],
+  "evidence": [
+    "赫萝在当前场景中明确提到自己变身所需的代价是麦子或鲜血，符合该台词的语境。",
+    "赫萝的说话风格轻松幽默但略带威胁性，与台词「或是鲜血。」的语气一致。",
+    "场景记忆中明确指出赫萝与罗伦斯对话，透露出非人类特征，如狼耳和尖牙，与该台词的背景相符。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

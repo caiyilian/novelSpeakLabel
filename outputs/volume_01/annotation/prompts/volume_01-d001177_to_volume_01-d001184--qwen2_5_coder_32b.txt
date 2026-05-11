@@ -1,0 +1,455 @@
+你是轻小说说话人标注项目的阶段 2：正式标注助手。
+你的任务是判断输入 target_dialogues 中每一句台词的说话人，不要改写原文。
+必须把这些台词当作同一个连续片段来判断，优先保持对话轮次和叙述线索的一致性。
+
+规则：
+1. 只输出严格 JSON，不要 Markdown，不要解释性前后缀。
+2. 如果说话人是候选角色，speaker_entity_id 必须使用 candidate_characters 里的 entity_id，speaker_status 填 known。
+3. 如果说话人像某个未知人物，speaker_entity_id 使用 candidate_mysteries 里的 mystery_id，speaker_status 填 mystery。
+4. 如果只是无法追踪的路人/群体，speaker_status 填 npc，speaker_entity_id 可为空或使用 npc:简短称呼。
+5. 证据不足时不要硬猜，speaker_status 填 ambiguous 或 review，并把 needs_review 设为 true。
+6. candidate_speakers 至少列出 1 个候选；如果无法判断，列出最可能的候选和不确定原因。
+7. confidence 使用 0 到 1 之间的小数，表示你对最终判断的把握。
+8. 不要只因为台词里提到某个名字、职业、地点，就把说话人标成那个实体；被称呼的人通常不是说话人。
+9. 连续问答、交易寒暄、命令/回答等场景要按上下句轮次判断；同一人连续说话必须有叙述或语气证据支持。
+10. 如果当前上下文显示某角色还没有登场，不要因为角色库或后文记忆里有这个角色就提前标给他/她。
+
+11. target_dialogues 中 dialogue_kind=inline 的项目是正文内嵌引号，不要当作独立对白；标为 review，needs_review=true。
+12. candidate_mysteries 只是可选候选；如果候选名称和当前段落地点/人物不一致，必须改用 npc 或 review。
+13. 如果只有轮次推断、没有叙述锚点或自我介绍，请降低 confidence，并在 evidence 里说明轮次依据。
+
+输出 JSON 结构：
+{
+  "annotations": [
+    {
+      "dialogue_id": "必须来自 target_dialogue_ids",
+      "speaker_entity_id": "string",
+      "speaker_display": "string",
+      "speaker_status": "known|mystery|npc|ambiguous|review",
+      "confidence": 0.0,
+      "candidate_speakers": [
+        {"entity_id": "string", "display": "string", "status": "known|mystery|npc|ambiguous|review", "score": 0.0}
+      ],
+      "evidence": ["短证据，不要大段复制原文"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "可选，简短说明整体轮次判断"
+}
+必须为 target_dialogue_ids 中每个 dialogue_id 输出且只输出一条 annotation。
+
+输入 JSON：
+{
+  "volume": {
+    "volume_id": "volume_01",
+    "volume": 1
+  },
+  "target_dialogue_ids": [
+    "volume_01-d001177",
+    "volume_01-d001178",
+    "volume_01-d001179",
+    "volume_01-d001180",
+    "volume_01-d001181",
+    "volume_01-d001182",
+    "volume_01-d001183",
+    "volume_01-d001184"
+  ],
+  "dialogues": [
+    {
+      "dialogue_id": "volume_01-d001177",
+      "dialogue_index": 1176,
+      "window_position": 1,
+      "chapter_id": "volume_01-c007",
+      "chapter_title": "第六幕",
+      "scene_id": "volume_01-c007-s001",
+      "paragraph_id": "volume_01-c007-s001-p002590",
+      "paragraph_index": 2589,
+      "local_dialogue_index": 1,
+      "text": "吸——",
+      "quote_text": "「吸——」",
+      "paragraph_text": "「吸——」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 5
+    },
+    {
+      "dialogue_id": "volume_01-d001178",
+      "dialogue_index": 1177,
+      "window_position": 2,
+      "chapter_id": "volume_01-c007",
+      "chapter_title": "第六幕",
+      "scene_id": "volume_01-c007-s001",
+      "paragraph_id": "volume_01-c007-s001-p002592",
+      "paragraph_index": 2591,
+      "local_dialogue_index": 1,
+      "text": "嗷呜～～～～～～～～～～～～～～！",
+      "quote_text": "「嗷呜～～～～～～～～～～～～～～！」",
+      "paragraph_text": "「嗷呜～～～～～～～～～～～～～～！」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 19
+    },
+    {
+      "dialogue_id": "volume_01-d001179",
+      "dialogue_index": 1178,
+      "window_position": 3,
+      "chapter_id": "volume_01-c007",
+      "chapter_title": "第六幕",
+      "scene_id": "volume_01-c007-s001",
+      "paragraph_id": "volume_01-c007-s001-p002596",
+      "paragraph_index": 2595,
+      "local_dialogue_index": 1,
+      "text": "咳……咳……喉咙……咱的喉咙……",
+      "quote_text": "「咳……咳……喉咙……咱的喉咙……」",
+      "paragraph_text": "「咳……咳……喉咙……咱的喉咙……」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 18
+    },
+    {
+      "dialogue_id": "volume_01-d001180",
+      "dialogue_index": 1179,
+      "window_position": 4,
+      "chapter_id": "volume_01-c007",
+      "chapter_title": "第六幕",
+      "scene_id": "volume_01-c007-s001",
+      "paragraph_id": "volume_01-c007-s001-p002599",
+      "paragraph_index": 2598,
+      "local_dialogue_index": 1,
+      "text": "咱想吃……苹果呐……咳！",
+      "quote_text": "「咱想吃……苹果呐……咳！」",
+      "paragraph_text": "「咱想吃……苹果呐……咳！」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 14
+    },
+    {
+      "dialogue_id": "volume_01-d001181",
+      "dialogue_index": 1180,
+      "window_position": 5,
+      "chapter_id": "volume_01-c007",
+      "chapter_title": "第六幕",
+      "scene_id": "volume_01-c007-s001",
+      "paragraph_id": "volume_01-c007-s001-p002600",
+      "paragraph_index": 2599,
+      "local_dialogue_index": 1,
+      "text": "以后你想吃多少就吃多少，那些猎犬呢？",
+      "quote_text": "「以后你想吃多少就吃多少，那些猎犬呢？」",
+      "paragraph_text": "「以后你想吃多少就吃多少，那些猎犬呢？」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 20
+    },
+    {
+      "dialogue_id": "volume_01-d001182",
+      "dialogue_index": 1181,
+      "window_position": 6,
+      "chapter_id": "volume_01-c007",
+      "chapter_title": "第六幕",
+      "scene_id": "volume_01-c007-s001",
+      "paragraph_id": "volume_01-c007-s001-p002601",
+      "paragraph_index": 2600,
+      "local_dialogue_index": 1,
+      "text": "夹着尾巴逃跑了。",
+      "quote_text": "「夹着尾巴逃跑了。」",
+      "paragraph_text": "「夹着尾巴逃跑了。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 10
+    },
+    {
+      "dialogue_id": "volume_01-d001183",
+      "dialogue_index": 1182,
+      "window_position": 7,
+      "chapter_id": "volume_01-c007",
+      "chapter_title": "第六幕",
+      "scene_id": "volume_01-c007-s001",
+      "paragraph_id": "volume_01-c007-s001-p002602",
+      "paragraph_index": 2601,
+      "local_dialogue_index": 1,
+      "text": "那我们也该逃了。他们听了刚刚的声音，一定知道我们在这里。",
+      "quote_text": "「那我们也该逃了。他们听了刚刚的声音，一定知道我们在这里。」",
+      "paragraph_text": "「那我们也该逃了。他们听了刚刚的声音，一定知道我们在这里。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 30
+    },
+    {
+      "dialogue_id": "volume_01-d001184",
+      "dialogue_index": 1183,
+      "window_position": 8,
+      "chapter_id": "volume_01-c007",
+      "chapter_title": "第六幕",
+      "scene_id": "volume_01-c007-s001",
+      "paragraph_id": "volume_01-c007-s001-p002603",
+      "paragraph_index": 2602,
+      "local_dialogue_index": 1,
+      "text": "认得路吗？",
+      "quote_text": "「认得路吗？」",
+      "paragraph_text": "「认得路吗？」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 7
+    }
+  ],
+  "context": {
+    "paragraphs": [
+      {
+        "paragraph_id": "volume_01-c007-s001-p002587",
+        "paragraph_index": 2586,
+        "text": "赫萝究竟打算怎么做呢？",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c007-s001-p002588",
+        "paragraph_index": 2587,
+        "text": "「如果犬太愚蠢而无法理解的话就糗了……总之，汝先摀住耳朵。」",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c007-s001-p002589",
+        "paragraph_index": 2588,
+        "text": "罗伦斯照赫萝说的话摀上耳朵，他猜得到赫萝要做什么——是长嚎。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c007-s001-p002590",
+        "paragraph_index": 2589,
+        "text": "「吸——」",
+        "target_dialogue_ids": [
+          "volume_01-d001177"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c007-s001-p002591",
+        "paragraph_index": 2590,
+        "text": "传来吸气的声音。吸气的声音持续很久，不禁让人怀疑赫萝如此纤细的身躯，要如何吸入那么多空气。停顿了一瞬间后，如地牛翻身般的狼嚎声响起。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c007-s001-p002592",
+        "paragraph_index": 2591,
+        "text": "「嗷呜～～～～～～～～～～～～～～！」",
+        "target_dialogue_ids": [
+          "volume_01-d001178"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c007-s001-p002593",
+        "paragraph_index": 2592,
+        "text": "那声音的力量之强劲，足以使手及脸部露出来的皮肤随之震动。甚至让人不禁认为地下道是否会因此坍塌。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c007-s001-p002594",
+        "paragraph_index": 2593,
+        "text": "罗伦斯听着那仿佛不管再强悍的壮汉，也能够撕碎其肝脏般的狼嚎。他在途中也忘了那是赫萝的声音，死命地摀住耳朵，并缩起身子。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c007-s001-p002595",
+        "paragraph_index": 2594,
+        "text": "罗伦斯想起在山里及草原上遭狼群追杀的经验。无以计数的狼群不仅对地形了若指掌，还拥有人类无法与之对抗的运动细胞。这一切一并袭击过来，而狼嚎就是袭击的前兆。也因为如此，有些村落甚至在发生瘟疫时，为了赶走瘟疫，所有村民都会模仿狼嚎。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c007-s001-p002596",
+        "paragraph_index": 2595,
+        "text": "「咳……咳……喉咙……咱的喉咙……」",
+        "target_dialogue_ids": [
+          "volume_01-d001179"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c007-s001-p002597",
+        "paragraph_index": 2596,
+        "text": "当咆哮声消失，留下雷声般的余音后，罗伦斯拿开摀住耳朵的手抬头一看，发现赫萝在黑暗中频频咳嗽。那么细小的喉咙要发出那么巨大的声音，当然会如此了。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c007-s001-p002598",
+        "paragraph_index": 2597,
+        "text": "可是，这里没有水给她喝。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c007-s001-p002599",
+        "paragraph_index": 2598,
+        "text": "「咱想吃……苹果呐……咳！」",
+        "target_dialogue_ids": [
+          "volume_01-d001180"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c007-s001-p002600",
+        "paragraph_index": 2599,
+        "text": "「以后你想吃多少就吃多少，那些猎犬呢？」",
+        "target_dialogue_ids": [
+          "volume_01-d001181"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c007-s001-p002601",
+        "paragraph_index": 2600,
+        "text": "「夹着尾巴逃跑了。」",
+        "target_dialogue_ids": [
+          "volume_01-d001182"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c007-s001-p002602",
+        "paragraph_index": 2601,
+        "text": "「那我们也该逃了。他们听了刚刚的声音，一定知道我们在这里。」",
+        "target_dialogue_ids": [
+          "volume_01-d001183"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c007-s001-p002603",
+        "paragraph_index": 2602,
+        "text": "「认得路吗？」",
+        "target_dialogue_ids": [
+          "volume_01-d001184"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c007-s001-p002604",
+        "paragraph_index": 2603,
+        "text": "「算吧。」",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c007-s001-p002605",
+        "paragraph_index": 2604,
+        "text": "罗伦斯准备跨出步伐前，转向赫萝并伸出左手，赫萝紧紧抓住他的手。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c007-s001-p002606",
+        "paragraph_index": 2605,
+        "text": "罗伦斯确认赫萝抓住他的手之后，便跑了起来。这时，就连罗伦斯的耳朵也能微微听见人类怒吼的声音。",
+        "target_dialogue_ids": []
+      }
+    ]
+  },
+  "scene_memory": [
+    {
+      "scene_id": "volume_01-c007-s001-r003",
+      "parent_scene_id": "volume_01-c007-s001",
+      "chunk_index": 3,
+      "chunk_count": 6,
+      "scene_summary": "赫萝在地下道中发出狼嚎以驱赶猎犬，罗伦斯对此感到震惊并担心她的健康。",
+      "active_characters": [
+        "罗伦斯",
+        "赫萝"
+      ],
+      "relationships": [
+        "罗伦斯与赫萝一同旅行",
+        "罗伦斯对赫萝的健康和安全表现出关心"
+      ],
+      "notes": "赫萝在场景中表现出非人类的特征，如狼嚎和狼耳，但未提及其他神秘人物。场景中未出现未命名但可追踪的神秘人物。"
+    },
+    {
+      "scene_id": "volume_01-c007-s001-r004",
+      "parent_scene_id": "volume_01-c007-s001",
+      "chunk_index": 4,
+      "chunk_count": 6,
+      "scene_summary": "罗伦斯与赫萝在地下道中逃跑，他们推测敌人是因在地面上找不到他们而潜入地下，两人加快脚步逃离。",
+      "active_characters": [
+        "罗伦斯",
+        "赫萝"
+      ],
+      "relationships": [
+        "罗伦斯与赫萝有亲密关系，共同行动"
+      ],
+      "notes": "本场景中没有出现未命名但可追踪的神秘人物。罗伦斯与赫萝的互动表明他们之间存在亲密关系，且在逃亡过程中相互依赖。"
+    }
+  ],
+  "candidate_characters": [
+    {
+      "entity_id": "char_0001",
+      "display_name": "罗伦斯",
+      "aliases": [
+        "罗伦斯",
+        "罗伦斯先生"
+      ],
+      "titles": [
+        "中间人",
+        "交易者",
+        "同行",
+        "商人",
+        "小毛头",
+        "小的",
+        "市井无赖",
+        "年轻人"
+      ],
+      "description": "一位行商人，正在与米隆商行的代表马贺特进行交易谈判。他原本期待获得两千枚银币，但实际只得到一百二十枚，感到震惊和困惑。 / 一位行商人，发现并收留了赫萝，决定与她一同旅行。 / 一位二十五岁的自力更生旅行商人，已有七年行商经验，性格泰然自若。 / 一位冷静理性的旅行商人，对赫萝的身份持怀疑态度，但仍保持互动。他注重外表整洁，对商业制度有深入理解。 / 冷静理性的旅行商人，与赫萝一同旅行。在本场景中与米隆商行的马贺特讨论梅迪欧商行的威胁，提出利用崔尼银币交易作为交涉王牌。 / 一位冷静理性的旅行商人，与赫萝一同旅行…",
+      "speech_style": "理性、坚定、略带情绪化 / 冷静、理性，带有悔恨和自责的语气。 / 冷静、理性，语气中带有对赫萝的关心和些许担忧。 / 冷静、理性、略带失落 / 冷静、理性，对商业制度有深入理解，并能清晰地向他人解释。 / 理性、礼貌、略带谨慎。 / 理性、冷静，带有商业分析倾向。 / 理性、沉稳、略带幽默 / 理性、冷静，但因困惑…",
+      "relationship_hints": [
+        "与赫萝一同旅行",
+        "对赫萝的真实性持怀疑态度",
+        "与深山村落的村民有交易关系",
+        "对修道院抱有商业期望但未成功",
+        "与骑士有短暂互动",
+        "与小村落的村民有交易关系",
+        "与修道院有关联",
+        "对教会和异教徒问题有见解"
+      ],
+      "first_seen_scene_id": "volume_01-c000-s003-r001",
+      "latest_seen_scene_id": "volume_01-c008-s003-r002",
+      "confidence": 1.0
+    },
+    {
+      "entity_id": "char_0002",
+      "display_name": "赫萝",
+      "aliases": [
+        "赫萝"
+      ],
+      "titles": [
+        "丰收之神",
+        "咱",
+        "神秘少女",
+        "约伊兹的贤狼",
+        "贤狼"
+      ],
+      "description": "自称丰收之神的神秘少女，拥有狼的耳朵和尾巴。在本场景中协助罗伦斯，表现出对他的关心和保护。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴，行为举止非人类，表现出轻松幽默但略带威胁性的说话风格。在本场景中，她对罗伦斯的伤口进行吸血，引发旁人惊呼，并表现出悲伤的情绪。 / 自称是丰收之神的神秘少女，拥有狼的耳朵和尾巴。在本场景中逐渐显露出非人类的特征，最终完全变成一只巨大的狼。她与罗伦斯有情感交流，表现出悲伤和决绝的情绪。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴，未直接参与本场景，但罗伦斯的行动可能与她有关…",
+      "speech_style": "轻松幽默但略带威胁性，情绪化且带有调侃语气。 / 轻松幽默、略带调侃和威胁 / 轻松幽默、略带威胁性 / 轻松幽默、略带威胁性、撒娇 / 警觉、神秘 / 轻松幽默但略带威胁性 / 轻松幽默、略带调侃 / 轻松幽默但略带威胁性，语气中透露出对罗伦斯的依赖。 / 轻松幽默、略带威胁性、自信 / 轻松幽默但略带威胁性，情绪…",
+      "relationship_hints": [
+        "与罗伦斯一同旅行",
+        "被罗伦斯怀疑是否为真正的神",
+        "与叶勒有附身关系",
+        "与罗伦斯有潜在互动",
+        "与罗伦斯有互动，似乎是被他发现并收留的。",
+        "与罗伦斯有互动，但尚未明确关系",
+        "与罗伦斯互动频繁，表现出对他的信任和玩笑态度",
+        "与罗伦斯互动密切"
+      ],
+      "first_seen_scene_id": "volume_01-c000-s003-r001",
+      "latest_seen_scene_id": "volume_01-c008-s003-r002",
+      "confidence": 1.0
+    }
+  ],
+  "candidate_mysteries": [
+    {
+      "mystery_id": "mystery_volume_01_c007_s001_r002_猎犬",
+      "temporary_name": "猎犬",
+      "description": "被追捕者放出的猎犬，追踪能力极强，是罗伦斯和赫萝的主要威胁。",
+      "evidence": [
+        "volume_01-c007-s001-p002581",
+        "volume_01-c007-s001-p002585"
+      ],
+      "source_scene_id": "volume_01-c007-s001-r002",
+      "confidence": 0.8
+    }
+  ]
+}

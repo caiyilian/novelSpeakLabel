@@ -1,0 +1,30 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001072",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "当前场景中唯一明确出现并有行动和心理描写的人物是罗伦斯，没有其他角色登场。",
+        "台词出现在罗伦斯正在探索地下道的段落中，符合他主动确认位置的语气和行为。",
+        "上下文没有其他说话人出现，也没有任何叙述暗示有其他人在场。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "当前段落中只有罗伦斯一人在场，且台词符合其探索环境时的语气和行为，因此判断为罗伦斯所说。"
+}
+```

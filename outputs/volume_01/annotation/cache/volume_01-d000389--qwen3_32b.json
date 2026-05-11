@@ -1,0 +1,24 @@
+{
+  "dialogue_id": "volume_01-d000389",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    }
+  ],
+  "evidence": [
+    "对话内容提到「狼不爱吃辣」，这与赫萝自称是狼/丰收之神的身份相符。",
+    "上下文提到「狼会借的东西」、「狼给人的感觉是爱吃辛辣的食物」，暗示说话人是在回忆或讲述与狼有关的经历，赫萝是唯一明确提到的狼形角色。",
+    "后续段落提到「哈哈，那是红辣椒，高级品呢！」和「那次大伙儿把整个脸栽进河水里好久好久」，与赫萝的回忆语气一致。",
+    "赫萝在场景中频繁出现，且是唯一与「狼」身份直接相关的角色。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

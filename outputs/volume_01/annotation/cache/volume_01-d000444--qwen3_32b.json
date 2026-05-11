@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000444",
+  "speaker_entity_id": "char_0011",
+  "speaker_display": "彪形大汉",
+  "speaker_status": "known",
+  "confidence": 0.9,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0011",
+      "display": "彪形大汉",
+      "status": "known",
+      "score": 0.9
+    },
+    {
+      "entity_id": "char_0010",
+      "display": "店员",
+      "status": "known",
+      "score": 0.1
+    }
+  ],
+  "evidence": [
+    "前一段提到彪形大汉站在卸货场左边，与罗伦斯互动，并指示他让马儿过来。",
+    "当前段中「哎呀，好马！」的语气热情、粗犷，符合彪形大汉的说话风格。",
+    "后续段中「他很勤劳工作，从不发牢骚。」进一步表明说话人对马的熟悉，符合搬运工身份。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

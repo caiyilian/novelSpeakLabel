@@ -1,0 +1,23 @@
+{
+  "dialogue_id": "volume_01-d000938",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.98
+    }
+  ],
+  "evidence": [
+    "台词中自称「我是中午来过的罗伦斯」，与上下文提到的罗伦斯逃跑、请求庇护的行为一致。",
+    "上下文提到罗伦斯在米隆商行前拍打栅栏喊叫，紧接着该台词出现，符合罗伦斯的处境和语气。",
+    "场景记忆中罗伦斯是主要角色，且在本场景中独自行动，没有其他角色在此时发声。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

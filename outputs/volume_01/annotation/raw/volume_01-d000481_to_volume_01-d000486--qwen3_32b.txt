@@ -1,0 +1,181 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000481",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.8
+        },
+        {
+          "entity_id": "char_0016",
+          "display": "鉴定员",
+          "status": "known",
+          "score": 0.2
+        }
+      ],
+      "evidence": [
+        "对话中称呼对方为『先生』，语气礼貌，符合罗伦斯的说话风格。",
+        "上下文显示罗伦斯在交易中较为被动，但仍在回应对方。",
+        "赫萝在旁协助，但未在此句发言。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000482",
+      "speaker_entity_id": "char_0016",
+      "speaker_display": "鉴定员",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0016",
+          "display": "鉴定员",
+          "status": "known",
+          "score": 0.85
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.15
+        }
+      ],
+      "evidence": [
+        "对话内容是关于皮草的评价，符合鉴定员的专业职责。",
+        "上下文显示赫萝将貂皮交给鉴定员，他随后进行评价。",
+        "语气专业，符合鉴定员的说话风格。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000483",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.75,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.75
+        },
+        {
+          "entity_id": "char_0016",
+          "display": "鉴定员",
+          "status": "known",
+          "score": 0.25
+        }
+      ],
+      "evidence": [
+        "对话内容是对前一句的回应，符合罗伦斯的被动回应风格。",
+        "上下文显示罗伦斯在交易中较为配合，可能在附和鉴定员的评价。",
+        "语气中带有赞同，符合罗伦斯的理性态度。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000484",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.9
+        },
+        {
+          "entity_id": "char_0016",
+          "display": "鉴定员",
+          "status": "known",
+          "score": 0.1
+        }
+      ],
+      "evidence": [
+        "对话中使用了『咱』自称，这是赫萝的典型说话方式。",
+        "上下文显示赫萝在交易中主导气氛，此句是她制造幽默的延续。",
+        "语气轻松幽默，符合赫萝的风格。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000485",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.9
+        },
+        {
+          "entity_id": "char_0016",
+          "display": "鉴定员",
+          "status": "known",
+          "score": 0.1
+        }
+      ],
+      "evidence": [
+        "对话中使用了『呗』这样的语气词，符合赫萝的说话风格。",
+        "上下文显示赫萝在继续她的幽默表演，此句是她对前一句的延续。",
+        "语气轻松，带有调侃意味。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000486",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.85
+        },
+        {
+          "entity_id": "char_0016",
+          "display": "鉴定员",
+          "status": "known",
+          "score": 0.15
+        }
+      ],
+      "evidence": [
+        "对话中赫萝继续主导交易气氛，语气轻松，符合她的风格。",
+        "上下文显示赫萝在推动男子进行下一步动作，语气带有引导性。",
+        "『先生』的称呼与前文一致，符合赫萝对罗伦斯和男子的称呼方式。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，赫萝主导气氛，罗伦斯被动回应，鉴定员参与评价。整体对话符合角色行为模式。"
+}
+```

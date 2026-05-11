@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000245",
+  "speaker_entity_id": "char_0009",
+  "speaker_display": "杰廉",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0009",
+      "display": "杰廉",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0008",
+      "display": "年轻商人",
+      "status": "known",
+      "score": 0.1
+    }
+  ],
+  "evidence": [
+    "对话中自称「小的名叫杰廉」，明确表明身份。",
+    "场景记忆中明确提到杰廉是新出现的可追踪人物，且是本段对话的说话人。",
+    "杰廉是刚入行的旅行商人，与罗伦斯对话，符合上下文语境。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

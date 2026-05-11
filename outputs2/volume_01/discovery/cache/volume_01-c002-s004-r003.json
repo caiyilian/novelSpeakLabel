@@ -1,0 +1,60 @@
+{
+  "scene_id": "volume_01-c002-s004",
+  "scene_summary": "赫萝向罗伦斯解释她不愿展示真实模样，并试图用麦穗来展示变身能力。罗伦斯虽然怀疑，但被赫萝掌控了局面。",
+  "active_characters": [
+    "罗伦斯",
+    "赫萝"
+  ],
+  "character_candidates": [
+    {
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": [
+        "旅行商人",
+        "行商人"
+      ],
+      "description": "理性、谨慎的商人，对赫萝的身份和行为感到困惑，但逐渐被她掌控。",
+      "speech_style": "理性、怀疑、略带无奈",
+      "speech_markers": [
+        "我、我怎么可能害怕看到你的模样。",
+        "这……"
+      ],
+      "relationship_hints": [
+        "与赫萝有互动，被赫萝掌控局面"
+      ],
+      "evidence": [
+        "volume_01-d000123",
+        "volume_01-d000129"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "赫萝",
+      "aliases": [],
+      "titles": [
+        "丰收之神",
+        "狼"
+      ],
+      "description": "自称是丰收之神的神秘少女，拥有狼的特征，行为狡诈自信，试图展示变身能力。",
+      "speech_style": "狡诈、自信、略带不悦",
+      "speech_markers": [
+        "咱",
+        "就让汝看一些呗。不过，变全身太累人了，手臂就好，汝将就点呗。"
+      ],
+      "relationship_hints": [
+        "与罗伦斯有互动，掌控局面"
+      ],
+      "evidence": [
+        "volume_01-d000122",
+        "volume_01-d000130",
+        "volume_01-d000131"
+      ],
+      "confidence": 0.95
+    }
+  ],
+  "mystery_entities": [],
+  "relationships": [
+    "罗伦斯与赫萝之间存在信任与怀疑的复杂关系"
+  ],
+  "notes": "赫萝表现出对变身的控制力，罗伦斯则在怀疑与信任之间挣扎。场景中未出现新的神秘人物。"
+}

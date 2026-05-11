@@ -1,0 +1,51 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000183",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.98,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.98
+        }
+      ],
+      "evidence": [
+        "台词中使用了赫萝的典型自称‘咱’，这是她的显著语言特征。",
+        "上下文提到赫萝擅自穿上罗伦斯的衣物，并提出剪洞的请求，符合她的行为模式。",
+        "场景记忆中赫萝表现出自信和大胆，与台词语气一致。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000184",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "这是对前一句赫萝提问的回应，符合对话轮次逻辑。",
+        "罗伦斯在上下文中表现出理性与谨慎，此回应语气符合他的性格。",
+        "场景记忆中提到罗伦斯对赫萝的行为感到担忧，此回应体现了他的妥协态度。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，赫萝提出问题，罗伦斯回应，符合两人互动模式。"
+}

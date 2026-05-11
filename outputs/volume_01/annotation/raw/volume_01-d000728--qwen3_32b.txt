@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000728",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "mystery_volume_01_c004_s009_r002_神秘人物",
+      "display": "神秘人物",
+      "status": "mystery",
+      "score": 0.2
+    }
+  ],
+  "evidence": [
+    "赫萝在本场景中表现出较强的引导性，通过比喻和提问推动罗伦斯的思考。",
+    "对话内容与赫萝的说话风格一致，轻松幽默但略带威胁性，且带有引导和提问的语气。",
+    "场景记忆中提到赫萝未直接发言，但被提及为对话对象，符合当前台词的语境。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

@@ -1,0 +1,23 @@
+{
+  "dialogue_id": "volume_01-d000066",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "赫萝在场景中频繁出现，且说话风格轻松幽默但略带威胁性，与台词「那匹马啊。」的语气相符。",
+    "场景记忆中提到赫萝拥有狼耳和神秘感，且与罗伦斯有互动，符合说话人特征。",
+    "当前对话上下文显示说话人是在回应「你是谁？」和「除了你还有谁！」，赫萝是唯一明确的对话角色。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d000303",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    }
+  ],
+  "evidence": [
+    "台词中自称「咱是贤狼赫萝」，明确表明说话人身份。",
+    "上下文显示赫萝与罗伦斯有互动，且说话风格与赫萝一致，轻松幽默略带调侃。",
+    "场景记忆中赫萝是活跃角色，且说话风格与台词一致。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

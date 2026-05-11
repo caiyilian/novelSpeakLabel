@@ -1,0 +1,23 @@
+{
+  "dialogue_id": "volume_01-d000477",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "前一段中赫萝说：「主人啊，捉弄人家不好呐。」",
+    "当前段落提到罗伦斯难以判断「主人」这个称呼是赫萝在拿他开玩笑",
+    "后一段中赫萝说：「主人，请给咱一件貂皮。」"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

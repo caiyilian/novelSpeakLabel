@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d000889",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "前一段提到赫萝红着眼睛及鼻子，声音已平静许多。",
+    "当前段落是赫萝的直接引语，符合她说话轻松幽默但略带调侃的风格。",
+    "场景记忆中明确指出赫萝与罗伦斯有亲密互动，且是主要角色之一。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

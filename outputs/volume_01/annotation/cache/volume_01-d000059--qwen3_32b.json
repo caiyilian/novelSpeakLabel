@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000059",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "上下文显示罗伦斯在怀疑赫萝的身份，而这句话是典型的罗伦斯理性怀疑的语气。",
+    "下一段提到罗伦斯把手摸向短剑，说明说话人是罗伦斯。",
+    "赫萝的说话风格轻松幽默，而这句话语气严肃，更符合罗伦斯的说话方式。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

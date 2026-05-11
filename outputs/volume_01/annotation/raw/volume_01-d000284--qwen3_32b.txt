@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000284",
+  "speaker_entity_id": "char_0009",
+  "speaker_display": "杰廉",
+  "speaker_status": "known",
+  "confidence": 0.85,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0009",
+      "display": "杰廉",
+      "status": "known",
+      "score": 0.85
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.15
+    }
+  ],
+  "evidence": [
+    "前文提到「小毛头」，而杰廉是被罗伦斯和赫萝称为「小毛头」的旅行商人。",
+    "当前对话「有什么好奇怪的？」语气轻松，符合杰廉的说话风格。",
+    "场景记忆中提到杰廉是被怀疑说谎的对象，与当前对话的语境相符。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

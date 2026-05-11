@@ -1,0 +1,28 @@
+{
+  "dialogue_id": "volume_01-d001182",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.9,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.9
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.1
+    }
+  ],
+  "evidence": [
+    "上下文显示罗伦斯和赫萝在逃亡，罗伦斯更常在对话中提及猎犬和路线，语气理性冷静，符合罗伦斯的说话风格。",
+    "赫萝的台词通常带有情绪化和调侃语气，而此句语气冷静，更符合罗伦斯的风格。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

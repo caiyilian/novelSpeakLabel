@@ -1,0 +1,157 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000790",
+      "speaker_entity_id": "char_0021",
+      "speaker_display": "店老板",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0021",
+          "display": "店老板",
+          "status": "known",
+          "score": 1.0
+        }
+      ],
+      "evidence": ["根据上下文，该台词由店老板说出，其语境与店老板观察赫萝宿醉状态一致"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000791",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 1.0
+        }
+      ],
+      "evidence": ["前一句为店老板询问价格，后一句为罗伦斯回应并准备付款，符合对话轮次逻辑"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000792",
+      "speaker_entity_id": "char_0021",
+      "speaker_display": "店老板",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0021",
+          "display": "店老板",
+          "status": "known",
+          "score": 1.0
+        }
+      ],
+      "evidence": ["店老板观察赫萝状态并发出疑问，符合角色行为逻辑"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000793",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 1.0
+        }
+      ],
+      "evidence": ["赫萝处于宿醉状态，回应店老板的疑问，符合角色行为逻辑"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000794",
+      "speaker_entity_id": "char_0021",
+      "speaker_display": "店老板",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0021",
+          "display": "店老板",
+          "status": "known",
+          "score": 1.0
+        }
+      ],
+      "evidence": ["店老板对年轻人的失误表示理解，符合其角色设定"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000795",
+      "speaker_entity_id": "char_0021",
+      "speaker_display": "店老板",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0021",
+          "display": "店老板",
+          "status": "known",
+          "score": 1.0
+        }
+      ],
+      "evidence": ["店老板再次确认金额并催促付款，符合角色行为逻辑"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000796",
+      "speaker_entity_id": "char_0021",
+      "speaker_display": "店老板",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0021",
+          "display": "店老板",
+          "status": "known",
+          "score": 1.0
+        }
+      ],
+      "evidence": ["店老板建议两人休息并询问是否来自旅馆，符合其角色行为逻辑"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000797",
+      "speaker_entity_id": "char_0021",
+      "speaker_display": "店老板",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0021",
+          "display": "店老板",
+          "status": "known",
+          "score": 1.0
+        }
+      ],
+      "evidence": ["根据上下文，该台词由店老板发出，与前文罗伦斯点头回应一致"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话围绕罗伦斯和赫萝在店中发生，店老板作为主要对话人，与罗伦斯和赫萝互动。"
+}

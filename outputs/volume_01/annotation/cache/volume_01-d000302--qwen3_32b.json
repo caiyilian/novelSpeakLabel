@@ -1,0 +1,23 @@
+{
+  "dialogue_id": "volume_01-d000302",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    }
+  ],
+  "evidence": [
+    "赫萝在场景中频繁发言，说话风格轻松幽默且略带威胁性，符合台词「最后这颗马铃薯是咱的。」的语气。",
+    "上下文显示赫萝在调侃罗伦斯，且有拿走马铃薯的行为，台词符合她的行为模式。",
+    "赫萝的自称「咱」在台词中出现，这是她的标志性语言特征。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

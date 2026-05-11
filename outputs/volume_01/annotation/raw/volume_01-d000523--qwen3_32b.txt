@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000523",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "对话内容提到「旅行商人」、「商馆」、「联络据点」等术语，与罗伦斯的商人身份和对话风格一致。",
+    "上下文显示罗伦斯正在寻找店老板，并提到杰廉，符合他作为旅行商人的行为。",
+    "赫萝的说话风格通常更轻松幽默，略带威胁性，而本句语气理性冷静，更符合罗伦斯的风格。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

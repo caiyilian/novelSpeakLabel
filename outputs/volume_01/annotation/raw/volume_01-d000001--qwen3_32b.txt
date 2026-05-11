@@ -1,0 +1,30 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000001",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "台词中自称「咱是赫萝」，明确表明说话人身份。",
+        "上下文提到「自称是丰收之神赫萝的美丽少女」，与台词内容一致。",
+        "赫萝是当前场景中已登场的明确角色，且是唯一自称「咱」的说话人。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "该台词为赫萝的自我介绍，上下文明确，说话人判断清晰。"
+}
+```

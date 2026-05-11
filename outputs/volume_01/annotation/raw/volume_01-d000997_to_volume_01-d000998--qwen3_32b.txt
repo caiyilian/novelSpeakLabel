@@ -1,0 +1,57 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000997",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "上下文提到「罗伦斯在沉思中，被马贺特的声音拉回现实」，说明前一句台词是罗伦斯的沉思被打断，因此「罗伦斯先生」应为罗伦斯的回应或自言。",
+        "「罗伦斯先生」是罗伦斯的尊称，符合他在此场景中的身份和说话风格。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000998",
+      "speaker_entity_id": "char_0030",
+      "speaker_display": "米隆商行",
+      "speaker_status": "known",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0030",
+          "display": "米隆商行",
+          "status": "known",
+          "score": 0.8
+        },
+        {
+          "entity_id": "char_0028",
+          "display": "梅迪欧商行",
+          "status": "known",
+          "score": 0.2
+        }
+      ],
+      "evidence": [
+        "上下文提到「面对马贺特诚恳的问话态度，罗伦斯只能点头」，说明「您知道原因是吗？」是马贺特提出的问题，而马贺特代表米隆商行。",
+        "米隆商行是本场景中与罗伦斯有直接互动的商行，而梅迪欧商行未直接登场，因此更可能是米隆商行的代表提问。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次为罗伦斯回应马贺特的提问，符合上下文逻辑。"
+}
+```

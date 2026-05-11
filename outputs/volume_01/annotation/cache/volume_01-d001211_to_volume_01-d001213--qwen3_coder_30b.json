@@ -1,0 +1,86 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001211",
+      "speaker_entity_id": "mystery_volume_01_c007_s002_r004_伏击者",
+      "speaker_display": "伏击者",
+      "speaker_status": "mystery",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "mystery_volume_01_c007_s002_r004_伏击者",
+          "display": "伏击者",
+          "status": "mystery",
+          "score": 0.9
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.05
+        }
+      ],
+      "evidence": [
+        "说话者在黑暗中袭击罗伦斯，且台词内容符合其悔恨情绪；罗伦斯确认对方意图杀害自己"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001212",
+      "speaker_entity_id": "mystery_volume_01_c007_s002_r004_伏击者",
+      "speaker_display": "伏击者",
+      "speaker_status": "mystery",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "mystery_volume_01_c007_s002_r004_伏击者",
+          "display": "伏击者",
+          "status": "mystery",
+          "score": 0.85
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.1
+        }
+      ],
+      "evidence": [
+        "与前一句台词连续，语气一致，且上下文显示伏击者在反击后仍处于战斗状态"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001213",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        },
+        {
+          "entity_id": "mystery_volume_01_c007_s002_r004_伏击者",
+          "display": "伏击者",
+          "status": "mystery",
+          "score": 0.03
+        }
+      ],
+      "evidence": [
+        "前两句台词为伏击者所说，此句为罗伦斯反击并踢昏对方后所说，符合上下文动作逻辑"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "第一句和第二句为伏击者所说，第三句为罗伦斯反击后所说，对话轮次清晰，符合战斗场景逻辑"
+}

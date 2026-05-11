@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000454",
+  "speaker_entity_id": "char_0015",
+  "speaker_display": "鉴定的男子",
+  "speaker_status": "known",
+  "confidence": 0.9,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0015",
+      "display": "鉴定的男子",
+      "status": "known",
+      "score": 0.9
+    },
+    {
+      "entity_id": "char_0016",
+      "display": "鉴定员",
+      "status": "known",
+      "score": 0.75
+    }
+  ],
+  "evidence": [
+    "对话内容「喔喔……这大小真是没得挑剔。呃——这里总共是七十件吧？」与前文「罗伦斯从货台上即时挑出一件看来宽大的貂皮，然后亲手交给鉴定的男子」相呼应，表明说话人是鉴定的男子。",
+    "场景记忆中提到「鉴定的男子并不会要求检查其他貂皮的大小」，说明说话人是负责鉴定的男子。",
+    "候选角色中「鉴定的男子」的描述与当前对话内容高度匹配。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

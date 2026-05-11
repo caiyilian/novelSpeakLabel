@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d001163",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "上下文显示罗伦斯在推测震动来源，语气理性，符合其说话风格。",
+    "赫萝在此场景中表现出怀疑和警觉，但此句更符合罗伦斯的理性推测语气。",
+    "场景记忆中罗伦斯多次对环境进行理性分析，而赫萝则更倾向于直觉反应。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

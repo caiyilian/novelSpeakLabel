@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d001061",
+  "speaker_entity_id": "char_0020",
+  "speaker_display": "列支敦·马贺特",
+  "speaker_status": "known",
+  "confidence": 0.92,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0020",
+      "display": "列支敦·马贺特",
+      "status": "known",
+      "score": 0.92
+    },
+    {
+      "entity_id": "char_0027",
+      "display": "米隆商行人员",
+      "status": "known",
+      "score": 0.15
+    }
+  ],
+  "evidence": [
+    "上下文显示对话围绕教会和梅迪欧商行的威胁展开，而列支敦·马贺特是米隆商行的代表，且在场景中频繁发言，讨论这些威胁。",
+    "当前段落是场景中列支敦·马贺特对教会能力的确认，符合其冷静分析的说话风格。",
+    "场景记忆中列支敦·马贺特是主要发言者，与罗伦斯讨论教会和梅迪欧商行的威胁。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

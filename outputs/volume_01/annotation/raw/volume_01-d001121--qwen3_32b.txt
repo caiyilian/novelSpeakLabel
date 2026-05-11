@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d001121",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    }
+  ],
+  "evidence": [
+    "赫萝听到罗伦斯说的话，虽然稍稍睁开左眼看了他一下，也只简短地说了句「没什么」。",
+    "场景记忆中赫萝多次与罗伦斯对话，表现出情绪波动和简短回应的说话风格。",
+    "当前段落明确指出说话人是赫萝对罗伦斯的回应。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

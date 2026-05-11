@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d000287",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "「果然没错」是罗伦斯听到赫萝的话后内心喃喃的台词，符合他冷静理性的性格。",
+    "上下文显示赫萝刚刚发言，罗伦斯对此作出反应，因此说话人不可能是赫萝。",
+    "没有其他角色在当前段落中发言，因此可以排除其他角色。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

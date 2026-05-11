@@ -1,0 +1,250 @@
+你是轻小说说话人标注项目的阶段 1：角色发现与建库助手。
+你的任务不是给每句台词最终打标签，而是从当前场景中发现角色、别名、称谓、关系线索、说话风格线索、场景摘要，以及尚未命名但可追踪的神秘人物。
+
+规则：
+1. 只输出严格 JSON，不要 Markdown，不要解释性前后缀。
+2. scene_id 必须填写输入 scene.request_id。
+3. 不要编造没有文本证据的人名。
+4. 如果人物未命名但看起来可在后文追踪，放入 mystery_entities。
+5. character_candidates 只放可以从文本中看到名字、称谓或稳定身份线索的人物。
+6. titles 只放身份/职业/称谓，不要把职业称谓当成人物别名。
+7. speech_markers 只记录高区分度口癖/自称/固定句尾/固定短语；普通词不要记录，也不要把口癖放进 aliases/titles。
+8. evidence 使用 paragraph_id 或 dialogue_id 相关的短证据，不要长篇复制原文。
+
+输出 JSON 结构：
+{
+  "scene_id": "string",
+  "scene_summary": "string",
+  "active_characters": ["string"],
+  "character_candidates": [
+    {
+      "display_name": "string",
+      "aliases": ["string"],
+      "titles": ["string"],
+      "description": "string",
+      "speech_style": "string",
+      "speech_markers": ["string"],
+      "relationship_hints": ["string"],
+      "evidence": ["string"],
+      "confidence": 0.0
+    }
+  ],
+  "mystery_entities": [
+    {
+      "temporary_name": "string",
+      "description": "string",
+      "evidence": ["string"],
+      "confidence": 0.0
+    }
+  ],
+  "relationships": ["string"],
+  "notes": "string"
+}
+
+输入场景 JSON：
+{
+  "volume_id": "volume_01",
+  "scene": {
+    "request_id": "volume_01-c002-s001-r001",
+    "scene_id": "volume_01-c002-s001",
+    "chapter_id": "volume_01-c002",
+    "chapter_title": "第一幕",
+    "chunk_index": 1,
+    "chunk_count": 3
+  },
+  "paragraphs": [
+    {
+      "paragraph_id": "volume_01-c002-s001-p000075",
+      "text": "第一幕"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000076",
+      "text": "第"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000077",
+      "text": "一"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000078",
+      "text": "幕"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000079",
+      "text": "「这是最后一件了吧？」"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000080",
+      "text": "「嗯，这里确实有……七十件。多谢惠顾。」"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000081",
+      "text": "「不，我们才要谢谢你呢。只有罗伦斯先生你愿意到这深山里来，真是帮了我们大忙。」"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000082",
+      "text": "「不过，我也因此拿到上等的皮草啊，我会再来的。」"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000083",
+      "text": "结束一如往常的对话，离开深山里的村落已过了五个小时。太阳升起后就立刻动身，下山来到这片草原时已过了中午。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000084",
+      "text": "这天的天气晴朗，没有半点风，是个适合坐在马车上，悠哉横越草原的日子。因为这阵子的天气寒冷，原以为冬天就快到了，现在却一点儿也感觉不到。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000085",
+      "text": "成为自力更生的旅行商人，只身行商至今已有七个年头，今年二十五岁的罗伦斯坐在马车驾座上，泰然自若地打着呵欠。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000086",
+      "text": "这里几乎没有高大的草木会阻碍视线，眼前景色一望无际，也因此可以看清远方的景象。在视野最远处，可看到一所几年前建盖好的修道院。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000087",
+      "text": "或许是有某地方的贵族子弟成了他们的修道士吧，尽管在如此偏僻荒远的土地上，但这所修道院不仅是一栋优良的石造建筑物，甚至还使用了铁制门窗，令人难以置信。记得没错的话，修道院里应该有二十多位修道士，另外还有将近同样人数的男仆为他们打点生活。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000088",
+      "text": "修道院刚开始建盖时，罗伦斯以为可以招揽到新顾客而满怀期待。可惜修道院似乎不跟民间商人往来，而是以独自的通路调度物资，罗伦斯的期望因而落空。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000089",
+      "text": "虽然期望是落了空，但是修道士的生活并不奢侈，他们甚至会下田耕作；就算做成了生意，可能也没有太多利益可图。不仅如此，或许还有可能被迫捐款，或者被倒债。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000090",
+      "text": "单纯就买卖的对象来说，修道士比盗贼还要恶劣。不过，只要能够和他们做生意，对商人来说还是有好处。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000091",
+      "text": "因为这个缘故，罗伦斯还是恋恋不舍地望着修道院，但是他突然瞇起眼睛。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000092",
+      "text": "修道院那头，有人正朝向这边挥手。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000093",
+      "text": "「怎么回事？」"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000094",
+      "text": "那人看起来不像男仆，因为男仆身上穿的应该是肮脏的深褐色工作服，而正在挥手的人穿着看似灰色的衣服。虽然要特地走到那头有些麻烦，但就这么漠视的话，恐怕会造成日后的困扰。罗伦斯不得已，只好把马车转向修道院的方向。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000095",
+      "text": "马车转向后，原本挥着手的人可能是发现罗伦斯朝自己的方向走来，便停止挥手，但也没有走向罗伦斯的意思。看来，他要等罗伦斯自己走到修道院。教会相关人士的态度傲慢已是司空见惯的事，罗伦斯不会为了这点小事生气。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000096",
+      "text": "不过，在缓缓靠近修道院，清楚看见那人的身影后，罗伦斯不禁发出声音说："
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000097",
+      "text": "「……骑士？」"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000098",
+      "text": "起初罗伦斯心想：骑士怎么可能会出现在这里？但靠近后他发现确实是名骑士，原来看起来灰灰的衣服是银色的盔甲。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000099",
+      "text": "「你是什么人？」"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000100",
+      "text": "骑士在罗伦斯到了两人要交谈还稍嫌远的距离时，便如此大喊。那语气仿佛自己不用报上名来，每个人也该认得他似的。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000101",
+      "text": "「我是旅行商人罗伦斯，有什么能为您效劳的吗？」"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000102",
+      "text": "修道院已近在眼前，往南方延伸的田地里，正在耕作的男仆寥寥可数。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000103",
+      "text": "罗伦斯发现骑士不止一名，还有一名骑士站在修道院另一头，说不定骑士们是在站岗巡视。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000104",
+      "text": "「旅行商人？你来的方向应该没有任何城镇。」"
+    }
+  ],
+  "dialogues": [
+    {
+      "dialogue_id": "volume_01-d000002",
+      "paragraph_id": "volume_01-c002-s001-p000079",
+      "text": "这是最后一件了吧？"
+    },
+    {
+      "dialogue_id": "volume_01-d000003",
+      "paragraph_id": "volume_01-c002-s001-p000080",
+      "text": "嗯，这里确实有……七十件。多谢惠顾。"
+    },
+    {
+      "dialogue_id": "volume_01-d000004",
+      "paragraph_id": "volume_01-c002-s001-p000081",
+      "text": "不，我们才要谢谢你呢。只有罗伦斯先生你愿意到这深山里来，真是帮了我们大忙。"
+    },
+    {
+      "dialogue_id": "volume_01-d000005",
+      "paragraph_id": "volume_01-c002-s001-p000082",
+      "text": "不过，我也因此拿到上等的皮草啊，我会再来的。"
+    },
+    {
+      "dialogue_id": "volume_01-d000006",
+      "paragraph_id": "volume_01-c002-s001-p000093",
+      "text": "怎么回事？"
+    },
+    {
+      "dialogue_id": "volume_01-d000007",
+      "paragraph_id": "volume_01-c002-s001-p000097",
+      "text": "……骑士？"
+    },
+    {
+      "dialogue_id": "volume_01-d000008",
+      "paragraph_id": "volume_01-c002-s001-p000099",
+      "text": "你是什么人？"
+    },
+    {
+      "dialogue_id": "volume_01-d000009",
+      "paragraph_id": "volume_01-c002-s001-p000101",
+      "text": "我是旅行商人罗伦斯，有什么能为您效劳的吗？"
+    },
+    {
+      "dialogue_id": "volume_01-d000010",
+      "paragraph_id": "volume_01-c002-s001-p000104",
+      "text": "旅行商人？你来的方向应该没有任何城镇。"
+    }
+  ],
+  "known_characters": [
+    {
+      "entity_id": "char_0001",
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": [
+        "行商人"
+      ],
+      "description": "一位行商人，发现并收留了赫萝，决定与她一同旅行。",
+      "speech_style": "理性、怀疑、谨慎",
+      "speech_markers": []
+    },
+    {
+      "entity_id": "char_0002",
+      "display_name": "赫萝",
+      "aliases": [],
+      "titles": [
+        "丰收之神"
+      ],
+      "description": "自称是丰收之神的少女，拥有狼的耳朵和尾巴，说话狡诈。",
+      "speech_style": "狡诈、自信、神气",
+      "speech_markers": [
+        "咱"
+      ]
+    }
+  ]
+}

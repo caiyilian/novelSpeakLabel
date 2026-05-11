@@ -1,0 +1,28 @@
+{
+  "dialogue_id": "volume_01-d000162",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "上下文显示罗伦斯在观察赫萝的表情后忍不住开口提问，符合罗伦斯冷静理性但关心赫萝的性格。",
+    "赫萝在前文未开口，而此句是罗伦斯对赫萝情绪的回应，符合场景逻辑。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

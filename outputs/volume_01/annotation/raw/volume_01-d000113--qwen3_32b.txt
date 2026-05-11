@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d000113",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    }
+  ],
+  "evidence": [
+    "前一段提到赫萝一边抚摸尾巴一边继续说，当前段是赫萝的直接引语，符合她的说话风格。",
+    "赫萝在场景中多次提到变身所需的代价，当前台词是她对罗伦斯的回应，符合上下文逻辑。",
+    "赫萝的自称和轻松幽默但略带威胁的语气与台词一致。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

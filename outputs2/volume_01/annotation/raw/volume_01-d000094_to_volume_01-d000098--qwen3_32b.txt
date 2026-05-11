@@ -1,0 +1,123 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000094",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.98,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.98
+        }
+      ],
+      "evidence": [
+        "使用自称‘咱’，符合赫萝的speech_marker",
+        "提到‘人类的外表’和‘身上的毛’，暗示非人类身份，与赫萝设定一致",
+        "上下文显示说话人是赫萝，罗伦斯在回应她"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000095",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.97,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.97
+        }
+      ],
+      "evidence": [
+        "上下文显示罗伦斯在提问赫萝关于‘模样’的含义",
+        "符合罗伦斯理性、略带怀疑的说话风格",
+        "对话轮次上紧接赫萝的发言，符合问答结构"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000096",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.96,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.96
+        }
+      ],
+      "evidence": [
+        "使用自称‘咱’，符合赫萝的speech_marker",
+        "回应罗伦斯的提问，符合对话轮次",
+        "提到‘人类的模样’和‘可爱’，符合赫萝的自信语气"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000097",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "上下文显示罗伦斯在回应赫萝的发言，语气略带挑衅",
+        "符合罗伦斯理性、略带怀疑的说话风格",
+        "对话轮次上紧接赫萝的发言，符合问答结构"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000098",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.99,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.99
+        }
+      ],
+      "evidence": [
+        "使用自称‘咱’，符合赫萝的speech_marker",
+        "提到‘耳朵’和‘尾巴’，明确展示非人类特征，与赫萝设定一致",
+        "自称‘约伊兹的贤狼’，符合角色身份",
+        "上下文显示赫萝在回应罗伦斯的质疑，语气自信且带有炫耀"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，赫萝与罗伦斯交替发言，符合上下文中的互动模式。所有台词均来自已登场角色，无未知说话人迹象。"
+}
+```

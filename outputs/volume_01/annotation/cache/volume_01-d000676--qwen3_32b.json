@@ -1,0 +1,23 @@
+{
+  "dialogue_id": "volume_01-d000676",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "赫萝在前一段落中被描述为「停止摇动双手，打开双手把其中两枚货币放在兑换台上」，接着「再度试着摇晃手中剩余的两枚货币」，并「开口说」，因此接下来的对话「不知道。」极有可能是她所说。",
+    "场景记忆中明确指出赫萝在本场景中与罗伦斯和怀兹互动频繁，且是主要对话者之一。",
+    "赫萝的说话风格为轻松幽默但略带威胁性，符合「不知道。」这种简短但带有情绪的表达。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

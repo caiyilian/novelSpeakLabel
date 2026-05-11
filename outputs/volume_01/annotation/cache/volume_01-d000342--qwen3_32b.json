@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000342",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "对话内容「我认错，别再说了。」语气带有歉意和情绪波动，符合赫萝在场景中对罗伦斯回忆狼群袭击时表现出的关心和歉意。",
+    "场景记忆中提到赫萝对罗伦斯表现出歉意和担忧，符合当前对话的情绪特征。",
+    "赫萝的说话风格中包含情绪化和略带歉意的语气，而罗伦斯通常较为冷静理性，因此更可能是赫萝在道歉。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000704",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "对话内容提到「他」，与前文提到的杰廉有关，而罗伦斯是主要分析和质疑杰廉动机的角色。",
+    "场景记忆中，罗伦斯多次对杰廉的交易动机表示困惑和怀疑，符合当前台词的语气和内容。",
+    "赫萝在此场景中更多是调侃和解释，而非提出质疑或分析亏损问题。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

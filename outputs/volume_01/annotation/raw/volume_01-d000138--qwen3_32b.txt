@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d000138",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "对话中提到「罗伦斯如此告诉自己」，明确表明说话人是罗伦斯。",
+    "上下文显示罗伦斯正在与赫萝互动，并表现出心理活动。",
+    "没有其他角色在此段对话中发言。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

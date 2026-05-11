@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d000094",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    }
+  ],
+  "evidence": [
+    "台词中使用了赫萝常用的自称‘咱’，语气轻松幽默且略带抱怨，符合她的说话风格。",
+    "上下文提到赫萝打喷嚏、赤裸身体、钻进貂皮堆，与当前台词中的‘身上的毛太少了’形成连贯的场景描述。",
+    "场景记忆中明确指出赫萝是本场景的活跃角色，且台词风格与她的描述一致。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

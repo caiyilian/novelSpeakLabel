@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d001027",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.98
+    },
+    {
+      "entity_id": "char_0020",
+      "display": "列支敦·马贺特",
+      "status": "known",
+      "score": 0.02
+    }
+  ],
+  "evidence": [
+    "对话内容分析了与国王签订合约的策略，与罗伦斯在场景中展现的冷静策略性分析相符。",
+    "场景记忆中提到罗伦斯提出利用崔尼国王的财务困境和教会的影响力，制定交易策略。",
+    "候选角色中罗伦斯的描述与当前对话的语气和内容高度一致。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

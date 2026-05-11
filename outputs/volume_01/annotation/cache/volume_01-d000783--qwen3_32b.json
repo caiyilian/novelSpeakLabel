@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000783",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.98
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.02
+    }
+  ],
+  "evidence": [
+    "「真是的」是罗伦斯对赫萝无力回应的无奈语气，符合他冷静理性但略带情绪化的说话风格。",
+    "当前段落明确提到「即使罗伦斯再次无奈地说了『真是的』」，直接指出说话人是罗伦斯。",
+    "罗伦斯在场景中表现出对赫萝的关心和无奈，符合「真是的」这种语气的语境。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

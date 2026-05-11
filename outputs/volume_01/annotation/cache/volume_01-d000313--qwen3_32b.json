@@ -1,0 +1,27 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000313",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "上下文提到赫萝在不远处回头喊罗伦斯，符合该句台词的语气和行为特征。",
+        "台词中使用了「汝」这一古风称呼，与赫萝的说话风格一致。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "该句台词为赫萝对罗伦斯的直接呼唤，上下文明确表明说话人为赫萝。"
+}

@@ -1,0 +1,34 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000766",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 1.0
+        },
+        {
+          "entity_id": "mystery_volume_01_c005_s001_r004_帕斯罗村朋友",
+          "display": "帕斯罗村朋友",
+          "status": "mystery",
+          "score": 0.75
+        }
+      ],
+      "evidence": [
+        "前文赫萝在回忆中提及该人物，语气轻松且带有怀念",
+        "该台词与赫萝之前描述该人物性格一致",
+        "赫萝在回忆中表现出开心和害羞的情绪，符合对朋友的描述"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "赫萝在回忆中提及一位朋友，该朋友性格开朗、对赫萝变身不惊讶，与当前台词内容一致，判断为赫萝本人所言"
+}

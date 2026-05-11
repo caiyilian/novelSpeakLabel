@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000463",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0016",
+      "display": "鉴定员",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "前一段提到赫萝突然拉了罗伦斯的衣角，暗示她即将发言。",
+    "当前段落是赫萝打断对话的延续，符合她的行为模式。",
+    "后续段落中罗伦斯贴近赫萝的外套，暗示她刚刚离开或准备离开，符合「失陪一下」的语境。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

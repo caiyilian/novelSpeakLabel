@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000560",
+  "speaker_entity_id": "char_0009",
+  "speaker_display": "杰廉",
+  "speaker_status": "known",
+  "confidence": 0.9,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0009",
+      "display": "杰廉",
+      "status": "known",
+      "score": 0.9
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.1
+    }
+  ],
+  "evidence": [
+    "对话中使用了「小的」自称，与杰廉的「自称小人物」的描述一致。",
+    "对话内容涉及情报交易的条件，与杰廉在场景中提出交易的背景相符。",
+    "对话语气谦卑但谨慎，符合杰廉的「谨慎、不自信」的说话风格。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

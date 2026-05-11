@@ -1,0 +1,59 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001208",
+      "speaker_entity_id": "mystery_volume_01_c007_s002_r003_矮小孩童",
+      "speaker_display": "矮小孩童",
+      "speaker_status": "mystery",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "mystery_volume_01_c007_s002_r003_矮小孩童",
+          "display": "矮小孩童",
+          "status": "mystery",
+          "score": 0.9
+        },
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.1
+        }
+      ],
+      "evidence": [
+        "前文描述黑影从眼前晃过，随后发出该声音；赫萝虽有低吼但未提及发出此音；声音特征符合袭击者行为"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001209",
+      "speaker_entity_id": "mystery_volume_01_c007_s002_r003_矮小孩童",
+      "speaker_display": "矮小孩童",
+      "speaker_status": "mystery",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "mystery_volume_01_c007_s002_r003_矮小孩童",
+          "display": "矮小孩童",
+          "status": "mystery",
+          "score": 0.95
+        },
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.05
+        }
+      ],
+      "evidence": [
+        "与前一句连续，语气一致，符合袭击者情绪表达；赫萝虽有动作但未发声；上下文为连续攻击行为"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "两句话连续出现，符合袭击者连续攻击行为，推测为同一角色。赫萝虽有动作但未发声，无法确认其是否参与对白。"
+}

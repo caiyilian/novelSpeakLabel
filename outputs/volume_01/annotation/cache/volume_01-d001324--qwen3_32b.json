@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d001324",
+  "speaker_entity_id": "char_0020",
+  "speaker_display": "列支敦·马贺特",
+  "speaker_status": "known",
+  "confidence": 0.8,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0020",
+      "display": "列支敦·马贺特",
+      "status": "known",
+      "score": 0.8
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.2
+    }
+  ],
+  "evidence": [
+    "对话内容为马贺特讲述的宗教戏剧故事，符合其在场景中讲述故事的行为",
+    "场景记忆中提到马贺特讲述宗教戏剧，暗示他可能是当前对话的讲述者",
+    "对话中未出现赫萝或店员的特征性语言，排除她们为说话人"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d001248",
+  "speaker_entity_id": "char_0004",
+  "speaker_display": "叶勒",
+  "speaker_status": "known",
+  "confidence": 0.9,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0004",
+      "display": "叶勒",
+      "status": "known",
+      "score": 0.9
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.1
+    }
+  ],
+  "evidence": [
+    "当前段落「罗伦斯？」是对罗伦斯的称呼，语气中带有疑问和试探，符合叶勒试图与罗伦斯交谈的场景。",
+    "上下文显示叶勒刚刚出现并试图说服罗伦斯参与麦子交易，因此他最有可能是说话人。",
+    "罗伦斯在前一段中刚刚转身面向前方，不太可能用这种方式称呼自己。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

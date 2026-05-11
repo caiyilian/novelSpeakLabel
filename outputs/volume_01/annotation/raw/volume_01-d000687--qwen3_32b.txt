@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d000687",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "对话中提到「报恩」，与前文赫萝调侃罗伦斯的语气一致。",
+    "对话中提到「知道秘密的人越少越好」，符合赫萝一贯的谨慎和神秘态度。",
+    "上下文显示赫萝在与罗伦斯互动中主导节奏，语气轻松但略带威胁性。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

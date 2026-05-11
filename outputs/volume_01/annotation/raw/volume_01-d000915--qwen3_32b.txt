@@ -1,0 +1,37 @@
+```json
+{
+  "dialogue_id": "volume_01-d000915",
+  "speaker_entity_id": "mystery_volume_01_c005_s005_r005_追踪者",
+  "speaker_display": "追踪者",
+  "speaker_status": "mystery",
+  "confidence": 0.75,
+  "candidate_speakers": [
+    {
+      "entity_id": "mystery_volume_01_c005_s005_r005_追踪者",
+      "display": "追踪者",
+      "status": "mystery",
+      "score": 0.75
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.2
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.2
+    }
+  ],
+  "evidence": [
+    "对话出现在罗伦斯与赫萝奔跑途中，前文提到他们被追踪。",
+    "台词「停，有人看守。」语气带有警告意味，符合追踪者或监视者的身份。",
+    "当前场景中没有罗伦斯或赫萝发出警告的动机或上下文线索。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

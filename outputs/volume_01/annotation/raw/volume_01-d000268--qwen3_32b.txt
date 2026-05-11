@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d000268",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "前一段提到赫萝用手指勾着嘴角，随后她说「不过，咱以前也曾经因为吞下马铃薯而被噎着。」，接着说「或许咱天生跟马铃薯不合呗。」，符合赫萝轻松幽默但略带威胁的说话风格。",
+    "赫萝在场景中多次表现出对食物（尤其是马铃薯）的兴趣，并以「咱」自称，符合她的语言特征。",
+    "当前场景中赫萝是唯一明确提到与马铃薯有关的角色，且没有其他角色使用「咱」自称。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

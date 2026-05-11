@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d001305",
+  "speaker_entity_id": "char_0020",
+  "speaker_display": "列支敦·马贺特",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0020",
+      "display": "列支敦·马贺特",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "上下文显示罗伦斯与马贺特正在进行交易谈判，且罗伦斯在前一段中点头，而此句语气更符合马贺特作为商行代表的沉稳和理性表达。",
+    "马贺特在场景记忆中多次以理性、专业、带有歉意的语气发言，符合此句的表达风格。",
+    "罗伦斯通常表现出冷静、理性、略带失落的语气，但此句更偏向于对交易结果的解释，而非罗伦斯的自述。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

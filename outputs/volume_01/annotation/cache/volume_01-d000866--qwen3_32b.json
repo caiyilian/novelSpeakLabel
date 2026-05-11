@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000866",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.98
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.02
+    }
+  ],
+  "evidence": [
+    "上下文显示罗伦斯正在与赫萝讨论开店的利弊，语气理性且略带幽默，符合罗伦斯的说话风格。",
+    "赫萝在前一段中表现出尴尬和冷淡，而罗伦斯用开玩笑的语气继续对话，符合罗伦斯的描述。",
+    "该段对话中提到开店、交朋友、找老婆、墓地等话题，是罗伦斯一贯的理性与幽默结合的表达方式。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

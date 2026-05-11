@@ -1,0 +1,59 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001261",
+      "speaker_entity_id": "char_0004",
+      "speaker_display": "叶勒",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0004",
+          "display": "叶勒",
+          "status": "known",
+          "score": 0.9
+        },
+        {
+          "entity_id": "char_0032",
+          "display": "梅迪欧商行手下",
+          "status": "npc",
+          "score": 0.1
+        }
+      ],
+      "evidence": [
+        "叶勒的声音响起，因为赫萝的怪异举动而停下脚步的梅迪欧商行手下回过神来，架起武器往前逼近。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001262",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.85
+        },
+        {
+          "entity_id": "mystery_volume_01_c007_s004_r002_梅迪欧商行手下",
+          "display": "梅迪欧商行手下",
+          "status": "mystery",
+          "score": 0.15
+        }
+      ],
+      "evidence": [
+        "赫萝听到声音稍微睁开眼睛，她看了罗伦斯一眼。罗伦斯看见赫萝悲伤的笑容，便明白自己当下露出什么样的表情。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "第一句台词由叶勒发出，命令手下行动；第二句台词为赫萝在吸血后被惊呼时的反应，符合其行为逻辑与情绪表达。"
+}

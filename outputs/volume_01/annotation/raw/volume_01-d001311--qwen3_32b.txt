@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d001311",
+  "speaker_entity_id": "char_0020",
+  "speaker_display": "列支敦·马贺特",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0020",
+      "display": "列支敦·马贺特",
+      "status": "known",
+      "score": 0.98
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.02
+    }
+  ],
+  "evidence": [
+    "「当然，这还算便宜。」是马贺特在回应罗伦斯对一千枚银币的惊讶，符合其作为商行代表的语气和立场。",
+    "上下文显示罗伦斯对金额感到惊讶，而马贺特则以「还算便宜」回应，符合其冷静、自信的说话风格。",
+    "场景记忆中明确指出马贺特是米隆商行帕兹欧分行的行长，与罗伦斯进行交易谈判，且在本段对话中主导了语气和立场。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

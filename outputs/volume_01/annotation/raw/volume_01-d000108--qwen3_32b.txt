@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d000108",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    }
+  ],
+  "evidence": [
+    "赫萝在本场景中多次发言，使用自称「咱」，语气轻松幽默但略带威胁性，符合该台词风格。",
+    "上下文显示该台词是对「为什么？」的回应，而赫萝在前文明确表示「咱不要」，表明她主导对话节奏。",
+    "场景记忆中赫萝多次以「咱」自称，且与罗伦斯有互动，符合当前对话的语境。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

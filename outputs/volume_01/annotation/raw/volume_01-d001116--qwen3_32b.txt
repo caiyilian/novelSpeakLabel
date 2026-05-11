@@ -1,0 +1,30 @@
+```json
+{
+  "dialogue_id": "volume_01-d001116",
+  "speaker_entity_id": "char_0031",
+  "speaker_display": "马夫",
+  "speaker_status": "known",
+  "confidence": 0.9,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0031",
+      "display": "马夫",
+      "status": "known",
+      "score": 0.9
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.1
+    }
+  ],
+  "evidence": [
+    "「包在我身上。」是马夫在接收到罗伦斯的指令后，表示会执行任务的回应。",
+    "前文提到罗伦斯向马车外的马夫传达信息，马夫回应后立刻跳下马车快跑而去。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

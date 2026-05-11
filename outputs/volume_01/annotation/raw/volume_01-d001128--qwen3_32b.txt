@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d001128",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    }
+  ],
+  "evidence": [
+    "对话中自称「咱是贤狼赫萝呐」，明确表明身份。",
+    "上下文显示这是赫萝与罗伦斯的对话，且赫萝在本场景中频繁出现。",
+    "赫萝在本场景中表现出对麦田管理的自信，与她的角色设定一致。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

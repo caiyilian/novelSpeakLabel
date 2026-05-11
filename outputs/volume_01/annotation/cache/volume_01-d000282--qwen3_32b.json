@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000282",
+  "speaker_entity_id": "mystery_volume_01_c003_s003_r001_杰廉",
+  "speaker_display": "杰廉",
+  "speaker_status": "mystery",
+  "confidence": 0.75,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0009",
+      "display": "杰廉",
+      "status": "known",
+      "score": 0.7
+    },
+    {
+      "entity_id": "mystery_volume_01_c003_s003_r001_杰廉",
+      "display": "杰廉",
+      "status": "mystery",
+      "score": 0.75
+    }
+  ],
+  "evidence": [
+    "对话中提到「那个在大厅里跟我们搭腔的家伙」，与杰廉的描述相符。",
+    "杰廉在场景中被提及为「小毛头」，与上下文中的称呼一致。",
+    "杰廉是场景中被讨论的神秘人物，未直接发言，但被罗伦斯和赫萝提及。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

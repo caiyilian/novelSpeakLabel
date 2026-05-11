@@ -1,0 +1,32 @@
+```json
+{
+  "dialogue_id": "volume_01-d000054",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    },
+    {
+      "entity_id": "mystery_volume_01_c002_s003_r001_神秘女孩",
+      "display": "神秘女孩",
+      "status": "mystery",
+      "score": 0.02
+    }
+  ],
+  "evidence": [
+    "女孩缓缓张开嘴巴，闭起双眼朝天空发出长嚎声",
+    "罗伦斯惊觉那不像叶勒发出的模仿狼嚎声，而是真正的狼嚎",
+    "赫萝的动物耳朵和狼嚎暗示她可能与狼有关联",
+    "赫萝的说话风格和非人类特征表明她可能是狼嚎的发出者"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

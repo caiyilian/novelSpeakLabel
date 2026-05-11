@@ -1,0 +1,183 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000222",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "上下文显示赫萝在伪装成人类，说话风格符合其自称'咱'的特征",
+        "前文提到赫萝对罗伦斯的胡子进行评论"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000223",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "连续对话轮次，赫萝继续表达对罗伦斯胡子的偏好",
+        "上下文显示赫萝在伪装成人类，说话风格符合其自称'咱'的特征"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000224",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "连续对话轮次，赫萝继续表达对罗伦斯胡子的偏好",
+        "上下文显示赫萝在伪装成人类，说话风格符合其自称'咱'的特征"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000225",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "连续对话轮次，赫萝提醒罗伦斯注意伪装",
+        "上下文显示赫萝在伪装成人类，说话风格符合其自称'咱'的特征"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000226",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "赫萝明确自我介绍为'贤狼赫萝'",
+        "上下文显示赫萝在伪装成人类，说话风格符合其自称'咱'的特征"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000227",
+      "speaker_entity_id": "char_0006",
+      "speaker_display": "教会夫妻",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0006",
+          "display": "教会夫妻",
+          "status": "known",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "上下文显示罗伦斯正在与教会夫妻交谈",
+        "对话内容涉及约连，符合夫妻的提问逻辑"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000228",
+      "speaker_entity_id": "char_0006",
+      "speaker_display": "教会夫妻",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0006",
+          "display": "教会夫妻",
+          "status": "known",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "连续对话轮次，教会夫妻回应提问",
+        "上下文显示罗伦斯正在与教会夫妻交谈"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000229",
+      "speaker_entity_id": "char_0006",
+      "speaker_display": "教会夫妻",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0006",
+          "display": "教会夫妻",
+          "status": "known",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "连续对话轮次，教会夫妻继续提问",
+        "上下文显示罗伦斯正在与教会夫妻交谈"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "赫萝与罗伦斯的对话后，场景转向罗伦斯与教会夫妻的互动，对话轮次清晰，角色转换合理。"
+}
+```

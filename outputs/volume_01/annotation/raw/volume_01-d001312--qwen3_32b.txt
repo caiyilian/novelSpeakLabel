@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d001312",
+  "speaker_entity_id": "char_0020",
+  "speaker_display": "列支敦·马贺特",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0020",
+      "display": "列支敦·马贺特",
+      "status": "known",
+      "score": 0.98
+    },
+    {
+      "entity_id": "char_0030",
+      "display": "米隆商行",
+      "status": "known",
+      "score": 0.02
+    }
+  ],
+  "evidence": [
+    "上下文显示该台词是马贺特在与罗伦斯进行交易谈判时所说。",
+    "场景记忆中明确提到马贺特负责解释交易细节，并提及罗伦斯的马车管理。",
+    "台词内容与马贺特作为商行代表的角色设定一致，涉及费用和管理责任。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

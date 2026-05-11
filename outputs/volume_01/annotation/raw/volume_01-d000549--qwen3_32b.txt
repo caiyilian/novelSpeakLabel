@@ -1,0 +1,32 @@
+```json
+{
+  "dialogue_id": "volume_01-d000549",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0009",
+      "display": "杰廉",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "前一段对话中杰廉表现出夸张和调侃的态度，而当前段落中说话者语气冷静、理性，符合罗伦斯的风格。",
+    "当前段落中说话者提到「该谈谈正事」，这与罗伦斯在场景中主导交易谈判的角色一致。",
+    "场景记忆中显示罗伦斯是主导交易谈判的一方，而杰廉在前一段中刚刚表现出夸张行为，不太可能立刻切换为冷静语气。",
+    "罗伦斯的描述中提到他冷静理性，对商业制度有深入理解，这与当前台词的语气相符。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

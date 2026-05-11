@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000661",
+  "speaker_entity_id": "char_0019",
+  "speaker_display": "怀兹",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0019",
+      "display": "怀兹",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "前一段落中，怀兹说「算是吧。」和「我只能说你自己谨慎点就是了，要抢先别人一步没那么容易的。」，表明他正在与罗伦斯对话。",
+    "当前段落「到底有还是没有？」是对怀兹先前发言的直接追问，语气符合怀兹的轻松调侃风格。",
+    "后续段落中，怀兹从木箱中取出银币并交给罗伦斯，进一步确认了说话人是怀兹。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

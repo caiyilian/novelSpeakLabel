@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000492",
+  "speaker_entity_id": "char_0016",
+  "speaker_display": "鉴定员",
+  "speaker_status": "known",
+  "confidence": 0.9,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0016",
+      "display": "鉴定员",
+      "status": "known",
+      "score": 0.9
+    },
+    {
+      "entity_id": "char_0014",
+      "display": "商行代表",
+      "status": "known",
+      "score": 0.1
+    }
+  ],
+  "evidence": [
+    "前一段中鉴定员在赫萝说明后点头表示认同，当前段落中「您说的一点也没错」是对赫萝的回应，语气与鉴定员的「真的没错」一致。",
+    "当前场景中赫萝主导对话，鉴定员是主要的回应者，符合说话人逻辑。",
+    "场景记忆中鉴定员是主要的交易参与者，与赫萝互动频繁。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

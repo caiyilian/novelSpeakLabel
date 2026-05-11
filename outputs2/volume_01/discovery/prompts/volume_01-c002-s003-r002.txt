@@ -1,0 +1,330 @@
+你是轻小说说话人标注项目的阶段 1：角色发现与建库助手。
+你的任务不是给每句台词最终打标签，而是从当前场景中发现角色、别名、称谓、关系线索、说话风格线索、场景摘要，以及尚未命名但可追踪的神秘人物。
+
+规则：
+1. 只输出严格 JSON，不要 Markdown，不要解释性前后缀。
+2. scene_id 必须填写输入 scene.request_id。
+3. 不要编造没有文本证据的人名。
+4. 如果人物未命名但看起来可在后文追踪，放入 mystery_entities。
+5. character_candidates 只放可以从文本中看到名字、称谓或稳定身份线索的人物。
+6. titles 只放身份/职业/称谓，不要把职业称谓当成人物别名。
+7. speech_markers 只记录高区分度口癖/自称/固定句尾/固定短语；普通词不要记录，也不要把口癖放进 aliases/titles。
+8. evidence 使用 paragraph_id 或 dialogue_id 相关的短证据，不要长篇复制原文。
+
+输出 JSON 结构：
+{
+  "scene_id": "string",
+  "scene_summary": "string",
+  "active_characters": ["string"],
+  "character_candidates": [
+    {
+      "display_name": "string",
+      "aliases": ["string"],
+      "titles": ["string"],
+      "description": "string",
+      "speech_style": "string",
+      "speech_markers": ["string"],
+      "relationship_hints": ["string"],
+      "evidence": ["string"],
+      "confidence": 0.0
+    }
+  ],
+  "mystery_entities": [
+    {
+      "temporary_name": "string",
+      "description": "string",
+      "evidence": ["string"],
+      "confidence": 0.0
+    }
+  ],
+  "relationships": ["string"],
+  "notes": "string"
+}
+
+输入场景 JSON：
+{
+  "volume_id": "volume_01",
+  "scene": {
+    "request_id": "volume_01-c002-s003-r002",
+    "scene_id": "volume_01-c002-s003",
+    "chapter_id": "volume_01-c002",
+    "chapter_title": "第一幕",
+    "chunk_index": 2,
+    "chunk_count": 3
+  },
+  "paragraphs": [
+    {
+      "paragraph_id": "volume_01-c002-s003-p000265",
+      "text": "女孩一边继续笑，一边捡起掉落的肉干再咬了一口。她果然有着锐利尖牙，接着看看她的耳朵，可以知道这女孩绝对不是正常人类。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s003-p000266",
+      "text": "「你是谁？」"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s003-p000267",
+      "text": "「汝问咱？」"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s003-p000268",
+      "text": "「除了你还有谁！」"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s003-p000269",
+      "text": "「那匹马啊。」"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s003-p000270",
+      "text": "「……」"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s003-p000271",
+      "text": "罗伦斯拔出短剑，这时女孩总算收起了脸上的笑容，她瞇起带点红色的琥珀色眼睛。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s003-p000272",
+      "text": "「你到底是谁？」"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s003-p000273",
+      "text": "「胆敢拿剑指着咱，真是不懂礼貌。」"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s003-p000274",
+      "text": "「你说什么？」"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s003-p000275",
+      "text": "「嗯？对喔，咱逃跑成功了。抱歉抱歉，咱都给忘了。」"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s003-p000276",
+      "text": "女孩说完后，露出开心的笑容。那笑脸天真无邪，可爱极了。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s003-p000277",
+      "text": "罗伦斯并非被笑容收买，他只是觉得拿短剑指着女孩不该是男子汉所为，于是收起短剑。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s003-p000278",
+      "text": "「咱的名字是赫萝，好久没有以这种模样出现了。嗯，还不赖呢。」"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s003-p000279",
+      "text": "女孩一边说，一边打量自己。罗伦斯虽然没听懂女孩后面说的话，不过，前面的内容却令他相当在意。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s003-p000280",
+      "text": "「赫萝？」"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s003-p000281",
+      "text": "「嗯，赫萝。好名字呗？」"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s003-p000282",
+      "text": "罗伦斯行遍各地，只在一个地方听过这个名字。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s003-p000283",
+      "text": "就是刚刚去过的帕斯罗村的丰收之神。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s003-p000284",
+      "text": "「真巧，我也认识一个叫做赫萝的人。」"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s003-p000285",
+      "text": "这女孩好大胆，竟敢冒充神的名字。不过，这也表示女孩应是帕斯罗村民。说不定她是因为那耳朵及尖牙，而被父母藏在家里养大的。这么一想，就能够理解她刚刚说逃跑成功的意思了。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s003-p000286",
+      "text": "罗伦斯时有耳闻这种不正常的小孩出生的事。人们会说这些小孩被恶魔附身，出生时有恶魔或妖精附在他们身上。如果他们被教会发现的话，很可能被冠上崇拜恶魔的罪名，整个家族都会毫不留情地处以火刑。因此，这样不正常的小孩不是被丢弃在山里，就是一辈子躲在家里。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s003-p000287",
+      "text": "罗伦斯是第一次遇见恶魔附身者，他还以为恶魔附身者会是丑陋至极的妖怪，然而，就女孩的外型看来，要说她是女神都不奇怪。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s003-p000288",
+      "text": "「哟，汝认识和咱一样叫做赫萝的人？那家伙是哪儿的人啊？」"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s003-p000289",
+      "text": "口中不停咀嚼肉干的女孩赫萝，怎么看都不像在骗人。不过，罗伦斯觉得长时间被关在家里，使得她深信自己是神也不无可能。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s003-p000290",
+      "text": "「那是这附近的丰收之神的名字。你是神吗？」"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s003-p000291",
+      "text": "听到罗伦斯这么说，赫萝在月光笼罩下，一瞬间露出困扰的表情，随即又化为笑脸。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s003-p000292",
+      "text": "「虽然咱长久以来被尊为神，且被束缚在这块土地上，但咱根本不是什么伟大的神。咱就是咱，咱是赫萝。」"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s003-p000293",
+      "text": "罗伦斯推测女孩出生后就一直被关在家里，这么一想，不禁有些怜悯起女孩来了。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s003-p000294",
+      "text": "「长久是说打从出生开始吗？」"
+    }
+  ],
+  "dialogues": [
+    {
+      "dialogue_id": "volume_01-d000063",
+      "paragraph_id": "volume_01-c002-s003-p000266",
+      "text": "你是谁？"
+    },
+    {
+      "dialogue_id": "volume_01-d000064",
+      "paragraph_id": "volume_01-c002-s003-p000267",
+      "text": "汝问咱？"
+    },
+    {
+      "dialogue_id": "volume_01-d000065",
+      "paragraph_id": "volume_01-c002-s003-p000268",
+      "text": "除了你还有谁！"
+    },
+    {
+      "dialogue_id": "volume_01-d000066",
+      "paragraph_id": "volume_01-c002-s003-p000269",
+      "text": "那匹马啊。"
+    },
+    {
+      "dialogue_id": "volume_01-d000067",
+      "paragraph_id": "volume_01-c002-s003-p000270",
+      "text": "……"
+    },
+    {
+      "dialogue_id": "volume_01-d000068",
+      "paragraph_id": "volume_01-c002-s003-p000272",
+      "text": "你到底是谁？"
+    },
+    {
+      "dialogue_id": "volume_01-d000069",
+      "paragraph_id": "volume_01-c002-s003-p000273",
+      "text": "胆敢拿剑指着咱，真是不懂礼貌。"
+    },
+    {
+      "dialogue_id": "volume_01-d000070",
+      "paragraph_id": "volume_01-c002-s003-p000274",
+      "text": "你说什么？"
+    },
+    {
+      "dialogue_id": "volume_01-d000071",
+      "paragraph_id": "volume_01-c002-s003-p000275",
+      "text": "嗯？对喔，咱逃跑成功了。抱歉抱歉，咱都给忘了。"
+    },
+    {
+      "dialogue_id": "volume_01-d000072",
+      "paragraph_id": "volume_01-c002-s003-p000278",
+      "text": "咱的名字是赫萝，好久没有以这种模样出现了。嗯，还不赖呢。"
+    },
+    {
+      "dialogue_id": "volume_01-d000073",
+      "paragraph_id": "volume_01-c002-s003-p000280",
+      "text": "赫萝？"
+    },
+    {
+      "dialogue_id": "volume_01-d000074",
+      "paragraph_id": "volume_01-c002-s003-p000281",
+      "text": "嗯，赫萝。好名字呗？"
+    },
+    {
+      "dialogue_id": "volume_01-d000075",
+      "paragraph_id": "volume_01-c002-s003-p000284",
+      "text": "真巧，我也认识一个叫做赫萝的人。"
+    },
+    {
+      "dialogue_id": "volume_01-d000076",
+      "paragraph_id": "volume_01-c002-s003-p000288",
+      "text": "哟，汝认识和咱一样叫做赫萝的人？那家伙是哪儿的人啊？"
+    },
+    {
+      "dialogue_id": "volume_01-d000077",
+      "paragraph_id": "volume_01-c002-s003-p000290",
+      "text": "那是这附近的丰收之神的名字。你是神吗？"
+    },
+    {
+      "dialogue_id": "volume_01-d000078",
+      "paragraph_id": "volume_01-c002-s003-p000292",
+      "text": "虽然咱长久以来被尊为神，且被束缚在这块土地上，但咱根本不是什么伟大的神。咱就是咱，咱是赫萝。"
+    },
+    {
+      "dialogue_id": "volume_01-d000079",
+      "paragraph_id": "volume_01-c002-s003-p000294",
+      "text": "长久是说打从出生开始吗？"
+    }
+  ],
+  "known_characters": [
+    {
+      "entity_id": "char_0001",
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": [
+        "旅行商人",
+        "行商人"
+      ],
+      "description": "一位行商人，发现并收留了赫萝，决定与她一同旅行。 / 二十五岁，行商七年，性格理性、谨慎，与修道院和骑士互动时表现出职业习惯性的冷静。 / 一位行商人，发现并收留了赫萝，决定与她一同旅行。 / 二十五岁，行商七年，性格理性、谨慎，与修道院和骑士互动时表现出职业习惯性的冷静。 / 一位理性、谨慎的商人，对宗教仪式不感兴趣，但因叶勒被选为「狼赫萝」而感到困扰。 / 二十五岁的旅行商人，独自旅行，思考未来与孤独感，对马儿有深厚感情。 / 理性、谨慎的商人，独自旅行，对陌生人的出现感到警惕。 / 理性、谨慎的商人，独自旅行，对神秘女孩表现出警惕但逐渐放松。",
+      "speech_style": "理性、怀疑、谨慎 / 理性、怀疑、略带无奈 / 理性、略带感伤、自省",
+      "speech_markers": [
+        "算了……",
+        "糟糕",
+        "……"
+      ]
+    },
+    {
+      "entity_id": "char_0002",
+      "display_name": "赫萝",
+      "aliases": [],
+      "titles": [
+        "丰收之神"
+      ],
+      "description": "自称是丰收之神的少女，拥有狼的耳朵和尾巴，说话狡诈。 / 拥有动物耳朵的神秘女孩，发出狼嚎，但随后表现出人性的一面，说话狡诈自信。",
+      "speech_style": "狡诈、自信、神气",
+      "speech_markers": [
+        "咱"
+      ]
+    },
+    {
+      "entity_id": "char_0003",
+      "display_name": "骑士",
+      "aliases": [
+        "下级骑士",
+        "年轻骑士"
+      ],
+      "titles": [
+        "骑士"
+      ],
+      "description": "年轻的下级骑士，穿着灰色大衣和刻有红色十字架的银制胸甲，刚成为骑士不久，态度傲慢但容易被甜食收买。",
+      "speech_style": "傲慢、迟疑、逐渐放松",
+      "speech_markers": [
+        "呃……",
+        "嗯……真好吃"
+      ]
+    },
+    {
+      "entity_id": "char_0004",
+      "display_name": "农夫",
+      "aliases": [],
+      "titles": [],
+      "description": "帕斯罗村的农夫，正在麦田中劳作，与罗伦斯有简短对话。 / 麦田中的村民，与罗伦斯有简短互动，表现出朴实的性格。",
+      "speech_style": "朴实、直接",
+      "speech_markers": []
+    },
+    {
+      "entity_id": "char_0005",
+      "display_name": "叶勒",
+      "aliases": [],
+      "titles": [],
+      "description": "麦田中割下最后一束麦子的村民，被选为「狼赫萝」的化身，将被关在谷仓中一周。",
+      "speech_style": "朴实、紧张",
+      "speech_markers": []
+    }
+  ]
+}

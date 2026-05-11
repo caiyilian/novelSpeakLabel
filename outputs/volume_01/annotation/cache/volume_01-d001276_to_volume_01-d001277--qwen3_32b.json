@@ -1,0 +1,55 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001276",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "上下文显示罗伦斯在试图挽留赫萝，情绪激动地呼喊她的名字。",
+        "该段落紧接着描述「他用沙哑的声音呼喊」，表明说话人是罗伦斯。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001277",
+      "speaker_entity_id": "",
+      "speaker_display": "",
+      "speaker_status": "review",
+      "confidence": 0.0,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.3
+        },
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.2
+        }
+      ],
+      "evidence": [
+        "该台词是内嵌引号，上下文显示「罗伦斯心想」，因此不是独立对白。",
+        "规则 11 明确指出内嵌引号不能当作独立说话人。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    }
+  ],
+  "window_notes": "第一句台词是罗伦斯对赫萝的呼喊，情绪明显。第二句为内嵌引号，不能作为独立说话人判断。"
+}

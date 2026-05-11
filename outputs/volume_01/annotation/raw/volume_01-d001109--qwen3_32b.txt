@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d001109",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "前一段中赫萝提到「是叶勒。汝认识吧？」，紧接着当前段落是「怎……」，符合赫萝说话的语气和情绪波动。",
+    "场景记忆中显示赫萝对叶勒怀有强烈愤怒，当前台词「怎……」可能是她对叶勒提及的反应。",
+    "赫萝的台词风格为轻松幽默但略带威胁性，情绪化明显，当前台词虽短但符合其情绪表达方式。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

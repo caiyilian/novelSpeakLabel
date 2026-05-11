@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d001241",
+  "speaker_entity_id": "char_0004",
+  "speaker_display": "叶勒",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0004",
+      "display": "叶勒",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "对话内容提到「长久住在村子的麦田里，能够自在操控丰收与否的狼之化身」，这与叶勒作为帕斯罗村农夫、被村民认为是丰收之神附身的载体的描述高度吻合。",
+    "上下文显示叶勒刚刚与罗伦斯和赫萝对话，且赫萝表现出对他的愤怒，暗示他可能是传说中描述的对象。",
+    "叶勒在场景中被描述为与传说中的丰收之神形象相符，因此台词应出自他。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

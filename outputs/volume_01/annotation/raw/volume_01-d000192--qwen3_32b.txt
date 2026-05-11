@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d000192",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "前一段提到赫萝自嘲地笑着说道，显示她的情绪和说话风格。",
+    "当前段落是「总之，多多指教了……呃——」，符合赫萝轻松幽默但略带调侃的说话风格。",
+    "后一段罗伦斯回应「我叫罗伦斯。克拉福•罗伦斯，工作上我都以罗伦斯自称。」，说明前一句是赫萝的回应。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

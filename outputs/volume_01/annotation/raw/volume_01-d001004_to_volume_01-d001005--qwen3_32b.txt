@@ -1,0 +1,49 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001004",
+      "speaker_entity_id": "mystery_volume_01_c005_s008_r002_信件的发送者",
+      "speaker_display": "信件的发送者",
+      "speaker_status": "mystery",
+      "confidence": 0.7,
+      "candidate_speakers": [
+        {
+          "entity_id": "mystery_volume_01_c005_s008_r002_信件的发送者",
+          "display": "信件的发送者",
+          "status": "mystery",
+          "score": 0.7
+        }
+      ],
+      "evidence": [
+        "该台词出现在信件中，由罗伦斯拆开后直接引用，上下文显示说话人不是罗伦斯或赫萝，而是信件的发送者。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001005",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "上下文明确指出罗伦斯将信件交给马贺特后，‘勉强挤出声音说’，紧接着就是该台词，符合说话人轮次推断。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "两句话为连续对话，第一句为信件内容，说话人未知；第二句为罗伦斯的回应，符合上下文逻辑和说话人轮次。"
+}
+```

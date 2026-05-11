@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000109",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.98
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.02
+    }
+  ],
+  "evidence": [
+    "上下文显示罗伦斯在试图确认赫萝的身份，并提出将她交给教会的条件，语气理性且带有逻辑推理。",
+    "赫萝在前一段对话中表现出不悦和抗拒，而当前段落是罗伦斯的回应，符合其冷静理性的说话风格。",
+    "场景记忆中明确指出罗伦斯对赫萝的身份持怀疑态度，并试图掌握对话主导权。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

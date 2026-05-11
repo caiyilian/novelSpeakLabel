@@ -1,0 +1,27 @@
+{
+  "dialogue_id": "volume_01-d001270",
+  "speaker_entity_id": "mystery_volume_01_c007_s004_r004_士兵A",
+  "speaker_display": "士兵A",
+  "speaker_status": "mystery",
+  "confidence": 0.7,
+  "candidate_speakers": [
+    {
+      "entity_id": "mystery_volume_01_c007_s004_r004_士兵A",
+      "display": "士兵A",
+      "status": "mystery",
+      "score": 0.7
+    },
+    {
+      "entity_id": "mystery_volume_01_c007_s004_r004_士兵B",
+      "display": "士兵B",
+      "status": "mystery",
+      "score": 0.6
+    }
+  ],
+  "evidence": [
+    "「喔！」出现在两名士兵丢弃武器并被狼击败的场景中，与士兵A和士兵B的描述相符。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

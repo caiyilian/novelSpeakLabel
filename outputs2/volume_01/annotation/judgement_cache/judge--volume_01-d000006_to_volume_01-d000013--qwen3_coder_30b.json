@@ -1,0 +1,205 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000006",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "score": 0.95
+        },
+        {
+          "entity_id": "char_0003",
+          "display": "骑士",
+          "score": 0.05
+        }
+      ],
+      "evidence": [
+        "罗伦斯是场景中唯一已知说话人",
+        "上下文明确罗伦斯在场",
+        "无反证据"
+      ],
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000007",
+      "speaker_entity_id": "char_0003",
+      "speaker_display": "骑士",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0003",
+          "display": "骑士",
+          "score": 0.9
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "score": 0.1
+        }
+      ],
+      "evidence": [
+        "对话对象为罗伦斯，符合骑士回应",
+        "骑士态度傲慢，符合角色设定",
+        "无反证据"
+      ],
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000008",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "score": 0.95
+        },
+        {
+          "entity_id": "char_0003",
+          "display": "骑士",
+          "score": 0.05
+        }
+      ],
+      "evidence": [
+        "罗伦斯已出现，此句可能是他对骑士的回应",
+        "上下文明确罗伦斯在场",
+        "无反证据"
+      ],
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000009",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.98,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "score": 0.98
+        },
+        {
+          "entity_id": "char_0003",
+          "display": "骑士",
+          "score": 0.02
+        }
+      ],
+      "evidence": [
+        "明确自称罗伦斯，符合角色设定",
+        "罗伦斯在场景中持续对话",
+        "无反证据"
+      ],
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000010",
+      "speaker_entity_id": "char_0003",
+      "speaker_display": "骑士",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0003",
+          "display": "骑士",
+          "score": 0.9
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "score": 0.1
+        }
+      ],
+      "evidence": [
+        "对话对象为罗伦斯，符合骑士回应",
+        "骑士态度傲慢，符合角色设定",
+        "无反证据"
+      ],
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000011",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "score": 0.95
+        },
+        {
+          "entity_id": "char_0003",
+          "display": "骑士",
+          "score": 0.05
+        }
+      ],
+      "evidence": [
+        "罗伦斯在场景中主动递糖，符合上下文",
+        "罗伦斯在场并持续对话",
+        "无反证据"
+      ],
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000012",
+      "speaker_entity_id": "char_0003",
+      "speaker_display": "骑士",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0003",
+          "display": "骑士",
+          "score": 0.95
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "score": 0.05
+        }
+      ],
+      "evidence": [
+        "符合骑士的迟疑语气",
+        "对话对象为罗伦斯",
+        "无反证据"
+      ],
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000013",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "score": 0.95
+        },
+        {
+          "entity_id": "char_0003",
+          "display": "骑士",
+          "score": 0.05
+        }
+      ],
+      "evidence": [
+        "罗伦斯在场景中持续对话，符合上下文",
+        "罗伦斯在场并持续对话",
+        "无反证据"
+      ],
+      "needs_review": false
+    }
+  ],
+  "window_notes": "所有对话均基于上下文明确角色行为，无需要复核项。"
+}

@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d000345",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "前一段提到赫萝一脸歉意地说话，接下来是罗伦斯陷入回忆，而当前台词是「……生气了？」，根据后文解释，这是赫萝在试探罗伦斯的情绪。",
+    "赫萝在场景中多次表现出轻松幽默但略带威胁的说话风格，符合当前台词的语气。",
+    "后文明确指出「开口说话的是聪明的贤狼」，进一步确认说话人是赫萝。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

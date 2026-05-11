@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000641",
+  "speaker_entity_id": "char_0019",
+  "speaker_display": "怀兹",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0019",
+      "display": "怀兹",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "当前段落前文是怀兹与罗伦斯的对话，怀兹询问罗伦斯「今天来有什么事吗？」，而当前段落是「嗯，老实说，我有事想请你帮……怎么了？」，语气和上下文符合怀兹的说话风格。",
+    "场景记忆中，怀兹与罗伦斯有长期合作关系，且怀兹对罗伦斯表现出好奇和互动，符合当前对话的语境。",
+    "当前段落的下一段提到「罗伦斯话说到一半，怀兹才一副像是突然从梦中醒来的表情」，暗示说话人是罗伦斯，但当前段落的语气更符合怀兹的说话风格。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

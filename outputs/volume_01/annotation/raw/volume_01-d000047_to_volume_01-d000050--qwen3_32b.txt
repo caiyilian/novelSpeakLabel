@@ -1,0 +1,91 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000047",
+      "speaker_entity_id": "mystery_volume_01_c002_s002_r005_神秘女孩",
+      "speaker_display": "神秘女孩",
+      "speaker_status": "mystery",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "mystery_volume_01_c002_s002_r005_神秘女孩",
+          "display": "神秘女孩",
+          "status": "mystery",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "对话出现在罗伦斯发现神秘女孩睡觉的段落中，且上下文显示她尚未醒来，因此说话人应为她。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000048",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "上下文明确指出罗伦斯试图叫醒女孩，因此此句应为罗伦斯所说。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000049",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "此句是罗伦斯对女孩的进一步喊话，延续了上一句的对话轮次。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000050",
+      "speaker_entity_id": "mystery_volume_01_c002_s002_r005_神秘女孩",
+      "speaker_display": "神秘女孩",
+      "speaker_status": "mystery",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "mystery_volume_01_c002_s002_r005_神秘女孩",
+          "display": "神秘女孩",
+          "status": "mystery",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "此句是女孩在罗伦斯喊话后做出的回应，符合上下文逻辑。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰：罗伦斯发现神秘女孩后尝试叫醒她，女孩随后回应。对话符合连续问答结构。"
+}
+```

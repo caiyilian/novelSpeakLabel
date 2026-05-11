@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d000606",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "赫萝在对话中表现出对经济话题的理解，且说话风格轻松幽默但略带调侃，符合她的特征。",
+    "当前段落之后的段落提到「转眼间赫萝已吃完面包，她舔着手指头这么说。」，明确指出说话人是赫萝。",
+    "场景记忆中多次提到赫萝与罗伦斯的互动，且她对货币和商业话题表现出兴趣。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

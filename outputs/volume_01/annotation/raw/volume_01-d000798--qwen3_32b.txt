@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000798",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0021",
+      "display": "店老板",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "上下文显示罗伦斯与店老板互动，店老板离开后，罗伦斯建议赫萝喝果汁，语气中带有关心。",
+    "场景记忆中提到罗伦斯对赫萝的宿醉表现出担忧，并照顾她。",
+    "台词语气符合罗伦斯的理性、关心和照顾风格。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

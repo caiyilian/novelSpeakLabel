@@ -1,0 +1,53 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000894",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "上下文显示罗伦斯与赫萝在房间中，赫萝刚吃完面包并打呵欠，罗伦斯表现出关心，符合说话人语气。",
+        "台词提到「浪费蜡烛」，符合罗伦斯商人身份的理性思维。",
+        "上下文中有「罗伦斯没耐心等眼睛适应黑暗」，表明他刚躺下，符合说话人状态。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000895",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "上下文显示赫萝盘腿坐在床上笑，随后躺下，符合说话人语气。",
+        "台词「果然是个商人」是对罗伦斯的回应，符合赫萝调侃的说话风格。",
+        "赫萝在前文有「咱还觉得困，汝不睡吗？」的台词，显示她与罗伦斯对话的连续性。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，罗伦斯先表示要睡觉，赫萝随后回应，符合两人互动模式。"
+}
+```

@@ -1,0 +1,173 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000235",
+      "speaker_entity_id": "char_0007",
+      "speaker_display": "贵族男子",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0007",
+          "display": "贵族男子",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "贵族男子是佩连佐地区的葡萄园领主，对话内容涉及葡萄园经营和葡萄酒商的交易，符合其身份。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000236",
+      "speaker_entity_id": "char_0007",
+      "speaker_display": "贵族男子",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0007",
+          "display": "贵族男子",
+          "status": "known",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "贵族男子继续与罗伦斯对话，内容延续前句关于葡萄园和葡萄酒商的讨论。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000237",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "罗伦斯被贵族男子称呼为「罗伦斯先生」，并回应邀请，符合其身份和对话轮次。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000238",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "罗伦斯继续回应贵族男子的邀请，对话轮次合理。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000239",
+      "speaker_entity_id": "char_0007",
+      "speaker_display": "贵族男子",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0007",
+          "display": "贵族男子",
+          "status": "known",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "贵族男子与妻子一同离开，对话内容提及「妻子有些累了」，符合其身份和上下文。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000240",
+      "speaker_entity_id": "char_0007",
+      "speaker_display": "贵族男子",
+      "speaker_status": "known",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0007",
+          "display": "贵族男子",
+          "status": "known",
+          "score": 0.8
+        }
+      ],
+      "evidence": [
+        "贵族男子继续与罗伦斯道别，对话轮次合理。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000241",
+      "speaker_entity_id": "char_0008",
+      "speaker_display": "杰廉",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0008",
+          "display": "杰廉",
+          "status": "known",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "新对话轮次开始，杰廉靠近罗伦斯并表达敬佩，符合其身份和上下文。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000242",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "罗伦斯回应杰廉的赞美，对话轮次合理。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，贵族男子与罗伦斯的对话后，杰廉加入对话，整体轮次合理，无明显歧义。"
+}

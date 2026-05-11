@@ -1,0 +1,34 @@
+```json
+{
+  "scene_id": "volume_01-c003-s002",
+  "scene_summary": "赫萝与罗伦斯在旅途中交谈，赫萝提到自己曾因吞食马铃薯被噎住，并表现出对罗伦斯的调侃。罗伦斯则试图确认赫萝是否真的能识破谎言。赫萝在对话中展现出调皮和自信的个性，同时也有孩子气的一面。",
+  "active_characters": ["赫萝", "罗伦斯"],
+  "character_candidates": [
+    {
+      "display_name": "赫萝",
+      "aliases": [],
+      "titles": ["狼", "贤狼"],
+      "description": "自称是丰收之神的神秘少女，拥有狼的特征，行为狡诈自信，表现出调皮和孩子气的一面。",
+      "speech_style": "狡诈、自信、调皮、略带挑衅",
+      "speech_markers": ["咱", "咱天生跟马铃薯不合呗", "汝也知道咱的尾巴漂亮"],
+      "relationship_hints": ["与罗伦斯有亲密互动", "对罗伦斯表现出调侃和挑衅"],
+      "evidence": ["volume_01-d000265", "volume_01-d000266", "volume_01-d000268", "volume_01-d000274", "volume_01-d000276"],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": ["商人", "旅行商人"],
+      "description": "理性、谨慎的商人，对赫萝的身份和行为感到困惑，但逐渐被她掌控。",
+      "speech_style": "理性、怀疑、谨慎",
+      "speech_markers": ["你不是有说过可以识破谎言之类的话？", "可以分辨多少呢？"],
+      "relationship_hints": ["与赫萝同行", "对赫萝的身份表示怀疑但逐渐接受"],
+      "evidence": ["volume_01-d000270", "volume_01-d000275", "volume_01-d000277"],
+      "confidence": 0.95
+    }
+  ],
+  "mystery_entities": [],
+  "relationships": ["赫萝与罗伦斯同行", "赫萝调侃罗伦斯", "罗伦斯对赫萝的身份表示怀疑"],
+  "notes": "赫萝表现出调皮和自信的说话风格，使用自称「咱」，并带有挑衅和调侃的语气。罗伦斯则表现出理性与怀疑的态度，试图确认赫萝的能力。两人之间存在互动和情感张力。"
+}
+```

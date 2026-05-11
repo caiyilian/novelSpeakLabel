@@ -1,0 +1,438 @@
+你是轻小说说话人标注项目的阶段 2：正式标注助手。
+你的任务是判断输入 target_dialogues 中每一句台词的说话人，不要改写原文。
+必须把这些台词当作同一个连续片段来判断，优先保持对话轮次和叙述线索的一致性。
+
+规则：
+1. 只输出严格 JSON，不要 Markdown，不要解释性前后缀。
+2. 如果说话人是候选角色，speaker_entity_id 必须使用 candidate_characters 里的 entity_id，speaker_status 填 known。
+3. 如果说话人像某个未知人物，speaker_entity_id 使用 candidate_mysteries 里的 mystery_id，speaker_status 填 mystery。
+4. 如果只是无法追踪的路人/群体，speaker_status 填 npc，speaker_entity_id 可为空或使用 npc:简短称呼。
+5. 证据不足时不要硬猜，speaker_status 填 ambiguous 或 review，并把 needs_review 设为 true。
+6. candidate_speakers 至少列出 1 个候选；如果无法判断，列出最可能的候选和不确定原因。
+7. confidence 使用 0 到 1 之间的小数，表示你对最终判断的把握。
+8. 不要只因为台词里提到某个名字、职业、地点，就把说话人标成那个实体；被称呼的人通常不是说话人。
+9. 连续问答、交易寒暄、命令/回答等场景要按上下句轮次判断；同一人连续说话必须有叙述或语气证据支持。
+10. 如果当前上下文显示某角色还没有登场，不要因为角色库或后文记忆里有这个角色就提前标给他/她。
+
+11. target_dialogues 中 dialogue_kind=inline 的项目是正文内嵌引号，不要当作独立对白；标为 review，needs_review=true。
+12. candidate_mysteries 只是可选候选；如果候选名称和当前段落地点/人物不一致，必须改用 npc 或 review。
+13. 如果只有轮次推断、没有叙述锚点或自我介绍，请降低 confidence，并在 evidence 里说明轮次依据。
+
+14. candidate_characters.speech_markers 是阶段 1 提取的高区分度口癖/自称/固定短语；命中时可作为证据，但如果多个角色共享或上下文反证明显，必须进入复核。
+
+输出 JSON 结构：
+{
+  "annotations": [
+    {
+      "dialogue_id": "必须来自 target_dialogue_ids",
+      "speaker_entity_id": "string",
+      "speaker_display": "string",
+      "speaker_status": "known|mystery|npc|ambiguous|review",
+      "confidence": 0.0,
+      "candidate_speakers": [
+        {"entity_id": "string", "display": "string", "status": "known|mystery|npc|ambiguous|review", "score": 0.0}
+      ],
+      "evidence": ["短证据，不要大段复制原文"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "可选，简短说明整体轮次判断"
+}
+必须为 target_dialogue_ids 中每个 dialogue_id 输出且只输出一条 annotation。
+
+输入 JSON：
+{
+  "volume": {
+    "volume_id": "volume_01",
+    "volume": 1
+  },
+  "target_dialogue_ids": [
+    "volume_01-d000855",
+    "volume_01-d000856",
+    "volume_01-d000857",
+    "volume_01-d000858",
+    "volume_01-d000859",
+    "volume_01-d000860",
+    "volume_01-d000861",
+    "volume_01-d000862"
+  ],
+  "dialogues": [
+    {
+      "dialogue_id": "volume_01-d000855",
+      "dialogue_index": 854,
+      "window_position": 1,
+      "chapter_id": "volume_01-c005",
+      "chapter_title": "第四幕",
+      "scene_id": "volume_01-c005-s004",
+      "paragraph_id": "volume_01-c005-s004-p001846",
+      "paragraph_index": 1845,
+      "local_dialogue_index": 1,
+      "text": "呵，这咱懂。汝甚至还画出理想的城镇，想必画了不少次呗。",
+      "quote_text": "「呵，这咱懂。汝甚至还画出理想的城镇，想必画了不少次呗。」",
+      "paragraph_text": "「呵，这咱懂。汝甚至还画出理想的城镇，想必画了不少次呗。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 29
+    },
+    {
+      "dialogue_id": "volume_01-d000856",
+      "dialogue_index": 855,
+      "window_position": 2,
+      "chapter_id": "volume_01-c005",
+      "chapter_title": "第四幕",
+      "scene_id": "volume_01-c005-s004",
+      "paragraph_id": "volume_01-c005-s004-p001847",
+      "paragraph_index": 1846,
+      "local_dialogue_index": 1,
+      "text": "因为我觉得只要画出来，总有一天就会是我的。",
+      "quote_text": "「因为我觉得只要画出来，总有一天就会是我的。」",
+      "paragraph_text": "「因为我觉得只要画出来，总有一天就会是我的。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 23
+    },
+    {
+      "dialogue_id": "volume_01-d000857",
+      "dialogue_index": 856,
+      "window_position": 3,
+      "chapter_id": "volume_01-c005",
+      "chapter_title": "第四幕",
+      "scene_id": "volume_01-c005-s004",
+      "paragraph_id": "volume_01-c005-s004-p001848",
+      "paragraph_index": 1847,
+      "local_dialogue_index": 1,
+      "text": "咱好久以前遇过的画家也曾说过同样的话。那画家说想要画下眼前的景色，然后全部纳为己有。",
+      "quote_text": "「咱好久以前遇过的画家也曾说过同样的话。那画家说想要画下眼前的景色，然后全部纳为己有。」",
+      "paragraph_text": "「咱好久以前遇过的画家也曾说过同样的话。那画家说想要画下眼前的景色，然后全部纳为己有。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 44
+    },
+    {
+      "dialogue_id": "volume_01-d000858",
+      "dialogue_index": 857,
+      "window_position": 4,
+      "chapter_id": "volume_01-c005",
+      "chapter_title": "第四幕",
+      "scene_id": "volume_01-c005-s004",
+      "paragraph_id": "volume_01-c005-s004-p001850",
+      "paragraph_index": 1849,
+      "local_dialogue_index": 1,
+      "text": "想必那画家的梦想至今都还没实现呗。不过，汝距离梦想成真的日子却是不远呐。",
+      "quote_text": "「想必那画家的梦想至今都还没实现呗。不过，汝距离梦想成真的日子却是不远呐。」",
+      "paragraph_text": "「想必那画家的梦想至今都还没实现呗。不过，汝距离梦想成真的日子却是不远呐。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 38
+    },
+    {
+      "dialogue_id": "volume_01-d000859",
+      "dialogue_index": 858,
+      "window_position": 5,
+      "chapter_id": "volume_01-c005",
+      "chapter_title": "第四幕",
+      "scene_id": "volume_01-c005-s004",
+      "paragraph_id": "volume_01-c005-s004-p001851",
+      "paragraph_index": 1850,
+      "local_dialogue_index": 1,
+      "text": "没错。只要想到这个，就觉得坐立难安。我甚至恨不得跑一趟米隆商行，去打每个人的屁股一顿。",
+      "quote_text": "「没错。只要想到这个，就觉得坐立难安。我甚至恨不得跑一趟米隆商行，去打每个人的屁股一顿。」",
+      "paragraph_text": "「没错。只要想到这个，就觉得坐立难安。我甚至恨不得跑一趟米隆商行，去打每个人的屁股一顿。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 45
+    },
+    {
+      "dialogue_id": "volume_01-d000860",
+      "dialogue_index": 859,
+      "window_position": 6,
+      "chapter_id": "volume_01-c005",
+      "chapter_title": "第四幕",
+      "scene_id": "volume_01-c005-s004",
+      "paragraph_id": "volume_01-c005-s004-p001852",
+      "paragraph_index": 1851,
+      "local_dialogue_index": 1,
+      "text": "希望汝的梦想成真呐。",
+      "quote_text": "「希望汝的梦想成真呐。」",
+      "paragraph_text": "虽然说得有些夸张，但这确实是罗伦斯的真心话。可能是因为这样，所以赫萝并没有嘲笑他，只是笑着说了句：「希望汝的梦想成真呐。」",
+      "dialogue_kind": "inline",
+      "outside_quote_text": "虽然说得有些夸张，但这确实是罗伦斯的真心话。可能是因为这样，所以赫萝并没有嘲笑他，只是笑着说了句：",
+      "char_start": 49,
+      "char_end": 61
+    },
+    {
+      "dialogue_id": "volume_01-d000861",
+      "dialogue_index": 860,
+      "window_position": 7,
+      "chapter_id": "volume_01-c005",
+      "chapter_title": "第四幕",
+      "scene_id": "volume_01-c005-s004",
+      "paragraph_id": "volume_01-c005-s004-p001853",
+      "paragraph_index": 1852,
+      "local_dialogue_index": 1,
+      "text": "话说回来，拥有商店就真的好吗？行商不是也挺赚钱的？",
+      "quote_text": "「话说回来，拥有商店就真的好吗？行商不是也挺赚钱的？」",
+      "paragraph_text": "「话说回来，拥有商店就真的好吗？行商不是也挺赚钱的？」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 27
+    },
+    {
+      "dialogue_id": "volume_01-d000862",
+      "dialogue_index": 861,
+      "window_position": 8,
+      "chapter_id": "volume_01-c005",
+      "chapter_title": "第四幕",
+      "scene_id": "volume_01-c005-s004",
+      "paragraph_id": "volume_01-c005-s004-p001854",
+      "paragraph_index": 1853,
+      "local_dialogue_index": 1,
+      "text": "只是能赚钱而已。",
+      "quote_text": "「只是能赚钱而已。」",
+      "paragraph_text": "「只是能赚钱而已。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 10
+    }
+  ],
+  "context": {
+    "paragraphs": [
+      {
+        "paragraph_id": "volume_01-c005-s004-p001843",
+        "paragraph_index": 1842,
+        "text": "「喔……」",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c005-s004-p001844",
+        "paragraph_index": 1843,
+        "text": "赫萝一副不太感兴趣的样子点点头，把剩下的面包放进她小小的嘴里，随即往桌子的方向走去。这时传来咕噜咕噜的声音，想必是赫萝在喝水吧。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c005-s004-p001845",
+        "paragraph_index": 1844,
+        "text": "「拥有自己的店面是每个旅行商人的梦想，当然我也不例外。」",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c005-s004-p001846",
+        "paragraph_index": 1845,
+        "text": "「呵，这咱懂。汝甚至还画出理想的城镇，想必画了不少次呗。」",
+        "target_dialogue_ids": [
+          "volume_01-d000855"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c005-s004-p001847",
+        "paragraph_index": 1846,
+        "text": "「因为我觉得只要画出来，总有一天就会是我的。」",
+        "target_dialogue_ids": [
+          "volume_01-d000856"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c005-s004-p001848",
+        "paragraph_index": 1847,
+        "text": "「咱好久以前遇过的画家也曾说过同样的话。那画家说想要画下眼前的景色，然后全部纳为己有。」",
+        "target_dialogue_ids": [
+          "volume_01-d000857"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c005-s004-p001849",
+        "paragraph_index": 1848,
+        "text": "赫萝吃着第二片面包，并在床角坐了下来。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c005-s004-p001850",
+        "paragraph_index": 1849,
+        "text": "「想必那画家的梦想至今都还没实现呗。不过，汝距离梦想成真的日子却是不远呐。」",
+        "target_dialogue_ids": [
+          "volume_01-d000858"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c005-s004-p001851",
+        "paragraph_index": 1850,
+        "text": "「没错。只要想到这个，就觉得坐立难安。我甚至恨不得跑一趟米隆商行，去打每个人的屁股一顿。」",
+        "target_dialogue_ids": [
+          "volume_01-d000859"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c005-s004-p001852",
+        "paragraph_index": 1851,
+        "text": "虽然说得有些夸张，但这确实是罗伦斯的真心话。可能是因为这样，所以赫萝并没有嘲笑他，只是笑着说了句：「希望汝的梦想成真呐。」",
+        "target_dialogue_ids": [
+          "volume_01-d000860"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c005-s004-p001853",
+        "paragraph_index": 1852,
+        "text": "「话说回来，拥有商店就真的好吗？行商不是也挺赚钱的？」",
+        "target_dialogue_ids": [
+          "volume_01-d000861"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c005-s004-p001854",
+        "paragraph_index": 1853,
+        "text": "「只是能赚钱而已。」",
+        "target_dialogue_ids": [
+          "volume_01-d000862"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c005-s004-p001855",
+        "paragraph_index": 1854,
+        "text": "赫萝微微歪头。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c005-s004-p001856",
+        "paragraph_index": 1855,
+        "text": "「除了赚钱还有啥？」",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c005-s004-p001857",
+        "paragraph_index": 1856,
+        "text": "「大部分的旅行商人在行商时，都会游走二十到三十个城镇。这是因为旅行商人就算留在一个城镇里，赚的钱也不会变多。因此，几乎一整年的时间都得坐在马车上。」",
+        "target_dialogue_ids": []
+      }
+    ]
+  },
+  "scene_memory": [
+    {
+      "scene_id": "volume_01-c005-s004-r001",
+      "parent_scene_id": "volume_01-c005-s004",
+      "chunk_index": 1,
+      "chunk_count": 3,
+      "scene_summary": "罗伦斯与赫萝在房间中讨论开店计划。罗伦斯分享了自己画图的习惯，并表达了对开店的渴望。赫萝则以轻松的态度回应，并提到一位画家的类似梦想。两人对话中透露出对未来的期待与现实的思考。",
+      "active_characters": [
+        "罗伦斯",
+        "赫萝"
+      ],
+      "relationships": [
+        "罗伦斯与赫萝是长期旅行伙伴，彼此信任且情感深厚。",
+        "赫萝对罗伦斯的梦想持支持态度，但以轻松方式表达。",
+        "罗伦斯对开店有强烈渴望，认为这是实现稳定生活的关键。"
+      ],
+      "notes": "赫萝在对话中表现出对罗伦斯情绪的敏感，但整体语气轻松，与罗伦斯的认真形成对比。画家作为神秘人物被提及，可能在后文有重要线索。"
+    }
+  ],
+  "candidate_characters": [
+    {
+      "entity_id": "char_0001",
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": [
+        "商人",
+        "旅行商人",
+        "行商人"
+      ],
+      "description": "理性、谨慎的商人，试图分析局势并保持冷静。他与赫萝同行，面对叶勒的威胁时表现出坚定。 / 理性、坚定的商人，坚持遵守与赫萝的合约，拒绝背叛她。面对叶勒的威胁保持冷静，表现出对赫萝的忠诚。 / 理性、谨慎的商人，身受重伤但仍试图保持冷静并等待救援。他表现出对赫萝的依赖和信任。 / 罗伦斯目睹赫萝的变身过程，表现出震惊和无力。他试图抓住赫萝留下的皮袋，但最终面对巨大的狼形生物，感到无法应对。 / 理性、谨慎的商人，与赫萝在地下通道中遭遇叶勒的威胁。他试图安抚赫萝的情绪，并表现出对环境变化的敏感。 / 在赫萝的威压下感…",
+      "speech_style": "温和、理性、略带担忧 / 理性、略带策略性、温和 / 理性、担忧、略带冲动 / 虚弱、低沉、略带困惑 / 虚弱、低沉、焦虑 / 理性、坚定、略带焦虑 / 理性、焦虑、略带冲动 / 虚弱、低沉、焦虑 / 虚弱、焦虑、略带愤怒 / 愤怒、理性、略带冲动 / 虚弱、焦虑、略带悔恨 / 理性、冷静、略带焦虑",
+      "speech_markers": [
+        "……骑士？",
+        "有什么能为您效劳的吗？",
+        "算了……",
+        "糟糕",
+        "……",
+        "喂！",
+        "喂！起床啊！",
+        "喂！有什么好笑的？"
+      ],
+      "relationship_hints": [
+        "与赫萝一同旅行",
+        "对赫萝的身份持怀疑态度",
+        "与修道院有生意期望但未成功",
+        "与骑士初次互动",
+        "与赫萝有密切关系",
+        "与教会和骑士有互动",
+        "与叶勒有交集，计划与他交谈但被祭典打断",
+        "与叶勒有过去的交易关系。"
+      ],
+      "first_seen_scene_id": "volume_01-c000-s003-r001",
+      "latest_seen_scene_id": "volume_01-c008-s003-r001",
+      "confidence": 1.0
+    },
+    {
+      "entity_id": "char_0002",
+      "display_name": "赫萝",
+      "aliases": [],
+      "titles": [
+        "丰收之神",
+        "狼",
+        "贤狼"
+      ],
+      "description": "神秘少女，拥有狼的特征。在本场景中协助罗伦斯击退袭击者，表现出冷静和对环境的高度感知能力。 / 在地下道中不断呼喊罗伦斯，试图唤醒他并指引方向。表现出担忧和责任感。 / 神秘少女，拥有狼的特征，情绪波动明显，对罗伦斯表现出依赖和担忧。 / 神秘少女，拥有狼的特征。在本场景中表现出脆弱和依赖，对独自旅行感到不安。她对叶勒的言语感到愤怒与悲伤。 / 情绪波动明显的贤狼，因叶勒的言语感到悲伤。她表现出对罗伦斯的依赖，并在关键时刻流露出脆弱。 / 情绪波动明显的贤狼，因叶勒的言语感到愤怒与悲伤。她吸食罗伦斯的血液以施展某…",
+      "speech_style": "未直接发言，但被频繁提及 / 冷静、自信、略带调侃 / 调皮、略带挑衅、情绪化 / 略带孩子气、情绪化、略带调侃 / 冷静、简短、略带策略性 / 关切、坚定、略带责备 / 情绪化、略带孩子气 / 冷静、略带情绪化 / 脆弱、情绪化、略带孩子气 / 冷静、自信、略带策略性 / 冷静、简短、略带威严 / 未直接发言",
+      "speech_markers": [
+        "咱",
+        "哈哈哈哈哈，咱是恶魔？",
+        "好名字呗？",
+        "咱没听过。",
+        "咱不要。",
+        "或是鲜血。",
+        "如何？愿意相信咱了呗？",
+        "汝要温柔一些呐。"
+      ],
+      "relationship_hints": [
+        "与罗伦斯一同旅行",
+        "捉弄罗伦斯",
+        "与罗伦斯展开对话",
+        "表现出对罗伦斯的调侃",
+        "与罗伦斯有初步互动，可能是他未来的旅伴",
+        "与罗伦斯进行对话，表现出信任与坦率",
+        "提到出生地时流露出真实情感",
+        "与罗伦斯有互动，被罗伦斯收留并一同旅行"
+      ],
+      "first_seen_scene_id": "volume_01-c000-s003-r001",
+      "latest_seen_scene_id": "volume_01-c008-s003-r001",
+      "confidence": 0.95
+    },
+    {
+      "entity_id": "char_0014",
+      "display_name": "米隆商行",
+      "aliases": [],
+      "titles": [
+        "商行"
+      ],
+      "description": "被罗伦斯说服调查杰廉的商行，被认为在情报收集方面非常优秀。",
+      "speech_style": "未直接发言",
+      "speech_markers": [],
+      "relationship_hints": [
+        "被罗伦斯说服",
+        "与杰廉有潜在冲突"
+      ],
+      "first_seen_scene_id": "volume_01-c005-s001-r001",
+      "latest_seen_scene_id": "volume_01-c005-s001-r001",
+      "confidence": 0.8
+    }
+  ],
+  "candidate_mysteries": [
+    {
+      "mystery_id": "mystery_volume_01_c005_s004_r001_画家",
+      "temporary_name": "画家",
+      "description": "赫萝提到的画家，曾说过「想要画下眼前的景色，然后全部纳为己有」，暗示其梦想与罗伦斯相似。",
+      "evidence": [
+        "volume_01-c005-s004-p001848"
+      ],
+      "source_scene_id": "volume_01-c005-s004-r001",
+      "confidence": 0.7
+    }
+  ]
+}

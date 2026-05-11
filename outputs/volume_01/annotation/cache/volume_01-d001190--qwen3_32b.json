@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d001190",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "上下文对话中，前一句是「如果他们早知道我们在这里，那现在早就被两面夹……攻……？」，语气较为激动，而当前句「原来如此，确实有道理。」语气理性、冷静，符合罗伦斯的说话风格。",
+    "场景记忆中，罗伦斯在地下道中确认路线、分析敌人动向，表现出冷静理性的特质，而赫萝则更倾向于情绪化或直觉反应。",
+    "当前段落之后的段落提到「罗伦斯一路走来的人生，并没有乐观到会让他认为那是米隆商行的人回来救他们。」，表明接下来的叙述视角仍以罗伦斯为主。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

@@ -1,0 +1,183 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000235",
+      "speaker_entity_id": "char_0007",
+      "speaker_display": "佩连佐男子",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0007",
+          "display": "佩连佐男子",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "对话内容涉及葡萄园和葡萄酒商，与佩连佐男子的身份相符",
+        "上下文显示这是男子对罗伦斯的解释，符合贵族说话风格"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000236",
+      "speaker_entity_id": "char_0007",
+      "speaker_display": "佩连佐男子",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0007",
+          "display": "佩连佐男子",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "这是对前一句的回应，符合对话轮次",
+        "内容提到与酒商争论，符合葡萄园领主身份"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000237",
+      "speaker_entity_id": "char_0007",
+      "speaker_display": "佩连佐男子",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0007",
+          "display": "佩连佐男子",
+          "status": "known",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "提到罗伦斯先生，表明这是男子对罗伦斯的回应",
+        "符合贵族邀请他人到寒舍的语气"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000238",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "这是对前一句的回应，符合对话轮次",
+        "语气礼貌，符合罗伦斯的说话风格"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000239",
+      "speaker_entity_id": "char_0007",
+      "speaker_display": "佩连佐男子",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0007",
+          "display": "佩连佐男子",
+          "status": "known",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "提到妻子，符合贵族夫妻身份",
+        "这是对罗伦斯邀请的回应，符合对话轮次"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000240",
+      "speaker_entity_id": "char_0007",
+      "speaker_display": "佩连佐男子",
+      "speaker_status": "known",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0007",
+          "display": "佩连佐男子",
+          "status": "known",
+          "score": 0.8
+        }
+      ],
+      "evidence": [
+        "这是对前一句的回应，符合对话轮次",
+        "语气虔诚，符合贵族的表达方式"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000241",
+      "speaker_entity_id": "char_0008",
+      "speaker_display": "年轻商人",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0008",
+          "display": "年轻商人",
+          "status": "known",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "称呼罗伦斯为老板，符合年轻商人对同行的称呼",
+        "上下文显示这是新商人对罗伦斯的赞美"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000242",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "这是对年轻商人赞美的回应，符合对话轮次",
+        "语气谦逊，符合罗伦斯的说话风格"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，从佩连佐男子与罗伦斯的交流开始，接着是男子与罗伦斯的互动，最后是年轻商人对罗伦斯的赞美和罗伦斯的回应。整体对话连贯，符合场景设定。"
+}
+```

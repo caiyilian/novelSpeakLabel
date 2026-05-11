@@ -1,0 +1,32 @@
+```json
+{
+  "dialogue_id": "volume_01-d000665",
+  "speaker_entity_id": "char_0019",
+  "speaker_display": "怀兹",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0019",
+      "display": "怀兹",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "前一段中怀兹托着腮并笑着说，表示他正在与罗伦斯互动。",
+    "当前段落是「唉……该怎么办好呢。」，语气与怀兹轻松调侃的风格相符。",
+    "下一段中罗伦斯夹杂着叹息声说话，说明当前段落的叹息声更可能是怀兹的语气。",
+    "场景记忆中，怀兹与罗伦斯在讨论货币问题，怀兹态度轻松，罗伦斯则困扰，符合当前语境。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

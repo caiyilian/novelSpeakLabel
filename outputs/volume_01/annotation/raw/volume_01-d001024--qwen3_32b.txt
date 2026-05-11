@@ -1,0 +1,28 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001024",
+      "speaker_entity_id": "char_0028",
+      "speaker_display": "梅迪欧商行",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0028",
+          "display": "梅迪欧商行",
+          "status": "known",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "上下文提到梅迪欧商行准备大量崔尼银币与王族交涉，并计划回收市面上的银币进行谈判，符合该台词中「我们愿意把银币卖给您」的语气和意图。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "该台词是梅迪欧商行在与崔尼国王交涉时的发言，符合上下文中的商行策略描述，因此判断为梅迪欧商行。"
+}
+```

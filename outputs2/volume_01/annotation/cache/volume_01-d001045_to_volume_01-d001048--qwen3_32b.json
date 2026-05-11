@@ -1,0 +1,93 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001045",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.98,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.98
+        }
+      ],
+      "evidence": [
+        "上下文提到罗伦斯正在与米隆商行的马贺特讨论营救赫萝的计划，且该段落明确指出是罗伦斯的发言。",
+        "台词中提到“和我一起逃跑的人是狼的化身”，表明说话人是罗伦斯，因为赫萝是他的同伴，而罗伦斯是唯一明确登场的说话人。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001046",
+      "speaker_entity_id": "char_0015",
+      "speaker_display": "列支敦·马贺特",
+      "speaker_status": "known",
+      "confidence": 0.92,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0015",
+          "display": "列支敦·马贺特",
+          "status": "known",
+          "score": 0.92
+        }
+      ],
+      "evidence": [
+        "该段落紧接在罗伦斯发言之后，符合对话轮次交替的逻辑。",
+        "上下文显示马贺特正在回应罗伦斯的提议，表现出犹豫和思考的状态。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001047",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.97,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.97
+        }
+      ],
+      "evidence": [
+        "该段落是罗伦斯继续与马贺特对话，解释赫萝被捕的动机，并提出具体问题。",
+        "台词中提到“赫萝这次会被捉到全是为了让我来到这里”，表明说话人是罗伦斯，因为赫萝是他的同伴，而他正在向马贺特解释情况。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001048",
+      "speaker_entity_id": "char_0015",
+      "speaker_display": "列支敦·马贺特",
+      "speaker_status": "known",
+      "confidence": 0.93,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0015",
+          "display": "列支敦·马贺特",
+          "status": "known",
+          "score": 0.93
+        }
+      ],
+      "evidence": [
+        "该段落是马贺特对罗伦斯问题的回应，符合对话轮次交替的逻辑。",
+        "台词中使用了敬语“您”，表明说话人是对罗伦斯提问的对方，即马贺特。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，罗伦斯与马贺特交替发言，符合商业谈判场景的对话模式。"
+}

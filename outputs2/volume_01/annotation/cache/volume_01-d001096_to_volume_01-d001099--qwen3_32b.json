@@ -1,0 +1,99 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001096",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.98,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.98
+        }
+      ],
+      "evidence": [
+        "使用自称「咱」，符合赫萝的 speech_markers",
+        "对话内容为「咱有跟汝说过吧，咱要汝来救咱」，语气情绪化，符合赫萝的说话风格",
+        "上下文显示赫萝正在指责罗伦斯未能及时营救，符合说话人身份"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001097",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.97,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.97
+        }
+      ],
+      "evidence": [
+        "使用自称「咱」，符合赫萝的 speech_markers",
+        "对话内容为「咱啊……咱以为一定是汝来救咱……呜……光想就让咱觉得可恨！」，情绪强烈，符合赫萝的说话风格",
+        "上下文显示赫萝情绪激动，符合说话人身份",
+        "与上一句为连续对话，符合赫萝连续表达情绪的场景"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001098",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.96,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.96
+        }
+      ],
+      "evidence": [
+        "使用自称「咱」，符合赫萝的 speech_markers",
+        "对话内容为「汝如果算个雄性的话，就应该磨牙勇赴战场呗！竟然躲在那种黑洞里，都因为汝，因为汝害咱蒙羞——」，语气愤怒，符合赫萝的说话风格",
+        "上下文显示赫萝愤怒指责罗伦斯，符合说话人身份",
+        "与上两句为连续对话，符合赫萝连续表达情绪的场景"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001099",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "对话内容为「你不是平安无事了吗？」，语气平静，符合罗伦斯的说话风格",
+        "上下文显示罗伦斯打断赫萝的指责，符合说话人身份",
+        "与前三句为连续对话，符合罗伦斯回应赫萝的场景"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "四句对话构成一个连续的对话轮次：赫萝连续三句情绪化指责罗伦斯未能及时营救，罗伦斯在第四句打断并回应。对话符合赫萝和罗伦斯在场景中的互动模式。"
+}

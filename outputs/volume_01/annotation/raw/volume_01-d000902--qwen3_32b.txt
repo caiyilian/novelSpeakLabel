@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000902",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.02
+    }
+  ],
+  "evidence": [
+    "赫萝在场景中频繁出现并主导对话，语气轻松幽默但略带威胁性，符合她的说话风格。",
+    "当前段落紧接着赫萝用手指堵住罗伦斯的嘴，暗示她正在主导对话。",
+    "后续段落提到赫萝轻声细语说话，进一步确认说话人是她。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

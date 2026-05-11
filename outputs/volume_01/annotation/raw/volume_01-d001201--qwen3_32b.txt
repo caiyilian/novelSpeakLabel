@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d001201",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "对话内容「可恶，还是先回头。我记不了再多的路了。」语气中带有焦虑和理性判断，符合罗伦斯冷静但情绪化的说话风格。",
+    "场景记忆中提到罗伦斯试图安抚赫萝的情绪，而赫萝并未在此段对话中表达路线焦虑。",
+    "上下文显示罗伦斯对路线记忆感到模糊，因此决定回头，符合罗伦斯的理性决策风格。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

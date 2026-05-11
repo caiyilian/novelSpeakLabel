@@ -1,0 +1,165 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000527",
+      "speaker_entity_id": "char_0012",
+      "speaker_display": "女店员",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0012",
+          "display": "女店员",
+          "status": "known",
+          "score": 0.95
+        },
+        {
+          "entity_id": "char_0008",
+          "display": "杰廉",
+          "status": "mystery",
+          "score": 0.05
+        }
+      ],
+      "evidence": [
+        "提到杰廉先生并表示他交代过，符合女店员的描述和发言习惯",
+        "与上下文中的对话轮次一致，且前文提到女店员对杰廉有了解"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000528",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "前文提到罗伦斯想与杰廉联络，此句为直接回应",
+        "符合罗伦斯理性、谨慎的说话风格"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000529",
+      "speaker_entity_id": "char_0012",
+      "speaker_display": "女店员",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0012",
+          "display": "女店员",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "明确提到杰廉先生并提供其行踪信息，符合女店员角色设定",
+        "上下文表明她对杰廉有了解，且与罗伦斯互动"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000530",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "回应女店员提供的信息，符合罗伦斯的反应逻辑",
+        "语气简洁，符合其理性、略带思考的说话风格"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000531",
+      "speaker_entity_id": "char_0012",
+      "speaker_display": "女店员",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0012",
+          "display": "女店员",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "继续提供关于杰廉出现时间的建议，符合女店员角色设定",
+        "上下文表明她对杰廉有了解并愿意协助罗伦斯"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000532",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "回应女店员建议，表现出接受并决定等待杰廉",
+        "语气轻松，符合罗伦斯在情境中的态度"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000533",
+      "speaker_entity_id": "char_0012",
+      "speaker_display": "女店员",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0012",
+          "display": "女店员",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "最后礼貌地回应罗伦斯，符合女店员开朗、有生意头脑的特征",
+        "使用「是，请您慢用」，符合其说话习惯"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，罗伦斯与女店员之间形成完整问答链条，女店员对杰廉的了解和协助行为明确，罗伦斯则表现出理性、谨慎的态度。"
+}

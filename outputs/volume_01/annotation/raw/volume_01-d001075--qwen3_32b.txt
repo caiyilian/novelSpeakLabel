@@ -1,0 +1,30 @@
+```json
+{
+  "dialogue_id": "volume_01-d001075",
+  "speaker_entity_id": "mystery_volume_01_c006_s003_r002_神秘人物A",
+  "speaker_display": "神秘人物A",
+  "speaker_status": "mystery",
+  "confidence": 0.6,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.4
+    },
+    {
+      "entity_id": "mystery_volume_01_c006_s003_r002_神秘人物A",
+      "display": "神秘人物A",
+      "status": "mystery",
+      "score": 0.6
+    }
+  ],
+  "evidence": [
+    "说话声从正上方传来，随后听到拆开地板的破裂声。接着又再传来一声「拉嘿」",
+    "赫萝的对话和行动主要集中在与罗伦斯的互动中，未提及她与神秘人物A的对话"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": true
+}
+```

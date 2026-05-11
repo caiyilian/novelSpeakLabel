@@ -1,0 +1,63 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000896",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        },
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.1
+        }
+      ],
+      "evidence": [
+        "上下文显示罗伦斯刚发现赫萝已经躺在他的床上，语气显得困惑，符合罗伦斯冷静但略带迟疑的说话风格。",
+        "赫萝在下一句表现出娇媚的语气，与本句的困惑语气形成对话轮次，符合两人互动模式。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000897",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.95
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.05
+        }
+      ],
+      "evidence": [
+        "赫萝在下一段描述中被明确指出使用了娇媚的语气，符合本句的说话风格。",
+        "对话轮次显示为罗伦斯困惑提问后，赫萝回应，符合两人互动模式。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，罗伦斯先表达困惑，赫萝随后以娇媚语气回应，符合两人在场景中的互动模式。"
+}
+```

@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d000144",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "前一段中赫萝用「真搞不过你」的态度说话，随后罗伦斯询问「到底是怎么了？」，当前段「嗯。」是赫萝的回应。",
+    "场景记忆中赫萝和罗伦斯是主要互动角色，且赫萝的说话风格包括轻松幽默、略带调侃和威胁，符合当前简短回应的语气。",
+    "当前段之后紧接着赫萝用哀怜的眼神说话，进一步确认说话人是赫萝。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

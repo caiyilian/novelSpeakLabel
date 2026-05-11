@@ -1,0 +1,580 @@
+你是轻小说说话人标注项目的 Stage 2.5 裁判模型。
+你只拿目标窗口、候选角色和 structured_evidence 做最终判断。必须同时考虑正证据和反证据；不确定就进入复核，不能为了减少复核而硬猜。
+
+要求：
+1. 连续两句同一人说话是允许的，只要证据支持。
+2. 被称呼的人通常不是说话人。
+3. candidate_characters.speech_markers 是口癖/自称证据；多个角色共享或上下文反证时不能直接采纳。
+4. 如果台词说“她/他/它的名字是 X”，通常不是 X 本人在自我介绍。
+5. 输出 speaker、正证据、反证据、needs_review。
+
+只输出严格 JSON。输出必须紧凑，避免截断：
+- 每个 dialogue_id 只输出 1 条 annotation。
+- candidate_speakers 最多 2 个候选；如果 needs_review=true，也列出最可能的 1-2 个。
+- evidence 最多 3 条，每条不超过 30 字；不要重复长段原文。
+- 不要输出 should_create_new_entity / new_entity_hint，除非确实要新建未知人物。
+
+JSON 结构：
+{
+  "annotations": [
+    {
+      "dialogue_id": "必须来自 target_dialogue_ids",
+      "speaker_entity_id": "string",
+      "speaker_display": "string",
+      "speaker_status": "known|mystery|npc|ambiguous|review",
+      "confidence": 0.0,
+      "candidate_speakers": [
+        {"entity_id": "string", "display": "string", "score": 0.0}
+      ],
+      "evidence": ["短证据"],
+      "needs_review": false
+    }
+  ],
+  "window_notes": "string"
+}
+
+输入 JSON：
+{
+  "volume": {
+    "volume_id": "volume_01",
+    "volume": 1
+  },
+  "target_dialogue_ids": [
+    "volume_01-d000014",
+    "volume_01-d000015",
+    "volume_01-d000016",
+    "volume_01-d000017",
+    "volume_01-d000018",
+    "volume_01-d000019",
+    "volume_01-d000020",
+    "volume_01-d000021"
+  ],
+  "dialogues": [
+    {
+      "dialogue_id": "volume_01-d000014",
+      "dialogue_index": 13,
+      "window_position": 1,
+      "chapter_id": "volume_01-c002",
+      "chapter_title": "第一幕",
+      "scene_id": "volume_01-c002-s001",
+      "paragraph_id": "volume_01-c002-s001-p000113",
+      "paragraph_index": 112,
+      "local_dialogue_index": 1,
+      "text": "原来如此。我看你车上还有货，是盐吗？",
+      "quote_text": "「原来如此。我看你车上还有货，是盐吗？」",
+      "paragraph_text": "「原来如此。我看你车上还有货，是盐吗？」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 20
+    },
+    {
+      "dialogue_id": "volume_01-d000015",
+      "dialogue_index": 14,
+      "window_position": 2,
+      "chapter_id": "volume_01-c002",
+      "chapter_title": "第一幕",
+      "scene_id": "volume_01-c002-s001",
+      "paragraph_id": "volume_01-c002-s001-p000114",
+      "paragraph_index": 113,
+      "local_dialogue_index": 1,
+      "text": "不，这些是皮草。您瞧。",
+      "quote_text": "「不，这些是皮草。您瞧。」",
+      "paragraph_text": "「不，这些是皮草。您瞧。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 13
+    },
+    {
+      "dialogue_id": "volume_01-d000016",
+      "dialogue_index": 15,
+      "window_position": 3,
+      "chapter_id": "volume_01-c002",
+      "chapter_title": "第一幕",
+      "scene_id": "volume_01-c002-s001",
+      "paragraph_id": "volume_01-c002-s001-p000116",
+      "paragraph_index": 115,
+      "local_dialogue_index": 1,
+      "text": "喔，那这是什么？",
+      "quote_text": "「喔，那这是什么？」",
+      "paragraph_text": "「喔，那这是什么？」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 10
+    },
+    {
+      "dialogue_id": "volume_01-d000017",
+      "dialogue_index": 16,
+      "window_position": 4,
+      "chapter_id": "volume_01-c002",
+      "chapter_title": "第一幕",
+      "scene_id": "volume_01-c002-s001",
+      "paragraph_id": "volume_01-c002-s001-p000117",
+      "paragraph_index": 116,
+      "local_dialogue_index": 1,
+      "text": "啊，这是山里的村民给我的麦子。",
+      "quote_text": "「啊，这是山里的村民给我的麦子。」",
+      "paragraph_text": "「啊，这是山里的村民给我的麦子。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 17
+    },
+    {
+      "dialogue_id": "volume_01-d000018",
+      "dialogue_index": 17,
+      "window_position": 5,
+      "chapter_id": "volume_01-c002",
+      "chapter_title": "第一幕",
+      "scene_id": "volume_01-c002-s001",
+      "paragraph_id": "volume_01-c002-s001-p000119",
+      "paragraph_index": 118,
+      "local_dialogue_index": 1,
+      "text": "嗯。好了，你可以走了。",
+      "quote_text": "「嗯。好了，你可以走了。」",
+      "paragraph_text": "「嗯。好了，你可以走了。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 13
+    },
+    {
+      "dialogue_id": "volume_01-d000019",
+      "dialogue_index": 18,
+      "window_position": 6,
+      "chapter_id": "volume_01-c002",
+      "chapter_title": "第一幕",
+      "scene_id": "volume_01-c002-s001",
+      "paragraph_id": "volume_01-c002-s001-p000120",
+      "paragraph_index": 119,
+      "local_dialogue_index": 1,
+      "text": "是",
+      "quote_text": "「是」",
+      "paragraph_text": "自己把人叫来，现在又想随便打发我，如果乖乖说「是」的话，就不配当商人了。罗伦斯一边有意无意地把玩刚刚的皮袋，一边转回骑士的方向。",
+      "dialogue_kind": "inline",
+      "outside_quote_text": "自己把人叫来，现在又想随便打发我，如果乖乖说的话，就不配当商人了。罗伦斯一边有意无意地把玩刚刚的皮袋，一边转回骑士的方向。",
+      "char_start": 22,
+      "char_end": 25
+    },
+    {
+      "dialogue_id": "volume_01-d000020",
+      "dialogue_index": 19,
+      "window_position": 7,
+      "chapter_id": "volume_01-c002",
+      "chapter_title": "第一幕",
+      "scene_id": "volume_01-c002-s001",
+      "paragraph_id": "volume_01-c002-s001-p000121",
+      "paragraph_index": 120,
+      "local_dialogue_index": 1,
+      "text": "发生什么事了吗？平常在这里应该见不到骑士吧？",
+      "quote_text": "「发生什么事了吗？平常在这里应该见不到骑士吧？」",
+      "paragraph_text": "「发生什么事了吗？平常在这里应该见不到骑士吧？」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 24
+    },
+    {
+      "dialogue_id": "volume_01-d000021",
+      "dialogue_index": 20,
+      "window_position": 8,
+      "chapter_id": "volume_01-c002",
+      "chapter_title": "第一幕",
+      "scene_id": "volume_01-c002-s001",
+      "paragraph_id": "volume_01-c002-s001-p000124",
+      "paragraph_index": 123,
+      "local_dialogue_index": 1,
+      "text": "嗯……真好吃，我得好好答谢你才行。",
+      "quote_text": "「嗯……真好吃，我得好好答谢你才行。」",
+      "paragraph_text": "「嗯……真好吃，我得好好答谢你才行。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 19
+    }
+  ],
+  "context": {
+    "paragraphs": [
+      {
+        "paragraph_id": "volume_01-c002-s001-p000110",
+        "paragraph_index": 109,
+        "text": "虽然骑士瞬间露出迟疑的神情，但终究敌不过糖果的诱惑。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000111",
+        "paragraph_index": 110,
+        "text": "不过，身为骑士的自尊，让他从点头到伸手取糖花了不少时间。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000112",
+        "paragraph_index": 111,
+        "text": "「从这里往东边山头走上约半天的时间，就可以看到一座小村落。我是到那里卖盐回来的。」",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000113",
+        "paragraph_index": 112,
+        "text": "「原来如此。我看你车上还有货，是盐吗？」",
+        "target_dialogue_ids": [
+          "volume_01-d000014"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000114",
+        "paragraph_index": 113,
+        "text": "「不，这些是皮草。您瞧。」",
+        "target_dialogue_ids": [
+          "volume_01-d000015"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000115",
+        "paragraph_index": 114,
+        "text": "罗伦斯一边说，一边转向货台掀开覆盖的麻布。那是非常漂亮的貂皮。如果以眼前这位骑士的薪水来看，相信貂皮的价值比他的年薪还要高。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000116",
+        "paragraph_index": 115,
+        "text": "「喔，那这是什么？」",
+        "target_dialogue_ids": [
+          "volume_01-d000016"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000117",
+        "paragraph_index": 116,
+        "text": "「啊，这是山里的村民给我的麦子。」",
+        "target_dialogue_ids": [
+          "volume_01-d000017"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000118",
+        "paragraph_index": 117,
+        "text": "成束的麦子就放在貂皮堆旁边，那是罗伦斯前去卖盐的村落所种植的麦子。那里的麦子不但耐寒，也不容易被虫咬。去年西北方受到严重的寒害，罗伦斯打算把麦子拿到西北方去卖。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000119",
+        "paragraph_index": 118,
+        "text": "「嗯。好了，你可以走了。」",
+        "target_dialogue_ids": [
+          "volume_01-d000018"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000120",
+        "paragraph_index": 119,
+        "text": "自己把人叫来，现在又想随便打发我，如果乖乖说「是」的话，就不配当商人了。罗伦斯一边有意无意地把玩刚刚的皮袋，一边转回骑士的方向。",
+        "target_dialogue_ids": [
+          "volume_01-d000019"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000121",
+        "paragraph_index": 120,
+        "text": "「发生什么事了吗？平常在这里应该见不到骑士吧？」",
+        "target_dialogue_ids": [
+          "volume_01-d000020"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000122",
+        "paragraph_index": 121,
+        "text": "年轻骑士可能是因为被询问而感到不悦，稍稍皱起眉头，再看到罗伦斯手中的皮袋，眉头皱得更深了。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000123",
+        "paragraph_index": 122,
+        "text": "看来骑士似乎是上钩了。罗伦斯解开绳子，拿出一颗蜂蜜糖递给骑士。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000124",
+        "paragraph_index": 123,
+        "text": "「嗯……真好吃，我得好好答谢你才行。」",
+        "target_dialogue_ids": [
+          "volume_01-d000021"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000125",
+        "paragraph_index": 124,
+        "text": "骑士喜欢讲道理。罗伦斯露出营业用笑容，表现出非常感谢的模样，向骑士鞠躬。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000126",
+        "paragraph_index": 125,
+        "text": "「听说最近，这一带会有异教徒祭典，所以我们才受命在这里防卫。你知道什么消息吗？」",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000127",
+        "paragraph_index": 126,
+        "text": "这时，如果表现出失望的表情，那么演技就太差了。罗伦斯假装想了好一会儿后，回答说：「我不知道耶。」事实上，罗伦斯是在撒谎，不过骑士说的话也不甚正确，所以他不得不扯谎。",
+        "target_dialogue_ids": []
+      }
+    ]
+  },
+  "scene_memory": [
+    {
+      "scene_id": "volume_01-c002-s001-r002",
+      "parent_scene_id": "volume_01-c002-s001",
+      "chunk_index": 2,
+      "chunk_count": 3,
+      "scene_summary": "罗伦斯与一名年轻的下级骑士在修道院附近相遇。骑士态度傲慢，但被罗伦斯用蜂蜜糖收买，逐渐放松警惕。罗伦斯通过对话巧妙地获取了骑士的信任，并在最后离开时对骑士的猜测表示怀疑。",
+      "active_characters": [
+        "罗伦斯",
+        "骑士"
+      ],
+      "relationships": [
+        "罗伦斯与骑士之间存在短暂的互动，罗伦斯通过蜂蜜糖影响骑士的态度。",
+        "骑士对罗伦斯的货物表现出兴趣，但对异教徒祭典的猜测是错误的。"
+      ],
+      "notes": "骑士虽然未被命名，但其身份和行为特征明确，可作为角色建库的候选。罗伦斯的对话策略和蜂蜜糖的使用是关键线索。"
+    }
+  ],
+  "candidate_characters": [
+    {
+      "entity_id": "char_0003",
+      "display_name": "骑士",
+      "aliases": [
+        "下级骑士",
+        "年轻骑士"
+      ],
+      "titles": [
+        "骑士"
+      ],
+      "description": "年轻的下级骑士，穿着灰色大衣和刻有红色十字架的银制胸甲，刚成为骑士不久，态度傲慢但容易被甜食收买。",
+      "speech_style": "傲慢、迟疑、逐渐放松",
+      "speech_markers": [
+        "呃……",
+        "嗯……真好吃"
+      ],
+      "relationship_hints": [
+        "与罗伦斯有短暂互动，被蜂蜜糖影响态度"
+      ],
+      "first_seen_scene_id": "volume_01-c002-s001-r002",
+      "latest_seen_scene_id": "volume_01-c002-s001-r002",
+      "confidence": 0.9
+    },
+    {
+      "entity_id": "char_0001",
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": [
+        "商人",
+        "旅行商人",
+        "行商人"
+      ],
+      "description": "理性、谨慎的商人，试图分析局势并保持冷静。他与赫萝同行，面对叶勒的威胁时表现出坚定。 / 理性、坚定的商人，坚持遵守与赫萝的合约，拒绝背叛她。面对叶勒的威胁保持冷静，表现出对赫萝的忠诚。 / 理性、谨慎的商人，身受重伤但仍试图保持冷静并等待救援。他表现出对赫萝的依赖和信任。 / 罗伦斯目睹赫萝的变身过程，表现出震惊和无力。他试图抓住赫萝留下的皮袋，但最终面对巨大的狼形生物，感到无法应对。 / 理性、谨慎的商人，与赫萝在地下通道中遭遇叶勒的威胁。他试图安抚赫萝的情绪，并表现出对环境变化的敏感。 / 在赫萝的威压下感…",
+      "speech_style": "温和、理性、略带担忧 / 理性、略带策略性、温和 / 理性、担忧、略带冲动 / 虚弱、低沉、略带困惑 / 虚弱、低沉、焦虑 / 理性、坚定、略带焦虑 / 理性、焦虑、略带冲动 / 虚弱、低沉、焦虑 / 虚弱、焦虑、略带愤怒 / 愤怒、理性、略带冲动 / 虚弱、焦虑、略带悔恨 / 理性、冷静、略带焦虑",
+      "speech_markers": [
+        "算了……",
+        "糟糕",
+        "……",
+        "这……",
+        "唔……嗯……",
+        "果然没错",
+        "时间就是金钱",
+        "说的也是"
+      ],
+      "relationship_hints": [
+        "与赫萝一同旅行",
+        "对赫萝的身份持怀疑态度",
+        "与修道院有生意期望但未成功",
+        "与骑士初次互动",
+        "与赫萝有密切关系",
+        "与教会和骑士有互动",
+        "与叶勒有交集，计划与他交谈但被祭典打断",
+        "与叶勒有过去的交易关系。"
+      ],
+      "first_seen_scene_id": "volume_01-c000-s003-r001",
+      "latest_seen_scene_id": "volume_01-c008-s003-r001",
+      "confidence": 1.0
+    }
+  ],
+  "candidate_mysteries": [],
+  "structured_evidence": [
+    {
+      "dialogue_id": "volume_01-d000014",
+      "source_model": "qwen3:32b",
+      "explicit_attribution": {
+        "speaker_display": "",
+        "text": ""
+      },
+      "addressed_to": [
+        "罗伦斯"
+      ],
+      "turn_relation": "问答",
+      "same_speaker_allowed": false,
+      "speech_markers": [],
+      "third_person_name_references": [],
+      "positive_evidence": [
+        "对话内容为对车上货物的提问，暗示说话人是骑士"
+      ],
+      "negative_evidence": [],
+      "needs_review_hint": false,
+      "notes": "对话内容为对车上货物的提问，暗示说话人是骑士"
+    },
+    {
+      "dialogue_id": "volume_01-d000015",
+      "source_model": "qwen3:32b",
+      "explicit_attribution": {
+        "speaker_display": "",
+        "text": ""
+      },
+      "addressed_to": [
+        "骑士"
+      ],
+      "turn_relation": "回应",
+      "same_speaker_allowed": false,
+      "speech_markers": [],
+      "third_person_name_references": [],
+      "positive_evidence": [
+        "对话内容为对车上货物的回应，暗示说话人是罗伦斯"
+      ],
+      "negative_evidence": [],
+      "needs_review_hint": false,
+      "notes": "对话内容为对车上货物的回应，暗示说话人是罗伦斯"
+    },
+    {
+      "dialogue_id": "volume_01-d000016",
+      "source_model": "qwen3:32b",
+      "explicit_attribution": {
+        "speaker_display": "",
+        "text": ""
+      },
+      "addressed_to": [
+        "罗伦斯"
+      ],
+      "turn_relation": "问答",
+      "same_speaker_allowed": false,
+      "speech_markers": [],
+      "third_person_name_references": [],
+      "positive_evidence": [
+        "对话内容为对车上另一货物的提问，暗示说话人是骑士"
+      ],
+      "negative_evidence": [],
+      "needs_review_hint": false,
+      "notes": "对话内容为对车上另一货物的提问，暗示说话人是骑士"
+    },
+    {
+      "dialogue_id": "volume_01-d000017",
+      "source_model": "qwen3:32b",
+      "explicit_attribution": {
+        "speaker_display": "",
+        "text": ""
+      },
+      "addressed_to": [
+        "骑士"
+      ],
+      "turn_relation": "回应",
+      "same_speaker_allowed": false,
+      "speech_markers": [],
+      "third_person_name_references": [],
+      "positive_evidence": [
+        "对话内容为对车上另一货物的回应，暗示说话人是罗伦斯"
+      ],
+      "negative_evidence": [],
+      "needs_review_hint": false,
+      "notes": "对话内容为对车上另一货物的回应，暗示说话人是罗伦斯"
+    },
+    {
+      "dialogue_id": "volume_01-d000018",
+      "source_model": "qwen3:32b",
+      "explicit_attribution": {
+        "speaker_display": "",
+        "text": ""
+      },
+      "addressed_to": [
+        "罗伦斯"
+      ],
+      "turn_relation": "回应",
+      "same_speaker_allowed": false,
+      "speech_markers": [],
+      "third_person_name_references": [],
+      "positive_evidence": [
+        "对话内容为对罗伦斯的指示，暗示说话人是骑士"
+      ],
+      "negative_evidence": [],
+      "needs_review_hint": false,
+      "notes": "对话内容为对罗伦斯的指示，暗示说话人是骑士"
+    },
+    {
+      "dialogue_id": "volume_01-d000019",
+      "source_model": "qwen3:32b",
+      "explicit_attribution": {
+        "speaker_display": "",
+        "text": ""
+      },
+      "addressed_to": [
+        "骑士"
+      ],
+      "turn_relation": "回应",
+      "same_speaker_allowed": false,
+      "speech_markers": [],
+      "third_person_name_references": [],
+      "positive_evidence": [
+        "对话内容为对骑士的回应，暗示说话人是罗伦斯"
+      ],
+      "negative_evidence": [],
+      "needs_review_hint": false,
+      "notes": "对话内容为对骑士的回应，暗示说话人是罗伦斯"
+    },
+    {
+      "dialogue_id": "volume_01-d000020",
+      "source_model": "qwen3:32b",
+      "explicit_attribution": {
+        "speaker_display": "",
+        "text": ""
+      },
+      "addressed_to": [
+        "罗伦斯"
+      ],
+      "turn_relation": "问答",
+      "same_speaker_allowed": false,
+      "speech_markers": [],
+      "third_person_name_references": [],
+      "positive_evidence": [
+        "对话内容为对罗伦斯的提问，暗示说话人是骑士"
+      ],
+      "negative_evidence": [],
+      "needs_review_hint": false,
+      "notes": "对话内容为对罗伦斯的提问，暗示说话人是骑士"
+    },
+    {
+      "dialogue_id": "volume_01-d000021",
+      "source_model": "qwen3:32b",
+      "explicit_attribution": {
+        "speaker_display": "",
+        "text": ""
+      },
+      "addressed_to": [
+        "骑士"
+      ],
+      "turn_relation": "回应",
+      "same_speaker_allowed": false,
+      "speech_markers": [
+        {
+          "marker": "嗯……真好吃",
+          "owner_display": "骑士"
+        }
+      ],
+      "third_person_name_references": [],
+      "positive_evidence": [
+        "对话内容为对骑士的回应，暗示说话人是罗伦斯"
+      ],
+      "negative_evidence": [],
+      "needs_review_hint": false,
+      "notes": "对话内容为对骑士的回应，暗示说话人是罗伦斯"
+    }
+  ]
+}

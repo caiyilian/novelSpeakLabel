@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000893",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.02
+    }
+  ],
+  "evidence": [
+    "前一段提到赫萝打呵欠并表现出疲累，当前台词符合她说话风格中轻松幽默但略带调侃的语气。",
+    "场景记忆中赫萝多次表现出疲倦和调侃罗伦斯的语气，而罗伦斯通常较为理性。",
+    "当前段落之后的回应「嗯，该睡觉了。不睡觉的话，太浪费蜡烛了。」是罗伦斯的语气，进一步确认说话人不是他。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

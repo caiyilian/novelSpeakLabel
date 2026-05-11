@@ -1,0 +1,107 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000445",
+      "speaker_entity_id": "char_0017",
+      "speaker_display": "男子",
+      "speaker_status": "known",
+      "confidence": 0.75,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0017",
+          "display": "男子",
+          "status": "known",
+          "score": 0.75
+        },
+        {
+          "entity_id": "char_0012",
+          "display": "采购人员",
+          "status": "known",
+          "score": 0.15
+        }
+      ],
+      "evidence": [
+        "前文描述男子抱住马儿并发出静止指示，后文有“哎呀，好马！”的反应，符合男子行为；但无明确自我介绍或身份提示"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000446",
+      "speaker_entity_id": "char_0017",
+      "speaker_display": "男子",
+      "speaker_status": "known",
+      "confidence": 0.75,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0017",
+          "display": "男子",
+          "status": "known",
+          "score": 0.75
+        },
+        {
+          "entity_id": "char_0012",
+          "display": "采购人员",
+          "status": "known",
+          "score": 0.15
+        }
+      ],
+      "evidence": [
+        "与上一句对话行为一致，语气承接自然，符合男子对马的观察与评论；无明确身份提示"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000447",
+      "speaker_entity_id": "char_0012",
+      "speaker_display": "采购人员",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0012",
+          "display": "采购人员",
+          "status": "known",
+          "score": 0.85
+        },
+        {
+          "entity_id": "char_0017",
+          "display": "男子",
+          "status": "known",
+          "score": 0.15
+        }
+      ],
+      "evidence": [
+        "承接上文男子对马的评论，回应语气自然，符合采购人员专业回应；上下文无其他角色可承接此句"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000448",
+      "speaker_entity_id": "char_0012",
+      "speaker_display": "采购人员",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0012",
+          "display": "采购人员",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "明确为迎接罗伦斯的采购人员，且在对话中确认其身份，符合采购人员角色设定；前文已交代该角色为鉴定商品的采购人员"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，从男子对马的观察到采购人员回应，再到采购人员正式问候罗伦斯，逻辑连贯。"
+}

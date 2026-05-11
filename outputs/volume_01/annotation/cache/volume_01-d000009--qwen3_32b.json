@@ -1,0 +1,28 @@
+{
+  "dialogue_id": "volume_01-d000009",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.98
+    },
+    {
+      "entity_id": "char_0003",
+      "display": "骑士",
+      "status": "known",
+      "score": 0.02
+    }
+  ],
+  "evidence": [
+    "对话内容明确提到「我是旅行商人罗伦斯」，直接表明说话人身份。",
+    "上下文显示罗伦斯正在与骑士对话，骑士先前已发问「你是什么人？」，罗伦斯的回答符合逻辑回应。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d001029",
+  "speaker_entity_id": "char_0020",
+  "speaker_display": "列支敦·马贺特",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0020",
+      "display": "列支敦·马贺特",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "前文对话中，罗伦斯提出复杂的交易策略，马贺特对此表示认同并点头，随后对话中「是的。」是对罗伦斯策略的回应。",
+    "场景记忆中，罗伦斯与马贺特是主要对话者，且马贺特多次对罗伦斯的提议表示认同。",
+    "当前段落之后的对话中，罗伦斯继续提出具体交易细节，而「是的。」更可能是马贺特的回应，而非罗伦斯的重复确认。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

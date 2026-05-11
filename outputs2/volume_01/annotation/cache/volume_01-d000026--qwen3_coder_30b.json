@@ -1,0 +1,34 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000026",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.85
+        },
+        {
+          "entity_id": "char_0004",
+          "display": "农夫",
+          "status": "known",
+          "score": 0.15
+        }
+      ],
+      "evidence": [
+        "前文提到罗伦斯在麦田中与农夫交谈，场景设定合理",
+        "台词内容符合罗伦斯理性、略带感慨的说话风格",
+        "后文提到罗伦斯苦笑并吃蜂蜜糖，暗示其为说话人"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "根据上下文，罗伦斯正在麦田中与农夫互动，且前文有其行为描述，结合台词语气与场景逻辑，判断为罗伦斯所说"
+}

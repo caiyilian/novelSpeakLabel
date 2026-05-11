@@ -1,0 +1,175 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000935",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "罗伦斯在奔跑中，突然听到「看到了！在洛依大道上！」，符合他焦急寻找赫萝的语境。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000936",
+      "speaker_entity_id": "char_0018",
+      "speaker_display": "梅迪欧商行追捕者",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0018",
+          "display": "梅迪欧商行追捕者",
+          "status": "known",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "「只捉到一个？他们应该有两个人！」符合追捕者对罗伦斯和赫萝的追踪逻辑。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000937",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.8
+        }
+      ],
+      "evidence": [
+        "「找到了！」出现在罗伦斯左转后，后方传来，符合赫萝可能被追捕者发现的场景。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000938",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "罗伦斯拍打栅栏喊叫，台词内容与他的身份和处境完全吻合。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000939",
+      "speaker_entity_id": "char_0018",
+      "speaker_display": "梅迪欧商行追捕者",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0018",
+          "display": "梅迪欧商行追捕者",
+          "status": "known",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "「等一下！喂，把那名男子交出来！」符合追捕者试图阻止罗伦斯逃脱的逻辑。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000940",
+      "speaker_entity_id": "char_0017",
+      "speaker_display": "米隆商行帕兹欧分行卸货工",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0017",
+          "display": "米隆商行帕兹欧分行卸货工",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "「混帐！你们以为这里是什么地方！」是卸货工为保护罗伦斯而强硬发言的典型表现。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000941",
+      "speaker_entity_id": "char_0019",
+      "speaker_display": "老卸货工",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0019",
+          "display": "老卸货工",
+          "status": "known",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "「大半夜的，这么大骚动到底是怎么回事？」是老卸货工在事件后提出疑问的合理台词。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000942",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "「很抱歉造成如此骚动，幸得相救真是感激不尽。」是罗伦斯对米隆商行员工表达感谢的合理回应。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，罗伦斯、赫萝、追捕者和米隆商行员工的发言交替出现，符合场景中追逐与救援的紧张氛围。"
+}
+```

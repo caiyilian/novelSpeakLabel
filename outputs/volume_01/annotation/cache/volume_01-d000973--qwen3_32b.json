@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000973",
+  "speaker_entity_id": "char_0020",
+  "speaker_display": "列支敦·马贺特",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0020",
+      "display": "列支敦·马贺特",
+      "status": "known",
+      "score": 0.98
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "ambiguous",
+      "score": 0.02
+    }
+  ],
+  "evidence": [
+    "对话内容提到「贵商行」，符合米隆商行代表马贺特的立场。",
+    "上下文显示罗伦斯正在与马贺特讨论商行与梅迪欧商行的交易，马贺特是主要发言者。",
+    "马贺特在场景中多次分析局势，语气冷静理性，符合该句的语气风格。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

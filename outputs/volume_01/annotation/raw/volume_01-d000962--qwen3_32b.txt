@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d000962",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.98
+    }
+  ],
+  "evidence": [
+    "对话中提到「我的伙伴赫萝」，与罗伦斯的描述一致，且场景记忆中明确罗伦斯与赫萝是伙伴。",
+    "当前段落是罗伦斯在回应马贺特的提问，语气中带有对赫萝的关心和解释，符合罗伦斯的说话风格。",
+    "前一段落提到罗伦斯「在吐气时开口说」，表明当前对话是罗伦斯的发言。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

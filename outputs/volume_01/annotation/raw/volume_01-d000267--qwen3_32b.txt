@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d000267",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "前一段提到赫萝用手指勾着嘴角，随后她提到自己曾因吞下马铃薯被噎着。",
+    "当前段落「喔。」是简短的回应，符合赫萝轻松幽默但略带调侃的说话风格。",
+    "后一段「或许咱天生跟马铃薯不合呗。」中的「咱」是赫萝的典型自称，进一步确认说话人身份。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

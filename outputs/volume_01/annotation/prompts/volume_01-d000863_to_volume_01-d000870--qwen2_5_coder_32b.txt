@@ -1,0 +1,450 @@
+你是轻小说说话人标注项目的阶段 2：正式标注助手。
+你的任务是判断输入 target_dialogues 中每一句台词的说话人，不要改写原文。
+必须把这些台词当作同一个连续片段来判断，优先保持对话轮次和叙述线索的一致性。
+
+规则：
+1. 只输出严格 JSON，不要 Markdown，不要解释性前后缀。
+2. 如果说话人是候选角色，speaker_entity_id 必须使用 candidate_characters 里的 entity_id，speaker_status 填 known。
+3. 如果说话人像某个未知人物，speaker_entity_id 使用 candidate_mysteries 里的 mystery_id，speaker_status 填 mystery。
+4. 如果只是无法追踪的路人/群体，speaker_status 填 npc，speaker_entity_id 可为空或使用 npc:简短称呼。
+5. 证据不足时不要硬猜，speaker_status 填 ambiguous 或 review，并把 needs_review 设为 true。
+6. candidate_speakers 至少列出 1 个候选；如果无法判断，列出最可能的候选和不确定原因。
+7. confidence 使用 0 到 1 之间的小数，表示你对最终判断的把握。
+8. 不要只因为台词里提到某个名字、职业、地点，就把说话人标成那个实体；被称呼的人通常不是说话人。
+9. 连续问答、交易寒暄、命令/回答等场景要按上下句轮次判断；同一人连续说话必须有叙述或语气证据支持。
+10. 如果当前上下文显示某角色还没有登场，不要因为角色库或后文记忆里有这个角色就提前标给他/她。
+
+11. target_dialogues 中 dialogue_kind=inline 的项目是正文内嵌引号，不要当作独立对白；标为 review，needs_review=true。
+12. candidate_mysteries 只是可选候选；如果候选名称和当前段落地点/人物不一致，必须改用 npc 或 review。
+13. 如果只有轮次推断、没有叙述锚点或自我介绍，请降低 confidence，并在 evidence 里说明轮次依据。
+
+输出 JSON 结构：
+{
+  "annotations": [
+    {
+      "dialogue_id": "必须来自 target_dialogue_ids",
+      "speaker_entity_id": "string",
+      "speaker_display": "string",
+      "speaker_status": "known|mystery|npc|ambiguous|review",
+      "confidence": 0.0,
+      "candidate_speakers": [
+        {"entity_id": "string", "display": "string", "status": "known|mystery|npc|ambiguous|review", "score": 0.0}
+      ],
+      "evidence": ["短证据，不要大段复制原文"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "可选，简短说明整体轮次判断"
+}
+必须为 target_dialogue_ids 中每个 dialogue_id 输出且只输出一条 annotation。
+
+输入 JSON：
+{
+  "volume": {
+    "volume_id": "volume_01",
+    "volume": 1
+  },
+  "target_dialogue_ids": [
+    "volume_01-d000863",
+    "volume_01-d000864",
+    "volume_01-d000865",
+    "volume_01-d000866",
+    "volume_01-d000867",
+    "volume_01-d000868",
+    "volume_01-d000869",
+    "volume_01-d000870"
+  ],
+  "dialogues": [
+    {
+      "dialogue_id": "volume_01-d000863",
+      "dialogue_index": 862,
+      "window_position": 1,
+      "chapter_id": "volume_01-c005",
+      "chapter_title": "第四幕",
+      "scene_id": "volume_01-c005-s004",
+      "paragraph_id": "volume_01-c005-s004-p001856",
+      "paragraph_index": 1855,
+      "local_dialogue_index": 1,
+      "text": "除了赚钱还有啥？",
+      "quote_text": "「除了赚钱还有啥？」",
+      "paragraph_text": "「除了赚钱还有啥？」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 10
+    },
+    {
+      "dialogue_id": "volume_01-d000864",
+      "dialogue_index": 863,
+      "window_position": 2,
+      "chapter_id": "volume_01-c005",
+      "chapter_title": "第四幕",
+      "scene_id": "volume_01-c005-s004",
+      "paragraph_id": "volume_01-c005-s004-p001857",
+      "paragraph_index": 1856,
+      "local_dialogue_index": 1,
+      "text": "大部分的旅行商人在行商时，都会游走二十到三十个城镇。这是因为旅行商人就算留在一个城镇里，赚的钱也不会变多。因此，几乎一整年的时间都得坐在马车上。",
+      "quote_text": "「大部分的旅行商人在行商时，都会游走二十到三十个城镇。这是因为旅行商人就算留在一个城镇里，赚的钱也不会变多。因此，几乎一整年的时间都得坐在马车上。」",
+      "paragraph_text": "「大部分的旅行商人在行商时，都会游走二十到三十个城镇。这是因为旅行商人就算留在一个城镇里，赚的钱也不会变多。因此，几乎一整年的时间都得坐在马车上。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 74
+    },
+    {
+      "dialogue_id": "volume_01-d000865",
+      "dialogue_index": 864,
+      "window_position": 3,
+      "chapter_id": "volume_01-c005",
+      "chapter_title": "第四幕",
+      "scene_id": "volume_01-c005-s004",
+      "paragraph_id": "volume_01-c005-s004-p001859",
+      "paragraph_index": 1858,
+      "local_dialogue_index": 1,
+      "text": "这样的生活根本没法交到什么朋友，顶多认识交易的对象。",
+      "quote_text": "「这样的生活根本没法交到什么朋友，顶多认识交易的对象。」",
+      "paragraph_text": "「这样的生活根本没法交到什么朋友，顶多认识交易的对象。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 28
+    },
+    {
+      "dialogue_id": "volume_01-d000866",
+      "dialogue_index": 865,
+      "window_position": 4,
+      "chapter_id": "volume_01-c005",
+      "chapter_title": "第四幕",
+      "scene_id": "volume_01-c005-s004",
+      "paragraph_id": "volume_01-c005-s004-p001862",
+      "paragraph_index": 1861,
+      "local_dialogue_index": 1,
+      "text": "只要开了店，我就是城里的一分子。这样就交得到朋友，要找老婆也比较容易。还有，最重要的是先找好墓地，就能够比较安心。至于能不能找到愿意和我一起进坟墓的老婆……就得靠运气了。",
+      "quote_text": "「只要开了店，我就是城里的一分子。这样就交得到朋友，要找老婆也比较容易。还有，最重要的是先找好墓地，就能够比较安心。至于能不能找到愿意和我一起进坟墓的老婆……就得靠运气了。」",
+      "paragraph_text": "「只要开了店，我就是城里的一分子。这样就交得到朋友，要找老婆也比较容易。还有，最重要的是先找好墓地，就能够比较安心。至于能不能找到愿意和我一起进坟墓的老婆……就得靠运气了。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 87
+    },
+    {
+      "dialogue_id": "volume_01-d000867",
+      "dialogue_index": 866,
+      "window_position": 5,
+      "chapter_id": "volume_01-c005",
+      "chapter_title": "第四幕",
+      "scene_id": "volume_01-c005-s004",
+      "paragraph_id": "volume_01-c005-s004-p001864",
+      "paragraph_index": 1863,
+      "local_dialogue_index": 1,
+      "text": "找老婆",
+      "quote_text": "「找老婆」",
+      "paragraph_text": "旅行商人会把前往新城镇挖掘值钱的商品说成「找老婆」，这句话也包含了不容易找到好东西的意思。",
+      "dialogue_kind": "inline",
+      "outside_quote_text": "旅行商人会把前往新城镇挖掘值钱的商品说成，这句话也包含了不容易找到好东西的意思。",
+      "char_start": 20,
+      "char_end": 25
+    },
+    {
+      "dialogue_id": "volume_01-d000868",
+      "dialogue_index": 867,
+      "window_position": 6,
+      "chapter_id": "volume_01-c005",
+      "chapter_title": "第四幕",
+      "scene_id": "volume_01-c005-s004",
+      "paragraph_id": "volume_01-c005-s004-p001867",
+      "paragraph_index": 1866,
+      "local_dialogue_index": 1,
+      "text": "不过，汝如果真能拥有自己的店，对咱来说有些困扰。",
+      "quote_text": "「不过，汝如果真能拥有自己的店，对咱来说有些困扰。」",
+      "paragraph_text": "「不过，汝如果真能拥有自己的店，对咱来说有些困扰。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 26
+    },
+    {
+      "dialogue_id": "volume_01-d000869",
+      "dialogue_index": 868,
+      "window_position": 7,
+      "chapter_id": "volume_01-c005",
+      "chapter_title": "第四幕",
+      "scene_id": "volume_01-c005-s004",
+      "paragraph_id": "volume_01-c005-s004-p001868",
+      "paragraph_index": 1867,
+      "local_dialogue_index": 1,
+      "text": "嗯？为什么？",
+      "quote_text": "「嗯？为什么？」",
+      "paragraph_text": "「嗯？为什么？」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 8
+    },
+    {
+      "dialogue_id": "volume_01-d000870",
+      "dialogue_index": 869,
+      "window_position": 8,
+      "chapter_id": "volume_01-c005",
+      "chapter_title": "第四幕",
+      "scene_id": "volume_01-c005-s004",
+      "paragraph_id": "volume_01-c005-s004-p001870",
+      "paragraph_index": 1869,
+      "local_dialogue_index": 1,
+      "text": "汝如果开了自己的店，就不会离开那间店了呗。这样咱不是得自己一个人旅行，就是得找到新的同伴。",
+      "quote_text": "「汝如果开了自己的店，就不会离开那间店了呗。这样咱不是得自己一个人旅行，就是得找到新的同伴。」",
+      "paragraph_text": "「汝如果开了自己的店，就不会离开那间店了呗。这样咱不是得自己一个人旅行，就是得找到新的同伴。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 47
+    }
+  ],
+  "context": {
+    "paragraphs": [
+      {
+        "paragraph_id": "volume_01-c005-s004-p001853",
+        "paragraph_index": 1852,
+        "text": "「话说回来，拥有商店就真的好吗？行商不是也挺赚钱的？」",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c005-s004-p001854",
+        "paragraph_index": 1853,
+        "text": "「只是能赚钱而已。」",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c005-s004-p001855",
+        "paragraph_index": 1854,
+        "text": "赫萝微微歪头。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c005-s004-p001856",
+        "paragraph_index": 1855,
+        "text": "「除了赚钱还有啥？」",
+        "target_dialogue_ids": [
+          "volume_01-d000863"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c005-s004-p001857",
+        "paragraph_index": 1856,
+        "text": "「大部分的旅行商人在行商时，都会游走二十到三十个城镇。这是因为旅行商人就算留在一个城镇里，赚的钱也不会变多。因此，几乎一整年的时间都得坐在马车上。」",
+        "target_dialogue_ids": [
+          "volume_01-d000864"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c005-s004-p001858",
+        "paragraph_index": 1857,
+        "text": "罗伦斯伸手拿起书桌上的杯子，把剩下的一些葡萄酒喝光。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c005-s004-p001859",
+        "paragraph_index": 1858,
+        "text": "「这样的生活根本没法交到什么朋友，顶多认识交易的对象。」",
+        "target_dialogue_ids": [
+          "volume_01-d000865"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c005-s004-p001860",
+        "paragraph_index": 1859,
+        "text": "听了罗伦斯的说明，赫萝像是突然察觉到什么，随即又像自知问了不该问的问题似地，露出尴尬的表情。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c005-s004-p001861",
+        "paragraph_index": 1860,
+        "text": "赫萝果然是个本性善良的家伙。罗伦斯为了让赫萝不那么在意，所以故意用开玩笑的口吻继续说道：",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c005-s004-p001862",
+        "paragraph_index": 1861,
+        "text": "「只要开了店，我就是城里的一分子。这样就交得到朋友，要找老婆也比较容易。还有，最重要的是先找好墓地，就能够比较安心。至于能不能找到愿意和我一起进坟墓的老婆……就得靠运气了。」",
+        "target_dialogue_ids": [
+          "volume_01-d000866"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c005-s004-p001863",
+        "paragraph_index": 1862,
+        "text": "赫萝轻声笑了出来。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c005-s004-p001864",
+        "paragraph_index": 1863,
+        "text": "旅行商人会把前往新城镇挖掘值钱的商品说成「找老婆」，这句话也包含了不容易找到好东西的意思。",
+        "target_dialogue_ids": [
+          "volume_01-d000867"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c005-s004-p001865",
+        "paragraph_index": 1864,
+        "text": "事实上，就算在城镇里开店，也不可能一下子就与城镇的居民熟络起来。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c005-s004-p001866",
+        "paragraph_index": 1865,
+        "text": "尽管如此，能够长久居住在一块土地上，仍是旅行商人的梦想。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c005-s004-p001867",
+        "paragraph_index": 1866,
+        "text": "「不过，汝如果真能拥有自己的店，对咱来说有些困扰。」",
+        "target_dialogue_ids": [
+          "volume_01-d000868"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c005-s004-p001868",
+        "paragraph_index": 1867,
+        "text": "「嗯？为什么？」",
+        "target_dialogue_ids": [
+          "volume_01-d000869"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c005-s004-p001869",
+        "paragraph_index": 1868,
+        "text": "罗伦斯回过头来说，他看见赫萝脸上的笑容虽然还没完全消失，但神色却显得有些黯然。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c005-s004-p001870",
+        "paragraph_index": 1869,
+        "text": "「汝如果开了自己的店，就不会离开那间店了呗。这样咱不是得自己一个人旅行，就是得找到新的同伴。」",
+        "target_dialogue_ids": [
+          "volume_01-d000870"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c005-s004-p001871",
+        "paragraph_index": 1870,
+        "text": "罗伦斯想起赫萝说过想要先到处看看这个世界，再回到北方。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c005-s004-p001872",
+        "paragraph_index": 1871,
+        "text": "不过，赫萝这么聪明，手上还有卖貂皮时赚到的钱，她一个人应该也不会有问题。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c005-s004-p001873",
+        "paragraph_index": 1872,
+        "text": "「你一个人旅行也没问题吧？」",
+        "target_dialogue_ids": []
+      }
+    ]
+  },
+  "scene_memory": [
+    {
+      "scene_id": "volume_01-c005-s004-r002",
+      "parent_scene_id": "volume_01-c005-s004",
+      "chunk_index": 2,
+      "chunk_count": 6,
+      "scene_summary": "罗伦斯与赫萝在旅馆中讨论开店与行商的利弊。赫萝表现出对罗伦斯开店计划的支持，同时提出一些轻松幽默的调侃。罗伦斯则认真分析行商的孤独与开店的社交优势。",
+      "active_characters": [
+        "罗伦斯",
+        "赫萝"
+      ],
+      "relationships": [
+        "罗伦斯与赫萝关系亲密，赫萝表现出对罗伦斯开店计划的支持和调侃。",
+        "赫萝称呼罗伦斯为‘汝’，显示亲密但略带戏谑的语气。"
+      ],
+      "notes": "本场景中，罗伦斯与赫萝的互动表现出他们之间亲密但略带调侃的关系。赫萝的轻松幽默与罗伦斯的理性形成对比，但两者在讨论开店计划时保持了良好的互动。"
+    },
+    {
+      "scene_id": "volume_01-c005-s004-r003",
+      "parent_scene_id": "volume_01-c005-s004",
+      "chunk_index": 3,
+      "chunk_count": 6,
+      "scene_summary": "罗伦斯与赫萝讨论开店的未来，赫萝表现出对独自旅行的不安，流露出对罗伦斯陪伴的依赖。",
+      "active_characters": [
+        "罗伦斯",
+        "赫萝"
+      ],
+      "relationships": [
+        "罗伦斯与赫萝之间存在亲密但复杂的依赖关系",
+        "赫萝对独自旅行感到不安，暗示她对罗伦斯的依赖"
+      ],
+      "notes": "赫萝在本场景中表现出孩子气和脆弱的一面，暗示她对罗伦斯的依赖远超表面的调侃。罗伦斯虽然理性，但对赫萝的情绪变化也表现出关心。"
+    }
+  ],
+  "candidate_characters": [
+    {
+      "entity_id": "char_0001",
+      "display_name": "罗伦斯",
+      "aliases": [
+        "罗伦斯",
+        "罗伦斯先生"
+      ],
+      "titles": [
+        "中间人",
+        "交易者",
+        "同行",
+        "商人",
+        "小毛头",
+        "小的",
+        "市井无赖",
+        "年轻人"
+      ],
+      "description": "一位行商人，正在与米隆商行的代表马贺特进行交易谈判。他原本期待获得两千枚银币，但实际只得到一百二十枚，感到震惊和困惑。 / 一位行商人，发现并收留了赫萝，决定与她一同旅行。 / 一位二十五岁的自力更生旅行商人，已有七年行商经验，性格泰然自若。 / 一位冷静理性的旅行商人，对赫萝的身份持怀疑态度，但仍保持互动。他注重外表整洁，对商业制度有深入理解。 / 冷静理性的旅行商人，与赫萝一同旅行。在本场景中与米隆商行的马贺特讨论梅迪欧商行的威胁，提出利用崔尼银币交易作为交涉王牌。 / 一位冷静理性的旅行商人，与赫萝一同旅行…",
+      "speech_style": "理性、坚定、略带情绪化 / 冷静、理性，带有悔恨和自责的语气。 / 冷静、理性，语气中带有对赫萝的关心和些许担忧。 / 冷静、理性、略带失落 / 冷静、理性，对商业制度有深入理解，并能清晰地向他人解释。 / 理性、礼貌、略带谨慎。 / 理性、冷静，带有商业分析倾向。 / 理性、沉稳、略带幽默 / 理性、冷静，但因困惑…",
+      "relationship_hints": [
+        "与赫萝一同旅行",
+        "对赫萝的真实性持怀疑态度",
+        "与深山村落的村民有交易关系",
+        "对修道院抱有商业期望但未成功",
+        "与骑士有短暂互动",
+        "与小村落的村民有交易关系",
+        "与修道院有关联",
+        "对教会和异教徒问题有见解"
+      ],
+      "first_seen_scene_id": "volume_01-c000-s003-r001",
+      "latest_seen_scene_id": "volume_01-c008-s003-r002",
+      "confidence": 1.0
+    },
+    {
+      "entity_id": "char_0002",
+      "display_name": "赫萝",
+      "aliases": [
+        "赫萝"
+      ],
+      "titles": [
+        "丰收之神",
+        "咱",
+        "神秘少女",
+        "约伊兹的贤狼",
+        "贤狼"
+      ],
+      "description": "自称丰收之神的神秘少女，拥有狼的耳朵和尾巴。在本场景中协助罗伦斯，表现出对他的关心和保护。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴，行为举止非人类，表现出轻松幽默但略带威胁性的说话风格。在本场景中，她对罗伦斯的伤口进行吸血，引发旁人惊呼，并表现出悲伤的情绪。 / 自称是丰收之神的神秘少女，拥有狼的耳朵和尾巴。在本场景中逐渐显露出非人类的特征，最终完全变成一只巨大的狼。她与罗伦斯有情感交流，表现出悲伤和决绝的情绪。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴，未直接参与本场景，但罗伦斯的行动可能与她有关…",
+      "speech_style": "轻松幽默但略带威胁性，情绪化且带有调侃语气。 / 轻松幽默、略带调侃和威胁 / 轻松幽默、略带威胁性 / 轻松幽默、略带威胁性、撒娇 / 警觉、神秘 / 轻松幽默但略带威胁性 / 轻松幽默、略带调侃 / 轻松幽默但略带威胁性，语气中透露出对罗伦斯的依赖。 / 轻松幽默、略带威胁性、自信 / 轻松幽默但略带威胁性，情绪…",
+      "relationship_hints": [
+        "与罗伦斯一同旅行",
+        "被罗伦斯怀疑是否为真正的神",
+        "与叶勒有附身关系",
+        "与罗伦斯有潜在互动",
+        "与罗伦斯有互动，似乎是被他发现并收留的。",
+        "与罗伦斯有互动，但尚未明确关系",
+        "与罗伦斯互动频繁，表现出对他的信任和玩笑态度",
+        "与罗伦斯互动密切"
+      ],
+      "first_seen_scene_id": "volume_01-c000-s003-r001",
+      "latest_seen_scene_id": "volume_01-c008-s003-r002",
+      "confidence": 1.0
+    }
+  ],
+  "candidate_mysteries": []
+}

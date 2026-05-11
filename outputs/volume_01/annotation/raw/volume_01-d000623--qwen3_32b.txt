@@ -1,0 +1,32 @@
+```json
+{
+  "dialogue_id": "volume_01-d000623",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "前一段提到「货币如果有大幅波动时，一定会有征兆」，赫萝回应「就像暴风雨前的宁静？」，随后罗伦斯微笑着说：",
+    "当前段落是罗伦斯对赫萝的比喻进行回应，语气理性且专业，符合罗伦斯的说话风格。",
+    "后一段提到「看到赫萝似乎没搞懂的样子，罗伦斯清清喉咙，开始解说」，说明当前说话人是罗伦斯。",
+    "场景记忆中，罗伦斯正在向赫萝解释货币运作机制，含银量变化如何影响价值，当前台词符合这一背景。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

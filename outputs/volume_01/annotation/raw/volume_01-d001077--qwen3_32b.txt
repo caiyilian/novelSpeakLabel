@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d001077",
+  "speaker_entity_id": "mystery_volume_01_c006_s003_r002_神秘人物A",
+  "speaker_display": "神秘人物A",
+  "speaker_status": "mystery",
+  "confidence": 0.6,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.4
+    },
+    {
+      "entity_id": "mystery_volume_01_c006_s003_r002_神秘人物A",
+      "display": "神秘人物A",
+      "status": "mystery",
+      "score": 0.6
+    }
+  ],
+  "evidence": [
+    "说话声从正上方传来，随后听到拆开地板的破裂声。",
+    "门盖打开的那一刻，回答「皮里昂」的声音，随光线传到罗伦斯耳中。",
+    "赫萝的对话发生在稍后段落，未出现在此句中。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": true
+}
+```

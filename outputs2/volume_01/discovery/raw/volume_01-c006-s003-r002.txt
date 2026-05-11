@@ -1,0 +1,56 @@
+```json
+{
+  "scene_id": "volume_01-c006-s003",
+  "scene_summary": "罗伦斯与赫萝在米隆商行的协助下，通过地下道成功逃脱，并乘坐马车离开。赫萝对罗伦斯表现出强烈的不满，但最终情绪逐渐缓和。",
+  "active_characters": ["罗伦斯", "赫萝", "商行的人"],
+  "character_candidates": [
+    {
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": ["商人", "旅行商人", "行商人"],
+      "description": "理性、谨慎的商人，正在与米隆商行人员合作营救赫萝。他熟悉地下通道的布局，并表现出对计划的冷静分析。",
+      "speech_style": "理性、低沉、略带策略性",
+      "speech_markers": ["……", "是啊"],
+      "relationship_hints": ["与赫萝有亲密关系", "与米隆商行有合作关系"],
+      "evidence": ["volume_01-c006-s003-p002371", "volume_01-c006-s003-p002373", "volume_01-c006-s003-p002382", "volume_01-c006-s003-p002390"],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "赫萝",
+      "aliases": [],
+      "titles": ["贤狼", "狼", "丰收之神"],
+      "description": "神秘少女，拥有狼的特征。在本场景中表现出脆弱和依赖，对独自旅行感到不安。她与罗伦斯之间有强烈的情感联系。",
+      "speech_style": "脆弱、情绪化、略带孩子气",
+      "speech_markers": ["咱", "汝把咱的名字说出来看看！"],
+      "relationship_hints": ["与罗伦斯有亲密关系", "对罗伦斯有强烈不满"],
+      "evidence": ["volume_01-c006-s003-p002375", "volume_01-c006-s003-p002385", "volume_01-c006-s003-p002391", "volume_01-c006-s003-p002394"],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "商行的人",
+      "aliases": [],
+      "titles": ["商行人员", "米隆商行员工"],
+      "description": "协助罗伦斯与赫萝的米隆商行人员，表现出高度的效率和专业性。他负责安排马车、协助撤离，并与罗伦斯进行战术沟通。",
+      "speech_style": "理性、冷静",
+      "speech_markers": ["那么，祝您们成功"],
+      "relationship_hints": ["与罗伦斯有合作关系", "与赫萝有互动"],
+      "evidence": ["volume_01-c006-s003-p002375", "volume_01-c006-s003-p002377", "volume_01-c006-s003-p002380"],
+      "confidence": 0.85
+    }
+  ],
+  "mystery_entities": [
+    {
+      "temporary_name": "梅迪欧商行人员",
+      "description": "未直接出现，但被提及为潜在威胁。可能是梅迪欧商行的人员，与罗伦斯和赫萝存在对立关系。",
+      "evidence": ["volume_01-c006-s003-p002379"],
+      "confidence": 0.7
+    }
+  ],
+  "relationships": [
+    "罗伦斯与赫萝之间有亲密关系，但赫萝对罗伦斯表现出强烈不满。",
+    "罗伦斯与商行的人有合作关系，商行的人协助罗伦斯与赫萝撤离。",
+    "赫萝与商行的人有互动，但未表现出明显情感联系。"
+  ],
+  "notes": "赫萝的不满情绪是本场景的重点，罗伦斯的理性与赫萝的情绪形成对比。商行的人表现出高度效率，推动剧情发展。"
+}
+```

@@ -1,0 +1,30 @@
+{
+  "dialogue_id": "volume_01-d001021",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.98
+    },
+    {
+      "entity_id": "char_0020",
+      "display": "列支敦·马贺特",
+      "status": "known",
+      "score": 0.02
+    }
+  ],
+  "evidence": [
+    "对话内容与罗伦斯在场景中提出的崔尼银币交易策略一致。",
+    "上下文显示罗伦斯正在与马贺特讨论如何利用特权进行交易，而此句是罗伦斯对放弃特权的明确反对。",
+    "罗伦斯是当前场景中主要的发言者，且与特权和交易相关。",
+    "马贺特在前文提到特权的重要性，罗伦斯在此回应其观点。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

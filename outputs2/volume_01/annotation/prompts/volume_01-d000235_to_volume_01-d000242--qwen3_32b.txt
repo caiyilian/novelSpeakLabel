@@ -1,0 +1,567 @@
+你是轻小说说话人标注项目的阶段 2：正式标注助手。
+你的任务是判断输入 target_dialogues 中每一句台词的说话人，不要改写原文。
+必须把这些台词当作同一个连续片段来判断，优先保持对话轮次和叙述线索的一致性。
+
+规则：
+1. 只输出严格 JSON，不要 Markdown，不要解释性前后缀。
+2. 如果说话人是候选角色，speaker_entity_id 必须使用 candidate_characters 里的 entity_id，speaker_status 填 known。
+3. 如果说话人像某个未知人物，speaker_entity_id 使用 candidate_mysteries 里的 mystery_id，speaker_status 填 mystery。
+4. 如果只是无法追踪的路人/群体，speaker_status 填 npc，speaker_entity_id 可为空或使用 npc:简短称呼。
+5. 证据不足时不要硬猜，speaker_status 填 ambiguous 或 review，并把 needs_review 设为 true。
+6. candidate_speakers 至少列出 1 个候选；如果无法判断，列出最可能的候选和不确定原因。
+7. confidence 使用 0 到 1 之间的小数，表示你对最终判断的把握。
+8. 不要只因为台词里提到某个名字、职业、地点，就把说话人标成那个实体；被称呼的人通常不是说话人。
+9. 连续问答、交易寒暄、命令/回答等场景要按上下句轮次判断；同一人连续说话必须有叙述或语气证据支持。
+10. 如果当前上下文显示某角色还没有登场，不要因为角色库或后文记忆里有这个角色就提前标给他/她。
+
+11. target_dialogues 中 dialogue_kind=inline 的项目是正文内嵌引号，不要当作独立对白；标为 review，needs_review=true。
+12. candidate_mysteries 只是可选候选；如果候选名称和当前段落地点/人物不一致，必须改用 npc 或 review。
+13. 如果只有轮次推断、没有叙述锚点或自我介绍，请降低 confidence，并在 evidence 里说明轮次依据。
+
+14. candidate_characters.speech_markers 是阶段 1 提取的高区分度口癖/自称/固定短语；命中时可作为证据，但如果多个角色共享或上下文反证明显，必须进入复核。
+
+输出 JSON 结构：
+{
+  "annotations": [
+    {
+      "dialogue_id": "必须来自 target_dialogue_ids",
+      "speaker_entity_id": "string",
+      "speaker_display": "string",
+      "speaker_status": "known|mystery|npc|ambiguous|review",
+      "confidence": 0.0,
+      "candidate_speakers": [
+        {"entity_id": "string", "display": "string", "status": "known|mystery|npc|ambiguous|review", "score": 0.0}
+      ],
+      "evidence": ["短证据，不要大段复制原文"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "可选，简短说明整体轮次判断"
+}
+必须为 target_dialogue_ids 中每个 dialogue_id 输出且只输出一条 annotation。
+
+输入 JSON：
+{
+  "volume": {
+    "volume_id": "volume_01",
+    "volume": 1
+  },
+  "target_dialogue_ids": [
+    "volume_01-d000235",
+    "volume_01-d000236",
+    "volume_01-d000237",
+    "volume_01-d000238",
+    "volume_01-d000239",
+    "volume_01-d000240",
+    "volume_01-d000241",
+    "volume_01-d000242"
+  ],
+  "dialogues": [
+    {
+      "dialogue_id": "volume_01-d000235",
+      "dialogue_index": 234,
+      "window_position": 1,
+      "chapter_id": "volume_01-c003",
+      "chapter_title": "第二幕",
+      "scene_id": "volume_01-c003-s002",
+      "paragraph_id": "volume_01-c003-s002-p000670",
+      "paragraph_index": 669,
+      "local_dialogue_index": 1,
+      "text": "这种交易体制称为汇兑，这是商人们为了方便和不同地方的人做生意才发明出来的体制。如果您是拥有葡萄园的领主，只要小心不要被葡萄酒商恶意贬低葡萄的品质，然后便宜收购就可以了。",
+      "quote_text": "「这种交易体制称为汇兑，这是商人们为了方便和不同地方的人做生意才发明出来的体制。如果您是拥有葡萄园的领主，只要小心不要被葡萄酒商恶意贬低葡萄的品质，然后便宜收购就可以了。」",
+      "paragraph_text": "「这种交易体制称为汇兑，这是商人们为了方便和不同地方的人做生意才发明出来的体制。如果您是拥有葡萄园的领主，只要小心不要被葡萄酒商恶意贬低葡萄的品质，然后便宜收购就可以了。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 86
+    },
+    {
+      "dialogue_id": "volume_01-d000236",
+      "dialogue_index": 235,
+      "window_position": 2,
+      "chapter_id": "volume_01-c003",
+      "chapter_title": "第二幕",
+      "scene_id": "volume_01-c003-s002",
+      "paragraph_id": "volume_01-c003-s002-p000671",
+      "paragraph_index": 670,
+      "local_dialogue_index": 1,
+      "text": "嗯，我们每年都会为了这档事与酒商争论。",
+      "quote_text": "「嗯，我们每年都会为了这档事与酒商争论。」",
+      "paragraph_text": "「嗯，我们每年都会为了这档事与酒商争论。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 21
+    },
+    {
+      "dialogue_id": "volume_01-d000237",
+      "dialogue_index": 236,
+      "window_position": 3,
+      "chapter_id": "volume_01-c003",
+      "chapter_title": "第二幕",
+      "scene_id": "volume_01-c003-s002",
+      "paragraph_id": "volume_01-c003-s002-p000673",
+      "paragraph_index": 672,
+      "local_dialogue_index": 1,
+      "text": "你说你是罗伦斯先生吧！下次有机会来到佩连佐时，欢迎你来寒舍拜访。",
+      "quote_text": "「你说你是罗伦斯先生吧！下次有机会来到佩连佐时，欢迎你来寒舍拜访。」",
+      "paragraph_text": "「你说你是罗伦斯先生吧！下次有机会来到佩连佐时，欢迎你来寒舍拜访。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 34
+    },
+    {
+      "dialogue_id": "volume_01-d000238",
+      "dialogue_index": 237,
+      "window_position": 4,
+      "chapter_id": "volume_01-c003",
+      "chapter_title": "第二幕",
+      "scene_id": "volume_01-c003-s002",
+      "paragraph_id": "volume_01-c003-s002-p000674",
+      "paragraph_index": 673,
+      "local_dialogue_index": 1,
+      "text": "好的，谢谢您。",
+      "quote_text": "「好的，谢谢您。」",
+      "paragraph_text": "「好的，谢谢您。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 9
+    },
+    {
+      "dialogue_id": "volume_01-d000239",
+      "dialogue_index": 238,
+      "window_position": 5,
+      "chapter_id": "volume_01-c003",
+      "chapter_title": "第二幕",
+      "scene_id": "volume_01-c003-s002",
+      "paragraph_id": "volume_01-c003-s002-p000677",
+      "paragraph_index": 676,
+      "local_dialogue_index": 1,
+      "text": "那么，因为妻子有些累了，我们先失陪了。",
+      "quote_text": "「那么，因为妻子有些累了，我们先失陪了。」",
+      "paragraph_text": "「那么，因为妻子有些累了，我们先失陪了。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 21
+    },
+    {
+      "dialogue_id": "volume_01-d000240",
+      "dialogue_index": 239,
+      "window_position": 6,
+      "chapter_id": "volume_01-c003",
+      "chapter_title": "第二幕",
+      "scene_id": "volume_01-c003-s002",
+      "paragraph_id": "volume_01-c003-s002-p000678",
+      "paragraph_index": 677,
+      "local_dialogue_index": 1,
+      "text": "希望神能指引我们再次相逢。",
+      "quote_text": "「希望神能指引我们再次相逢。」",
+      "paragraph_text": "「希望神能指引我们再次相逢。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 15
+    },
+    {
+      "dialogue_id": "volume_01-d000241",
+      "dialogue_index": 240,
+      "window_position": 7,
+      "chapter_id": "volume_01-c003",
+      "chapter_title": "第二幕",
+      "scene_id": "volume_01-c003-s002",
+      "paragraph_id": "volume_01-c003-s002-p000681",
+      "paragraph_index": 680,
+      "local_dialogue_index": 1,
+      "text": "嘿嘿，我说老板，您真是了不起的人物！",
+      "quote_text": "「嘿嘿，我说老板，您真是了不起的人物！」",
+      "paragraph_text": "「嘿嘿，我说老板，您真是了不起的人物！」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 20
+    },
+    {
+      "dialogue_id": "volume_01-d000242",
+      "dialogue_index": 241,
+      "window_position": 8,
+      "chapter_id": "volume_01-c003",
+      "chapter_title": "第二幕",
+      "scene_id": "volume_01-c003-s002",
+      "paragraph_id": "volume_01-c003-s002-p000683",
+      "paragraph_index": 682,
+      "local_dialogue_index": 1,
+      "text": "我不过是个随处可见的旅行商人罢了。",
+      "quote_text": "「我不过是个随处可见的旅行商人罢了。」",
+      "paragraph_text": "「我不过是个随处可见的旅行商人罢了。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 19
+    }
+  ],
+  "context": {
+    "paragraphs": [
+      {
+        "paragraph_id": "volume_01-c003-s001-p000667",
+        "paragraph_index": 666,
+        "text": "「这……真是非常奇妙啊。」",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c003-s001-p000668",
+        "paragraph_index": 667,
+        "text": "男子说完频频点头。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c003-s001-p000669",
+        "paragraph_index": 668,
+        "text": "「我住在一个叫做佩连佐的城镇，我的葡萄园从没采用过这么奇妙的方法来买卖葡萄，不知道这样会不会有问题啊？」",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c003-s002-p000670",
+        "paragraph_index": 669,
+        "text": "「这种交易体制称为汇兑，这是商人们为了方便和不同地方的人做生意才发明出来的体制。如果您是拥有葡萄园的领主，只要小心不要被葡萄酒商恶意贬低葡萄的品质，然后便宜收购就可以了。」",
+        "target_dialogue_ids": [
+          "volume_01-d000235"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c003-s002-p000671",
+        "paragraph_index": 670,
+        "text": "「嗯，我们每年都会为了这档事与酒商争论。」",
+        "target_dialogue_ids": [
+          "volume_01-d000236"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c003-s002-p000672",
+        "paragraph_index": 671,
+        "text": "虽然男子笑着这么说，但事实上，想必这位领主请来的会计人员会面红耳赤地，与老奸巨猾的葡萄酒商争论吧。拥有葡萄园的人多半是贵族出身，但几乎没有一个贵族会亲自耕作或交涉金钱。所以说，统治帕斯罗村与那附近一带的亚伦多伯爵是个极其古怪的人。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c003-s002-p000673",
+        "paragraph_index": 672,
+        "text": "「你说你是罗伦斯先生吧！下次有机会来到佩连佐时，欢迎你来寒舍拜访。」",
+        "target_dialogue_ids": [
+          "volume_01-d000237"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c003-s002-p000674",
+        "paragraph_index": 673,
+        "text": "「好的，谢谢您。」",
+        "target_dialogue_ids": [
+          "volume_01-d000238"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c003-s002-p000675",
+        "paragraph_index": 674,
+        "text": "男子没有提及自己的姓名，这是贵族特有的习惯。他们以为即使自己没有道出姓名，对方也应该认识自己，所以他们认为由自己说出姓名的行为有失格调。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c003-s002-p000676",
+        "paragraph_index": 675,
+        "text": "相信到了佩连佐，只要提到葡萄园的领主，就非这名男子莫属了吧。如果在佩连佐的城里，罗伦斯等人或许根本无法与这名男子交谈，所以教会是最适合建立这种人脉的场所。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c003-s002-p000677",
+        "paragraph_index": 676,
+        "text": "「那么，因为妻子有些累了，我们先失陪了。」",
+        "target_dialogue_ids": [
+          "volume_01-d000239"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c003-s002-p000678",
+        "paragraph_index": 677,
+        "text": "「希望神能指引我们再次相逢。」",
+        "target_dialogue_ids": [
+          "volume_01-d000240"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c003-s002-p000679",
+        "paragraph_index": 678,
+        "text": "这是在教会里，人人会讲的一句话。男子从椅子上站起身子，和妻子一同轻轻点头告辞后，走出大厅。罗伦斯从先前男子邀他拿来一同坐着的椅子上站起来，把夫妻两人刚刚坐着的两张椅子放回大厅角落。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c003-s002-p000680",
+        "paragraph_index": 679,
+        "text": "在大厅里，只有贵族、有钱人和骑士有资格坐在椅子上，而这三种都是会惹人嫌弃的身分。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c003-s002-p000681",
+        "paragraph_index": 680,
+        "text": "「嘿嘿，我说老板，您真是了不起的人物！」",
+        "target_dialogue_ids": [
+          "volume_01-d000241"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c003-s002-p000682",
+        "paragraph_index": 681,
+        "text": "当罗伦斯收拾好椅子，回到坐在大厅中央的赫萝身边时，一名男子挨近过来。从男子的装扮和举止看来，应该是个同行。男子被胡子遮盖的脸孔看来很年轻，似乎是刚入行没多久的商人。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c003-s002-p000683",
+        "paragraph_index": 682,
+        "text": "「我不过是个随处可见的旅行商人罢了。」",
+        "target_dialogue_ids": [
+          "volume_01-d000242"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c003-s002-p000684",
+        "paragraph_index": 683,
+        "text": "罗伦斯冷冷地回答，坐在罗伦斯另一边的赫萝稍稍把身子坐正。这时，赫萝套在头上的外套稍微动了一下。不过，应该只有罗伦斯发现那是赫萝在动耳朵。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c003-s002-p000685",
+        "paragraph_index": 684,
+        "text": "「您客气了。小的刚刚也一直想加入那对夫妻的对话，只是老找不到机会，但老板您却轻轻松松做到了。想到将来要和老板这样的对手竞争，就让人觉得意志消沉。」",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c003-s002-p000686",
+        "paragraph_index": 685,
+        "text": "男子露出笑容说，缺了一颗门牙让他的表情显得可爱。或许他是故意拔掉门牙，好让他那有点笨拙的笑容告诉大家自己还是个新手。如果是个商人，就一定知道自己的脸会带给对方什么样的印象。",
+        "target_dialogue_ids": []
+      }
+    ]
+  },
+  "scene_memory": [
+    {
+      "scene_id": "volume_01-c003-s002-r001",
+      "parent_scene_id": "volume_01-c003-s002",
+      "chunk_index": 1,
+      "chunk_count": 3,
+      "scene_summary": "罗伦斯在教会中与一位贵族男子及其妻子交谈，随后与同行的赫萝一起接待了一位名叫杰廉的年轻商人。贵族男子未透露姓名，但被暗示是佩连佐地区的葡萄园领主。杰廉对罗伦斯表示敬佩，并试图获取情报。",
+      "active_characters": [
+        "罗伦斯",
+        "赫萝",
+        "贵族男子",
+        "杰廉"
+      ],
+      "relationships": [
+        "罗伦斯与赫萝同行",
+        "罗伦斯与贵族男子交谈",
+        "罗伦斯与杰廉互动",
+        "贵族男子与妻子同行"
+      ],
+      "notes": "贵族男子未透露姓名，但被暗示是佩连佐地区的葡萄园领主。杰廉是新入行的商人，试图与罗伦斯建立联系。赫萝的身份在本场景中未进一步揭示。"
+    }
+  ],
+  "candidate_characters": [
+    {
+      "entity_id": "char_0001",
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": [
+        "商人",
+        "旅行商人",
+        "行商人"
+      ],
+      "description": "理性、谨慎的商人，试图分析局势并保持冷静。他与赫萝同行，面对叶勒的威胁时表现出坚定。 / 理性、坚定的商人，坚持遵守与赫萝的合约，拒绝背叛她。面对叶勒的威胁保持冷静，表现出对赫萝的忠诚。 / 理性、谨慎的商人，身受重伤但仍试图保持冷静并等待救援。他表现出对赫萝的依赖和信任。 / 罗伦斯目睹赫萝的变身过程，表现出震惊和无力。他试图抓住赫萝留下的皮袋，但最终面对巨大的狼形生物，感到无法应对。 / 理性、谨慎的商人，与赫萝在地下通道中遭遇叶勒的威胁。他试图安抚赫萝的情绪，并表现出对环境变化的敏感。 / 在赫萝的威压下感…",
+      "speech_style": "温和、理性、略带担忧 / 理性、略带策略性、温和 / 理性、担忧、略带冲动 / 虚弱、低沉、略带困惑 / 虚弱、低沉、焦虑 / 理性、坚定、略带焦虑 / 理性、焦虑、略带冲动 / 虚弱、低沉、焦虑 / 虚弱、焦虑、略带愤怒 / 愤怒、理性、略带冲动 / 虚弱、焦虑、略带悔恨 / 理性、冷静、略带焦虑",
+      "speech_markers": [
+        "……骑士？",
+        "有什么能为您效劳的吗？",
+        "算了……",
+        "糟糕",
+        "……",
+        "喂！",
+        "喂！起床啊！",
+        "喂！有什么好笑的？"
+      ],
+      "relationship_hints": [
+        "与赫萝一同旅行",
+        "对赫萝的身份持怀疑态度",
+        "与修道院有生意期望但未成功",
+        "与骑士初次互动",
+        "与赫萝有密切关系",
+        "与教会和骑士有互动",
+        "与叶勒有交集，计划与他交谈但被祭典打断",
+        "与叶勒有过去的交易关系。"
+      ],
+      "first_seen_scene_id": "volume_01-c000-s003-r001",
+      "latest_seen_scene_id": "volume_01-c008-s003-r001",
+      "confidence": 1.0
+    },
+    {
+      "entity_id": "char_0002",
+      "display_name": "赫萝",
+      "aliases": [],
+      "titles": [
+        "丰收之神",
+        "狼",
+        "贤狼"
+      ],
+      "description": "神秘少女，拥有狼的特征。在本场景中协助罗伦斯击退袭击者，表现出冷静和对环境的高度感知能力。 / 在地下道中不断呼喊罗伦斯，试图唤醒他并指引方向。表现出担忧和责任感。 / 神秘少女，拥有狼的特征，情绪波动明显，对罗伦斯表现出依赖和担忧。 / 神秘少女，拥有狼的特征。在本场景中表现出脆弱和依赖，对独自旅行感到不安。她对叶勒的言语感到愤怒与悲伤。 / 情绪波动明显的贤狼，因叶勒的言语感到悲伤。她表现出对罗伦斯的依赖，并在关键时刻流露出脆弱。 / 情绪波动明显的贤狼，因叶勒的言语感到愤怒与悲伤。她吸食罗伦斯的血液以施展某…",
+      "speech_style": "未直接发言，但被频繁提及 / 冷静、自信、略带调侃 / 调皮、略带挑衅、情绪化 / 略带孩子气、情绪化、略带调侃 / 冷静、简短、略带策略性 / 关切、坚定、略带责备 / 情绪化、略带孩子气 / 冷静、略带情绪化 / 脆弱、情绪化、略带孩子气 / 冷静、自信、略带策略性 / 冷静、简短、略带威严 / 未直接发言",
+      "speech_markers": [
+        "咱",
+        "哈哈哈哈哈，咱是恶魔？",
+        "好名字呗？",
+        "咱没听过。",
+        "咱不要。",
+        "或是鲜血。",
+        "如何？愿意相信咱了呗？",
+        "汝要温柔一些呐。"
+      ],
+      "relationship_hints": [
+        "与罗伦斯一同旅行",
+        "捉弄罗伦斯",
+        "与罗伦斯展开对话",
+        "表现出对罗伦斯的调侃",
+        "与罗伦斯有初步互动，可能是他未来的旅伴",
+        "与罗伦斯进行对话，表现出信任与坦率",
+        "提到出生地时流露出真实情感",
+        "与罗伦斯有互动，被罗伦斯收留并一同旅行"
+      ],
+      "first_seen_scene_id": "volume_01-c000-s003-r001",
+      "latest_seen_scene_id": "volume_01-c008-s003-r001",
+      "confidence": 0.95
+    },
+    {
+      "entity_id": "char_0007",
+      "display_name": "贵族男子",
+      "aliases": [
+        "佩连佐领主",
+        "葡萄园领主"
+      ],
+      "titles": [
+        "葡萄园领主",
+        "贵族"
+      ],
+      "description": "未透露姓名的贵族男子，与妻子一同出现在教会中，与罗伦斯交谈，被暗示是佩连佐地区的葡萄园领主。",
+      "speech_style": "高傲、含蓄",
+      "speech_markers": [
+        "欢迎你来寒舍拜访。"
+      ],
+      "relationship_hints": [
+        "与妻子同行",
+        "与罗伦斯交谈"
+      ],
+      "first_seen_scene_id": "volume_01-c003-s002-r001",
+      "latest_seen_scene_id": "volume_01-c003-s002-r001",
+      "confidence": 0.85
+    },
+    {
+      "entity_id": "char_0008",
+      "display_name": "杰廉",
+      "aliases": [],
+      "titles": [
+        "旅行商人"
+      ],
+      "description": "杰廉是本场景中被提及的年轻商人，他向罗伦斯提出货币投机的机会。赫萝认为他在说谎，但罗伦斯并未完全否定他的说法。 / 年轻的旅行商人，试图与罗伦斯建立联系，表现出对罗伦斯的敬佩。在本场景中与罗伦斯达成初步协议。 / 被罗伦斯寻找的旅行商人，据称会在日落后出现。 / 年轻的旅行商人，与罗伦斯有商业联系，表现出热情和对罗伦斯的敬佩。 / 年轻的旅行商人，试图与罗伦斯达成银币含银量变动的情报交易。他表现出热情和一定的商业技巧，但罗伦斯对其真实性存疑。 / 年轻的旅行商人，与罗伦斯达成情报交易。在本场景中未直接发言，但被提…",
+      "speech_style": "热情、略带笨拙 / 未直接发言，但被提及为信息来源。 / 未直接发言，但被提及为信息来源 / 未直接发言",
+      "speech_markers": [
+        "嘿嘿……",
+        "小的想……",
+        "那么，小的就先走一步了。",
+        "庆祝我们的重逢！",
+        "皮草卖得如何？"
+      ],
+      "relationship_hints": [
+        "与罗伦斯互动",
+        "试图获取情报",
+        "试图与罗伦斯建立联系",
+        "对赫萝表现出好奇",
+        "试图接近罗伦斯和赫萝",
+        "被赫萝认为在说谎",
+        "与罗伦斯有商业往来",
+        "与罗伦斯有联系"
+      ],
+      "first_seen_scene_id": "volume_01-c003-s002-r001",
+      "latest_seen_scene_id": "volume_01-c006-s004-r003",
+      "confidence": 0.9
+    },
+    {
+      "entity_id": "char_0003",
+      "display_name": "骑士",
+      "aliases": [
+        "下级骑士",
+        "年轻骑士"
+      ],
+      "titles": [
+        "骑士"
+      ],
+      "description": "年轻的下级骑士，穿着灰色大衣和刻有红色十字架的银制胸甲，刚成为骑士不久，态度傲慢但容易被甜食收买。",
+      "speech_style": "傲慢、迟疑、逐渐放松",
+      "speech_markers": [
+        "呃……",
+        "嗯……真好吃"
+      ],
+      "relationship_hints": [
+        "与罗伦斯有短暂互动，被蜂蜜糖影响态度"
+      ],
+      "first_seen_scene_id": "volume_01-c002-s001-r002",
+      "latest_seen_scene_id": "volume_01-c002-s001-r002",
+      "confidence": 0.9
+    },
+    {
+      "entity_id": "char_0022",
+      "display_name": "亚伦多伯爵",
+      "aliases": [],
+      "titles": [
+        "伯爵"
+      ],
+      "description": "被罗伦斯推测为梅迪欧商行背后的资助者，可能与赫萝的被捉有关。",
+      "speech_style": "未直接发言",
+      "speech_markers": [],
+      "relationship_hints": [
+        "与梅迪欧商行有关",
+        "可能与赫萝的被捉有关"
+      ],
+      "first_seen_scene_id": "volume_01-c006-s004-r001",
+      "latest_seen_scene_id": "volume_01-c006-s004-r001",
+      "confidence": 0.75
+    },
+    {
+      "entity_id": "char_0006",
+      "display_name": "夫妻",
+      "aliases": [
+        "教会中的夫妻",
+        "有钱夫妻"
+      ],
+      "titles": [],
+      "description": "一对富裕的夫妻，住在教会中，与罗伦斯交谈，对商业话题表现出兴趣。",
+      "speech_style": "自然、开放、略带好奇",
+      "speech_markers": [],
+      "relationship_hints": [
+        "与罗伦斯有短暂的对话互动"
+      ],
+      "first_seen_scene_id": "volume_01-c003-s001-r003",
+      "latest_seen_scene_id": "volume_01-c003-s001-r003",
+      "confidence": 0.75
+    }
+  ],
+  "candidate_mysteries": [
+    {
+      "mystery_id": "mystery_volume_01_c003_s002_r001_贵族男子的妻子",
+      "temporary_name": "贵族男子的妻子",
+      "description": "与贵族男子一同出现在教会中，未有台词，但被提及为「妻子」。",
+      "evidence": [
+        "volume_01-d000239",
+        "volume_01-c003-s002-p000679"
+      ],
+      "source_scene_id": "volume_01-c003-s002-r001",
+      "confidence": 0.7
+    }
+  ]
+}

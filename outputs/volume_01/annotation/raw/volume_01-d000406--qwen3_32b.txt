@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000406",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "场景记忆中提到罗伦斯在谈话中试图引导赫萝说出真实想法，且本段对话是罗伦斯在谈话中主动引导话题的延续。",
+    "前一段文字提到「没有什么事情比知道他人内心在想什么的瞬间还要令人愉快，罗伦斯刻意露出营业用笑容看着赫萝说」，暗示接下来的对话由罗伦斯主导。",
+    "对话内容「回到刚刚船的话题」是罗伦斯在商业谈判中常见的策略性引导，符合其理性、冷静的说话风格。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

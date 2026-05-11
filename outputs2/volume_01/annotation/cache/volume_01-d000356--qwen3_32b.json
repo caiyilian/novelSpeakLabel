@@ -1,0 +1,28 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000356",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.98,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.98
+        }
+      ],
+      "evidence": [
+        "赫萝在场景记忆中被描述为使用自称「咱」，而台词中出现了「咱」，符合其语言特征。",
+        "场景记忆中明确指出赫萝在旅途中与罗伦斯对话，且此段对话发生在两人共处的马车中。",
+        "后续段落明确指出「窝在貂皮堆里的赫萝突然说出这句话」，直接确认说话人。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "此段对话为赫萝在旅途中的发言，上下文明确指向她为说话人，且语言风格与场景记忆一致。"
+}

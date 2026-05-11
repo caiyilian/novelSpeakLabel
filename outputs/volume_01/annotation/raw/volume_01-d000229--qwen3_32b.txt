@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000229",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0006",
+      "display": "教会夫妻",
+      "status": "known",
+      "score": 0.1
+    }
+  ],
+  "evidence": [
+    "上下文显示罗伦斯正在与教会夫妻对话，并试图加入他们的谈话。",
+    "该台词语气理性，符合罗伦斯的说话风格。",
+    "后续台词「这就得靠商人的智慧了。」是罗伦斯的典型回应。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

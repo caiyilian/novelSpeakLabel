@@ -1,0 +1,56 @@
+```json
+{
+  "scene_id": "volume_01-c004-s002",
+  "scene_summary": "罗伦斯与赫萝来到米隆商行，与店员和搬运工互动，准备推销皮草。场景描绘了商行的运作方式和人物之间的初步交流。",
+  "active_characters": ["罗伦斯", "赫萝"],
+  "character_candidates": [
+    {
+      "display_name": "店员",
+      "aliases": [],
+      "titles": ["米隆商行店员", "卸货场管理人员"],
+      "description": "负责接待罗伦斯的店员，外表整洁，行为得体，代表米隆商行的作风。",
+      "speech_style": "礼貌、专业",
+      "speech_markers": ["欢迎来到米隆商行！", "可以，可以，当然再欢迎不过了。"],
+      "relationship_hints": ["接待罗伦斯", "指引罗伦斯前往卸货场"],
+      "evidence": ["volume_01-c004-s002-p001060", "volume_01-c004-s002-p001063"],
+      "confidence": 0.9
+    },
+    {
+      "display_name": "彪形大汉",
+      "aliases": [],
+      "titles": ["搬运工", "卸货场人员"],
+      "description": "肤色黝黑、体格魁梧的搬运工，负责接待罗伦斯的马车。",
+      "speech_style": "热情、直接",
+      "speech_markers": ["喂～～老板您上哪儿去？", "那好，老板您的马车就寄放在我这里吧。"],
+      "relationship_hints": ["协助罗伦斯停车", "与罗伦斯互动友好"],
+      "evidence": ["volume_01-c004-s002-p001066", "volume_01-c004-s002-p001070"],
+      "confidence": 0.8
+    },
+    {
+      "display_name": "采购人员",
+      "aliases": [],
+      "titles": ["商品鉴定员", "米隆商行采购员"],
+      "description": "被彪形大汉唤来的男子，外表文雅，负责商品鉴定。",
+      "speech_style": "正式、礼貌",
+      "speech_markers": ["您是克拉福•罗伦斯先生吧，我代替行长感谢您莅临本商行。"],
+      "relationship_hints": ["代表行长接待罗伦斯", "负责商品鉴定"],
+      "evidence": ["volume_01-c004-s002-p001078"],
+      "confidence": 0.85
+    }
+  ],
+  "mystery_entities": [
+    {
+      "temporary_name": "米隆商行行长",
+      "description": "未出场但被提及的商行负责人，由采购人员代表致谢。",
+      "evidence": ["volume_01-c004-s002-p001078"],
+      "confidence": 0.7
+    }
+  ],
+  "relationships": [
+    "罗伦斯与店员：接待与指引",
+    "罗伦斯与彪形大汉：停车与互动",
+    "罗伦斯与采购人员：商品鉴定与接待"
+  ],
+  "notes": "场景中出现的店员、搬运工和采购人员均未命名，但可通过行为和身份线索进行追踪。米隆商行行长虽未出场，但通过采购人员的台词可推测其存在。"
+}
+```

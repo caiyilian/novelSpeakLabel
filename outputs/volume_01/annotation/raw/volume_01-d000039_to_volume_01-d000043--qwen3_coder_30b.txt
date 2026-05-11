@@ -1,0 +1,130 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000039",
+      "speaker_entity_id": "mystery_volume_01_c002_s002_r002_村民",
+      "speaker_display": "村民",
+      "speaker_status": "mystery",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "mystery_volume_01_c002_s002_r002_村民",
+          "display": "村民",
+          "status": "mystery",
+          "score": 0.85
+        },
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.1
+        }
+      ],
+      "evidence": ["连续三句高声呼喊，符合村民集体行为特征；赫萝未直接发声，但被村民称为‘狼赫萝’"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000040",
+      "speaker_entity_id": "mystery_volume_01_c002_s002_r002_村民",
+      "speaker_display": "村民",
+      "speaker_status": "mystery",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "mystery_volume_01_c002_s002_r002_村民",
+          "display": "村民",
+          "status": "mystery",
+          "score": 0.9
+        },
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.05
+        }
+      ],
+      "evidence": ["重复呼喊赫萝名字，符合村民集体行为；赫萝虽为丰收之神，但未直接说话"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000041",
+      "speaker_entity_id": "mystery_volume_01_c002_s002_r002_村民",
+      "speaker_display": "村民",
+      "speaker_status": "mystery",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "mystery_volume_01_c002_s002_r002_村民",
+          "display": "村民",
+          "status": "mystery",
+          "score": 0.9
+        },
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.05
+        }
+      ],
+      "evidence": ["高声宣告‘狼赫萝出现’，符合村民对丰收之神的集体认知；赫萝未直接发声"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000042",
+      "speaker_entity_id": "mystery_volume_01_c002_s002_r002_村民",
+      "speaker_display": "村民",
+      "speaker_status": "mystery",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "mystery_volume_01_c002_s002_r002_村民",
+          "display": "村民",
+          "status": "mystery",
+          "score": 0.9
+        },
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.05
+        }
+      ],
+      "evidence": ["‘抓住祂’的命令式语气，符合村民对丰收之神的集体行动；赫萝未直接说话"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000043",
+      "speaker_entity_id": "mystery_volume_01_c002_s002_r002_村民",
+      "speaker_display": "村民",
+      "speaker_status": "mystery",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "mystery_volume_01_c002_s002_r002_村民",
+          "display": "村民",
+          "status": "mystery",
+          "score": 0.9
+        },
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.05
+        }
+      ],
+      "evidence": ["‘别让祂逃走了’的紧迫语气，符合村民对丰收之神的集体追捕行为；赫萝未直接说话"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "连续五句高声呼喊与命令，符合村民集体参与丰收祭典的场景，未见明确个体发言，推测为村民群体行为。"
+}

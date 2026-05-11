@@ -1,0 +1,48 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000806",
+      "speaker_entity_id": "",
+      "speaker_display": "",
+      "speaker_status": "ambiguous",
+      "confidence": 0.3,
+      "candidate_speakers": [
+        {"entity_id": "char_0002", "display": "赫萝", "status": "known", "score": 0.4},
+        {"entity_id": "char_0001", "display": "罗伦斯", "status": "known", "score": 0.3}
+      ],
+      "evidence": ["对话轮次不明确，没有直接证据表明说话人身份"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    },
+    {
+      "dialogue_id": "volume_01-d000807",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {"entity_id": "char_0001", "display": "罗伦斯", "status": "known", "score": 0.9}
+      ],
+      "evidence": ["对话内容符合罗伦斯的冷静、理性风格，且场景中提到罗伦斯在安慰赫萝"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000808",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {"entity_id": "char_0002", "display": "赫萝", "status": "known", "score": 0.9}
+      ],
+      "evidence": ["对话内容符合赫萝的轻松幽默但略带威胁性风格，且场景中提到赫萝因宿醉而虚弱无力"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "根据上下文和对话内容判断，第二句和第三句的说话人较为明确；第一句由于缺乏直接证据，轮次不明确，因此标注为ambiguous。"
+}

@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d001337",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.98
+    },
+    {
+      "entity_id": "char_0020",
+      "display": "列支敦·马贺特",
+      "status": "known",
+      "score": 0.02
+    }
+  ],
+  "evidence": [
+    "上下文显示罗伦斯正在查看请款单并表现出困惑，随后跳下床，符合他的行为模式。",
+    "场景记忆中明确指出罗伦斯是当前场景的主要人物之一，且与马贺特有互动。",
+    "台词「嗯……」出现在罗伦斯对文件内容感到困惑的段落中，符合他的情绪反应。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

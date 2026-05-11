@@ -1,0 +1,95 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001014",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "上下文显示罗伦斯正在与马贺特讨论商行的困境，语气理性且关注利益，符合罗伦斯的说话风格。",
+        "场景记忆中提到罗伦斯与马贺特讨论梅迪欧商行的威胁，罗伦斯是主要发言者之一。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001015",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "该句是前一句的延续，罗伦斯继续表达对当前局势的分析，语气一致。",
+        "场景记忆中提到罗伦斯提出必须拥有对抗的王牌，符合此句内容。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001016",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "该句延续了前两句的逻辑，罗伦斯继续分析局势，语气理性且带有商业判断。",
+        "场景记忆中提到罗伦斯提出向教会举发梅迪欧商行，符合此句内容。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001017",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "该句是罗伦斯对前文的回应，语气略显犹豫，符合他在面对困难时的表达方式。",
+        "场景记忆中提到罗伦斯在被问及是否会说出不利证言时，回答「我想……应该会吧」，符合此句内容。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "四句台词构成一个完整的对话轮次，由罗伦斯连续发言，分析当前困境并提出可能的应对策略。对话逻辑连贯，语气一致，符合罗伦斯的说话风格。"
+}
+```

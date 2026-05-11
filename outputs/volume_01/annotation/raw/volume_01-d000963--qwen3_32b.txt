@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000963",
+  "speaker_entity_id": "char_0020",
+  "speaker_display": "列支敦·马贺特",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0020",
+      "display": "列支敦·马贺特",
+      "status": "known",
+      "score": 0.98
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.02
+    }
+  ],
+  "evidence": [
+    "前一段中罗伦斯提到「那应该是我的伙伴赫萝。为了让我顺利来到这里，她故意引开敌人……」，而当前段落是「原来如此。可是，他们为什么要捉你的伙伴呢？」，语气和内容符合马贺特冷静分析的风格。",
+    "场景记忆中明确指出马贺特在本场景中与罗伦斯讨论梅迪欧商行的威胁，表现出沉稳态度，符合当前台词的语气。",
+    "罗伦斯在前一段中刚刚陈述了赫萝的行动，接下来的回应更可能来自马贺特，而非罗伦斯自己提问。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d000352",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "赫萝在场景中频繁发言，说话风格轻松幽默但略带威胁性，符合台词「就算是咱，也有不能回答的事。」的语气。",
+    "场景记忆中提到赫萝对罗伦斯表现出挑衅与不信任，且她常以「咱」自称，与台词一致。",
+    "前一段提到赫萝拉住罗伦斯的衣服，暗示她正在回应罗伦斯的问题，因此说话人应为赫萝。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

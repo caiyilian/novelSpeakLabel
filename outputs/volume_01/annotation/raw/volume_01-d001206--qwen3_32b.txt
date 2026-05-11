@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d001206",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.85,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.85
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.15
+    }
+  ],
+  "evidence": [
+    "前文提到罗伦斯准备伺机快跑，并祈祷能逮到梅迪欧商行的人大叫。",
+    "当前段落是「哈、哈……」，语气中带有紧张和压抑的笑声，符合罗伦斯在危机中的反应风格。",
+    "后文提到「发出脚步声的方向传来少根筋的呼吸声，有人想打喷嚏」，暗示罗伦斯在观察环境并等待机会，符合他冷静理性的性格。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

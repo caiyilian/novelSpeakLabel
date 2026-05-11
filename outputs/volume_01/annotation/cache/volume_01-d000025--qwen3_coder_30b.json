@@ -1,0 +1,40 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000025",
+      "speaker_entity_id": "char_0003",
+      "speaker_display": "骑士",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0003",
+          "display": "骑士",
+          "status": "known",
+          "score": 0.85
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.15
+        },
+        {
+          "entity_id": "mystery_volume_01_c002_s001_r004_异教徒",
+          "display": "异教徒",
+          "status": "mystery",
+          "score": 0.0
+        }
+      ],
+      "evidence": [
+        "前文描述骑士因蜂蜜糖态度缓和并询问祭典消息",
+        "罗伦斯在下一句中提到‘喃喃念着骑士说的话’",
+        "骑士是唯一提及‘异教徒祭典’的对话角色"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "根据上下文，骑士在前文与罗伦斯互动并提及异教徒祭典，后文罗伦斯回忆其话语，因此该台词应为骑士所说。"
+}

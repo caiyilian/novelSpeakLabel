@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d001015",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.98
+    },
+    {
+      "entity_id": "char_0020",
+      "display": "列支敦·马贺特",
+      "status": "known",
+      "score": 0.02
+    }
+  ],
+  "evidence": [
+    "对话内容与罗伦斯在场景中提出的策略性回应一致，如「重点是我们手上也必须有能够对抗的王牌」，符合他冷静理性的说话风格。",
+    "上下文显示罗伦斯正在与马贺特讨论应对梅迪欧商行的威胁，罗伦斯提出主动出击的策略，而马贺特更多是分析现状。",
+    "场景记忆中明确指出罗伦斯是主要发言者，提出利用崔尼银币交易作为交涉王牌，与当前台词逻辑一致。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

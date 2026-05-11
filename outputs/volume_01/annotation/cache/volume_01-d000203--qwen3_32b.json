@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000203",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "前一段中罗伦斯一边拧干上衣一边提到麦子的处理方式，接着赫萝回应，当前段是罗伦斯的提问「怎么处理是指？」",
+    "场景记忆中明确指出罗伦斯与赫萝在讨论麦子的处理方式，互动频繁，且当前段是罗伦斯的提问",
+    "赫萝的说话风格轻松幽默，略带调侃，而当前段语气理性，符合罗伦斯的说话风格"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

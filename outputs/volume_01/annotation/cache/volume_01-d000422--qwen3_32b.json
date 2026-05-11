@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000422",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "上下文显示赫萝刚刚吃了八颗苹果，罗伦斯对此表示评论，符合罗伦斯冷静理性、略带调侃的说话风格。",
+    "场景记忆中罗伦斯与赫萝频繁互动，罗伦斯常以理性语气评论赫萝的行为，而赫萝则以轻松幽默的语气回应。",
+    "该句台词「你真会吃。」语气中带有轻微的调侃和无奈，符合罗伦斯对赫萝行为的反应模式。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

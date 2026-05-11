@@ -1,0 +1,30 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000046",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "「糟糕」是罗伦斯的 speech_marker，出现在他思考掉进河里的风险时。",
+        "上下文显示罗伦斯在河边露宿，独自一人，没有其他说话人出现。",
+        "该台词是内嵌引号，但上下文明确是罗伦斯的内心独白或自言自语。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "该段对话为罗伦斯的内心独白，上下文明确，无其他说话人出现，判断为罗伦斯本人。"
+}
+```

@@ -1,0 +1,179 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000661",
+      "speaker_entity_id": "",
+      "speaker_display": "",
+      "speaker_status": "ambiguous",
+      "confidence": 0.3,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.4
+        },
+        {
+          "entity_id": "char_0019",
+          "display": "怀兹",
+          "status": "known",
+          "score": 0.3
+        }
+      ],
+      "evidence": [
+        "对话轮次推断，但没有明确的叙述锚点"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    },
+    {
+      "dialogue_id": "volume_01-d000662",
+      "speaker_entity_id": "char_0019",
+      "speaker_display": "怀兹",
+      "speaker_status": "known",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0019",
+          "display": "怀兹",
+          "status": "known",
+          "score": 0.8
+        }
+      ],
+      "evidence": [
+        "对话内容符合怀兹的专业态度"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000663",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.8
+        }
+      ],
+      "evidence": [
+        "对话内容符合罗伦斯的谨慎态度"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000664",
+      "speaker_entity_id": "char_0019",
+      "speaker_display": "怀兹",
+      "speaker_status": "known",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0019",
+          "display": "怀兹",
+          "status": "known",
+          "score": 0.8
+        }
+      ],
+      "evidence": [
+        "对话内容符合怀兹的轻松态度"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000665",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.8
+        }
+      ],
+      "evidence": [
+        "对话内容符合罗伦斯的困惑态度"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000666",
+      "speaker_entity_id": "char_0019",
+      "speaker_display": "怀兹",
+      "speaker_status": "known",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0019",
+          "display": "怀兹",
+          "status": "known",
+          "score": 0.8
+        }
+      ],
+      "evidence": [
+        "对话内容符合怀兹的调侃态度"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000667",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.8
+        }
+      ],
+      "evidence": [
+        "对话内容符合罗伦斯的反对态度"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000668",
+      "speaker_entity_id": "char_0019",
+      "speaker_display": "怀兹",
+      "speaker_status": "known",
+      "confidence": 0.7,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0019",
+          "display": "怀兹",
+          "status": "known",
+          "score": 0.7
+        }
+      ],
+      "evidence": [
+        "对话内容符合怀兹的调侃态度，但为内嵌引号"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    }
+  ],
+  "window_notes": "对话轮次推断显示罗伦斯和怀兹在交替发言，但第一句对话缺乏明确的叙述锚点。最后一句为内嵌引号，需要进一步确认说话人。"
+}

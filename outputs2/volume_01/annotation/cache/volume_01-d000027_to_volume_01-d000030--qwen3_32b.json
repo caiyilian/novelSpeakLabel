@@ -1,0 +1,94 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000027",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "上下文显示罗伦斯正在与农夫打招呼，符合说话人身份",
+        "台词「嗨！辛苦了。」是典型的寒暄语，符合罗伦斯的理性、温和语气"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000028",
+      "speaker_entity_id": "char_0004",
+      "speaker_display": "农夫",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0004",
+          "display": "农夫",
+          "status": "known",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "「喔？」是农夫的典型口癖",
+        "上下文显示罗伦斯打招呼后，农夫回应，符合对话轮次"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000029",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.8
+        }
+      ],
+      "evidence": [
+        "罗伦斯继续与农夫对话，询问叶勒的位置，符合上下文逻辑",
+        "台词「请问叶勒在哪里啊？」是典型的罗伦斯式提问"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000030",
+      "speaker_entity_id": "char_0004",
+      "speaker_display": "农夫",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0004",
+          "display": "农夫",
+          "status": "known",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "农夫继续回答罗伦斯的问题，符合对话轮次",
+        "台词中提到「叶勒」，与农夫的背景信息一致",
+        "「喔！」是农夫的典型口癖"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，罗伦斯与农夫交替发言，符合上下文逻辑。农夫的口癖「喔？」和「喔！」被多次使用，有助于确认说话人。"
+}

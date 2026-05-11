@@ -1,0 +1,75 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001242",
+      "speaker_entity_id": "char_0005",
+      "speaker_display": "叶勒",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {"entity_id": "char_0005", "display": "叶勒", "status": "known", "score": 0.9}
+      ],
+      "evidence": ["对话内容提到教会和旧时代诀别，符合叶勒的立场。"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001243",
+      "speaker_entity_id": "char_0005",
+      "speaker_display": "叶勒",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {"entity_id": "char_0005", "display": "叶勒", "status": "known", "score": 0.9}
+      ],
+      "evidence": ["对话内容提到米隆商行和关税，符合叶勒的立场。"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001244",
+      "speaker_entity_id": "char_0005",
+      "speaker_display": "叶勒",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {"entity_id": "char_0005", "display": "叶勒", "status": "known", "score": 0.9}
+      ],
+      "evidence": ["对话内容提到村民对罗伦斯的感激和优先购买麦子的权利，符合叶勒的立场。"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001245",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {"entity_id": "char_0001", "display": "罗伦斯", "status": "known", "score": 0.9}
+      ],
+      "evidence": ["对话内容是对叶勒的回应，符合罗伦斯的立场。"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001246",
+      "speaker_entity_id": "char_0005",
+      "speaker_display": "叶勒",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {"entity_id": "char_0005", "display": "叶勒", "status": "known", "score": 0.9}
+      ],
+      "evidence": ["对话内容是对罗伦斯的回应，符合叶勒的立场。"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，根据上下文判断说话人。"
+}

@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000817",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.02
+    }
+  ],
+  "evidence": [
+    "赫萝的狼耳朵在对话中有所反应，暗示她对某些话题仍保持警觉。",
+    "赫萝双眼半睁，看着罗伦斯说道。她的眼神没有丝毫可趁之机。",
+    "赫萝的尾巴和耳朵暴露了她的情绪，暗示她并非完全能控制自己的狼性特征。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

@@ -1,0 +1,470 @@
+你是轻小说说话人标注项目的阶段 2：正式标注助手。
+你的任务是判断输入 target_dialogues 中每一句台词的说话人，不要改写原文。
+必须把这些台词当作同一个连续片段来判断，优先保持对话轮次和叙述线索的一致性。
+
+规则：
+1. 只输出严格 JSON，不要 Markdown，不要解释性前后缀。
+2. 如果说话人是候选角色，speaker_entity_id 必须使用 candidate_characters 里的 entity_id，speaker_status 填 known。
+3. 如果说话人像某个未知人物，speaker_entity_id 使用 candidate_mysteries 里的 mystery_id，speaker_status 填 mystery。
+4. 如果只是无法追踪的路人/群体，speaker_status 填 npc，speaker_entity_id 可为空或使用 npc:简短称呼。
+5. 证据不足时不要硬猜，speaker_status 填 ambiguous 或 review，并把 needs_review 设为 true。
+6. candidate_speakers 至少列出 1 个候选；如果无法判断，列出最可能的候选和不确定原因。
+7. confidence 使用 0 到 1 之间的小数，表示你对最终判断的把握。
+8. 不要只因为台词里提到某个名字、职业、地点，就把说话人标成那个实体；被称呼的人通常不是说话人。
+9. 连续问答、交易寒暄、命令/回答等场景要按上下句轮次判断；同一人连续说话必须有叙述或语气证据支持。
+10. 如果当前上下文显示某角色还没有登场，不要因为角色库或后文记忆里有这个角色就提前标给他/她。
+
+11. target_dialogues 中 dialogue_kind=inline 的项目是正文内嵌引号，不要当作独立对白；标为 review，needs_review=true。
+12. candidate_mysteries 只是可选候选；如果候选名称和当前段落地点/人物不一致，必须改用 npc 或 review。
+13. 如果只有轮次推断、没有叙述锚点或自我介绍，请降低 confidence，并在 evidence 里说明轮次依据。
+
+输出 JSON 结构：
+{
+  "annotations": [
+    {
+      "dialogue_id": "必须来自 target_dialogue_ids",
+      "speaker_entity_id": "string",
+      "speaker_display": "string",
+      "speaker_status": "known|mystery|npc|ambiguous|review",
+      "confidence": 0.0,
+      "candidate_speakers": [
+        {"entity_id": "string", "display": "string", "status": "known|mystery|npc|ambiguous|review", "score": 0.0}
+      ],
+      "evidence": ["短证据，不要大段复制原文"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "可选，简短说明整体轮次判断"
+}
+必须为 target_dialogue_ids 中每个 dialogue_id 输出且只输出一条 annotation。
+
+输入 JSON：
+{
+  "volume": {
+    "volume_id": "volume_01",
+    "volume": 1
+  },
+  "target_dialogue_ids": [
+    "volume_01-d000691",
+    "volume_01-d000692",
+    "volume_01-d000693",
+    "volume_01-d000694",
+    "volume_01-d000695",
+    "volume_01-d000696",
+    "volume_01-d000697",
+    "volume_01-d000698"
+  ],
+  "dialogues": [
+    {
+      "dialogue_id": "volume_01-d000691",
+      "dialogue_index": 690,
+      "window_position": 1,
+      "chapter_id": "volume_01-c004",
+      "chapter_title": "第三幕",
+      "scene_id": "volume_01-c004-s008",
+      "paragraph_id": "volume_01-c004-s008-p001507",
+      "paragraph_index": 1506,
+      "local_dialogue_index": 1,
+      "text": "不过，雌性也是会因此感到高兴的傻瓜。所以呐，不管雄性还是雌性皆为傻瓜。",
+      "quote_text": "「不过，雌性也是会因此感到高兴的傻瓜。所以呐，不管雄性还是雌性皆为傻瓜。」",
+      "paragraph_text": "「不过，雌性也是会因此感到高兴的傻瓜。所以呐，不管雄性还是雌性皆为傻瓜。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 37
+    },
+    {
+      "dialogue_id": "volume_01-d000692",
+      "dialogue_index": 691,
+      "window_position": 2,
+      "chapter_id": "volume_01-c004",
+      "chapter_title": "第三幕",
+      "scene_id": "volume_01-c004-s008",
+      "paragraph_id": "volume_01-c004-s008-p001510",
+      "paragraph_index": 1509,
+      "local_dialogue_index": 1,
+      "text": "呵，对咱而言，汝等人类看来不过跟小鸡没两样。",
+      "quote_text": "「呵，对咱而言，汝等人类看来不过跟小鸡没两样。」",
+      "paragraph_text": "「呵，对咱而言，汝等人类看来不过跟小鸡没两样。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 24
+    },
+    {
+      "dialogue_id": "volume_01-d000693",
+      "dialogue_index": 692,
+      "window_position": 3,
+      "chapter_id": "volume_01-c004",
+      "chapter_title": "第三幕",
+      "scene_id": "volume_01-c004-s008",
+      "paragraph_id": "volume_01-c004-s008-p001511",
+      "paragraph_index": 1510,
+      "local_dialogue_index": 1,
+      "text": "你自己现在还不是人类的模样，你可小心别在喜欢的狼面前露出利牙啊。",
+      "quote_text": "「你自己现在还不是人类的模样，你可小心别在喜欢的狼面前露出利牙啊。」",
+      "paragraph_text": "「你自己现在还不是人类的模样，你可小心别在喜欢的狼面前露出利牙啊。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 34
+    },
+    {
+      "dialogue_id": "volume_01-d000694",
+      "dialogue_index": 693,
+      "window_position": 4,
+      "chapter_id": "volume_01-c004",
+      "chapter_title": "第三幕",
+      "scene_id": "volume_01-c004-s008",
+      "paragraph_id": "volume_01-c004-s008-p001512",
+      "paragraph_index": 1511,
+      "local_dialogue_index": 1,
+      "text": "胡说什么。咱只要轻轻一摇咱可爱的尾巴，不管是人还是狼都会立刻为咱倾倒。",
+      "quote_text": "「胡说什么。咱只要轻轻一摇咱可爱的尾巴，不管是人还是狼都会立刻为咱倾倒。」",
+      "paragraph_text": "「胡说什么。咱只要轻轻一摇咱可爱的尾巴，不管是人还是狼都会立刻为咱倾倒。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 37
+    },
+    {
+      "dialogue_id": "volume_01-d000695",
+      "dialogue_index": 694,
+      "window_position": 5,
+      "chapter_id": "volume_01-c004",
+      "chapter_title": "第三幕",
+      "scene_id": "volume_01-c004-s008",
+      "paragraph_id": "volume_01-c004-s008-p001514",
+      "paragraph_index": 1513,
+      "local_dialogue_index": 1,
+      "text": "好了，玩笑话就讲到这儿。",
+      "quote_text": "「好了，玩笑话就讲到这儿。」",
+      "paragraph_text": "「好了，玩笑话就讲到这儿。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 14
+    },
+    {
+      "dialogue_id": "volume_01-d000696",
+      "dialogue_index": 695,
+      "window_position": 6,
+      "chapter_id": "volume_01-c004",
+      "chapter_title": "第三幕",
+      "scene_id": "volume_01-c004-s008",
+      "paragraph_id": "volume_01-c004-s008-p001516",
+      "paragraph_index": 1515,
+      "local_dialogue_index": 1,
+      "text": "虽然只有些微不同，但越新的银币，感觉声音越低沉。",
+      "quote_text": "「虽然只有些微不同，但越新的银币，感觉声音越低沉。」",
+      "paragraph_text": "「虽然只有些微不同，但越新的银币，感觉声音越低沉。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 26
+    },
+    {
+      "dialogue_id": "volume_01-d000697",
+      "dialogue_index": 696,
+      "window_position": 7,
+      "chapter_id": "volume_01-c004",
+      "chapter_title": "第三幕",
+      "scene_id": "volume_01-c004-s008",
+      "paragraph_id": "volume_01-c004-s008-p001517",
+      "paragraph_index": 1516,
+      "local_dialogue_index": 1,
+      "text": "低沉？",
+      "quote_text": "「低沉？」",
+      "paragraph_text": "「低沉？」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 5
+    },
+    {
+      "dialogue_id": "volume_01-d000698",
+      "dialogue_index": 697,
+      "window_position": 8,
+      "chapter_id": "volume_01-c004",
+      "chapter_title": "第三幕",
+      "scene_id": "volume_01-c004-s008",
+      "paragraph_id": "volume_01-c004-s008-p001519",
+      "paragraph_index": 1518,
+      "local_dialogue_index": 1,
+      "text": "嗯……可是，这么一来，就该认定杰廉说谎了？",
+      "quote_text": "「嗯……可是，这么一来，就该认定杰廉说谎了？」",
+      "paragraph_text": "「嗯……可是，这么一来，就该认定杰廉说谎了？」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 23
+    }
+  ],
+  "context": {
+    "paragraphs": [
+      {
+        "paragraph_id": "volume_01-c004-s008-p001504",
+        "paragraph_index": 1503,
+        "text": "看着赫萝不怀好意的视线，罗伦斯虽然明白这是赫萝的恶作剧，但就是没法控制脸部表情不变僵硬。为什么赫萝总是能察觉这些事情呢？还是她太会套话了呢？",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s008-p001505",
+        "paragraph_index": 1504,
+        "text": "「哎，没什么好在意的，所有雄性都是爱吃醋的傻瓜呐。」",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s008-p001506",
+        "paragraph_index": 1505,
+        "text": "正因为道中心声，所以赫萝的话听来更为刺耳。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s008-p001507",
+        "paragraph_index": 1506,
+        "text": "「不过，雌性也是会因此感到高兴的傻瓜。所以呐，不管雄性还是雌性皆为傻瓜。」",
+        "target_dialogue_ids": [
+          "volume_01-d000691"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c004-s008-p001508",
+        "paragraph_index": 1507,
+        "text": "赫萝稍稍把身子贴近罗伦斯说道。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s008-p001509",
+        "paragraph_index": 1508,
+        "text": "不光是谈生意，赫萝在男女情感方面似乎也挺老练的。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s008-p001510",
+        "paragraph_index": 1509,
+        "text": "「呵，对咱而言，汝等人类看来不过跟小鸡没两样。」",
+        "target_dialogue_ids": [
+          "volume_01-d000692"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c004-s008-p001511",
+        "paragraph_index": 1510,
+        "text": "「你自己现在还不是人类的模样，你可小心别在喜欢的狼面前露出利牙啊。」",
+        "target_dialogue_ids": [
+          "volume_01-d000693"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c004-s008-p001512",
+        "paragraph_index": 1511,
+        "text": "「胡说什么。咱只要轻轻一摇咱可爱的尾巴，不管是人还是狼都会立刻为咱倾倒。」",
+        "target_dialogue_ids": [
+          "volume_01-d000694"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c004-s008-p001513",
+        "paragraph_index": 1512,
+        "text": "赫萝单手撑腰，轻轻左右摇摆腰部。赫萝说的话似乎是真的，罗伦斯找不到话反驳她。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s008-p001514",
+        "paragraph_index": 1513,
+        "text": "「好了，玩笑话就讲到这儿。」",
+        "target_dialogue_ids": [
+          "volume_01-d000695"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c004-s008-p001515",
+        "paragraph_index": 1514,
+        "text": "听到赫萝这么说，罗伦斯也恢复正经的表情。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s008-p001516",
+        "paragraph_index": 1515,
+        "text": "「虽然只有些微不同，但越新的银币，感觉声音越低沉。」",
+        "target_dialogue_ids": [
+          "volume_01-d000696"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c004-s008-p001517",
+        "paragraph_index": 1516,
+        "text": "「低沉？」",
+        "target_dialogue_ids": [
+          "volume_01-d000697"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c004-s008-p001518",
+        "paragraph_index": 1517,
+        "text": "赫萝点点头。声音变得低沉，就表示含银量降低。如果只是些微的差距，或许很难分辨声音的不同，但如果含银量降低到白色银币都变黑了的话，就连外行人也能听出声音变得低沉。倘若赫萝所言属实，那或许这就是崔尼银币即将降低含银量的前兆。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s008-p001519",
+        "paragraph_index": 1518,
+        "text": "「嗯……可是，这么一来，就该认定杰廉说谎了？」",
+        "target_dialogue_ids": [
+          "volume_01-d000698"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c004-s008-p001520",
+        "paragraph_index": 1519,
+        "text": "「这很难断定。不过，视情况发展，那名年轻人或许真会把十枚崔尼银币还给汝。」",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s008-p001521",
+        "paragraph_index": 1520,
+        "text": "「我也这么觉得。如果只是想要赚取情报费的诈欺，不会在酒吧吃得这么开，在教会的时候应该就会要求我付钱。」",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s008-p001522",
+        "paragraph_index": 1521,
+        "text": "「这事态真是不可思议呐。」",
+        "target_dialogue_ids": []
+      }
+    ]
+  },
+  "scene_memory": [
+    {
+      "scene_id": "volume_01-c004-s008-r003",
+      "parent_scene_id": "volume_01-c004-s008",
+      "chunk_index": 3,
+      "chunk_count": 6,
+      "scene_summary": "赫萝与罗伦斯在讨论崔尼银币的含银量问题，赫萝以轻松幽默的语气调侃罗伦斯，并提出自己的观察。罗伦斯则认真思考赫萝的分析，并对杰廉是否说谎表示疑虑。",
+      "active_characters": [
+        "赫萝",
+        "罗伦斯"
+      ],
+      "relationships": [
+        "赫萝与罗伦斯之间存在长期互动，关系复杂，既有亲密也有怀疑",
+        "赫萝在对话中主导节奏，罗伦斯则表现出理性思考"
+      ],
+      "notes": "本场景中赫萝与罗伦斯的对话围绕崔尼银币的含银量展开，赫萝以轻松幽默的方式表达观点，罗伦斯则认真思考并回应。两人关系稳定，互动频繁，无新角色出现。"
+    },
+    {
+      "scene_id": "volume_01-c004-s008-r004",
+      "parent_scene_id": "volume_01-c004-s008",
+      "chunk_index": 4,
+      "chunk_count": 6,
+      "scene_summary": "罗伦斯对杰廉的交易动机感到困惑，赫萝则指出他可能被骗了。对话中涉及银币价值变动和交易策略，但罗伦斯仍未完全理解背后的意图。",
+      "active_characters": [
+        "罗伦斯",
+        "赫萝",
+        "杰廉"
+      ],
+      "relationships": [
+        "罗伦斯与赫萝一同旅行",
+        "罗伦斯与杰廉有交易关系",
+        "赫萝对罗伦斯的判断提出质疑"
+      ],
+      "notes": "杰廉是本场景中关键但未直接说话的角色，其动机和身份仍不明。赫萝的调侃和罗伦斯的困惑暗示了潜在的欺诈或误解。"
+    }
+  ],
+  "candidate_characters": [
+    {
+      "entity_id": "char_0001",
+      "display_name": "罗伦斯",
+      "aliases": [
+        "罗伦斯",
+        "罗伦斯先生"
+      ],
+      "titles": [
+        "中间人",
+        "交易者",
+        "同行",
+        "商人",
+        "小毛头",
+        "小的",
+        "市井无赖",
+        "年轻人"
+      ],
+      "description": "一位行商人，正在与米隆商行的代表马贺特进行交易谈判。他原本期待获得两千枚银币，但实际只得到一百二十枚，感到震惊和困惑。 / 一位行商人，发现并收留了赫萝，决定与她一同旅行。 / 一位二十五岁的自力更生旅行商人，已有七年行商经验，性格泰然自若。 / 一位冷静理性的旅行商人，对赫萝的身份持怀疑态度，但仍保持互动。他注重外表整洁，对商业制度有深入理解。 / 冷静理性的旅行商人，与赫萝一同旅行。在本场景中与米隆商行的马贺特讨论梅迪欧商行的威胁，提出利用崔尼银币交易作为交涉王牌。 / 一位冷静理性的旅行商人，与赫萝一同旅行…",
+      "speech_style": "理性、坚定、略带情绪化 / 冷静、理性，带有悔恨和自责的语气。 / 冷静、理性，语气中带有对赫萝的关心和些许担忧。 / 冷静、理性、略带失落 / 冷静、理性，对商业制度有深入理解，并能清晰地向他人解释。 / 理性、礼貌、略带谨慎。 / 理性、冷静，带有商业分析倾向。 / 理性、沉稳、略带幽默 / 理性、冷静，但因困惑…",
+      "relationship_hints": [
+        "与赫萝一同旅行",
+        "对赫萝的真实性持怀疑态度",
+        "与深山村落的村民有交易关系",
+        "对修道院抱有商业期望但未成功",
+        "与骑士有短暂互动",
+        "与小村落的村民有交易关系",
+        "与修道院有关联",
+        "对教会和异教徒问题有见解"
+      ],
+      "first_seen_scene_id": "volume_01-c000-s003-r001",
+      "latest_seen_scene_id": "volume_01-c008-s003-r002",
+      "confidence": 1.0
+    },
+    {
+      "entity_id": "char_0002",
+      "display_name": "赫萝",
+      "aliases": [
+        "赫萝"
+      ],
+      "titles": [
+        "丰收之神",
+        "咱",
+        "神秘少女",
+        "约伊兹的贤狼",
+        "贤狼"
+      ],
+      "description": "自称丰收之神的神秘少女，拥有狼的耳朵和尾巴。在本场景中协助罗伦斯，表现出对他的关心和保护。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴，行为举止非人类，表现出轻松幽默但略带威胁性的说话风格。在本场景中，她对罗伦斯的伤口进行吸血，引发旁人惊呼，并表现出悲伤的情绪。 / 自称是丰收之神的神秘少女，拥有狼的耳朵和尾巴。在本场景中逐渐显露出非人类的特征，最终完全变成一只巨大的狼。她与罗伦斯有情感交流，表现出悲伤和决绝的情绪。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴，未直接参与本场景，但罗伦斯的行动可能与她有关…",
+      "speech_style": "轻松幽默但略带威胁性，情绪化且带有调侃语气。 / 轻松幽默、略带调侃和威胁 / 轻松幽默、略带威胁性 / 轻松幽默、略带威胁性、撒娇 / 警觉、神秘 / 轻松幽默但略带威胁性 / 轻松幽默、略带调侃 / 轻松幽默但略带威胁性，语气中透露出对罗伦斯的依赖。 / 轻松幽默、略带威胁性、自信 / 轻松幽默但略带威胁性，情绪…",
+      "relationship_hints": [
+        "与罗伦斯一同旅行",
+        "被罗伦斯怀疑是否为真正的神",
+        "与叶勒有附身关系",
+        "与罗伦斯有潜在互动",
+        "与罗伦斯有互动，似乎是被他发现并收留的。",
+        "与罗伦斯有互动，但尚未明确关系",
+        "与罗伦斯互动频繁，表现出对他的信任和玩笑态度",
+        "与罗伦斯互动密切"
+      ],
+      "first_seen_scene_id": "volume_01-c000-s003-r001",
+      "latest_seen_scene_id": "volume_01-c008-s003-r002",
+      "confidence": 1.0
+    },
+    {
+      "entity_id": "char_0009",
+      "display_name": "杰廉",
+      "aliases": [],
+      "titles": [
+        "中间人",
+        "交易者",
+        "同行",
+        "商人",
+        "小毛头",
+        "小的",
+        "市井无赖",
+        "年轻人"
+      ],
+      "description": "一位能言善道的市井无赖，试图接近赫萝并表现出厚颜无耻的态度。 / 提供货币投机情报的商人，被罗伦斯怀疑其动机。 / 与罗伦斯达成交易的中间人，提供情报服务，自称小人物，但行为谨慎。 / 与罗伦斯和赫萝同行的旅人，已离开队伍。他的离开引发了赫萝和罗伦斯的讨论。 / 提出交易提议的人物，未直接出现，但被赫萝提及。 / 被罗伦斯寻找的男子，据称会在日落后出现。 / 据称会在日落后出现的男子，被罗伦斯和赫萝推测会如女店员所说出现。 / 与罗伦斯和赫萝互动的商人，对皮草交易表现出兴趣。 / 提供银币含银量情报的中间人，表现…",
+      "speech_style": "厚颜无耻、能言善道、带有谄媚语气 / 未直接说话，但被罗伦斯和赫萝评价为「小毛头」和「说谎者」 / 谦卑但自信，带有职业性的谨慎语气。 / 未直接发言，但被提及。 / 未知 / 未直接出现 / 直接、略带调侃 / 谦卑、谨慎、略带紧张 / 谦卑、谨慎、带有讨好语气 / 谨慎、不自信 / 未直接说话，但被罗伦斯提及 /…",
+      "relationship_hints": [
+        "对罗伦斯表示敬佩",
+        "试图获取情报",
+        "与罗伦斯和赫萝互动",
+        "与罗伦斯有亲戚关系",
+        "试图接近赫萝",
+        "向罗伦斯提供情报，但罗伦斯怀疑其真实性",
+        "可能向其他商人提供相同情报",
+        "与罗伦斯有商业合作关系"
+      ],
+      "first_seen_scene_id": "volume_01-c003-s002-r002",
+      "latest_seen_scene_id": "volume_01-c004-s008-r005",
+      "confidence": 0.9
+    }
+  ],
+  "candidate_mysteries": []
+}

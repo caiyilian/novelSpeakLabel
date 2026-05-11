@@ -1,0 +1,23 @@
+{
+  "dialogue_id": "volume_01-d000107",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    }
+  ],
+  "evidence": [
+    "前一段中赫萝说：「咱不要。」",
+    "当前段落是「为什么？」，语气与赫萝的说话风格一致，轻松幽默但略带情绪。",
+    "后一段中赫萝反问：「咱还想问汝为什么非得要看呢？」，进一步确认说话人是赫萝。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

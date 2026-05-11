@@ -1,0 +1,20 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001024",
+      "speaker_entity_id": "",
+      "speaker_display": "梅迪欧商行代表",
+      "speaker_status": "npc",
+      "confidence": 0.6,
+      "candidate_speakers": [
+        {"entity_id": "char_0028", "display": "梅迪欧商行", "status": "known", "score": 0.5},
+        {"entity_id": "", "display": "梅迪欧商行代表", "status": "npc", "score": 0.4}
+      ],
+      "evidence": ["对话内容符合梅迪欧商行的策略"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    }
+  ],
+  "window_notes": "根据上下文，这句台词是梅迪欧商行代表在国王面前说的话。虽然候选角色中有梅迪欧商行，但具体说话人身份不明确，因此标为 npc 并需要进一步确认。"
+}

@@ -1,0 +1,93 @@
+{
+  "scene_id": "volume_01-c002-s002",
+  "scene_summary": "罗伦斯来到麦田，目睹村民举行丰收祭典，叶勒被选为「狼赫萝」的化身，将被关在谷仓中一周。罗伦斯对此感到困扰，决定前往村长住所。",
+  "active_characters": [
+    "罗伦斯",
+    "叶勒",
+    "农夫"
+  ],
+  "character_candidates": [
+    {
+      "display_name": "叶勒",
+      "aliases": [],
+      "titles": [],
+      "description": "麦田中割下最后一束麦子的村民，被选为「狼赫萝」的化身，将被关在谷仓中一周。",
+      "speech_style": "朴实、紧张",
+      "speech_markers": [
+        "嗷呜～～～～～～～"
+      ],
+      "relationship_hints": [
+        "与罗伦斯有交集，罗伦斯因他无法交谈而感到困扰"
+      ],
+      "evidence": [
+        "volume_01-c002-s002-p000170",
+        "volume_01-c002-s002-p000176",
+        "volume_01-c002-s002-p000181"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": [
+        "旅行商人"
+      ],
+      "description": "一位理性、谨慎的商人，对宗教仪式不感兴趣，但因叶勒被选为「狼赫萝」而感到困扰。",
+      "speech_style": "理性、怀疑、略带无奈",
+      "speech_markers": [
+        "算了……"
+      ],
+      "relationship_hints": [
+        "与叶勒有交集，计划与他交谈但被祭典打断"
+      ],
+      "evidence": [
+        "volume_01-c002-s002-p000156",
+        "volume_01-c002-s002-p000181",
+        "volume_01-c002-s002-p000182"
+      ],
+      "confidence": 1.0
+    },
+    {
+      "display_name": "农夫",
+      "aliases": [],
+      "titles": [],
+      "description": "麦田中的村民，与罗伦斯有简短互动，表现出朴实的性格。",
+      "speech_style": "朴实、直接",
+      "speech_markers": [],
+      "relationship_hints": [
+        "与罗伦斯有简短对话"
+      ],
+      "evidence": [
+        "volume_01-c002-s002-p000155",
+        "volume_01-c002-s002-p000157"
+      ],
+      "confidence": 0.8
+    }
+  ],
+  "mystery_entities": [
+    {
+      "temporary_name": "村民群体",
+      "description": "参与丰收祭典的村民，高声叫喊并追逐「狼赫萝」的化身。",
+      "evidence": [
+        "volume_01-c002-s002-p000158",
+        "volume_01-c002-s002-p000160",
+        "volume_01-c002-s002-p000163"
+      ],
+      "confidence": 0.7
+    },
+    {
+      "temporary_name": "村长",
+      "description": "罗伦斯计划前往的地点人物，未直接出现但被提及。",
+      "evidence": [
+        "volume_01-c002-s002-p000183"
+      ],
+      "confidence": 0.6
+    }
+  ],
+  "relationships": [
+    "罗伦斯与叶勒有交集，因叶勒被选为「狼赫萝」而无法交谈",
+    "罗伦斯与农夫有简短互动",
+    "村民群体与叶勒有互动，围绕「狼赫萝」展开仪式"
+  ],
+  "notes": "「狼赫萝」是丰收之神的化身，但未明确指出是否为赫萝本人。叶勒被选为「狼赫萝」的载体，罗伦斯对此感到困扰。场景中未出现赫萝本人，但提及了她的名字。"
+}

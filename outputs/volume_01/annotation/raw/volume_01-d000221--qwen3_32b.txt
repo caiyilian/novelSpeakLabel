@@ -1,0 +1,32 @@
+```json
+{
+  "dialogue_id": "volume_01-d000221",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.02
+    }
+  ],
+  "evidence": [
+    "上下文显示赫萝在持续调侃罗伦斯的外表和气味，语气轻松幽默且略带威胁，符合赫萝的说话风格。",
+    "前一段中赫萝说：「汝被雨淋过，身上还这么臭啊。咱这只狼都这么说了，错不了。」，表明说话人是赫萝。",
+    "当前段落中「就算是狼，也会整理自己的毛」是赫萝以狼的视角评论罗伦斯的外表，符合她的说话方式。",
+    "后一段提到「虽然不知道赫萝是开玩笑还是认真的」，明确指出说话人是赫萝。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

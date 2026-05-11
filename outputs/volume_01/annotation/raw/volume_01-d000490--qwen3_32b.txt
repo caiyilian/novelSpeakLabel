@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000490",
+  "speaker_entity_id": "char_0016",
+  "speaker_display": "鉴定员",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0016",
+      "display": "鉴定员",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0017",
+      "display": "男子",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "男子嗅完后，点了点头回答「真的没错」",
+    "当前段落中提到的「男子」与「鉴定员」为同一人，且在场景记忆中「鉴定员」是活跃角色",
+    "「鉴定员」在场景中负责嗅闻貂皮气味并回应赫萝的说明"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

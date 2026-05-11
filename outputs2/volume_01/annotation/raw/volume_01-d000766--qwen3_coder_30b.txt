@@ -1,0 +1,35 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000766",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.9
+        },
+        {
+          "entity_id": "mystery_volume_01_c005_s001_r003_帕斯罗村的村民",
+          "display": "帕斯罗村的村民",
+          "status": "mystery",
+          "score": 0.1
+        }
+      ],
+      "evidence": [
+        "前文赫萝在回忆中提及该人物，语境为赫萝在讲述与该人物的互动",
+        "赫萝说话时表情开心且害羞，符合回忆中对朋友的怀念",
+        "赫萝使用自称'咱'，符合其说话风格",
+        "该句为赫萝对某位朋友的评价，与上下文一致"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "赫萝在回忆中提及朋友，语气带有怀念与喜爱，符合其说话风格和上下文情境"
+}

@@ -1,0 +1,59 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001261",
+      "speaker_entity_id": "char_0005",
+      "speaker_display": "叶勒",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0005",
+          "display": "叶勒",
+          "status": "known",
+          "score": 0.95
+        },
+        {
+          "entity_id": "char_0024",
+          "display": "梅迪欧商行手下",
+          "status": "known",
+          "score": 0.05
+        }
+      ],
+      "evidence": [
+        "台词与叶勒的speech_markers中的'在等什么！还不快抓起来！'完全一致；上下文描述叶勒指挥手下逼近赫萝"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001262",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.85
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.15
+        }
+      ],
+      "evidence": [
+        "赫萝在吸血后被旁人惊呼，其声音与赫萝的语调、情绪相符；罗伦斯处于虚弱状态，不太可能发出这种惊叫"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "第一句为叶勒命令手下行动，第二句为赫萝吸血后被旁人惊呼，符合角色行为逻辑与上下文叙述"
+}

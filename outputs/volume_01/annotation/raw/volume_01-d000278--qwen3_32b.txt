@@ -1,0 +1,32 @@
+```json
+{
+  "dialogue_id": "volume_01-d000278",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.02
+    }
+  ],
+  "evidence": [
+    "说话风格轻松幽默但略带威胁性，符合赫萝的说话模式。",
+    "台词中使用「咱」自称，这是赫萝的典型语言特征。",
+    "上下文显示赫萝在调侃罗伦斯，符合她对罗伦斯一贯的说话方式。",
+    "场景记忆中赫萝是活跃角色，且与罗伦斯有频繁互动。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

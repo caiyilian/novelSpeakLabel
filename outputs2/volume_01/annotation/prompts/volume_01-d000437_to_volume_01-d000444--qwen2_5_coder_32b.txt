@@ -1,0 +1,524 @@
+你是轻小说说话人标注项目的阶段 2：正式标注助手。
+你的任务是判断输入 target_dialogues 中每一句台词的说话人，不要改写原文。
+必须把这些台词当作同一个连续片段来判断，优先保持对话轮次和叙述线索的一致性。
+
+规则：
+1. 只输出严格 JSON，不要 Markdown，不要解释性前后缀。
+2. 如果说话人是候选角色，speaker_entity_id 必须使用 candidate_characters 里的 entity_id，speaker_status 填 known。
+3. 如果说话人像某个未知人物，speaker_entity_id 使用 candidate_mysteries 里的 mystery_id，speaker_status 填 mystery。
+4. 如果只是无法追踪的路人/群体，speaker_status 填 npc，speaker_entity_id 可为空或使用 npc:简短称呼。
+5. 证据不足时不要硬猜，speaker_status 填 ambiguous 或 review，并把 needs_review 设为 true。
+6. candidate_speakers 至少列出 1 个候选；如果无法判断，列出最可能的候选和不确定原因。
+7. confidence 使用 0 到 1 之间的小数，表示你对最终判断的把握。
+8. 不要只因为台词里提到某个名字、职业、地点，就把说话人标成那个实体；被称呼的人通常不是说话人。
+9. 连续问答、交易寒暄、命令/回答等场景要按上下句轮次判断；同一人连续说话必须有叙述或语气证据支持。
+10. 如果当前上下文显示某角色还没有登场，不要因为角色库或后文记忆里有这个角色就提前标给他/她。
+
+11. target_dialogues 中 dialogue_kind=inline 的项目是正文内嵌引号，不要当作独立对白；标为 review，needs_review=true。
+12. candidate_mysteries 只是可选候选；如果候选名称和当前段落地点/人物不一致，必须改用 npc 或 review。
+13. 如果只有轮次推断、没有叙述锚点或自我介绍，请降低 confidence，并在 evidence 里说明轮次依据。
+
+14. candidate_characters.speech_markers 是阶段 1 提取的高区分度口癖/自称/固定短语；命中时可作为证据，但如果多个角色共享或上下文反证明显，必须进入复核。
+
+输出 JSON 结构：
+{
+  "annotations": [
+    {
+      "dialogue_id": "必须来自 target_dialogue_ids",
+      "speaker_entity_id": "string",
+      "speaker_display": "string",
+      "speaker_status": "known|mystery|npc|ambiguous|review",
+      "confidence": 0.0,
+      "candidate_speakers": [
+        {"entity_id": "string", "display": "string", "status": "known|mystery|npc|ambiguous|review", "score": 0.0}
+      ],
+      "evidence": ["短证据，不要大段复制原文"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "可选，简短说明整体轮次判断"
+}
+必须为 target_dialogue_ids 中每个 dialogue_id 输出且只输出一条 annotation。
+
+输入 JSON：
+{
+  "volume": {
+    "volume_id": "volume_01",
+    "volume": 1
+  },
+  "target_dialogue_ids": [
+    "volume_01-d000437",
+    "volume_01-d000438",
+    "volume_01-d000439",
+    "volume_01-d000440",
+    "volume_01-d000441",
+    "volume_01-d000442",
+    "volume_01-d000443",
+    "volume_01-d000444"
+  ],
+  "dialogues": [
+    {
+      "dialogue_id": "volume_01-d000437",
+      "dialogue_index": 436,
+      "window_position": 1,
+      "chapter_id": "volume_01-c004",
+      "chapter_title": "第三幕",
+      "scene_id": "volume_01-c004-s002",
+      "paragraph_id": "volume_01-c004-s002-p001060",
+      "paragraph_index": 1059,
+      "local_dialogue_index": 1,
+      "text": "欢迎来到米隆商行！",
+      "quote_text": "「欢迎来到米隆商行！」",
+      "paragraph_text": "「欢迎来到米隆商行！」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 11
+    },
+    {
+      "dialogue_id": "volume_01-d000438",
+      "dialogue_index": 437,
+      "window_position": 2,
+      "chapter_id": "volume_01-c004",
+      "chapter_title": "第三幕",
+      "scene_id": "volume_01-c004-s002",
+      "paragraph_id": "volume_01-c004-s002-p001062",
+      "paragraph_index": 1061,
+      "local_dialogue_index": 1,
+      "text": "我之前曾在贵商行卖过麦子，今天前来推销皮草。商品就在后方，可否拨空看一下呢？",
+      "quote_text": "「我之前曾在贵商行卖过麦子，今天前来推销皮草。商品就在后方，可否拨空看一下呢？」",
+      "paragraph_text": "「我之前曾在贵商行卖过麦子，今天前来推销皮草。商品就在后方，可否拨空看一下呢？」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 40
+    },
+    {
+      "dialogue_id": "volume_01-d000439",
+      "dialogue_index": 438,
+      "window_position": 3,
+      "chapter_id": "volume_01-c004",
+      "chapter_title": "第三幕",
+      "scene_id": "volume_01-c004-s002",
+      "paragraph_id": "volume_01-c004-s002-p001063",
+      "paragraph_index": 1062,
+      "local_dialogue_index": 1,
+      "text": "可以，可以，当然再欢迎不过了。那么就请直接前进到底，再向左手边的人员询问。",
+      "quote_text": "「可以，可以，当然再欢迎不过了。那么就请直接前进到底，再向左手边的人员询问。」",
+      "paragraph_text": "「可以，可以，当然再欢迎不过了。那么就请直接前进到底，再向左手边的人员询问。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 39
+    },
+    {
+      "dialogue_id": "volume_01-d000440",
+      "dialogue_index": 439,
+      "window_position": 4,
+      "chapter_id": "volume_01-c004",
+      "chapter_title": "第三幕",
+      "scene_id": "volume_01-c004-s002",
+      "paragraph_id": "volume_01-c004-s002-p001066",
+      "paragraph_index": 1065,
+      "local_dialogue_index": 1,
+      "text": "喂～～老板您上哪儿去？",
+      "quote_text": "「喂～～老板您上哪儿去？」",
+      "paragraph_text": "「喂～～老板您上哪儿去？」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 13
+    },
+    {
+      "dialogue_id": "volume_01-d000441",
+      "dialogue_index": 440,
+      "window_position": 5,
+      "chapter_id": "volume_01-c004",
+      "chapter_title": "第三幕",
+      "scene_id": "volume_01-c004-s002",
+      "paragraph_id": "volume_01-c004-s002-p001067",
+      "paragraph_index": 1066,
+      "local_dialogue_index": 1,
+      "text": "他是战士吗？",
+      "quote_text": "「他是战士吗？」",
+      "paragraph_text": "罗伦斯两人一边斜眼看着店员忙碌地装货、卸货，一边继续往店内前进，途中传来的呼唤声让他们停了下来。朝声音传来的方向看去，映入眼帘的是一名肤色晒得黝黑、身体冒着热气的彪形大汉。看来，搬运货物的货场再怎么也不可能雇用像在门口与罗伦斯搭腔的男子。不过，这名大汉的体格实在太魁梧了点，连赫萝都不禁小声说了句：「他是战士吗？」",
+      "dialogue_kind": "inline",
+      "outside_quote_text": "罗伦斯两人一边斜眼看着店员忙碌地装货、卸货，一边继续往店内前进，途中传来的呼唤声让他们停了下来。朝声音传来的方向看去，映入眼帘的是一名肤色晒得黝黑、身体冒着热气的彪形大汉。看来，搬运货物的货场再怎么也不可能雇用像在门口与罗伦斯搭腔的男子。不过，这名大汉的体格实在太魁梧了点，连赫萝都不禁小声说了句：",
+      "char_start": 149,
+      "char_end": 157
+    },
+    {
+      "dialogue_id": "volume_01-d000442",
+      "dialogue_index": 441,
+      "window_position": 6,
+      "chapter_id": "volume_01-c004",
+      "chapter_title": "第三幕",
+      "scene_id": "volume_01-c004-s002",
+      "paragraph_id": "volume_01-c004-s002-p001068",
+      "paragraph_index": 1067,
+      "local_dialogue_index": 1,
+      "text": "我们是前来推销皮草的，店员要我们进来后找左手边的人员。",
+      "quote_text": "「我们是前来推销皮草的，店员要我们进来后找左手边的人员。」",
+      "paragraph_text": "「我们是前来推销皮草的，店员要我们进来后找左手边的人员。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 29
+    },
+    {
+      "dialogue_id": "volume_01-d000443",
+      "dialogue_index": 442,
+      "window_position": 7,
+      "chapter_id": "volume_01-c004",
+      "chapter_title": "第三幕",
+      "scene_id": "volume_01-c004-s002",
+      "paragraph_id": "volume_01-c004-s002-p001070",
+      "paragraph_index": 1069,
+      "local_dialogue_index": 1,
+      "text": "那好，老板您的马车就寄放在我这里吧。请直接往这边过来。",
+      "quote_text": "「那好，老板您的马车就寄放在我这里吧。请直接往这边过来。」",
+      "paragraph_text": "「那好，老板您的马车就寄放在我这里吧。请直接往这边过来。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 29
+    },
+    {
+      "dialogue_id": "volume_01-d000444",
+      "dialogue_index": 443,
+      "window_position": 8,
+      "chapter_id": "volume_01-c004",
+      "chapter_title": "第三幕",
+      "scene_id": "volume_01-c004-s002",
+      "paragraph_id": "volume_01-c004-s002-p001072",
+      "paragraph_index": 1071,
+      "local_dialogue_index": 1,
+      "text": "哎呀，好马！这家伙看来挺强壮的。",
+      "quote_text": "「哎呀，好马！这家伙看来挺强壮的。」",
+      "paragraph_text": "「哎呀，好马！这家伙看来挺强壮的。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 18
+    }
+  ],
+  "context": {
+    "paragraphs": [
+      {
+        "paragraph_id": "volume_01-c004-s002-p001057",
+        "paragraph_index": 1056,
+        "text": "罗伦斯与赫萝两人先前往旅馆确保住宿的房间后，罗伦斯便梳理胡子整装出发。一旁的赫萝仍把外套罩在头上。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s002-p001058",
+        "paragraph_index": 1057,
+        "text": "米隆商行距离停船处很近，就在第五家的位置，是间拥有第二大规模的店铺。米隆商行的店面有着宽敞的马车出入口，可通往连接到停船处的木板通道，使米隆商行的店面看来像是规模最大的店铺。宽敞的出入口可看到林林总总的商品种类，及大量商品送入店内，仿佛对往返不绝的行人炫耀店铺的繁荣盛况。或许这也是米隆商行为了与当地业者较劲的独门智慧。比起这样大肆炫耀的方式，当地业者的交易多是利用长期培养而得的人脉，自然不会高调表现出自己赚钱的模样，因为他们没必要这么做。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s002-p001059",
+        "paragraph_index": 1058,
+        "text": "罗伦斯在米隆商行的卸货场前面停下马车，店员随即出来迎接。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s002-p001060",
+        "paragraph_index": 1059,
+        "text": "「欢迎来到米隆商行！」",
+        "target_dialogue_ids": [
+          "volume_01-d000437"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c004-s002-p001061",
+        "paragraph_index": 1060,
+        "text": "负责管理卸货场的店员胡须剃得干净，头发整齐且服装得体，米隆商行的作风果然特别。一般来说，卸货场多是外表如山贼的壮汉一边大声吆喝，一边忙碌往来的地方。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s002-p001062",
+        "paragraph_index": 1061,
+        "text": "「我之前曾在贵商行卖过麦子，今天前来推销皮草。商品就在后方，可否拨空看一下呢？」",
+        "target_dialogue_ids": [
+          "volume_01-d000438"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c004-s002-p001063",
+        "paragraph_index": 1062,
+        "text": "「可以，可以，当然再欢迎不过了。那么就请直接前进到底，再向左手边的人员询问。」",
+        "target_dialogue_ids": [
+          "volume_01-d000439"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c004-s002-p001064",
+        "paragraph_index": 1063,
+        "text": "罗伦斯点点头后，握住缰绳，按照店员指示，驾着马车从出入口进入卸货场。卸货场四处可看到麦子、稻草、石块、木材、水果，各式各样物品把卸货场挤得满满的，不断来回奔走的店员更是活力充沛。卸货场的盛况道出米隆商行能够在异国成功的原因，也让旅行商人明白这一点。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s002-p001065",
+        "paragraph_index": 1064,
+        "text": "一旁的赫萝似乎也显得有些吃惊。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s002-p001066",
+        "paragraph_index": 1065,
+        "text": "「喂～～老板您上哪儿去？」",
+        "target_dialogue_ids": [
+          "volume_01-d000440"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c004-s002-p001067",
+        "paragraph_index": 1066,
+        "text": "罗伦斯两人一边斜眼看着店员忙碌地装货、卸货，一边继续往店内前进，途中传来的呼唤声让他们停了下来。朝声音传来的方向看去，映入眼帘的是一名肤色晒得黝黑、身体冒着热气的彪形大汉。看来，搬运货物的货场再怎么也不可能雇用像在门口与罗伦斯搭腔的男子。不过，这名大汉的体格实在太魁梧了点，连赫萝都不禁小声说了句：「他是战士吗？」",
+        "target_dialogue_ids": [
+          "volume_01-d000441"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c004-s002-p001068",
+        "paragraph_index": 1067,
+        "text": "「我们是前来推销皮草的，店员要我们进来后找左手边的人员。」",
+        "target_dialogue_ids": [
+          "volume_01-d000442"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c004-s002-p001069",
+        "paragraph_index": 1068,
+        "text": "罗伦斯说完后，发现这名大汉就站在卸货场左边，两人四目相交，彼此笑了出来。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s002-p001070",
+        "paragraph_index": 1069,
+        "text": "「那好，老板您的马车就寄放在我这里吧。请直接往这边过来。」",
+        "target_dialogue_ids": [
+          "volume_01-d000443"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c004-s002-p001071",
+        "paragraph_index": 1070,
+        "text": "罗伦斯按照指示让马儿走向男子，男子从正面抱住马儿，对马儿发出静止的指示。或许是受到男子充沛活力的影响，马儿跟着打响鼻声。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s002-p001072",
+        "paragraph_index": 1071,
+        "text": "「哎呀，好马！这家伙看来挺强壮的。」",
+        "target_dialogue_ids": [
+          "volume_01-d000444"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c004-s002-p001073",
+        "paragraph_index": 1072,
+        "text": "「他很勤劳工作，从不发牢骚。」",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s002-p001074",
+        "paragraph_index": 1073,
+        "text": "「如果有会发牢骚的马，那应该当成展示品供世人瞧瞧。」",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s002-p001075",
+        "paragraph_index": 1074,
+        "text": "「正是。」",
+        "target_dialogue_ids": []
+      }
+    ]
+  },
+  "scene_memory": [
+    {
+      "scene_id": "volume_01-c004-s002-r003",
+      "parent_scene_id": "volume_01-c004-s002",
+      "chunk_index": 3,
+      "chunk_count": 3,
+      "scene_summary": "罗伦斯与赫萝来到米隆商行，与店员和搬运工互动，准备推销皮草。场景描绘了商行的运作方式和人物之间的初步交流。",
+      "active_characters": [
+        "罗伦斯",
+        "赫萝"
+      ],
+      "relationships": [
+        "罗伦斯与店员：接待与指引",
+        "罗伦斯与彪形大汉：停车与互动",
+        "罗伦斯与采购人员：商品鉴定与接待"
+      ],
+      "notes": "场景中出现的店员、搬运工和采购人员均未命名，但可通过行为和身份线索进行追踪。米隆商行行长虽未出场，但通过采购人员的台词可推测其存在。"
+    }
+  ],
+  "candidate_characters": [
+    {
+      "entity_id": "char_0001",
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": [
+        "商人",
+        "旅行商人",
+        "行商人"
+      ],
+      "description": "理性、谨慎的商人，试图分析局势并保持冷静。他与赫萝同行，面对叶勒的威胁时表现出坚定。 / 理性、坚定的商人，坚持遵守与赫萝的合约，拒绝背叛她。面对叶勒的威胁保持冷静，表现出对赫萝的忠诚。 / 理性、谨慎的商人，身受重伤但仍试图保持冷静并等待救援。他表现出对赫萝的依赖和信任。 / 罗伦斯目睹赫萝的变身过程，表现出震惊和无力。他试图抓住赫萝留下的皮袋，但最终面对巨大的狼形生物，感到无法应对。 / 理性、谨慎的商人，与赫萝在地下通道中遭遇叶勒的威胁。他试图安抚赫萝的情绪，并表现出对环境变化的敏感。 / 在赫萝的威压下感…",
+      "speech_style": "温和、理性、略带担忧 / 理性、略带策略性、温和 / 理性、担忧、略带冲动 / 虚弱、低沉、略带困惑 / 虚弱、低沉、焦虑 / 理性、坚定、略带焦虑 / 理性、焦虑、略带冲动 / 虚弱、低沉、焦虑 / 虚弱、焦虑、略带愤怒 / 愤怒、理性、略带冲动 / 虚弱、焦虑、略带悔恨 / 理性、冷静、略带焦虑",
+      "speech_markers": [
+        "……骑士？",
+        "有什么能为您效劳的吗？",
+        "算了……",
+        "糟糕",
+        "……",
+        "喂！",
+        "喂！起床啊！",
+        "喂！有什么好笑的？"
+      ],
+      "relationship_hints": [
+        "与赫萝一同旅行",
+        "对赫萝的身份持怀疑态度",
+        "与修道院有生意期望但未成功",
+        "与骑士初次互动",
+        "与赫萝有密切关系",
+        "与教会和骑士有互动",
+        "与叶勒有交集，计划与他交谈但被祭典打断",
+        "与叶勒有过去的交易关系。"
+      ],
+      "first_seen_scene_id": "volume_01-c000-s003-r001",
+      "latest_seen_scene_id": "volume_01-c008-s003-r001",
+      "confidence": 1.0
+    },
+    {
+      "entity_id": "char_0002",
+      "display_name": "赫萝",
+      "aliases": [],
+      "titles": [
+        "丰收之神",
+        "狼",
+        "贤狼"
+      ],
+      "description": "神秘少女，拥有狼的特征。在本场景中协助罗伦斯击退袭击者，表现出冷静和对环境的高度感知能力。 / 在地下道中不断呼喊罗伦斯，试图唤醒他并指引方向。表现出担忧和责任感。 / 神秘少女，拥有狼的特征，情绪波动明显，对罗伦斯表现出依赖和担忧。 / 神秘少女，拥有狼的特征。在本场景中表现出脆弱和依赖，对独自旅行感到不安。她对叶勒的言语感到愤怒与悲伤。 / 情绪波动明显的贤狼，因叶勒的言语感到悲伤。她表现出对罗伦斯的依赖，并在关键时刻流露出脆弱。 / 情绪波动明显的贤狼，因叶勒的言语感到愤怒与悲伤。她吸食罗伦斯的血液以施展某…",
+      "speech_style": "未直接发言，但被频繁提及 / 冷静、自信、略带调侃 / 调皮、略带挑衅、情绪化 / 略带孩子气、情绪化、略带调侃 / 冷静、简短、略带策略性 / 关切、坚定、略带责备 / 情绪化、略带孩子气 / 冷静、略带情绪化 / 脆弱、情绪化、略带孩子气 / 冷静、自信、略带策略性 / 冷静、简短、略带威严 / 未直接发言",
+      "speech_markers": [
+        "咱",
+        "哈哈哈哈哈，咱是恶魔？",
+        "好名字呗？",
+        "咱没听过。",
+        "咱不要。",
+        "或是鲜血。",
+        "如何？愿意相信咱了呗？",
+        "汝要温柔一些呐。"
+      ],
+      "relationship_hints": [
+        "与罗伦斯一同旅行",
+        "捉弄罗伦斯",
+        "与罗伦斯展开对话",
+        "表现出对罗伦斯的调侃",
+        "与罗伦斯有初步互动，可能是他未来的旅伴",
+        "与罗伦斯进行对话，表现出信任与坦率",
+        "提到出生地时流露出真实情感",
+        "与罗伦斯有互动，被罗伦斯收留并一同旅行"
+      ],
+      "first_seen_scene_id": "volume_01-c000-s003-r001",
+      "latest_seen_scene_id": "volume_01-c008-s003-r001",
+      "confidence": 0.95
+    },
+    {
+      "entity_id": "char_0009",
+      "display_name": "店员",
+      "aliases": [],
+      "titles": [
+        "卸货场管理人员",
+        "米隆商行店员"
+      ],
+      "description": "负责接待罗伦斯的店员，外表整洁，行为得体，代表米隆商行的作风。",
+      "speech_style": "礼貌、专业",
+      "speech_markers": [
+        "欢迎来到米隆商行！"
+      ],
+      "relationship_hints": [
+        "接待罗伦斯",
+        "指引罗伦斯前往卸货场"
+      ],
+      "first_seen_scene_id": "volume_01-c004-s002-r003",
+      "latest_seen_scene_id": "volume_01-c004-s002-r003",
+      "confidence": 0.9
+    },
+    {
+      "entity_id": "char_0010",
+      "display_name": "彪形大汉",
+      "aliases": [],
+      "titles": [
+        "卸货场人员",
+        "搬运工"
+      ],
+      "description": "肤色黝黑、体格魁梧的搬运工，负责接待罗伦斯的马车。",
+      "speech_style": "热情、直接",
+      "speech_markers": [
+        "喂～～老板您上哪儿去？"
+      ],
+      "relationship_hints": [
+        "协助罗伦斯停车",
+        "与罗伦斯互动友好"
+      ],
+      "first_seen_scene_id": "volume_01-c004-s002-r003",
+      "latest_seen_scene_id": "volume_01-c004-s002-r003",
+      "confidence": 0.8
+    },
+    {
+      "entity_id": "char_0014",
+      "display_name": "米隆商行",
+      "aliases": [],
+      "titles": [
+        "商行"
+      ],
+      "description": "被罗伦斯说服调查杰廉的商行，被认为在情报收集方面非常优秀。",
+      "speech_style": "未直接发言",
+      "speech_markers": [],
+      "relationship_hints": [
+        "被罗伦斯说服",
+        "与杰廉有潜在冲突"
+      ],
+      "first_seen_scene_id": "volume_01-c005-s001-r001",
+      "latest_seen_scene_id": "volume_01-c005-s001-r001",
+      "confidence": 0.8
+    },
+    {
+      "entity_id": "char_0011",
+      "display_name": "采购人员",
+      "aliases": [],
+      "titles": [
+        "商品鉴定员",
+        "米隆商行采购员"
+      ],
+      "description": "被彪形大汉唤来的男子，外表文雅，负责商品鉴定。 / 米隆商行的采购员，负责鉴定罗伦斯带来的貂皮。作风直接，单刀直入，表现出专业素养。 / 米隆商行的采购员，负责鉴定罗伦斯带来的貂皮。作风直接，单刀直入，表现出专业素养。在赫萝插嘴后感到困惑并道歉。",
+      "speech_style": "正式、礼貌 / 正式、礼貌、直接",
+      "speech_markers": [
+        "喔……",
+        "那么……罗伦兹先生",
+        "本商行也完全赞同",
+        "谢谢。那么，先生啊。",
+        "是的，我完全赞同。"
+      ],
+      "relationship_hints": [
+        "代表行长接待罗伦斯",
+        "负责商品鉴定",
+        "与罗伦斯进行交易谈判",
+        "代表米隆商行",
+        "被赫萝质疑后感到困惑",
+        "与罗伦斯进行交易",
+        "被赫萝引导",
+        "与罗伦斯有商业关系"
+      ],
+      "first_seen_scene_id": "volume_01-c004-s002-r003",
+      "latest_seen_scene_id": "volume_01-c004-s004-r001",
+      "confidence": 0.9
+    }
+  ],
+  "candidate_mysteries": []
+}

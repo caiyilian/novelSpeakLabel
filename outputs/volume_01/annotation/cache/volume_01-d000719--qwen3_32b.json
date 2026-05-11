@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000719",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "上下文显示赫萝在对话中主导节奏，语气轻松幽默但略带威胁，符合赫萝的说话风格。",
+    "当前段落是赫萝对罗伦斯的提问「银币的含银量渐渐降低的事常有吗？」的回应，符合她对商业话题的调侃和分析风格。",
+    "场景记忆中显示赫萝与罗伦斯的对话频繁，且赫萝常以轻松幽默但略带威胁的语气回应罗伦斯的困惑。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

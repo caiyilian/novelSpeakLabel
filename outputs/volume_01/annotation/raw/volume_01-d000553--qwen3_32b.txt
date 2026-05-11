@@ -1,0 +1,32 @@
+```json
+{
+  "dialogue_id": "volume_01-d000553",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0009",
+      "display": "杰廉",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "前一段对话中罗伦斯开门见山地提问，语气直接且理性，符合罗伦斯的说话风格。",
+    "当前对话内容「含银量真的会提高吗？」是对杰廉提供的情报提出质疑，符合罗伦斯冷静分析、不轻易相信他人的性格。",
+    "场景记忆中明确提到罗伦斯对杰廉的提议持怀疑态度，因此此句应为罗伦斯的质疑。",
+    "下一段描述「听到罗伦斯如此开门见山地问，杰廉的神情显得畏缩」，进一步确认说话人为罗伦斯。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

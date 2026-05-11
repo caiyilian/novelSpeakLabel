@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d000151",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    }
+  ],
+  "evidence": [
+    "赫萝在对话中提到自己进入叶勒的身体，这与场景记忆中赫萝与叶勒的身份关联一致。",
+    "赫萝的说话风格与候选角色 char_0002 的描述完全吻合，轻松幽默但略带威胁性。",
+    "当前段落紧接着赫萝的对话，且上下文显示罗伦斯正在回应赫萝的提问，说明说话人是赫萝。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

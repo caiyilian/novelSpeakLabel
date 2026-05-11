@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d001253",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0004",
+      "display": "叶勒",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "前一句是「罗伦斯，我们的友情真是短暂。」，暗示说话人可能是罗伦斯。",
+    "当前场景中罗伦斯是主要角色，且与叶勒有互动，但没有证据表明叶勒会说出这句话。",
+    "「旅行商人总是避免不了分离。」符合罗伦斯冷静理性的说话风格。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

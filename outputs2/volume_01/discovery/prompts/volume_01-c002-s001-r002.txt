@@ -1,0 +1,281 @@
+你是轻小说说话人标注项目的阶段 1：角色发现与建库助手。
+你的任务不是给每句台词最终打标签，而是从当前场景中发现角色、别名、称谓、关系线索、说话风格线索、场景摘要，以及尚未命名但可追踪的神秘人物。
+
+规则：
+1. 只输出严格 JSON，不要 Markdown，不要解释性前后缀。
+2. scene_id 必须填写输入 scene.request_id。
+3. 不要编造没有文本证据的人名。
+4. 如果人物未命名但看起来可在后文追踪，放入 mystery_entities。
+5. character_candidates 只放可以从文本中看到名字、称谓或稳定身份线索的人物。
+6. titles 只放身份/职业/称谓，不要把职业称谓当成人物别名。
+7. speech_markers 只记录高区分度口癖/自称/固定句尾/固定短语；普通词不要记录，也不要把口癖放进 aliases/titles。
+8. evidence 使用 paragraph_id 或 dialogue_id 相关的短证据，不要长篇复制原文。
+
+输出 JSON 结构：
+{
+  "scene_id": "string",
+  "scene_summary": "string",
+  "active_characters": ["string"],
+  "character_candidates": [
+    {
+      "display_name": "string",
+      "aliases": ["string"],
+      "titles": ["string"],
+      "description": "string",
+      "speech_style": "string",
+      "speech_markers": ["string"],
+      "relationship_hints": ["string"],
+      "evidence": ["string"],
+      "confidence": 0.0
+    }
+  ],
+  "mystery_entities": [
+    {
+      "temporary_name": "string",
+      "description": "string",
+      "evidence": ["string"],
+      "confidence": 0.0
+    }
+  ],
+  "relationships": ["string"],
+  "notes": "string"
+}
+
+输入场景 JSON：
+{
+  "volume_id": "volume_01",
+  "scene": {
+    "request_id": "volume_01-c002-s001-r002",
+    "scene_id": "volume_01-c002-s001",
+    "chapter_id": "volume_01-c002",
+    "chapter_title": "第一幕",
+    "chunk_index": 2,
+    "chunk_count": 3
+  },
+  "paragraphs": [
+    {
+      "paragraph_id": "volume_01-c002-s001-p000105",
+      "text": "骑士骄傲地挺起刻有红色十字架的银制胸甲，态度蛮横地说道。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000106",
+      "text": "然而，骑士直接套在肩上的大衣同样是灰色，这代表他只是一名下级骑士。短短的金发似乎刚剃不久，体格也看不出身经百战的样子。或许是刚刚成为骑士，所以显得趾高气扬。面对这种人，必须从容应付，免得他们一下子就得意忘形。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000107",
+      "text": "罗伦斯没有马上回答，他从怀里拿出一只皮袋，缓缓解开绑住袋口的绳子，袋子里装着蜂蜜糖。罗伦斯拿出一颗放入口中，再把整袋蜂蜜糖递给骑士。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000108",
+      "text": "「要不要来一颗？」"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000109",
+      "text": "「呃……」"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000110",
+      "text": "虽然骑士瞬间露出迟疑的神情，但终究敌不过糖果的诱惑。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000111",
+      "text": "不过，身为骑士的自尊，让他从点头到伸手取糖花了不少时间。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000112",
+      "text": "「从这里往东边山头走上约半天的时间，就可以看到一座小村落。我是到那里卖盐回来的。」"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000113",
+      "text": "「原来如此。我看你车上还有货，是盐吗？」"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000114",
+      "text": "「不，这些是皮草。您瞧。」"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000115",
+      "text": "罗伦斯一边说，一边转向货台掀开覆盖的麻布。那是非常漂亮的貂皮。如果以眼前这位骑士的薪水来看，相信貂皮的价值比他的年薪还要高。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000116",
+      "text": "「喔，那这是什么？」"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000117",
+      "text": "「啊，这是山里的村民给我的麦子。」"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000118",
+      "text": "成束的麦子就放在貂皮堆旁边，那是罗伦斯前去卖盐的村落所种植的麦子。那里的麦子不但耐寒，也不容易被虫咬。去年西北方受到严重的寒害，罗伦斯打算把麦子拿到西北方去卖。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000119",
+      "text": "「嗯。好了，你可以走了。」"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000120",
+      "text": "自己把人叫来，现在又想随便打发我，如果乖乖说「是」的话，就不配当商人了。罗伦斯一边有意无意地把玩刚刚的皮袋，一边转回骑士的方向。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000121",
+      "text": "「发生什么事了吗？平常在这里应该见不到骑士吧？」"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000122",
+      "text": "年轻骑士可能是因为被询问而感到不悦，稍稍皱起眉头，再看到罗伦斯手中的皮袋，眉头皱得更深了。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000123",
+      "text": "看来骑士似乎是上钩了。罗伦斯解开绳子，拿出一颗蜂蜜糖递给骑士。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000124",
+      "text": "「嗯……真好吃，我得好好答谢你才行。」"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000125",
+      "text": "骑士喜欢讲道理。罗伦斯露出营业用笑容，表现出非常感谢的模样，向骑士鞠躬。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000126",
+      "text": "「听说最近，这一带会有异教徒祭典，所以我们才受命在这里防卫。你知道什么消息吗？」"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000127",
+      "text": "这时，如果表现出失望的表情，那么演技就太差了。罗伦斯假装想了好一会儿后，回答说：「我不知道耶。」事实上，罗伦斯是在撒谎，不过骑士说的话也不甚正确，所以他不得不扯谎。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000128",
+      "text": "「他们果然想在背地里偷偷举办祭典，异教徒真是一群胆小鬼。」"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000129",
+      "text": "虽然骑士完全猜想错误的发言听来好笑，但罗伦斯当然没有予以指正，他表示赞同骑士说的话后，随即向骑士告辞。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000130",
+      "text": "骑士点点头，再度为蜂蜜糖向罗伦斯道谢。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000131",
+      "text": "可见骑士是真的喜欢吃蜂蜜糖。下级骑士的钱都花费在装备和旅费上。事实上，他们的生活还不如初入门的鞋匠学徒。骑士肯定很久没吃到甜的东西了。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000132",
+      "text": "话虽如此，但罗伦斯并不打算再多拿蜂蜜糖分给骑士，毕竟蜂蜜糖并不便宜。"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000133",
+      "text": "「异教徒祭典……还真会猜啊。」"
+    },
+    {
+      "paragraph_id": "volume_01-c002-s001-p000134",
+      "text": "离开修道院一会儿后，罗伦斯喃喃念着骑士说的话，苦笑了一下。"
+    }
+  ],
+  "dialogues": [
+    {
+      "dialogue_id": "volume_01-d000011",
+      "paragraph_id": "volume_01-c002-s001-p000108",
+      "text": "要不要来一颗？"
+    },
+    {
+      "dialogue_id": "volume_01-d000012",
+      "paragraph_id": "volume_01-c002-s001-p000109",
+      "text": "呃……"
+    },
+    {
+      "dialogue_id": "volume_01-d000013",
+      "paragraph_id": "volume_01-c002-s001-p000112",
+      "text": "从这里往东边山头走上约半天的时间，就可以看到一座小村落。我是到那里卖盐回来的。"
+    },
+    {
+      "dialogue_id": "volume_01-d000014",
+      "paragraph_id": "volume_01-c002-s001-p000113",
+      "text": "原来如此。我看你车上还有货，是盐吗？"
+    },
+    {
+      "dialogue_id": "volume_01-d000015",
+      "paragraph_id": "volume_01-c002-s001-p000114",
+      "text": "不，这些是皮草。您瞧。"
+    },
+    {
+      "dialogue_id": "volume_01-d000016",
+      "paragraph_id": "volume_01-c002-s001-p000116",
+      "text": "喔，那这是什么？"
+    },
+    {
+      "dialogue_id": "volume_01-d000017",
+      "paragraph_id": "volume_01-c002-s001-p000117",
+      "text": "啊，这是山里的村民给我的麦子。"
+    },
+    {
+      "dialogue_id": "volume_01-d000018",
+      "paragraph_id": "volume_01-c002-s001-p000119",
+      "text": "嗯。好了，你可以走了。"
+    },
+    {
+      "dialogue_id": "volume_01-d000019",
+      "paragraph_id": "volume_01-c002-s001-p000120",
+      "text": "是"
+    },
+    {
+      "dialogue_id": "volume_01-d000020",
+      "paragraph_id": "volume_01-c002-s001-p000121",
+      "text": "发生什么事了吗？平常在这里应该见不到骑士吧？"
+    },
+    {
+      "dialogue_id": "volume_01-d000021",
+      "paragraph_id": "volume_01-c002-s001-p000124",
+      "text": "嗯……真好吃，我得好好答谢你才行。"
+    },
+    {
+      "dialogue_id": "volume_01-d000022",
+      "paragraph_id": "volume_01-c002-s001-p000126",
+      "text": "听说最近，这一带会有异教徒祭典，所以我们才受命在这里防卫。你知道什么消息吗？"
+    },
+    {
+      "dialogue_id": "volume_01-d000023",
+      "paragraph_id": "volume_01-c002-s001-p000127",
+      "text": "我不知道耶。"
+    },
+    {
+      "dialogue_id": "volume_01-d000024",
+      "paragraph_id": "volume_01-c002-s001-p000128",
+      "text": "他们果然想在背地里偷偷举办祭典，异教徒真是一群胆小鬼。"
+    },
+    {
+      "dialogue_id": "volume_01-d000025",
+      "paragraph_id": "volume_01-c002-s001-p000133",
+      "text": "异教徒祭典……还真会猜啊。"
+    }
+  ],
+  "known_characters": [
+    {
+      "entity_id": "char_0001",
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": [
+        "旅行商人",
+        "行商人"
+      ],
+      "description": "一位行商人，发现并收留了赫萝，决定与她一同旅行。 / 二十五岁，行商七年，性格理性、谨慎，与修道院和骑士互动时表现出职业习惯性的冷静。",
+      "speech_style": "理性、怀疑、谨慎",
+      "speech_markers": []
+    },
+    {
+      "entity_id": "char_0002",
+      "display_name": "赫萝",
+      "aliases": [],
+      "titles": [
+        "丰收之神"
+      ],
+      "description": "自称是丰收之神的少女，拥有狼的耳朵和尾巴，说话狡诈。",
+      "speech_style": "狡诈、自信、神气",
+      "speech_markers": [
+        "咱"
+      ]
+    }
+  ]
+}

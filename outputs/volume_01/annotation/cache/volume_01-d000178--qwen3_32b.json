@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000178",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.98
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.02
+    }
+  ],
+  "evidence": [
+    "前一段提到罗伦斯思考了一会儿后缓缓开口说，接着是这句台词，符合罗伦斯的理性、谨慎语气。",
+    "下一段提到罗伦斯原以为答案会惹赫萝不满，进一步确认说话人是罗伦斯。",
+    "罗伦斯的理性商人性格与这句「我没办法立刻下决定」高度吻合。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

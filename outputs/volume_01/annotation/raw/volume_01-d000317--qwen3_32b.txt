@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000317",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "上下文显示赫萝专注于梳理尾巴，罗伦斯则在思考和计划，对话内容符合罗伦斯冷静理性的语气。",
+    "对话中提到「没必要让他跟着马车一起慢慢走吧」，暗示说话人对行程有判断力，符合罗伦斯的商人身份。",
+    "前一句是赫萝的提问「咱们不跟他一起走吗？」，此句是对该问题的理性回应，符合罗伦斯的说话风格。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

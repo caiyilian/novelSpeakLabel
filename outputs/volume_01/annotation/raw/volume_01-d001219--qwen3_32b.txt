@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d001219",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "前一段提到赫萝搥打罗伦斯并说「振作一点，再一下就到了。」，当前对话「……到哪里？」是对赫萝话语的回应，语气虚弱，符合罗伦斯的说话风格。",
+    "场景记忆中，罗伦斯和赫萝是主要角色，且罗伦斯在体力不支时表现出困惑和依赖，符合当前台词的语气。",
+    "当前段落中没有其他角色的对话，因此可以合理推断说话人为罗伦斯。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

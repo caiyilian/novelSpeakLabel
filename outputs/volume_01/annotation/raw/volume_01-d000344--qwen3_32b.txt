@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d000344",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "下一段明确提到「一脸歉意的赫萝垂下肩膀，缩着身体小声地说」，说明当前台词是她道歉的延续。",
+    "场景记忆中赫萝多次表现出歉意和担忧，尤其在罗伦斯情绪低落时。",
+    "赫萝的说话风格符合「抱歉……」这种简短、情绪化的表达。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

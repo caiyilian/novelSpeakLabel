@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d000332",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "赫萝在本场景中以轻松幽默但略带威胁性的语气调侃罗伦斯，符合她的说话风格。",
+    "前一句台词「哈哈哈哈哈，汝的脑筋转得真快。」是赫萝的笑声，紧接着是她的回应，符合对话逻辑。",
+    "赫萝在场景中表现出狡诈、自信和调皮的特质，与台词内容一致。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

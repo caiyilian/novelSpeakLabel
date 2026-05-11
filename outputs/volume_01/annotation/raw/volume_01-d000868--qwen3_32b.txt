@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000868",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "对话中使用了「汝」来称呼对方，这是赫萝常用的敬语风格。",
+    "对话内容涉及开店与旅行的矛盾，这是赫萝与罗伦斯之间经常讨论的话题。",
+    "上下文显示赫萝对罗伦斯开店计划表现出复杂情绪，符合她的性格特征。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000624",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.9,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.9
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.1
+    }
+  ],
+  "evidence": [
+    "前一段罗伦斯刚说完一段关于货币的解释，下一段提到赫萝似乎没搞懂的样子，因此此处的「嗯……」很可能是赫萝的反应。",
+    "场景记忆中显示赫萝在对话中表现出理解力，尽管她表面上看似困惑，因此她发出的「嗯……」符合她的说话风格。",
+    "赫萝在场景中是主要互动角色之一，而罗伦斯是解释者，因此反应更可能来自赫萝。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

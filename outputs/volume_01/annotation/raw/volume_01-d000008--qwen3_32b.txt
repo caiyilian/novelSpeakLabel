@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000008",
+  "speaker_entity_id": "char_0003",
+  "speaker_display": "骑士",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0003",
+      "display": "骑士",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "mystery_volume_01_c002_s001_r002_修道院骑士2",
+      "display": "修道院骑士2",
+      "status": "mystery",
+      "score": 0.1
+    }
+  ],
+  "evidence": [
+    "前文提到罗伦斯确认对方是骑士，且对话语气傲慢。",
+    "下一段提到骑士大喊并质疑罗伦斯的身份，符合骑士的说话风格。",
+    "场景记忆中明确指出该骑士与罗伦斯对话，且态度傲慢。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

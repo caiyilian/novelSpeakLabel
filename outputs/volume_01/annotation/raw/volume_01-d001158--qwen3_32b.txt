@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d001158",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    }
+  ],
+  "evidence": [
+    "上下文显示赫萝与罗伦斯有亲密互动，且赫萝在场景中表现出开心和撒娇的情绪。",
+    "下一段明确提到赫萝加重握住罗伦斯的手，并解释这是她害羞的反应。",
+    "场景记忆中提到赫萝在黑暗车厢中表现出轻松幽默但略带威胁的语气，与当前台词的撒娇语气一致。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d001322",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0020",
+      "display": "列支敦·马贺特",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "对话中提到「戏曲」，与前文「您是说胡椒吗？」和「怎么了吗？」的对话逻辑连贯，符合罗伦斯的说话风格。",
+    "罗伦斯在场景中是主要对话者，且与马贺特有持续互动，符合当前语境。",
+    "罗伦斯的描述中提到他「最近才读完从南方寄上来的戏曲」，与台词内容一致。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d000890",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "赫萝在场景中表现出情绪波动，刚刚擤鼻涕并擦眼角，随后回应罗伦斯的举动。",
+    "当前对话语气犹豫、含糊，符合赫萝害羞和情绪化的说话风格。",
+    "场景中只有罗伦斯和赫萝两人，且赫萝是情绪表达的主体。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

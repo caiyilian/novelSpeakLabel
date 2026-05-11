@@ -1,0 +1,51 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000176",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "上下文明确指出赫萝表达了对旅行的意愿，并提到思念故乡，符合该段对话内容。",
+        "上下文提到赫萝说罢并继续说，表明这是她连续的发言。",
+        "对话中使用了「咱」自称，符合赫萝的说话风格。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000177",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "上下文明确指出赫萝继续发言，并以「咱」自称，符合她的说话风格。",
+        "对话内容延续了前一句的逻辑，是赫萝对罗伦斯的进一步请求。",
+        "场景记忆中赫萝是主要对话者之一，且与罗伦斯互动频繁。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "两句话为赫萝连续发言，符合上下文叙述逻辑和角色行为模式。"
+}

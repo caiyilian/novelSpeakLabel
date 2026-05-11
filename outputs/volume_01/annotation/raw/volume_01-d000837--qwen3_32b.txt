@@ -1,0 +1,30 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000837",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "前文提到赫萝因宿醉感到不适，此处台词「……忍不住了，好想吐。」符合她宿醉后的反应。",
+        "上下文显示赫萝沉默一阵子后小声说，符合说话人轮次的自然过渡。",
+        "场景记忆中明确指出赫萝因宿醉不适，罗伦斯在照顾她。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，赫萝在沉默后表达不适，罗伦斯随后作出反应，符合角色行为逻辑。"
+}
+```

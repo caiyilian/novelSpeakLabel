@@ -1,0 +1,23 @@
+{
+  "dialogue_id": "volume_01-d000806",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "赫萝在本场景中因宿醉虚弱无力，趴在桌上抱怨。",
+    "对话内容表现出疲惫和沮丧的情绪，符合赫萝在场景中的状态。",
+    "前文提到赫萝试图回忆一件重要的事但未能想起，与当前台词中的「脑袋完全转不动」呼应。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

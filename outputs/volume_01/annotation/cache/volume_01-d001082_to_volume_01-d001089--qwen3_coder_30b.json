@@ -1,0 +1,171 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001082",
+      "speaker_entity_id": "volume_01-d001082",
+      "speaker_display": "里昂",
+      "speaker_status": "review",
+      "confidence": 0.0,
+      "candidate_speakers": [],
+      "evidence": [
+        "inline 引号，非独立对白"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    },
+    {
+      "dialogue_id": "volume_01-d001083",
+      "speaker_entity_id": "volume_01-d001083",
+      "speaker_display": "奴马",
+      "speaker_status": "review",
+      "confidence": 0.0,
+      "candidate_speakers": [],
+      "evidence": [
+        "inline 引号，非独立对白"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    },
+    {
+      "dialogue_id": "volume_01-d001084",
+      "speaker_entity_id": "char_0024",
+      "speaker_display": "梅迪欧商行的人",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0024",
+          "display": "梅迪欧商行的人",
+          "status": "known",
+          "score": 0.9
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.1
+        }
+      ],
+      "evidence": [
+        "语境中为商行人员发言，语气冷静，符合其专业性"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001085",
+      "speaker_entity_id": "char_0024",
+      "speaker_display": "梅迪欧商行的人",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0024",
+          "display": "梅迪欧商行的人",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "语境中为商行人员发言，语气冷静，符合其专业性"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001086",
+      "speaker_entity_id": "char_0024",
+      "speaker_display": "梅迪欧商行的人",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0024",
+          "display": "梅迪欧商行的人",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "语境中为商行人员发言，语气冷静，符合其专业性"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001087",
+      "speaker_entity_id": "char_0024",
+      "speaker_display": "梅迪欧商行的人",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0024",
+          "display": "梅迪欧商行的人",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "语境中为商行人员发言，语气冷静，符合其专业性"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001088",
+      "speaker_entity_id": "char_0024",
+      "speaker_display": "梅迪欧商行的人",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0024",
+          "display": "梅迪欧商行的人",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "语境中为商行人员发言，语气冷静，符合其专业性"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001089",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.8
+        },
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.2
+        }
+      ],
+      "evidence": [
+        "语境中为罗伦斯对赫萝说话，语气关心，符合其性格"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "整体对话轮次清晰，商行人员连续发言，罗伦斯在最后回应赫萝。"
+}

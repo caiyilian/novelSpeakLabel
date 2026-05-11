@@ -1,0 +1,159 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000527",
+      "speaker_entity_id": "char_0018",
+      "speaker_display": "女店员",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0018",
+          "display": "女店员",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "女店员对杰廉的名字反应积极，提供有用信息",
+        "当前场景中已知的活跃角色之一"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000528",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "罗伦斯是当前场景中等待杰廉的旅行商人",
+        "对话轮次上紧接女店员的发言，符合问答逻辑"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000529",
+      "speaker_entity_id": "char_0018",
+      "speaker_display": "女店员",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0018",
+          "display": "女店员",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "女店员继续提供关于杰廉的详细信息",
+        "对话轮次上紧接罗伦斯的发言，符合问答逻辑"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000530",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "罗伦斯对女店员的信息作出回应",
+        "对话轮次上紧接女店员的发言，符合问答逻辑"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000531",
+      "speaker_entity_id": "char_0018",
+      "speaker_display": "女店员",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0018",
+          "display": "女店员",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "女店员继续提供关于杰廉的进一步建议",
+        "对话轮次上紧接罗伦斯的发言，符合问答逻辑"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000532",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "罗伦斯对女店员的建议表示接受",
+        "对话轮次上紧接女店员的发言，符合问答逻辑"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000533",
+      "speaker_entity_id": "char_0018",
+      "speaker_display": "女店员",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0018",
+          "display": "女店员",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "女店员对罗伦斯的回应表示礼貌的结束语",
+        "对话轮次上紧接罗伦斯的发言，符合问答逻辑"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，女店员与罗伦斯交替发言，符合场景中两人互动的叙述线索。所有台词均可按上下文合理分配说话人。"
+}

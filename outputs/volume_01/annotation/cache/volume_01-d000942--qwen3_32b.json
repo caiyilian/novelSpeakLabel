@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000942",
+  "speaker_entity_id": "char_0023",
+  "speaker_display": "米隆侯爵",
+  "speaker_status": "known",
+  "confidence": 0.85,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0023",
+      "display": "米隆侯爵",
+      "status": "known",
+      "score": 0.85
+    },
+    {
+      "entity_id": "char_0020",
+      "display": "列支敦·马贺特",
+      "status": "known",
+      "score": 0.6
+    }
+  ],
+  "evidence": [
+    "对话内容提到「相救」，与米隆侯爵在场景中对商行的保护行为相符。",
+    "米隆侯爵在场景中表现出对商行的权威和责任感，符合道歉和感谢的语气。",
+    "米隆侯爵的发言风格为「气势十足，带有权威感」，与该句台词的语气相符。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

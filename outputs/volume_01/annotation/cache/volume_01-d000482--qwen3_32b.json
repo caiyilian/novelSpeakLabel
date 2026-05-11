@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000482",
+  "speaker_entity_id": "char_0016",
+  "speaker_display": "鉴定员",
+  "speaker_status": "known",
+  "confidence": 0.9,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0016",
+      "display": "鉴定员",
+      "status": "known",
+      "score": 0.9
+    },
+    {
+      "entity_id": "char_0015",
+      "display": "鉴定的男子",
+      "status": "known",
+      "score": 0.7
+    }
+  ],
+  "evidence": [
+    "赫萝将貂皮交给鉴定员，而该句台词出现在赫萝插嘴之后，符合鉴定员对皮草进行专业评价的语境。",
+    "场景记忆中提到「鉴定员」对赫萝的言辞感到惊讶，暗示他为当前对话的说话人。",
+    "台词语气专业，符合「鉴定员」的描述风格。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

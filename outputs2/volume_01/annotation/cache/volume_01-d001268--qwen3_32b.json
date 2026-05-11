@@ -1,0 +1,27 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001268",
+      "speaker_entity_id": "mystery_volume_01_c007_s004_r002_巨大狼",
+      "speaker_display": "巨大狼",
+      "speaker_status": "mystery",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "mystery_volume_01_c007_s004_r002_巨大狼",
+          "display": "巨大狼",
+          "status": "mystery",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "上下文描述中提到巨大狼的出现和行为，包括吓退人群、丢武器等，符合该台词的惊恐反应",
+        "该台词是突然的惊叫，符合巨大狼出现时的场景氛围"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "该台词是突然的惊叫，出现在巨大狼现身的场景中，符合神秘实体的反应模式。上下文未提供明确说话人身份，因此归为巨大狼。"
+}

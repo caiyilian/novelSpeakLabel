@@ -1,0 +1,92 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000195",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.9
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.1
+        }
+      ],
+      "evidence": [
+        "赫萝在前文表现出活泼、调侃的语气，符合台词中的语气风格。",
+        "赫萝在前文刚刚与罗伦斯握手达成共识，此时更可能主动提出出发。",
+        "台词中使用了「先这样呗」，语气轻松，符合赫萝的说话风格。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000196",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.85
+        },
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.15
+        }
+      ],
+      "evidence": [
+        "这是对前一句的回应，符合对话轮次逻辑，罗伦斯更可能表现出惊讶和责备。",
+        "「你怎么不早点说」是罗伦斯的典型反应，语气中带有责备，符合他的性格。",
+        "赫萝在前一句中主动提出出发，罗伦斯作为理性商人更可能对此做出反应。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000197",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.88,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.88
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.12
+        }
+      ],
+      "evidence": [
+        "赫萝在前文表现出对环境的敏感和判断力，更可能对河川的情绪做出评论。",
+        "「心情不好」这样的拟人化表达更符合赫萝的说话风格。",
+        "罗伦斯在前一句中刚表达责备，赫萝作为活泼角色更可能迅速转移话题。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "三句对话构成一个完整的对话轮次：赫萝提议出发 → 罗伦斯回应责备 → 赫萝转移话题。对话节奏自然，符合两人性格和互动模式。"
+}

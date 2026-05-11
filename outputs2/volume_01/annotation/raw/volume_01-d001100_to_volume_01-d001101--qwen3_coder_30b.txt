@@ -1,0 +1,55 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001100",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        },
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.1
+        }
+      ],
+      "evidence": ["上下文描述罗伦斯安抚赫萝，且该台词语气符合罗伦斯的温和理性风格；赫萝情绪已缓和，但未直接发言。"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001101",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.85
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.15
+        }
+      ],
+      "evidence": ["赫萝在前文情绪缓和后，直接用手指顶着罗伦斯胸前口袋说话，且台词中使用‘咱’自称，符合赫萝的说话习惯；罗伦斯未再发言，且该句为赫萝主动表达依赖与情绪。"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "第一句为罗伦斯安抚赫萝，第二句为赫萝回应并表达依赖，对话轮次清晰，符合角色关系发展。"
+}

@@ -1,0 +1,75 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001136",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "使用自称「咱」，与赫萝的 speech_markers 匹配",
+        "情绪化表达与赫萝在场景中的情绪波动一致",
+        "上下文显示赫萝刚刚哭泣，情绪尚未平复，符合说话人状态"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001137",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "上下文显示罗伦斯在轻抚赫萝的头后说出这段话",
+        "内容符合罗伦斯作为商人的理性与策略性表达",
+        "「我们是商人」与罗伦斯的 titles 和 speech_style 一致"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001138",
+      "speaker_entity_id": "",
+      "speaker_display": "",
+      "speaker_status": "review",
+      "confidence": 0.0,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.7
+        }
+      ],
+      "evidence": [
+        "dialogue_kind=inline，是正文内嵌引语，未构成独立对白",
+        "上下文明确指出「罗伦斯当然刻意加重语气说出『我们』两个字」"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    }
+  ],
+  "window_notes": "对话轮次清晰，赫萝与罗伦斯交替发言，符合场景中两人情绪互动的节奏。第三句为内嵌引语，未构成独立对白，需复核。"
+}
+```

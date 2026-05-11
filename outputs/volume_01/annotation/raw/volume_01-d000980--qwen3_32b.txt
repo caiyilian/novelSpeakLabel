@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000980",
+  "speaker_entity_id": "char_0020",
+  "speaker_display": "列支敦·马贺特",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0020",
+      "display": "列支敦·马贺特",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.1
+    }
+  ],
+  "evidence": [
+    "对话内容提到「我们开始收集银币的时间点，是在与罗伦斯先生达成协议之后」，这与马贺特在场景中解释商行立场和交易细节的语气一致。",
+    "上下文显示罗伦斯处于被质问和解释的被动状态，而说话者表现出冷静、理性且代表商行利益的立场，符合马贺特的说话风格。",
+    "场景记忆中明确指出马贺特是米隆商行帕兹欧分行的行长，与罗伦斯进行交易谈判，并透露梅迪欧商行的背景，与当前对话内容高度相关。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

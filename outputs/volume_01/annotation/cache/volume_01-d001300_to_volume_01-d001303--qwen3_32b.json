@@ -1,0 +1,121 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001300",
+      "speaker_entity_id": "char_0034",
+      "speaker_display": "国王",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0034",
+          "display": "国王",
+          "status": "known",
+          "score": 0.85
+        },
+        {
+          "entity_id": "char_0035",
+          "display": "御用商人",
+          "status": "known",
+          "score": 0.6
+        }
+      ],
+      "evidence": [
+        "上下文提到「国王的御用商人」，但此句为「请您确认」，语气较为正式，符合国王或其代表的语气。",
+        "前文提到马贺特将文件递给罗伦斯，此句为马贺特之后的对话，但未明确说话人，需结合上下文推断。",
+        "场景记忆中提到国王通过策略榨取利益，此句可能是国王策略的一部分。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001301",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        },
+        {
+          "entity_id": "char_0030",
+          "display": "米隆商行",
+          "status": "known",
+          "score": 0.4
+        }
+      ],
+      "evidence": [
+        "此句为「这……是？」，语气惊讶，符合罗伦斯在看到金额后反应的描述。",
+        "前一句为马贺特的对话，此句为罗伦斯的回应，符合对话轮次。",
+        "场景中罗伦斯是主要角色，且对金额感到困惑，符合此句语气。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001302",
+      "speaker_entity_id": "char_0034",
+      "speaker_display": "国王",
+      "speaker_status": "known",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0034",
+          "display": "国王",
+          "status": "known",
+          "score": 0.8
+        },
+        {
+          "entity_id": "char_0035",
+          "display": "御用商人",
+          "status": "known",
+          "score": 0.5
+        }
+      ],
+      "evidence": [
+        "此句为「一百二十枚银币……」，解释金额来源，符合国王策略的描述。",
+        "上下文提到「国王的御用商人」，但此句语气较为正式，更符合国王或其代表的语气。",
+        "场景记忆中提到国王通过策略榨取利益，此句可能是国王策略的一部分。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001303",
+      "speaker_entity_id": "char_0034",
+      "speaker_display": "国王",
+      "speaker_status": "known",
+      "confidence": 0.75,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0034",
+          "display": "国王",
+          "status": "known",
+          "score": 0.75
+        },
+        {
+          "entity_id": "char_0035",
+          "display": "御用商人",
+          "status": "known",
+          "score": 0.5
+        }
+      ],
+      "evidence": [
+        "此句为「我们搬运货币的费用……」，解释国王的策略，符合国王的立场。",
+        "上下文提到「国王的御用商人」，但此句语气较为正式，更符合国王或其代表的语气。",
+        "场景记忆中提到国王通过策略榨取利益，此句可能是国王策略的一部分。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次为马贺特 → 罗伦斯 → 马贺特/国王代表 → 马贺特/国王代表，整体语气和内容符合国王策略的逐步揭示。"
+}

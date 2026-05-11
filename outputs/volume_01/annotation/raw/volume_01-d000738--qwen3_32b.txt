@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000738",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.9,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.9
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.1
+    }
+  ],
+  "evidence": [
+    "赫萝在场景中饮酒迅速且已有醉意，符合「嗯……」的语气和行为特征。",
+    "罗伦斯在前一段对话中解释米隆商行的情报收集能力，赫萝则在之后被描述为「双眼无神地注视远方，爱理不理的样子」，符合「嗯……」的回应风格。",
+    "赫萝的说话风格轻松幽默但略带调侃，符合简短语气词的表达方式。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

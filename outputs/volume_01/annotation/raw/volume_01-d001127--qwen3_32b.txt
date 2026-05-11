@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d001127",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "外套底下的尾巴发出「啪唰」声。",
+    "前一段中赫萝刚刚提到自己的尾巴数量象征岁月，暗示她拥有非人类的尾巴。",
+    "当前段落紧接着赫萝的发言，且描述的是她身体特征的自然反应。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

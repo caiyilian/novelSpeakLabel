@@ -1,0 +1,30 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000885",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "赫萝在本场景中情绪不稳，表达对孤独的恐惧，与罗伦斯的安抚行为相呼应。",
+        "台词中使用了「咱」自称，符合赫萝的说话风格。",
+        "场景记忆中明确指出赫萝在表达情绪，罗伦斯在安抚她。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "本段对话为赫萝情绪表达，与后文罗伦斯的安抚行为形成连续互动，符合对话轮次逻辑。"
+}
+```

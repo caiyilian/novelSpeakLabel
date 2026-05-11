@@ -1,0 +1,49 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000054",
+      "speaker_entity_id": "char_0005",
+      "speaker_display": "叶勒",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0005",
+          "display": "叶勒",
+          "status": "known",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "上下文提到叶勒曾发出狼嚎声，而当前台词与叶勒的 speech_marker「嗷呜～～～～～～～」完全一致",
+        "前文描述女孩发出长嚎声，暗示其身份可能是叶勒的化身"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000055",
+      "speaker_entity_id": "",
+      "speaker_display": "",
+      "speaker_status": "review",
+      "confidence": 0.0,
+      "candidate_speakers": [
+        {
+          "entity_id": "mystery_volume_01_c002_s003_r001_叶勒",
+          "display": "叶勒",
+          "status": "mystery",
+          "score": 0.6
+        }
+      ],
+      "evidence": [
+        "dialogue_kind=inline，根据规则 11，应标为 review",
+        "上下文描述恐惧袭上罗伦斯心头，而非人物说话"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    }
+  ],
+  "window_notes": "第一句台词与叶勒的 speech_marker 完全一致，且上下文描述其发出狼嚎，因此判断为叶勒。第二句为 inline 对白，非独立说话人，需复核。"
+}

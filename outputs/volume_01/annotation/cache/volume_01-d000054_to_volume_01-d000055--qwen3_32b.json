@@ -1,0 +1,56 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000054",
+      "speaker_entity_id": "mystery_volume_01_c002_s003_r001_神秘女孩",
+      "speaker_display": "神秘女孩",
+      "speaker_status": "mystery",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "mystery_volume_01_c002_s003_r001_神秘女孩",
+          "display": "神秘女孩",
+          "status": "mystery",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "上下文描述女孩发出长嚎声，紧接着是这句「嗷呜～～～～～～～」，符合她的行为特征。",
+        "场景记忆提到女孩发出狼嚎，暗示她与这句台词有关。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000055",
+      "speaker_entity_id": "",
+      "speaker_display": "",
+      "speaker_status": "review",
+      "confidence": 0.0,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.6
+        },
+        {
+          "entity_id": "mystery_volume_01_c002_s003_r001_神秘女孩",
+          "display": "神秘女孩",
+          "status": "mystery",
+          "score": 0.4
+        }
+      ],
+      "evidence": [
+        "该台词是内嵌引号，未明确归属说话人。",
+        "上下文提到「莫大的恐惧袭上罗伦斯心头」，暗示这句可能是罗伦斯的内心感受，但无法确认是否为他说话。",
+        "没有明确的叙述线索表明说话人是谁。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    }
+  ],
+  "window_notes": "第一句台词明显由神秘女孩发出，第二句为内嵌引号，无法明确归属说话人，需进一步确认。"
+}

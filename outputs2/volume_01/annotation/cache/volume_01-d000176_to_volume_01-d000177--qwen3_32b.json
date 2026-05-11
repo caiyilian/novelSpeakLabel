@@ -1,0 +1,51 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000176",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "上下文明确指出赫萝表达了对故乡的思念，并说出这段台词。",
+        "台词中使用了赫萝的典型自称「咱」，符合其 speech_markers。",
+        "上下文提到「赫萝说罢，她回过头以平静的表情看着罗伦斯」，表明说话人是赫萝。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000177",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "上下文明确指出赫萝继续说这段台词。",
+        "台词中使用了赫萝的典型自称「咱」，符合其 speech_markers。",
+        "上下文提到「赫萝微笑着说道」，表明说话人是赫萝。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "两段对话为赫萝连续发言，符合上下文中的叙述线索和角色行为模式。"
+}

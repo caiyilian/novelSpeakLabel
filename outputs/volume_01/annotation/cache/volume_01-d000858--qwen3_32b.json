@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000858",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "上下文显示罗伦斯在积极讨论开店计划，并对赫萝表现出关心，语气理性且略带情绪化。",
+    "该句台词中使用了「汝」来称呼赫萝，符合罗伦斯一贯的说话风格。",
+    "赫萝在前一段中只是吃面包，未发言，因此不可能是说话人。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

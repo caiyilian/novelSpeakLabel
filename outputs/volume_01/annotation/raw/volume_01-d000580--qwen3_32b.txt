@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000580",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.9,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.9
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.6
+    }
+  ],
+  "evidence": [
+    "上下文对话中，前一句是「所以呢？现在已经知道银币的种类了，有没有什么新发现？」，语气上像是对前一个问题的回应，符合罗伦斯冷静理性的说话风格。",
+    "场景记忆中，罗伦斯与赫萝的对话围绕货币经济展开，罗伦斯通常会提出分析和总结，而赫萝则更倾向于调侃和提问。",
+    "当前对话「该说是新发现吗？我是有想到几件事。」语气理性，带有总结性质，符合罗伦斯的表达方式。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

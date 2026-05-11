@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d001003",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0028",
+      "display": "梅迪欧商行",
+      "status": "ambiguous",
+      "score": 0.1
+    }
+  ],
+  "evidence": [
+    "罗伦斯在场景中明确表现出对信件的关注，并提出查看信件的要求。",
+    "后续段落提到「听到罗伦斯的要求，马贺特……」，表明说话人是罗伦斯。",
+    "罗伦斯是场景中主要的行动者，与信件内容有直接关联。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

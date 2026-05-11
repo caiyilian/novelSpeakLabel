@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d000424",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "赫萝在场景中多次提到苹果的诱惑，并以轻松幽默但略带威胁的语气说话，符合台词风格。",
+    "场景中赫萝与罗伦斯讨论诱惑与禁欲的利弊，台词内容与她的立场一致。",
+    "赫萝的台词中使用了「贤狼」这一自称，与她的身份描述相符。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

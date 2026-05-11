@@ -1,0 +1,123 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001229",
+      "speaker_entity_id": "mystery_volume_01_c007_s003_r001_追捕者",
+      "speaker_display": "追捕者",
+      "speaker_status": "mystery",
+      "confidence": 0.75,
+      "candidate_speakers": [
+        {
+          "entity_id": "mystery_volume_01_c007_s003_r001_追捕者",
+          "display": "追捕者",
+          "status": "mystery",
+          "score": 0.75
+        },
+        {
+          "entity_id": "char_0024",
+          "display": "梅迪欧商行手下",
+          "status": "known",
+          "score": 0.6
+        }
+      ],
+      "evidence": [
+        "脚步声从转角出现，喊叫声可能是追捕者发出的。",
+        "上下文显示有追捕者逼近，但尚未明确说话人身份。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001230",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "上下文明确提到罗伦斯拔出短剑挡在赫萝面前，随后发出命令式语气的「退后。」",
+        "符合罗伦斯理性、坚定的说话风格。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001231",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "上下文提到赫萝抬头望着罗伦斯，随后赫萝说话，符合她的说话风格（「汝的身体这样不行呗。」）",
+        "赫萝的语气带有关切和责备，符合她的性格。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001232",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "赫萝刚说完后，罗伦斯立即回应，符合对话轮次。",
+        "罗伦斯的语气表现出虚弱但坚持，符合他的当前状态。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001233",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.8
+        }
+      ],
+      "evidence": [
+        "赫萝在罗伦斯说完后立即回应，符合对话轮次。",
+        "赫萝的语气带有讽刺和情绪，符合她的说话风格。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，罗伦斯与赫萝交替发言，符合两人当前的互动模式。第一句说话人尚不明确，但后续对话符合两人轮次。"
+}
+```

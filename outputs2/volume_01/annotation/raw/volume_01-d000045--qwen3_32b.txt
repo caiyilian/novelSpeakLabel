@@ -1,0 +1,30 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000045",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "上下文明确提到「罗伦斯总是夸口说」，直接指明说话人身份",
+        "该段落是关于罗伦斯的内心独白和回忆，符合说话人逻辑",
+        "说话内容与罗伦斯的性格描述（理性、坚定）一致"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "该段对话为内嵌引号，但上下文明确指出说话人为罗伦斯，因此可直接标注。"
+}
+```

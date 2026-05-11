@@ -1,0 +1,32 @@
+```json
+{
+  "dialogue_id": "volume_01-d000588",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.02
+    }
+  ],
+  "evidence": [
+    "对话中使用了「咱」和「汝」的自称和他称，这是赫萝一贯的说话风格。",
+    "对话内容围绕着面包和苹果的价值，以及如何处理面包店老板娘的问题，这与赫萝对食物的执着和幽默感相符。",
+    "上下文显示赫萝在集市上对蜂蜜面包表现出强烈兴趣，并因崔尼银币面额过大而遇到问题，因此她提出让罗伦斯帮忙拿面包或让老板娘摆臭脸，符合她的行为模式。",
+    "赫萝的台词中带有轻松幽默但略带威胁的语气，这与她的性格一致。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

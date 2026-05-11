@@ -1,0 +1,27 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000044",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "上下文明确提到罗伦斯感到困扰，并且该句位于他叹气并准备离开村庄的段落中。",
+        "候选角色罗伦斯的 speech_markers 中包含「算了……」，与台词完全一致。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "该句为罗伦斯在准备离开村庄时的独白，上下文明确指向他本人，且 speech_marker 命中，轮次合理。"
+}

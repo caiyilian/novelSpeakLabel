@@ -1,0 +1,123 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001034",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.98,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.98
+        }
+      ],
+      "evidence": [
+        "上下文显示罗伦斯正在向马贺特分析梅迪欧商行的策略，符合说话人身份",
+        "该段落前一句是罗伦斯按着脑海里组织好的台词说：",
+        "台词内容与罗伦斯的理性分析风格一致"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001035",
+      "speaker_entity_id": "char_0015",
+      "speaker_display": "列支敦·马贺特",
+      "speaker_status": "known",
+      "confidence": 0.97,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0015",
+          "display": "列支敦·马贺特",
+          "status": "known",
+          "score": 0.97
+        }
+      ],
+      "evidence": [
+        "上下文显示马贺特在认真听罗伦斯的分析后提问",
+        "该段落前一句是马贺特闭起眼睛，认真听着罗伦斯回答",
+        "提问语气符合马贺特冷静理性的风格"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001036",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.99,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.99
+        }
+      ],
+      "evidence": [
+        "这是罗伦斯对马贺特提问的直接回应",
+        "该段落前一句是马贺特闭起眼睛，认真听着罗伦斯回答",
+        "该段落后一句是马贺特缓缓点点头，显示对话轮次完整",
+        "内容延续了罗伦斯的理性分析风格"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001037",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.96,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.96
+        }
+      ],
+      "evidence": [
+        "该段落前一句是马贺特缓缓点点头，显示对话轮次继续",
+        "罗伦斯在继续阐述梅迪欧商行的策略",
+        "内容延续了罗伦斯的理性分析风格"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001038",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "这是罗伦斯对前文分析的总结",
+        "该段落前一句是马贺特缓缓点点头，显示对话轮次继续",
+        "内容延续了罗伦斯的理性分析风格"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，罗伦斯与马贺特交替发言，符合商业谈判场景的对话模式。罗伦斯主导分析，马贺特提出问题和回应。"
+}
+```

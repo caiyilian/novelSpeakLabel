@@ -1,0 +1,37 @@
+```json
+{
+  "dialogue_id": "volume_01-d000480",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.9,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.9
+    },
+    {
+      "entity_id": "char_0016",
+      "display": "鉴定员",
+      "status": "known",
+      "score": 0.6
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.4
+    }
+  ],
+  "evidence": [
+    "前一段赫萝要求罗伦斯给她一件貂皮，罗伦斯似乎回答得很妥当。",
+    "下一段提到「既然被称为主人，就必须表现得有威严」，暗示说话人是罗伦斯。",
+    "场景记忆中罗伦斯是主要对话者，赫萝虽在场但未发言，而「嗯。」是简短回应，符合罗伦斯的理性风格。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

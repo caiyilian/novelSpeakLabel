@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d001295",
+  "speaker_entity_id": "char_0020",
+  "speaker_display": "列支敦·马贺特",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0020",
+      "display": "列支敦·马贺特",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "前一段提到「马贺特骄傲地回答」，当前段对话是马贺特对罗伦斯的回应，语气符合其角色风格。",
+    "当前段对话内容是关于交易和罗伦斯的午餐安排，符合马贺特作为商行代表的职责和语气。",
+    "后一段罗伦斯回应「不，不用了。比起这个，能否请您先告诉我交易的细节呢？」进一步确认说话人是马贺特。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

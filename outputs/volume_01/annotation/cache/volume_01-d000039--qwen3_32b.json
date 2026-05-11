@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000039",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.9,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.9
+    },
+    {
+      "entity_id": "mystery_volume_01_c002_s002_r002_村民",
+      "display": "村民",
+      "status": "mystery",
+      "score": 0.1
+    }
+  ],
+  "evidence": [
+    "赫萝是村民祭典的核心象征，台词「嗷呜～～～～～～～」符合她非人类的狼嚎特征。",
+    "场景中村民集体呼喊「赫萝！」，暗示她可能是祭典的中心人物。",
+    "赫萝在场景中被描述为「狼」，与村民的呼喊和行为相呼应。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

@@ -1,0 +1,120 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001073",
+      "speaker_entity_id": "",
+      "speaker_display": "",
+      "speaker_status": "ambiguous",
+      "confidence": 0.2,
+      "candidate_speakers": [
+        {"entity_id": "", "display": "", "status": "npc", "score": 0.5},
+        {"entity_id": "char_0001", "display": "罗伦斯", "status": "known", "score": 0.3},
+        {"entity_id": "char_0002", "display": "赫萝", "status": "known", "score": 0.2}
+      ],
+      "evidence": ["对话轮次依据"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    },
+    {
+      "dialogue_id": "volume_01-d001074",
+      "speaker_entity_id": "mystery_volume_01_c006_s003_r001_神秘说话者1",
+      "speaker_display": "神秘说话者1",
+      "speaker_status": "mystery",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {"entity_id": "mystery_volume_01_c006_s003_r001_神秘说话者1", "display": "神秘说话者1", "status": "mystery", "score": 0.9}
+      ],
+      "evidence": ["「拉嘿。」"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001075",
+      "speaker_entity_id": "",
+      "speaker_display": "",
+      "speaker_status": "review",
+      "confidence": 0.0,
+      "candidate_speakers": [
+        {"entity_id": "", "display": "", "status": "npc", "score": 0.1},
+        {"entity_id": "mystery_volume_01_c006_s003_r001_神秘说话者1", "display": "神秘说话者1", "status": "mystery", "score": 0.4}
+      ],
+      "evidence": ["对话轮次依据"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    },
+    {
+      "dialogue_id": "volume_01-d001076",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {"entity_id": "char_0001", "display": "罗伦斯", "status": "known", "score": 0.9}
+      ],
+      "evidence": ["「奴马」"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001077",
+      "speaker_entity_id": "mystery_volume_01_c006_s003_r001_神秘说话者2",
+      "speaker_display": "神秘说话者2",
+      "speaker_status": "mystery",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {"entity_id": "mystery_volume_01_c006_s003_r001_神秘说话者2", "display": "神秘说话者2", "status": "mystery", "score": 0.9}
+      ],
+      "evidence": ["「皮里昂」"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001078",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {"entity_id": "char_0002", "display": "赫萝", "status": "known", "score": 0.9}
+      ],
+      "evidence": ["「赫萝！」"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001079",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {"entity_id": "char_0002", "display": "赫萝", "status": "known", "score": 0.9}
+      ],
+      "evidence": ["对话轮次依据"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001080",
+      "speaker_entity_id": "char_0021",
+      "speaker_display": "商行的人",
+      "speaker_status": "known",
+      "confidence": 0.7,
+      "candidate_speakers": [
+        {"entity_id": "char_0021", "display": "商行的人", "status": "known", "score": 0.8}
+      ],
+      "evidence": ["对话轮次依据"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次和叙述线索表明罗伦斯、赫萝和商行的人是主要角色，但部分神秘说话者身份不明确。"
+}

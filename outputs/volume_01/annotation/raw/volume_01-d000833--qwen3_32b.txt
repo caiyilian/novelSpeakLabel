@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000833",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.98
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "ambiguous",
+      "score": 0.02
+    }
+  ],
+  "evidence": [
+    "上下文显示罗伦斯在思考如何处理赫萝的尾巴，提到「罗伦斯心想不梳头买梳子也没有用，尾巴的毛应该要用毛织品师傅在用的毛刷才对」，暗示说话人是罗伦斯。",
+    "对话内容「我买把毛刷给你好了，要不然我介绍好的毛织品师傅给你如何？」符合罗伦斯冷静、理性且略带关心的语气。",
+    "后续段落提到「罗伦斯半认真半开玩笑地说完后」，明确指出说话人是罗伦斯。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

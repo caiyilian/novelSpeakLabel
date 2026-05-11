@@ -1,0 +1,112 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000039",
+      "speaker_entity_id": "char_0005",
+      "speaker_display": "叶勒",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0005",
+          "display": "叶勒",
+          "status": "known",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "叶勒是「狼赫萝」的化身，且在上下文中被描述为发出类似狼嚎的声音，符合台词「嗷呜～～～～～～～」的语气和场景逻辑。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000040",
+      "speaker_entity_id": "char_0005",
+      "speaker_display": "叶勒",
+      "speaker_status": "known",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0005",
+          "display": "叶勒",
+          "status": "known",
+          "score": 0.8
+        }
+      ],
+      "evidence": [
+        "叶勒作为「狼赫萝」的化身，持续发出「赫萝」的叫声，符合台词「赫萝！赫萝！赫萝！」的重复性与仪式感。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000041",
+      "speaker_entity_id": "char_0005",
+      "speaker_display": "叶勒",
+      "speaker_status": "known",
+      "confidence": 0.75,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0005",
+          "display": "叶勒",
+          "status": "known",
+          "score": 0.75
+        }
+      ],
+      "evidence": [
+        "叶勒作为「狼赫萝」的化身，继续以该身份进行呼喊，符合台词「狼赫萝出现了！狼赫萝出现了！」的语境。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000042",
+      "speaker_entity_id": "char_0005",
+      "speaker_display": "叶勒",
+      "speaker_status": "known",
+      "confidence": 0.7,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0005",
+          "display": "叶勒",
+          "status": "known",
+          "score": 0.7
+        }
+      ],
+      "evidence": [
+        "叶勒作为「狼赫萝」的化身，继续指挥村民行动，符合台词「抓住祂！快抓住！」的语气和场景逻辑。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000043",
+      "speaker_entity_id": "char_0005",
+      "speaker_display": "叶勒",
+      "speaker_status": "known",
+      "confidence": 0.65,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0005",
+          "display": "叶勒",
+          "status": "known",
+          "score": 0.65
+        }
+      ],
+      "evidence": [
+        "叶勒作为「狼赫萝」的化身，继续指挥村民行动，符合台词「别让祂逃走了！快追！」的语气和场景逻辑。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "所有台词均来自叶勒，他作为「狼赫萝」的化身在仪式中持续发出声音并指挥村民。对话轮次清晰，符合连续问答和仪式场景的逻辑。"
+}
+```

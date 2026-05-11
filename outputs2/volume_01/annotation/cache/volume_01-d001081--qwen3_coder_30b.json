@@ -1,0 +1,34 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001081",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.85
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.15
+        }
+      ],
+      "evidence": [
+        "前文赫萝对罗伦斯说话并推他前进，语境上赫萝处于主导地位",
+        "该台词为短促、情绪化表达，符合赫萝的情绪化说话风格",
+        "罗伦斯在前文被赫萝推着走，未见其主动发言，更可能为赫萝的反应"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "赫萝在前文对罗伦斯有明确指令和互动，该台词为赫萝在行动中的简短反应，符合其情绪化表达方式"
+}

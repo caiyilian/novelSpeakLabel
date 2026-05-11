@@ -1,0 +1,490 @@
+你是轻小说说话人标注项目的阶段 2：正式标注助手。
+你的任务是判断输入 target_dialogues 中每一句台词的说话人，不要改写原文。
+必须把这些台词当作同一个连续片段来判断，优先保持对话轮次和叙述线索的一致性。
+
+规则：
+1. 只输出严格 JSON，不要 Markdown，不要解释性前后缀。
+2. 如果说话人是候选角色，speaker_entity_id 必须使用 candidate_characters 里的 entity_id，speaker_status 填 known。
+3. 如果说话人像某个未知人物，speaker_entity_id 使用 candidate_mysteries 里的 mystery_id，speaker_status 填 mystery。
+4. 如果只是无法追踪的路人/群体，speaker_status 填 npc，speaker_entity_id 可为空或使用 npc:简短称呼。
+5. 证据不足时不要硬猜，speaker_status 填 ambiguous 或 review，并把 needs_review 设为 true。
+6. candidate_speakers 至少列出 1 个候选；如果无法判断，列出最可能的候选和不确定原因。
+7. confidence 使用 0 到 1 之间的小数，表示你对最终判断的把握。
+8. 不要只因为台词里提到某个名字、职业、地点，就把说话人标成那个实体；被称呼的人通常不是说话人。
+9. 连续问答、交易寒暄、命令/回答等场景要按上下句轮次判断；同一人连续说话必须有叙述或语气证据支持。
+10. 如果当前上下文显示某角色还没有登场，不要因为角色库或后文记忆里有这个角色就提前标给他/她。
+
+11. target_dialogues 中 dialogue_kind=inline 的项目是正文内嵌引号，不要当作独立对白；标为 review，needs_review=true。
+12. candidate_mysteries 只是可选候选；如果候选名称和当前段落地点/人物不一致，必须改用 npc 或 review。
+13. 如果只有轮次推断、没有叙述锚点或自我介绍，请降低 confidence，并在 evidence 里说明轮次依据。
+
+14. candidate_characters.speech_markers 是阶段 1 提取的高区分度口癖/自称/固定短语；命中时可作为证据，但如果多个角色共享或上下文反证明显，必须进入复核。
+
+输出 JSON 结构：
+{
+  "annotations": [
+    {
+      "dialogue_id": "必须来自 target_dialogue_ids",
+      "speaker_entity_id": "string",
+      "speaker_display": "string",
+      "speaker_status": "known|mystery|npc|ambiguous|review",
+      "confidence": 0.0,
+      "candidate_speakers": [
+        {"entity_id": "string", "display": "string", "status": "known|mystery|npc|ambiguous|review", "score": 0.0}
+      ],
+      "evidence": ["短证据，不要大段复制原文"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "可选，简短说明整体轮次判断"
+}
+必须为 target_dialogue_ids 中每个 dialogue_id 输出且只输出一条 annotation。
+
+输入 JSON：
+{
+  "volume": {
+    "volume_id": "volume_01",
+    "volume": 1
+  },
+  "target_dialogue_ids": [
+    "volume_01-d000790",
+    "volume_01-d000791",
+    "volume_01-d000792",
+    "volume_01-d000793",
+    "volume_01-d000794",
+    "volume_01-d000795",
+    "volume_01-d000796",
+    "volume_01-d000797"
+  ],
+  "dialogues": [
+    {
+      "dialogue_id": "volume_01-d000790",
+      "dialogue_index": 789,
+      "window_position": 1,
+      "chapter_id": "volume_01-c005",
+      "chapter_title": "第四幕",
+      "scene_id": "volume_01-c005-s002",
+      "paragraph_id": "volume_01-c005-s002-p001725",
+      "paragraph_index": 1724,
+      "local_dialogue_index": 1,
+      "text": "要先付啊？一共三十二路特。",
+      "quote_text": "「要先付啊？一共三十二路特。」",
+      "paragraph_text": "「要先付啊？一共三十二路特。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 15
+    },
+    {
+      "dialogue_id": "volume_01-d000791",
+      "dialogue_index": 790,
+      "window_position": 2,
+      "chapter_id": "volume_01-c005",
+      "chapter_title": "第四幕",
+      "scene_id": "volume_01-c005-s002",
+      "paragraph_id": "volume_01-c005-s002-p001726",
+      "paragraph_index": 1725,
+      "local_dialogue_index": 1,
+      "text": "好，请等等。",
+      "quote_text": "「好，请等等。」",
+      "paragraph_text": "「好，请等等。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 8
+    },
+    {
+      "dialogue_id": "volume_01-d000792",
+      "dialogue_index": 791,
+      "window_position": 3,
+      "chapter_id": "volume_01-c005",
+      "chapter_title": "第四幕",
+      "scene_id": "volume_01-c005-s002",
+      "paragraph_id": "volume_01-c005-s002-p001728",
+      "paragraph_index": 1727,
+      "local_dialogue_index": 1,
+      "text": "宿醉啊？",
+      "quote_text": "「宿醉啊？」",
+      "paragraph_text": "「宿醉啊？」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 6
+    },
+    {
+      "dialogue_id": "volume_01-d000793",
+      "dialogue_index": 792,
+      "window_position": 4,
+      "chapter_id": "volume_01-c005",
+      "chapter_title": "第四幕",
+      "scene_id": "volume_01-c005-s002",
+      "paragraph_id": "volume_01-c005-s002-p001729",
+      "paragraph_index": 1728,
+      "local_dialogue_index": 1,
+      "text": "喝了太多葡萄酒。",
+      "quote_text": "「喝了太多葡萄酒。」",
+      "paragraph_text": "「喝了太多葡萄酒。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 10
+    },
+    {
+      "dialogue_id": "volume_01-d000794",
+      "dialogue_index": 793,
+      "window_position": 5,
+      "chapter_id": "volume_01-c005",
+      "chapter_title": "第四幕",
+      "scene_id": "volume_01-c005-s002",
+      "paragraph_id": "volume_01-c005-s002-p001730",
+      "paragraph_index": 1729,
+      "local_dialogue_index": 1,
+      "text": "年轻时总会有这些失误。不管是宿醉还是什么都好，都逃不了要付出代价的时候。这里就经常有年轻的旅行商人脸色惨白，摇摇晃晃地走出去。",
+      "quote_text": "「年轻时总会有这些失误。不管是宿醉还是什么都好，都逃不了要付出代价的时候。这里就经常有年轻的旅行商人脸色惨白，摇摇晃晃地走出去。」",
+      "paragraph_text": "「年轻时总会有这些失误。不管是宿醉还是什么都好，都逃不了要付出代价的时候。这里就经常有年轻的旅行商人脸色惨白，摇摇晃晃地走出去。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 65
+    },
+    {
+      "dialogue_id": "volume_01-d000795",
+      "dialogue_index": 794,
+      "window_position": 6,
+      "chapter_id": "volume_01-c005",
+      "chapter_title": "第四幕",
+      "scene_id": "volume_01-c005-s002",
+      "paragraph_id": "volume_01-c005-s002-p001732",
+      "paragraph_index": 1731,
+      "local_dialogue_index": 1,
+      "text": "来！三十二路特。",
+      "quote_text": "「来！三十二路特。」",
+      "paragraph_text": "「来！三十二路特。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 10
+    },
+    {
+      "dialogue_id": "volume_01-d000796",
+      "dialogue_index": 795,
+      "window_position": 7,
+      "chapter_id": "volume_01-c005",
+      "chapter_title": "第四幕",
+      "scene_id": "volume_01-c005-s002",
+      "paragraph_id": "volume_01-c005-s002-p001733",
+      "paragraph_index": 1732,
+      "local_dialogue_index": 1,
+      "text": "嗯……金额没错。我看，两位就在这里休息一下吧。你们应该是走不到自己住的旅馆，才进来的吧？",
+      "quote_text": "「嗯……金额没错。我看，两位就在这里休息一下吧。你们应该是走不到自己住的旅馆，才进来的吧？」",
+      "paragraph_text": "「嗯……金额没错。我看，两位就在这里休息一下吧。你们应该是走不到自己住的旅馆，才进来的吧？」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 46
+    },
+    {
+      "dialogue_id": "volume_01-d000797",
+      "dialogue_index": 796,
+      "window_position": 8,
+      "chapter_id": "volume_01-c005",
+      "chapter_title": "第四幕",
+      "scene_id": "volume_01-c005-s002",
+      "paragraph_id": "volume_01-c005-s002-p001734",
+      "paragraph_index": 1733,
+      "local_dialogue_index": 1,
+      "text": "哇哈哈",
+      "quote_text": "「哇哈哈」",
+      "paragraph_text": "罗伦斯点点头，店老板见状「哇哈哈」大笑，往吧台里走去。",
+      "dialogue_kind": "inline",
+      "outside_quote_text": "罗伦斯点点头，店老板见状大笑，往吧台里走去。",
+      "char_start": 12,
+      "char_end": 17
+    }
+  ],
+  "context": {
+    "paragraphs": [
+      {
+        "paragraph_id": "volume_01-c005-s002-p001722",
+        "paragraph_index": 1721,
+        "text": "赫萝趴在桌上侧着脸，发出「恶」的声音，那声音让人无法分辨她是在叹气，还是呻吟。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c005-s002-p001723",
+        "paragraph_index": 1722,
+        "text": "「来了！苹果汁还有两人份面包。」",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c005-s002-p001724",
+        "paragraph_index": 1723,
+        "text": "「多少钱？」",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c005-s002-p001725",
+        "paragraph_index": 1724,
+        "text": "「要先付啊？一共三十二路特。」",
+        "target_dialogue_ids": [
+          "volume_01-d000790"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c005-s002-p001726",
+        "paragraph_index": 1725,
+        "text": "「好，请等等。」",
+        "target_dialogue_ids": [
+          "volume_01-d000791"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c005-s002-p001727",
+        "paragraph_index": 1726,
+        "text": "罗伦斯打开绑在腰际上的零钱包翻找。就在罗伦斯忙着准备容易看错成铜币的黑色路特银币时，店老板见到赫萝的模样，摇头笑着说：",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c005-s002-p001728",
+        "paragraph_index": 1727,
+        "text": "「宿醉啊？」",
+        "target_dialogue_ids": [
+          "volume_01-d000792"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c005-s002-p001729",
+        "paragraph_index": 1728,
+        "text": "「喝了太多葡萄酒。」",
+        "target_dialogue_ids": [
+          "volume_01-d000793"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c005-s002-p001730",
+        "paragraph_index": 1729,
+        "text": "「年轻时总会有这些失误。不管是宿醉还是什么都好，都逃不了要付出代价的时候。这里就经常有年轻的旅行商人脸色惨白，摇摇晃晃地走出去。」",
+        "target_dialogue_ids": [
+          "volume_01-d000794"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c005-s002-p001731",
+        "paragraph_index": 1730,
+        "text": "只要是旅行商人，难免都会有这样的经验。事实上，罗伦斯自己也有过几次这样的失误。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c005-s002-p001732",
+        "paragraph_index": 1731,
+        "text": "「来！三十二路特。」",
+        "target_dialogue_ids": [
+          "volume_01-d000795"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c005-s002-p001733",
+        "paragraph_index": 1732,
+        "text": "「嗯……金额没错。我看，两位就在这里休息一下吧。你们应该是走不到自己住的旅馆，才进来的吧？」",
+        "target_dialogue_ids": [
+          "volume_01-d000796"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c005-s002-p001734",
+        "paragraph_index": 1733,
+        "text": "罗伦斯点点头，店老板见状「哇哈哈」大笑，往吧台里走去。",
+        "target_dialogue_ids": [
+          "volume_01-d000797"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c005-s002-p001735",
+        "paragraph_index": 1734,
+        "text": "「喝点果汁吧，这果汁被稀释得恰恰好。」",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c005-s002-p001736",
+        "paragraph_index": 1735,
+        "text": "赫萝听到罗伦斯这么说，慢吞吞抬起头来。因为赫萝的脸蛋长得标致，即使露出痛苦的表情，依然很有魅力。如果怀兹看到了，肯定会放下工作来照料赫萝吧。只要赫萝给他一点微笑，他就会心满意足。罗伦斯想到这儿不禁笑了出来。赫萝双眼无神地啜着果汁，露出不可思议的表情看着罗伦斯。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c005-s002-p001737",
+        "paragraph_index": 1736,
+        "text": "「呼……咱不晓得几百多年没宿醉过了。」",
+        "target_dialogue_ids": []
+      }
+    ]
+  },
+  "scene_memory": [
+    {
+      "scene_id": "volume_01-c005-s002-r002",
+      "parent_scene_id": "volume_01-c005-s002",
+      "chunk_index": 2,
+      "chunk_count": 3,
+      "scene_summary": "罗伦斯与赫萝在旅馆附设的酒吧中休息，赫萝因宿醉显得虚弱。罗伦斯照顾她，并与店老板简短交谈。场景中展现了两人之间的互动以及赫萝的狼性特征。",
+      "active_characters": [
+        "罗伦斯",
+        "赫萝",
+        "店老板"
+      ],
+      "relationships": [
+        "罗伦斯与赫萝同行，表现出照顾与信任",
+        "罗伦斯与店老板有简短互动，显示为常客",
+        "赫萝与店老板有互动，显示店老板对她有一定了解"
+      ],
+      "notes": "赫萝的宿醉状态是本场景的重点，罗伦斯表现出对她的关心。店老板的出现为场景增添了日常氛围，但未提供额外人物线索。"
+    },
+    {
+      "scene_id": "volume_01-c005-s002-r003",
+      "parent_scene_id": "volume_01-c005-s002",
+      "chunk_index": 3,
+      "chunk_count": 3,
+      "scene_summary": "罗伦斯与赫萝在酒吧中，赫萝因宿醉而虚弱，罗伦斯照顾她并与其交谈。赫萝提到与熊一起喝酒的经历，表现出调皮和虚弱的混合状态。店老板提供果汁，赫萝试图回忆某件重要的事但失败。",
+      "active_characters": [
+        "罗伦斯",
+        "赫萝",
+        "店老板"
+      ],
+      "relationships": [
+        "罗伦斯与赫萝关系亲密，表现出关心和理解",
+        "赫萝与熊有共同经历，但熊未出现",
+        "罗伦斯与店老板有互动，但关系不深"
+      ],
+      "notes": "赫萝提到的熊是未出现但可追踪的神秘人物。场景中未出现其他已知角色，如怀兹或杰廉。"
+    }
+  ],
+  "candidate_characters": [
+    {
+      "entity_id": "char_0016",
+      "display_name": "店老板",
+      "aliases": [],
+      "titles": [
+        "餐馆老板"
+      ],
+      "description": "精神奕奕的店老板，热情地为罗伦斯和赫萝服务，并对赫萝的宿醉表示理解。 / 热情的店老板，为罗伦斯和赫萝提供果汁，并对赫萝的宿醉表示理解。",
+      "speech_style": "热情、略带幽默 / 热情、幽默",
+      "speech_markers": [
+        "宿醉啊？",
+        "年轻时总会有这些失误。",
+        "哇哈哈"
+      ],
+      "relationship_hints": [
+        "与罗伦斯有互动，显示为常客",
+        "对赫萝的宿醉表示理解，暗示对她的熟悉",
+        "与罗伦斯有互动，但关系不深",
+        "对赫萝表现出理解",
+        "与罗伦斯有互动，提供服务。"
+      ],
+      "first_seen_scene_id": "volume_01-c005-s002-r002",
+      "latest_seen_scene_id": "volume_01-c005-s003-r003",
+      "confidence": 0.85
+    },
+    {
+      "entity_id": "char_0001",
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": [
+        "商人",
+        "旅行商人",
+        "行商人"
+      ],
+      "description": "理性、谨慎的商人，试图分析局势并保持冷静。他与赫萝同行，面对叶勒的威胁时表现出坚定。 / 理性、坚定的商人，坚持遵守与赫萝的合约，拒绝背叛她。面对叶勒的威胁保持冷静，表现出对赫萝的忠诚。 / 理性、谨慎的商人，身受重伤但仍试图保持冷静并等待救援。他表现出对赫萝的依赖和信任。 / 罗伦斯目睹赫萝的变身过程，表现出震惊和无力。他试图抓住赫萝留下的皮袋，但最终面对巨大的狼形生物，感到无法应对。 / 理性、谨慎的商人，与赫萝在地下通道中遭遇叶勒的威胁。他试图安抚赫萝的情绪，并表现出对环境变化的敏感。 / 在赫萝的威压下感…",
+      "speech_style": "温和、理性、略带担忧 / 理性、略带策略性、温和 / 理性、担忧、略带冲动 / 虚弱、低沉、略带困惑 / 虚弱、低沉、焦虑 / 理性、坚定、略带焦虑 / 理性、焦虑、略带冲动 / 虚弱、低沉、焦虑 / 虚弱、焦虑、略带愤怒 / 愤怒、理性、略带冲动 / 虚弱、焦虑、略带悔恨 / 理性、冷静、略带焦虑",
+      "speech_markers": [
+        "……骑士？",
+        "有什么能为您效劳的吗？",
+        "算了……",
+        "糟糕",
+        "……",
+        "喂！",
+        "喂！起床啊！",
+        "喂！有什么好笑的？"
+      ],
+      "relationship_hints": [
+        "与赫萝一同旅行",
+        "对赫萝的身份持怀疑态度",
+        "与修道院有生意期望但未成功",
+        "与骑士初次互动",
+        "与赫萝有密切关系",
+        "与教会和骑士有互动",
+        "与叶勒有交集，计划与他交谈但被祭典打断",
+        "与叶勒有过去的交易关系。"
+      ],
+      "first_seen_scene_id": "volume_01-c000-s003-r001",
+      "latest_seen_scene_id": "volume_01-c008-s003-r001",
+      "confidence": 1.0
+    },
+    {
+      "entity_id": "char_0002",
+      "display_name": "赫萝",
+      "aliases": [],
+      "titles": [
+        "丰收之神",
+        "狼",
+        "贤狼"
+      ],
+      "description": "神秘少女，拥有狼的特征。在本场景中协助罗伦斯击退袭击者，表现出冷静和对环境的高度感知能力。 / 在地下道中不断呼喊罗伦斯，试图唤醒他并指引方向。表现出担忧和责任感。 / 神秘少女，拥有狼的特征，情绪波动明显，对罗伦斯表现出依赖和担忧。 / 神秘少女，拥有狼的特征。在本场景中表现出脆弱和依赖，对独自旅行感到不安。她对叶勒的言语感到愤怒与悲伤。 / 情绪波动明显的贤狼，因叶勒的言语感到悲伤。她表现出对罗伦斯的依赖，并在关键时刻流露出脆弱。 / 情绪波动明显的贤狼，因叶勒的言语感到愤怒与悲伤。她吸食罗伦斯的血液以施展某…",
+      "speech_style": "未直接发言，但被频繁提及 / 冷静、自信、略带调侃 / 调皮、略带挑衅、情绪化 / 略带孩子气、情绪化、略带调侃 / 冷静、简短、略带策略性 / 关切、坚定、略带责备 / 情绪化、略带孩子气 / 冷静、略带情绪化 / 脆弱、情绪化、略带孩子气 / 冷静、自信、略带策略性 / 冷静、简短、略带威严 / 未直接发言",
+      "speech_markers": [
+        "咱",
+        "哈哈哈哈哈，咱是恶魔？",
+        "好名字呗？",
+        "咱没听过。",
+        "咱不要。",
+        "或是鲜血。",
+        "如何？愿意相信咱了呗？",
+        "汝要温柔一些呐。"
+      ],
+      "relationship_hints": [
+        "与罗伦斯一同旅行",
+        "捉弄罗伦斯",
+        "与罗伦斯展开对话",
+        "表现出对罗伦斯的调侃",
+        "与罗伦斯有初步互动，可能是他未来的旅伴",
+        "与罗伦斯进行对话，表现出信任与坦率",
+        "提到出生地时流露出真实情感",
+        "与罗伦斯有互动，被罗伦斯收留并一同旅行"
+      ],
+      "first_seen_scene_id": "volume_01-c000-s003-r001",
+      "latest_seen_scene_id": "volume_01-c008-s003-r001",
+      "confidence": 0.95
+    },
+    {
+      "entity_id": "char_0013",
+      "display_name": "怀兹",
+      "aliases": [],
+      "titles": [
+        "兑换商"
+      ],
+      "description": "帕兹欧的兑换商，与罗伦斯关系良好。他比罗伦斯年轻几岁，两人因师父相识而成为朋友。 / 帕兹欧的兑换商，与罗伦斯关系良好。他表现出对赫萝的兴趣，并试图追求她，引发罗伦斯的不快。 / 帕兹欧的兑换商，与罗伦斯关系良好，对赫萝表现出明显的兴趣。 / 帕兹欧的兑换商，与罗伦斯关系良好。在本场景中表现出对赫萝的兴趣，试图追求她，引发罗伦斯的不快。",
+      "speech_style": "热情、略带幽默",
+      "speech_markers": [
+        "赫萝啊……真是好名字。",
+        "没有用的啦！",
+        "当然、当然",
+        "哈哈，这太胡闹了。",
+        "别在意，别在意。",
+        "一定喔！一定的一定喔！"
+      ],
+      "relationship_hints": [
+        "与罗伦斯是朋友，有长期合作关系",
+        "对赫萝的来历感到好奇",
+        "与罗伦斯是熟人，关系友好但有竞争意味",
+        "对赫萝表现出追求意图",
+        "与罗伦斯有长期合作关系，两人关系如同朋友。",
+        "对赫萝表现出明显的兴趣。",
+        "与罗伦斯有长期合作关系",
+        "对赫萝表现出兴趣"
+      ],
+      "first_seen_scene_id": "volume_01-c004-s007-r001",
+      "latest_seen_scene_id": "volume_01-c004-s008-r001",
+      "confidence": 0.95
+    }
+  ],
+  "candidate_mysteries": []
+}

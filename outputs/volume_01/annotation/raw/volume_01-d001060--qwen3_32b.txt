@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d001060",
+  "speaker_entity_id": "mystery_volume_01_c006_s002_r004_教会成员",
+  "speaker_display": "教会成员",
+  "speaker_status": "mystery",
+  "confidence": 0.75,
+  "candidate_speakers": [
+    {
+      "entity_id": "mystery_volume_01_c006_s002_r004_教会成员",
+      "display": "教会成员",
+      "status": "mystery",
+      "score": 0.75
+    },
+    {
+      "entity_id": "char_0020",
+      "display": "列支敦·马贺特",
+      "status": "known",
+      "score": 0.25
+    }
+  ],
+  "evidence": [
+    "前一段对话中提问者明确提到「是教会吗？」，当前对话是对该问题的回答，内容涉及教会的活动范围和能力，符合教会成员的视角。",
+    "对话内容提到「教会同样也会前往各个国家的各个城镇」，表明说话人对教会的行动有深入了解，可能是教会成员或与教会有密切关系的人。",
+    "当前场景中，教会是米隆商行的敌手，且与罗伦斯和赫萝存在潜在冲突，因此说话人可能是教会成员，而非商行代表。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

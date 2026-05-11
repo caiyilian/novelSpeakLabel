@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d001313",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "对话内容提到「我的马」，而前文提到「马车管理由我们负责」，暗示说话人关心自己的马，符合罗伦斯的视角。",
+    "场景记忆中罗伦斯是主要角色，与马贺特互动频繁，且未出现其他角色直接提及马的状况。",
+    "罗伦斯是本场景中唯一持续关注马和交易细节的角色。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

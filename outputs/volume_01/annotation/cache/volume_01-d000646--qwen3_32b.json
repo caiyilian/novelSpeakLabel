@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000646",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "mystery_volume_01_c004_s007_r002_神秘女孩",
+      "display": "神秘女孩",
+      "status": "mystery",
+      "score": 0.2
+    }
+  ],
+  "evidence": [
+    "赫萝原本好奇地四处张望，她听到罗伦斯的话才转过身来，不甘愿地附和。",
+    "赫萝的说话风格轻松幽默但略带威胁性，符合该句台词的语气。",
+    "场景中赫萝是唯一尚未直接发言的已知角色，而怀兹和罗伦斯的对话风格与该句台词不匹配。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

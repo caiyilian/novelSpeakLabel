@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d001334",
+  "speaker_entity_id": "char_0020",
+  "speaker_display": "列支敦·马贺特",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0020",
+      "display": "列支敦·马贺特",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "上下文显示罗伦斯正在查看由马贺特递上的文件，且接下来的段落中马贺特继续与罗伦斯互动。",
+    "场景记忆中明确指出马贺特是米隆商行帕兹欧分行的代表，与罗伦斯有交易关系。",
+    "台词内容「收件者确实是我们商行没错……」符合马贺特作为商行代表的身份和语气。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

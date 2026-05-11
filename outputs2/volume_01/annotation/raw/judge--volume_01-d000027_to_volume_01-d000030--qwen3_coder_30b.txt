@@ -1,0 +1,72 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000027",
+      "speaker_entity_id": "",
+      "speaker_display": "",
+      "speaker_status": "review",
+      "confidence": 0.3,
+      "candidate_speakers": [
+        {"entity_id": "char_0004", "display": "农夫", "score": 0.6},
+        {"entity_id": "char_0001", "display": "罗伦斯", "score": 0.4}
+      ],
+      "evidence": [
+        "语气友好，似打招呼",
+        "无明确说话人线索",
+        "罗伦斯在场，但未被指明"
+      ],
+      "needs_review": true
+    },
+    {
+      "dialogue_id": "volume_01-d000028",
+      "speaker_entity_id": "",
+      "speaker_display": "",
+      "speaker_status": "review",
+      "confidence": 0.25,
+      "candidate_speakers": [
+        {"entity_id": "char_0004", "display": "农夫", "score": 0.55},
+        {"entity_id": "char_0001", "display": "罗伦斯", "score": 0.45}
+      ],
+      "evidence": [
+        "短促回应，似对罗伦斯提问",
+        "无明确说话人线索",
+        "罗伦斯在场，但未被指明"
+      ],
+      "needs_review": true
+    },
+    {
+      "dialogue_id": "volume_01-d000029",
+      "speaker_entity_id": "",
+      "speaker_display": "",
+      "speaker_status": "review",
+      "confidence": 0.35,
+      "candidate_speakers": [
+        {"entity_id": "char_0001", "display": "罗伦斯", "score": 0.6},
+        {"entity_id": "char_0004", "display": "农夫", "score": 0.4}
+      ],
+      "evidence": [
+        "明确提到“叶勒”，似罗伦斯询问",
+        "无明确说话人线索",
+        "罗伦斯在场，但未被指明"
+      ],
+      "needs_review": true
+    },
+    {
+      "dialogue_id": "volume_01-d000030",
+      "speaker_entity_id": "char_0004",
+      "speaker_display": "农夫",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {"entity_id": "char_0004", "display": "农夫", "score": 0.95}
+      ],
+      "evidence": [
+        "描述符合农夫说话风格",
+        "上下文明确指出是农夫",
+        "语气朴实，符合农夫性格"
+      ],
+      "needs_review": false
+    }
+  ],
+  "window_notes": "前四句对话中，前三句说话人不确定，第四句明确为农夫。"
+}

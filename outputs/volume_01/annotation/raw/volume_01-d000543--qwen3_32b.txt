@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000543",
+  "speaker_entity_id": "char_0009",
+  "speaker_display": "杰廉",
+  "speaker_status": "known",
+  "confidence": 0.85,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0009",
+      "display": "杰廉",
+      "status": "known",
+      "score": 0.85
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.15
+    }
+  ],
+  "evidence": [
+    "对话前文提到「皮草卖得如何？」和「卖到相当好的价格，你看这酒也明白吧？」，暗示对话发生在商业场合，杰廉是皮草交易的潜在参与者。",
+    "场景记忆中杰廉与罗伦斯有互动，且在本场景中被提及为可能出现的人物。",
+    "对话内容「真是令人羡慕，是不是有什么诀窍呢？」语气轻松，符合杰廉的商业同行调侃风格。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

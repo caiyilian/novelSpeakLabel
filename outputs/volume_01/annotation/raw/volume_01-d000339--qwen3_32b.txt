@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000339",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.02
+    }
+  ],
+  "evidence": [
+    "赫萝在场景中以轻松幽默但略带威胁的语气调侃罗伦斯，符合她的说话风格。",
+    "前一句是赫萝提问「话说，汝曾经在山里头被狼袭击过吗？」，接下来是罗伦斯回答「有。嗯……八次左右吧。」，然后是赫萝继续提问「很难对付是呗？」，符合对话逻辑。",
+    "赫萝在场景中表现出对罗伦斯的捉弄和调侃，语气轻松但略带威胁，符合她的性格特征。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

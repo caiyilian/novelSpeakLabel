@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000248",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.98
+    },
+    {
+      "entity_id": "char_0009",
+      "display": "杰廉",
+      "status": "known",
+      "score": 0.02
+    }
+  ],
+  "evidence": [
+    "「我妻子赫萝。」是罗伦斯在对话中介绍赫萝的台词，符合其冷静理性且略带幽默的说话风格。",
+    "上下文显示罗伦斯在与杰廉对话时介绍赫萝，而杰廉随后对赫萝表现出好奇，符合场景互动逻辑。",
+    "场景记忆中明确指出罗伦斯与赫萝是夫妻，且罗伦斯是对话的主导者。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

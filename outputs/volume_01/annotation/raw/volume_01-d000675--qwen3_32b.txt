@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d000675",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "当前段落紧接着赫萝尝试摇晃货币的动作，且后续段落明确提到赫萝停止摇动双手并进行货币测试。",
+    "场景记忆中明确指出赫萝在本场景中主导了货币测试，并与罗伦斯有频繁互动。",
+    "赫萝的说话风格为轻松幽默但略带威胁性，符合「嗯。」这种简短但带有情绪的回应。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

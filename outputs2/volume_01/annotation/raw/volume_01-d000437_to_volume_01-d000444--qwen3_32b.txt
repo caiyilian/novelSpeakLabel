@@ -1,0 +1,183 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000437",
+      "speaker_entity_id": "char_0009",
+      "speaker_display": "店员",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0009",
+          "display": "店员",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "台词是典型的欢迎语，符合店员接待顾客的场景",
+        "上下文提到店员迎接罗伦斯，且该台词是第一句对话"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000438",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "罗伦斯是本场景的主角，正在与店员交涉",
+        "台词内容符合推销商品的语境，且与后文店员回应一致"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000439",
+      "speaker_entity_id": "char_0009",
+      "speaker_display": "店员",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0009",
+          "display": "店员",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "店员在前一句回应罗伦斯的请求，此句是其进一步指引",
+        "台词内容符合店员职责，且语气礼貌专业"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000440",
+      "speaker_entity_id": "char_0010",
+      "speaker_display": "彪形大汉",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0010",
+          "display": "彪形大汉",
+          "status": "known",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "上下文提到彪形大汉在门口与罗伦斯搭话",
+        "台词语气热情，符合搬运工打招呼的风格"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000441",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.8
+        }
+      ],
+      "evidence": [
+        "上下文明确提到赫萝小声说了这句话",
+        "赫萝是罗伦斯的同伴，与场景中其他角色互动"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000442",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "罗伦斯是本场景的主角，正在与彪形大汉互动",
+        "台词内容符合其继续推进推销任务的逻辑"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000443",
+      "speaker_entity_id": "char_0010",
+      "speaker_display": "彪形大汉",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0010",
+          "display": "彪形大汉",
+          "status": "known",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "彪形大汉在前一句与罗伦斯互动，此句是其进一步回应",
+        "台词内容符合搬运工负责寄放马车的职责"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000444",
+      "speaker_entity_id": "char_0010",
+      "speaker_display": "彪形大汉",
+      "speaker_status": "known",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0010",
+          "display": "彪形大汉",
+          "status": "known",
+          "score": 0.8
+        }
+      ],
+      "evidence": [
+        "彪形大汉在前一句与罗伦斯互动，此句是其继续对话",
+        "台词内容符合其对马匹的评价"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，主要围绕罗伦斯与米隆商行店员、搬运工的互动展开。对话顺序合理，角色身份明确，未出现难以判断的说话人。"
+}
+```

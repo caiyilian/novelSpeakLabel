@@ -1,0 +1,23 @@
+{
+  "dialogue_id": "volume_01-d001239",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    }
+  ],
+  "evidence": [
+    "对话中提到「叶勒」，而罗伦斯与叶勒有旧识，且在场景中频繁互动。",
+    "对话语气理性且略带失落，符合罗伦斯的说话风格。",
+    "场景中罗伦斯与叶勒的互动表明他可能在回应叶勒的发言。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

@@ -1,0 +1,32 @@
+```json
+{
+  "dialogue_id": "volume_01-d000848",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "对话内容提到「商店的开店计划」，与罗伦斯在场景中展示蓝图和计划的行为一致。",
+    "上下文显示罗伦斯在谈论自己的构想，语气理性且带有实际考量，符合其说话风格。",
+    "赫萝在前一句提问「这些文字是什么？」，而此句是对该问题的回应，符合罗伦斯解释计划的逻辑。",
+    "场景记忆中明确指出罗伦斯与赫萝讨论开店计划，罗伦斯是主要发言者。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

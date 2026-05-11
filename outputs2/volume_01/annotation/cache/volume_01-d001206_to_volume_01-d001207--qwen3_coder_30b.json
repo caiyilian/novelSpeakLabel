@@ -1,0 +1,77 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001206",
+      "speaker_entity_id": "mystery_volume_01_c007_s002_r001_梅迪欧商行追捕者",
+      "speaker_display": "梅迪欧商行追捕者",
+      "speaker_status": "mystery",
+      "confidence": 0.75,
+      "candidate_speakers": [
+        {
+          "entity_id": "mystery_volume_01_c007_s002_r001_梅迪欧商行追捕者",
+          "display": "梅迪欧商行追捕者",
+          "status": "mystery",
+          "score": 0.8
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.1
+        },
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.05
+        }
+      ],
+      "evidence": [
+        "上下文描述为追捕者发出的呼吸声",
+        "声音来自脚步声方向",
+        "罗伦斯判断为福音，暗示非己方",
+        "前文提到梅迪欧商行人员在追捕"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001207",
+      "speaker_entity_id": "mystery_volume_01_c007_s002_r001_梅迪欧商行追捕者",
+      "speaker_display": "梅迪欧商行追捕者",
+      "speaker_status": "mystery",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {
+          "entity_id": "mystery_volume_01_c007_s002_r001_梅迪欧商行追捕者",
+          "display": "梅迪欧商行追捕者",
+          "status": "mystery",
+          "score": 0.85
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.08
+        },
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.03
+        }
+      ],
+      "evidence": [
+        "与前一句呼吸声连续，推测为同一人",
+        "描述为打喷嚏声，符合追捕者紧张状态",
+        "罗伦斯判断为福音，说明声音非己方",
+        "场景中未出现其他明确角色发声"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "两句话连续出现，描述为追捕者发出的呼吸与打喷嚏，推测为同一人。罗伦斯与赫萝未直接发言，且上下文明确指向梅迪欧商行追捕者。"
+}

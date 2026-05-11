@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d000114",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    }
+  ],
+  "evidence": [
+    "前一段明确提到「赫萝又再叹了口气，她一边抚摸尾巴，一边继续说」，表明说话人是赫萝。",
+    "当前段落中的台词「咱变身需要的东西是一些麦子。」符合赫萝的说话风格，使用「咱」自称，语气轻松但略带神秘。",
+    "场景记忆中多次提到赫萝与罗伦斯的对话，且她明确提到自己变身所需的代价，与当前台词一致。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

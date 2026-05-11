@@ -1,0 +1,36 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000993",
+      "speaker_entity_id": "char_0020",
+      "speaker_display": "列支敦·马贺特",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0020",
+          "display": "列支敦·马贺特",
+          "status": "known",
+          "score": 0.9
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "ambiguous",
+          "score": 0.1
+        }
+      ],
+      "evidence": [
+        "对话中使用了「罗伦斯先生」的敬称，符合马贺特的说话风格。",
+        "上下文显示罗伦斯正在被讨论为被捉对象，说话人应为第三方，而非罗伦斯本人。",
+        "对话内容涉及商行策略分析，符合马贺特作为商行代表的立场。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话为独立段落，上下文显示说话人是正在分析局势的第三方角色，最可能是马贺特。"
+}
+```

@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000018",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0003",
+      "display": "骑士",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "对话内容「嗯。好了，你可以走了。」符合罗伦斯冷静、理性、略带命令语气的说话风格。",
+    "上下文显示罗伦斯与骑士有互动，且在对话中处于主导地位。",
+    "场景记忆中罗伦斯是主要角色，且在本段场景中频繁出现，而骑士仅是短暂互动对象。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

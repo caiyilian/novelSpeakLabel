@@ -1,0 +1,34 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000132",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        },
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.05
+        }
+      ],
+      "evidence": [
+        "上下文显示赫萝已经摘下麦穗并吞下，罗伦斯对此感到疑惑并提问，符合他理性、冷静的性格。",
+        "前文提到赫萝展示部分变身能力，但没有说话，因此当前对话更可能是罗伦斯的反应。",
+        "该段落紧接着罗伦斯的描述性动作，逻辑上应为他提出问题。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，罗伦斯对赫萝的行为提出疑问，符合上下文逻辑。"
+}

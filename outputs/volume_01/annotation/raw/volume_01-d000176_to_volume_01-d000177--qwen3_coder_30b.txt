@@ -1,0 +1,43 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000176",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 1.0
+        }
+      ],
+      "evidence": ["前文提到赫萝回过头看着罗伦斯，继续说话；台词风格符合赫萝的轻松幽默且略带威胁的语气"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000177",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 1.0
+        }
+      ],
+      "evidence": ["赫萝在前一句对话后继续发言，语气与前句一致；使用了‘咱’作为自称，符合赫萝的说话风格；上下文明确为赫萝对罗伦斯的直接回应"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "赫萝在连续两句话中发言，语气连贯，符合其角色特征，且前文已明确其为说话人"
+}

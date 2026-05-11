@@ -1,0 +1,61 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000627",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.85
+        },
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.15
+        }
+      ],
+      "evidence": [
+        "前文为罗伦斯对货币机制的解释，此句为总结性回应，语气符合罗伦斯的理性风格",
+        "赫萝在前文表现出对经济现象的理解力，但此句语气更偏向罗伦斯的表达方式"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000628",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.9
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.1
+        }
+      ],
+      "evidence": [
+        "前文罗伦斯解释完后，赫萝总结并表达感慨，符合赫萝的语境与情绪表达方式",
+        "赫萝在本场景中展现出对经济现象的敏锐理解，此句为她对人类世界复杂性的感叹"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，罗伦斯先解释后总结，赫萝随后表达感慨，符合两人互动逻辑"
+}

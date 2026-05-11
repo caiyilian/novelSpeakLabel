@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000286",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    },
+    {
+      "entity_id": "char_0009",
+      "display": "杰廉",
+      "status": "known",
+      "score": 0.02
+    }
+  ],
+  "evidence": [
+    "赫萝在场景中频繁出现并评论杰廉的谎言，说话风格轻松幽默且略带威胁性，与台词中的语气一致。",
+    "场景记忆中明确指出赫萝对杰廉的动机持怀疑态度，并调侃罗伦斯的判断力。",
+    "台词中「咱觉得他在说谎」符合赫萝的自称方式和说话风格。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

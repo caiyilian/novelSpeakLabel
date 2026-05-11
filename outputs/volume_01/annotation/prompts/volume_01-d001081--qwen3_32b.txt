@@ -1,0 +1,225 @@
+你是轻小说说话人标注项目的阶段 2：正式标注助手。
+你的任务是判断输入 target_dialogues 中每一句台词的说话人，不要改写原文。
+必须把这些台词当作同一个连续片段来判断，优先保持对话轮次和叙述线索的一致性。
+
+规则：
+1. 只输出严格 JSON，不要 Markdown，不要解释性前后缀。
+2. 如果说话人是候选角色，speaker_entity_id 必须使用 candidate_characters 里的 entity_id，speaker_status 填 known。
+3. 如果说话人像某个未知人物，speaker_entity_id 使用 candidate_mysteries 里的 mystery_id，speaker_status 填 mystery。
+4. 如果只是无法追踪的路人/群体，speaker_status 填 npc，speaker_entity_id 可为空或使用 npc:简短称呼。
+5. 证据不足时不要硬猜，speaker_status 填 ambiguous 或 review，并把 needs_review 设为 true。
+6. candidate_speakers 至少列出 1 个候选；如果无法判断，列出最可能的候选和不确定原因。
+7. confidence 使用 0 到 1 之间的小数，表示你对最终判断的把握。
+8. 不要只因为台词里提到某个名字、职业、地点，就把说话人标成那个实体；被称呼的人通常不是说话人。
+9. 连续问答、交易寒暄、命令/回答等场景要按上下句轮次判断；同一人连续说话必须有叙述或语气证据支持。
+10. 如果当前上下文显示某角色还没有登场，不要因为角色库或后文记忆里有这个角色就提前标给他/她。
+
+11. target_dialogues 中 dialogue_kind=inline 的项目是正文内嵌引号，不要当作独立对白；标为 review，needs_review=true。
+12. candidate_mysteries 只是可选候选；如果候选名称和当前段落地点/人物不一致，必须改用 npc 或 review。
+13. 如果只有轮次推断、没有叙述锚点或自我介绍，请降低 confidence，并在 evidence 里说明轮次依据。
+
+输出 JSON 结构：
+{
+  "annotations": [
+    {
+      "dialogue_id": "必须来自 target_dialogue_ids",
+      "speaker_entity_id": "string",
+      "speaker_display": "string",
+      "speaker_status": "known|mystery|npc|ambiguous|review",
+      "confidence": 0.0,
+      "candidate_speakers": [
+        {"entity_id": "string", "display": "string", "status": "known|mystery|npc|ambiguous|review", "score": 0.0}
+      ],
+      "evidence": ["短证据，不要大段复制原文"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "可选，简短说明整体轮次判断"
+}
+必须为 target_dialogue_ids 中每个 dialogue_id 输出且只输出一条 annotation。
+
+输入 JSON：
+{
+  "volume": {
+    "volume_id": "volume_01",
+    "volume": 1
+  },
+  "target_dialogue_ids": [
+    "volume_01-d001081"
+  ],
+  "dialogues": [
+    {
+      "dialogue_id": "volume_01-d001081",
+      "dialogue_index": 1080,
+      "window_position": 1,
+      "chapter_id": "volume_01-c006",
+      "chapter_title": "第五幕",
+      "scene_id": "volume_01-c006-s003",
+      "paragraph_id": "volume_01-c006-s003-p002367",
+      "paragraph_index": 2366,
+      "local_dialogue_index": 1,
+      "text": "什……呃，喔。",
+      "quote_text": "「什……呃，喔。」",
+      "paragraph_text": "「什……呃，喔。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 9
+    }
+  ],
+  "context": {
+    "paragraphs": [
+      {
+        "paragraph_id": "volume_01-c006-s003-p002364",
+        "paragraph_index": 2363,
+        "text": "罗伦斯照赫萝的话让开身体，等赫萝下来。然而，此刻罗伦斯心中感受到的不是看到赫萝的喜悦，而是没能听到她兴奋声音所带来的失望感。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c006-s003-p002365",
+        "paragraph_index": 2364,
+        "text": "当然，罗伦斯知道这完全是他一厢情愿的想法，所以也不能说些什么。然而，看着赫萝伸手接住上方传下来的包袱，一副毫不在意自己的模样，让罗伦斯更觉满腹牢骚难以发泄。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c006-s003-p002366",
+        "paragraph_index": 2365,
+        "text": "「发什么呆啊？喏，这汝的份。快点拿起来，往里面走。」",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c006-s003-p002367",
+        "paragraph_index": 2366,
+        "text": "「什……呃，喔。」",
+        "target_dialogue_ids": [
+          "volume_01-d001081"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c006-s003-p002368",
+        "paragraph_index": 2367,
+        "text": "罗伦斯抱住被硬塞进他怀里的包袱后，被赫萝推着往通道深处前进。怀里的包袱发出喀锵喀锵的声响，看来他们为了假装成强盗，似乎故意抢了一些财宝。另一个人紧接着从洞口下来，门盖随即盖上。地下道再度陷入黑暗，而这也是出发的信号。罗伦斯在没能与赫萝说话的情况下迈开脚步前进。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c006-s003-p002369",
+        "paragraph_index": 2368,
+        "text": "接下来的路线是走到尽头往右转后，手扶左边的墙壁前进再走到尽头。然后先爬出地面坐上在那里待命的马车，再进入另一个地下道。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c006-s003-p002370",
+        "paragraph_index": 2369,
+        "text": "每个人都沉默地在地下道前进，终于走到路的尽头。",
+        "target_dialogue_ids": []
+      }
+    ]
+  },
+  "scene_memory": [
+    {
+      "scene_id": "volume_01-c006-s003-r003",
+      "parent_scene_id": "volume_01-c006-s003",
+      "chunk_index": 3,
+      "chunk_count": 6,
+      "scene_summary": "罗伦斯与赫萝在商行人员的协助下，通过地下通道成功撤离并登上马车。商行人员表现出高度的组织效率和默契，确认身份后迅速协助他们离开。赫萝的狼耳引发了一点小插曲，但整体行动顺利。",
+      "active_characters": [
+        "罗伦斯",
+        "赫萝",
+        "商行的人"
+      ],
+      "relationships": [
+        "罗伦斯与赫萝有亲密关系",
+        "罗伦斯与商行人员有合作关系",
+        "赫萝与商行人员有互动"
+      ],
+      "notes": "本场景中，商行人员表现出高度的组织效率和默契，协助罗伦斯与赫萝撤离。赫萝的狼耳引发了一点小插曲，但整体行动顺利。罗伦斯表现出对赫萝的关心，但因赫萝的狼耳而感到困扰。"
+    }
+  ],
+  "candidate_characters": [
+    {
+      "entity_id": "char_0001",
+      "display_name": "罗伦斯",
+      "aliases": [
+        "罗伦斯",
+        "罗伦斯先生"
+      ],
+      "titles": [
+        "中间人",
+        "交易者",
+        "同行",
+        "商人",
+        "小毛头",
+        "小的",
+        "市井无赖",
+        "年轻人"
+      ],
+      "description": "一位行商人，正在与米隆商行的代表马贺特进行交易谈判。他原本期待获得两千枚银币，但实际只得到一百二十枚，感到震惊和困惑。 / 一位行商人，发现并收留了赫萝，决定与她一同旅行。 / 一位二十五岁的自力更生旅行商人，已有七年行商经验，性格泰然自若。 / 一位冷静理性的旅行商人，对赫萝的身份持怀疑态度，但仍保持互动。他注重外表整洁，对商业制度有深入理解。 / 冷静理性的旅行商人，与赫萝一同旅行。在本场景中与米隆商行的马贺特讨论梅迪欧商行的威胁，提出利用崔尼银币交易作为交涉王牌。 / 一位冷静理性的旅行商人，与赫萝一同旅行…",
+      "speech_style": "理性、坚定、略带情绪化 / 冷静、理性，带有悔恨和自责的语气。 / 冷静、理性，语气中带有对赫萝的关心和些许担忧。 / 冷静、理性、略带失落 / 冷静、理性，对商业制度有深入理解，并能清晰地向他人解释。 / 理性、礼貌、略带谨慎。 / 理性、冷静，带有商业分析倾向。 / 理性、沉稳、略带幽默 / 理性、冷静，但因困惑…",
+      "relationship_hints": [
+        "与赫萝一同旅行",
+        "对赫萝的真实性持怀疑态度",
+        "与深山村落的村民有交易关系",
+        "对修道院抱有商业期望但未成功",
+        "与骑士有短暂互动",
+        "与小村落的村民有交易关系",
+        "与修道院有关联",
+        "对教会和异教徒问题有见解"
+      ],
+      "first_seen_scene_id": "volume_01-c000-s003-r001",
+      "latest_seen_scene_id": "volume_01-c008-s003-r002",
+      "confidence": 1.0
+    },
+    {
+      "entity_id": "char_0002",
+      "display_name": "赫萝",
+      "aliases": [
+        "赫萝"
+      ],
+      "titles": [
+        "丰收之神",
+        "咱",
+        "神秘少女",
+        "约伊兹的贤狼",
+        "贤狼"
+      ],
+      "description": "自称丰收之神的神秘少女，拥有狼的耳朵和尾巴。在本场景中协助罗伦斯，表现出对他的关心和保护。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴，行为举止非人类，表现出轻松幽默但略带威胁性的说话风格。在本场景中，她对罗伦斯的伤口进行吸血，引发旁人惊呼，并表现出悲伤的情绪。 / 自称是丰收之神的神秘少女，拥有狼的耳朵和尾巴。在本场景中逐渐显露出非人类的特征，最终完全变成一只巨大的狼。她与罗伦斯有情感交流，表现出悲伤和决绝的情绪。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴，未直接参与本场景，但罗伦斯的行动可能与她有关…",
+      "speech_style": "轻松幽默但略带威胁性，情绪化且带有调侃语气。 / 轻松幽默、略带调侃和威胁 / 轻松幽默、略带威胁性 / 轻松幽默、略带威胁性、撒娇 / 警觉、神秘 / 轻松幽默但略带威胁性 / 轻松幽默、略带调侃 / 轻松幽默但略带威胁性，语气中透露出对罗伦斯的依赖。 / 轻松幽默、略带威胁性、自信 / 轻松幽默但略带威胁性，情绪…",
+      "relationship_hints": [
+        "与罗伦斯一同旅行",
+        "被罗伦斯怀疑是否为真正的神",
+        "与叶勒有附身关系",
+        "与罗伦斯有潜在互动",
+        "与罗伦斯有互动，似乎是被他发现并收留的。",
+        "与罗伦斯有互动，但尚未明确关系",
+        "与罗伦斯互动频繁，表现出对他的信任和玩笑态度",
+        "与罗伦斯互动密切"
+      ],
+      "first_seen_scene_id": "volume_01-c000-s003-r001",
+      "latest_seen_scene_id": "volume_01-c008-s003-r002",
+      "confidence": 1.0
+    },
+    {
+      "entity_id": "char_0024",
+      "display_name": "梅迪欧商行的人",
+      "aliases": [],
+      "titles": [
+        "商行人员",
+        "米隆商行代表"
+      ],
+      "description": "试图破坏米隆商行帕兹欧分行的不法分子，与罗伦斯的交易存在竞争关系。 / 协助罗伦斯与赫萝撤离的商行人员，表现出高度的组织效率和默契。确认身份后迅速协助他们离开，并在撤离后祝他们成功。",
+      "speech_style": "未直接说话 / 专业、冷静、有条理",
+      "relationship_hints": [
+        "与罗伦斯存在商业竞争",
+        "袭击米隆商行",
+        "与罗伦斯有合作关系",
+        "与赫萝有互动"
+      ],
+      "first_seen_scene_id": "volume_01-c005-s006-r004",
+      "latest_seen_scene_id": "volume_01-c006-s003-r003",
+      "confidence": 0.9
+    }
+  ],
+  "candidate_mysteries": []
+}

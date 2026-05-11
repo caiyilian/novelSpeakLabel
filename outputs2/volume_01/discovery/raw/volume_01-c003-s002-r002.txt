@@ -1,0 +1,87 @@
+```json
+{
+  "scene_id": "volume_01-c003-s002",
+  "scene_summary": "罗伦斯与赫萝在教会中休息，杰廉试图接近他们。赫萝表现出对食物的热爱，并以狼的本性狼吞虎咽。罗伦斯则在准备食物和麦粒，与赫萝互动自然。",
+  "active_characters": ["罗伦斯", "赫萝", "杰廉"],
+  "character_candidates": [
+    {
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": [
+        "商人",
+        "旅行商人",
+        "行商人"
+      ],
+      "description": "理性、谨慎的商人，正在教会中与赫萝共处，准备食物并照顾她的需求。",
+      "speech_style": "理性、温和、略带无奈",
+      "speech_markers": [
+        "……",
+        "算了……",
+        "那可不一定喔。"
+      ],
+      "relationship_hints": [
+        "与赫萝有长期同行关系",
+        "对赫萝的行为感到无奈但包容"
+      ],
+      "evidence": [
+        "volume_01-c003-s002-p000714",
+        "volume_01-c003-s002-p000715",
+        "volume_01-c003-s002-p000719"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "赫萝",
+      "aliases": [],
+      "titles": [
+        "丰收之神",
+        "狼",
+        "贤狼"
+      ],
+      "description": "拥有狼的特征的神秘少女，与罗伦斯同行，表现出对食物的热爱和狼的本性。",
+      "speech_style": "狡黠、自信、略带挑衅",
+      "speech_markers": [
+        "咱",
+        "如何？合适吗？",
+        "狼嘛，当然是狼吞虎咽了。"
+      ],
+      "relationship_hints": [
+        "与罗伦2s002-p000719",
+        "volume_01-c003-s002-p000720",
+        "volume_01-c003-s002-p000721"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "杰廉",
+      "aliases": [],
+      "titles": [
+        "旅行商人"
+      ],
+      "description": "年轻的旅行商人，试图接近罗伦斯和赫萝，表现出热情和笨拙。",
+      "speech_style": "热情、略带笨拙",
+      "speech_markers": [
+        "嘿嘿……",
+        "小的想……"
+      ],
+      "relationship_hints": [
+        "试图与罗伦斯建立联系",
+        "对赫萝表现出好奇"
+      ],
+      "evidence": [
+        "volume_01-c003-s002-p000703",
+        "volume_01-c003-s002-p000711",
+        "volume_01-c003-s002-p000712"
+      ],
+      "confidence": 0.85
+    }
+  ],
+  "mystery_entities": [],
+  "relationships": [
+    "罗伦斯与赫萝有长期同行关系",
+    "杰廉试图与罗伦斯建立联系",
+    "赫萝对罗伦斯表现出依赖和亲近"
+  ],
+  "notes": "赫萝在本场景中表现出强烈的食欲和狼的本性，与罗伦斯的互动自然。杰廉试图接近他们，但未获得深入对话机会。场景中未出现新的神秘人物。"
+}
+```

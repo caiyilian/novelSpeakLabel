@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000546",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0009",
+      "display": "杰廉",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "前文提到「不管怎么说，能够卖得高价真是太好了。只要老板您的资金增加，小的所能分到的钱也会增加。」，暗示说话人是罗伦斯。",
+    "后文回应「咦？别这么说啊。小的拼命祈祷皮草卖得高价，就是希望老板可以增资啊。」，进一步确认说话人是罗伦斯。",
+    "场景记忆中罗伦斯与杰廉进行交易谈判，罗伦斯表现出理性分析和冷静态度，符合该台词风格。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

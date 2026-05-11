@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d001199",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "当前段落前文提到「汝，这路？」，罗伦斯回答「我认得，没问题。」，符合罗伦斯冷静理性的说话风格。",
+    "场景记忆中提到罗伦斯在地下道中确认自己对路线的记忆，表现出对岔路和方向的不确定，但仍然坚持自己认得路。",
+    "罗伦斯是当前场景中唯一明确发言的角色，赫萝未直接参与对话。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

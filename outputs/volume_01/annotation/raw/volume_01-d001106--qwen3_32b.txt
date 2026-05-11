@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d001106",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    }
+  ],
+  "evidence": [
+    "上下文显示赫萝刚刚表现出愤怒和情绪波动，且对话中使用了「咱」自称，符合赫萝的说话风格。",
+    "赫萝是场景中唯一持续出现并主导情绪变化的角色。",
+    "赫萝的台词风格轻松幽默但略带威胁性，符合当前句子的语气。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

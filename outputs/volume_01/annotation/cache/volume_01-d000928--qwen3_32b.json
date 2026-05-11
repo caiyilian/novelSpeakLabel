@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000928",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.02
+    }
+  ],
+  "evidence": [
+    "对话内容提到「耳朵及尾巴」，这是赫萝的标志性特征。",
+    "上下文显示赫萝在讨论如果她的耳朵和尾巴被发现的后果，语气自信且带有调侃。",
+    "场景记忆中赫萝主导策略讨论，并表现出对罗伦斯的关心和调侃。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d001063",
+  "speaker_entity_id": "char_0020",
+  "speaker_display": "列支敦·马贺特",
+  "speaker_status": "known",
+  "confidence": 0.92,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0020",
+      "display": "列支敦·马贺特",
+      "status": "known",
+      "score": 0.92
+    },
+    {
+      "entity_id": "char_0027",
+      "display": "米隆商行人员",
+      "status": "known",
+      "score": 0.15
+    }
+  ],
+  "evidence": [
+    "前文提到「暗号是皮里昂、奴马」，这是米隆商行内部人员才会使用的术语，暗示说话人是商行内部成员。",
+    "场景中罗伦斯与马贺特的对话涉及商业策略和行动安排，语气符合马贺特的冷静和专业风格。",
+    "「两大金币」是货币单位，通常由商行代表或交易者提及，而非路人或神秘人物。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

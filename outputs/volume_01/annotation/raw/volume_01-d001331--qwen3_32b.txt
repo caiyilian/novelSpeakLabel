@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d001331",
+  "speaker_entity_id": "char_0020",
+  "speaker_display": "列支敦·马贺特",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0020",
+      "display": "列支敦·马贺特",
+      "status": "known",
+      "score": 0.98
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.02
+    }
+  ],
+  "evidence": [
+    "对话内容提到「我会为您准备好胡椒的」，与马贺特在场景中讨论辛香料的语境一致。",
+    "上下文显示马贺特刚刚与罗伦斯进行交易谈判，并提到辛香料的调味，符合说话人身份。",
+    "后续段落提到「马贺特说道，并打算转身离开」，进一步确认说话人为马贺特。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

@@ -1,0 +1,462 @@
+你是轻小说说话人标注项目的阶段 2：正式标注助手。
+你的任务是判断输入 target_dialogues 中每一句台词的说话人，不要改写原文。
+必须把这些台词当作同一个连续片段来判断，优先保持对话轮次和叙述线索的一致性。
+
+规则：
+1. 只输出严格 JSON，不要 Markdown，不要解释性前后缀。
+2. 如果说话人是候选角色，speaker_entity_id 必须使用 candidate_characters 里的 entity_id，speaker_status 填 known。
+3. 如果说话人像某个未知人物，speaker_entity_id 使用 candidate_mysteries 里的 mystery_id，speaker_status 填 mystery。
+4. 如果只是无法追踪的路人/群体，speaker_status 填 npc，speaker_entity_id 可为空或使用 npc:简短称呼。
+5. 证据不足时不要硬猜，speaker_status 填 ambiguous 或 review，并把 needs_review 设为 true。
+6. candidate_speakers 至少列出 1 个候选；如果无法判断，列出最可能的候选和不确定原因。
+7. confidence 使用 0 到 1 之间的小数，表示你对最终判断的把握。
+8. 不要只因为台词里提到某个名字、职业、地点，就把说话人标成那个实体；被称呼的人通常不是说话人。
+9. 连续问答、交易寒暄、命令/回答等场景要按上下句轮次判断；同一人连续说话必须有叙述或语气证据支持。
+10. 如果当前上下文显示某角色还没有登场，不要因为角色库或后文记忆里有这个角色就提前标给他/她。
+
+11. target_dialogues 中 dialogue_kind=inline 的项目是正文内嵌引号，不要当作独立对白；标为 review，needs_review=true。
+12. candidate_mysteries 只是可选候选；如果候选名称和当前段落地点/人物不一致，必须改用 npc 或 review。
+13. 如果只有轮次推断、没有叙述锚点或自我介绍，请降低 confidence，并在 evidence 里说明轮次依据。
+
+输出 JSON 结构：
+{
+  "annotations": [
+    {
+      "dialogue_id": "必须来自 target_dialogue_ids",
+      "speaker_entity_id": "string",
+      "speaker_display": "string",
+      "speaker_status": "known|mystery|npc|ambiguous|review",
+      "confidence": 0.0,
+      "candidate_speakers": [
+        {"entity_id": "string", "display": "string", "status": "known|mystery|npc|ambiguous|review", "score": 0.0}
+      ],
+      "evidence": ["短证据，不要大段复制原文"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "可选，简短说明整体轮次判断"
+}
+必须为 target_dialogue_ids 中每个 dialogue_id 输出且只输出一条 annotation。
+
+输入 JSON：
+{
+  "volume": {
+    "volume_id": "volume_01",
+    "volume": 1
+  },
+  "target_dialogue_ids": [
+    "volume_01-d000742",
+    "volume_01-d000743",
+    "volume_01-d000744",
+    "volume_01-d000745",
+    "volume_01-d000746",
+    "volume_01-d000747",
+    "volume_01-d000748",
+    "volume_01-d000749"
+  ],
+  "dialogues": [
+    {
+      "dialogue_id": "volume_01-d000742",
+      "dialogue_index": 741,
+      "window_position": 1,
+      "chapter_id": "volume_01-c005",
+      "chapter_title": "第四幕",
+      "scene_id": "volume_01-c005-s001",
+      "paragraph_id": "volume_01-c005-s001-p001623",
+      "paragraph_index": 1622,
+      "local_dialogue_index": 1,
+      "text": "嗯，毕竟这是挺不错的酒。要是平常才不会喝这么好的酒。",
+      "quote_text": "「嗯，毕竟这是挺不错的酒。要是平常才不会喝这么好的酒。」",
+      "paragraph_text": "「嗯，毕竟这是挺不错的酒。要是平常才不会喝这么好的酒。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 28
+    },
+    {
+      "dialogue_id": "volume_01-d000743",
+      "dialogue_index": 742,
+      "window_position": 2,
+      "chapter_id": "volume_01-c005",
+      "chapter_title": "第四幕",
+      "scene_id": "volume_01-c005-s001",
+      "paragraph_id": "volume_01-c005-s001-p001624",
+      "paragraph_index": 1623,
+      "local_dialogue_index": 1,
+      "text": "真的吗？",
+      "quote_text": "「真的吗？」",
+      "paragraph_text": "「真的吗？」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 6
+    },
+    {
+      "dialogue_id": "volume_01-d000744",
+      "dialogue_index": 743,
+      "window_position": 3,
+      "chapter_id": "volume_01-c005",
+      "chapter_title": "第四幕",
+      "scene_id": "volume_01-c005-s001",
+      "paragraph_id": "volume_01-c005-s001-p001625",
+      "paragraph_index": 1624,
+      "local_dialogue_index": 1,
+      "text": "没钱的时候，喝的不是葡萄渣滓已经粘稠如泥的酒，就是没加砂糖、蜂蜜或老姜，会苦到不能喝的酒。基本上，清澈可见杯底的葡萄酒就是奢侈品。",
+      "quote_text": "「没钱的时候，喝的不是葡萄渣滓已经粘稠如泥的酒，就是没加砂糖、蜂蜜或老姜，会苦到不能喝的酒。基本上，清澈可见杯底的葡萄酒就是奢侈品。」",
+      "paragraph_text": "「没钱的时候，喝的不是葡萄渣滓已经粘稠如泥的酒，就是没加砂糖、蜂蜜或老姜，会苦到不能喝的酒。基本上，清澈可见杯底的葡萄酒就是奢侈品。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 67
+    },
+    {
+      "dialogue_id": "volume_01-d000745",
+      "dialogue_index": 744,
+      "window_position": 4,
+      "chapter_id": "volume_01-c005",
+      "chapter_title": "第四幕",
+      "scene_id": "volume_01-c005-s001",
+      "paragraph_id": "volume_01-c005-s001-p001627",
+      "paragraph_index": 1626,
+      "local_dialogue_index": 1,
+      "text": "喔，咱还以为这是普通的酒。",
+      "quote_text": "「喔，咱还以为这是普通的酒。」",
+      "paragraph_text": "「喔，咱还以为这是普通的酒。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 15
+    },
+    {
+      "dialogue_id": "volume_01-d000746",
+      "dialogue_index": 745,
+      "window_position": 5,
+      "chapter_id": "volume_01-c005",
+      "chapter_title": "第四幕",
+      "scene_id": "volume_01-c005-s001",
+      "paragraph_id": "volume_01-c005-s001-p001628",
+      "paragraph_index": 1627,
+      "local_dialogue_index": 1,
+      "text": "哈哈，你的身分高嘛。",
+      "quote_text": "「哈哈，你的身分高嘛。」",
+      "paragraph_text": "「哈哈，你的身分高嘛。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 12
+    },
+    {
+      "dialogue_id": "volume_01-d000747",
+      "dialogue_index": 746,
+      "window_position": 6,
+      "chapter_id": "volume_01-c005",
+      "chapter_title": "第四幕",
+      "scene_id": "volume_01-c005-s001",
+      "paragraph_id": "volume_01-c005-s001-p001632",
+      "paragraph_index": 1631,
+      "local_dialogue_index": 1,
+      "text": "怎么了？",
+      "quote_text": "「怎么了？」",
+      "paragraph_text": "「怎么了？」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 6
+    },
+    {
+      "dialogue_id": "volume_01-d000748",
+      "dialogue_index": 747,
+      "window_position": 7,
+      "chapter_id": "volume_01-c005",
+      "chapter_title": "第四幕",
+      "scene_id": "volume_01-c005-s001",
+      "paragraph_id": "volume_01-c005-s001-p001635",
+      "paragraph_index": 1634,
+      "local_dialogue_index": 1,
+      "text": "你该不会是因为我说你的身分高，所以生气吧？",
+      "quote_text": "「你该不会是因为我说你的身分高，所以生气吧？」",
+      "paragraph_text": "「你该不会是因为我说你的身分高，所以生气吧？」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 23
+    },
+    {
+      "dialogue_id": "volume_01-d000749",
+      "dialogue_index": 748,
+      "window_position": 8,
+      "chapter_id": "volume_01-c005",
+      "chapter_title": "第四幕",
+      "scene_id": "volume_01-c005-s001",
+      "paragraph_id": "volume_01-c005-s001-p001639",
+      "paragraph_index": 1638,
+      "local_dialogue_index": 1,
+      "text": "抱歉，我那么说没有特别的意思。",
+      "quote_text": "「抱歉，我那么说没有特别的意思。」",
+      "paragraph_text": "「抱歉，我那么说没有特别的意思。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 17
+    }
+  ],
+  "context": {
+    "paragraphs": [
+      {
+        "paragraph_id": "volume_01-c005-s001-p001620",
+        "paragraph_index": 1619,
+        "text": "看着赫萝双眼无神地注视远方，爱理不理的样子，罗伦斯原以为赫萝在思考些什么，后来才发现原来赫萝已经颇有醉意。她手上拿着酒杯，慢慢闭上双眼。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c005-s001-p001621",
+        "paragraph_index": 1620,
+        "text": "「你的酒量还真好。」",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c005-s001-p001622",
+        "paragraph_index": 1621,
+        "text": "「酒的魅力太大……」",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c005-s001-p001623",
+        "paragraph_index": 1622,
+        "text": "「嗯，毕竟这是挺不错的酒。要是平常才不会喝这么好的酒。」",
+        "target_dialogue_ids": [
+          "volume_01-d000742"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c005-s001-p001624",
+        "paragraph_index": 1623,
+        "text": "「真的吗？」",
+        "target_dialogue_ids": [
+          "volume_01-d000743"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c005-s001-p001625",
+        "paragraph_index": 1624,
+        "text": "「没钱的时候，喝的不是葡萄渣滓已经粘稠如泥的酒，就是没加砂糖、蜂蜜或老姜，会苦到不能喝的酒。基本上，清澈可见杯底的葡萄酒就是奢侈品。」",
+        "target_dialogue_ids": [
+          "volume_01-d000744"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c005-s001-p001626",
+        "paragraph_index": 1625,
+        "text": "听到罗伦斯这么说，赫萝往杯子里望了望，然后有气无力地说：",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c005-s001-p001627",
+        "paragraph_index": 1626,
+        "text": "「喔，咱还以为这是普通的酒。」",
+        "target_dialogue_ids": [
+          "volume_01-d000745"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c005-s001-p001628",
+        "paragraph_index": 1627,
+        "text": "「哈哈，你的身分高嘛。」",
+        "target_dialogue_ids": [
+          "volume_01-d000746"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c005-s001-p001629",
+        "paragraph_index": 1628,
+        "text": "罗伦斯笑着说。赫萝一听到罗伦斯说的话，表情突然变得僵硬，她低头把杯子放在地板上，随即躺在床上缩起身子。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c005-s001-p001630",
+        "paragraph_index": 1629,
+        "text": "因为一切来得太突然，罗伦斯只能惊讶地注视着赫萝的模样。当下的气氛看来，赫萝不像因为想睡觉而躺在床上。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c005-s001-p001631",
+        "paragraph_index": 1630,
+        "text": "罗伦斯回想自己刚刚的言行，或许他说了什么让赫萝不开心的话。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c005-s001-p001632",
+        "paragraph_index": 1631,
+        "text": "「怎么了？」",
+        "target_dialogue_ids": [
+          "volume_01-d000747"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c005-s001-p001633",
+        "paragraph_index": 1632,
+        "text": "罗伦斯想不出自己有什么不妥的言行，于是开口询问。赫萝那尖尖的狼耳朵动也不动，看来她是十分生气的样子。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c005-s001-p001634",
+        "paragraph_index": 1633,
+        "text": "罗伦斯不知该如何继续搭腔，他拚命动脑筋思考，最后终于想到了。他想到刚遇到赫萝时交谈过的话。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c005-s001-p001635",
+        "paragraph_index": 1634,
+        "text": "「你该不会是因为我说你的身分高，所以生气吧？」",
+        "target_dialogue_ids": [
+          "volume_01-d000748"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c005-s001-p001636",
+        "paragraph_index": 1635,
+        "text": "当罗伦斯要求赫萝变身成狼给他看时，赫萝曾说过不喜欢别人畏惧她的感觉。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c005-s001-p001637",
+        "paragraph_index": 1636,
+        "text": "她还说过不喜欢被拱成高高在上的特别存在。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c005-s001-p001638",
+        "paragraph_index": 1637,
+        "text": "罗伦斯不禁想起一首吟游诗人的诗。这首诗述说神之所以要求每年举办一次祭典，是因为祂太寂寞了。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c005-s001-p001639",
+        "paragraph_index": 1638,
+        "text": "「抱歉，我那么说没有特别的意思。」",
+        "target_dialogue_ids": [
+          "volume_01-d000749"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c005-s001-p001640",
+        "paragraph_index": 1639,
+        "text": "然而，赫萝还是动也不动。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c005-s001-p001641",
+        "paragraph_index": 1640,
+        "text": "「你……嗯，该怎么说呢，你没什么特别……啊，不对。说你是平民也不算。平凡吗？这好像也不对……」",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c005-s001-p001642",
+        "paragraph_index": 1641,
+        "text": "罗伦斯找不到适当的字眼来形容，这让他更焦急、更不知所措。",
+        "target_dialogue_ids": []
+      }
+    ]
+  },
+  "scene_memory": [
+    {
+      "scene_id": "volume_01-c005-s001-r002",
+      "parent_scene_id": "volume_01-c005-s001",
+      "chunk_index": 2,
+      "chunk_count": 5,
+      "scene_summary": "罗伦斯与赫萝在对话中讨论葡萄酒的品质，赫萝因罗伦斯称她身份高而感到不悦，表现出情绪波动。",
+      "active_characters": [
+        "罗伦斯",
+        "赫萝"
+      ],
+      "relationships": [
+        "罗伦斯与赫萝之间存在长期互动和情感联系"
+      ],
+      "notes": "赫萝对身份的敏感反应暗示了她对自身身份的复杂态度，罗伦斯表现出理解和关心。场景中未出现新角色，但赫萝的情绪变化值得关注。"
+    },
+    {
+      "scene_id": "volume_01-c005-s001-r003",
+      "parent_scene_id": "volume_01-c005-s001",
+      "chunk_index": 3,
+      "chunk_count": 5,
+      "scene_summary": "罗伦斯与赫萝在对话中互动，罗伦斯试图找到合适的词语来形容赫萝，但屡屡受挫。赫萝表现出对罗伦斯语言能力的不满，并提及自己离开森林的原因。",
+      "active_characters": [
+        "罗伦斯",
+        "赫萝"
+      ],
+      "relationships": [
+        "罗伦斯与赫萝一同旅行",
+        "罗伦斯对赫萝的身份持怀疑态度",
+        "赫萝对罗伦斯的语言能力表现出不满"
+      ],
+      "notes": "本场景中未出现未命名但可追踪的神秘人物。罗伦斯与赫萝的互动揭示了他们之间的微妙关系，以及赫萝对罗伦斯的调侃态度。"
+    }
+  ],
+  "candidate_characters": [
+    {
+      "entity_id": "char_0001",
+      "display_name": "罗伦斯",
+      "aliases": [
+        "罗伦斯",
+        "罗伦斯先生"
+      ],
+      "titles": [
+        "中间人",
+        "交易者",
+        "同行",
+        "商人",
+        "小毛头",
+        "小的",
+        "市井无赖",
+        "年轻人"
+      ],
+      "description": "一位行商人，正在与米隆商行的代表马贺特进行交易谈判。他原本期待获得两千枚银币，但实际只得到一百二十枚，感到震惊和困惑。 / 一位行商人，发现并收留了赫萝，决定与她一同旅行。 / 一位二十五岁的自力更生旅行商人，已有七年行商经验，性格泰然自若。 / 一位冷静理性的旅行商人，对赫萝的身份持怀疑态度，但仍保持互动。他注重外表整洁，对商业制度有深入理解。 / 冷静理性的旅行商人，与赫萝一同旅行。在本场景中与米隆商行的马贺特讨论梅迪欧商行的威胁，提出利用崔尼银币交易作为交涉王牌。 / 一位冷静理性的旅行商人，与赫萝一同旅行…",
+      "speech_style": "理性、坚定、略带情绪化 / 冷静、理性，带有悔恨和自责的语气。 / 冷静、理性，语气中带有对赫萝的关心和些许担忧。 / 冷静、理性、略带失落 / 冷静、理性，对商业制度有深入理解，并能清晰地向他人解释。 / 理性、礼貌、略带谨慎。 / 理性、冷静，带有商业分析倾向。 / 理性、沉稳、略带幽默 / 理性、冷静，但因困惑…",
+      "relationship_hints": [
+        "与赫萝一同旅行",
+        "对赫萝的真实性持怀疑态度",
+        "与深山村落的村民有交易关系",
+        "对修道院抱有商业期望但未成功",
+        "与骑士有短暂互动",
+        "与小村落的村民有交易关系",
+        "与修道院有关联",
+        "对教会和异教徒问题有见解"
+      ],
+      "first_seen_scene_id": "volume_01-c000-s003-r001",
+      "latest_seen_scene_id": "volume_01-c008-s003-r002",
+      "confidence": 1.0
+    },
+    {
+      "entity_id": "char_0002",
+      "display_name": "赫萝",
+      "aliases": [
+        "赫萝"
+      ],
+      "titles": [
+        "丰收之神",
+        "咱",
+        "神秘少女",
+        "约伊兹的贤狼",
+        "贤狼"
+      ],
+      "description": "自称丰收之神的神秘少女，拥有狼的耳朵和尾巴。在本场景中协助罗伦斯，表现出对他的关心和保护。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴，行为举止非人类，表现出轻松幽默但略带威胁性的说话风格。在本场景中，她对罗伦斯的伤口进行吸血，引发旁人惊呼，并表现出悲伤的情绪。 / 自称是丰收之神的神秘少女，拥有狼的耳朵和尾巴。在本场景中逐渐显露出非人类的特征，最终完全变成一只巨大的狼。她与罗伦斯有情感交流，表现出悲伤和决绝的情绪。 / 自称丰收之神的神秘少女，拥有狼的耳朵和尾巴，未直接参与本场景，但罗伦斯的行动可能与她有关…",
+      "speech_style": "轻松幽默但略带威胁性，情绪化且带有调侃语气。 / 轻松幽默、略带调侃和威胁 / 轻松幽默、略带威胁性 / 轻松幽默、略带威胁性、撒娇 / 警觉、神秘 / 轻松幽默但略带威胁性 / 轻松幽默、略带调侃 / 轻松幽默但略带威胁性，语气中透露出对罗伦斯的依赖。 / 轻松幽默、略带威胁性、自信 / 轻松幽默但略带威胁性，情绪…",
+      "relationship_hints": [
+        "与罗伦斯一同旅行",
+        "被罗伦斯怀疑是否为真正的神",
+        "与叶勒有附身关系",
+        "与罗伦斯有潜在互动",
+        "与罗伦斯有互动，似乎是被他发现并收留的。",
+        "与罗伦斯有互动，但尚未明确关系",
+        "与罗伦斯互动频繁，表现出对他的信任和玩笑态度",
+        "与罗伦斯互动密切"
+      ],
+      "first_seen_scene_id": "volume_01-c000-s003-r001",
+      "latest_seen_scene_id": "volume_01-c008-s003-r002",
+      "confidence": 1.0
+    }
+  ],
+  "candidate_mysteries": []
+}

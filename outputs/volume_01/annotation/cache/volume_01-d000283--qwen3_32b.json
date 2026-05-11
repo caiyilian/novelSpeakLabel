@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000283",
+  "speaker_entity_id": "char_0009",
+  "speaker_display": "杰廉",
+  "speaker_status": "known",
+  "confidence": 0.85,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0009",
+      "display": "杰廉",
+      "status": "known",
+      "score": 0.85
+    },
+    {
+      "entity_id": "mystery_volume_01_c003_s003_r001_杰廉",
+      "display": "杰廉",
+      "status": "mystery",
+      "score": 0.25
+    }
+  ],
+  "evidence": [
+    "对话中提到「小毛头」，这是杰廉的别称之一。",
+    "上下文提到「大厅里跟我们搭腔的家伙」，与杰廉的出场方式吻合。",
+    "杰廉在场景中被频繁提及，且说话风格与「轻松幽默但略带调侃」相符。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000513",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0016",
+      "display": "鉴定员",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "说话风格轻松幽默但略带威胁性，符合赫萝的特征。",
+    "前一段中「咱不会说上钩的人自己有错。不过，对方知道有这种方法，也会感到佩服呗。」中的「咱」是赫萝的自称习惯。",
+    "场景记忆中赫萝主导交易谈判，表现出自信和狡黠，符合该台词的语境。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

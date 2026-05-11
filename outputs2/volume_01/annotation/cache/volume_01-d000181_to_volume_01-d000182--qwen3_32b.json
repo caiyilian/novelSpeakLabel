@@ -1,0 +1,51 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000181",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "上下文提到罗伦斯刚刚醒来，赫萝已经穿了他的衣服，因此他很可能是对赫萝说话的人。",
+        "台词中使用了「那是我的东西」，暗示说话人拥有该物品，而罗伦斯的衣物被赫萝穿走，符合这一语境。",
+        "罗伦斯在上下文中表现出对赫萝行为的责备语气，符合该句台词的情绪。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000182",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "上下文明确指出赫萝穿上了罗伦斯的衣服，并且在回应他的责备。",
+        "台词中使用了「咱」这一自称，与赫萝的 speech_markers 中的「咱」完全一致。",
+        "赫萝在上下文中表现得自信且不以为意，符合该句台词的语气。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，罗伦斯先责备赫萝擅自穿他的衣服，赫萝随后回应，语气自信，符合上下文中的互动模式。"
+}

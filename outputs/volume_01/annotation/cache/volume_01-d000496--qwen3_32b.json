@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000496",
+  "speaker_entity_id": "char_0016",
+  "speaker_display": "鉴定员",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0016",
+      "display": "鉴定员",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0014",
+      "display": "商行代表",
+      "status": "known",
+      "score": 0.1
+    }
+  ],
+  "evidence": [
+    "前一段提到赫萝的提问让鉴定的男子从梦中醒来，紧接着本段提出报价，符合鉴定员的反应逻辑。",
+    "场景记忆中明确指出鉴定员与罗伦斯进行交易，且被赫萝影响态度。",
+    "台词中提到「崔尼银币两百枚」，这是交易报价，符合鉴定员在交易中提出价格的场景。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d001086",
+  "speaker_entity_id": "char_0024",
+  "speaker_display": "梅迪欧商行的人",
+  "speaker_status": "known",
+  "confidence": 0.8,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0024",
+      "display": "梅迪欧商行的人",
+      "status": "known",
+      "score": 0.8
+    },
+    {
+      "entity_id": "mystery_volume_01_c006_s003_r002_神秘人物A",
+      "display": "神秘人物A",
+      "status": "mystery",
+      "score": 0.2
+    }
+  ],
+  "evidence": [
+    "前文提到「商行的人坐在马车里一边说，一边拉起赫萝」，并迅速推回石板盖住洞口，符合商行人员冷静、有条理的行动风格。",
+    "当前台词「还有一个人在底下呢。」暗示商行人员对地下情况了如指掌，符合其协助撤离的职责。",
+    "后续段落提到商行的人盖上马车底板并离开，说明其在场并主导行动。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

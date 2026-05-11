@@ -1,0 +1,450 @@
+你是轻小说说话人标注项目的阶段 2：正式标注助手。
+你的任务是判断输入 target_dialogues 中每一句台词的说话人，不要改写原文。
+必须把这些台词当作同一个连续片段来判断，优先保持对话轮次和叙述线索的一致性。
+
+规则：
+1. 只输出严格 JSON，不要 Markdown，不要解释性前后缀。
+2. 如果说话人是候选角色，speaker_entity_id 必须使用 candidate_characters 里的 entity_id，speaker_status 填 known。
+3. 如果说话人像某个未知人物，speaker_entity_id 使用 candidate_mysteries 里的 mystery_id，speaker_status 填 mystery。
+4. 如果只是无法追踪的路人/群体，speaker_status 填 npc，speaker_entity_id 可为空或使用 npc:简短称呼。
+5. 证据不足时不要硬猜，speaker_status 填 ambiguous 或 review，并把 needs_review 设为 true。
+6. candidate_speakers 至少列出 1 个候选；如果无法判断，列出最可能的候选和不确定原因。
+7. confidence 使用 0 到 1 之间的小数，表示你对最终判断的把握。
+8. 不要只因为台词里提到某个名字、职业、地点，就把说话人标成那个实体；被称呼的人通常不是说话人。
+9. 连续问答、交易寒暄、命令/回答等场景要按上下句轮次判断；同一人连续说话必须有叙述或语气证据支持。
+10. 如果当前上下文显示某角色还没有登场，不要因为角色库或后文记忆里有这个角色就提前标给他/她。
+
+11. target_dialogues 中 dialogue_kind=inline 的项目是正文内嵌引号，不要当作独立对白；标为 review，needs_review=true。
+12. candidate_mysteries 只是可选候选；如果候选名称和当前段落地点/人物不一致，必须改用 npc 或 review。
+13. 如果只有轮次推断、没有叙述锚点或自我介绍，请降低 confidence，并在 evidence 里说明轮次依据。
+
+14. candidate_characters.speech_markers 是阶段 1 提取的高区分度口癖/自称/固定短语；命中时可作为证据，但如果多个角色共享或上下文反证明显，必须进入复核。
+
+输出 JSON 结构：
+{
+  "annotations": [
+    {
+      "dialogue_id": "必须来自 target_dialogue_ids",
+      "speaker_entity_id": "string",
+      "speaker_display": "string",
+      "speaker_status": "known|mystery|npc|ambiguous|review",
+      "confidence": 0.0,
+      "candidate_speakers": [
+        {"entity_id": "string", "display": "string", "status": "known|mystery|npc|ambiguous|review", "score": 0.0}
+      ],
+      "evidence": ["短证据，不要大段复制原文"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "可选，简短说明整体轮次判断"
+}
+必须为 target_dialogue_ids 中每个 dialogue_id 输出且只输出一条 annotation。
+
+输入 JSON：
+{
+  "volume": {
+    "volume_id": "volume_01",
+    "volume": 1
+  },
+  "target_dialogue_ids": [
+    "volume_01-d000723",
+    "volume_01-d000724",
+    "volume_01-d000725",
+    "volume_01-d000726",
+    "volume_01-d000727",
+    "volume_01-d000728",
+    "volume_01-d000729"
+  ],
+  "dialogues": [
+    {
+      "dialogue_id": "volume_01-d000723",
+      "dialogue_index": 722,
+      "window_position": 1,
+      "chapter_id": "volume_01-c004",
+      "chapter_title": "第三幕",
+      "scene_id": "volume_01-c004-s009",
+      "paragraph_id": "volume_01-c004-s009-p001559",
+      "paragraph_index": 1558,
+      "local_dialogue_index": 1,
+      "text": "真奇妙的比喻方法。",
+      "quote_text": "「真奇妙的比喻方法。」",
+      "paragraph_text": "「真奇妙的比喻方法。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 11
+    },
+    {
+      "dialogue_id": "volume_01-d000724",
+      "dialogue_index": 723,
+      "window_position": 2,
+      "chapter_id": "volume_01-c004",
+      "chapter_title": "第三幕",
+      "scene_id": "volume_01-c004-s009",
+      "paragraph_id": "volume_01-c004-s009-p001561",
+      "paragraph_index": 1560,
+      "local_dialogue_index": 1,
+      "text": "看来汝好像徘徊在思考的迷宫中走不出来，这时候应该让自己有新的观点。咱们想要猎取猎物时，时而会爬到树上去。从树上望去的森林又是不同的样貌，也就是说……",
+      "quote_text": "「看来汝好像徘徊在思考的迷宫中走不出来，这时候应该让自己有新的观点。咱们想要猎取猎物时，时而会爬到树上去。从树上望去的森林又是不同的样貌，也就是说……」",
+      "paragraph_text": "「看来汝好像徘徊在思考的迷宫中走不出来，这时候应该让自己有新的观点。咱们想要猎取猎物时，时而会爬到树上去。从树上望去的森林又是不同的样貌，也就是说……」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 76
+    },
+    {
+      "dialogue_id": "volume_01-d000725",
+      "dialogue_index": 724,
+      "window_position": 3,
+      "chapter_id": "volume_01-c004",
+      "chapter_title": "第三幕",
+      "scene_id": "volume_01-c004-s009",
+      "paragraph_id": "volume_01-c004-s009-p001563",
+      "paragraph_index": 1562,
+      "local_dialogue_index": 1,
+      "text": "有所企图的人如果不是那名年轻人呢？",
+      "quote_text": "「有所企图的人如果不是那名年轻人呢？」",
+      "paragraph_text": "「有所企图的人如果不是那名年轻人呢？」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 19
+    },
+    {
+      "dialogue_id": "volume_01-d000726",
+      "dialogue_index": 725,
+      "window_position": 4,
+      "chapter_id": "volume_01-c004",
+      "chapter_title": "第三幕",
+      "scene_id": "volume_01-c004-s009",
+      "paragraph_id": "volume_01-c004-s009-p001564",
+      "paragraph_index": 1563,
+      "local_dialogue_index": 1,
+      "text": "啊……",
+      "quote_text": "「啊……」",
+      "paragraph_text": "「啊……」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 5
+    },
+    {
+      "dialogue_id": "volume_01-d000727",
+      "dialogue_index": 726,
+      "window_position": 5,
+      "chapter_id": "volume_01-c004",
+      "chapter_title": "第三幕",
+      "scene_id": "volume_01-c004-s009",
+      "paragraph_id": "volume_01-c004-s009-p001566",
+      "paragraph_index": 1565,
+      "local_dialogue_index": 1,
+      "text": "那名年轻人并不一定得从他交易的对象身上获取利益。好比说，那名年轻人有可能是受人之托，而四处宣传这诡异的交易好拿取佣金，是呗？",
+      "quote_text": "「那名年轻人并不一定得从他交易的对象身上获取利益。好比说，那名年轻人有可能是受人之托，而四处宣传这诡异的交易好拿取佣金，是呗？」",
+      "paragraph_text": "「那名年轻人并不一定得从他交易的对象身上获取利益。好比说，那名年轻人有可能是受人之托，而四处宣传这诡异的交易好拿取佣金，是呗？」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 64
+    },
+    {
+      "dialogue_id": "volume_01-d000728",
+      "dialogue_index": 727,
+      "window_position": 6,
+      "chapter_id": "volume_01-c004",
+      "chapter_title": "第三幕",
+      "scene_id": "volume_01-c004-s009",
+      "paragraph_id": "volume_01-c004-s009-p001568",
+      "paragraph_index": 1567,
+      "local_dialogue_index": 1,
+      "text": "如果只注意森林里的一株枯树，会觉得这株枯树对森林有害；但如果以整体森林来看，这株枯树会成为提供其他树木成长的养分来源，那就是对森林有益。如果用不同的观点来观察眼前的状况，经常会发现完全相反的事实。如何？有看到什么吗？",
+      "quote_text": "「如果只注意森林里的一株枯树，会觉得这株枯树对森林有害；但如果以整体森林来看，这株枯树会成为提供其他树木成长的养分来源，那就是对森林有益。如果用不同的观点来观察眼前的状况，经常会发现完全相反的事实。如何？有看到什么吗？」",
+      "paragraph_text": "「如果只注意森林里的一株枯树，会觉得这株枯树对森林有害；但如果以整体森林来看，这株枯树会成为提供其他树木成长的养分来源，那就是对森林有益。如果用不同的观点来观察眼前的状况，经常会发现完全相反的事实。如何？有看到什么吗？」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 110
+    },
+    {
+      "dialogue_id": "volume_01-d000729",
+      "dialogue_index": 728,
+      "window_position": 7,
+      "chapter_id": "volume_01-c004",
+      "chapter_title": "第三幕",
+      "scene_id": "volume_01-c004-s009",
+      "paragraph_id": "volume_01-c004-s009-p001570",
+      "paragraph_index": 1569,
+      "local_dialogue_index": 1,
+      "text": "使用不同观点",
+      "quote_text": "「使用不同观点」",
+      "paragraph_text": "思考眼前状况的观点，就是「使用不同观点」的知识。",
+      "dialogue_kind": "inline",
+      "outside_quote_text": "思考眼前状况的观点，就是的知识。",
+      "char_start": 12,
+      "char_end": 20
+    }
+  ],
+  "context": {
+    "paragraphs": [
+      {
+        "paragraph_id": "volume_01-c004-s008-p001556",
+        "paragraph_index": 1555,
+        "text": "「唔……」",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s008-p001557",
+        "paragraph_index": 1556,
+        "text": "罗伦斯心想赫萝的脸上会带着微笑，或许单纯是因为眼前的状况让她觉得愉快。不，想必她一定很愉快。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s008-p001558",
+        "paragraph_index": 1557,
+        "text": "「不过，汝在那个瞬间带着那些麦子，站在那座村落的那个位置上，也算是偶然。世上没有什么事情比必然与偶然更难懂了，就像要懂得木头人的爱恋之情一样困难。」",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s009-p001559",
+        "paragraph_index": 1558,
+        "text": "「真奇妙的比喻方法。」",
+        "target_dialogue_ids": [
+          "volume_01-d000723"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c004-s009-p001560",
+        "paragraph_index": 1559,
+        "text": "只有在这种时候能够马上反应，罗伦斯在心里自嘲。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s009-p001561",
+        "paragraph_index": 1560,
+        "text": "「看来汝好像徘徊在思考的迷宫中走不出来，这时候应该让自己有新的观点。咱们想要猎取猎物时，时而会爬到树上去。从树上望去的森林又是不同的样貌，也就是说……」",
+        "target_dialogue_ids": [
+          "volume_01-d000724"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c004-s009-p001562",
+        "paragraph_index": 1561,
+        "text": "贤狼赫萝的脸上带着奸诈的笑容，一边露出左边的尖牙，一边说道：",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s009-p001563",
+        "paragraph_index": 1562,
+        "text": "「有所企图的人如果不是那名年轻人呢？」",
+        "target_dialogue_ids": [
+          "volume_01-d000725"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c004-s009-p001564",
+        "paragraph_index": 1563,
+        "text": "「啊……」",
+        "target_dialogue_ids": [
+          "volume_01-d000726"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c004-s009-p001565",
+        "paragraph_index": 1564,
+        "text": "罗伦斯感觉头部像受了重重一击。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s009-p001566",
+        "paragraph_index": 1565,
+        "text": "「那名年轻人并不一定得从他交易的对象身上获取利益。好比说，那名年轻人有可能是受人之托，而四处宣传这诡异的交易好拿取佣金，是呗？」",
+        "target_dialogue_ids": [
+          "volume_01-d000727"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c004-s009-p001567",
+        "paragraph_index": 1566,
+        "text": "明明矮了罗伦斯两个头的赫萝，看起来却像巨人般高大。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s009-p001568",
+        "paragraph_index": 1567,
+        "text": "「如果只注意森林里的一株枯树，会觉得这株枯树对森林有害；但如果以整体森林来看，这株枯树会成为提供其他树木成长的养分来源，那就是对森林有益。如果用不同的观点来观察眼前的状况，经常会发现完全相反的事实。如何？有看到什么吗？」",
+        "target_dialogue_ids": [
+          "volume_01-d000728"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c004-s009-p001569",
+        "paragraph_index": 1568,
+        "text": "虽然有一瞬间罗伦斯怀疑赫萝已发现了什么内幕，但后来他从赫萝的语调中发现，赫萝不是在考验自己，只是单纯推他一把。对商人来说，拥有知识非常重要，但这个知识并非单纯了解商品价格。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s009-p001570",
+        "paragraph_index": 1569,
+        "text": "思考眼前状况的观点，就是「使用不同观点」的知识。",
+        "target_dialogue_ids": [
+          "volume_01-d000729"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c004-s009-p001571",
+        "paragraph_index": 1570,
+        "text": "罗伦斯陷入思考，他用新获得的这个知识思考。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s009-p001572",
+        "paragraph_index": 1571,
+        "text": "假设杰廉不是从实际谈话的对象——也就是罗伦斯等人身上获取利益，而是从其他地方获取利益的话呢？假设杰廉是借由让某人买入银币，而能够从另一个人手中拿取佣金的话？",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c004-s009-p001573",
+        "paragraph_index": 1572,
+        "text": "就在这些观点浮现在脑海里的那一刹那，罗伦斯倒抽了一口气。",
+        "target_dialogue_ids": []
+      }
+    ]
+  },
+  "scene_memory": [
+    {
+      "scene_id": "volume_01-c004-s009-r001",
+      "parent_scene_id": "volume_01-c004-s009",
+      "chunk_index": 1,
+      "chunk_count": 2,
+      "scene_summary": "罗伦斯在赫萝的启发下，开始重新思考杰廉的动机，并推测杰廉可能是受雇于他人进行银币回收。赫萝以森林与枯树的比喻引导罗伦斯换位思考，最终罗伦斯意识到一个可能的商业计策。",
+      "active_characters": [
+        "罗伦斯",
+        "赫萝"
+      ],
+      "relationships": [
+        "罗伦斯与赫萝同行并讨论商业策略",
+        "赫萝启发罗伦斯思考杰廉的动机"
+      ],
+      "notes": "杰廉虽然未直接发言，但其行为和动机是本场景的核心线索。赫萝的比喻和引导是推动罗伦斯思考的关键。"
+    }
+  ],
+  "candidate_characters": [
+    {
+      "entity_id": "char_0002",
+      "display_name": "赫萝",
+      "aliases": [],
+      "titles": [
+        "丰收之神",
+        "狼",
+        "贤狼"
+      ],
+      "description": "神秘少女，拥有狼的特征。在本场景中协助罗伦斯击退袭击者，表现出冷静和对环境的高度感知能力。 / 在地下道中不断呼喊罗伦斯，试图唤醒他并指引方向。表现出担忧和责任感。 / 神秘少女，拥有狼的特征，情绪波动明显，对罗伦斯表现出依赖和担忧。 / 神秘少女，拥有狼的特征。在本场景中表现出脆弱和依赖，对独自旅行感到不安。她对叶勒的言语感到愤怒与悲伤。 / 情绪波动明显的贤狼，因叶勒的言语感到悲伤。她表现出对罗伦斯的依赖，并在关键时刻流露出脆弱。 / 情绪波动明显的贤狼，因叶勒的言语感到愤怒与悲伤。她吸食罗伦斯的血液以施展某…",
+      "speech_style": "未直接发言，但被频繁提及 / 冷静、自信、略带调侃 / 调皮、略带挑衅、情绪化 / 略带孩子气、情绪化、略带调侃 / 冷静、简短、略带策略性 / 关切、坚定、略带责备 / 情绪化、略带孩子气 / 冷静、略带情绪化 / 脆弱、情绪化、略带孩子气 / 冷静、自信、略带策略性 / 冷静、简短、略带威严 / 未直接发言",
+      "speech_markers": [
+        "咱",
+        "哈哈哈哈哈，咱是恶魔？",
+        "好名字呗？",
+        "咱没听过。",
+        "咱不要。",
+        "或是鲜血。",
+        "如何？愿意相信咱了呗？",
+        "汝要温柔一些呐。"
+      ],
+      "relationship_hints": [
+        "与罗伦斯一同旅行",
+        "捉弄罗伦斯",
+        "与罗伦斯展开对话",
+        "表现出对罗伦斯的调侃",
+        "与罗伦斯有初步互动，可能是他未来的旅伴",
+        "与罗伦斯进行对话，表现出信任与坦率",
+        "提到出生地时流露出真实情感",
+        "与罗伦斯有互动，被罗伦斯收留并一同旅行"
+      ],
+      "first_seen_scene_id": "volume_01-c000-s003-r001",
+      "latest_seen_scene_id": "volume_01-c008-s003-r001",
+      "confidence": 0.95
+    },
+    {
+      "entity_id": "char_0001",
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": [
+        "商人",
+        "旅行商人",
+        "行商人"
+      ],
+      "description": "理性、谨慎的商人，试图分析局势并保持冷静。他与赫萝同行，面对叶勒的威胁时表现出坚定。 / 理性、坚定的商人，坚持遵守与赫萝的合约，拒绝背叛她。面对叶勒的威胁保持冷静，表现出对赫萝的忠诚。 / 理性、谨慎的商人，身受重伤但仍试图保持冷静并等待救援。他表现出对赫萝的依赖和信任。 / 罗伦斯目睹赫萝的变身过程，表现出震惊和无力。他试图抓住赫萝留下的皮袋，但最终面对巨大的狼形生物，感到无法应对。 / 理性、谨慎的商人，与赫萝在地下通道中遭遇叶勒的威胁。他试图安抚赫萝的情绪，并表现出对环境变化的敏感。 / 在赫萝的威压下感…",
+      "speech_style": "温和、理性、略带担忧 / 理性、略带策略性、温和 / 理性、担忧、略带冲动 / 虚弱、低沉、略带困惑 / 虚弱、低沉、焦虑 / 理性、坚定、略带焦虑 / 理性、焦虑、略带冲动 / 虚弱、低沉、焦虑 / 虚弱、焦虑、略带愤怒 / 愤怒、理性、略带冲动 / 虚弱、焦虑、略带悔恨 / 理性、冷静、略带焦虑",
+      "speech_markers": [
+        "……骑士？",
+        "有什么能为您效劳的吗？",
+        "算了……",
+        "糟糕",
+        "……",
+        "喂！",
+        "喂！起床啊！",
+        "喂！有什么好笑的？"
+      ],
+      "relationship_hints": [
+        "与赫萝一同旅行",
+        "对赫萝的身份持怀疑态度",
+        "与修道院有生意期望但未成功",
+        "与骑士初次互动",
+        "与赫萝有密切关系",
+        "与教会和骑士有互动",
+        "与叶勒有交集，计划与他交谈但被祭典打断",
+        "与叶勒有过去的交易关系。"
+      ],
+      "first_seen_scene_id": "volume_01-c000-s003-r001",
+      "latest_seen_scene_id": "volume_01-c008-s003-r001",
+      "confidence": 1.0
+    },
+    {
+      "entity_id": "char_0008",
+      "display_name": "杰廉",
+      "aliases": [],
+      "titles": [
+        "旅行商人"
+      ],
+      "description": "杰廉是本场景中被提及的年轻商人，他向罗伦斯提出货币投机的机会。赫萝认为他在说谎，但罗伦斯并未完全否定他的说法。 / 年轻的旅行商人，试图与罗伦斯建立联系，表现出对罗伦斯的敬佩。在本场景中与罗伦斯达成初步协议。 / 被罗伦斯寻找的旅行商人，据称会在日落后出现。 / 年轻的旅行商人，与罗伦斯有商业联系，表现出热情和对罗伦斯的敬佩。 / 年轻的旅行商人，试图与罗伦斯达成银币含银量变动的情报交易。他表现出热情和一定的商业技巧，但罗伦斯对其真实性存疑。 / 年轻的旅行商人，与罗伦斯达成情报交易。在本场景中未直接发言，但被提…",
+      "speech_style": "热情、略带笨拙 / 未直接发言，但被提及为信息来源。 / 未直接发言，但被提及为信息来源 / 未直接发言",
+      "speech_markers": [
+        "嘿嘿……",
+        "小的想……",
+        "那么，小的就先走一步了。",
+        "庆祝我们的重逢！",
+        "皮草卖得如何？"
+      ],
+      "relationship_hints": [
+        "与罗伦斯互动",
+        "试图获取情报",
+        "试图与罗伦斯建立联系",
+        "对赫萝表现出好奇",
+        "试图接近罗伦斯和赫萝",
+        "被赫萝认为在说谎",
+        "与罗伦斯有商业往来",
+        "与罗伦斯有联系"
+      ],
+      "first_seen_scene_id": "volume_01-c003-s002-r001",
+      "latest_seen_scene_id": "volume_01-c006-s004-r003",
+      "confidence": 0.9
+    }
+  ],
+  "candidate_mysteries": [
+    {
+      "mystery_id": "mystery_volume_01_c004_s009_r001_杰廉",
+      "temporary_name": "杰廉",
+      "description": "被提及的年轻商人，提出银币交易策略，被赫萝指出为诈欺。罗伦斯推测他可能是受雇于他人进行银币回收。",
+      "evidence": [
+        "volume_01-c004-s009-p001566",
+        "volume_01-c004-s009-p001572",
+        "volume_01-c004-s009-p001577",
+        "volume_01-c004-s009-p001578",
+        "volume_01-c004-s009-p001579"
+      ],
+      "source_scene_id": "volume_01-c004-s009-r001",
+      "confidence": 0.85
+    }
+  ]
+}

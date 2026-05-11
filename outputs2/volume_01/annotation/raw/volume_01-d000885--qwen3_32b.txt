@@ -1,0 +1,30 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000885",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.98,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.98
+        }
+      ],
+      "evidence": [
+        "台词中使用了赫萝的典型自称‘咱’，这是她的高区分度语言特征。",
+        "上下文显示赫萝正在表达情绪，罗伦斯在之后的段落中回应并安慰她，符合对话轮次。",
+        "场景记忆中提到赫萝情绪低落，与当前台词的情绪表达一致。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "当前对话为赫萝的独白，情绪低落，罗伦斯在后续段落中回应，符合对话轮次。"
+}
+```

@@ -1,0 +1,41 @@
+```json
+{
+  "scene_id": "volume_01-c007-s002",
+  "scene_summary": "罗伦斯与赫萝在复杂的地下道中迷路并被梅迪欧商行追捕，两人情绪焦虑，试图找到安全的路线逃离。",
+  "active_characters": ["罗伦斯", "赫萝"],
+  "character_candidates": [
+    {
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": ["旅行商人"],
+      "description": "正在地下道中与赫萝同行，表现出焦虑和对路线的不自信。他试图安抚赫萝的情绪，并表现出对环境变化的敏感。",
+      "speech_style": "焦虑、理性、略带冲动",
+      "speech_markers": ["可恶，还是先回头。", "我记不了再多的路了。"],
+      "relationship_hints": ["与赫萝有亲密互动，表现出保护欲。"],
+      "evidence": ["volume_01-c007-s002-p002636", "volume_01-c007-s002-p002643", "volume_01-c007-s002-p002646"],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "赫萝",
+      "aliases": [],
+      "titles": ["贤狼"],
+      "description": "与罗伦斯在地下道中同行，表现出冷静和对环境的高度感知能力。她同意罗伦斯的决定，并表现出对他的信任。",
+      "speech_style": "冷静、简短、略带策略性",
+      "speech_markers": ["多少可以。", "找个适当的地方……"],
+      "relationship_hints": ["与罗伦斯有亲密互动，表现出依赖和信任。"],
+      "evidence": ["volume_01-c007-s002-p002649", "volume_01-c007-s002-p002651", "volume_01-c007-s002-p002650"],
+      "confidence": 0.95
+    }
+  ],
+  "mystery_entities": [
+    {
+      "temporary_name": "梅迪欧商行追捕者",
+      "description": "在地下道中追捕罗伦斯与赫萝的敌人，人数不明，行动谨慎。",
+      "evidence": ["volume_01-c007-s002-p002640", "volume_01-c007-s002-p002659", "volume_01-c007-s002-p002665"],
+      "confidence": 0.85
+    }
+  ],
+  "relationships": ["罗伦斯与赫萝是亲密的同伴，彼此信任并依赖。", "罗伦斯与梅迪欧商行追捕者是对立关系。", "赫萝与梅迪欧商行追捕者是对立关系。"],
+  "notes": "场景中未出现新角色，主要聚焦于罗伦斯与赫萝的互动及梅迪欧商行的追捕。赫萝表现出冷静和策略性，罗伦斯则焦虑但努力控制情绪。"
+}
+```

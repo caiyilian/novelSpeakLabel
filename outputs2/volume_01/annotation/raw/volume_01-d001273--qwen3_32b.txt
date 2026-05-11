@@ -1,0 +1,36 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001273",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.85
+        },
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.15
+        }
+      ],
+      "evidence": [
+        "上下文显示罗伦斯刚刚喊出「赫萝……」，这是他表达情绪或担忧的常见方式。",
+        "前文提到罗伦斯对赫萝的举动感到不安，因此他很可能是当前说话人。",
+        "赫萝在前一段中刚刚完成行动，没有立即回应的迹象，因此说话人更可能是罗伦斯。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "当前对话为罗伦斯对赫萝的回应，上下文显示他刚刚经历紧张场景，情绪上更可能主动发言。"
+}
+```

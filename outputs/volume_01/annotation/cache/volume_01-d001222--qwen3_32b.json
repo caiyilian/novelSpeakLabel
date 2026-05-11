@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d001222",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "前一段提到罗伦斯发现手臂上有布条包扎，接着他回应「……这纱布？」，符合罗伦斯的语气和语境。",
+    "赫萝的说话风格通常带有轻松幽默和调侃，而这句话语气较为困惑和直接，更符合罗伦斯的表达方式。",
+    "上下文显示罗伦斯刚刚恢复意识，对身体状况感到疑惑，因此更可能是他提出问题。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

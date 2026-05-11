@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000955",
+  "speaker_entity_id": "char_0026",
+  "speaker_display": "老卸货工",
+  "speaker_status": "known",
+  "confidence": 0.9,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0026",
+      "display": "老卸货工",
+      "status": "known",
+      "score": 0.9
+    },
+    {
+      "entity_id": "char_0020",
+      "display": "列支敦·马贺特",
+      "status": "known",
+      "score": 0.1
+    }
+  ],
+  "evidence": [
+    "老卸货工在前文与罗伦斯交谈，并承诺保护赫萝。",
+    "当前段落的下一段提到「老卸货工一边大笑说着，一边引领罗伦斯走进商行」，与当前台词语气一致。",
+    "台词「哈哈哈，这真是令人期待啊。」符合老卸货工的幽默、亲切的说话风格。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

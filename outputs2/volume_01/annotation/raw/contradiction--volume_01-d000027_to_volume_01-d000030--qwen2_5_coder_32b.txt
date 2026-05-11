@@ -1,0 +1,37 @@
+{
+  "checks": [
+    {
+      "dialogue_id": "volume_01-d000027",
+      "has_contradiction": true,
+      "severity": "weak",
+      "reason": "对话内容友好，但没有明确的上下文证据表明是罗伦斯说话。候选说话人中罗伦斯的得分较低。",
+      "counter_evidence": ["候选说话人中罗伦斯的得分为0.49，且无明确说话人线索"],
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000028",
+      "has_contradiction": true,
+      "severity": "weak",
+      "reason": "对话内容友好，但没有明确的上下文证据表明是农夫说话。候选说话人中农夫的得分较低。",
+      "counter_evidence": ["候选说话人中农夫的得分为0.46，且无明确说话人线索"],
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000029",
+      "has_contradiction": true,
+      "severity": "weak",
+      "reason": "对话内容友好，但没有明确的上下文证据表明是罗伦斯说话。候选说话人中罗伦斯的得分较低。",
+      "counter_evidence": ["候选说话人中罗伦斯的得分为0.46，且无明确说话人线索"],
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000030",
+      "has_contradiction": false,
+      "severity": "none",
+      "reason": "对话内容符合农夫的说话风格，且上下文明确指出是农夫。",
+      "counter_evidence": [],
+      "needs_review": false
+    }
+  ],
+  "window_notes": "多处对话缺乏明确的说话人线索，候选说话人的得分较低。但没有明显的强反证需要复核。"
+}

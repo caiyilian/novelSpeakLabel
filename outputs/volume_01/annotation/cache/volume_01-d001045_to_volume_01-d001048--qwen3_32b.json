@@ -1,0 +1,93 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001045",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "上下文提到罗伦斯正在与马贺特谈判，且该段对话符合罗伦斯冷静理性、策略性的说话风格。",
+        "场景记忆中提到罗伦斯提出营救赫萝的计划，并强调赫萝的非人类身份，与台词内容一致。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001046",
+      "speaker_entity_id": "char_0030",
+      "speaker_display": "米隆商行",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0030",
+          "display": "米隆商行",
+          "status": "known",
+          "score": 0.85
+        }
+      ],
+      "evidence": [
+        "该台词出现在罗伦斯发言之后，符合对话轮次逻辑，可能是米隆商行代表马贺特的反应。",
+        "场景中米隆商行是罗伦斯谈判的对象，且未有其他角色在场。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001047",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.9
+        }
+      ],
+      "evidence": [
+        "该台词延续了前一段罗伦斯的发言，内容上是进一步向米隆商行提出交涉条件，符合对话轮次。",
+        "台词中提到「贵商行」，表明说话人是向米隆商行提问的一方，即罗伦斯。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001048",
+      "speaker_entity_id": "char_0030",
+      "speaker_display": "米隆商行",
+      "speaker_status": "known",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0030",
+          "display": "米隆商行",
+          "status": "known",
+          "score": 0.8
+        }
+      ],
+      "evidence": [
+        "该台词是对上一段罗伦斯提问的回应，符合对话轮次逻辑。",
+        "米隆商行是罗伦斯谈判的对象，且未有其他角色在场。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话轮次清晰，罗伦斯与米隆商行代表进行谈判，双方交替发言，符合上下文逻辑。"
+}

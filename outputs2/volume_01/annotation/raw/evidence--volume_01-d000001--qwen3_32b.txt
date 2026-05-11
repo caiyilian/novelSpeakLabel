@@ -1,0 +1,41 @@
+```json
+{
+  "evidence": [
+    {
+      "dialogue_id": "volume_01-d000001",
+      "explicit_attribution": {
+        "speaker_display": "赫萝",
+        "text": "「虽然咱长久以来被尊为神，不过，咱就是咱，咱是赫萝。」"
+      },
+      "addressed_to": [],
+      "turn_relation": "standalone",
+      "same_speaker_allowed": true,
+      "speech_markers": [
+        {
+          "marker": "咱",
+          "owner_display": "赫萝"
+        },
+        {
+          "marker": "咱是赫萝",
+          "owner_display": "赫萝"
+        }
+      ],
+      "third_person_name_references": [
+        {
+          "display": "赫萝",
+          "text": "自称是丰收之神赫萝的美丽少女"
+        }
+      ],
+      "positive_evidence": [
+        "台词中明确自称‘咱是赫萝’",
+        "上下文提到‘自称是丰收之神赫萝的美丽少女’",
+        "台词风格与赫萝的‘咱’自称一致"
+      ],
+      "negative_evidence": [],
+      "needs_review_hint": false,
+      "notes": "明确的自称和上下文支持，证据充分。"
+    }
+  ],
+  "window_notes": "目标对话为本段唯一对话，上下文明确指出说话者为赫萝，且台词风格与赫萝的‘咱’自称一致。无冲突证据。"
+}
+```

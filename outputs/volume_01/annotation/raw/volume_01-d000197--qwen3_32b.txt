@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000197",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "赫萝在场景中表现出对罗伦斯的关心和保护，说话风格轻松幽默但略带威胁性，符合台词语气。",
+    "场景记忆中提到赫萝与罗伦斯一同旅行，并且有情绪波动和试探性的互动。",
+    "台词内容提到「河川的心情不好」，这与赫萝对自然和情绪的敏感描述相符。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

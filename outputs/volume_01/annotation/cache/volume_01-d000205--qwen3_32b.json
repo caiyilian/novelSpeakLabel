@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000205",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.02
+    }
+  ],
+  "evidence": [
+    "对话中使用了「咱」作为自称，这是赫萝的典型说话风格。",
+    "对话内容涉及麦子与生存状态的联系，这与赫萝作为丰收之神的设定相符。",
+    "上下文显示赫萝在讨论麦子的处理方式，罗伦斯则在提问和回应，因此说话人应为赫萝。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

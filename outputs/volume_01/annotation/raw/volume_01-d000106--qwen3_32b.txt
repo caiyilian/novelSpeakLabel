@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d000106",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    }
+  ],
+  "evidence": [
+    "赫萝的反应是厌恶的表情，且直截了当地说：「咱不要。」",
+    "赫萝在对话中多次使用自称‘咱’，暗示其非人类身份。",
+    "赫萝对罗伦斯的怀疑表现出厌恶和抗拒，不愿配合。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

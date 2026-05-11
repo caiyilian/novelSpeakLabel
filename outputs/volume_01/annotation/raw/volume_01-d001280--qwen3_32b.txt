@@ -1,0 +1,30 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001280",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        }
+      ],
+      "evidence": [
+        "上下文显示罗伦斯正在试图挽留赫萝，并表达自己会追到北方森林的决心，该台词符合他情绪激烈、理性中带有情绪的说话风格。",
+        "前文提到罗伦斯用憎恨的口吻大喊，表明他正在表达强烈情绪，而该台词正是这种情绪的延续。",
+        "该段落紧接着描述罗伦斯大喊后声音在地下道内回响，说明说话人是罗伦斯。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "该段对话为罗伦斯在试图挽留赫萝时的激烈表达，上下文明确显示说话人为罗伦斯，轮次清晰，无其他说话人介入。"
+}
+```

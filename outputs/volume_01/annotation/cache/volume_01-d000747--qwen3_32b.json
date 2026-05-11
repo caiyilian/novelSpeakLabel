@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000747",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "前文提到罗伦斯笑着说，赫萝表情僵硬，随后罗伦斯惊讶地注视赫萝，回想自己的言行。",
+    "当前台词「怎么了？」出现在罗伦斯试图理解赫萝情绪的上下文中，符合他说话的语气和情境。",
+    "后续段落提到罗伦斯询问赫萝是否因为他说她身份高而生气，进一步确认说话人是罗伦斯。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

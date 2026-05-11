@@ -1,0 +1,253 @@
+你是轻小说说话人标注项目的阶段 2：正式标注助手。
+你的任务是判断输入 target_dialogues 中每一句台词的说话人，不要改写原文。
+必须把这些台词当作同一个连续片段来判断，优先保持对话轮次和叙述线索的一致性。
+
+规则：
+1. 只输出严格 JSON，不要 Markdown，不要解释性前后缀。
+2. 如果说话人是候选角色，speaker_entity_id 必须使用 candidate_characters 里的 entity_id，speaker_status 填 known。
+3. 如果说话人像某个未知人物，speaker_entity_id 使用 candidate_mysteries 里的 mystery_id，speaker_status 填 mystery。
+4. 如果只是无法追踪的路人/群体，speaker_status 填 npc，speaker_entity_id 可为空或使用 npc:简短称呼。
+5. 证据不足时不要硬猜，speaker_status 填 ambiguous 或 review，并把 needs_review 设为 true。
+6. candidate_speakers 至少列出 1 个候选；如果无法判断，列出最可能的候选和不确定原因。
+7. confidence 使用 0 到 1 之间的小数，表示你对最终判断的把握。
+8. 不要只因为台词里提到某个名字、职业、地点，就把说话人标成那个实体；被称呼的人通常不是说话人。
+9. 连续问答、交易寒暄、命令/回答等场景要按上下句轮次判断；同一人连续说话必须有叙述或语气证据支持。
+10. 如果当前上下文显示某角色还没有登场，不要因为角色库或后文记忆里有这个角色就提前标给他/她。
+
+11. target_dialogues 中 dialogue_kind=inline 的项目是正文内嵌引号，不要当作独立对白；标为 review，needs_review=true。
+12. candidate_mysteries 只是可选候选；如果候选名称和当前段落地点/人物不一致，必须改用 npc 或 review。
+13. 如果只有轮次推断、没有叙述锚点或自我介绍，请降低 confidence，并在 evidence 里说明轮次依据。
+
+输出 JSON 结构：
+{
+  "annotations": [
+    {
+      "dialogue_id": "必须来自 target_dialogue_ids",
+      "speaker_entity_id": "string",
+      "speaker_display": "string",
+      "speaker_status": "known|mystery|npc|ambiguous|review",
+      "confidence": 0.0,
+      "candidate_speakers": [
+        {"entity_id": "string", "display": "string", "status": "known|mystery|npc|ambiguous|review", "score": 0.0}
+      ],
+      "evidence": ["短证据，不要大段复制原文"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "可选，简短说明整体轮次判断"
+}
+必须为 target_dialogue_ids 中每个 dialogue_id 输出且只输出一条 annotation。
+
+输入 JSON：
+{
+  "volume": {
+    "volume_id": "volume_01",
+    "volume": 1
+  },
+  "target_dialogue_ids": [
+    "volume_01-d000026"
+  ],
+  "dialogues": [
+    {
+      "dialogue_id": "volume_01-d000026",
+      "dialogue_index": 25,
+      "window_position": 1,
+      "chapter_id": "volume_01-c002",
+      "chapter_title": "第一幕",
+      "scene_id": "volume_01-c002-s001",
+      "paragraph_id": "volume_01-c002-s001-p000144",
+      "paragraph_index": 143,
+      "local_dialogue_index": 1,
+      "text": "不管哪一行的生意都不好做呢。",
+      "quote_text": "「不管哪一行的生意都不好做呢。」",
+      "paragraph_text": "「不管哪一行的生意都不好做呢。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 16
+    }
+  ],
+  "context": {
+    "paragraphs": [
+      {
+        "paragraph_id": "volume_01-c002-s001-p000141",
+        "paragraph_index": 140,
+        "text": "注：指非正统的宗教派别",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000142",
+        "paragraph_index": 141,
+        "text": "就算城里的居民没有说出口，但相信大家都能够感觉到教会的绝对性威严已逐渐消失。事实上，据说因为教皇收到的教会税比预期来得少，而向多国国王请求捐助费用修复大神殿。早在十年前，这根本是不可能发生的事。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000143",
+        "paragraph_index": 142,
+        "text": "面对这样的局势，也难怪教会急于设法找回威严。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000144",
+        "paragraph_index": 143,
+        "text": "「不管哪一行的生意都不好做呢。」",
+        "target_dialogue_ids": [
+          "volume_01-d000026"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000145",
+        "paragraph_index": 144,
+        "text": "罗伦斯苦笑，把蜂蜜糖丢入口中。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000146",
+        "paragraph_index": 145,
+        "text": "当罗伦斯来到宽广的麦田时，西边的天空已经泛起比麦穗还要美丽的金黄色。远方鸟儿小小的身影赶着回家，处处传来的青蛙鸣，仿佛在宣告自己即将入眠似的。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000147",
+        "paragraph_index": 146,
+        "text": "几乎所有麦田都已完成收割，应该这几天就会举办祭典。快的话，或许后天就会举办了。",
+        "target_dialogue_ids": []
+      }
+    ]
+  },
+  "scene_memory": [
+    {
+      "scene_id": "volume_01-c002-s001-r006",
+      "parent_scene_id": "volume_01-c002-s001",
+      "chunk_index": 6,
+      "chunk_count": 6,
+      "scene_summary": "罗伦斯在帕斯罗村的麦田中与农夫交谈，询问叶勒的下落，并提到叶勒今年雇用年轻人种田，推测其中某人可能是『赫萝』。",
+      "active_characters": [
+        "罗伦斯",
+        "农夫",
+        "叶勒"
+      ],
+      "relationships": [
+        "罗伦斯与叶勒有联系",
+        "叶勒与赫萝（疑似）有联系"
+      ],
+      "notes": "赫萝的出现线索较模糊，需进一步确认是否为同一角色。"
+    }
+  ],
+  "candidate_characters": [
+    {
+      "entity_id": "char_0001",
+      "display_name": "罗伦斯",
+      "aliases": [
+        "罗伦斯",
+        "罗伦斯先生"
+      ],
+      "titles": [
+        "中间人",
+        "交易者",
+        "同行",
+        "商人",
+        "小毛头",
+        "小的",
+        "市井无赖",
+        "年轻人"
+      ],
+      "description": "一位行商人，正在与米隆商行的代表马贺特进行交易谈判。他原本期待获得两千枚银币，但实际只得到一百二十枚，感到震惊和困惑。 / 一位行商人，发现并收留了赫萝，决定与她一同旅行。 / 一位二十五岁的自力更生旅行商人，已有七年行商经验，性格泰然自若。 / 一位冷静理性的旅行商人，对赫萝的身份持怀疑态度，但仍保持互动。他注重外表整洁，对商业制度有深入理解。 / 冷静理性的旅行商人，与赫萝一同旅行。在本场景中与米隆商行的马贺特讨论梅迪欧商行的威胁，提出利用崔尼银币交易作为交涉王牌。 / 一位冷静理性的旅行商人，与赫萝一同旅行…",
+      "speech_style": "理性、坚定、略带情绪化 / 冷静、理性，带有悔恨和自责的语气。 / 冷静、理性，语气中带有对赫萝的关心和些许担忧。 / 冷静、理性、略带失落 / 冷静、理性，对商业制度有深入理解，并能清晰地向他人解释。 / 理性、礼貌、略带谨慎。 / 理性、冷静，带有商业分析倾向。 / 理性、沉稳、略带幽默 / 理性、冷静，但因困惑…",
+      "relationship_hints": [
+        "与赫萝一同旅行",
+        "对赫萝的真实性持怀疑态度",
+        "与深山村落的村民有交易关系",
+        "对修道院抱有商业期望但未成功",
+        "与骑士有短暂互动",
+        "与小村落的村民有交易关系",
+        "与修道院有关联",
+        "对教会和异教徒问题有见解"
+      ],
+      "first_seen_scene_id": "volume_01-c000-s003-r001",
+      "latest_seen_scene_id": "volume_01-c008-s003-r002",
+      "confidence": 1.0
+    },
+    {
+      "entity_id": "char_0004",
+      "display_name": "叶勒",
+      "aliases": [
+        "叶勒"
+      ],
+      "titles": [
+        "帕斯罗村农夫",
+        "村民代表"
+      ],
+      "description": "帕斯罗村的农夫，今年雇用年轻人种田。 / 帕斯罗村的农夫，今年雇用年轻人种田，是村民丰收祭典的中心人物。 / 帕斯罗村的农夫，今年雇用年轻人种田，是村民丰收祭典的中心人物。他被村民认为是丰收之神附身的载体。 / 帕斯罗村的农夫，曾与罗伦斯交易麦子，对罗伦斯怀有感恩之心。 / 赫萝提及的愤怒对象，可能是帕斯罗村的农夫，曾被认为是丰收之神附身的载体。 / 帕斯罗村的农夫，被认为是丰收之神附身的载体。 / 帕斯罗村的农夫，被认为是丰收之神附身的载体。在本场景中突然出现，与罗伦斯有旧识，并提及帕斯罗村的银币交易计划。 /…",
+      "speech_style": "未直接说话，通过他人描述 / 未直接说话，但被村民高声呼喊 / 热情、激动，带有仪式感。 / 未直接说话，但通过他人叙述体现其性格 / 未直接说话 / 未直接发言，但被提及。 / 略带悲伤但坚定 / 理性、策略性、带有说服力 / 热情、说服性强 / 坚定、略带威胁 / 命令式 / 情绪化、不讲理",
+      "relationship_hints": [
+        "与罗伦斯有互动",
+        "雇用年轻人",
+        "是村民活动的组织者",
+        "与农夫有联系",
+        "与罗伦斯有交谈的意图",
+        "被村民追逐",
+        "与罗伦斯有商业交易关系",
+        "被村民视为丰收之神附身的载体"
+      ],
+      "first_seen_scene_id": "volume_01-c002-s001-r006",
+      "latest_seen_scene_id": "volume_01-c007-s004-r005",
+      "confidence": 0.95
+    },
+    {
+      "entity_id": "char_0005",
+      "display_name": "农夫",
+      "aliases": [],
+      "titles": [],
+      "description": "一位晒得黝黑的农夫，与罗伦斯有互动，笑容真诚。",
+      "speech_style": "朴实、真诚",
+      "relationship_hints": [
+        "与罗伦斯有互动",
+        "与叶勒有联系"
+      ],
+      "first_seen_scene_id": "volume_01-c002-s002-r001",
+      "latest_seen_scene_id": "volume_01-c002-s002-r001",
+      "confidence": 0.85
+    },
+    {
+      "entity_id": "char_0034",
+      "display_name": "国王",
+      "aliases": [],
+      "titles": [
+        "国王",
+        "王族"
+      ],
+      "description": "崔尼国的统治者，正面临财务危机，通过复杂的费用和合约条款从米隆商行榨取利益。",
+      "speech_style": "未直接说话，但通过策略和制度体现其权威与计谋。",
+      "relationship_hints": [
+        "与米隆商行存在权力关系",
+        "与御用商人合作"
+      ],
+      "first_seen_scene_id": "volume_01-c008-s001-r005",
+      "latest_seen_scene_id": "volume_01-c008-s001-r005",
+      "confidence": 0.95
+    },
+    {
+      "entity_id": "char_0029",
+      "display_name": "崔尼国王",
+      "aliases": [],
+      "titles": [
+        "国王",
+        "王族"
+      ],
+      "description": "崔尼国的统治者，正面临财务危机，可能通过回收银币并发行新货币来缓解。",
+      "speech_style": "未直接发言，但其行为逻辑被罗伦斯推测为「愿意以特权换取银币」。",
+      "relationship_hints": [
+        "与梅迪欧商行交涉",
+        "与米隆商行可能交涉",
+        "处于财务危机"
+      ],
+      "first_seen_scene_id": "volume_01-c006-s001-r004",
+      "latest_seen_scene_id": "volume_01-c006-s001-r004",
+      "confidence": 0.8
+    }
+  ],
+  "candidate_mysteries": []
+}

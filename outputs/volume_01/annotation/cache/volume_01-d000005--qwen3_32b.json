@@ -1,0 +1,23 @@
+{
+  "dialogue_id": "volume_01-d000005",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.98
+    }
+  ],
+  "evidence": [
+    "对话内容提到「我会再来的」，与罗伦斯离开深山村落的场景一致。",
+    "上下文显示罗伦斯刚完成交易，提到「拿到上等的皮草」，符合他的商人身份和行为模式。",
+    "场景记忆中罗伦斯是本段场景的唯一主要角色，且没有其他角色在该段对话中发言。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

@@ -1,0 +1,23 @@
+{
+  "dialogue_id": "volume_01-d000084",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    }
+  ],
+  "evidence": [
+    "赫萝在对话中提到北方，并描述其气候特征，与当前台词「汝曾去过吗？」形成直接回应。",
+    "当前段落中提到「赫萝突然瞇起眼睛看向远方，她的模样实在不像在说谎」，暗示说话人是赫萝。",
+    "赫萝的说话风格轻松幽默但略带威胁性，符合台词语气。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

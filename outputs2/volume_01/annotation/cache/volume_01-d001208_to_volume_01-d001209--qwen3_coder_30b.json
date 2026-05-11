@@ -1,0 +1,63 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d001208",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.9
+        },
+        {
+          "entity_id": "mystery_volume_01_c007_s002_r002_袭击者",
+          "display": "袭击者",
+          "status": "mystery",
+          "score": 0.1
+        }
+      ],
+      "evidence": [
+        "赫萝在战斗中发出低吼声，与前文描述一致",
+        "赫萝协助罗伦斯击退袭击者，符合其角色行为",
+        "赫萝有类似“呜噜噜咕噜噜噜噜”的声音特征"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d001209",
+      "speaker_entity_id": "char_0002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.95
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.05
+        }
+      ],
+      "evidence": [
+        "赫萝在战斗中表现出强烈情绪和呼喊行为",
+        "赫萝协助罗伦斯击退袭击者，符合其角色行为",
+        "赫萝有“哇！可恶，在这里！”的表达方式，符合其情绪化特征"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "赫萝在战斗中发出低吼和呼喊，行为连贯，符合其角色特征。罗伦斯未直接发言，但其反应与赫萝的行动一致。"
+}

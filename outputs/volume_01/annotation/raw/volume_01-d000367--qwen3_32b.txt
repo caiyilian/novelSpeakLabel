@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000367",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.9,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.9
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.1
+    }
+  ],
+  "evidence": [
+    "前一段对话中提到「你不用把脸遮起来吗？」，暗示说话人对赫萝的外貌有担忧，符合罗伦斯的语气和立场。",
+    "当前段落「嗯？脸？」是对前一句的回应，语气简短且略带疑惑，符合罗伦斯冷静理性的说话风格。",
+    "场景记忆中显示罗伦斯多次对赫萝的外貌和身份表示担忧，而赫萝则表现出不以为意的态度，符合当前对话的语境。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

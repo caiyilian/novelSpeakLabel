@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000445",
+  "speaker_entity_id": "char_0016",
+  "speaker_display": "鉴定员",
+  "speaker_status": "known",
+  "confidence": 0.85,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0016",
+      "display": "鉴定员",
+      "status": "known",
+      "score": 0.85
+    },
+    {
+      "entity_id": "char_0013",
+      "display": "鉴定商品的采购人员",
+      "status": "known",
+      "score": 0.7
+    }
+  ],
+  "evidence": [
+    "对话内容「他很勤劳工作，从不发牢骚。」是对马的评价，符合卸货场中负责鉴定商品的采购人员或鉴定员的说话风格。",
+    "上下文显示该人物是与罗伦斯互动的采购人员，且在卸货场负责鉴定商品。",
+    "「他很勤劳工作」暗示说话人对马的观察和评价，符合鉴定员的专业角色。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

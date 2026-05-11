@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000923",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "对话内容「汝的主意不错。不过，咱也有一些想法。」语气理性、冷静，符合罗伦斯的说话风格。",
+    "上下文显示赫萝刚刚提出「兵分两路」的建议，罗伦斯在回应中表示认可并补充自己的想法，符合两人互动模式。",
+    "场景记忆中明确指出罗伦斯和赫萝是本场景的活跃角色，且罗伦斯主导策略讨论。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

@@ -1,0 +1,34 @@
+```json
+{
+  "scene_id": "volume_01-c004-s002",
+  "scene_summary": "罗伦斯与赫萝在马车上继续交谈，赫萝一开始不愿承认自己想吃苹果，但最终坦白。罗伦斯买苹果给她，两人之间有互动和调侃。赫萝表现出调皮和孩子气的一面，而罗伦斯则显得理性且略带无奈。",
+  "active_characters": ["罗伦斯", "赫萝"],
+  "character_candidates": [
+    {
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": ["商人", "旅行商人"],
+      "description": "理性、谨慎的商人，与赫萝同行，试图理解她的行为并保持理性应对。",
+      "speech_style": "理性、略带无奈、温和",
+      "speech_markers": ["你自己的花费自己想办法啊！"],
+      "relationship_hints": ["与赫萝同行，对她的行为感到无奈但包容"],
+      "evidence": ["volume_01-d000403", "volume_01-d000410", "volume_01-d000414", "volume_01-d000416", "volume_01-d000422"],
+      "confidence": 0.95
+    },
+    {
+      "display_name": "赫萝",
+      "aliases": [],
+      "titles": ["贤狼", "丰收之神"],
+      "description": "自称是丰收之神的神秘少女，拥有狼的特征，表现出调皮、自信和孩子气的一面。",
+      "speech_style": "狡黠、调皮、略带挑衅",
+      "speech_markers": ["咱……想要……吃……苹果……", "喀滋……嗯……可是扎……喀滋……咱啊……"],
+      "relationship_hints": ["与罗伦斯同行，对他表现出亲密与掌控"],
+      "evidence": ["volume_01-d000402", "volume_01-d000409", "volume_01-d000412", "volume_01-d000413", "volume_01-d000417", "volume_01-d000419", "volume_01-d000424"],
+      "confidence": 0.95
+    }
+  ],
+  "mystery_entities": [],
+  "relationships": ["罗伦斯与赫萝同行，赫萝对罗伦斯表现出亲密与掌控，罗伦斯对赫萝感到无奈但包容"],
+  "notes": "赫萝在本场景中表现出对食物的强烈渴望，特别是苹果。她一开始不愿承认，但最终坦白，展现出孩子气的一面。罗伦斯则表现出理性与包容，两人互动自然。"
+}
+```

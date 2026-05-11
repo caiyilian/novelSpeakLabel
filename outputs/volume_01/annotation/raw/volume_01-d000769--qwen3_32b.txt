@@ -1,0 +1,31 @@
+```json
+{
+  "dialogue_id": "volume_01-d000769",
+  "speaker_entity_id": "char_0001",
+  "speaker_display": "罗伦斯",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0020",
+      "display": "列支敦·马贺特",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "对话内容提及「杰廉的背后关系」，这是罗伦斯在与米隆商行谈判时关注的重点。",
+    "前一段对话中，列支敦·马贺特表示「我们愿意接受这次交易」，但本句的语气和问题更符合罗伦斯的风格。",
+    "场景记忆中，罗伦斯与列支敦·马贺特进行商业谈判，罗伦斯表现出对交易细节的深入分析和提问倾向。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```

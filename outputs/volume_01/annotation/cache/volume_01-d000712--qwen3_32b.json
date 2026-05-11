@@ -1,0 +1,29 @@
+{
+  "dialogue_id": "volume_01-d000712",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.95,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.95
+    },
+    {
+      "entity_id": "char_0001",
+      "display": "罗伦斯",
+      "status": "known",
+      "score": 0.05
+    }
+  ],
+  "evidence": [
+    "上下文显示罗伦斯感到困惑和震惊，而赫萝在对话中主导节奏并指出罗伦斯的错误。",
+    "该段对话出现在赫萝分析杰廉交易策略的场景中，语气符合赫萝的轻松幽默但略带威胁的风格。",
+    "赫萝在场景中多次指出罗伦斯的疏忽，表现出对商业策略的深刻理解。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}

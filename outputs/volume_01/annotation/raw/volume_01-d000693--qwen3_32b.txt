@@ -1,0 +1,25 @@
+```json
+{
+  "dialogue_id": "volume_01-d000693",
+  "speaker_entity_id": "char_0002",
+  "speaker_display": "赫萝",
+  "speaker_status": "known",
+  "confidence": 0.98,
+  "candidate_speakers": [
+    {
+      "entity_id": "char_0002",
+      "display": "赫萝",
+      "status": "known",
+      "score": 0.98
+    }
+  ],
+  "evidence": [
+    "上下文显示赫萝在与罗伦斯进行轻松调侃的对话，语气风格与赫萝一贯的轻松幽默但略带威胁的说话方式一致。",
+    "前一段中赫萝说：「呵，对咱而言，汝等人类看来不过跟小鸡没两样。」，与当前台词风格一致。",
+    "后一段中赫萝继续以轻松调侃的语气回应：「胡说什么。咱只要轻轻一摇咱可爱的尾巴，不管是人还是狼都会立刻为咱倾倒。」，进一步确认说话人是赫萝。"
+  ],
+  "should_create_new_entity": false,
+  "new_entity_hint": "",
+  "needs_review": false
+}
+```
