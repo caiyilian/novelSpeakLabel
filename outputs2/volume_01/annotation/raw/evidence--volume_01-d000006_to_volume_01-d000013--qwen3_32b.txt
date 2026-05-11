@@ -1,0 +1,111 @@
+```json
+{
+  "evidence": [
+    {
+      "dialogue_id": "volume_01-d000006",
+      "explicit_attribution": {"speaker_display": "", "text": ""},
+      "addressed_to": [],
+      "turn_relation": "start",
+      "same_speaker_allowed": true,
+      "speech_markers": [],
+      "third_person_name_references": [],
+      "positive_evidence": ["罗伦斯是场景中唯一已知的说话人"],
+      "negative_evidence": [],
+      "needs_review_hint": false,
+      "notes": "无明确说话人锚点，但罗伦斯是唯一已知角色，可推测为他说话。"
+    },
+    {
+      "dialogue_id": "volume_01-d000007",
+      "explicit_attribution": {"speaker_display": "", "text": ""},
+      "addressed_to": ["罗伦斯"],
+      "turn_relation": "response",
+      "same_speaker_allowed": false,
+      "speech_markers": [],
+      "third_person_name_references": [],
+      "positive_evidence": ["对话对象为罗伦斯，可能是骑士回应"],
+      "negative_evidence": [],
+      "needs_review_hint": false,
+      "notes": "对话对象为罗伦斯，可能是骑士回应。"
+    },
+    {
+      "dialogue_id": "volume_01-d000008",
+      "explicit_attribution": {"speaker_display": "", "text": ""},
+      "addressed_to": ["骑士"],
+      "turn_relation": "response",
+      "same_speaker_allowed": false,
+      "speech_markers": [],
+      "third_person_name_references": [],
+      "positive_evidence": ["罗伦斯已出现，此句可能是他对骑士的回应"],
+      "negative_evidence": [],
+      "needs_review_hint": false,
+      "notes": "对话对象为骑士，可能是罗伦斯回应。"
+    },
+    {
+      "dialogue_id": "volume_01-d000009",
+      "explicit_attribution": {"speaker_display": "罗伦斯", "text": "我是旅行商人罗伦斯"},
+      "addressed_to": ["骑士"],
+      "turn_relation": "response",
+      "same_speaker_allowed": false,
+      "speech_markers": [{"marker": "为您效劳", "owner_display": "罗伦斯"}],
+      "third_person_name_references": [],
+      "positive_evidence": ["明确自称罗伦斯，符合角色设定"],
+      "negative_evidence": [],
+      "needs_review_hint": false,
+      "notes": "明确自称罗伦斯，符合角色设定。"
+    },
+    {
+      "dialogue_id": "volume_01-d000010",
+      "explicit_attribution": {"speaker_display": "", "text": ""},
+      "addressed_to": ["罗伦斯"],
+      "turn_relation": "response",
+      "same_speaker_allowed": false,
+      "speech_markers": [],
+      "third_person_name_references": [],
+      "positive_evidence": ["对话对象为罗伦斯，可能是骑士回应"],
+      "negative_evidence": [],
+      "needs_review_hint": false,
+      "notes": "对话对象为罗伦斯，可能是骑士回应。"
+    },
+    {
+      "dialogue_id": "volume_01-d000011",
+      "explicit_attribution": {"speaker_display": "罗伦斯", "text": "要不要来一颗？"},
+      "addressed_to": ["骑士"],
+      "turn_relation": "response",
+      "same_speaker_allowed": false,
+      "speech_markers": [],
+      "third_person_name_references": [],
+      "positive_evidence": ["罗伦斯在场景中主动递糖，符合上下文"],
+      "negative_evidence": [],
+      "needs_review_hint": false,
+      "notes": "罗伦斯在场景中主动递糖，符合上下文。"
+    },
+    {
+      "dialogue_id": "volume_01-d000012",
+      "explicit_attribution": {"speaker_display": "骑士", "text": "呃……"},
+      "addressed_to": [],
+      "turn_relation": "response",
+      "same_speaker_allowed": false,
+      "speech_markers": [{"marker": "呃……", "owner_display": "骑士"}],
+      "third_person_name_references": [],
+      "positive_evidence": ["符合骑士的迟疑语气"],
+      "negative_evidence": [],
+      "needs_review_hint": false,
+      "notes": "符合骑士的迟疑语气。"
+    },
+    {
+      "dialogue_id": "volume_01-d000013",
+      "explicit_attribution": {"speaker_display": "罗伦斯", "text": "我是到那里卖盐回来的"},
+      "addressed_to": ["骑士"],
+      "turn_relation": "response",
+      "same_speaker_allowed": false,
+      "speech_markers": [],
+      "third_person_name_references": [],
+      "positive_evidence": ["罗伦斯在场景中持续对话，符合上下文"],
+      "negative_evidence": [],
+      "needs_review_hint": false,
+      "notes": "罗伦斯在场景中持续对话，符合上下文。"
+    }
+  ],
+  "window_notes": "对话主要发生在罗伦斯与骑士之间，双方交替发言，无明显说话人混淆。罗伦斯有明确自称，骑士有迟疑语气，符合角色设定。"
+}
+```

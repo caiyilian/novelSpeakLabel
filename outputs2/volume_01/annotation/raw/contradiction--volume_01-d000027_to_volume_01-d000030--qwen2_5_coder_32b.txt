@@ -1,0 +1,37 @@
+{
+  "checks": [
+    {
+      "dialogue_id": "volume_01-d000027",
+      "has_contradiction": false,
+      "severity": "none",
+      "reason": "",
+      "counter_evidence": [],
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000028",
+      "has_contradiction": false,
+      "severity": "none",
+      "reason": "",
+      "counter_evidence": [],
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000029",
+      "has_contradiction": true,
+      "severity": "weak",
+      "reason": "对话内容是罗伦斯提问叶勒的位置，但标注为罗伦斯说话。",
+      "counter_evidence": ["明确提到“叶勒”，可能是罗伦斯提问"],
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000030",
+      "has_contradiction": false,
+      "severity": "none",
+      "reason": "",
+      "counter_evidence": [],
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话29标注为罗伦斯说话，但内容是提问叶勒的位置，可能存在弱反证。"
+}

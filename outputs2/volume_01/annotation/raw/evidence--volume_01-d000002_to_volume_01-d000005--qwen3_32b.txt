@@ -1,0 +1,59 @@
+```json
+{
+  "evidence": [
+    {
+      "dialogue_id": "volume_01-d000002",
+      "explicit_attribution": {"speaker_display": "", "text": ""},
+      "addressed_to": [],
+      "turn_relation": "start",
+      "same_speaker_allowed": true,
+      "speech_markers": [],
+      "third_person_name_references": [],
+      "positive_evidence": ["无明确说话人，但上下文显示为交易场景，可能是罗伦斯询问对方"],
+      "negative_evidence": [],
+      "needs_review_hint": true,
+      "notes": "无明确说话人，需结合上下文推断"
+    },
+    {
+      "dialogue_id": "volume_01-d000003",
+      "explicit_attribution": {"speaker_display": "", "text": ""},
+      "addressed_to": ["罗伦斯"],
+      "turn_relation": "response",
+      "same_speaker_allowed": false,
+      "speech_markers": [],
+      "third_person_name_references": [],
+      "positive_evidence": ["回应了前一句，语气符合交易场景，可能是村民或店主"],
+      "negative_evidence": [],
+      "needs_review_hint": true,
+      "notes": "回应前一句，但无明确说话人，需结合上下文推断"
+    },
+    {
+      "dialogue_id": "volume_01-d000004",
+      "explicit_attribution": {"speaker_display": "", "text": ""},
+      "addressed_to": ["罗伦斯"],
+      "turn_relation": "response",
+      "same_speaker_allowed": false,
+      "speech_markers": [],
+      "third_person_name_references": [{"display": "罗伦斯", "text": "罗伦斯先生你愿意到这深山里来"}],
+      "positive_evidence": ["明确称呼罗伦斯先生，可能是村民或店主"],
+      "negative_evidence": [],
+      "needs_review_hint": false,
+      "notes": "明确称呼罗伦斯先生，说话人可能是村民"
+    },
+    {
+      "dialogue_id": "volume_01-d000005",
+      "explicit_attribution": {"speaker_display": "", "text": ""},
+      "addressed_to": [],
+      "turn_relation": "response",
+      "same_speaker_allowed": false,
+      "speech_markers": [],
+      "third_person_name_references": [],
+      "positive_evidence": ["语气自信，符合罗伦斯的说话风格"],
+      "negative_evidence": [],
+      "needs_review_hint": true,
+      "notes": "语气自信，可能是罗伦斯，但无明确证据"
+    }
+  ],
+  "window_notes": "对话发生在交易场景中，罗伦斯是主要角色，但对话中无明确说话人。需结合上下文和角色行为推断说话人。"
+}
+```

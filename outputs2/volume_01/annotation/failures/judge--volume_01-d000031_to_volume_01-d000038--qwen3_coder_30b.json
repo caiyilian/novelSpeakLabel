@@ -1,0 +1,18 @@
+{
+  "request_id": "judge--volume_01-d000031_to_volume_01-d000038--qwen3_coder_30b",
+  "dialogue_ids": [
+    "volume_01-d000031",
+    "volume_01-d000032",
+    "volume_01-d000033",
+    "volume_01-d000034",
+    "volume_01-d000035",
+    "volume_01-d000036",
+    "volume_01-d000037",
+    "volume_01-d000038"
+  ],
+  "model": "qwen3-coder:30b",
+  "role": "judge",
+  "error_type": "JSONDecodeError",
+  "error": "Expecting ',' delimiter: line 273 column 10 (char 6459)",
+  "prompt_path": "outputs2/volume_01/annotation/prompts/judge--volume_01-d000031_to_volume_01-d000038--qwen3_coder_30b.txt"
+}

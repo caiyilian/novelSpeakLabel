@@ -1,0 +1,41 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000025",
+      "speaker_entity_id": "char_0003",
+      "speaker_display": "骑士",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0003",
+          "display": "骑士",
+          "status": "known",
+          "score": 0.85
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.15
+        },
+        {
+          "entity_id": "char_0004",
+          "display": "农夫",
+          "status": "known",
+          "score": 0.0
+        }
+      ],
+      "evidence": [
+        "对话内容提及「异教徒祭典」，与后文罗伦斯喃喃念着骑士说的话呼应，暗示说话人是骑士。",
+        "骑士在前文有分发蜂蜜糖的行为，符合其性格与上下文情境。",
+        "罗伦斯在后文对这句话的反应表明这是骑士所说，而非罗伦斯本人。",
+        "没有明确说话人，但结合上下文和角色行为，骑士是最可能的说话人。"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "该句台词与前文骑士行为及后文罗伦斯反应形成逻辑闭环，虽无直接自称或口癖证据，但结合上下文可合理推断为骑士所说。"
+}

@@ -1,0 +1,247 @@
+你是轻小说说话人标注项目的 Stage 2.5 局部证据抽取器。
+你只抽取证据，不直接决定最终说话人。必须只看输入里的目标窗口、局部上下文和候选角色。
+
+请为每个 target_dialogue_ids 输出一条 evidence，字段含义：
+- explicit_attribution: 叙述里是否有“某人说/问/回答/喊”的明确锚点。
+- addressed_to: 当前台词明显在称呼谁；被称呼者通常不是说话人。
+- turn_relation: 与上一句/下一句的问答、回应、打断、连续独白等关系。
+- same_speaker_allowed: 是否允许与上一句或下一句同一人连续说话，不能机械交替。
+- speech_markers: 命中的口癖/自称/固定句尾，以及它对应的候选角色。
+- third_person_name_references: “她的名字是 X”这类第三人称介绍或排除本人说话的反证。
+- positive_evidence / negative_evidence: 支持或反对某候选的短证据。
+- needs_review_hint: 证据不足或互相冲突时为 true。
+
+只输出严格 JSON：
+{
+  "evidence": [
+    {
+      "dialogue_id": "必须来自 target_dialogue_ids",
+      "explicit_attribution": {"speaker_display": "", "text": ""},
+      "addressed_to": ["string"],
+      "turn_relation": "string",
+      "same_speaker_allowed": true,
+      "speech_markers": [{"marker": "string", "owner_display": "string"}],
+      "third_person_name_references": [{"display": "string", "text": "string"}],
+      "positive_evidence": ["短证据"],
+      "negative_evidence": ["短反证"],
+      "needs_review_hint": false,
+      "notes": "string"
+    }
+  ],
+  "window_notes": "string"
+}
+
+输入 JSON：
+{
+  "volume": {
+    "volume_id": "volume_01",
+    "volume": 1
+  },
+  "target_dialogue_ids": [
+    "volume_01-d000002",
+    "volume_01-d000003",
+    "volume_01-d000004",
+    "volume_01-d000005"
+  ],
+  "dialogues": [
+    {
+      "dialogue_id": "volume_01-d000002",
+      "dialogue_index": 1,
+      "window_position": 1,
+      "chapter_id": "volume_01-c002",
+      "chapter_title": "第一幕",
+      "scene_id": "volume_01-c002-s001",
+      "paragraph_id": "volume_01-c002-s001-p000079",
+      "paragraph_index": 78,
+      "local_dialogue_index": 1,
+      "text": "这是最后一件了吧？",
+      "quote_text": "「这是最后一件了吧？」",
+      "paragraph_text": "「这是最后一件了吧？」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 11
+    },
+    {
+      "dialogue_id": "volume_01-d000003",
+      "dialogue_index": 2,
+      "window_position": 2,
+      "chapter_id": "volume_01-c002",
+      "chapter_title": "第一幕",
+      "scene_id": "volume_01-c002-s001",
+      "paragraph_id": "volume_01-c002-s001-p000080",
+      "paragraph_index": 79,
+      "local_dialogue_index": 1,
+      "text": "嗯，这里确实有……七十件。多谢惠顾。",
+      "quote_text": "「嗯，这里确实有……七十件。多谢惠顾。」",
+      "paragraph_text": "「嗯，这里确实有……七十件。多谢惠顾。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 20
+    },
+    {
+      "dialogue_id": "volume_01-d000004",
+      "dialogue_index": 3,
+      "window_position": 3,
+      "chapter_id": "volume_01-c002",
+      "chapter_title": "第一幕",
+      "scene_id": "volume_01-c002-s001",
+      "paragraph_id": "volume_01-c002-s001-p000081",
+      "paragraph_index": 80,
+      "local_dialogue_index": 1,
+      "text": "不，我们才要谢谢你呢。只有罗伦斯先生你愿意到这深山里来，真是帮了我们大忙。",
+      "quote_text": "「不，我们才要谢谢你呢。只有罗伦斯先生你愿意到这深山里来，真是帮了我们大忙。」",
+      "paragraph_text": "「不，我们才要谢谢你呢。只有罗伦斯先生你愿意到这深山里来，真是帮了我们大忙。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 39
+    },
+    {
+      "dialogue_id": "volume_01-d000005",
+      "dialogue_index": 4,
+      "window_position": 4,
+      "chapter_id": "volume_01-c002",
+      "chapter_title": "第一幕",
+      "scene_id": "volume_01-c002-s001",
+      "paragraph_id": "volume_01-c002-s001-p000082",
+      "paragraph_index": 81,
+      "local_dialogue_index": 1,
+      "text": "不过，我也因此拿到上等的皮草啊，我会再来的。",
+      "quote_text": "「不过，我也因此拿到上等的皮草啊，我会再来的。」",
+      "paragraph_text": "「不过，我也因此拿到上等的皮草啊，我会再来的。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 24
+    }
+  ],
+  "context": {
+    "paragraphs": [
+      {
+        "paragraph_id": "volume_01-c002-s001-p000076",
+        "paragraph_index": 75,
+        "text": "第",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000077",
+        "paragraph_index": 76,
+        "text": "一",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000078",
+        "paragraph_index": 77,
+        "text": "幕",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000079",
+        "paragraph_index": 78,
+        "text": "「这是最后一件了吧？」",
+        "target_dialogue_ids": [
+          "volume_01-d000002"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000080",
+        "paragraph_index": 79,
+        "text": "「嗯，这里确实有……七十件。多谢惠顾。」",
+        "target_dialogue_ids": [
+          "volume_01-d000003"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000081",
+        "paragraph_index": 80,
+        "text": "「不，我们才要谢谢你呢。只有罗伦斯先生你愿意到这深山里来，真是帮了我们大忙。」",
+        "target_dialogue_ids": [
+          "volume_01-d000004"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000082",
+        "paragraph_index": 81,
+        "text": "「不过，我也因此拿到上等的皮草啊，我会再来的。」",
+        "target_dialogue_ids": [
+          "volume_01-d000005"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000083",
+        "paragraph_index": 82,
+        "text": "结束一如往常的对话，离开深山里的村落已过了五个小时。太阳升起后就立刻动身，下山来到这片草原时已过了中午。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000084",
+        "paragraph_index": 83,
+        "text": "这天的天气晴朗，没有半点风，是个适合坐在马车上，悠哉横越草原的日子。因为这阵子的天气寒冷，原以为冬天就快到了，现在却一点儿也感觉不到。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000085",
+        "paragraph_index": 84,
+        "text": "成为自力更生的旅行商人，只身行商至今已有七个年头，今年二十五岁的罗伦斯坐在马车驾座上，泰然自若地打着呵欠。",
+        "target_dialogue_ids": []
+      }
+    ]
+  },
+  "scene_memory": [
+    {
+      "scene_id": "volume_01-c002-s001-r001",
+      "parent_scene_id": "volume_01-c002-s001",
+      "chunk_index": 1,
+      "chunk_count": 3,
+      "scene_summary": "罗伦斯结束深山村落的交易后，独自在草原上赶路，途中遇到修道院方向的一名骑士。骑士态度傲慢，向罗伦斯发问。",
+      "active_characters": [
+        "罗伦斯"
+      ],
+      "relationships": [
+        "罗伦斯与修道院有生意期望但未成功",
+        "罗伦斯与修道院骑士初次互动"
+      ],
+      "notes": "场景中未出现赫萝，但罗伦斯的对话和行为符合已知角色设定。修道院骑士为新出现的神秘人物，可能在后文有重要角色。"
+    }
+  ],
+  "candidate_characters": [
+    {
+      "entity_id": "char_0001",
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": [
+        "商人",
+        "旅行商人",
+        "行商人"
+      ],
+      "description": "理性、谨慎的商人，试图分析局势并保持冷静。他与赫萝同行，面对叶勒的威胁时表现出坚定。 / 理性、坚定的商人，坚持遵守与赫萝的合约，拒绝背叛她。面对叶勒的威胁保持冷静，表现出对赫萝的忠诚。 / 理性、谨慎的商人，身受重伤但仍试图保持冷静并等待救援。他表现出对赫萝的依赖和信任。 / 罗伦斯目睹赫萝的变身过程，表现出震惊和无力。他试图抓住赫萝留下的皮袋，但最终面对巨大的狼形生物，感到无法应对。 / 理性、谨慎的商人，与赫萝在地下通道中遭遇叶勒的威胁。他试图安抚赫萝的情绪，并表现出对环境变化的敏感。 / 在赫萝的威压下感…",
+      "speech_style": "温和、理性、略带担忧 / 理性、略带策略性、温和 / 理性、担忧、略带冲动 / 虚弱、低沉、略带困惑 / 虚弱、低沉、焦虑 / 理性、坚定、略带焦虑 / 理性、焦虑、略带冲动 / 虚弱、低沉、焦虑 / 虚弱、焦虑、略带愤怒 / 愤怒、理性、略带冲动 / 虚弱、焦虑、略带悔恨 / 理性、冷静、略带焦虑",
+      "speech_markers": [
+        "算了……",
+        "糟糕",
+        "……",
+        "这……",
+        "唔……嗯……",
+        "果然没错",
+        "时间就是金钱",
+        "说的也是"
+      ],
+      "relationship_hints": [
+        "与赫萝一同旅行",
+        "对赫萝的身份持怀疑态度",
+        "与修道院有生意期望但未成功",
+        "与骑士初次互动",
+        "与赫萝有密切关系",
+        "与教会和骑士有互动",
+        "与叶勒有交集，计划与他交谈但被祭典打断",
+        "与叶勒有过去的交易关系。"
+      ],
+      "first_seen_scene_id": "volume_01-c000-s003-r001",
+      "latest_seen_scene_id": "volume_01-c008-s003-r001",
+      "confidence": 1.0
+    }
+  ],
+  "candidate_mysteries": []
+}

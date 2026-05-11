@@ -1,0 +1,75 @@
+{
+  "checks": [
+    {
+      "dialogue_id": "volume_01-d000014",
+      "has_contradiction": false,
+      "severity": "none",
+      "reason": "",
+      "counter_evidence": [],
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000015",
+      "has_contradiction": false,
+      "severity": "none",
+      "reason": "",
+      "counter_evidence": [],
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000016",
+      "has_contradiction": false,
+      "severity": "none",
+      "reason": "",
+      "counter_evidence": [],
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000017",
+      "has_contradiction": false,
+      "severity": "none",
+      "reason": "",
+      "counter_evidence": [],
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000018",
+      "has_contradiction": false,
+      "severity": "none",
+      "reason": "",
+      "counter_evidence": [],
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000019",
+      "has_contradiction": true,
+      "severity": "strong",
+      "reason": "标成罗伦斯，但台词命中唯一属于骑士的高区分度口癖「嗯……真好吃」。",
+      "counter_evidence": [
+        "对话内容为对骑士的回应，暗示说话人是罗伦斯",
+        "被称呼的人通常不是说话人，此处称呼骑士"
+      ],
+      "needs_review": true
+    },
+    {
+      "dialogue_id": "volume_01-d000020",
+      "has_contradiction": false,
+      "severity": "none",
+      "reason": "",
+      "counter_evidence": [],
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000021",
+      "has_contradiction": true,
+      "severity": "weak",
+      "reason": "标成骑士，但候选角色得分接近。",
+      "counter_evidence": [
+        "规则：相邻两人连续对白按轮次交替",
+        "规则：同一小段只有两个本地说话候选"
+      ],
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话19存在强反证，需要复核。对话21存在弱反证，记录说明即可。"
+}

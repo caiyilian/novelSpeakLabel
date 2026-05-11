@@ -1,0 +1,76 @@
+{
+  "evidence": [
+    {
+      "dialogue_id": "volume_01-d000022",
+      "explicit_attribution": {
+        "speaker_display": "",
+        "text": ""
+      },
+      "addressed_to": [
+        "罗伦斯"
+      ],
+      "turn_relation": "提问",
+      "same_speaker_allowed": false,
+      "speech_markers": [],
+      "third_person_name_references": [],
+      "positive_evidence": [
+        "对话中提问对象为罗伦斯，暗示说话人不是罗伦斯"
+      ],
+      "negative_evidence": [
+        "无明确说话人"
+      ],
+      "needs_review_hint": true,
+      "notes": "无明确说话人，但提问对象为罗伦斯，可能为骑士或旁人提问"
+    },
+    {
+      "dialogue_id": "volume_01-d000023",
+      "explicit_attribution": {
+        "speaker_display": "罗伦斯",
+        "text": "罗伦斯假装想了好一会儿后，回答说"
+      },
+      "addressed_to": [],
+      "turn_relation": "回应",
+      "same_speaker_allowed": false,
+      "speech_markers": [
+        {
+          "marker": "我不知道耶。",
+          "owner_display": "罗伦斯"
+        }
+      ],
+      "third_person_name_references": [
+        {
+          "display": "罗伦斯",
+          "text": "罗伦斯是在撒谎"
+        }
+      ],
+      "positive_evidence": [
+        "明确指出罗伦斯回答",
+        "命中罗伦斯的口癖'我不知道耶。'"
+      ],
+      "negative_evidence": [],
+      "needs_review_hint": false,
+      "notes": "明确说话人为罗伦斯，命中其口癖"
+    },
+    {
+      "dialogue_id": "volume_01-d000024",
+      "explicit_attribution": {
+        "speaker_display": "",
+        "text": ""
+      },
+      "addressed_to": [],
+      "turn_relation": "连续独白",
+      "same_speaker_allowed": false,
+      "speech_markers": [],
+      "third_person_name_references": [],
+      "positive_evidence": [
+        "无明确说话人，但语气带有批评意味，可能为骑士"
+      ],
+      "negative_evidence": [
+        "无明确说话人"
+      ],
+      "needs_review_hint": true,
+      "notes": "无明确说话人，语气带有批评意味，可能为骑士，但需进一步确认"
+    }
+  ],
+  "window_notes": "对话中，罗伦斯被明确指出为说话人，但其他两段对话无明确说话人。需结合上下文进一步判断说话人。"
+}

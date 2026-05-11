@@ -1,0 +1,229 @@
+你是轻小说说话人标注项目的 Stage 2.5 裁判模型。
+你只拿目标窗口、候选角色和 structured_evidence 做最终判断。必须同时考虑正证据和反证据；不确定就进入复核，不能为了减少复核而硬猜。
+
+要求：
+1. 连续两句同一人说话是允许的，只要证据支持。
+2. 被称呼的人通常不是说话人。
+3. candidate_characters.speech_markers 是口癖/自称证据；多个角色共享或上下文反证时不能直接采纳。
+4. 如果台词说“她/他/它的名字是 X”，通常不是 X 本人在自我介绍。
+5. 输出 speaker、正证据、反证据、needs_review。
+
+只输出严格 JSON，结构与 Stage 2 annotations 相同：
+{
+  "annotations": [
+    {
+      "dialogue_id": "必须来自 target_dialogue_ids",
+      "speaker_entity_id": "string",
+      "speaker_display": "string",
+      "speaker_status": "known|mystery|npc|ambiguous|review",
+      "confidence": 0.0,
+      "candidate_speakers": [
+        {"entity_id": "string", "display": "string", "status": "known|mystery|npc|ambiguous|review", "score": 0.0}
+      ],
+      "evidence": ["正证据和必要反证，短句"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "string"
+}
+
+输入 JSON：
+{
+  "volume": {
+    "volume_id": "volume_01",
+    "volume": 1
+  },
+  "target_dialogue_ids": [
+    "volume_01-d000025"
+  ],
+  "dialogues": [
+    {
+      "dialogue_id": "volume_01-d000025",
+      "dialogue_index": 24,
+      "window_position": 1,
+      "chapter_id": "volume_01-c002",
+      "chapter_title": "第一幕",
+      "scene_id": "volume_01-c002-s001",
+      "paragraph_id": "volume_01-c002-s001-p000133",
+      "paragraph_index": 132,
+      "local_dialogue_index": 1,
+      "text": "异教徒祭典……还真会猜啊。",
+      "quote_text": "「异教徒祭典……还真会猜啊。」",
+      "paragraph_text": "「异教徒祭典……还真会猜啊。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 15
+    }
+  ],
+  "context": {
+    "paragraphs": [
+      {
+        "paragraph_id": "volume_01-c002-s001-p000130",
+        "paragraph_index": 129,
+        "text": "骑士点点头，再度为蜂蜜糖向罗伦斯道谢。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000131",
+        "paragraph_index": 130,
+        "text": "可见骑士是真的喜欢吃蜂蜜糖。下级骑士的钱都花费在装备和旅费上。事实上，他们的生活还不如初入门的鞋匠学徒。骑士肯定很久没吃到甜的东西了。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000132",
+        "paragraph_index": 131,
+        "text": "话虽如此，但罗伦斯并不打算再多拿蜂蜜糖分给骑士，毕竟蜂蜜糖并不便宜。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000133",
+        "paragraph_index": 132,
+        "text": "「异教徒祭典……还真会猜啊。」",
+        "target_dialogue_ids": [
+          "volume_01-d000025"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000134",
+        "paragraph_index": 133,
+        "text": "离开修道院一会儿后，罗伦斯喃喃念着骑士说的话，苦笑了一下。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000135",
+        "paragraph_index": 134,
+        "text": "罗伦斯知道骑士在说什么。应该说，只要是这附近的人都会知道吧。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000136",
+        "paragraph_index": 135,
+        "text": "那根本不是什么异教徒祭典。况且异教徒不是在更北边、就是在更东边的地方出没。",
+        "target_dialogue_ids": []
+      }
+    ]
+  },
+  "scene_memory": [
+    {
+      "scene_id": "volume_01-c002-s001-r003",
+      "parent_scene_id": "volume_01-c002-s001",
+      "chunk_index": 3,
+      "chunk_count": 3,
+      "scene_summary": "罗伦斯在麦田中与农夫交谈，讨论即将举行的祭典以及教会与地方的关系。他提到教会的威严正在减弱，同时提到帕斯罗村的麦田和伯爵的赞助。对话中提及了叶勒和『赫萝』的线索。",
+      "active_characters": [
+        "罗伦斯",
+        "农夫"
+      ],
+      "relationships": [
+        "罗伦斯与农夫有简短互动",
+        "农夫与叶勒有联系",
+        "叶勒与『赫萝』有关"
+      ],
+      "notes": "场景中提及了叶勒和『赫萝』，但未提供完整信息，需在后续章节中追踪。罗伦斯的理性语气和对教会的评论表明他对宗教和政治局势有深刻理解。"
+    }
+  ],
+  "candidate_characters": [
+    {
+      "entity_id": "char_0001",
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": [
+        "商人",
+        "旅行商人",
+        "行商人"
+      ],
+      "description": "理性、谨慎的商人，试图分析局势并保持冷静。他与赫萝同行，面对叶勒的威胁时表现出坚定。 / 理性、坚定的商人，坚持遵守与赫萝的合约，拒绝背叛她。面对叶勒的威胁保持冷静，表现出对赫萝的忠诚。 / 理性、谨慎的商人，身受重伤但仍试图保持冷静并等待救援。他表现出对赫萝的依赖和信任。 / 罗伦斯目睹赫萝的变身过程，表现出震惊和无力。他试图抓住赫萝留下的皮袋，但最终面对巨大的狼形生物，感到无法应对。 / 理性、谨慎的商人，与赫萝在地下通道中遭遇叶勒的威胁。他试图安抚赫萝的情绪，并表现出对环境变化的敏感。 / 在赫萝的威压下感…",
+      "speech_style": "温和、理性、略带担忧 / 理性、略带策略性、温和 / 理性、担忧、略带冲动 / 虚弱、低沉、略带困惑 / 虚弱、低沉、焦虑 / 理性、坚定、略带焦虑 / 理性、焦虑、略带冲动 / 虚弱、低沉、焦虑 / 虚弱、焦虑、略带愤怒 / 愤怒、理性、略带冲动 / 虚弱、焦虑、略带悔恨 / 理性、冷静、略带焦虑",
+      "speech_markers": [
+        "算了……",
+        "糟糕",
+        "……",
+        "这……",
+        "唔……嗯……",
+        "果然没错",
+        "时间就是金钱",
+        "说的也是"
+      ],
+      "relationship_hints": [
+        "与赫萝一同旅行",
+        "对赫萝的身份持怀疑态度",
+        "与修道院有生意期望但未成功",
+        "与骑士初次互动",
+        "与赫萝有密切关系",
+        "与教会和骑士有互动",
+        "与叶勒有交集，计划与他交谈但被祭典打断",
+        "与叶勒有过去的交易关系。"
+      ],
+      "first_seen_scene_id": "volume_01-c000-s003-r001",
+      "latest_seen_scene_id": "volume_01-c008-s003-r001",
+      "confidence": 1.0
+    },
+    {
+      "entity_id": "char_0003",
+      "display_name": "骑士",
+      "aliases": [
+        "下级骑士",
+        "年轻骑士"
+      ],
+      "titles": [
+        "骑士"
+      ],
+      "description": "年轻的下级骑士，穿着灰色大衣和刻有红色十字架的银制胸甲，刚成为骑士不久，态度傲慢但容易被甜食收买。",
+      "speech_style": "傲慢、迟疑、逐渐放松",
+      "speech_markers": [
+        "呃……",
+        "嗯……真好吃"
+      ],
+      "relationship_hints": [
+        "与罗伦斯有短暂互动，被蜂蜜糖影响态度"
+      ],
+      "first_seen_scene_id": "volume_01-c002-s001-r002",
+      "latest_seen_scene_id": "volume_01-c002-s001-r002",
+      "confidence": 0.9
+    },
+    {
+      "entity_id": "char_0004",
+      "display_name": "农夫",
+      "aliases": [],
+      "titles": [],
+      "description": "帕斯罗村的农夫，正在麦田中劳作，与罗伦斯有简短对话。 / 麦田中的村民，与罗伦斯有简短互动，表现出朴实的性格。",
+      "speech_style": "朴实、直接",
+      "speech_markers": [],
+      "relationship_hints": [
+        "与叶勒有关系",
+        "与帕斯罗村的祭典有关",
+        "与罗伦斯有简短对话"
+      ],
+      "first_seen_scene_id": "volume_01-c002-s001-r003",
+      "latest_seen_scene_id": "volume_01-c002-s002-r001",
+      "confidence": 0.8
+    }
+  ],
+  "candidate_mysteries": [],
+  "structured_evidence": [
+    {
+      "dialogue_id": "volume_01-d000025",
+      "source_model": "qwen3:32b",
+      "explicit_attribution": {
+        "speaker_display": "",
+        "text": ""
+      },
+      "addressed_to": [],
+      "turn_relation": "standalone",
+      "same_speaker_allowed": true,
+      "speech_markers": [],
+      "third_person_name_references": [],
+      "positive_evidence": [
+        "对话内容提及「异教徒祭典」，与后文罗伦斯喃喃念着骑士说的话呼应，暗示说话人是骑士。"
+      ],
+      "negative_evidence": [
+        "没有明确说话人，也没有口癖或自称，无法直接确认说话人。"
+      ],
+      "needs_review_hint": true,
+      "notes": "对话内容与后文罗伦斯的反应形成呼应，但无明确说话人，需结合上下文进一步判断。"
+    }
+  ]
+}

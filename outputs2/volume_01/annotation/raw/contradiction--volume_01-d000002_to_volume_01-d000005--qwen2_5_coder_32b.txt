@@ -1,0 +1,37 @@
+{
+  "checks": [
+    {
+      "dialogue_id": "volume_01-d000002",
+      "has_contradiction": true,
+      "severity": "weak",
+      "reason": "对话中没有明确的证据表明说话人是小村落的村民，且上下文仅显示为交易场景。",
+      "counter_evidence": ["无明确说话人，需结合上下文推断"],
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000003",
+      "has_contradiction": true,
+      "severity": "strong",
+      "reason": "标成罗伦斯，但台词命中唯一属于小村落的村民的高区分度口癖。",
+      "counter_evidence": ["明确称呼罗伦斯先生，说话人可能是村民"],
+      "needs_review": true
+    },
+    {
+      "dialogue_id": "volume_01-d000004",
+      "has_contradiction": false,
+      "severity": "none",
+      "reason": "对话中标成小村落的村民，且台词明确称呼罗伦斯先生。",
+      "counter_evidence": [],
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000005",
+      "has_contradiction": false,
+      "severity": "none",
+      "reason": "对话中标成罗伦斯，且语气自信符合角色设定。",
+      "counter_evidence": [],
+      "needs_review": false
+    }
+  ],
+  "window_notes": "volume_01-d000003 标注为罗伦斯存在强反证，需复核。"
+}

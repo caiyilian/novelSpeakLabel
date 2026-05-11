@@ -1,0 +1,93 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000002",
+      "speaker_entity_id": "",
+      "speaker_display": "",
+      "speaker_status": "review",
+      "confidence": 0.3,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.4
+        }
+      ],
+      "evidence": [
+        "无明确说话人，但上下文显示为交易场景，可能是罗伦斯询问对方",
+        "未发现明确反证据"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    },
+    {
+      "dialogue_id": "volume_01-d000003",
+      "speaker_entity_id": "",
+      "speaker_display": "",
+      "speaker_status": "review",
+      "confidence": 0.3,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.4
+        }
+      ],
+      "evidence": [
+        "回应了前一句，语气符合交易场景，可能是村民或店主",
+        "未发现明确反证据"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    },
+    {
+      "dialogue_id": "volume_01-d000004",
+      "speaker_entity_id": "",
+      "speaker_display": "",
+      "speaker_status": "review",
+      "confidence": 0.4,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.5
+        }
+      ],
+      "evidence": [
+        "明确称呼罗伦斯先生，可能是村民或店主",
+        "说话人被称呼，通常不是说话人"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    },
+    {
+      "dialogue_id": "volume_01-d000005",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.7,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.8
+        }
+      ],
+      "evidence": [
+        "语气自信，符合罗伦斯的说话风格",
+        "与前文罗伦斯的语境一致，且无反证"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话发生在深山村落交易结束后，罗伦斯在草原上赶路时。前两句无明确说话人，后两句中第四句明确为村民或店主对罗伦斯的回应，第五句为罗伦斯本人自述。"
+}

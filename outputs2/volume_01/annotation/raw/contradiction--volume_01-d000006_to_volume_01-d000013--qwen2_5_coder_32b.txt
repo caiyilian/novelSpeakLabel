@@ -1,0 +1,69 @@
+{
+  "checks": [
+    {
+      "dialogue_id": "volume_01-d000006",
+      "has_contradiction": false,
+      "severity": "none",
+      "reason": "",
+      "counter_evidence": [],
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000007",
+      "has_contradiction": true,
+      "severity": "weak",
+      "reason": "对话对象为罗伦斯，可能是骑士回应，但模型对角色的区分度不高。",
+      "counter_evidence": ["confidence score for both characters is low"],
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000008",
+      "has_contradiction": false,
+      "severity": "none",
+      "reason": "",
+      "counter_evidence": [],
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000009",
+      "has_contradiction": false,
+      "severity": "none",
+      "reason": "",
+      "counter_evidence": [],
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000010",
+      "has_contradiction": false,
+      "severity": "none",
+      "reason": "",
+      "counter_evidence": [],
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000011",
+      "has_contradiction": false,
+      "severity": "none",
+      "reason": "",
+      "counter_evidence": [],
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000012",
+      "has_contradiction": true,
+      "severity": "weak",
+      "reason": "符合骑士的迟疑语气，但模型对角色的区分度不高。",
+      "counter_evidence": ["confidence score for both characters is low"],
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000013",
+      "has_contradiction": false,
+      "severity": "none",
+      "reason": "",
+      "counter_evidence": [],
+      "needs_review": false
+    }
+  ],
+  "window_notes": "对话中存在一些角色区分度不高的情况，但没有明显的强反证。"
+}

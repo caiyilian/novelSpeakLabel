@@ -1,0 +1,318 @@
+你是轻小说说话人标注项目的 Stage 2.5 裁判模型。
+你只拿目标窗口、候选角色和 structured_evidence 做最终判断。必须同时考虑正证据和反证据；不确定就进入复核，不能为了减少复核而硬猜。
+
+要求：
+1. 连续两句同一人说话是允许的，只要证据支持。
+2. 被称呼的人通常不是说话人。
+3. candidate_characters.speech_markers 是口癖/自称证据；多个角色共享或上下文反证时不能直接采纳。
+4. 如果台词说“她/他/它的名字是 X”，通常不是 X 本人在自我介绍。
+5. 输出 speaker、正证据、反证据、needs_review。
+
+只输出严格 JSON，结构与 Stage 2 annotations 相同：
+{
+  "annotations": [
+    {
+      "dialogue_id": "必须来自 target_dialogue_ids",
+      "speaker_entity_id": "string",
+      "speaker_display": "string",
+      "speaker_status": "known|mystery|npc|ambiguous|review",
+      "confidence": 0.0,
+      "candidate_speakers": [
+        {"entity_id": "string", "display": "string", "status": "known|mystery|npc|ambiguous|review", "score": 0.0}
+      ],
+      "evidence": ["正证据和必要反证，短句"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "string"
+}
+
+输入 JSON：
+{
+  "volume": {
+    "volume_id": "volume_01",
+    "volume": 1
+  },
+  "target_dialogue_ids": [
+    "volume_01-d000022",
+    "volume_01-d000023",
+    "volume_01-d000024"
+  ],
+  "dialogues": [
+    {
+      "dialogue_id": "volume_01-d000022",
+      "dialogue_index": 21,
+      "window_position": 1,
+      "chapter_id": "volume_01-c002",
+      "chapter_title": "第一幕",
+      "scene_id": "volume_01-c002-s001",
+      "paragraph_id": "volume_01-c002-s001-p000126",
+      "paragraph_index": 125,
+      "local_dialogue_index": 1,
+      "text": "听说最近，这一带会有异教徒祭典，所以我们才受命在这里防卫。你知道什么消息吗？",
+      "quote_text": "「听说最近，这一带会有异教徒祭典，所以我们才受命在这里防卫。你知道什么消息吗？」",
+      "paragraph_text": "「听说最近，这一带会有异教徒祭典，所以我们才受命在这里防卫。你知道什么消息吗？」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 40
+    },
+    {
+      "dialogue_id": "volume_01-d000023",
+      "dialogue_index": 22,
+      "window_position": 2,
+      "chapter_id": "volume_01-c002",
+      "chapter_title": "第一幕",
+      "scene_id": "volume_01-c002-s001",
+      "paragraph_id": "volume_01-c002-s001-p000127",
+      "paragraph_index": 126,
+      "local_dialogue_index": 1,
+      "text": "我不知道耶。",
+      "quote_text": "「我不知道耶。」",
+      "paragraph_text": "这时，如果表现出失望的表情，那么演技就太差了。罗伦斯假装想了好一会儿后，回答说：「我不知道耶。」事实上，罗伦斯是在撒谎，不过骑士说的话也不甚正确，所以他不得不扯谎。",
+      "dialogue_kind": "inline",
+      "outside_quote_text": "这时，如果表现出失望的表情，那么演技就太差了。罗伦斯假装想了好一会儿后，回答说：事实上，罗伦斯是在撒谎，不过骑士说的话也不甚正确，所以他不得不扯谎。",
+      "char_start": 40,
+      "char_end": 48
+    },
+    {
+      "dialogue_id": "volume_01-d000024",
+      "dialogue_index": 23,
+      "window_position": 3,
+      "chapter_id": "volume_01-c002",
+      "chapter_title": "第一幕",
+      "scene_id": "volume_01-c002-s001",
+      "paragraph_id": "volume_01-c002-s001-p000128",
+      "paragraph_index": 127,
+      "local_dialogue_index": 1,
+      "text": "他们果然想在背地里偷偷举办祭典，异教徒真是一群胆小鬼。",
+      "quote_text": "「他们果然想在背地里偷偷举办祭典，异教徒真是一群胆小鬼。」",
+      "paragraph_text": "「他们果然想在背地里偷偷举办祭典，异教徒真是一群胆小鬼。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 29
+    }
+  ],
+  "context": {
+    "paragraphs": [
+      {
+        "paragraph_id": "volume_01-c002-s001-p000123",
+        "paragraph_index": 122,
+        "text": "看来骑士似乎是上钩了。罗伦斯解开绳子，拿出一颗蜂蜜糖递给骑士。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000124",
+        "paragraph_index": 123,
+        "text": "「嗯……真好吃，我得好好答谢你才行。」",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000125",
+        "paragraph_index": 124,
+        "text": "骑士喜欢讲道理。罗伦斯露出营业用笑容，表现出非常感谢的模样，向骑士鞠躬。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000126",
+        "paragraph_index": 125,
+        "text": "「听说最近，这一带会有异教徒祭典，所以我们才受命在这里防卫。你知道什么消息吗？」",
+        "target_dialogue_ids": [
+          "volume_01-d000022"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000127",
+        "paragraph_index": 126,
+        "text": "这时，如果表现出失望的表情，那么演技就太差了。罗伦斯假装想了好一会儿后，回答说：「我不知道耶。」事实上，罗伦斯是在撒谎，不过骑士说的话也不甚正确，所以他不得不扯谎。",
+        "target_dialogue_ids": [
+          "volume_01-d000023"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000128",
+        "paragraph_index": 127,
+        "text": "「他们果然想在背地里偷偷举办祭典，异教徒真是一群胆小鬼。」",
+        "target_dialogue_ids": [
+          "volume_01-d000024"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000129",
+        "paragraph_index": 128,
+        "text": "虽然骑士完全猜想错误的发言听来好笑，但罗伦斯当然没有予以指正，他表示赞同骑士说的话后，随即向骑士告辞。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000130",
+        "paragraph_index": 129,
+        "text": "骑士点点头，再度为蜂蜜糖向罗伦斯道谢。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000131",
+        "paragraph_index": 130,
+        "text": "可见骑士是真的喜欢吃蜂蜜糖。下级骑士的钱都花费在装备和旅费上。事实上，他们的生活还不如初入门的鞋匠学徒。骑士肯定很久没吃到甜的东西了。",
+        "target_dialogue_ids": []
+      }
+    ]
+  },
+  "scene_memory": [
+    {
+      "scene_id": "volume_01-c002-s001-r002",
+      "parent_scene_id": "volume_01-c002-s001",
+      "chunk_index": 2,
+      "chunk_count": 3,
+      "scene_summary": "罗伦斯与一名年轻的下级骑士在修道院附近相遇。骑士态度傲慢，但被罗伦斯用蜂蜜糖收买，逐渐放松警惕。罗伦斯通过对话巧妙地获取了骑士的信任，并在最后离开时对骑士的猜测表示怀疑。",
+      "active_characters": [
+        "罗伦斯",
+        "骑士"
+      ],
+      "relationships": [
+        "罗伦斯与骑士之间存在短暂的互动，罗伦斯通过蜂蜜糖影响骑士的态度。",
+        "骑士对罗伦斯的货物表现出兴趣，但对异教徒祭典的猜测是错误的。"
+      ],
+      "notes": "骑士虽然未被命名，但其身份和行为特征明确，可作为角色建库的候选。罗伦斯的对话策略和蜂蜜糖的使用是关键线索。"
+    }
+  ],
+  "candidate_characters": [
+    {
+      "entity_id": "char_0003",
+      "display_name": "骑士",
+      "aliases": [
+        "下级骑士",
+        "年轻骑士"
+      ],
+      "titles": [
+        "骑士"
+      ],
+      "description": "年轻的下级骑士，穿着灰色大衣和刻有红色十字架的银制胸甲，刚成为骑士不久，态度傲慢但容易被甜食收买。",
+      "speech_style": "傲慢、迟疑、逐渐放松",
+      "speech_markers": [
+        "呃……",
+        "嗯……真好吃"
+      ],
+      "relationship_hints": [
+        "与罗伦斯有短暂互动，被蜂蜜糖影响态度"
+      ],
+      "first_seen_scene_id": "volume_01-c002-s001-r002",
+      "latest_seen_scene_id": "volume_01-c002-s001-r002",
+      "confidence": 0.9
+    },
+    {
+      "entity_id": "char_0001",
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": [
+        "商人",
+        "旅行商人",
+        "行商人"
+      ],
+      "description": "理性、谨慎的商人，试图分析局势并保持冷静。他与赫萝同行，面对叶勒的威胁时表现出坚定。 / 理性、坚定的商人，坚持遵守与赫萝的合约，拒绝背叛她。面对叶勒的威胁保持冷静，表现出对赫萝的忠诚。 / 理性、谨慎的商人，身受重伤但仍试图保持冷静并等待救援。他表现出对赫萝的依赖和信任。 / 罗伦斯目睹赫萝的变身过程，表现出震惊和无力。他试图抓住赫萝留下的皮袋，但最终面对巨大的狼形生物，感到无法应对。 / 理性、谨慎的商人，与赫萝在地下通道中遭遇叶勒的威胁。他试图安抚赫萝的情绪，并表现出对环境变化的敏感。 / 在赫萝的威压下感…",
+      "speech_style": "温和、理性、略带担忧 / 理性、略带策略性、温和 / 理性、担忧、略带冲动 / 虚弱、低沉、略带困惑 / 虚弱、低沉、焦虑 / 理性、坚定、略带焦虑 / 理性、焦虑、略带冲动 / 虚弱、低沉、焦虑 / 虚弱、焦虑、略带愤怒 / 愤怒、理性、略带冲动 / 虚弱、焦虑、略带悔恨 / 理性、冷静、略带焦虑",
+      "speech_markers": [
+        "算了……",
+        "糟糕",
+        "……",
+        "这……",
+        "唔……嗯……",
+        "果然没错",
+        "时间就是金钱",
+        "说的也是"
+      ],
+      "relationship_hints": [
+        "与赫萝一同旅行",
+        "对赫萝的身份持怀疑态度",
+        "与修道院有生意期望但未成功",
+        "与骑士初次互动",
+        "与赫萝有密切关系",
+        "与教会和骑士有互动",
+        "与叶勒有交集，计划与他交谈但被祭典打断",
+        "与叶勒有过去的交易关系。"
+      ],
+      "first_seen_scene_id": "volume_01-c000-s003-r001",
+      "latest_seen_scene_id": "volume_01-c008-s003-r001",
+      "confidence": 1.0
+    }
+  ],
+  "candidate_mysteries": [],
+  "structured_evidence": [
+    {
+      "dialogue_id": "volume_01-d000022",
+      "source_model": "qwen3:32b",
+      "explicit_attribution": {
+        "speaker_display": "",
+        "text": ""
+      },
+      "addressed_to": [
+        "罗伦斯"
+      ],
+      "turn_relation": "提问",
+      "same_speaker_allowed": false,
+      "speech_markers": [],
+      "third_person_name_references": [],
+      "positive_evidence": [
+        "对话中提问对象为罗伦斯，暗示说话人不是罗伦斯"
+      ],
+      "negative_evidence": [
+        "无明确说话人"
+      ],
+      "needs_review_hint": true,
+      "notes": "无明确说话人，但提问对象为罗伦斯，可能为骑士或旁人提问"
+    },
+    {
+      "dialogue_id": "volume_01-d000023",
+      "source_model": "qwen3:32b",
+      "explicit_attribution": {
+        "speaker_display": "罗伦斯",
+        "text": "罗伦斯假装想了好一会儿后，回答说"
+      },
+      "addressed_to": [],
+      "turn_relation": "回应",
+      "same_speaker_allowed": false,
+      "speech_markers": [
+        {
+          "marker": "我不知道耶。",
+          "owner_display": "罗伦斯"
+        }
+      ],
+      "third_person_name_references": [
+        {
+          "display": "罗伦斯",
+          "text": "罗伦斯是在撒谎"
+        }
+      ],
+      "positive_evidence": [
+        "明确指出罗伦斯回答",
+        "命中罗伦斯的口癖'我不知道耶。'"
+      ],
+      "negative_evidence": [],
+      "needs_review_hint": false,
+      "notes": "明确说话人为罗伦斯，命中其口癖"
+    },
+    {
+      "dialogue_id": "volume_01-d000024",
+      "source_model": "qwen3:32b",
+      "explicit_attribution": {
+        "speaker_display": "",
+        "text": ""
+      },
+      "addressed_to": [],
+      "turn_relation": "连续独白",
+      "same_speaker_allowed": false,
+      "speech_markers": [],
+      "third_person_name_references": [],
+      "positive_evidence": [
+        "无明确说话人，但语气带有批评意味，可能为骑士"
+      ],
+      "negative_evidence": [
+        "无明确说话人"
+      ],
+      "needs_review_hint": true,
+      "notes": "无明确说话人，语气带有批评意味，可能为骑士，但需进一步确认"
+    }
+  ]
+}

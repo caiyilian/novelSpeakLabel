@@ -1,0 +1,75 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000039",
+      "speaker_entity_id": "",
+      "speaker_display": "",
+      "speaker_status": "review",
+      "confidence": 0.0,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.6
+        },
+        {
+          "entity_id": "char_0005",
+          "display": "叶勒",
+          "status": "known",
+          "score": 0.3
+        },
+        {
+          "entity_id": "char_0004",
+          "display": "农夫",
+          "status": "known",
+          "score": 0.1
+        }
+      ],
+      "evidence": [
+        "「嗷呜～～～～～～～」可能是狼的叫声，暗示赫萝的出现",
+        "没有明确说话人，无法直接确认说话人身份",
+        "该台词可能是赫萝的化身或象征，但无明确说话人，需结合上下文进一步判断"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    },
+    {
+      "dialogue_id": "volume_01-d000040",
+      "speaker_entity_id": "",
+      "speaker_display": "",
+      "speaker_status": "review",
+      "confidence": 0.0,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0005",
+          "display": "叶勒",
+          "status": "known",
+          "score": 0.7
+        },
+        {
+          "entity_id": "char_0004",
+          "display": "农夫",
+          "status": "known",
+          "score": 0.2
+        },
+        {
+          "entity_id": "char_0002",
+          "display": "赫萝",
+          "status": "known",
+          "score": 0.1
+        }
+      ],
+      "evidence": [
+        "「赫萝！赫萝！赫萝！」可能是村民对「狼赫萝」化身的回应，暗示说话人是村民群体",
+        "没有明确说话人，无法确认是否为赫萝本人说话",
+        "台词中重复「赫萝」，可能是村民对「狼赫萝」化身的欢呼，但无明确说话人，需结合上下文进一步判断"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": true
+    }
+  ],
+  "window_notes": "两段台词均未明确指出说话人，且上下文涉及「狼赫萝」的象征意义。第一段为类似狼嚎的声音，第二段为重复呼唤赫萝，但均无直接证据指向具体角色。需进一步结合场景与角色关系判断。"
+}

@@ -1,0 +1,61 @@
+```json
+{
+  "evidence": [
+    {
+      "dialogue_id": "volume_01-d000027",
+      "explicit_attribution": {"speaker_display": "", "text": ""},
+      "addressed_to": [],
+      "turn_relation": "start",
+      "same_speaker_allowed": true,
+      "speech_markers": [],
+      "third_person_name_references": [],
+      "positive_evidence": ["对话语气友好，可能是罗伦斯向农夫打招呼"],
+      "negative_evidence": ["无明确说话人线索"],
+      "needs_review_hint": true,
+      "notes": "无明确说话人线索，需结合上下文判断"
+    },
+    {
+      "dialogue_id": "volume_01-d000028",
+      "explicit_attribution": {"speaker_display": "", "text": ""},
+      "addressed_to": [],
+      "turn_relation": "response",
+      "same_speaker_allowed": false,
+      "speech_markers": [],
+      "third_person_name_references": [],
+      "positive_evidence": ["可能是农夫对罗伦斯的回应"],
+      "negative_evidence": ["无明确说话人线索"],
+      "needs_review_hint": true,
+      "notes": "短对话，需结合上下文判断说话人"
+    },
+    {
+      "dialogue_id": "volume_01-d000029",
+      "explicit_attribution": {"speaker_display": "", "text": ""},
+      "addressed_to": ["叶勒"],
+      "turn_relation": "question",
+      "same_speaker_allowed": false,
+      "speech_markers": [],
+      "third_person_name_references": [],
+      "positive_evidence": ["明确提到“叶勒”，可能是罗伦斯提问"],
+      "negative_evidence": ["无明确说话人线索"],
+      "needs_review_hint": true,
+      "notes": "提问内容明确指向叶勒，但说话人不明确"
+    },
+    {
+      "dialogue_id": "volume_01-d000030",
+      "explicit_attribution": {"speaker_display": "", "text": ""},
+      "addressed_to": [],
+      "turn_relation": "response",
+      "same_speaker_allowed": false,
+      "speech_markers": [],
+      "third_person_name_references": [
+        {"display": "农夫", "text": "农夫晒得黝黑的脸上堆满了笑容说道。那是绝对不会出现在商人脸上，只有没心机的人才会露出的笑容。"}
+      ],
+      "positive_evidence": ["描述符合农夫的说话风格，可能是农夫回答"],
+      "negative_evidence": ["无明确说话人线索"],
+      "needs_review_hint": false,
+      "notes": "上下文明确指出是农夫回答，证据充分"
+    }
+  ],
+  "window_notes": "对话窗口中，说话人线索不明确，但最后一条对话有明确的上下文描述，可确认为农夫。前三条对话需结合场景记忆和角色关系进一步判断。"
+}
+```

@@ -1,0 +1,91 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000022",
+      "speaker_entity_id": "char_0003",
+      "speaker_display": "骑士",
+      "speaker_status": "known",
+      "confidence": 0.85,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0003",
+          "display": "骑士",
+          "status": "known",
+          "score": 0.85
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.15
+        }
+      ],
+      "evidence": [
+        "对话中提问对象为罗伦斯，暗示说话人不是罗伦斯",
+        "骑士是唯一在场且有互动的已知角色"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000023",
+      "speaker_entity_id": "char_0001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.95
+        },
+        {
+          "entity_id": "char_0003",
+          "display": "骑士",
+          "status": "known",
+          "score": 0.05
+        }
+      ],
+      "evidence": [
+        "明确指出罗伦斯回答",
+        "命中罗伦斯的口癖'我不知道耶。'",
+        "上下文描述罗伦斯撒谎并假装思考"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000024",
+      "speaker_entity_id": "char_0003",
+      "speaker_display": "骑士",
+      "speaker_status": "known",
+      "confidence": 0.8,
+      "candidate_speakers": [
+        {
+          "entity_id": "char_0003",
+          "display": "骑士",
+          "status": "known",
+          "score": 0.8
+        },
+        {
+          "entity_id": "char_0001",
+          "display": "罗伦斯",
+          "status": "known",
+          "score": 0.2
+        }
+      ],
+      "evidence": [
+        "无明确说话人，但语气带有批评意味，可能为骑士",
+        "骑士是唯一在场角色，且前文有互动",
+        "罗伦斯未在该句中出现，无直接证据指向其说话"
+      ],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "三句对话中，第一句为骑士提问，第二句为罗伦斯回应，第三句为骑士继续发言。整体语境清晰，角色行为连贯，无明显矛盾或模糊点。"
+}

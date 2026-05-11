@@ -1,0 +1,460 @@
+你是轻小说说话人标注项目的 Stage 2.5 裁判模型。
+你只拿目标窗口、候选角色和 structured_evidence 做最终判断。必须同时考虑正证据和反证据；不确定就进入复核，不能为了减少复核而硬猜。
+
+要求：
+1. 连续两句同一人说话是允许的，只要证据支持。
+2. 被称呼的人通常不是说话人。
+3. candidate_characters.speech_markers 是口癖/自称证据；多个角色共享或上下文反证时不能直接采纳。
+4. 如果台词说“她/他/它的名字是 X”，通常不是 X 本人在自我介绍。
+5. 输出 speaker、正证据、反证据、needs_review。
+
+只输出严格 JSON，结构与 Stage 2 annotations 相同：
+{
+  "annotations": [
+    {
+      "dialogue_id": "必须来自 target_dialogue_ids",
+      "speaker_entity_id": "string",
+      "speaker_display": "string",
+      "speaker_status": "known|mystery|npc|ambiguous|review",
+      "confidence": 0.0,
+      "candidate_speakers": [
+        {"entity_id": "string", "display": "string", "status": "known|mystery|npc|ambiguous|review", "score": 0.0}
+      ],
+      "evidence": ["正证据和必要反证，短句"],
+      "should_create_new_entity": false,
+      "new_entity_hint": "",
+      "needs_review": false
+    }
+  ],
+  "window_notes": "string"
+}
+
+输入 JSON：
+{
+  "volume": {
+    "volume_id": "volume_01",
+    "volume": 1
+  },
+  "target_dialogue_ids": [
+    "volume_01-d000027",
+    "volume_01-d000028",
+    "volume_01-d000029",
+    "volume_01-d000030"
+  ],
+  "dialogues": [
+    {
+      "dialogue_id": "volume_01-d000027",
+      "dialogue_index": 26,
+      "window_position": 1,
+      "chapter_id": "volume_01-c002",
+      "chapter_title": "第一幕",
+      "scene_id": "volume_01-c002-s001",
+      "paragraph_id": "volume_01-c002-s001-p000150",
+      "paragraph_index": 149,
+      "local_dialogue_index": 1,
+      "text": "嗨！辛苦了。",
+      "quote_text": "「嗨！辛苦了。」",
+      "paragraph_text": "「嗨！辛苦了。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 8
+    },
+    {
+      "dialogue_id": "volume_01-d000028",
+      "dialogue_index": 27,
+      "window_position": 2,
+      "chapter_id": "volume_01-c002",
+      "chapter_title": "第一幕",
+      "scene_id": "volume_01-c002-s001",
+      "paragraph_id": "volume_01-c002-s001-p000152",
+      "paragraph_index": 151,
+      "local_dialogue_index": 1,
+      "text": "喔？",
+      "quote_text": "「喔？」",
+      "paragraph_text": "「喔？」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 4
+    },
+    {
+      "dialogue_id": "volume_01-d000029",
+      "dialogue_index": 28,
+      "window_position": 3,
+      "chapter_id": "volume_01-c002",
+      "chapter_title": "第一幕",
+      "scene_id": "volume_01-c002-s001",
+      "paragraph_id": "volume_01-c002-s001-p000153",
+      "paragraph_index": 152,
+      "local_dialogue_index": 1,
+      "text": "请问叶勒在哪里啊？",
+      "quote_text": "「请问叶勒在哪里啊？」",
+      "paragraph_text": "「请问叶勒在哪里啊？」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 11
+    },
+    {
+      "dialogue_id": "volume_01-d000030",
+      "dialogue_index": 29,
+      "window_position": 4,
+      "chapter_id": "volume_01-c002",
+      "chapter_title": "第一幕",
+      "scene_id": "volume_01-c002-s001",
+      "paragraph_id": "volume_01-c002-s001-p000154",
+      "paragraph_index": 153,
+      "local_dialogue_index": 1,
+      "text": "喔！叶勒在那儿。有没有看到很多人聚集在那边？他就在那块麦田里。叶勒今年都雇用年轻人来种田，因为他们比较不得要领，今年应该是他们田里的某个人会是『赫萝』吧。",
+      "quote_text": "「喔！叶勒在那儿。有没有看到很多人聚集在那边？他就在那块麦田里。叶勒今年都雇用年轻人来种田，因为他们比较不得要领，今年应该是他们田里的某个人会是『赫萝』吧。」",
+      "paragraph_text": "「喔！叶勒在那儿。有没有看到很多人聚集在那边？他就在那块麦田里。叶勒今年都雇用年轻人来种田，因为他们比较不得要领，今年应该是他们田里的某个人会是『赫萝』吧。」",
+      "dialogue_kind": "standalone",
+      "outside_quote_text": "",
+      "char_start": 0,
+      "char_end": 79
+    }
+  ],
+  "context": {
+    "paragraphs": [
+      {
+        "paragraph_id": "volume_01-c002-s001-p000147",
+        "paragraph_index": 146,
+        "text": "几乎所有麦田都已完成收割，应该这几天就会举办祭典。快的话，或许后天就会举办了。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000148",
+        "paragraph_index": 147,
+        "text": "在罗伦斯眼前延伸开来的这片麦田，是这个区域中以高收割量而自豪的帕斯罗村麦田。收割量越高，村民的生活也就越富裕。再加上管理这一带的亚伦多伯爵是个附近无人不知的怪人，他身为贵族却喜欢下田耕作，因此自然愿意赞助祭典，每年都会在祭典上饮酒欢唱，好不热闹。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000149",
+        "paragraph_index": 148,
+        "text": "然而，罗伦斯从未曾参加过他们的祭典。很遗憾，外人是不允许参加的。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000150",
+        "paragraph_index": 149,
+        "text": "「嗨！辛苦了。」",
+        "target_dialogue_ids": [
+          "volume_01-d000027"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000151",
+        "paragraph_index": 150,
+        "text": "罗伦斯朝正在帕斯罗村的麦田一角，把麦子往马车上堆的农夫打招呼。马车上的麦穗十分饱满，看来可以让购买麦子期货的人们松一口气吧。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000152",
+        "paragraph_index": 151,
+        "text": "「喔？」",
+        "target_dialogue_ids": [
+          "volume_01-d000028"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000153",
+        "paragraph_index": 152,
+        "text": "「请问叶勒在哪里啊？」",
+        "target_dialogue_ids": [
+          "volume_01-d000029"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000154",
+        "paragraph_index": 153,
+        "text": "「喔！叶勒在那儿。有没有看到很多人聚集在那边？他就在那块麦田里。叶勒今年都雇用年轻人来种田，因为他们比较不得要领，今年应该是他们田里的某个人会是『赫萝』吧。」",
+        "target_dialogue_ids": [
+          "volume_01-d000030"
+        ]
+      },
+      {
+        "paragraph_id": "volume_01-c002-s002-p000155",
+        "paragraph_index": 154,
+        "text": "农夫晒得黝黑的脸上堆满了笑容说道。那是绝对不会出现在商人脸上，只有没心机的人才会露出的笑容。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s002-p000156",
+        "paragraph_index": 155,
+        "text": "罗伦斯以营业用笑容向农夫答谢后，驾着马车朝叶勒的方向前去。",
+        "target_dialogue_ids": []
+      },
+      {
+        "paragraph_id": "volume_01-c002-s002-p000157",
+        "paragraph_index": 156,
+        "text": "如农夫所说，确实有很多人聚集在那里，人人都朝麦田中央叫喊着。",
+        "target_dialogue_ids": []
+      }
+    ]
+  },
+  "scene_memory": [
+    {
+      "scene_id": "volume_01-c002-s001-r003",
+      "parent_scene_id": "volume_01-c002-s001",
+      "chunk_index": 3,
+      "chunk_count": 3,
+      "scene_summary": "罗伦斯在麦田中与农夫交谈，讨论即将举行的祭典以及教会与地方的关系。他提到教会的威严正在减弱，同时提到帕斯罗村的麦田和伯爵的赞助。对话中提及了叶勒和『赫萝』的线索。",
+      "active_characters": [
+        "罗伦斯",
+        "农夫"
+      ],
+      "relationships": [
+        "罗伦斯与农夫有简短互动",
+        "农夫与叶勒有联系",
+        "叶勒与『赫萝』有关"
+      ],
+      "notes": "场景中提及了叶勒和『赫萝』，但未提供完整信息，需在后续章节中追踪。罗伦斯的理性语气和对教会的评论表明他对宗教和政治局势有深刻理解。"
+    }
+  ],
+  "candidate_characters": [
+    {
+      "entity_id": "char_0004",
+      "display_name": "农夫",
+      "aliases": [],
+      "titles": [],
+      "description": "帕斯罗村的农夫，正在麦田中劳作，与罗伦斯有简短对话。 / 麦田中的村民，与罗伦斯有简短互动，表现出朴实的性格。",
+      "speech_style": "朴实、直接",
+      "speech_markers": [],
+      "relationship_hints": [
+        "与叶勒有关系",
+        "与帕斯罗村的祭典有关",
+        "与罗伦斯有简短对话"
+      ],
+      "first_seen_scene_id": "volume_01-c002-s001-r003",
+      "latest_seen_scene_id": "volume_01-c002-s002-r001",
+      "confidence": 0.8
+    },
+    {
+      "entity_id": "char_0001",
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "titles": [
+        "商人",
+        "旅行商人",
+        "行商人"
+      ],
+      "description": "理性、谨慎的商人，试图分析局势并保持冷静。他与赫萝同行，面对叶勒的威胁时表现出坚定。 / 理性、坚定的商人，坚持遵守与赫萝的合约，拒绝背叛她。面对叶勒的威胁保持冷静，表现出对赫萝的忠诚。 / 理性、谨慎的商人，身受重伤但仍试图保持冷静并等待救援。他表现出对赫萝的依赖和信任。 / 罗伦斯目睹赫萝的变身过程，表现出震惊和无力。他试图抓住赫萝留下的皮袋，但最终面对巨大的狼形生物，感到无法应对。 / 理性、谨慎的商人，与赫萝在地下通道中遭遇叶勒的威胁。他试图安抚赫萝的情绪，并表现出对环境变化的敏感。 / 在赫萝的威压下感…",
+      "speech_style": "温和、理性、略带担忧 / 理性、略带策略性、温和 / 理性、担忧、略带冲动 / 虚弱、低沉、略带困惑 / 虚弱、低沉、焦虑 / 理性、坚定、略带焦虑 / 理性、焦虑、略带冲动 / 虚弱、低沉、焦虑 / 虚弱、焦虑、略带愤怒 / 愤怒、理性、略带冲动 / 虚弱、焦虑、略带悔恨 / 理性、冷静、略带焦虑",
+      "speech_markers": [
+        "算了……",
+        "糟糕",
+        "……",
+        "这……",
+        "唔……嗯……",
+        "果然没错",
+        "时间就是金钱",
+        "说的也是"
+      ],
+      "relationship_hints": [
+        "与赫萝一同旅行",
+        "对赫萝的身份持怀疑态度",
+        "与修道院有生意期望但未成功",
+        "与骑士初次互动",
+        "与赫萝有密切关系",
+        "与教会和骑士有互动",
+        "与叶勒有交集，计划与他交谈但被祭典打断",
+        "与叶勒有过去的交易关系。"
+      ],
+      "first_seen_scene_id": "volume_01-c000-s003-r001",
+      "latest_seen_scene_id": "volume_01-c008-s003-r001",
+      "confidence": 1.0
+    },
+    {
+      "entity_id": "char_0022",
+      "display_name": "亚伦多伯爵",
+      "aliases": [],
+      "titles": [
+        "伯爵"
+      ],
+      "description": "被罗伦斯推测为梅迪欧商行背后的资助者，可能与赫萝的被捉有关。",
+      "speech_style": "未直接发言",
+      "speech_markers": [],
+      "relationship_hints": [
+        "与梅迪欧商行有关",
+        "可能与赫萝的被捉有关"
+      ],
+      "first_seen_scene_id": "volume_01-c006-s004-r001",
+      "latest_seen_scene_id": "volume_01-c006-s004-r001",
+      "confidence": 0.75
+    },
+    {
+      "entity_id": "char_0002",
+      "display_name": "赫萝",
+      "aliases": [],
+      "titles": [
+        "丰收之神",
+        "狼",
+        "贤狼"
+      ],
+      "description": "神秘少女，拥有狼的特征。在本场景中协助罗伦斯击退袭击者，表现出冷静和对环境的高度感知能力。 / 在地下道中不断呼喊罗伦斯，试图唤醒他并指引方向。表现出担忧和责任感。 / 神秘少女，拥有狼的特征，情绪波动明显，对罗伦斯表现出依赖和担忧。 / 神秘少女，拥有狼的特征。在本场景中表现出脆弱和依赖，对独自旅行感到不安。她对叶勒的言语感到愤怒与悲伤。 / 情绪波动明显的贤狼，因叶勒的言语感到悲伤。她表现出对罗伦斯的依赖，并在关键时刻流露出脆弱。 / 情绪波动明显的贤狼，因叶勒的言语感到愤怒与悲伤。她吸食罗伦斯的血液以施展某…",
+      "speech_style": "未直接发言，但被频繁提及 / 冷静、自信、略带调侃 / 调皮、略带挑衅、情绪化 / 略带孩子气、情绪化、略带调侃 / 冷静、简短、略带策略性 / 关切、坚定、略带责备 / 情绪化、略带孩子气 / 冷静、略带情绪化 / 脆弱、情绪化、略带孩子气 / 冷静、自信、略带策略性 / 冷静、简短、略带威严 / 未直接发言",
+      "speech_markers": [
+        "咱",
+        "咱不会逃跑的",
+        "咱可是贤狼赫萝",
+        "呵呵",
+        "咱是贤狼赫萝呐",
+        "哈哈哈哈哈",
+        "咱希望可以……",
+        "咱不懂行情"
+      ],
+      "relationship_hints": [
+        "与罗伦斯一同旅行",
+        "捉弄罗伦斯",
+        "与罗伦斯展开对话",
+        "表现出对罗伦斯的调侃",
+        "与罗伦斯有初步互动，可能是他未来的旅伴",
+        "与罗伦斯进行对话，表现出信任与坦率",
+        "提到出生地时流露出真实情感",
+        "与罗伦斯有互动，被罗伦斯收留并一同旅行"
+      ],
+      "first_seen_scene_id": "volume_01-c000-s003-r001",
+      "latest_seen_scene_id": "volume_01-c008-s003-r001",
+      "confidence": 0.95
+    },
+    {
+      "entity_id": "char_0005",
+      "display_name": "叶勒",
+      "aliases": [],
+      "titles": [],
+      "description": "麦田中割下最后一束麦子的村民，被选为「狼赫萝」的化身，将被关在谷仓中一周。 / 赫萝提到的曾捉住她的人，可能是村民或与教会有关的人物。 / 村庄中的村民，与赫萝有过交集，可能是她与村庄之间冲突的导火索。 / 赫萝提到的村民，曾捉住她并说出让她感到愤怒与悲伤的话。可能是村庄中与赫萝冲突的导火索。 / 帕斯罗村的村民，与罗伦斯有旧识。他试图说服罗伦斯交出赫萝，以换取村落的经济利益。他穿着与村民身份不符的衣物，暗示与梅迪欧商行有联系。 / 帕斯罗村的村民，代表梅迪欧商行试图活捉赫萝。他与罗伦斯有旧识，但立场对立，表现出…",
+      "speech_style": "朴实、紧张 / 未直接发言 / 理性、略带策略性",
+      "speech_markers": [],
+      "relationship_hints": [
+        "与罗伦斯有交集，罗伦斯因他无法交谈而感到困扰",
+        "曾捉住赫萝",
+        "与赫萝有冲突",
+        "与梅迪欧商行有联系",
+        "可能是村庄中反对赫萝的人",
+        "与罗伦斯有交情",
+        "与罗伦斯有旧识",
+        "与梅迪欧商行有关联"
+      ],
+      "first_seen_scene_id": "volume_01-c002-s002-r001",
+      "latest_seen_scene_id": "volume_01-c007-s004-r003",
+      "confidence": 0.9
+    }
+  ],
+  "candidate_mysteries": [
+    {
+      "mystery_id": "mystery_volume_01_c002_s001_r003_叶勒",
+      "temporary_name": "叶勒",
+      "description": "帕斯罗村的某位人物，可能是村长或重要人物，负责组织麦田劳作。",
+      "evidence": [
+        "volume_01-c002-s001-p000153",
+        "volume_01-c002-s001-p000154"
+      ],
+      "source_scene_id": "volume_01-c002-s001-r003",
+      "confidence": 0.6
+    },
+    {
+      "mystery_id": "mystery_volume_01_c002_s001_r003_赫萝",
+      "temporary_name": "赫萝",
+      "description": "可能是祭典中的某种角色或象征，由年轻人扮演。",
+      "evidence": [
+        "volume_01-c002-s001-p000154"
+      ],
+      "source_scene_id": "volume_01-c002-s001-r003",
+      "confidence": 0.5
+    }
+  ],
+  "structured_evidence": [
+    {
+      "dialogue_id": "volume_01-d000027",
+      "source_model": "qwen3:32b",
+      "explicit_attribution": {
+        "speaker_display": "",
+        "text": ""
+      },
+      "addressed_to": [],
+      "turn_relation": "start",
+      "same_speaker_allowed": true,
+      "speech_markers": [],
+      "third_person_name_references": [],
+      "positive_evidence": [
+        "对话语气友好，可能是罗伦斯向农夫打招呼"
+      ],
+      "negative_evidence": [
+        "无明确说话人线索"
+      ],
+      "needs_review_hint": true,
+      "notes": "无明确说话人线索，需结合上下文判断"
+    },
+    {
+      "dialogue_id": "volume_01-d000028",
+      "source_model": "qwen3:32b",
+      "explicit_attribution": {
+        "speaker_display": "",
+        "text": ""
+      },
+      "addressed_to": [],
+      "turn_relation": "response",
+      "same_speaker_allowed": false,
+      "speech_markers": [],
+      "third_person_name_references": [],
+      "positive_evidence": [
+        "可能是农夫对罗伦斯的回应"
+      ],
+      "negative_evidence": [
+        "无明确说话人线索"
+      ],
+      "needs_review_hint": true,
+      "notes": "短对话，需结合上下文判断说话人"
+    },
+    {
+      "dialogue_id": "volume_01-d000029",
+      "source_model": "qwen3:32b",
+      "explicit_attribution": {
+        "speaker_display": "",
+        "text": ""
+      },
+      "addressed_to": [
+        "叶勒"
+      ],
+      "turn_relation": "question",
+      "same_speaker_allowed": false,
+      "speech_markers": [],
+      "third_person_name_references": [],
+      "positive_evidence": [
+        "明确提到“叶勒”，可能是罗伦斯提问"
+      ],
+      "negative_evidence": [
+        "无明确说话人线索"
+      ],
+      "needs_review_hint": true,
+      "notes": "提问内容明确指向叶勒，但说话人不明确"
+    },
+    {
+      "dialogue_id": "volume_01-d000030",
+      "source_model": "qwen3:32b",
+      "explicit_attribution": {
+        "speaker_display": "",
+        "text": ""
+      },
+      "addressed_to": [],
+      "turn_relation": "response",
+      "same_speaker_allowed": false,
+      "speech_markers": [],
+      "third_person_name_references": [
+        {
+          "display": "农夫",
+          "text": "农夫晒得黝黑的脸上堆满了笑容说道。那是绝对不会出现在商人脸上，只有没心机的人才会露出的笑容。"
+        }
+      ],
+      "positive_evidence": [
+        "描述符合农夫的说话风格，可能是农夫回答"
+      ],
+      "negative_evidence": [
+        "无明确说话人线索"
+      ],
+      "needs_review_hint": false,
+      "notes": "上下文明确指出是农夫回答，证据充分"
+    }
+  ]
+}
