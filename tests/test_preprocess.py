@@ -14,6 +14,7 @@ from novel_speaker_label.annotation import (
     _dialogue_windows,
     _extract_parsed_votes,
     _normalize_contradiction_check,
+    _normalize_vote,
     _parse_json_response,
     _render_labeled_text,
     _rule_votes_for_window,
@@ -361,6 +362,30 @@ class AnnotationTests(unittest.TestCase):
         self.assertEqual(annotation["speaker_status"], "review")
         self.assertEqual(annotation["review_reason"], "single_model_without_anchor")
 
+    def test_structured_single_model_known_vote_without_anchor_is_accepted(self) -> None:
+        dialogue = _annotation_dialogue(
+            "volume_01-d000002",
+            1,
+            0,
+            "这是最后一件了吧？",
+        )
+        vote = _annotation_vote(
+            dialogue,
+            "char_0001",
+            "罗伦斯",
+            confidence=0.95,
+        )
+
+        annotation = _aggregate_votes(
+            dialogue,
+            [vote],
+            AnnotationConfig(output_dir=Path("unused")),
+            structured=True,
+        )
+
+        self.assertFalse(annotation["needs_review"])
+        self.assertEqual(annotation["speaker_status"], "known")
+
     def test_single_model_mystery_vote_needs_review(self) -> None:
         dialogue = {
             "dialogue_id": "volume_01-d000003",
@@ -404,6 +429,27 @@ class AnnotationTests(unittest.TestCase):
         self.assertTrue(annotation["needs_review"])
         self.assertEqual(annotation["speaker_status"], "review")
         self.assertEqual(annotation["review_reason"], "single_model_mystery_candidate")
+
+    def test_group_npc_vote_is_normalized_from_mystery(self) -> None:
+        dialogue = _annotation_dialogue("volume_01-d000010", 9, 10, "谢谢惠顾。")
+
+        vote = _normalize_vote(
+            parsed_vote={
+                "dialogue_id": dialogue["dialogue_id"],
+                "speaker_entity_id": "mystery_village_group",
+                "speaker_display": "村民群体",
+                "speaker_status": "mystery",
+                "confidence": 0.88,
+                "needs_review": False,
+            },
+            dialogue=dialogue,
+            model="judge:model-a",
+            weight=1.0,
+        )
+
+        self.assertEqual(vote["speaker_status"], "npc")
+        self.assertEqual(vote["speaker_entity_id"], "npc:村民群体")
+        self.assertFalse(vote["needs_review"])
 
     def test_rule_votes_use_addressed_name_and_turns_for_village_trade(self) -> None:
         payload = {
@@ -702,6 +748,26 @@ class AnnotationTests(unittest.TestCase):
 
         self.assertEqual(len(votes), 1)
         self.assertEqual(votes[0]["speaker_display"], "阿晴")
+
+    def test_noisy_speech_marker_is_ignored(self) -> None:
+        payload = {
+            "candidate_characters": [
+                {
+                    "entity_id": "char_0001",
+                    "display_name": "罗伦斯",
+                    "aliases": [],
+                    "speech_markers": ["……"],
+                }
+            ]
+        }
+        dialogue = _annotation_dialogue(
+            "volume_01-d000147",
+            146,
+            428,
+            "……这是怎么回事？",
+        )
+
+        self.assertEqual(_rule_votes_for_window([dialogue], payload), [])
 
     def test_legacy_title_speech_marker_votes_are_supported(self) -> None:
         payload = {
@@ -1214,6 +1280,164 @@ class AnnotationTests(unittest.TestCase):
             self.assertTrue(
                 (output_dir / "annotation" / "contradiction_checks.jsonl").exists()
             )
+
+    def test_structured_repair_cache_resolves_strong_contradiction(self) -> None:
+        with tempfile.TemporaryDirectory(dir=Path.cwd()) as tmp:
+            output_dir = Path(tmp) / "outputs2" / "volume_01"
+            write_json(
+                output_dir / "volume.json",
+                {"volume_id": "volume_01", "volume": 1},
+            )
+            paragraph = "罗伦斯看着骑士。「请问叶勒在哪里？」"
+            char_start = paragraph.index("「")
+            write_jsonl(
+                output_dir / "preprocess" / "paragraphs.jsonl",
+                [{"paragraph_id": "p1", "paragraph_index": 0, "text": paragraph}],
+            )
+            write_jsonl(
+                output_dir / "preprocess" / "dialogues.jsonl",
+                [
+                    {
+                        "dialogue_id": "volume_01-d000001",
+                        "dialogue_index": 0,
+                        "volume_id": "volume_01",
+                        "chapter_id": "volume_01-c001",
+                        "chapter_index": 1,
+                        "chapter_title": "第一章",
+                        "scene_id": "volume_01-c001-s001",
+                        "scene_index": 1,
+                        "paragraph_id": "p1",
+                        "paragraph_index": 0,
+                        "local_dialogue_index": 1,
+                        "text": "请问叶勒在哪里？",
+                        "quote_text": "「请问叶勒在哪里？」",
+                        "dialogue_kind": "standalone",
+                        "paragraph_text": paragraph,
+                        "char_start": char_start,
+                        "char_end": len(paragraph),
+                        "prev_context": [],
+                        "next_context": [],
+                    }
+                ],
+            )
+            write_jsonl(
+                output_dir / "memory" / "semantic" / "characters.jsonl",
+                [
+                    {
+                        "entity_id": "char_0001",
+                        "display_name": "罗伦斯",
+                        "aliases": [],
+                        "titles": [],
+                        "description": "旅行商人",
+                        "speech_markers": [],
+                        "relationship_hints": [],
+                        "confidence": 0.9,
+                    },
+                    {
+                        "entity_id": "char_0002",
+                        "display_name": "骑士",
+                        "aliases": [],
+                        "titles": [],
+                        "description": "守卫骑士",
+                        "speech_markers": [],
+                        "relationship_hints": [],
+                        "confidence": 0.9,
+                    },
+                ],
+            )
+
+            write_json(
+                output_dir
+                / "annotation"
+                / "evidence_cache"
+                / "evidence--volume_01-d000001--fake_model.json",
+                {
+                    "evidence": [
+                        {
+                            "dialogue_id": "volume_01-d000001",
+                            "positive_evidence": ["第一轮有邻近上下文证据"],
+                            "negative_evidence": [],
+                        }
+                    ]
+                },
+            )
+            write_json(
+                output_dir
+                / "annotation"
+                / "judgement_cache"
+                / "judge--volume_01-d000001--fake_model.json",
+                {
+                    "annotations": [
+                        {
+                            "dialogue_id": "volume_01-d000001",
+                            "speaker_entity_id": "char_0001",
+                            "speaker_display": "罗伦斯",
+                            "speaker_status": "known",
+                            "confidence": 0.9,
+                            "evidence": ["第一轮误判为罗伦斯"],
+                        }
+                    ]
+                },
+            )
+            write_json(
+                output_dir
+                / "annotation"
+                / "contradiction_cache"
+                / "contradiction--volume_01-d000001--fake_model.json",
+                {
+                    "checks": [
+                        {
+                            "dialogue_id": "volume_01-d000001",
+                            "has_contradiction": True,
+                            "severity": "strong",
+                            "reason": "同段叙述明确骑士在回答",
+                            "counter_evidence": ["骑士回答"],
+                            "needs_review": True,
+                        }
+                    ]
+                },
+            )
+            write_json(
+                output_dir
+                / "annotation"
+                / "repair_cache"
+                / "repair--volume_01-d000001--iter1--fake_model.json",
+                {
+                    "annotations": [
+                        {
+                            "dialogue_id": "volume_01-d000001",
+                            "speaker_entity_id": "char_0002",
+                            "speaker_display": "骑士",
+                            "speaker_status": "known",
+                            "confidence": 0.92,
+                            "evidence": ["反证指向骑士回答"],
+                            "needs_review": False,
+                        }
+                    ]
+                },
+            )
+
+            summary = annotate_volume(
+                AnnotationConfig(
+                    output_dir=output_dir,
+                    models=("fake-model",),
+                    pipeline="structured",
+                    cache_only=True,
+                    write_prompts=False,
+                )
+            )
+
+            annotations = list(read_jsonl(output_dir / "annotation" / "annotations.jsonl"))
+            repairs = list(read_jsonl(output_dir / "annotation" / "repairs.jsonl"))
+            self.assertEqual(summary["prompt_count"], 4)
+            self.assertEqual(summary["repair_count"], 1)
+            self.assertEqual(annotations[0]["speaker_display"], "骑士")
+            self.assertEqual(annotations[0]["speaker_status"], "known")
+            self.assertFalse(annotations[0]["needs_review"])
+            self.assertEqual(annotations[0]["repair_trace"]["stop_reason"], "resolved")
+            self.assertEqual(annotations[0]["repair_trace"]["iteration_count"], 1)
+            self.assertEqual(annotations[0]["contradiction_checks"][0]["severity"], "strong")
+            self.assertTrue(repairs[0]["resolved"])
 
     def test_weak_contradiction_does_not_force_review(self) -> None:
         dialogue = _annotation_dialogue("d1", 0, 0, "她的名字是赫萝。")

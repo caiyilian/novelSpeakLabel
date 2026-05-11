@@ -85,6 +85,67 @@ INDIRECT_SPEECH_SUFFIXES = (
 )
 VILLAGE_CONTEXT_MARKERS = ("小村落", "深山", "山里的村民", "村落", "村民")
 VILLAGE_NPC_DISPLAY = "小村落的村民"
+STRUCTURED_REPAIR_MAX_ITERATIONS = 1
+GROUP_NPC_DISPLAY_VALUES = {
+    "非重要角色",
+    "路人",
+    "路人角色",
+    "路人甲",
+    "普通路人",
+    "村民",
+    "村民们",
+    "村民群体",
+    "群众",
+    "人群",
+    "众人",
+    "旁观者",
+    VILLAGE_NPC_DISPLAY,
+}
+GROUP_NPC_DISPLAY_KEYWORDS = (
+    "村民群体",
+    "村民们",
+    "路人",
+    "非重要角色",
+    "群众",
+    "人群",
+    "众人",
+)
+SPEECH_MARKER_SELF_PRONOUNS = {
+    "咱",
+    "汝",
+    "俺",
+    "吾",
+    "吾辈",
+    "妾身",
+    "在下",
+    "小生",
+    "本座",
+    "本王",
+    "朕",
+    "老身",
+    "奴家",
+    "鄙人",
+    "贫道",
+}
+LOW_SIGNAL_SPEECH_MARKERS = {
+    "嗯",
+    "呃",
+    "啊",
+    "唔",
+    "喔",
+    "哦",
+    "呵呵",
+    "哈哈",
+    "糟糕",
+    "抱歉",
+    "没问题",
+    "说的也是",
+    "那么",
+    "算了",
+    "好的",
+    "谢谢",
+}
+SPEECH_MARKER_PUNCTUATION = set("。！？!?；;：:，、,.…「」『』“”\"'")
 
 
 @dataclass(frozen=True)
@@ -154,6 +215,7 @@ def annotate_volume(config: AnnotationConfig) -> dict:
     evidence_cache_dir = annotation_dir / "evidence_cache"
     judgement_cache_dir = annotation_dir / "judgement_cache"
     contradiction_cache_dir = annotation_dir / "contradiction_cache"
+    repair_cache_dir = annotation_dir / "repair_cache"
     prompt_dir = annotation_dir / "prompts"
     raw_dir = annotation_dir / "raw"
     failure_dir = annotation_dir / "failures"
@@ -162,6 +224,7 @@ def annotate_volume(config: AnnotationConfig) -> dict:
         evidence_cache_dir,
         judgement_cache_dir,
         contradiction_cache_dir,
+        repair_cache_dir,
         prompt_dir,
         raw_dir,
         failure_dir,
@@ -186,6 +249,7 @@ def annotate_volume(config: AnnotationConfig) -> dict:
     evidence_rows: list[dict] = []
     judgement_rows: list[dict] = []
     contradiction_rows: list[dict] = []
+    repair_rows: list[dict] = []
     failed_requests: list[dict] = []
     prompt_count = 0
     rule_vote_count = 0
@@ -227,12 +291,14 @@ def annotate_volume(config: AnnotationConfig) -> dict:
                 evidence_cache_dir=evidence_cache_dir,
                 judgement_cache_dir=judgement_cache_dir,
                 contradiction_cache_dir=contradiction_cache_dir,
+                repair_cache_dir=repair_cache_dir,
             )
             votes.extend(structured["votes"])
             annotations.extend(structured["annotations"])
             evidence_rows.extend(structured["evidence_rows"])
             judgement_rows.extend(structured["judgement_rows"])
             contradiction_rows.extend(structured["contradiction_rows"])
+            repair_rows.extend(structured["repair_rows"])
             failed_requests.extend(structured["failed_requests"])
             prompt_count += structured["prompt_count"]
             rule_vote_count += structured["rule_vote_count"]
@@ -347,6 +413,8 @@ def annotate_volume(config: AnnotationConfig) -> dict:
             write_jsonl(annotation_dir / "judgements.jsonl", judgement_rows)
         if contradiction_rows:
             write_jsonl(annotation_dir / "contradiction_checks.jsonl", contradiction_rows)
+        if repair_rows:
+            write_jsonl(annotation_dir / "repairs.jsonl", repair_rows)
         write_jsonl(annotation_dir / "votes.jsonl", votes)
         write_jsonl(annotation_dir / "annotations.jsonl", annotations)
         write_jsonl(
@@ -378,6 +446,7 @@ def annotate_volume(config: AnnotationConfig) -> dict:
         "evidence_count": len(evidence_rows),
         "judgement_count": len(judgement_rows),
         "contradiction_check_count": len(contradiction_rows),
+        "repair_count": len(repair_rows),
         "vote_count": len(votes),
         "annotation_count": len(annotations),
         "review_count": review_count,
@@ -447,6 +516,7 @@ def _annotate_structured_window(
     evidence_cache_dir: Path,
     judgement_cache_dir: Path,
     contradiction_cache_dir: Path,
+    repair_cache_dir: Path,
 ) -> dict:
     window_id = _dialogue_window_id(dialogue_window)
     prompt_count = 0
@@ -455,6 +525,7 @@ def _annotate_structured_window(
     evidence_rows: list[dict] = []
     judgement_rows: list[dict] = []
     contradiction_rows: list[dict] = []
+    repair_rows: list[dict] = []
     failed_requests: list[dict] = []
     dialogue_votes_by_id: dict[str, list[dict]] = {
         dialogue["dialogue_id"]: [] for dialogue in dialogue_window
@@ -574,6 +645,7 @@ def _annotate_structured_window(
                     dialogue_votes_by_id[dialogue["dialogue_id"]],
                     config,
                     speaker_options=speaker_options,
+                    structured=True,
                 )
             )
 
@@ -624,8 +696,35 @@ def _annotate_structured_window(
             )
             contradiction_rows.append(check)
 
+    resolved_repair_ids: set[str] = set()
+    if contradiction_rows and annotations and not config.dry_run:
+        repair_result = _repair_structured_annotations(
+            dialogue_window=dialogue_window,
+            payload=payload,
+            annotations=annotations,
+            evidence_rows=evidence_rows,
+            contradiction_rows=contradiction_rows,
+            config=config,
+            clients=clients,
+            prompt_dir=prompt_dir,
+            raw_dir=raw_dir,
+            failure_dir=failure_dir,
+            repair_cache_dir=repair_cache_dir,
+            window_id=window_id,
+        )
+        annotations = repair_result["annotations"]
+        votes.extend(repair_result["votes"])
+        repair_rows.extend(repair_result["repair_rows"])
+        failed_requests.extend(repair_result["failed_requests"])
+        prompt_count += repair_result["prompt_count"]
+        resolved_repair_ids = repair_result["resolved_dialogue_ids"]
+
     if contradiction_rows:
-        annotations = _apply_contradiction_checks(annotations, contradiction_rows)
+        annotations = _apply_contradiction_checks(
+            annotations,
+            contradiction_rows,
+            resolved_dialogue_ids=resolved_repair_ids,
+        )
 
     return {
         "votes": votes,
@@ -633,6 +732,7 @@ def _annotate_structured_window(
         "evidence_rows": evidence_rows,
         "judgement_rows": judgement_rows,
         "contradiction_rows": contradiction_rows,
+        "repair_rows": repair_rows,
         "failed_requests": failed_requests,
         "prompt_count": prompt_count,
         "rule_vote_count": rule_vote_count,
@@ -703,6 +803,414 @@ def _record_annotation_failure(
             f"Structured annotation request failed: {request_id}. "
             f"Prompt is saved at {prompt_path}"
         ) from exc
+
+
+def _repair_structured_annotations(
+    *,
+    dialogue_window: list[dict],
+    payload: dict,
+    annotations: list[dict],
+    evidence_rows: list[dict],
+    contradiction_rows: list[dict],
+    config: AnnotationConfig,
+    clients: dict[str, OllamaClient],
+    prompt_dir: Path,
+    raw_dir: Path,
+    failure_dir: Path,
+    repair_cache_dir: Path,
+    window_id: str,
+) -> dict:
+    strong_checks_by_id: dict[str, list[dict]] = {}
+    for check in contradiction_rows:
+        if _is_strong_contradiction_check(check):
+            strong_checks_by_id.setdefault(check["dialogue_id"], []).append(check)
+    if not strong_checks_by_id:
+        return _structured_repair_result(annotations)
+
+    target_ids = [
+        dialogue["dialogue_id"]
+        for dialogue in dialogue_window
+        if dialogue["dialogue_id"] in strong_checks_by_id
+    ]
+    if not target_ids:
+        return _structured_repair_result(annotations)
+
+    model = _role_models(config, "judge")[0]
+    iteration = 1
+    request_id = f"repair--{window_id}--iter{iteration}--{_safe_model_name(model)}"
+    repair_payload = _payload_for_repair(
+        payload=payload,
+        target_ids=target_ids,
+        annotations=annotations,
+        evidence_rows=evidence_rows,
+        strong_checks_by_id=strong_checks_by_id,
+        iteration=iteration,
+    )
+    prompt = _build_repair_judge_prompt(repair_payload)
+    prompt_count = 1
+    prompt_path = prompt_dir / f"{request_id}.txt"
+    if config.write_prompts or config.dry_run:
+        prompt_path.write_text(prompt, encoding="utf-8", newline="\n")
+
+    annotations_by_id = {row["dialogue_id"]: dict(row) for row in annotations}
+    try:
+        parsed_response = _read_or_generate_json(
+            request_id=request_id,
+            prompt=prompt,
+            model=model,
+            client=clients[model],
+            cache_dir=repair_cache_dir,
+            raw_dir=raw_dir,
+            config=config,
+        )
+    except FileNotFoundError:
+        if config.cache_only:
+            updated = _annotations_with_repair_stop(
+                annotations,
+                target_ids,
+                strong_checks_by_id,
+                request_id,
+                stop_reason="repair_cache_missing",
+            )
+            return _structured_repair_result(
+                updated,
+                repair_rows=_repair_stop_rows(
+                    target_ids=target_ids,
+                    annotations_by_id=annotations_by_id,
+                    strong_checks_by_id=strong_checks_by_id,
+                    request_id=request_id,
+                    model=model,
+                    stop_reason="repair_cache_missing",
+                ),
+                prompt_count=prompt_count,
+            )
+        raise
+    except Exception as exc:
+        repair_failed_requests: list[dict] = []
+        _record_annotation_failure(
+            failed_requests=repair_failed_requests,
+            failure_dir=failure_dir,
+            request_id=request_id,
+            dialogue_window=dialogue_window,
+            model=model,
+            role="repair",
+            prompt_path=prompt_path,
+            exc=exc,
+            config=config,
+        )
+        updated = _annotations_with_repair_stop(
+            annotations,
+            target_ids,
+            strong_checks_by_id,
+            request_id,
+            stop_reason="request_failed",
+        )
+        return _structured_repair_result(
+            updated,
+            repair_rows=_repair_stop_rows(
+                target_ids=target_ids,
+                annotations_by_id=annotations_by_id,
+                strong_checks_by_id=strong_checks_by_id,
+                request_id=request_id,
+                model=model,
+                stop_reason="request_failed",
+            ),
+            failed_requests=repair_failed_requests,
+            prompt_count=prompt_count,
+        )
+
+    target_dialogues = [
+        dialogue for dialogue in dialogue_window if dialogue["dialogue_id"] in target_ids
+    ]
+    parsed_votes = _extract_parsed_votes(parsed_response, target_dialogues)
+    dialogues_by_id = {dialogue["dialogue_id"]: dialogue for dialogue in dialogue_window}
+    speaker_options = _known_speaker_options(payload)
+    votes: list[dict] = []
+    repair_rows: list[dict] = []
+    resolved_dialogue_ids: set[str] = set()
+    updated_by_id = dict(annotations_by_id)
+
+    for dialogue_id in target_ids:
+        initial = annotations_by_id[dialogue_id]
+        checks = strong_checks_by_id[dialogue_id]
+        parsed_vote = parsed_votes.get(dialogue_id)
+        vote: dict | None = None
+        repaired: dict | None = None
+        stop_reason = "missing_response"
+        if parsed_vote is not None:
+            dialogue = dialogues_by_id[dialogue_id]
+            vote = _normalize_vote(
+                parsed_vote=parsed_vote,
+                dialogue=dialogue,
+                model=f"repair:{model}",
+                weight=_model_weight(config, "judge", model),
+            )
+            votes.append(vote)
+            repaired = _aggregate_votes(
+                dialogue,
+                [vote],
+                config,
+                speaker_options=speaker_options,
+                structured=True,
+            )
+            if repaired.get("needs_review"):
+                stop_reason = "needs_review"
+            elif _annotation_speaker_key(repaired) == _annotation_speaker_key(initial):
+                stop_reason = "unchanged"
+            else:
+                stop_reason = "resolved"
+                resolved_dialogue_ids.add(dialogue_id)
+
+        trace = _repair_trace(
+            request_id=request_id,
+            checks=checks,
+            initial=initial,
+            repaired=repaired,
+            iteration_count=iteration,
+            stop_reason=stop_reason,
+        )
+        if stop_reason == "resolved" and repaired is not None:
+            next_row = dict(repaired)
+        else:
+            next_row = dict(initial)
+        next_row["repair_trace"] = trace
+        updated_by_id[dialogue_id] = next_row
+        repair_rows.append(
+            {
+                "request_id": request_id,
+                "model": model,
+                "dialogue_id": dialogue_id,
+                "iteration": iteration,
+                "trigger_reason": trace["trigger_reason"],
+                "stop_reason": stop_reason,
+                "resolved": stop_reason == "resolved",
+                "initial_speaker": trace["initial_speaker"],
+                "repaired_speaker": trace["repaired_speaker"],
+                "vote": vote,
+            }
+        )
+
+    return _structured_repair_result(
+        [updated_by_id[row["dialogue_id"]] for row in annotations],
+        votes=votes,
+        repair_rows=repair_rows,
+        resolved_dialogue_ids=resolved_dialogue_ids,
+        prompt_count=prompt_count,
+    )
+
+
+def _structured_repair_result(
+    annotations: list[dict],
+    *,
+    votes: list[dict] | None = None,
+    repair_rows: list[dict] | None = None,
+    failed_requests: list[dict] | None = None,
+    resolved_dialogue_ids: set[str] | None = None,
+    prompt_count: int = 0,
+) -> dict:
+    return {
+        "annotations": annotations,
+        "votes": votes or [],
+        "repair_rows": repair_rows or [],
+        "failed_requests": failed_requests or [],
+        "resolved_dialogue_ids": resolved_dialogue_ids or set(),
+        "prompt_count": prompt_count,
+    }
+
+
+def _payload_for_repair(
+    *,
+    payload: dict,
+    target_ids: list[str],
+    annotations: list[dict],
+    evidence_rows: list[dict],
+    strong_checks_by_id: dict[str, list[dict]],
+    iteration: int,
+) -> dict:
+    target_id_set = set(target_ids)
+    return {
+        "volume": payload.get("volume"),
+        "repair_iteration": iteration,
+        "target_dialogue_ids": target_ids,
+        "dialogues": [
+            row
+            for row in _as_list(payload.get("dialogues"))
+            if row.get("dialogue_id") in target_id_set
+        ],
+        "context": _repair_context(payload, target_id_set),
+        "candidate_characters": payload.get("candidate_characters", []),
+        "candidate_mysteries": payload.get("candidate_mysteries", []),
+        "structured_evidence": [
+            _evidence_prompt_card(row)
+            for row in evidence_rows
+            if row.get("dialogue_id") in target_id_set
+        ],
+        "first_judgements": [
+            _annotation_prompt_card(row)
+            for row in annotations
+            if row.get("dialogue_id") in target_id_set
+        ],
+        "strong_contradictions": [
+            _repair_check_prompt_card(check)
+            for dialogue_id in target_ids
+            for check in strong_checks_by_id.get(dialogue_id, [])
+        ],
+    }
+
+
+def _repair_context(payload: dict, target_id_set: set[str]) -> dict:
+    context = payload.get("context", {})
+    if not isinstance(context, dict):
+        return {}
+    return {
+        "paragraphs": [
+            row
+            for row in _as_list(context.get("paragraphs"))
+            if target_id_set.intersection(_as_list(row.get("target_dialogue_ids")))
+        ]
+    }
+
+
+def _repair_check_prompt_card(check: dict) -> dict:
+    return {
+        "dialogue_id": check.get("dialogue_id"),
+        "source_model": check.get("model"),
+        "reason": check.get("reason", ""),
+        "counter_evidence": _unique_strings(_as_list(check.get("counter_evidence")), 4),
+    }
+
+
+def _build_repair_judge_prompt(payload: dict) -> str:
+    return (
+        "你是轻小说说话人标注的 Stage 2.5 修复裁判。\n"
+        "只处理 target_dialogue_ids 中被 severity=strong 反证命中的台词；不要重跑整个窗口。\n"
+        "依据局部台词、候选角色、第一轮 structured_evidence、第一轮 judgement 和 strong_contradictions 做一次修复判断。\n"
+        "如果反证成立且有更合理的说话人，输出修正后的 speaker；如果仍然冲突、不确定、或修复会来回摇摆，就输出 review/needs_review=true。\n"
+        "普通村民、路人、群众可以标为 npc，display 可用“非重要角色”“路人”“村民群体”，但不要把重要角色误降为 npc。\n"
+        "口癖/自称只能作为高区分度短证据；多数角色没有口癖时不要强行套用。\n\n"
+        "只输出严格 JSON，每个 target dialogue 一条 annotation，candidate_speakers 最多 2 个，evidence 最多 3 条：\n"
+        "{\n"
+        '  "annotations": [\n'
+        "    {\n"
+        '      "dialogue_id": "必须来自 target_dialogue_ids",\n'
+        '      "speaker_entity_id": "string",\n'
+        '      "speaker_display": "string",\n'
+        '      "speaker_status": "known|mystery|npc|ambiguous|review",\n'
+        '      "confidence": 0.0,\n'
+        '      "candidate_speakers": [\n'
+        '        {"entity_id": "string", "display": "string", "status": "known|mystery|npc|ambiguous|review", "score": 0.0}\n'
+        "      ],\n"
+        '      "evidence": ["短证据"],\n'
+        '      "needs_review": false\n'
+        "    }\n"
+        "  ],\n"
+        '  "window_notes": "string"\n'
+        "}\n\n"
+        "输入 JSON：\n"
+        f"{json.dumps(payload, ensure_ascii=False, indent=2)}\n"
+    )
+
+
+def _annotations_with_repair_stop(
+    annotations: list[dict],
+    target_ids: list[str],
+    strong_checks_by_id: dict[str, list[dict]],
+    request_id: str,
+    *,
+    stop_reason: str,
+) -> list[dict]:
+    target_id_set = set(target_ids)
+    updated: list[dict] = []
+    for annotation in annotations:
+        if annotation["dialogue_id"] not in target_id_set:
+            updated.append(annotation)
+            continue
+        row = dict(annotation)
+        row["repair_trace"] = _repair_trace(
+            request_id=request_id,
+            checks=strong_checks_by_id.get(annotation["dialogue_id"], []),
+            initial=annotation,
+            repaired=None,
+            iteration_count=STRUCTURED_REPAIR_MAX_ITERATIONS,
+            stop_reason=stop_reason,
+        )
+        updated.append(row)
+    return updated
+
+
+def _repair_stop_rows(
+    *,
+    target_ids: list[str],
+    annotations_by_id: dict[str, dict],
+    strong_checks_by_id: dict[str, list[dict]],
+    request_id: str,
+    model: str,
+    stop_reason: str,
+) -> list[dict]:
+    rows: list[dict] = []
+    for dialogue_id in target_ids:
+        trace = _repair_trace(
+            request_id=request_id,
+            checks=strong_checks_by_id.get(dialogue_id, []),
+            initial=annotations_by_id[dialogue_id],
+            repaired=None,
+            iteration_count=STRUCTURED_REPAIR_MAX_ITERATIONS,
+            stop_reason=stop_reason,
+        )
+        rows.append(
+            {
+                "request_id": request_id,
+                "model": model,
+                "dialogue_id": dialogue_id,
+                "iteration": STRUCTURED_REPAIR_MAX_ITERATIONS,
+                "trigger_reason": trace["trigger_reason"],
+                "stop_reason": stop_reason,
+                "resolved": False,
+                "initial_speaker": trace["initial_speaker"],
+                "repaired_speaker": "",
+                "vote": None,
+            }
+        )
+    return rows
+
+
+def _repair_trace(
+    *,
+    request_id: str,
+    checks: list[dict],
+    initial: dict,
+    repaired: dict | None,
+    iteration_count: int,
+    stop_reason: str,
+) -> dict:
+    reasons = _unique_strings(
+        [check.get("reason") or "strong_contradiction" for check in checks],
+        3,
+    )
+    counter_evidence: list[str] = []
+    for check in checks:
+        counter_evidence.extend(_as_list(check.get("counter_evidence")))
+    return {
+        "request_id": request_id,
+        "trigger_reason": ";".join(reasons) or "strong_contradiction",
+        "iteration_count": iteration_count,
+        "stop_reason": stop_reason,
+        "counter_evidence": _unique_strings(counter_evidence, 4),
+        "initial_speaker": _speaker_trace_value(initial),
+        "repaired_speaker": _speaker_trace_value(repaired or {}),
+    }
+
+
+def _speaker_trace_value(row: dict) -> str:
+    display = _clean_text(row.get("speaker_display") or row.get("display"))
+    entity_id = _clean_text(row.get("speaker_entity_id") or row.get("entity_id"))
+    if display and entity_id:
+        return f"{display}<{entity_id}>"
+    return display or entity_id
+
+
+def _annotation_speaker_key(row: dict) -> str:
+    return _speaker_rule_key(row)
 
 
 def _build_evidence_prompt(payload: dict) -> str:
@@ -1013,8 +1521,11 @@ def _normalize_contradiction_check(
 
 
 def _apply_contradiction_checks(
-    annotations: list[dict], checks: list[dict]
+    annotations: list[dict],
+    checks: list[dict],
+    resolved_dialogue_ids: set[str] | None = None,
 ) -> list[dict]:
+    resolved_dialogue_ids = resolved_dialogue_ids or set()
     checks_by_id: dict[str, list[dict]] = {}
     for check in checks:
         checks_by_id.setdefault(check["dialogue_id"], []).append(check)
@@ -1030,7 +1541,7 @@ def _apply_contradiction_checks(
         ]
         if row_checks:
             row["contradiction_checks"] = row_checks
-        if strong_checks:
+        if strong_checks and row["dialogue_id"] not in resolved_dialogue_ids:
             reasons = [
                 check.get("reason") or "strong_contradiction"
                 for check in strong_checks
@@ -1714,10 +2225,15 @@ def _normalize_vote(
     speaker_entity_id = _clean_text(parsed_vote.get("speaker_entity_id"))
     speaker_display = _clean_text(parsed_vote.get("speaker_display"))
     confidence = _clamp(_safe_float(parsed_vote.get("confidence"), 0.0), 0.0, 1.0)
-    needs_review = bool(parsed_vote.get("needs_review")) or status in {
-        "ambiguous",
-        "review",
-    }
+    explicit_review = bool(parsed_vote.get("needs_review"))
+    if _is_group_npc_display(speaker_display) and not speaker_entity_id.startswith("char_"):
+        status = "npc"
+        speaker_entity_id = (
+            speaker_entity_id
+            if speaker_entity_id.startswith("npc:")
+            else f"npc:{_clean_identifier(speaker_display)}"
+        )
+    needs_review = explicit_review or status in {"ambiguous", "review"}
     if not speaker_entity_id and status in {"ambiguous", "review"}:
         speaker_entity_id = f"{status}:unknown"
     if not speaker_display and status in {"ambiguous", "review"}:
@@ -1743,6 +2259,15 @@ def _normalize_vote(
         "needs_review": needs_review,
         "raw_vote": parsed_vote,
     }
+
+
+def _is_group_npc_display(value: Any) -> bool:
+    display = _clean_text(value)
+    if not display:
+        return False
+    if display in GROUP_NPC_DISPLAY_VALUES:
+        return True
+    return any(keyword in display for keyword in GROUP_NPC_DISPLAY_KEYWORDS)
 
 
 def _normalize_candidate_speakers(value: Any) -> list[dict]:
@@ -2204,9 +2729,20 @@ def _legacy_speech_markers_from_character_card(row: dict) -> list[str]:
 
 
 def _is_usable_speech_marker(marker: str) -> bool:
+    marker = _clean_text(marker)
     if not marker:
         return False
-    if len(marker) > 12:
+    if marker in SPEECH_MARKER_SELF_PRONOUNS:
+        return True
+    if len(marker) > 4:
+        return False
+    if len(marker) == 1:
+        return False
+    if marker in LOW_SIGNAL_SPEECH_MARKERS:
+        return False
+    if any(char in SPEECH_MARKER_PUNCTUATION for char in marker):
+        return False
+    if not re.search(r"[A-Za-z0-9\u4e00-\u9fff]", marker):
         return False
     return True
 
@@ -2335,6 +2871,7 @@ def _aggregate_votes(
     votes: list[dict],
     config: AnnotationConfig,
     speaker_options: list[dict] | None = None,
+    structured: bool = False,
 ) -> dict:
     base = {
         "dialogue_id": dialogue["dialogue_id"],
@@ -2419,7 +2956,14 @@ def _aggregate_votes(
         dialogue, top, speaker_options or []
     )
     forced_review_reason = contradiction_reason or (
-        "" if accepted_by_rule else _forced_review_reason(dialogue, top, participating_model_count)
+        ""
+        if accepted_by_rule
+        else _forced_review_reason(
+            dialogue,
+            top,
+            participating_model_count,
+            structured=structured,
+        )
     )
 
     if accepted_by_rule:
@@ -2484,7 +3028,11 @@ def _aggregate_votes(
 
 
 def _forced_review_reason(
-    dialogue: dict, top: dict, participating_model_count: int
+    dialogue: dict,
+    top: dict,
+    participating_model_count: int,
+    *,
+    structured: bool = False,
 ) -> str:
     if _dialogue_kind(dialogue) != "standalone":
         return "non_standalone_quote"
@@ -2493,7 +3041,7 @@ def _forced_review_reason(
     status = _clean_status(top.get("speaker_status"))
     if status == "mystery":
         return "single_model_mystery_candidate"
-    if status == "known" and not _has_speaker_anchor(dialogue, top):
+    if status == "known" and not structured and not _has_speaker_anchor(dialogue, top):
         return "single_model_without_anchor"
     return ""
 
