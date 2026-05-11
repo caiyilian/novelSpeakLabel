@@ -753,7 +753,12 @@ def _build_judge_prompt(payload: dict) -> str:
         "3. candidate_characters.speech_markers 是口癖/自称证据；多个角色共享或上下文反证时不能直接采纳。\n"
         "4. 如果台词说“她/他/它的名字是 X”，通常不是 X 本人在自我介绍。\n"
         "5. 输出 speaker、正证据、反证据、needs_review。\n\n"
-        "只输出严格 JSON，结构与 Stage 2 annotations 相同：\n"
+        "只输出严格 JSON。输出必须紧凑，避免截断：\n"
+        "- 每个 dialogue_id 只输出 1 条 annotation。\n"
+        "- candidate_speakers 最多 2 个候选；如果 needs_review=true，也列出最可能的 1-2 个。\n"
+        "- evidence 最多 3 条，每条不超过 30 字；不要重复长段原文。\n"
+        "- 不要输出 should_create_new_entity / new_entity_hint，除非确实要新建未知人物。\n\n"
+        "JSON 结构：\n"
         "{\n"
         '  "annotations": [\n'
         "    {\n"
@@ -763,11 +768,9 @@ def _build_judge_prompt(payload: dict) -> str:
         '      "speaker_status": "known|mystery|npc|ambiguous|review",\n'
         '      "confidence": 0.0,\n'
         '      "candidate_speakers": [\n'
-        '        {"entity_id": "string", "display": "string", "status": "known|mystery|npc|ambiguous|review", "score": 0.0}\n'
+        '        {"entity_id": "string", "display": "string", "score": 0.0}\n'
         "      ],\n"
-        '      "evidence": ["正证据和必要反证，短句"],\n'
-        '      "should_create_new_entity": false,\n'
-        '      "new_entity_hint": "",\n'
+        '      "evidence": ["短证据"],\n'
         '      "needs_review": false\n'
         "    }\n"
         "  ],\n"
@@ -783,6 +786,7 @@ def _build_contradiction_prompt(payload: dict) -> str:
         "你是轻小说说话人标注项目的 Stage 2.5 反证检查器。\n"
         "你的任务不是重新标注所有台词，而是检查 proposed_annotations 有没有明显矛盾。"
         "强反证时必须要求复核；弱反证只记录说明。\n\n"
+        "只有 severity=strong 时 needs_review 才能为 true；severity=weak/none 时 needs_review 必须为 false。\n\n"
         "强反证示例：\n"
         "- 标成某角色，但台词用第三人称介绍这个角色的名字。\n"
         "- 标成 A，但台词命中唯一属于 B 的高区分度口癖。\n"
@@ -847,11 +851,29 @@ def _annotation_prompt_card(row: dict) -> dict:
         "speaker_display": row.get("speaker_display"),
         "speaker_status": row.get("speaker_status"),
         "confidence": row.get("confidence"),
-        "candidate_speakers": row.get("candidate_speakers", []),
-        "evidence": row.get("evidence", []),
+        "candidate_speakers": _compact_candidate_speakers(
+            row.get("candidate_speakers", []), limit=2
+        ),
+        "evidence": _unique_strings(_as_list(row.get("evidence")), 3),
         "needs_review": row.get("needs_review"),
         "review_reason": row.get("review_reason", ""),
     }
+
+
+def _compact_candidate_speakers(value: Any, limit: int = 2) -> list[dict]:
+    rows = value if isinstance(value, list) else []
+    compact: list[dict] = []
+    for row in rows[:limit]:
+        if not isinstance(row, dict):
+            continue
+        compact.append(
+            {
+                "entity_id": _clean_text(row.get("entity_id")),
+                "display": _clean_text(row.get("display") or row.get("speaker_display")),
+                "score": _clamp(_safe_float(row.get("score"), 0.0), 0.0, 1.0),
+            }
+        )
+    return compact
 
 
 def _extract_evidence_rows(parsed_response: Any, dialogues: list[dict]) -> dict[str, dict]:
@@ -972,8 +994,11 @@ def _normalize_contradiction_check(
     severity = _clean_text(row.get("severity")).lower() or "none"
     if severity not in {"none", "weak", "strong"}:
         severity = "strong" if bool(row.get("has_contradiction")) else "weak"
-    has_contradiction = bool(row.get("has_contradiction")) or severity == "strong"
-    needs_review = bool(row.get("needs_review")) or severity == "strong"
+    has_contradiction = bool(row.get("has_contradiction")) or severity in {
+        "weak",
+        "strong",
+    }
+    needs_review = severity == "strong"
     return {
         "request_id": request_id,
         "model": model,
@@ -998,7 +1023,11 @@ def _apply_contradiction_checks(
     for annotation in annotations:
         row = dict(annotation)
         row_checks = checks_by_id.get(row["dialogue_id"], [])
-        strong_checks = [check for check in row_checks if check.get("needs_review")]
+        strong_checks = [
+            check
+            for check in row_checks
+            if _is_strong_contradiction_check(check)
+        ]
         if row_checks:
             row["contradiction_checks"] = row_checks
         if strong_checks:
@@ -1020,6 +1049,15 @@ def _apply_contradiction_checks(
             )
         updated.append(row)
     return updated
+
+
+def _is_strong_contradiction_check(check: dict) -> bool:
+    severity = _clean_text(check.get("severity")).lower()
+    if severity in {"none", "weak"}:
+        return False
+    if severity == "strong":
+        return True
+    return bool(check.get("needs_review"))
 
 
 def _select_dialogues(

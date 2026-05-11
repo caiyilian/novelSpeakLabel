@@ -9,8 +9,11 @@ from novel_speaker_label.cli import _resolve_output
 from novel_speaker_label.annotation import (
     AnnotationConfig,
     _aggregate_votes,
+    _apply_contradiction_checks,
+    _build_judge_prompt,
     _dialogue_windows,
     _extract_parsed_votes,
+    _normalize_contradiction_check,
     _parse_json_response,
     _render_labeled_text,
     _rule_votes_for_window,
@@ -1211,6 +1214,73 @@ class AnnotationTests(unittest.TestCase):
             self.assertTrue(
                 (output_dir / "annotation" / "contradiction_checks.jsonl").exists()
             )
+
+    def test_weak_contradiction_does_not_force_review(self) -> None:
+        dialogue = _annotation_dialogue("d1", 0, 0, "她的名字是赫萝。")
+        annotation = _annotation_vote(dialogue, "char_0001", "罗伦斯")
+        check = _normalize_contradiction_check(
+            {
+                "dialogue_id": "d1",
+                "has_contradiction": False,
+                "severity": "weak",
+                "reason": "台词提到赫萝，但不是强反证",
+                "counter_evidence": ["台词提到赫萝"],
+                "needs_review": True,
+            },
+            dialogue,
+            "checker",
+            "request-1",
+        )
+
+        updated = _apply_contradiction_checks([annotation], [check])
+
+        self.assertFalse(check["needs_review"])
+        self.assertEqual(check["severity"], "weak")
+        self.assertFalse(updated[0]["needs_review"])
+        self.assertEqual(updated[0]["speaker_status"], "known")
+        self.assertNotIn("review_reason", updated[0])
+        self.assertEqual(updated[0]["contradiction_checks"][0]["severity"], "weak")
+
+    def test_strong_contradiction_forces_review(self) -> None:
+        dialogue = _annotation_dialogue("d1", 0, 0, "咱就是咱。")
+        annotation = _annotation_vote(dialogue, "char_0001", "罗伦斯")
+        check = _normalize_contradiction_check(
+            {
+                "dialogue_id": "d1",
+                "has_contradiction": False,
+                "severity": "strong",
+                "reason": "命中唯一属于赫萝的口癖",
+                "counter_evidence": ["咱"],
+                "needs_review": False,
+            },
+            dialogue,
+            "checker",
+            "request-1",
+        )
+
+        updated = _apply_contradiction_checks([annotation], [check])
+
+        self.assertTrue(check["needs_review"])
+        self.assertTrue(updated[0]["needs_review"])
+        self.assertEqual(updated[0]["speaker_status"], "review")
+        self.assertEqual(
+            updated[0]["review_reason"],
+            "model_contradiction:命中唯一属于赫萝的口癖",
+        )
+
+    def test_structured_judge_prompt_requests_compact_output(self) -> None:
+        prompt = _build_judge_prompt(
+            {
+                "target_dialogue_ids": ["d1"],
+                "dialogues": [],
+                "candidate_characters": [],
+                "structured_evidence": [],
+            }
+        )
+
+        self.assertIn("candidate_speakers 最多 2 个候选", prompt)
+        self.assertIn("evidence 最多 3 条", prompt)
+        self.assertNotIn('"should_create_new_entity": false', prompt)
 
 
 class CliOutputPathTests(unittest.TestCase):
