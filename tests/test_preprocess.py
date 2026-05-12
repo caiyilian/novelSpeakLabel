@@ -27,6 +27,9 @@ from novel_speaker_label.ollama_client import OllamaConfig, OllamaClient, collec
 from novel_speaker_label.preprocess import PreprocessConfig, preprocess_volume
 from novel_speaker_label.reading_v2 import (
     ReadingV2Config,
+    ReadingV2State,
+    _apply_entity_merges,
+    _apply_local_attribution_rules,
     annotate_v2_volume,
     estimate_prompt_tokens,
     prompt_length_status,
@@ -1584,12 +1587,253 @@ class ReadingV2Tests(unittest.TestCase):
             )
             prompts = list((output_dir / "reading_v2" / "prompts").glob("*.txt"))
             self.assertEqual(summary["pipeline"], "reading-v2")
-            self.assertEqual(summary["prompt_count"], 6)
+            self.assertEqual(summary["prompt_count"], 5)
             self.assertEqual(summary["prompt_over_limit_count"], 0)
-            self.assertEqual(report["prompt_count"], 6)
+            self.assertEqual(report["prompt_count"], 5)
             self.assertEqual(report["task_counts"]["annotation"], 1)
-            self.assertEqual(len(rows), 6)
-            self.assertEqual(len(prompts), 6)
+            self.assertEqual(report["task_counts"]["repair"], 0)
+            self.assertEqual(len(rows), 5)
+            self.assertEqual(len(prompts), 5)
+
+    def test_entity_merge_backfills_existing_annotations(self) -> None:
+        state = ReadingV2State()
+        state.mysteries["mystery_v2_000014"] = {
+            "entity_id": "mystery_v2_000014",
+            "entity_type": "mystery",
+            "display_name": "神秘女孩",
+            "aliases": ["女孩"],
+            "importance": "major",
+            "summary": "藏在货车里的神秘女孩。",
+            "evidence_refs": ["d1"],
+            "dialogue_count": 1,
+            "first_seen_chunk_id": "volume_01-r000018",
+            "latest_seen_chunk_id": "volume_01-r000018",
+        }
+        state.characters["char_v2_000003"] = {
+            "entity_id": "char_v2_000003",
+            "entity_type": "character",
+            "display_name": "赫萝",
+            "aliases": [],
+            "importance": "major",
+            "summary": "自称赫萝的女孩。",
+            "evidence_refs": ["d2"],
+            "dialogue_count": 2,
+            "first_seen_chunk_id": "volume_01-r000020",
+            "latest_seen_chunk_id": "volume_01-r000020",
+        }
+        annotations_by_id = {
+            "d1": {
+                "dialogue_id": "d1",
+                "speaker_entity_id": "mystery_v2_000014",
+                "speaker_display": "神秘女孩",
+                "speaker_status": "mystery",
+                "confidence": 0.72,
+                "evidence": [],
+                "needs_review": False,
+                "review_reason": "",
+            }
+        }
+
+        events = _apply_entity_merges(
+            {
+                "merge_candidates": [
+                    {
+                        "source_entity_id": "mystery_v2_000014",
+                        "target_entity_id": "char_v2_000003",
+                        "confidence": 0.92,
+                        "reason": "神秘女孩后来明确自称赫萝。",
+                    }
+                ]
+            },
+            state=state,
+            chunk_id="volume_01-r000020",
+            annotations_by_id=annotations_by_id,
+            current_annotations=[],
+        )
+
+        self.assertEqual(events[0]["event_type"], "entity_merge")
+        self.assertEqual(
+            annotations_by_id["d1"]["speaker_entity_id"], "char_v2_000003"
+        )
+        self.assertEqual(annotations_by_id["d1"]["speaker_display"], "赫萝")
+        self.assertEqual(annotations_by_id["d1"]["speaker_status"], "known")
+        self.assertIn("神秘女孩", state.characters["char_v2_000003"]["aliases"])
+        self.assertEqual(
+            state.mysteries["mystery_v2_000014"]["merged_into"], "char_v2_000003"
+        )
+
+    def test_local_attribution_rules_use_explicit_narration(self) -> None:
+        state = ReadingV2State()
+        state.characters["char_v2_000001"] = {
+            "entity_id": "char_v2_000001",
+            "entity_type": "character",
+            "display_name": "罗伦斯",
+            "aliases": [],
+            "importance": "major",
+            "summary": "旅行商人。",
+            "evidence_refs": [],
+            "dialogue_count": 3,
+            "first_seen_chunk_id": "volume_01-r000001",
+            "latest_seen_chunk_id": "volume_01-r000001",
+        }
+        state.characters["char_v2_000003"] = {
+            "entity_id": "char_v2_000003",
+            "entity_type": "character",
+            "display_name": "赫萝",
+            "aliases": ["神秘女孩"],
+            "importance": "major",
+            "summary": "自称赫萝的女孩。",
+            "evidence_refs": [],
+            "dialogue_count": 2,
+            "first_seen_chunk_id": "volume_01-r000020",
+            "latest_seen_chunk_id": "volume_01-r000020",
+        }
+
+        greeting = {
+            "paragraphs": [
+                {"paragraph_id": "p1", "paragraph_index": 1, "text": "「嗨！辛苦了。」"},
+                {"paragraph_id": "p2", "paragraph_index": 2, "text": "罗伦斯朝农夫打招呼。"},
+            ],
+            "lookahead_paragraphs": [],
+        }
+        greeting_annotations = _apply_local_attribution_rules(
+            chunk=greeting,
+            state=state,
+            annotations=[
+                {
+                    "dialogue_id": "d1",
+                    "dialogue_index": 1,
+                    "paragraph_id": "p1",
+                    "paragraph_index": 1,
+                    "text": "嗨！辛苦了。",
+                    "speaker_entity_id": "unknown",
+                    "speaker_display": "未知",
+                    "speaker_status": "unknown",
+                    "confidence": 0.0,
+                    "evidence": [],
+                    "needs_review": True,
+                    "review_reason": "missing",
+                }
+            ],
+        )
+        self.assertEqual(greeting_annotations[0]["speaker_display"], "罗伦斯")
+        self.assertFalse(greeting_annotations[0]["needs_review"])
+
+        counter_question = {
+            "paragraphs": [
+                {"paragraph_id": "p3", "paragraph_index": 3, "text": "「汝曾去过吗？」"},
+                {"paragraph_id": "p4", "paragraph_index": 4, "text": "女孩反问罗伦斯。"},
+            ],
+            "lookahead_paragraphs": [],
+        }
+        counter_annotations = _apply_local_attribution_rules(
+            chunk=counter_question,
+            state=state,
+            annotations=[
+                {
+                    "dialogue_id": "d2",
+                    "dialogue_index": 2,
+                    "paragraph_id": "p3",
+                    "paragraph_index": 3,
+                    "text": "汝曾去过吗？",
+                    "speaker_entity_id": "char_v2_000001",
+                    "speaker_display": "罗伦斯",
+                    "speaker_status": "known",
+                    "confidence": 0.8,
+                    "evidence": [],
+                    "needs_review": False,
+                    "review_reason": "",
+                }
+            ],
+        )
+        self.assertEqual(counter_annotations[0]["speaker_display"], "赫萝")
+
+        next_intro = {
+            "paragraphs": [
+                {"paragraph_id": "p5", "paragraph_index": 5, "text": "「我去过最北端的地方。」"},
+                {"paragraph_id": "p6", "paragraph_index": 6, "text": "听到罗伦斯这么说，赫萝回答说："},
+            ],
+            "lookahead_paragraphs": [],
+        }
+        next_intro_annotations = _apply_local_attribution_rules(
+            chunk=next_intro,
+            state=state,
+            annotations=[
+                {
+                    "dialogue_id": "d3",
+                    "dialogue_index": 3,
+                    "paragraph_id": "p5",
+                    "paragraph_index": 5,
+                    "text": "我去过最北端的地方。",
+                    "speaker_entity_id": "char_v2_000001",
+                    "speaker_display": "罗伦斯",
+                    "speaker_status": "known",
+                    "confidence": 0.8,
+                    "evidence": [],
+                    "needs_review": False,
+                    "review_reason": "",
+                }
+            ],
+        )
+        self.assertEqual(next_intro_annotations[0]["speaker_display"], "罗伦斯")
+
+        experience_context = {
+            "paragraphs": [
+                {"paragraph_id": "p7", "paragraph_index": 7, "text": "因为罗伦斯的行商经验可是远及极北地区。"},
+                {"paragraph_id": "p8", "paragraph_index": 8, "text": "「我去过最北端的地方。」"},
+            ],
+            "lookahead_paragraphs": [],
+        }
+        experience_annotations = _apply_local_attribution_rules(
+            chunk=experience_context,
+            state=state,
+            annotations=[
+                {
+                    "dialogue_id": "d4",
+                    "dialogue_index": 4,
+                    "paragraph_id": "p8",
+                    "paragraph_index": 8,
+                    "text": "我去过最北端的地方。",
+                    "speaker_entity_id": "char_v2_000003",
+                    "speaker_display": "赫萝",
+                    "speaker_status": "known",
+                    "confidence": 0.8,
+                    "evidence": [],
+                    "needs_review": False,
+                    "review_reason": "",
+                }
+            ],
+        )
+        self.assertEqual(experience_annotations[0]["speaker_display"], "罗伦斯")
+
+        previous_intro = {
+            "paragraphs": [
+                {"paragraph_id": "p9", "paragraph_index": 9, "text": "听到罗伦斯这么说，赫萝微微倾着头想了一下，回答说："},
+                {"paragraph_id": "p10", "paragraph_index": 10, "text": "「那地方很冷吧？」"},
+            ],
+            "lookahead_paragraphs": [],
+        }
+        previous_intro_annotations = _apply_local_attribution_rules(
+            chunk=previous_intro,
+            state=state,
+            annotations=[
+                {
+                    "dialogue_id": "d5",
+                    "dialogue_index": 5,
+                    "paragraph_id": "p10",
+                    "paragraph_index": 10,
+                    "text": "那地方很冷吧？",
+                    "speaker_entity_id": "char_v2_000001",
+                    "speaker_display": "罗伦斯",
+                    "speaker_status": "known",
+                    "confidence": 0.8,
+                    "evidence": [],
+                    "needs_review": False,
+                    "review_reason": "",
+                }
+            ],
+        )
+        self.assertEqual(previous_intro_annotations[0]["speaker_display"], "赫萝")
 
     def test_annotate_v2_cache_only_writes_annotations_and_memory(self) -> None:
         with tempfile.TemporaryDirectory(dir=Path.cwd()) as tmp:

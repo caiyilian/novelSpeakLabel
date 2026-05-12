@@ -20,6 +20,33 @@ READING_V2_TASKS = (
 )
 SPEAKER_STATUSES = {"known", "mystery", "npc_group", "unknown", "review"}
 IMPORTANCE_LEVELS = {"minor": 1, "medium": 2, "major": 3}
+DIRECT_ATTRIBUTION_VERBS = (
+    "反问",
+    "回答说",
+    "回答道",
+    "答道",
+    "问道",
+    "说道",
+    "说着",
+    "打招呼",
+    "喊道",
+    "叫道",
+)
+GENERIC_SPEAKER_DESCRIPTORS = {
+    "他",
+    "她",
+    "这个人",
+    "那个人",
+    "男人",
+    "女人",
+    "男子",
+    "女子",
+    "女孩",
+    "少女",
+    "姑娘",
+}
+COMMERCE_THANKS_MARKERS = ("多谢惠顾", "谢谢惠顾")
+MERCHANT_HINTS = ("商人", "行商", "商贩", "店主", "卖主", "摊主", "商")
 REVIEW_LABEL = "待复核"
 
 
@@ -56,6 +83,7 @@ class ReadingV2State:
     npc_groups: dict[str, dict] = field(default_factory=dict)
     facts: list[dict] = field(default_factory=list)
     entity_events: list[dict] = field(default_factory=list)
+    entity_aliases: dict[str, str] = field(default_factory=dict)
     next_character_id: int = 1
     next_mystery_id: int = 1
     next_npc_group_id: int = 1
@@ -108,6 +136,7 @@ def annotate_v2_volume(config: ReadingV2Config) -> dict:
     repairs: list[dict] = []
     failed_requests: list[dict] = []
     prompt_reports: list[dict] = []
+    skipped_no_dialogue_chunks = 0
 
     for offset, chunk in enumerate(selected_chunks, start=1):
         print(
@@ -116,6 +145,15 @@ def annotate_v2_volume(config: ReadingV2Config) -> dict:
             f"paragraphs={len(chunk['paragraphs'])} dialogues={len(chunk['dialogues'])}",
             flush=True,
         )
+        if not chunk["dialogues"]:
+            skipped_no_dialogue_chunks += 1
+            print(
+                "[annotate-v2] skip "
+                f"{chunk['chunk_id']}: no dialogues to annotate",
+                flush=True,
+            )
+            continue
+
         payload = _build_base_payload(
             volume_meta=volume_meta,
             chunk=chunk,
@@ -142,6 +180,14 @@ def annotate_v2_volume(config: ReadingV2Config) -> dict:
             chunk=chunk,
             request_id=_task_request_id(chunk["chunk_id"], "annotation", config.model),
             dry_run=config.dry_run,
+        )
+        chunk_annotations = _apply_entity_aliases_to_annotations(
+            chunk_annotations, state
+        )
+        chunk_annotations = _apply_local_attribution_rules(
+            chunk=chunk,
+            annotations=chunk_annotations,
+            state=state,
         )
         _ensure_entities_from_annotations(chunk_annotations, state, chunk["chunk_id"])
 
@@ -191,13 +237,28 @@ def annotate_v2_volume(config: ReadingV2Config) -> dict:
         discovery_events = _apply_entity_discovery(
             entity_discovery_response, state=state, chunk_id=chunk["chunk_id"]
         )
+        merge_events = _apply_entity_merges(
+            entity_discovery_response,
+            state=state,
+            chunk_id=chunk["chunk_id"],
+            annotations_by_id=annotations_by_id,
+            current_annotations=chunk_annotations,
+        )
+        chunk_annotations = _apply_entity_aliases_to_annotations(
+            chunk_annotations, state
+        )
+        chunk_annotations = _apply_local_attribution_rules(
+            chunk=chunk,
+            annotations=chunk_annotations,
+            state=state,
+        )
 
         update_payload = {
             **payload,
             "task_a_annotations": chunk_annotations,
             "task_b_chunk_summary": chunk_summary,
             "task_d_entity_discovery": entity_discovery_response or {},
-            "current_entity_memory": _memory_snapshot_for_output(state),
+            "current_entity_memory": _candidate_entity_cards(state, config),
         }
         entity_update_response = _run_reading_task(
             task="entity_update",
@@ -242,41 +303,53 @@ def annotate_v2_volume(config: ReadingV2Config) -> dict:
             global_summary_response, state=state, chunk_id=chunk["chunk_id"]
         )
 
-        repair_payload = {
-            **payload,
-            "task_a_annotations": chunk_annotations,
-            "task_b_chunk_summary": chunk_summary,
-            "updated_global_summary": state.global_summary,
-            "updated_entity_memory": _memory_snapshot_for_output(state),
-            "unresolved_annotations": [
-                row
-                for row in chunk_annotations
-                if row.get("needs_review")
-                or row.get("speaker_status") in {"unknown", "review", "mystery"}
-            ],
-        }
-        repair_response = _run_reading_task(
-            task="repair",
-            chunk=chunk,
-            payload=repair_payload,
-            prompt_builder=_build_repair_prompt,
-            client=client,
-            config=config,
-            prompt_dir=prompt_dir,
-            raw_dir=raw_dir,
-            cache_dir=cache_dir,
-            failure_dir=failure_dir,
-            failed_requests=failed_requests,
-            prompt_reports=prompt_reports,
-        )
-        chunk_repairs = _extract_repairs(
-            repair_response,
-            chunk=chunk,
-            annotations=chunk_annotations,
-            request_id=_task_request_id(chunk["chunk_id"], "repair", config.model),
-        )
+        unresolved_annotations = [
+            row
+            for row in chunk_annotations
+            if row.get("needs_review")
+            or row.get("speaker_status") in {"unknown", "review", "mystery"}
+        ]
+        if unresolved_annotations:
+            repair_payload = {
+                **payload,
+                "task_a_annotations": _compact_annotations(chunk_annotations),
+                "task_b_chunk_summary": chunk_summary,
+                "updated_global_summary": state.global_summary,
+                "updated_entity_memory": _candidate_entity_cards(state, config),
+                "unresolved_annotations": _compact_annotations(unresolved_annotations),
+            }
+            repair_response = _run_reading_task(
+                task="repair",
+                chunk=chunk,
+                payload=repair_payload,
+                prompt_builder=_build_repair_prompt,
+                client=client,
+                config=config,
+                prompt_dir=prompt_dir,
+                raw_dir=raw_dir,
+                cache_dir=cache_dir,
+                failure_dir=failure_dir,
+                failed_requests=failed_requests,
+                prompt_reports=prompt_reports,
+            )
+            chunk_repairs = _extract_repairs(
+                repair_response,
+                chunk=chunk,
+                annotations=chunk_annotations,
+                request_id=_task_request_id(chunk["chunk_id"], "repair", config.model),
+            )
+        else:
+            chunk_repairs = []
         repairs.extend(chunk_repairs)
         chunk_annotations = _apply_repairs(chunk_annotations, chunk_repairs)
+        chunk_annotations = _apply_entity_aliases_to_annotations(
+            chunk_annotations, state
+        )
+        chunk_annotations = _apply_local_attribution_rules(
+            chunk=chunk,
+            annotations=chunk_annotations,
+            state=state,
+        )
 
         if not config.dry_run:
             chunk_annotations = _fill_missing_annotations(
@@ -288,7 +361,7 @@ def annotate_v2_volume(config: ReadingV2Config) -> dict:
             _append_entity_events(
                 state=state,
                 chunk_id=chunk["chunk_id"],
-                events=[*discovery_events, *update_events],
+                events=[*discovery_events, *merge_events, *update_events],
             )
 
     annotations = sorted(
@@ -317,6 +390,7 @@ def annotate_v2_volume(config: ReadingV2Config) -> dict:
         "dry_run": config.dry_run,
         "cache_only": config.cache_only,
         "chunk_count": len(selected_chunks),
+        "skipped_no_dialogue_chunk_count": skipped_no_dialogue_chunks,
         "dialogue_count": sum(len(chunk["dialogues"]) for chunk in selected_chunks),
         "annotation_count": len(annotations),
         "repair_count": len(repairs),
@@ -865,6 +939,481 @@ def _apply_repairs(annotations: list[dict], repairs: list[dict]) -> list[dict]:
     return updated
 
 
+def _compact_annotations(annotations: list[dict]) -> list[dict]:
+    compacted: list[dict] = []
+    for row in annotations:
+        compacted.append(
+            {
+                "dialogue_id": row.get("dialogue_id"),
+                "dialogue_index": row.get("dialogue_index"),
+                "text": row.get("text", ""),
+                "speaker_entity_id": row.get("speaker_entity_id"),
+                "speaker_display": row.get("speaker_display"),
+                "speaker_status": row.get("speaker_status"),
+                "confidence": row.get("confidence", 0.0),
+                "evidence": _unique_strings(row.get("evidence", []), 3),
+                "needs_review": bool(row.get("needs_review")),
+                "review_reason": row.get("review_reason", ""),
+            }
+        )
+    return compacted
+
+
+def _apply_entity_merges(
+    response: Any,
+    *,
+    state: ReadingV2State,
+    chunk_id: str,
+    annotations_by_id: dict[str, dict],
+    current_annotations: list[dict],
+) -> list[dict]:
+    events: list[dict] = []
+    for row in _first_list_value(response, ("merge_candidates", "merges")):
+        if not isinstance(row, dict):
+            continue
+        confidence = _clamp(_safe_float(row.get("confidence"), 0.0), 0.0, 1.0)
+        if confidence < 0.85:
+            continue
+        source_id = _resolve_entity_id(state, row.get("source_entity_id"))
+        target_id = _resolve_entity_id(state, row.get("target_entity_id"))
+        if not source_id or not target_id or source_id == target_id:
+            continue
+        source_table = _find_entity_table_by_id(state, source_id)
+        target_table = _find_entity_table_by_id(state, target_id)
+        if source_table is None or target_table is None:
+            continue
+        source_card = source_table[source_id]
+        target_card = target_table[target_id]
+        if source_card.get("merged_into") or target_card.get("merged_into"):
+            continue
+
+        reason = _clean_text(row.get("reason")) or "entity_merge_candidate"
+        _merge_entity_card(
+            source_card=source_card,
+            target_card=target_card,
+            chunk_id=chunk_id,
+        )
+        source_card["merged_into"] = target_id
+        source_card["merge_confidence"] = confidence
+        source_card["merge_reason"] = reason
+        state.entity_aliases[source_id] = target_id
+        _backfill_annotations_for_merge(
+            annotations_by_id=annotations_by_id,
+            current_annotations=current_annotations,
+            source_entity_id=source_id,
+            target_card=target_card,
+            reason=reason,
+        )
+        events.append(
+            {
+                "chunk_id": chunk_id,
+                "event_type": "entity_merge",
+                "source_entity_id": source_id,
+                "target_entity_id": target_id,
+                "confidence": confidence,
+                "reason": reason,
+            }
+        )
+    return events
+
+
+def _merge_entity_card(
+    *, source_card: dict, target_card: dict, chunk_id: str
+) -> None:
+    source_display = _clean_text(source_card.get("display_name"))
+    target_card["aliases"] = _unique_strings(
+        [
+            *target_card.get("aliases", []),
+            source_display,
+            *source_card.get("aliases", []),
+        ],
+        12,
+    )
+    target_card["importance"] = _merge_importance(
+        target_card.get("importance"), _clean_importance(source_card.get("importance"))
+    )
+    target_card["evidence_refs"] = _unique_strings(
+        [
+            *target_card.get("evidence_refs", []),
+            *source_card.get("evidence_refs", []),
+        ],
+        24,
+    )
+    target_card["dialogue_count"] = int(target_card.get("dialogue_count", 0)) + int(
+        source_card.get("dialogue_count", 0)
+    )
+    source_summary = _clean_text(source_card.get("summary"))
+    target_summary = _clean_text(target_card.get("summary"))
+    if source_summary and source_summary not in target_summary:
+        max_length = 180 if target_card.get("entity_type") != "npc_group" else 120
+        target_card["summary"] = _truncate_chars(
+            " ".join(part for part in (target_summary, source_summary) if part),
+            max_length,
+        )
+    target_card["latest_seen_chunk_id"] = chunk_id
+
+
+def _backfill_annotations_for_merge(
+    *,
+    annotations_by_id: dict[str, dict],
+    current_annotations: list[dict],
+    source_entity_id: str,
+    target_card: dict,
+    reason: str,
+) -> None:
+    seen_dialogues: set[str] = set()
+    for annotation in [*annotations_by_id.values(), *current_annotations]:
+        dialogue_id = _clean_text(annotation.get("dialogue_id"))
+        if dialogue_id in seen_dialogues:
+            continue
+        seen_dialogues.add(dialogue_id)
+        if _clean_text(annotation.get("speaker_entity_id")) != source_entity_id:
+            continue
+        updated = _annotation_with_entity(
+            annotation=annotation,
+            card=target_card,
+            confidence=max(_safe_float(annotation.get("confidence"), 0.0), 0.92),
+            evidence=f"实体合并回填：{reason}",
+        )
+        annotation.clear()
+        annotation.update(updated)
+
+
+def _apply_entity_aliases_to_annotations(
+    annotations: list[dict], state: ReadingV2State
+) -> list[dict]:
+    updated: list[dict] = []
+    for annotation in annotations:
+        entity_id = _clean_text(annotation.get("speaker_entity_id"))
+        resolved_id = _resolve_entity_id(state, entity_id)
+        if not resolved_id or resolved_id == entity_id:
+            updated.append(annotation)
+            continue
+        card = _find_entity_card_by_id(state, resolved_id)
+        if card is None:
+            updated.append({**annotation, "speaker_entity_id": resolved_id})
+        else:
+            updated.append(
+                _annotation_with_entity(
+                    annotation=annotation,
+                    card=card,
+                    confidence=max(_safe_float(annotation.get("confidence"), 0.0), 0.9),
+                    evidence=f"实体别名归一：{entity_id} -> {resolved_id}",
+                )
+            )
+    return updated
+
+
+def _apply_local_attribution_rules(
+    *, chunk: dict, annotations: list[dict], state: ReadingV2State
+) -> list[dict]:
+    if not annotations:
+        return annotations
+    updated: list[dict] = []
+    for annotation in annotations:
+        card, reason = _local_rule_speaker(
+            chunk=chunk,
+            annotation=annotation,
+            state=state,
+            previous_annotations=updated,
+        )
+        if card is None:
+            updated.append(annotation)
+            continue
+        if card.get("entity_id") == annotation.get("speaker_entity_id"):
+            updated.append(annotation)
+            continue
+        updated.append(
+            _annotation_with_entity(
+                annotation=annotation,
+                card=card,
+                confidence=max(_safe_float(annotation.get("confidence"), 0.0), 0.9),
+                evidence=reason,
+            )
+        )
+    return updated
+
+
+def _local_rule_speaker(
+    *,
+    chunk: dict,
+    annotation: dict,
+    state: ReadingV2State,
+    previous_annotations: list[dict],
+) -> tuple[dict | None, str]:
+    context_texts = _dialogue_context_texts(chunk, annotation)
+    for text, position in context_texts:
+        card = _speaker_from_direct_attribution(
+            text=text,
+            position=position,
+            state=state,
+            previous_annotations=previous_annotations,
+        )
+        if card is not None:
+            return card, "确定性叙述归因规则"
+
+    card = _speaker_from_previous_experience_context(
+        chunk=chunk,
+        annotation=annotation,
+        state=state,
+    )
+    if card is not None:
+        return card, "前文经验叙述指向第一人称话语"
+
+    dialogue_text = _clean_text(annotation.get("text"))
+    if any(marker in dialogue_text for marker in COMMERCE_THANKS_MARKERS):
+        card = _merchant_entity_card(state)
+        if card is not None:
+            return card, "交易致谢话语归因给商贩/商人"
+
+    return None, ""
+
+
+def _dialogue_context_texts(chunk: dict, annotation: dict) -> list[tuple[str, str]]:
+    paragraph_index = _safe_int(annotation.get("paragraph_index"), 0)
+    rows = [*chunk.get("paragraphs", []), *chunk.get("lookahead_paragraphs", [])]
+    by_index = {
+        _safe_int(row.get("paragraph_index"), -1): _clean_text(row.get("text"))
+        for row in rows
+    }
+    contexts = [
+        (by_index.get(paragraph_index - 1, ""), "previous"),
+        (by_index.get(paragraph_index, ""), "current"),
+        (by_index.get(paragraph_index + 1, ""), "next"),
+    ]
+    return [(text, position) for text, position in contexts if text]
+
+
+def _speaker_from_direct_attribution(
+    *,
+    text: str,
+    position: str,
+    state: ReadingV2State,
+    previous_annotations: list[dict],
+) -> dict | None:
+    if position == "previous" and not _clean_text(text).endswith(("：", ":")):
+        return None
+    if position == "next" and _clean_text(text).endswith(("：", ":")):
+        return None
+
+    for marker in ("朝", "向"):
+        for match in re.finditer(marker, text):
+            tail = text[match.end() : match.end() + 80]
+            if "打招呼" not in tail:
+                continue
+            phrase = _subject_phrase_before(text[: match.start()])
+            card = _entity_card_from_phrase(
+                phrase, state=state, previous_annotations=previous_annotations
+            )
+            if card is not None:
+                return card
+
+    for verb in DIRECT_ATTRIBUTION_VERBS:
+        for match in re.finditer(re.escape(verb), text):
+            if match.start() <= 0:
+                continue
+            phrase = _subject_phrase_before(text[: match.start()])
+            if not phrase:
+                continue
+            card = _entity_card_from_phrase(
+                phrase, state=state, previous_annotations=previous_annotations
+            )
+            if card is not None:
+                return card
+
+    for clause in re.split(r"[。！？；\n]", text):
+        for subclause in re.split(r"[，,]", clause):
+            for verb in DIRECT_ATTRIBUTION_VERBS:
+                index = subclause.find(verb)
+                if index <= 0:
+                    continue
+                phrase = _subject_phrase_before(subclause[:index])
+                if not phrase:
+                    continue
+                card = _entity_card_from_phrase(
+                    phrase, state=state, previous_annotations=previous_annotations
+                )
+                if card is not None:
+                    return card
+    return None
+
+
+def _speaker_from_previous_experience_context(
+    *, chunk: dict, annotation: dict, state: ReadingV2State
+) -> dict | None:
+    dialogue_text = _clean_text(annotation.get("text"))
+    if not re.search(r"(我|咱|俺).{0,12}(去过|到过|见过|经历过)", dialogue_text):
+        return None
+    previous = _paragraph_text_by_relative_index(chunk, annotation, -1)
+    if not previous or not any(
+        marker in previous
+        for marker in ("经验", "经历", "去过", "到过", "曾经", "远及")
+    ):
+        return None
+    candidates: list[dict] = []
+    for card in _active_entity_cards(state):
+        if card.get("entity_type") != "character":
+            continue
+        if any(name and name in previous for name in _entity_names(card)):
+            candidates.append(card)
+    return _best_entity_card(candidates) if candidates else None
+
+
+def _paragraph_text_by_relative_index(
+    chunk: dict, annotation: dict, relative_index: int
+) -> str:
+    paragraph_index = _safe_int(annotation.get("paragraph_index"), 0)
+    rows = [*chunk.get("paragraphs", []), *chunk.get("lookahead_paragraphs", [])]
+    by_index = {
+        _safe_int(row.get("paragraph_index"), -1): _clean_text(row.get("text"))
+        for row in rows
+    }
+    return by_index.get(paragraph_index + relative_index, "")
+
+
+def _subject_phrase_before(text: str) -> str:
+    cleaned = _clean_text(text)
+    if not cleaned:
+        return ""
+    cleaned = re.sub(r"[“”\"'「」『』（）()]+", " ", cleaned)
+    cleaned = cleaned.rstrip(" ，,。！？；、：:")
+    parts = re.split(r"[\s，,。！？；、：:]+", cleaned)
+    phrase = parts[-1] if parts else cleaned
+    phrase = re.sub(r"^(可是|不过|然后|于是|这时|那时|接着|听到|看见|看到)", "", phrase)
+    return phrase[-16:]
+
+
+def _entity_card_from_phrase(
+    phrase: str,
+    *,
+    state: ReadingV2State,
+    previous_annotations: list[dict],
+) -> dict | None:
+    phrase = _clean_text(phrase)
+    if not phrase:
+        return None
+    cards = _active_entity_cards(state)
+    exact_matches = [
+        card
+        for card in cards
+        if phrase in {_clean_text(card.get("display_name")), *card.get("aliases", [])}
+    ]
+    if exact_matches:
+        return _best_entity_card(exact_matches)
+
+    partial_matches: list[dict] = []
+    for card in cards:
+        names = [_clean_text(card.get("display_name")), *card.get("aliases", [])]
+        if any(name and (name in phrase or phrase in name) for name in names):
+            partial_matches.append(card)
+    if partial_matches:
+        return _best_entity_card(partial_matches)
+
+    if phrase in GENERIC_SPEAKER_DESCRIPTORS:
+        descriptor_matches = [
+            card
+            for card in cards
+            if any(phrase in _clean_text(name) for name in _entity_names(card))
+        ]
+        if descriptor_matches:
+            return _best_entity_card(descriptor_matches)
+        for annotation in reversed(previous_annotations):
+            card = _find_entity_card_by_id(
+                state, _clean_text(annotation.get("speaker_entity_id"))
+            )
+            if card is not None:
+                return card
+    return None
+
+
+def _merchant_entity_card(state: ReadingV2State) -> dict | None:
+    candidates: list[dict] = []
+    for card in _active_entity_cards(state):
+        if card.get("entity_type") != "character":
+            continue
+        haystack = " ".join(
+            [
+                _clean_text(card.get("display_name")),
+                *_entity_names(card),
+                _clean_text(card.get("summary")),
+            ]
+        )
+        if any(hint in haystack for hint in MERCHANT_HINTS):
+            candidates.append(card)
+    return _best_entity_card(candidates) if candidates else None
+
+
+def _annotation_with_entity(
+    *, annotation: dict, card: dict, confidence: float, evidence: str
+) -> dict:
+    status = _status_for_entity_card(card)
+    needs_review = status in {"unknown", "review"}
+    return {
+        **annotation,
+        "speaker_entity_id": card.get("entity_id"),
+        "speaker_display": card.get("display_name") or _display_for_status(status),
+        "speaker_status": status,
+        "confidence": _clamp(confidence, 0.0, 1.0),
+        "evidence": _unique_strings([*annotation.get("evidence", []), evidence], 6),
+        "needs_review": needs_review,
+        "review_reason": "" if not needs_review else annotation.get("review_reason", ""),
+    }
+
+
+def _active_entity_cards(state: ReadingV2State) -> list[dict]:
+    return [
+        card
+        for card in [
+            *state.characters.values(),
+            *state.mysteries.values(),
+            *state.npc_groups.values(),
+        ]
+        if not card.get("merged_into")
+    ]
+
+
+def _best_entity_card(cards: list[dict]) -> dict:
+    return sorted(
+        cards,
+        key=lambda card: (
+            IMPORTANCE_LEVELS.get(card.get("importance", "minor"), 1),
+            _chunk_number(card.get("latest_seen_chunk_id")),
+            int(card.get("dialogue_count", 0)),
+        ),
+        reverse=True,
+    )[0]
+
+
+def _entity_names(card: dict) -> list[str]:
+    return _unique_strings([card.get("display_name"), *card.get("aliases", [])], 16)
+
+
+def _status_for_entity_card(card: dict) -> str:
+    entity_type = _clean_entity_type(card.get("entity_type"))
+    if entity_type == "character":
+        return "known"
+    if entity_type in {"mystery", "npc_group"}:
+        return entity_type
+    return "unknown"
+
+
+def _find_entity_card_by_id(state: ReadingV2State, entity_id: str) -> dict | None:
+    resolved_id = _resolve_entity_id(state, entity_id)
+    table = _find_entity_table_by_id(state, resolved_id)
+    if table is None:
+        return None
+    return table.get(resolved_id)
+
+
+def _resolve_entity_id(state: ReadingV2State, entity_id: Any) -> str:
+    current = _clean_text(entity_id)
+    seen: set[str] = set()
+    while current and current not in seen and current in state.entity_aliases:
+        seen.add(current)
+        current = _clean_text(state.entity_aliases.get(current))
+    return current
+
+
 def _normalize_chunk_summary(response: Any, *, chunk: dict, dry_run: bool) -> dict:
     if dry_run or not isinstance(response, dict):
         return {}
@@ -1007,7 +1556,9 @@ def _ensure_entities_from_annotations(
             continue
         entity_type = "character" if status == "known" else status
         table = _entity_table(state, entity_type)
-        entity_id = annotation["speaker_entity_id"]
+        entity_id = _resolve_entity_id(state, annotation["speaker_entity_id"])
+        if entity_id != annotation["speaker_entity_id"]:
+            annotation["speaker_entity_id"] = entity_id
         if entity_id in table:
             continue
         display = _clean_text(annotation.get("speaker_display"))
@@ -1192,14 +1743,6 @@ def _prompt_component_counts(prompt: str) -> dict:
     }
 
 
-def _memory_snapshot_for_output(state: ReadingV2State) -> dict:
-    return {
-        "characters": list(state.characters.values()),
-        "mysteries": list(state.mysteries.values()),
-        "npc_groups": list(state.npc_groups.values()),
-    }
-
-
 def _candidate_entity_cards(state: ReadingV2State, config: ReadingV2Config) -> list[dict]:
     rows = [
         *_entity_prompt_cards(state.characters.values()),
@@ -1219,14 +1762,16 @@ def _candidate_entity_cards(state: ReadingV2State, config: ReadingV2Config) -> l
 def _entity_prompt_cards(rows: Any) -> list[dict]:
     cards: list[dict] = []
     for row in rows:
+        if row.get("merged_into"):
+            continue
         cards.append(
             {
                 "entity_id": row.get("entity_id"),
                 "entity_type": row.get("entity_type"),
                 "display_name": row.get("display_name"),
-                "aliases": row.get("aliases", [])[:6],
+                "aliases": row.get("aliases", [])[:4],
                 "importance": row.get("importance", "minor"),
-                "summary": row.get("summary", ""),
+                "summary": _truncate_chars(row.get("summary", ""), 100),
                 "latest_seen_chunk_id": row.get("latest_seen_chunk_id", ""),
                 "dialogue_count": row.get("dialogue_count", 0),
             }
@@ -1457,6 +2002,13 @@ def _safe_model_name(model: str) -> str:
 def _safe_float(value: Any, default: float) -> float:
     try:
         return float(value)
+    except (TypeError, ValueError):
+        return default
+
+
+def _safe_int(value: Any, default: int) -> int:
+    try:
+        return int(value)
     except (TypeError, ValueError):
         return default
 
