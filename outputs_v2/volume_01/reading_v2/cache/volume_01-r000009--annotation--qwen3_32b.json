@@ -1,0 +1,70 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000006",
+      "speaker_entity_id": "char_v2_000004",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "罗伦斯是当前段落的主角，描述中提到他‘瞇起眼睛’，随后发出疑问‘怎么回事？’，符合其行为逻辑。"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000007",
+      "speaker_entity_id": "char_v2_000004",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "罗伦斯在靠近修道院后，观察到对方是骑士，并发出疑问‘……骑士？’，符合其视角和行为。"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000008",
+      "speaker_entity_id": "mystery_v2_000006",
+      "speaker_display": "修道院的修道士",
+      "speaker_status": "mystery",
+      "confidence": 0.85,
+      "evidence": [
+        "修道院方向有人挥手，随后发出‘你是什么人？’的质问，符合修道士或其代表的语气。"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000009",
+      "speaker_entity_id": "char_v2_000004",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "罗伦斯回应骑士的质问，自我介绍为‘旅行商人罗伦斯’，符合其身份和行为。"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000010",
+      "speaker_entity_id": "mystery_v2_000006",
+      "speaker_display": "修道院的修道士",
+      "speaker_status": "mystery",
+      "confidence": 0.85,
+      "evidence": [
+        "骑士是修道院方向的代表，其发言‘旅行商人？你来的方向应该没有任何城镇。’符合修道士的立场和语气。"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    }
+  ],
+  "chunk_notes": "本 chunk 中，罗伦斯与修道院方向的骑士有互动。对话中，罗伦斯的发言明确，而对方身份为修道院相关人士，因此标注为 mystery。未出现赫萝或其他重要角色的对话，因此无需 review。"
+}

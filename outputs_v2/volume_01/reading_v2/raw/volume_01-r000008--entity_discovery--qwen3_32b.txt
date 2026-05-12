@@ -1,0 +1,45 @@
+```json
+{
+  "new_entities": [
+    {
+      "entity_type": "character",
+      "display_name": "罗伦斯",
+      "aliases": [],
+      "importance": "major",
+      "summary": "二十五岁的自力更生旅行商人，已行商七年。本 chunk 中与村民交易皮草，并在草原上驾驶马车前往修道院方向。他表现出自信与商业头脑，对修道院的商业潜力感到失望。",
+      "evidence_refs": [
+        "volume_01-c002-s001-p000085",
+        "volume_01-c002-s001-p000081",
+        "volume_01-c002-s001-p000082"
+      ],
+      "dialogue_count_delta": 4
+    },
+    {
+      "entity_type": "npc_group",
+      "display_name": "深山村落的村民",
+      "aliases": [],
+      "importance": "minor",
+      "summary": "与罗伦斯进行皮草交易的无名群体，居住在深山中。他们对罗伦斯的到访表示感激，并在对话中提及交易细节。",
+      "evidence_refs": [
+        "volume_01-c002-s001-p000080",
+        "volume_01-c002-s001-p000081"
+      ],
+      "dialogue_count_delta": 0
+    },
+    {
+      "entity_type": "mystery",
+      "display_name": "修道院的修道士",
+      "aliases": [],
+      "importance": "medium",
+      "summary": "位于草原远处的修道院中的修道士群体，人数约二十多位，还有男仆。他们不与民间商人往来，而是通过独立通路调度物资。罗伦斯曾对修道院抱有商业期望，但因无法建立联系而失望。",
+      "evidence_refs": [
+        "volume_01-c002-s001-p000086",
+        "volume_01-c002-s001-p000087",
+        "volume_01-c002-s001-p000088"
+      ],
+      "dialogue_count_delta": 0
+    }
+  ],
+  "merge_candidates": []
+}
+```

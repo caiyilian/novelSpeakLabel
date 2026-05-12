@@ -1,0 +1,567 @@
+你是通用小说长期摘要维护助手。任务：用旧长期摘要、当前 chunk 短期摘要和结构化事实，更新卷级长期摘要。不得凭空新增当前 chunk 没有的事实。
+只返回 JSON，格式：{"summary":"50到700字","new_facts":[],"retained_facts":[],"dropped_facts_reason":[]}
+输入 JSON：
+{
+  "volume": {
+    "volume_id": "volume_01",
+    "volume": 1,
+    "title": ""
+  },
+  "chunk": {
+    "chunk_id": "volume_01-r000018",
+    "chunk_index": 17,
+    "chapter_id": "volume_01-c002",
+    "chapter_title": "第一幕",
+    "scene_id": "volume_01-c002-s003",
+    "paragraphs": [
+      {
+        "paragraph_id": "volume_01-c002-s003-p000235",
+        "paragraph_index": 234,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c002-s003",
+        "scene_index": 3,
+        "text": "罗伦斯是只身行走各地的商人，已经有过不只一、两次被无赖或盗贼包围的经验。他相信自己的胆识和魄力都比一般人高。虽然头上有着人类不可能有的动物耳朵，但面对区区一名女孩，不足以让罗伦斯感到害怕。"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000236",
+        "paragraph_index": 235,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c002-s003",
+        "scene_index": 3,
+        "text": "然而，尽管女孩没有回答罗伦斯，罗伦斯却没再继续发问。"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000237",
+        "paragraph_index": 236,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c002-s003",
+        "scene_index": 3,
+        "text": "那是因为缓缓站起身子的赤裸女孩美丽得让人发不出声音来。"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000238",
+        "paragraph_index": 237,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c002-s003",
+        "scene_index": 3,
+        "text": "货台上，被月光照射的毛发如丝绸般滑溜，就像一件高质感的斗篷垂在背上。从颈部到锁骨，并向下延伸到肩膀的线条，犹如绝代艺术家所雕刻的圣母雕像般美丽，手腕则仿佛冰雕品般光滑细致。"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000239",
+        "paragraph_index": 238,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c002-s003",
+        "scene_index": 3,
+        "text": "完美如无机物质的美丽身躯中间，露出一对不算大的乳房，散发着一股奇妙的动物腥味，教人不寒而栗的魅力中蕴含着温暖。"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000240",
+        "paragraph_index": 239,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c002-s003",
+        "scene_index": 3,
+        "text": "然而，如此引人垂涎的光景，却霎时转为令人双眉紧蹙的诡异模样。"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000241",
+        "paragraph_index": 240,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c002-s003",
+        "scene_index": 3,
+        "text": "女孩缓缓张开嘴巴，闭起双眼朝天空发出长嚎声："
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000242",
+        "paragraph_index": 241,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c002-s003",
+        "scene_index": 3,
+        "text": "「嗷呜～～～～～～～」"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000243",
+        "paragraph_index": 242,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c002-s003",
+        "scene_index": 3,
+        "text": "莫大的恐惧袭上罗伦斯心头，仿佛突来的冷风「唰唰唰唰唰」窜入身体般。"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000244",
+        "paragraph_index": 243,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c002-s003",
+        "scene_index": 3,
+        "text": "长嚎是狼群或狗儿呼唤同伴，准备攻击人类的前奏曲。"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000245",
+        "paragraph_index": 244,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c002-s003",
+        "scene_index": 3,
+        "text": "罗伦斯惊觉那不像叶勒发出的模仿狼嚎声，而是真正的狼嚎。他吓得掉落口中的肉干，马儿也因惊吓而跳了起来。"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000246",
+        "paragraph_index": 245,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c002-s003",
+        "scene_index": 3,
+        "text": "然后才猛然惊觉。"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000247",
+        "paragraph_index": 246,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c002-s003",
+        "scene_index": 3,
+        "text": "笼罩在月光下的女孩身影，女孩头上的耳朵，那对动物的耳朵。"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000248",
+        "paragraph_index": 247,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c002-s003",
+        "scene_index": 3,
+        "text": "「……呼，真是好月色，有没有酒啊？」"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000249",
+        "paragraph_index": 248,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c002-s003",
+        "scene_index": 3,
+        "text": "女孩把狼嚎余音慢慢收回闭起的口中，压低下腭微笑着说。女孩的声音让罗伦斯回过神来。"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000250",
+        "paragraph_index": 249,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c002-s003",
+        "scene_index": 3,
+        "text": "眼前看到的既不是狼，也不是狗，只是有着类似他们耳朵的美丽女孩。"
+      }
+    ],
+    "dialogues": [
+      {
+        "dialogue_id": "volume_01-d000054",
+        "dialogue_index": 53,
+        "paragraph_id": "volume_01-c002-s003-p000242",
+        "paragraph_index": 241,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "嗷呜～～～～～～～",
+        "quote_text": "「嗷呜～～～～～～～」",
+        "char_start": 0,
+        "char_end": 11
+      },
+      {
+        "dialogue_id": "volume_01-d000055",
+        "dialogue_index": 54,
+        "paragraph_id": "volume_01-c002-s003-p000243",
+        "paragraph_index": 242,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "inline",
+        "text": "唰唰唰唰唰",
+        "quote_text": "「唰唰唰唰唰」",
+        "char_start": 20,
+        "char_end": 27
+      },
+      {
+        "dialogue_id": "volume_01-d000056",
+        "dialogue_index": 55,
+        "paragraph_id": "volume_01-c002-s003-p000248",
+        "paragraph_index": 247,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "……呼，真是好月色，有没有酒啊？",
+        "quote_text": "「……呼，真是好月色，有没有酒啊？」",
+        "char_start": 0,
+        "char_end": 18
+      }
+    ]
+  },
+  "near_context": {
+    "lookback_paragraphs": [
+      {
+        "paragraph_id": "volume_01-c002-s002-p000232",
+        "paragraph_index": 231,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c002-s002",
+        "scene_index": 2,
+        "text": "「嗯……啊……」"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s002-p000233",
+        "paragraph_index": 232,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c002-s002",
+        "scene_index": 2,
+        "text": "看女孩总算是醒了过来，罗伦斯打起精神，提足丹田之力开口说："
+      },
+      {
+        "paragraph_id": "volume_01-c002-s002-p000234",
+        "paragraph_index": 233,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c002-s002",
+        "scene_index": 2,
+        "text": "「喂！你擅自坐上别人的马车，想干什么？」"
+      }
+    ],
+    "lookahead_paragraphs": [
+      {
+        "paragraph_id": "volume_01-c002-s003-p000251",
+        "paragraph_index": 250,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c002-s003",
+        "scene_index": 3,
+        "text": "「没有。话说你究竟是谁？为何在我的马车上睡觉？该不会是因为不想被卖到城里，所以逃了出来吧？」"
+      }
+    ]
+  },
+  "memory": {
+    "previous_chunk_summary": {
+      "chunk_id": "volume_01-r000017",
+      "summary": "罗伦斯试图叫醒睡在自己马车上的神秘女孩，但女孩反应迟缓，仅以模糊的语气回应。罗伦斯因担心她可能是风尘女子而试图保持冷静，但女孩的美貌和魅力让他一度动摇。他最终抓住貂皮拉掉女孩的头部支撑，女孩发出不悦的声音。然而，罗伦斯在拉貂皮时发现女孩头上长着像小狗的耳朵，这一异常特征让他震惊并僵住。罗伦斯多次质问女孩为何擅自坐在他的马车上，但女孩仍未明确回应。这一场景揭示了女孩身份的神秘性，以及她与罗伦斯之间即将展开的互动。",
+      "active_entities": [
+        "char_v2_000004",
+        "mystery_v2_000014"
+      ],
+      "open_questions": [
+        "神秘女孩为何会出现在罗伦斯的马车上？",
+        "她头上的小狗耳朵意味着什么？",
+        "她是否与传说中的『赫萝』有关？"
+      ],
+      "evidence_refs": [
+        "volume_01-c002-s002-p000220",
+        "volume_01-c002-s002-p000221",
+        "volume_01-c002-s002-p000222",
+        "volume_01-c002-s002-p000223",
+        "volume_01-c002-s002-p000224",
+        "volume_01-c002-s002-p000225",
+        "volume_01-c002-s002-p000226",
+        "volume_01-c002-s002-p000227",
+        "volume_01-c002-s002-p000228",
+        "volume_01-c002-s002-p000229",
+        "volume_01-c002-s002-p000230",
+        "volume_01-c002-s002-p000231",
+        "volume_01-c002-s002-p000232",
+        "volume_01-c002-s002-p000233",
+        "volume_01-c002-s002-p000234",
+        "volume_01-d000049",
+        "volume_01-d000050",
+        "volume_01-d000051",
+        "volume_01-d000052",
+        "volume_01-d000053"
+      ]
+    },
+    "global_summary": "本卷继续描绘旅行商人罗伦斯在离开帕斯罗村后的旅途。罗伦斯独自一人，内心感到寂寥，对陪伴的渴望愈发强烈。他回忆起旅行商人之间流传的马儿变成人类的传说，起初嗤之以鼻，但最近也开始相信这种事可能发生。他后悔当初没有选择母马，因为听说母马若变成人类，后悔就来不及了。罗伦斯现在骑着一匹强壮的公马，内心却充满对陪伴的渴望。在旅途中，他来到河边露宿，为马儿喂食、饮水，并准备就寝。然而，当他掀开麻布准备整理货台时，发现有人已经捷足先登。罗伦斯感到震惊，不确定这是幻觉还是真实存在的人。他试图确认，但女孩依旧在原地。这一发现打破了他独自旅行的平静，也暗示了新的互动即将展开。罗伦斯对马儿的陪伴感到遗憾，也对传说中马儿变成人类的可能性产生怀疑。他选择早睡，但显然内心仍被孤独与未知所困扰。随后，罗伦斯试图叫醒睡在自己马车上的神秘女孩，但女孩反应迟缓，仅以模糊的语气回应。罗伦斯因担心她可能是风尘女子而试图保持冷静，但女孩的美貌和魅力让他一度动摇。他最终抓住貂皮拉掉女孩的头部支撑，女孩发出不悦的声音。然而，罗伦斯在拉貂皮时发现女孩头上长着像小狗的耳朵，这一异常特征让他震惊并僵住。罗伦斯多次质问女孩为何擅自坐在他的马车上，但女孩仍未明确回应。这一场景揭示了女孩身份的神秘性，以及她与罗伦斯之间即将展开的互动。",
+    "candidate_entities": [
+      {
+        "entity_id": "char_v2_000004",
+        "entity_type": "character",
+        "display_name": "罗伦斯",
+        "aliases": [],
+        "importance": "major",
+        "summary": "罗伦斯在旅途中来到河边，决定露宿于此。他为马儿喂食、饮水，并准备就寝。然而，当他掀开麻布准备整理货台时，发现有人已经捷足先登。罗伦斯感到震惊，不确定这是幻觉还是真实存在的人。他试图确认，但女孩依旧在原地。这一发现打破了他独自旅行的平静，也暗示了新的互动即将展开。罗伦斯对马儿的陪伴感到遗憾，也对传说中马儿变成人类的可能性产生怀疑。他选择早睡，但显然内心仍被孤…",
+        "latest_seen_chunk_id": "volume_01-r000016",
+        "dialogue_count": 23
+      },
+      {
+        "entity_id": "char_v2_000003",
+        "entity_type": "character",
+        "display_name": "赫萝",
+        "aliases": [],
+        "importance": "major",
+        "summary": "自称是丰收之神的美丽少女，拥有狼的耳朵和尾巴，与罗伦斯一同旅行。本 chunk 中未出现对话，但提到‘引以为傲的尾巴’，暗示其身份特征与村落的象征意义相关。叙述者闲来无事时专注于梳理尾巴的毛，进一步强化了赫萝的存在感。",
+        "latest_seen_chunk_id": "volume_01-r000007",
+        "dialogue_count": 3
+      },
+      {
+        "entity_id": "char_v2_000001",
+        "entity_type": "character",
+        "display_name": "支仓冻砂",
+        "aliases": [
+          "Isuna Hasekura"
+        ],
+        "importance": "major",
+        "summary": "小说的作者，出现在制作信息页的作者信息中。",
+        "latest_seen_chunk_id": "volume_01-r000003",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "char_v2_000002",
+        "entity_type": "character",
+        "display_name": "文仓十",
+        "aliases": [
+          "Jyuu Ayakura"
+        ],
+        "importance": "major",
+        "summary": "小说的插画师，出现在制作信息页的插画师信息中。",
+        "latest_seen_chunk_id": "volume_01-r000003",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "mystery_v2_000014",
+        "entity_type": "mystery",
+        "display_name": "神秘女孩",
+        "aliases": [],
+        "importance": "medium",
+        "summary": "一名拥有小狗耳朵的神秘女孩，出现在罗伦斯的马车上。她睡得香甜，对罗伦斯的叫醒反应迟缓，仅以模糊的语气回应。她的美貌和异常特征（小狗耳朵）引起罗伦斯的注意和震惊。她的出现打破了罗伦斯独自旅行的平静，暗示了新的互动即将展开。",
+        "latest_seen_chunk_id": "volume_01-r000017",
+        "dialogue_count": 4
+      },
+      {
+        "entity_id": "mystery_v2_000009",
+        "entity_type": "mystery",
+        "display_name": "叶勒",
+        "aliases": [],
+        "importance": "medium",
+        "summary": "帕斯罗村的麦田耕作者，今年雇用年轻人进行耕作。在罗伦斯的询问下被提及，并被指出位于另一块麦田中。农夫提到叶勒的田里可能有今年的『赫萝』，暗示其与村庄祭典或象征性人物有关联。本 chunk 中，叶勒成功割下最后一束麦子，成为村民欢呼的对象，进一步强化了其与『赫萝』的关联。叶勒对罗伦斯心存感激，因为罗伦斯曾帮助村里销售麦子。",
+        "latest_seen_chunk_id": "volume_01-r000014",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "mystery_v2_000010",
+        "entity_type": "mystery",
+        "display_name": "赫萝",
+        "aliases": [],
+        "importance": "medium",
+        "summary": "在村民的叫喊中被提及的象征性人物，与狼和丰收之神相关。村民相信『赫萝』会藏在最后一束麦子中，并进入割下最后一束麦子的人体内。本 chunk 中，村民多次提到『赫萝』，并将其与祭典活动联系在一起。『赫萝』的出现引发了村民的热烈反应，并成为祭典的核心象征。",
+        "latest_seen_chunk_id": "volume_01-r000014",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "mystery_v2_000012",
+        "entity_type": "mystery",
+        "display_name": "丰收之神",
+        "aliases": [],
+        "importance": "medium",
+        "summary": "被村民认为会附在人类身上、象征丰收的神秘存在。在祭典中，丰收之神被认为藏在最后一束麦子里，并会附身在收割者身上。村民试图抓住祂，以确保祂留在村庄的麦田中。虽然没人知道祂是否真实存在，但这个习俗已延续很久。",
+        "latest_seen_chunk_id": "volume_01-r000014",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "char_v2_000006",
+        "entity_type": "character",
+        "display_name": "亚伦多伯爵",
+        "aliases": [],
+        "importance": "medium",
+        "summary": "管理帕斯罗村一带的贵族，以喜欢下田耕作为特点。他每年赞助村庄的丰收祭典，并在祭典上饮酒欢唱，是村庄的重要支持者。",
+        "latest_seen_chunk_id": "volume_01-r000012",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "mystery_v2_000007",
+        "entity_type": "character",
+        "display_name": "修道院的骑士",
+        "aliases": [],
+        "importance": "medium",
+        "summary": "出现在修道院附近的骑士，身穿银色盔甲，态度傲慢。他质疑罗伦斯的来历，并表现出对修道院安全的警觉。虽然被描述为下级骑士，但其行为显示出一定的权威性。本 chunk 中，骑士与罗伦斯发生对话，进一步揭示了修道院对外来者的戒备态度。骑士起初犹豫，但最终接受了罗伦斯递来的蜂蜜糖，表现出一定的软化迹象。他猜测祭典是异教徒的活动，并批评异教徒为胆小鬼，但罗伦斯并未纠正…",
+        "latest_seen_chunk_id": "volume_01-r000011",
+        "dialogue_count": 8
+      },
+      {
+        "entity_id": "mystery_v2_000008",
+        "entity_type": "mystery",
+        "display_name": "异教徒",
+        "aliases": [],
+        "importance": "medium",
+        "summary": "被修道院的骑士提及的群体，被认为是秘密举办祭典的异端。骑士对异教徒表现出强烈的敌意，称其为胆小鬼。然而，罗伦斯指出这并非事实，真正的祭典只是普通的丰收庆典。异教徒的提及揭示了修道院与教会之间的紧张关系，以及对异端的敏感态度。",
+        "latest_seen_chunk_id": "volume_01-r000011",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "mystery_v2_000006",
+        "entity_type": "mystery",
+        "display_name": "修道院的修道士",
+        "aliases": [],
+        "importance": "medium",
+        "summary": "位于草原远处的修道院中的修道士群体，人数约二十多位，还有男仆。他们不与民间商人往来，而是通过独立通路调度物资。罗伦斯曾对修道院抱有商业期望，但因无法建立联系而失望。本 chunk 中，修道院的骑士与罗伦斯发生互动，表现出对外来者的戒备态度，进一步揭示了修道院对外封闭的立场。",
+        "latest_seen_chunk_id": "volume_01-r000009",
+        "dialogue_count": 2
+      }
+    ]
+  },
+  "rules": {
+    "speaker_statuses": [
+      "known",
+      "mystery",
+      "npc_group",
+      "review",
+      "unknown"
+    ],
+    "importance_levels": [
+      "minor",
+      "medium",
+      "major"
+    ],
+    "general_novel_only": true
+  },
+  "task_b_chunk_summary": {
+    "chunk_id": "volume_01-r000018",
+    "summary": "罗伦斯面对神秘女孩的异常举动感到震惊。女孩赤裸着身体站在货台上，拥有如艺术品般的美丽外表，但她的动物耳朵和狼嚎声让罗伦斯感到恐惧。女孩发出长嚎后，罗伦斯意识到那不是模仿，而是真正的狼嚎，吓得掉落口中的肉干，马儿也受惊跳起。随后，女孩微笑着询问是否有酒，罗伦斯才惊觉她并非野兽，而是拥有动物特征的美丽人类。这一场景揭示了女孩身份的神秘性，以及她与罗伦斯之间即将展开的互动。",
+    "active_entities": [
+      "char_v2_000004",
+      "mystery_v2_000014"
+    ],
+    "open_questions": [
+      "神秘女孩为何拥有动物耳朵？",
+      "她的狼嚎是否与传说中的『赫萝』有关？",
+      "她为何会出现在罗伦斯的马车上？"
+    ],
+    "evidence_refs": [
+      "volume_01-c002-s003-p000235",
+      "volume_01-c002-s003-p000236",
+      "volume_01-c002-s003-p000237",
+      "volume_01-c002-s003-p000238",
+      "volume_01-c002-s003-p000239",
+      "volume_01-c002-s003-p000240",
+      "volume_01-c002-s003-p000241",
+      "volume_01-c002-s003-p000242",
+      "volume_01-c002-s003-p000243",
+      "volume_01-c002-s003-p000244",
+      "volume_01-c002-s003-p000245",
+      "volume_01-c002-s003-p000246",
+      "volume_01-c002-s003-p000247",
+      "volume_01-c002-s003-p000248",
+      "volume_01-c002-s003-p000249",
+      "volume_01-c002-s003-p000250",
+      "volume_01-d000054",
+      "volume_01-d000055",
+      "volume_01-d000056"
+    ]
+  },
+  "task_d_entity_discovery": {
+    "new_entities": [
+      {
+        "entity_type": "character",
+        "display_name": "赫萝",
+        "aliases": [
+          "丰收之神"
+        ],
+        "importance": "major",
+        "summary": "拥有动物耳朵的神秘女孩，与罗伦斯在旅途中相遇。她展现出超凡的美貌和独特的魅力，同时具备动物般的特征，如狼嚎和耳朵。她的出现打破了罗伦斯独自旅行的平静，并引发一系列互动。赫萝的身份与传说中的『丰收之神』有关，暗示她可能是某种神灵的化身。",
+        "evidence_refs": [
+          "volume_01-c002-s003-p000235",
+          "volume_01-c002-s003-p000237",
+          "volume_01-c002-s003-p000241",
+          "volume_01-c002-s003-p000247",
+          "volume_01-c002-s003-p000250",
+          "volume_01-d000054",
+          "volume_01-d000056"
+        ],
+        "dialogue_count_delta": 2
+      }
+    ],
+    "merge_candidates": [
+      {
+        "source_entity_id": "mystery_v2_000014",
+        "target_entity_id": "char_v2_000003",
+        "reason": "神秘女孩与赫萝在特征（动物耳朵、狼嚎）和行为（与罗伦斯互动）上高度一致，且赫萝是已知角色，应合并以统一身份。",
+        "confidence": 0.92
+      }
+    ]
+  },
+  "task_e_entity_update": {
+    "updates": [
+      {
+        "entity_id": "mystery_v2_000014",
+        "summary": "神秘女孩展现出超凡的美貌和独特的魅力，同时具备动物般的特征，如狼嚎和耳朵。她的出现打破了罗伦斯独自旅行的平静，并引发一系列互动。她的身份与传说中的『丰收之神』有关，暗示她可能是某种神灵的化身。",
+        "importance": "major",
+        "dialogue_count_delta": 2,
+        "latest_seen_chunk_id": "volume_01-r000018",
+        "relationship_updates": [
+          {
+            "target_entity_id": "char_v2_000004",
+            "relation": "interlocutor",
+            "evidence_ref": "volume_01-d000056"
+          }
+        ],
+        "evidence_refs": [
+          "volume_01-c002-s003-p000235",
+          "volume_01-c002-s003-p000237",
+          "volume_01-c002-s003-p000241",
+          "volume_01-c002-s003-p000247",
+          "volume_01-c002-s003-p000250",
+          "volume_01-d000054",
+          "volume_01-d000056"
+        ]
+      },
+      {
+        "entity_id": "char_v2_000004",
+        "summary": "罗伦斯面对神秘女孩的异常举动感到震惊。女孩赤裸着身体站在货台上，拥有如艺术品般的美丽外表，但她的动物耳朵和狼嚎声让罗伦斯感到恐惧。这一场景揭示了女孩身份的神秘性，以及她与罗伦斯之间即将展开的互动。",
+        "importance": "major",
+        "dialogue_count_delta": 1,
+        "latest_seen_chunk_id": "volume_01-r000018",
+        "relationship_updates": [
+          {
+            "target_entity_id": "mystery_v2_000014",
+            "relation": "interlocutor",
+            "evidence_ref": "volume_01-d000056"
+          }
+        ],
+        "evidence_refs": [
+          "volume_01-c002-s003-p000235",
+          "volume_01-c002-s003-p000236",
+          "volume_01-c002-s003-p000237",
+          "volume_01-c002-s003-p000238",
+          "volume_01-c002-s003-p000239",
+          "volume_01-c002-s003-p000240",
+          "volume_01-c002-s003-p000241",
+          "volume_01-c002-s003-p000242",
+          "volume_01-c002-s003-p000243",
+          "volume_01-c002-s003-p000244",
+          "volume_01-c002-s003-p000245",
+          "volume_01-c002-s003-p000246",
+          "volume_01-c002-s003-p000247",
+          "volume_01-c002-s003-p000248",
+          "volume_01-c002-s003-p000249",
+          "volume_01-c002-s003-p000250"
+        ]
+      }
+    ]
+  },
+  "old_global_summary": "本卷继续描绘旅行商人罗伦斯在离开帕斯罗村后的旅途。罗伦斯独自一人，内心感到寂寥，对陪伴的渴望愈发强烈。他回忆起旅行商人之间流传的马儿变成人类的传说，起初嗤之以鼻，但最近也开始相信这种事可能发生。他后悔当初没有选择母马，因为听说母马若变成人类，后悔就来不及了。罗伦斯现在骑着一匹强壮的公马，内心却充满对陪伴的渴望。在旅途中，他来到河边露宿，为马儿喂食、饮水，并准备就寝。然而，当他掀开麻布准备整理货台时，发现有人已经捷足先登。罗伦斯感到震惊，不确定这是幻觉还是真实存在的人。他试图确认，但女孩依旧在原地。这一发现打破了他独自旅行的平静，也暗示了新的互动即将展开。罗伦斯对马儿的陪伴感到遗憾，也对传说中马儿变成人类的可能性产生怀疑。他选择早睡，但显然内心仍被孤独与未知所困扰。随后，罗伦斯试图叫醒睡在自己马车上的神秘女孩，但女孩反应迟缓，仅以模糊的语气回应。罗伦斯因担心她可能是风尘女子而试图保持冷静，但女孩的美貌和魅力让他一度动摇。他最终抓住貂皮拉掉女孩的头部支撑，女孩发出不悦的声音。然而，罗伦斯在拉貂皮时发现女孩头上长着像小狗的耳朵，这一异常特征让他震惊并僵住。罗伦斯多次质问女孩为何擅自坐在他的马车上，但女孩仍未明确回应。这一场景揭示了女孩身份的神秘性，以及她与罗伦斯之间即将展开的互动。"
+}

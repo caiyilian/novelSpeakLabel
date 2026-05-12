@@ -1,0 +1,103 @@
+{
+  "updates": [
+    {
+      "entity_id": "char_v2_000003",
+      "summary": "赫萝继续与罗伦斯讨论变身的问题，表现出一定的控制欲和试探性。她提出只变手臂而非全身，以减少体力消耗，并吞下麦穗作为变身的必要条件。赫萝强调自己不会看错人，相信罗伦斯会遵守承诺，但罗伦斯仍显得犹豫和不安。赫萝的举动表明她愿意部分展示真实形态，但不愿完全暴露，这进一步加深了她对自身身份的矛盾心理。",
+      "importance": "major",
+      "dialogue_count_delta": 9,
+      "latest_seen_chunk_id": "volume_01-r000027",
+      "relationship_updates": [
+        {
+          "target_entity_id": "char_v2_000004",
+          "relation": "interlocutor",
+          "evidence_ref": "volume_01-d000124"
+        },
+        {
+          "target_entity_id": "char_v2_000004",
+          "relation": "interlocutor",
+          "evidence_ref": "volume_01-d000125"
+        },
+        {
+          "target_entity_id": "char_v2_000004",
+          "relation": "interlocutor",
+          "evidence_ref": "volume_01-d000126"
+        },
+        {
+          "target_entity_id": "char_v2_000004",
+          "relation": "interlocutor",
+          "evidence_ref": "volume_01-d000128"
+        },
+        {
+          "target_entity_id": "char_v2_000004",
+          "relation": "interlocutor",
+          "evidence_ref": "volume_01-d000130"
+        },
+        {
+          "target_entity_id": "char_v2_000004",
+          "relation": "interlocutor",
+          "evidence_ref": "volume_01-d000131"
+        }
+      ],
+      "evidence_refs": [
+        "volume_01-d000124",
+        "volume_01-d000125",
+        "volume_01-d000126",
+        "volume_01-d000128",
+        "volume_01-d000130",
+        "volume_01-d000131"
+      ]
+    },
+    {
+      "entity_id": "char_v2_000004",
+      "summary": "罗伦斯在与赫萝的对话中表现出犹豫和不安，尽管他试图掩饰，但显然对赫萝的真面目仍存有疑虑。他询问麦穗的用途，并对赫萝的变身行为感到困惑。罗伦斯的态度显示出对未知事物的谨慎和理性，同时表现出对赫萝的关心。赫萝的简短回应让他更加怀疑，但并未直接否定她的说法。",
+      "importance": "major",
+      "dialogue_count_delta": 4,
+      "latest_seen_chunk_id": "volume_01-r000027",
+      "relationship_updates": [
+        {
+          "target_entity_id": "char_v2_000003",
+          "relation": "interlocutor",
+          "evidence_ref": "volume_01-d000127"
+        },
+        {
+          "target_entity_id": "char_v2_000003",
+          "relation": "interlocutor",
+          "evidence_ref": "volume_01-d000129"
+        },
+        {
+          "target_entity_id": "char_v2_000003",
+          "relation": "interlocutor",
+          "evidence_ref": "volume_01-d000132"
+        }
+      ],
+      "evidence_refs": [
+        "volume_01-d000127",
+        "volume_01-d000129",
+        "volume_01-d000132"
+      ]
+    },
+    {
+      "entity_id": "mystery_v2_000020",
+      "summary": "赫萝吞下麦穗，暗示这是变身的必要条件。然而，麦穗的具体作用和其与变身之间的关系尚未明确。罗伦斯对此感到困惑，询问其用途，但赫萝并未直接解释。麦穗的用途可能与她的变身机制或身份有关，是解开她神秘身份的关键线索之一。",
+      "importance": "medium",
+      "dialogue_count_delta": 0,
+      "latest_seen_chunk_id": "volume_01-r000027",
+      "relationship_updates": [
+        {
+          "target_entity_id": "char_v2_000003",
+          "relation": "related_to",
+          "evidence_ref": "volume_01-c002-s004-p000394"
+        },
+        {
+          "target_entity_id": "char_v2_000004",
+          "relation": "related_to",
+          "evidence_ref": "volume_01-d000132"
+        }
+      ],
+      "evidence_refs": [
+        "volume_01-c002-s004-p000394",
+        "volume_01-d000132"
+      ]
+    }
+  ]
+}

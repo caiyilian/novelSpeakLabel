@@ -1,0 +1,59 @@
+{
+  "updates": [
+    {
+      "entity_id": "mystery_v2_000014",
+      "summary": "神秘女孩展现出超凡的美貌和独特的魅力，同时具备动物般的特征，如狼嚎和耳朵。她的出现打破了罗伦斯独自旅行的平静，并引发一系列互动。她的身份与传说中的『丰收之神』有关，暗示她可能是某种神灵的化身。",
+      "importance": "major",
+      "dialogue_count_delta": 2,
+      "latest_seen_chunk_id": "volume_01-r000018",
+      "relationship_updates": [
+        {
+          "target_entity_id": "char_v2_000004",
+          "relation": "interlocutor",
+          "evidence_ref": "volume_01-d000056"
+        }
+      ],
+      "evidence_refs": [
+        "volume_01-c002-s003-p000235",
+        "volume_01-c002-s003-p000237",
+        "volume_01-c002-s003-p000241",
+        "volume_01-c002-s003-p000247",
+        "volume_01-c002-s003-p000250",
+        "volume_01-d000054",
+        "volume_01-d000056"
+      ]
+    },
+    {
+      "entity_id": "char_v2_000004",
+      "summary": "罗伦斯面对神秘女孩的异常举动感到震惊。女孩赤裸着身体站在货台上，拥有如艺术品般的美丽外表，但她的动物耳朵和狼嚎声让罗伦斯感到恐惧。这一场景揭示了女孩身份的神秘性，以及她与罗伦斯之间即将展开的互动。",
+      "importance": "major",
+      "dialogue_count_delta": 1,
+      "latest_seen_chunk_id": "volume_01-r000018",
+      "relationship_updates": [
+        {
+          "target_entity_id": "mystery_v2_000014",
+          "relation": "interlocutor",
+          "evidence_ref": "volume_01-d000056"
+        }
+      ],
+      "evidence_refs": [
+        "volume_01-c002-s003-p000235",
+        "volume_01-c002-s003-p000236",
+        "volume_01-c002-s003-p000237",
+        "volume_01-c002-s003-p000238",
+        "volume_01-c002-s003-p000239",
+        "volume_01-c002-s003-p000240",
+        "volume_01-c002-s003-p000241",
+        "volume_01-c002-s003-p000242",
+        "volume_01-c002-s003-p000243",
+        "volume_01-c002-s003-p000244",
+        "volume_01-c002-s003-p000245",
+        "volume_01-c002-s003-p000246",
+        "volume_01-c002-s003-p000247",
+        "volume_01-c002-s003-p000248",
+        "volume_01-c002-s003-p000249",
+        "volume_01-c002-s003-p000250"
+      ]
+    }
+  ]
+}

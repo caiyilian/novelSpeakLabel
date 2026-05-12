@@ -1,0 +1,46 @@
+```json
+{
+  "updates": [
+    {
+      "entity_id": "char_v2_000003",
+      "summary": "自称是丰收之神的美丽少女，拥有狼的耳朵和尾巴，与罗伦斯一同旅行。",
+      "importance": "major",
+      "dialogue_count_delta": 1,
+      "latest_seen_chunk_id": "volume_01-r000004",
+      "relationship_updates": [
+        {
+          "target_entity_id": "char_v2_000004",
+          "relation": "travel_companion",
+          "evidence_ref": "volume_01-c000-s003-p000035"
+        }
+      ],
+      "evidence_refs": [
+        "volume_01-c000-s003-p000031",
+        "volume_01-c000-s003-p000032",
+        "volume_01-c000-s003-p000033",
+        "volume_01-c000-s003-p000034",
+        "volume_01-c000-s003-p000035"
+      ]
+    },
+    {
+      "entity_id": "char_v2_000004",
+      "summary": "行商人，故事的主角之一，发现并收留了自称丰收之神的少女赫萝，决定与她一同旅行。",
+      "importance": "major",
+      "dialogue_count_delta": 0,
+      "latest_seen_chunk_id": "volume_01-r000004",
+      "relationship_updates": [
+        {
+          "target_entity_id": "char_v2_000003",
+          "relation": "travel_companion",
+          "evidence_ref": "volume_01-c000-s003-p000035"
+        }
+      ],
+      "evidence_refs": [
+        "volume_01-c000-s003-p000031",
+        "volume_01-c000-s003-p000034",
+        "volume_01-c000-s003-p000035"
+      ]
+    }
+  ]
+}
+```

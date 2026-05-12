@@ -1,0 +1,46 @@
+```json
+{
+  "repairs": [
+    {
+      "dialogue_id": "volume_01-d000002",
+      "previous_speaker_entity_id": "unknown",
+      "new_speaker_entity_id": "npc_group_v2_000002",
+      "speaker_display": "深山村落的村民",
+      "speaker_status": "npc_group",
+      "confidence": 0.8,
+      "reason": "对话内容为「这是最后一件了吧？」，结合上下文，这是罗伦斯与村民交易时的对话，推测为村民的提问。",
+      "stop_reason": "resolved"
+    },
+    {
+      "dialogue_id": "volume_01-d000003",
+      "previous_speaker_entity_id": "unknown",
+      "new_speaker_entity_id": "npc_group_v2_000002",
+      "speaker_display": "深山村落的村民",
+      "speaker_status": "npc_group",
+      "confidence": 0.8,
+      "reason": "对话内容为「嗯，这里确实有……七十件。多谢惠顾。」，结合上下文，这是村民对罗伦斯的回应。",
+      "stop_reason": "resolved"
+    },
+    {
+      "dialogue_id": "volume_01-d000004",
+      "previous_speaker_entity_id": "unknown",
+      "new_speaker_entity_id": "npc_group_v2_000002",
+      "speaker_display": "深山村落的村民",
+      "speaker_status": "npc_group",
+      "confidence": 0.8,
+      "reason": "对话内容为「不，我们才要谢谢你呢。只有罗伦斯先生你愿意到这深山里来，真是帮了我们大忙。」，明确提及罗伦斯，推测为村民的感谢。",
+      "stop_reason": "resolved"
+    },
+    {
+      "dialogue_id": "volume_01-d000005",
+      "previous_speaker_entity_id": "unknown",
+      "new_speaker_entity_id": "char_v2_000004",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "reason": "对话内容为「不过，我也因此拿到上等的皮草啊，我会再来的。」，结合上下文，这是罗伦斯对村民的回应，表达他满意交易并会再次光顾。",
+      "stop_reason": "resolved"
+    }
+  ]
+}
+```

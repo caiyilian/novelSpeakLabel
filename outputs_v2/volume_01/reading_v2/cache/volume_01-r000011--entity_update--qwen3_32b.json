@@ -1,0 +1,83 @@
+{
+  "updates": [
+    {
+      "entity_id": "char_v2_000004",
+      "summary": "二十五岁的自力更生旅行商人，已行商七年。本 chunk 中继续与修道院的骑士互动，通过递蜂蜜糖缓和气氛，并在对话中撒谎以维持表面友好。他指出骑士的猜测错误，认为祭典只是普通的丰收庆典，而非异教徒活动。罗伦斯推测修道院可能因地理位置未被教会正式纳入版图，因此对祭典特别敏感。本 chunk 中，罗伦斯展现出高超的交际技巧和商业头脑，同时隐藏真实信息，为后续行动保留空间。",
+      "importance": "major",
+      "dialogue_count_delta": 2,
+      "latest_seen_chunk_id": "volume_01-r000011",
+      "relationship_updates": [
+        {
+          "target_entity_id": "mystery_v2_000007",
+          "relation": "interlocutor",
+          "evidence_ref": "volume_01-c002-s001-p000126"
+        },
+        {
+          "target_entity_id": "mystery_v2_000008",
+          "relation": "observer",
+          "evidence_ref": "volume_01-c002-s001-p000136"
+        }
+      ],
+      "evidence_refs": [
+        "volume_01-c002-s001-p000124",
+        "volume_01-c002-s001-p000127",
+        "volume_01-c002-s001-p000133",
+        "volume_01-c002-s001-p000134",
+        "volume_01-c002-s001-p000135",
+        "volume_01-c002-s001-p000136",
+        "volume_01-c002-s001-p000137",
+        "volume_01-c002-s001-p000138"
+      ]
+    },
+    {
+      "entity_id": "mystery_v2_000007",
+      "summary": "出现在修道院附近的骑士，身穿银色盔甲，态度傲慢。他质疑罗伦斯的来历，并表现出对修道院安全的警觉。虽然被描述为下级骑士，但其行为显示出一定的权威性。本 chunk 中，骑士与罗伦斯发生对话，进一步揭示了修道院对外来者的戒备态度。骑士起初犹豫，但最终接受了罗伦斯递来的蜂蜜糖，表现出一定的软化迹象。他猜测祭典是异教徒的活动，并批评异教徒为胆小鬼，但罗伦斯并未纠正他的误解。",
+      "importance": "medium",
+      "dialogue_count_delta": 2,
+      "latest_seen_chunk_id": "volume_01-r000011",
+      "relationship_updates": [
+        {
+          "target_entity_id": "char_v2_000004",
+          "relation": "interlocutor",
+          "evidence_ref": "volume_01-c002-s001-p000126"
+        },
+        {
+          "target_entity_id": "mystery_v2_000008",
+          "relation": "adversary",
+          "evidence_ref": "volume_01-c002-s001-p000128"
+        }
+      ],
+      "evidence_refs": [
+        "volume_01-c002-s001-p000124",
+        "volume_01-c002-s001-p000126",
+        "volume_01-c002-s001-p000128",
+        "volume_01-c002-s001-p000130"
+      ]
+    },
+    {
+      "entity_id": "mystery_v2_000008",
+      "summary": "被修道院的骑士提及的群体，被认为是秘密举办祭典的异端。骑士对异教徒表现出强烈的敌意，称其为胆小鬼。然而，罗伦斯指出这并非事实，真正的祭典只是普通的丰收庆典。异教徒的提及揭示了修道院与教会之间的紧张关系，以及对异端的敏感态度。",
+      "importance": "medium",
+      "dialogue_count_delta": 0,
+      "latest_seen_chunk_id": "volume_01-r000011",
+      "relationship_updates": [
+        {
+          "target_entity_id": "mystery_v2_000007",
+          "relation": "adversary",
+          "evidence_ref": "volume_01-c002-s001-p000128"
+        },
+        {
+          "target_entity_id": "char_v2_000004",
+          "relation": "observer",
+          "evidence_ref": "volume_01-c002-s001-p000136"
+        }
+      ],
+      "evidence_refs": [
+        "volume_01-c002-s001-p000126",
+        "volume_01-c002-s001-p000128",
+        "volume_01-c002-s001-p000136",
+        "volume_01-c002-s001-p000137"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000026",
+      "speaker_entity_id": "char_v2_000004",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "罗伦斯朝正在帕斯罗村的麦田一角，把麦子往马车上堆的农夫打招呼。"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000027",
+      "speaker_entity_id": "mystery_v2_000009",
+      "speaker_display": "农夫",
+      "speaker_status": "unknown",
+      "confidence": 0.7,
+      "evidence": [
+        "罗伦斯朝正在帕斯罗村的麦田一角，把麦子往马车上堆的农夫打招呼。"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000028",
+      "speaker_entity_id": "mystery_v2_000009",
+      "speaker_display": "农夫",
+      "speaker_status": "unknown",
+      "confidence": 0.7,
+      "evidence": [
+        "罗伦斯朝正在帕斯罗村的麦田一角，把麦子往马车上堆的农夫打招呼。"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000029",
+      "speaker_entity_id": "char_v2_000004",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "罗伦斯朝正在帕斯罗村的麦田一角，把麦子往马车上堆的农夫打招呼。"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000030",
+      "speaker_entity_id": "mystery_v2_000009",
+      "speaker_display": "农夫",
+      "speaker_status": "unknown",
+      "confidence": 0.7,
+      "evidence": [
+        "罗伦斯朝正在帕斯罗村的麦田一角，把麦子往马车上堆的农夫打招呼。"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    }
+  ],
+  "chunk_notes": "本 chunk 中的对话主要发生在罗伦斯与农夫之间。罗伦斯的对话可以明确识别，而农夫的对话由于未提及具体身份，且未在记忆中出现，因此标记为 unknown。未发现重要角色被误判的可能，因此无需 review。"
+}
+```

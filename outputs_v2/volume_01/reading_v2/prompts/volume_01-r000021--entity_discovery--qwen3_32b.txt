@@ -1,0 +1,776 @@
+你是通用小说实体发现助手。任务：从当前 chunk 和初标注结果中提出新增实体候选，但不要直接修改角色库。
+建 character：有明确名字、稳定身份或多次影响剧情。建 mystery：可追踪但暂未命名的个体。建 npc_group：无名群体、路人、临时职能角色、围观者或低重要度群体。
+只返回 JSON，格式：{"new_entities":[{"entity_type":"character|mystery|npc_group","display_name":"...","aliases":[],"importance":"minor|medium|major","summary":"...","evidence_refs":[],"dialogue_count_delta":0}],"merge_candidates":[{"source_entity_id":"...","target_entity_id":"...","reason":"...","confidence":0.0}]}
+输入 JSON：
+{
+  "volume": {
+    "volume_id": "volume_01",
+    "volume": 1,
+    "title": ""
+  },
+  "chunk": {
+    "chunk_id": "volume_01-r000021",
+    "chunk_index": 20,
+    "chapter_id": "volume_01-c002",
+    "chapter_title": "第一幕",
+    "scene_id": "volume_01-c002-s003",
+    "paragraphs": [
+      {
+        "paragraph_id": "volume_01-c002-s003-p000283",
+        "paragraph_index": 282,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c002-s003",
+        "scene_index": 3,
+        "text": "就是刚刚去过的帕斯罗村的丰收之神。"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000284",
+        "paragraph_index": 283,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c002-s003",
+        "scene_index": 3,
+        "text": "「真巧，我也认识一个叫做赫萝的人。」"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000285",
+        "paragraph_index": 284,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c002-s003",
+        "scene_index": 3,
+        "text": "这女孩好大胆，竟敢冒充神的名字。不过，这也表示女孩应是帕斯罗村民。说不定她是因为那耳朵及尖牙，而被父母藏在家里养大的。这么一想，就能够理解她刚刚说逃跑成功的意思了。"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000286",
+        "paragraph_index": 285,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c002-s003",
+        "scene_index": 3,
+        "text": "罗伦斯时有耳闻这种不正常的小孩出生的事。人们会说这些小孩被恶魔附身，出生时有恶魔或妖精附在他们身上。如果他们被教会发现的话，很可能被冠上崇拜恶魔的罪名，整个家族都会毫不留情地处以火刑。因此，这样不正常的小孩不是被丢弃在山里，就是一辈子躲在家里。"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000287",
+        "paragraph_index": 286,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c002-s003",
+        "scene_index": 3,
+        "text": "罗伦斯是第一次遇见恶魔附身者，他还以为恶魔附身者会是丑陋至极的妖怪，然而，就女孩的外型看来，要说她是女神都不奇怪。"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000288",
+        "paragraph_index": 287,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c002-s003",
+        "scene_index": 3,
+        "text": "「哟，汝认识和咱一样叫做赫萝的人？那家伙是哪儿的人啊？」"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000289",
+        "paragraph_index": 288,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c002-s003",
+        "scene_index": 3,
+        "text": "口中不停咀嚼肉干的女孩赫萝，怎么看都不像在骗人。不过，罗伦斯觉得长时间被关在家里，使得她深信自己是神也不无可能。"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000290",
+        "paragraph_index": 289,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c002-s003",
+        "scene_index": 3,
+        "text": "「那是这附近的丰收之神的名字。你是神吗？」"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000291",
+        "paragraph_index": 290,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c002-s003",
+        "scene_index": 3,
+        "text": "听到罗伦斯这么说，赫萝在月光笼罩下，一瞬间露出困扰的表情，随即又化为笑脸。"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000292",
+        "paragraph_index": 291,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c002-s003",
+        "scene_index": 3,
+        "text": "「虽然咱长久以来被尊为神，且被束缚在这块土地上，但咱根本不是什么伟大的神。咱就是咱，咱是赫萝。」"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000293",
+        "paragraph_index": 292,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c002-s003",
+        "scene_index": 3,
+        "text": "罗伦斯推测女孩出生后就一直被关在家里，这么一想，不禁有些怜悯起女孩来了。"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000294",
+        "paragraph_index": 293,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c002-s003",
+        "scene_index": 3,
+        "text": "「长久是说打从出生开始吗？」"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000295",
+        "paragraph_index": 294,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c002-s003",
+        "scene_index": 3,
+        "text": "「不。」"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000296",
+        "paragraph_index": 295,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c002-s003",
+        "scene_index": 3,
+        "text": "女孩的回答让罗伦斯感到意外。"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000297",
+        "paragraph_index": 296,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c002-s003",
+        "scene_index": 3,
+        "text": "「咱的出生地是在更遥远的北方大地。」"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000298",
+        "paragraph_index": 297,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c002-s003",
+        "scene_index": 3,
+        "text": "「北方？」"
+      }
+    ],
+    "dialogues": [
+      {
+        "dialogue_id": "volume_01-d000075",
+        "dialogue_index": 74,
+        "paragraph_id": "volume_01-c002-s003-p000284",
+        "paragraph_index": 283,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "真巧，我也认识一个叫做赫萝的人。",
+        "quote_text": "「真巧，我也认识一个叫做赫萝的人。」",
+        "char_start": 0,
+        "char_end": 18
+      },
+      {
+        "dialogue_id": "volume_01-d000076",
+        "dialogue_index": 75,
+        "paragraph_id": "volume_01-c002-s003-p000288",
+        "paragraph_index": 287,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "哟，汝认识和咱一样叫做赫萝的人？那家伙是哪儿的人啊？",
+        "quote_text": "「哟，汝认识和咱一样叫做赫萝的人？那家伙是哪儿的人啊？」",
+        "char_start": 0,
+        "char_end": 28
+      },
+      {
+        "dialogue_id": "volume_01-d000077",
+        "dialogue_index": 76,
+        "paragraph_id": "volume_01-c002-s003-p000290",
+        "paragraph_index": 289,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "那是这附近的丰收之神的名字。你是神吗？",
+        "quote_text": "「那是这附近的丰收之神的名字。你是神吗？」",
+        "char_start": 0,
+        "char_end": 21
+      },
+      {
+        "dialogue_id": "volume_01-d000078",
+        "dialogue_index": 77,
+        "paragraph_id": "volume_01-c002-s003-p000292",
+        "paragraph_index": 291,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "虽然咱长久以来被尊为神，且被束缚在这块土地上，但咱根本不是什么伟大的神。咱就是咱，咱是赫萝。",
+        "quote_text": "「虽然咱长久以来被尊为神，且被束缚在这块土地上，但咱根本不是什么伟大的神。咱就是咱，咱是赫萝。」",
+        "char_start": 0,
+        "char_end": 48
+      },
+      {
+        "dialogue_id": "volume_01-d000079",
+        "dialogue_index": 78,
+        "paragraph_id": "volume_01-c002-s003-p000294",
+        "paragraph_index": 293,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "长久是说打从出生开始吗？",
+        "quote_text": "「长久是说打从出生开始吗？」",
+        "char_start": 0,
+        "char_end": 14
+      },
+      {
+        "dialogue_id": "volume_01-d000080",
+        "dialogue_index": 79,
+        "paragraph_id": "volume_01-c002-s003-p000295",
+        "paragraph_index": 294,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "不。",
+        "quote_text": "「不。」",
+        "char_start": 0,
+        "char_end": 4
+      },
+      {
+        "dialogue_id": "volume_01-d000081",
+        "dialogue_index": 80,
+        "paragraph_id": "volume_01-c002-s003-p000297",
+        "paragraph_index": 296,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "咱的出生地是在更遥远的北方大地。",
+        "quote_text": "「咱的出生地是在更遥远的北方大地。」",
+        "char_start": 0,
+        "char_end": 18
+      },
+      {
+        "dialogue_id": "volume_01-d000082",
+        "dialogue_index": 81,
+        "paragraph_id": "volume_01-c002-s003-p000298",
+        "paragraph_index": 297,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "北方？",
+        "quote_text": "「北方？」",
+        "char_start": 0,
+        "char_end": 5
+      }
+    ]
+  },
+  "near_context": {
+    "lookback_paragraphs": [
+      {
+        "paragraph_id": "volume_01-c002-s003-p000280",
+        "paragraph_index": 279,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c002-s003",
+        "scene_index": 3,
+        "text": "「赫萝？」"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000281",
+        "paragraph_index": 280,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c002-s003",
+        "scene_index": 3,
+        "text": "「嗯，赫萝。好名字呗？」"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000282",
+        "paragraph_index": 281,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c002-s003",
+        "scene_index": 3,
+        "text": "罗伦斯行遍各地，只在一个地方听过这个名字。"
+      }
+    ],
+    "lookahead_paragraphs": [
+      {
+        "paragraph_id": "volume_01-c002-s003-p000299",
+        "paragraph_index": 298,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c002-s003",
+        "scene_index": 3,
+        "text": "「嗯。那儿夏季短暂，冬季漫长，是个银白色的世界呢。」"
+      }
+    ]
+  },
+  "memory": {
+    "previous_chunk_summary": {
+      "chunk_id": "volume_01-r000020",
+      "summary": "罗伦斯拔出短剑质问神秘女孩的身份，女孩则以轻松的态度回应，自称「赫萝」，并表示自己「好久没有以这种模样出现了」。她提到自己「逃跑成功了」，似乎对罗伦斯的威胁毫不在意。罗伦斯虽然对「赫萝」这个名字感到熟悉，但仍未完全理解她的身份。女孩表现出天真无邪的笑容，让罗伦斯放下短剑。她一边打量自己，一边继续与罗伦斯互动，展现出神秘又可爱的特质。罗伦斯对「赫萝」这个名字的来源感到困惑，并试图确认其真实性。这一场景进一步揭示了女孩与「赫萝」的关联，以及她与罗伦斯之间逐渐展开的互动。",
+      "active_entities": [
+        "char_v2_000004",
+        "char_v2_000003"
+      ],
+      "open_questions": [
+        "赫萝的真实身份是什么？",
+        "她为何会以「这种模样」出现？",
+        "她提到的「逃跑成功」具体指什么？",
+        "罗伦斯为何对「赫萝」这个名字感到熟悉？"
+      ],
+      "evidence_refs": [
+        "volume_01-c002-s003-p000271",
+        "volume_01-c002-s003-p000272",
+        "volume_01-c002-s003-p000273",
+        "volume_01-c002-s003-p000275",
+        "volume_01-c002-s003-p000278",
+        "volume_01-c002-s003-p000280",
+        "volume_01-c002-s003-p000281",
+        "volume_01-d000068",
+        "volume_01-d000069",
+        "volume_01-d000071",
+        "volume_01-d000072",
+        "volume_01-d000073",
+        "volume_01-d000074"
+      ]
+    },
+    "global_summary": "本卷继续描绘旅行商人罗伦斯在离开帕斯罗村后的旅途。罗伦斯独自一人，内心感到寂寥，对陪伴的渴望愈发强烈。他回忆起旅行商人之间流传的马儿变成人类的传说，起初嗤之以鼻，但最近也开始相信这种事可能发生。他后悔当初没有选择母马，因为听说母马若变成人类，后悔就来不及了。罗伦斯现在骑着一匹强壮的公马，内心却充满对陪伴的渴望。在旅途中，他来到河边露宿，为马儿喂食、饮水，并准备就寝。然而，当他掀开麻布准备整理货台时，发现有人已经捷足先登。罗伦斯感到震惊，不确定这是幻觉还是真实存在的人。他试图确认，但女孩依旧在原地。这一发现打破了他独自旅行的平静，也暗示了新的互动即将展开。罗伦斯对马儿的陪伴感到遗憾，也对传说中马儿变成人类的可能性产生怀疑。他选择早睡，但显然内心仍被孤独与未知所困扰。随后，罗伦斯试图叫醒睡在自己马车上的神秘女孩，但女孩反应迟缓，仅以模糊的语气回应。罗伦斯因担心她可能是风尘女子而试图保持冷静，但女孩的美貌和魅力让他一度动摇。他最终抓住貂皮拉掉女孩的头部支撑，女孩发出不悦的声音。然而，罗伦斯在拉貂皮时发现女孩头上长着像小狗的耳朵，这一异常特征让他震惊并僵住。罗伦斯多次质问女孩为何擅自坐在他的马车上，但女孩仍未明确回应。这一场景揭示了女孩身份的神秘性，以及她与罗伦斯之间即将展开的互动。罗伦斯面对神秘女孩的异常举动感到震惊。女孩赤裸着身体站在货台上，拥有如艺术品般的美丽外表，但她的动物耳朵和狼嚎声让罗伦斯感到恐惧。女孩发出长嚎后，罗伦斯意识到那不是模仿，而是真正的狼嚎，吓得掉落口中的肉干，马儿也受惊跳起。随后，女孩微笑着询问是否有酒，罗伦斯才惊觉她并非野兽，而是拥有动物特征的美丽人类。这一场景进一步揭示了女孩身份的神秘性，以及她与罗伦斯之间即将展开的互动。罗伦斯继续质问神秘女孩为何出现在他的马车上，并怀疑她是否是妖怪或恶魔。女孩则以轻松的态度回应，嘲笑罗伦斯的猜测，并表现出对食物和酒的关心。她吃掉了罗伦斯咬过的肉干，露出锐利的尖牙，但并未表现出敌意。罗伦斯因此更加警惕，甚至摸出腰间的银短剑，因为银是能驱逐妖魔的金属。然而，女孩的反应只是大笑，似乎对罗伦斯的威胁毫不在意。她的行为和…",
+    "candidate_entities": [
+      {
+        "entity_id": "char_v2_000003",
+        "entity_type": "character",
+        "display_name": "赫萝",
+        "aliases": [
+          "丰收之神"
+        ],
+        "importance": "major",
+        "summary": "赫萝在本 chunk 中正式自称「赫萝」，并提到自己「好久没有以这种模样出现了」。她展现出天真无邪的笑容，同时具备动物特征（如耳朵和尖牙），并表现出与「丰收之神」的关联。她的出现打破了罗伦斯独自旅行的平静，并引发一系列互动。赫萝的身份与传说中的「丰收之神」有关，暗示她可能是某种神灵的化身。",
+        "latest_seen_chunk_id": "volume_01-r000020",
+        "dialogue_count": 19
+      },
+      {
+        "entity_id": "char_v2_000004",
+        "entity_type": "character",
+        "display_name": "罗伦斯",
+        "aliases": [],
+        "importance": "major",
+        "summary": "罗伦斯拔出短剑质问神秘女孩的身份，女孩则以轻松的态度回应，自称「赫萝」，并表示自己「好久没有以这种模样出现了」。罗伦斯虽然对「赫萝」这个名字感到熟悉，但仍未完全理解她的身份。这一场景进一步揭示了女孩与「赫萝」的关联，以及她与罗伦斯之间逐渐展开的互动。",
+        "latest_seen_chunk_id": "volume_01-r000020",
+        "dialogue_count": 27
+      },
+      {
+        "entity_id": "mystery_v2_000014",
+        "entity_type": "mystery",
+        "display_name": "神秘女孩",
+        "aliases": [],
+        "importance": "major",
+        "summary": "神秘女孩在本 chunk 中正式自称「赫萝」，并明确与「丰收之神」的关联。她的身份已与「赫萝」实体合并，因此此实体将被移除。",
+        "latest_seen_chunk_id": "volume_01-r000020",
+        "dialogue_count": 9
+      },
+      {
+        "entity_id": "char_v2_000001",
+        "entity_type": "character",
+        "display_name": "支仓冻砂",
+        "aliases": [
+          "Isuna Hasekura"
+        ],
+        "importance": "major",
+        "summary": "小说的作者，出现在制作信息页的作者信息中。",
+        "latest_seen_chunk_id": "volume_01-r000003",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "char_v2_000002",
+        "entity_type": "character",
+        "display_name": "文仓十",
+        "aliases": [
+          "Jyuu Ayakura"
+        ],
+        "importance": "major",
+        "summary": "小说的插画师，出现在制作信息页的插画师信息中。",
+        "latest_seen_chunk_id": "volume_01-r000003",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "mystery_v2_000009",
+        "entity_type": "mystery",
+        "display_name": "叶勒",
+        "aliases": [],
+        "importance": "medium",
+        "summary": "帕斯罗村的麦田耕作者，今年雇用年轻人进行耕作。在罗伦斯的询问下被提及，并被指出位于另一块麦田中。农夫提到叶勒的田里可能有今年的『赫萝』，暗示其与村庄祭典或象征性人物有关联。本 chunk 中，叶勒成功割下最后一束麦子，成为村民欢呼的对象，进一步强化了其与『赫萝』的关联。叶勒对罗伦斯心存感激，因为罗伦斯曾帮助村里销售麦子。",
+        "latest_seen_chunk_id": "volume_01-r000014",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "mystery_v2_000010",
+        "entity_type": "mystery",
+        "display_name": "赫萝",
+        "aliases": [],
+        "importance": "medium",
+        "summary": "在村民的叫喊中被提及的象征性人物，与狼和丰收之神相关。村民相信『赫萝』会藏在最后一束麦子中，并进入割下最后一束麦子的人体内。本 chunk 中，村民多次提到『赫萝』，并将其与祭典活动联系在一起。『赫萝』的出现引发了村民的热烈反应，并成为祭典的核心象征。",
+        "latest_seen_chunk_id": "volume_01-r000014",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "mystery_v2_000012",
+        "entity_type": "mystery",
+        "display_name": "丰收之神",
+        "aliases": [],
+        "importance": "medium",
+        "summary": "被村民认为会附在人类身上、象征丰收的神秘存在。在祭典中，丰收之神被认为藏在最后一束麦子里，并会附身在收割者身上。村民试图抓住祂，以确保祂留在村庄的麦田中。虽然没人知道祂是否真实存在，但这个习俗已延续很久。",
+        "latest_seen_chunk_id": "volume_01-r000014",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "char_v2_000006",
+        "entity_type": "character",
+        "display_name": "亚伦多伯爵",
+        "aliases": [],
+        "importance": "medium",
+        "summary": "管理帕斯罗村一带的贵族，以喜欢下田耕作为特点。他每年赞助村庄的丰收祭典，并在祭典上饮酒欢唱，是村庄的重要支持者。",
+        "latest_seen_chunk_id": "volume_01-r000012",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "mystery_v2_000007",
+        "entity_type": "character",
+        "display_name": "修道院的骑士",
+        "aliases": [],
+        "importance": "medium",
+        "summary": "出现在修道院附近的骑士，身穿银色盔甲，态度傲慢。他质疑罗伦斯的来历，并表现出对修道院安全的警觉。虽然被描述为下级骑士，但其行为显示出一定的权威性。本 chunk 中，骑士与罗伦斯发生对话，进一步揭示了修道院对外来者的戒备态度。骑士起初犹豫，但最终接受了罗伦斯递来的蜂蜜糖，表现出一定的软化迹象。他猜测祭典是异教徒的活动，并批评异教徒为胆小鬼，但罗伦斯并未纠正…",
+        "latest_seen_chunk_id": "volume_01-r000011",
+        "dialogue_count": 8
+      },
+      {
+        "entity_id": "mystery_v2_000008",
+        "entity_type": "mystery",
+        "display_name": "异教徒",
+        "aliases": [],
+        "importance": "medium",
+        "summary": "被修道院的骑士提及的群体，被认为是秘密举办祭典的异端。骑士对异教徒表现出强烈的敌意，称其为胆小鬼。然而，罗伦斯指出这并非事实，真正的祭典只是普通的丰收庆典。异教徒的提及揭示了修道院与教会之间的紧张关系，以及对异端的敏感态度。",
+        "latest_seen_chunk_id": "volume_01-r000011",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "mystery_v2_000006",
+        "entity_type": "mystery",
+        "display_name": "修道院的修道士",
+        "aliases": [],
+        "importance": "medium",
+        "summary": "位于草原远处的修道院中的修道士群体，人数约二十多位，还有男仆。他们不与民间商人往来，而是通过独立通路调度物资。罗伦斯曾对修道院抱有商业期望，但因无法建立联系而失望。本 chunk 中，修道院的骑士与罗伦斯发生互动，表现出对外来者的戒备态度，进一步揭示了修道院对外封闭的立场。",
+        "latest_seen_chunk_id": "volume_01-r000009",
+        "dialogue_count": 2
+      }
+    ]
+  },
+  "rules": {
+    "speaker_statuses": [
+      "known",
+      "mystery",
+      "npc_group",
+      "review",
+      "unknown"
+    ],
+    "importance_levels": [
+      "minor",
+      "medium",
+      "major"
+    ],
+    "general_novel_only": true
+  },
+  "task_a_annotations": [
+    {
+      "dialogue_id": "volume_01-d000075",
+      "dialogue_index": 74,
+      "volume_id": "",
+      "chapter_id": "",
+      "chapter_index": 0,
+      "chapter_title": "",
+      "scene_id": "",
+      "scene_index": 0,
+      "paragraph_id": "volume_01-c002-s003-p000284",
+      "paragraph_index": 283,
+      "local_dialogue_index": 1,
+      "text": "真巧，我也认识一个叫做赫萝的人。",
+      "quote_text": "「真巧，我也认识一个叫做赫萝的人。」",
+      "dialogue_kind": "standalone",
+      "char_start": 0,
+      "char_end": 18,
+      "speaker_entity_id": "char_v2_000004",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "对话内容为罗伦斯对赫萝的回应，符合其角色身份"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false,
+      "review_reason": "",
+      "request_id": "volume_01-r000021--annotation--qwen3_32b"
+    },
+    {
+      "dialogue_id": "volume_01-d000076",
+      "dialogue_index": 75,
+      "volume_id": "",
+      "chapter_id": "",
+      "chapter_index": 0,
+      "chapter_title": "",
+      "scene_id": "",
+      "scene_index": 0,
+      "paragraph_id": "volume_01-c002-s003-p000288",
+      "paragraph_index": 287,
+      "local_dialogue_index": 1,
+      "text": "哟，汝认识和咱一样叫做赫萝的人？那家伙是哪儿的人啊？",
+      "quote_text": "「哟，汝认识和咱一样叫做赫萝的人？那家伙是哪儿的人啊？」",
+      "dialogue_kind": "standalone",
+      "char_start": 0,
+      "char_end": 28,
+      "speaker_entity_id": "char_v2_000003",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "对话中自称「咱」，与赫萝的自称一致"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false,
+      "review_reason": "",
+      "request_id": "volume_01-r000021--annotation--qwen3_32b"
+    },
+    {
+      "dialogue_id": "volume_01-d000077",
+      "dialogue_index": 76,
+      "volume_id": "",
+      "chapter_id": "",
+      "chapter_index": 0,
+      "chapter_title": "",
+      "scene_id": "",
+      "scene_index": 0,
+      "paragraph_id": "volume_01-c002-s003-p000290",
+      "paragraph_index": 289,
+      "local_dialogue_index": 1,
+      "text": "那是这附近的丰收之神的名字。你是神吗？",
+      "quote_text": "「那是这附近的丰收之神的名字。你是神吗？」",
+      "dialogue_kind": "standalone",
+      "char_start": 0,
+      "char_end": 21,
+      "speaker_entity_id": "char_v2_000004",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "对话内容为罗伦斯对赫萝的提问，符合其角色身份"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false,
+      "review_reason": "",
+      "request_id": "volume_01-r000021--annotation--qwen3_32b"
+    },
+    {
+      "dialogue_id": "volume_01-d000078",
+      "dialogue_index": 77,
+      "volume_id": "",
+      "chapter_id": "",
+      "chapter_index": 0,
+      "chapter_title": "",
+      "scene_id": "",
+      "scene_index": 0,
+      "paragraph_id": "volume_01-c002-s003-p000292",
+      "paragraph_index": 291,
+      "local_dialogue_index": 1,
+      "text": "虽然咱长久以来被尊为神，且被束缚在这块土地上，但咱根本不是什么伟大的神。咱就是咱，咱是赫萝。",
+      "quote_text": "「虽然咱长久以来被尊为神，且被束缚在这块土地上，但咱根本不是什么伟大的神。咱就是咱，咱是赫萝。」",
+      "dialogue_kind": "standalone",
+      "char_start": 0,
+      "char_end": 48,
+      "speaker_entity_id": "char_v2_000003",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "对话中自称「咱」，与赫萝的自称一致"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false,
+      "review_reason": "",
+      "request_id": "volume_01-r000021--annotation--qwen3_32b"
+    },
+    {
+      "dialogue_id": "volume_01-d000079",
+      "dialogue_index": 78,
+      "volume_id": "",
+      "chapter_id": "",
+      "chapter_index": 0,
+      "chapter_title": "",
+      "scene_id": "",
+      "scene_index": 0,
+      "paragraph_id": "volume_01-c002-s003-p000294",
+      "paragraph_index": 293,
+      "local_dialogue_index": 1,
+      "text": "长久是说打从出生开始吗？",
+      "quote_text": "「长久是说打从出生开始吗？」",
+      "dialogue_kind": "standalone",
+      "char_start": 0,
+      "char_end": 14,
+      "speaker_entity_id": "char_v2_000004",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "对话内容为罗伦斯对赫萝的提问，符合其角色身份"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false,
+      "review_reason": "",
+      "request_id": "volume_01-r000021--annotation--qwen3_32b"
+    },
+    {
+      "dialogue_id": "volume_01-d000080",
+      "dialogue_index": 79,
+      "volume_id": "",
+      "chapter_id": "",
+      "chapter_index": 0,
+      "chapter_title": "",
+      "scene_id": "",
+      "scene_index": 0,
+      "paragraph_id": "volume_01-c002-s003-p000295",
+      "paragraph_index": 294,
+      "local_dialogue_index": 1,
+      "text": "不。",
+      "quote_text": "「不。」",
+      "dialogue_kind": "standalone",
+      "char_start": 0,
+      "char_end": 4,
+      "speaker_entity_id": "char_v2_000003",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "对话中自称「咱」，与赫萝的自称一致"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false,
+      "review_reason": "",
+      "request_id": "volume_01-r000021--annotation--qwen3_32b"
+    },
+    {
+      "dialogue_id": "volume_01-d000081",
+      "dialogue_index": 80,
+      "volume_id": "",
+      "chapter_id": "",
+      "chapter_index": 0,
+      "chapter_title": "",
+      "scene_id": "",
+      "scene_index": 0,
+      "paragraph_id": "volume_01-c002-s003-p000297",
+      "paragraph_index": 296,
+      "local_dialogue_index": 1,
+      "text": "咱的出生地是在更遥远的北方大地。",
+      "quote_text": "「咱的出生地是在更遥远的北方大地。」",
+      "dialogue_kind": "standalone",
+      "char_start": 0,
+      "char_end": 18,
+      "speaker_entity_id": "char_v2_000003",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "对话中自称「咱」，与赫萝的自称一致"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false,
+      "review_reason": "",
+      "request_id": "volume_01-r000021--annotation--qwen3_32b"
+    },
+    {
+      "dialogue_id": "volume_01-d000082",
+      "dialogue_index": 81,
+      "volume_id": "",
+      "chapter_id": "",
+      "chapter_index": 0,
+      "chapter_title": "",
+      "scene_id": "",
+      "scene_index": 0,
+      "paragraph_id": "volume_01-c002-s003-p000298",
+      "paragraph_index": 297,
+      "local_dialogue_index": 1,
+      "text": "北方？",
+      "quote_text": "「北方？」",
+      "dialogue_kind": "standalone",
+      "char_start": 0,
+      "char_end": 5,
+      "speaker_entity_id": "char_v2_000004",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "对话内容为罗伦斯对赫萝的提问，符合其角色身份"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false,
+      "review_reason": "",
+      "request_id": "volume_01-r000021--annotation--qwen3_32b"
+    }
+  ],
+  "task_b_chunk_summary": {
+    "chunk_id": "volume_01-r000021",
+    "summary": "罗伦斯与赫萝继续对话，赫萝澄清自己并非丰收之神，而是被误认为神的人。她提到自己出生在遥远的北方大地，而非帕斯罗村，这与罗伦斯先前的推测不同。罗伦斯推测她可能因外貌异常（如耳朵和尖牙）而被家人藏匿，但赫萝否认了这一点。赫萝强调自己是「赫萝」，并非神明，但被村民尊为神。罗伦斯对她的出生地和身份感到疑惑，而赫萝的回答暗示她可能来自一个与帕斯罗村完全不同的地方。这一对话揭示了赫萝的真实身份仍存疑，她的出生背景和北方大地的关联成为新的谜团。",
+    "active_entities": [
+      "char_v2_000003",
+      "char_v2_000004"
+    ],
+    "open_questions": [
+      "赫萝为何出生在北方大地？",
+      "她为何被村民尊为神？",
+      "她是否真的与帕斯罗村的丰收之神有关？",
+      "她的异常外貌（耳朵和尖牙）是否与她的身份有关？"
+    ],
+    "evidence_refs": [
+      "volume_01-c002-s003-p000284",
+      "volume_01-c002-s003-p000285",
+      "volume_01-c002-s003-p000286",
+      "volume_01-c002-s003-p000287",
+      "volume_01-c002-s003-p000288",
+      "volume_01-c002-s003-p000290",
+      "volume_01-c002-s003-p000292",
+      "volume_01-c002-s003-p000294",
+      "volume_01-c002-s003-p000295",
+      "volume_01-c002-s003-p000297",
+      "volume_01-c002-s003-p000298",
+      "volume_01-d000075",
+      "volume_01-d000076",
+      "volume_01-d000077",
+      "volume_01-d000078",
+      "volume_01-d000079",
+      "volume_01-d000080",
+      "volume_01-d000081",
+      "volume_01-d000082"
+    ]
+  }
+}

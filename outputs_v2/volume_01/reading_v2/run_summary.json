@@ -1,0 +1,19 @@
+{
+  "volume_id": "volume_01",
+  "model": "qwen3:32b",
+  "pipeline": "reading-v2",
+  "output_dir": "outputs_v2/volume_01",
+  "dry_run": false,
+  "cache_only": false,
+  "chunk_count": 30,
+  "dialogue_count": 150,
+  "annotation_count": 150,
+  "repair_count": 26,
+  "review_count": 5,
+  "prompt_count": 180,
+  "max_prompt_estimated_tokens": 30270,
+  "avg_prompt_estimated_tokens": 13679.35,
+  "prompt_near_limit_count": 22,
+  "prompt_over_limit_count": 3,
+  "failed_request_count": 3
+}

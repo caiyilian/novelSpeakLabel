@@ -1,0 +1,18 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000001",
+      "speaker_entity_id": "char_v2_000003",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "对话中自称是赫萝，且上下文提到‘自称是丰收之神赫萝的美丽少女’"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    }
+  ],
+  "chunk_notes": "本 chunk 引入了新角色‘赫萝’，其对话明确表明身份。未出现其他可识别说话人，其余段落为叙述或插图说明。"
+}

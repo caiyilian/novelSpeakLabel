@@ -1,0 +1,69 @@
+{
+  "updates": [
+    {
+      "entity_id": "char_v2_000004",
+      "summary": "二十五岁的自力更生旅行商人，已行商七年。本 chunk 中与村民交易皮草，并在草原上驾驶马车前往修道院方向。他表现出自信与商业头脑，对修道院的商业潜力感到失望。在修道院附近与骑士发生互动，骑士质疑他的来历，罗伦斯以从容态度应对，试图建立联系。本 chunk 中，罗伦斯通过递蜂蜜糖、展示貂皮和麦子，试图缓和骑士的戒备，进一步推动与修道院的潜在商业联系。",
+      "importance": "major",
+      "dialogue_count_delta": 5,
+      "latest_seen_chunk_id": "volume_01-r000010",
+      "relationship_updates": [
+        {
+          "target_entity_id": "mystery_v2_000007",
+          "relation": "interlocutor",
+          "evidence_ref": "volume_01-c002-s001-p000108"
+        },
+        {
+          "target_entity_id": "char_v2_000005",
+          "relation": "business_partner",
+          "evidence_ref": "volume_01-c002-s001-p000117"
+        }
+      ],
+      "evidence_refs": [
+        "volume_01-c002-s001-p000108",
+        "volume_01-c002-s001-p000112",
+        "volume_01-c002-s001-p000114",
+        "volume_01-c002-s001-p000117",
+        "volume_01-c002-s001-p000121"
+      ]
+    },
+    {
+      "entity_id": "mystery_v2_000007",
+      "summary": "出现在修道院附近的骑士，身穿银色盔甲，态度傲慢。他质疑罗伦斯的来历，并表现出对修道院安全的警觉。虽然被描述为下级骑士，但其行为显示出一定的权威性。本 chunk 中，骑士与罗伦斯发生对话，进一步揭示了修道院对外来者的戒备态度。骑士起初犹豫，但最终接受了罗伦斯递来的蜂蜜糖，表现出一定的软化迹象。",
+      "importance": "medium",
+      "dialogue_count_delta": 5,
+      "latest_seen_chunk_id": "volume_01-r000010",
+      "relationship_updates": [
+        {
+          "target_entity_id": "char_v2_000004",
+          "relation": "interlocutor",
+          "evidence_ref": "volume_01-c002-s001-p000108"
+        }
+      ],
+      "evidence_refs": [
+        "volume_01-c002-s001-p000108",
+        "volume_01-c002-s001-p000112",
+        "volume_01-c002-s001-p000114",
+        "volume_01-c002-s001-p000116",
+        "volume_01-c002-s001-p000119"
+      ]
+    },
+    {
+      "entity_id": "char_v2_000005",
+      "summary": "居住在东边山头的小村落的无名村民，向罗伦斯提供麦子，并与他进行交易。他们的麦子耐寒且抗虫，罗伦斯计划将其带到西北方出售。本 chunk 中，罗伦斯提及村民赠予的麦子，并解释其商业价值，进一步揭示了他与村民的交易关系。",
+      "importance": "minor",
+      "dialogue_count_delta": 0,
+      "latest_seen_chunk_id": "volume_01-r000010",
+      "relationship_updates": [
+        {
+          "target_entity_id": "char_v2_000004",
+          "relation": "business_partner",
+          "evidence_ref": "volume_01-c002-s001-p000117"
+        }
+      ],
+      "evidence_refs": [
+        "volume_01-c002-s001-p000117",
+        "volume_01-c002-s001-p000118"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1232 @@
+你是通用小说当前 chunk 回看补标助手。任务：只回看 unresolved_annotations 中的 dialogue，利用当前 chunk 摘要、更新后的长期摘要和实体记忆尝试修正。仍不能判断就保留 unknown 或 review。
+只返回 JSON，格式：{"repairs":[{"dialogue_id":"...","previous_speaker_entity_id":"...","new_speaker_entity_id":"...","speaker_display":"...","speaker_status":"known|mystery|npc_group|unknown|review","confidence":0.0,"reason":"...","stop_reason":"resolved|unchanged|needs_review"}]}
+输入 JSON：
+{
+  "volume": {
+    "volume_id": "volume_01",
+    "volume": 1,
+    "title": ""
+  },
+  "chunk": {
+    "chunk_id": "volume_01-r000017",
+    "chunk_index": 16,
+    "chapter_id": "volume_01-c002",
+    "chapter_title": "第一幕",
+    "scene_id": "volume_01-c002-s002",
+    "paragraphs": [
+      {
+        "paragraph_id": "volume_01-c002-s002-p000219",
+        "paragraph_index": 218,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c002-s002",
+        "scene_index": 2,
+        "text": "有着美丽脸孔的女孩睡得香甜的模样，让人有些不忍心叫醒她。"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s002-p000220",
+        "paragraph_index": 219,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c002-s002",
+        "scene_index": 2,
+        "text": "「喂！我说你啊！」"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s002-p000221",
+        "paragraph_index": 220,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c002-s002",
+        "scene_index": 2,
+        "text": "尽管不忍心，罗伦斯还是打起精神开口说道。罗伦斯非得搞清楚女孩睡在他的马车上有什么企图。对方说不定是从村落离家出走的女孩，罗伦斯可不想牵涉上麻烦事。"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s002-p000222",
+        "paragraph_index": 221,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c002-s002",
+        "scene_index": 2,
+        "text": "「……嗯唔？」"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s002-p000223",
+        "paragraph_index": 222,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c002-s002",
+        "scene_index": 2,
+        "text": "随着罗伦斯的声音，女孩闭着双眼、慢了半拍做出反应，她的声音听来显得毫无防备。对于只光顾过城里妓院的旅行商人来说，那是会让他们感到昏眩的甜美声音。"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s002-p000224",
+        "paragraph_index": 223,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c002-s002",
+        "scene_index": 2,
+        "text": "而且，在月光笼罩下裹着貂皮睡觉的女孩，看起来虽然年轻，却富有惊人的魅力。"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s002-p000225",
+        "paragraph_index": 224,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c002-s002",
+        "scene_index": 2,
+        "text": "罗伦斯不自觉地咽下口水，不过这反倒让他立刻冷静下来。"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s002-p000226",
+        "paragraph_index": 225,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c002-s002",
+        "scene_index": 2,
+        "text": "倘若如此美丽的女孩是名风尘女子，要是随随便便碰了她，还不知道会被勒索多少钱呢。只要牵扯到钱，那比在教会祈祷更能让自己冷静。罗伦斯一下子就恢复平常心，他开口说："
+      },
+      {
+        "paragraph_id": "volume_01-c002-s002-p000227",
+        "paragraph_index": 226,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c002-s002",
+        "scene_index": 2,
+        "text": "「喂！起床啊！你在我的马车上做什么？」"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s002-p000228",
+        "paragraph_index": 227,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c002-s002",
+        "scene_index": 2,
+        "text": "然而，女孩却完全没有起床的意思。"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s002-p000229",
+        "paragraph_index": 228,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c002-s002",
+        "scene_index": 2,
+        "text": "看着丝毫不想起床的女孩，怒气难抑的罗伦斯抓住支撑女孩头部的貂皮，用力一拉。女孩的头部顿时失去支撑，掉进貂皮缝里，这时总算听见女孩显得不悦的声音。"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s002-p000230",
+        "paragraph_index": 229,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c002-s002",
+        "scene_index": 2,
+        "text": "罗伦斯打算继续说话，却整个人僵住了。"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s002-p000231",
+        "paragraph_index": 230,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c002-s002",
+        "scene_index": 2,
+        "text": "女孩头上竟然有着像小狗的耳朵。"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s002-p000232",
+        "paragraph_index": 231,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c002-s002",
+        "scene_index": 2,
+        "text": "「嗯……啊……」"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s002-p000233",
+        "paragraph_index": 232,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c002-s002",
+        "scene_index": 2,
+        "text": "看女孩总算是醒了过来，罗伦斯打起精神，提足丹田之力开口说："
+      },
+      {
+        "paragraph_id": "volume_01-c002-s002-p000234",
+        "paragraph_index": 233,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c002-s002",
+        "scene_index": 2,
+        "text": "「喂！你擅自坐上别人的马车，想干什么？」"
+      }
+    ],
+    "dialogues": [
+      {
+        "dialogue_id": "volume_01-d000049",
+        "dialogue_index": 48,
+        "paragraph_id": "volume_01-c002-s002-p000220",
+        "paragraph_index": 219,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "喂！我说你啊！",
+        "quote_text": "「喂！我说你啊！」",
+        "char_start": 0,
+        "char_end": 9
+      },
+      {
+        "dialogue_id": "volume_01-d000050",
+        "dialogue_index": 49,
+        "paragraph_id": "volume_01-c002-s002-p000222",
+        "paragraph_index": 221,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "……嗯唔？",
+        "quote_text": "「……嗯唔？」",
+        "char_start": 0,
+        "char_end": 7
+      },
+      {
+        "dialogue_id": "volume_01-d000051",
+        "dialogue_index": 50,
+        "paragraph_id": "volume_01-c002-s002-p000227",
+        "paragraph_index": 226,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "喂！起床啊！你在我的马车上做什么？",
+        "quote_text": "「喂！起床啊！你在我的马车上做什么？」",
+        "char_start": 0,
+        "char_end": 19
+      },
+      {
+        "dialogue_id": "volume_01-d000052",
+        "dialogue_index": 51,
+        "paragraph_id": "volume_01-c002-s002-p000232",
+        "paragraph_index": 231,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "嗯……啊……",
+        "quote_text": "「嗯……啊……」",
+        "char_start": 0,
+        "char_end": 8
+      },
+      {
+        "dialogue_id": "volume_01-d000053",
+        "dialogue_index": 52,
+        "paragraph_id": "volume_01-c002-s002-p000234",
+        "paragraph_index": 233,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "喂！你擅自坐上别人的马车，想干什么？",
+        "quote_text": "「喂！你擅自坐上别人的马车，想干什么？」",
+        "char_start": 0,
+        "char_end": 20
+      }
+    ]
+  },
+  "near_context": {
+    "lookback_paragraphs": [
+      {
+        "paragraph_id": "volume_01-c002-s002-p000216",
+        "paragraph_index": 215,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c002-s002",
+        "scene_index": 2,
+        "text": "「喂！」"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s002-p000217",
+        "paragraph_index": 216,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c002-s002",
+        "scene_index": 2,
+        "text": "罗伦斯不确定自己有没有喊出声。他心想自己可能单纯只是受到惊吓，也或许是过度寂寞而产生幻觉。"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s002-p000218",
+        "paragraph_index": 217,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c002-s002",
+        "scene_index": 2,
+        "text": "然而，不管他用力甩头还是搓揉眼睛，捷足先登的女孩依旧在眼前。"
+      }
+    ],
+    "lookahead_paragraphs": [
+      {
+        "paragraph_id": "volume_01-c002-s003-p000235",
+        "paragraph_index": 234,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c002-s003",
+        "scene_index": 3,
+        "text": "罗伦斯是只身行走各地的商人，已经有过不只一、两次被无赖或盗贼包围的经验。他相信自己的胆识和魄力都比一般人高。虽然头上有着人类不可能有的动物耳朵，但面对区区一名女孩，不足以让罗伦斯感到害怕。"
+      }
+    ]
+  },
+  "memory": {
+    "previous_chunk_summary": {
+      "chunk_id": "volume_01-r000016",
+      "summary": "罗伦斯在旅途中来到河边，决定露宿于此。他为马儿喂食、饮水，并准备就寝。然而，当他掀开麻布准备整理货台时，发现有人已经捷足先登。罗伦斯感到震惊，不确定这是幻觉还是真实存在的人。他试图确认，但女孩依旧在原地。这一发现打破了他独自旅行的平静，也暗示了新的互动即将展开。罗伦斯对马儿的陪伴感到遗憾，也对传说中马儿变成人类的可能性产生怀疑。他选择早睡，但显然内心仍被孤独与未知所困扰。",
+      "active_entities": [
+        "char_v2_000004"
+      ],
+      "open_questions": [
+        "罗伦斯发现的神秘女孩是谁？",
+        "她为何会出现在罗伦斯的货台上？",
+        "她是否与马儿变成人类的传说有关？"
+      ],
+      "evidence_refs": [
+        "volume_01-c002-s002-p000203",
+        "volume_01-c002-s002-p000207",
+        "volume_01-c002-s002-p000213",
+        "volume_01-c002-s002-p000214",
+        "volume_01-c002-s002-p000215",
+        "volume_01-c002-s002-p000216",
+        "volume_01-c002-s002-p000217",
+        "volume_01-c002-s002-p000218",
+        "volume_01-d000046",
+        "volume_01-d000047",
+        "volume_01-d000048"
+      ]
+    },
+    "global_summary": "本卷继续描绘旅行商人罗伦斯在离开帕斯罗村后的旅途。罗伦斯独自一人，内心感到寂寥，对陪伴的渴望愈发强烈。他回忆起旅行商人之间流传的马儿变成人类的传说，起初嗤之以鼻，但最近也开始相信这种事可能发生。他后悔当初没有选择母马，因为听说母马若变成人类，后悔就来不及了。罗伦斯现在骑着一匹强壮的公马，内心却充满对陪伴的渴望。在旅途中，他来到河边露宿，为马儿喂食、饮水，并准备就寝。然而，当他掀开麻布准备整理货台时，发现有人已经捷足先登。罗伦斯感到震惊，不确定这是幻觉还是真实存在的人。他试图确认，但女孩依旧在原地。这一发现打破了他独自旅行的平静，也暗示了新的互动即将展开。罗伦斯对马儿的陪伴感到遗憾，也对传说中马儿变成人类的可能性产生怀疑。他选择早睡，但显然内心仍被孤独与未知所困扰。本卷中，罗伦斯的孤独感和对未来的思考成为主要线索，同时揭示了他作为旅行商人的现实困境和内心变化。",
+    "candidate_entities": [
+      {
+        "entity_id": "char_v2_000004",
+        "entity_type": "character",
+        "display_name": "罗伦斯",
+        "aliases": [],
+        "importance": "major",
+        "summary": "罗伦斯在旅途中来到河边，决定露宿于此。他为马儿喂食、饮水，并准备就寝。然而，当他掀开麻布准备整理货台时，发现有人已经捷足先登。罗伦斯感到震惊，不确定这是幻觉还是真实存在的人。他试图确认，但女孩依旧在原地。这一发现打破了他独自旅行的平静，也暗示了新的互动即将展开。罗伦斯对马儿的陪伴感到遗憾，也对传说中马儿变成人类的可能性产生怀疑。他选择早睡，但显然内心仍被孤…",
+        "latest_seen_chunk_id": "volume_01-r000016",
+        "dialogue_count": 23
+      },
+      {
+        "entity_id": "char_v2_000003",
+        "entity_type": "character",
+        "display_name": "赫萝",
+        "aliases": [],
+        "importance": "major",
+        "summary": "自称是丰收之神的美丽少女，拥有狼的耳朵和尾巴，与罗伦斯一同旅行。本 chunk 中未出现对话，但提到‘引以为傲的尾巴’，暗示其身份特征与村落的象征意义相关。叙述者闲来无事时专注于梳理尾巴的毛，进一步强化了赫萝的存在感。",
+        "latest_seen_chunk_id": "volume_01-r000007",
+        "dialogue_count": 3
+      },
+      {
+        "entity_id": "char_v2_000001",
+        "entity_type": "character",
+        "display_name": "支仓冻砂",
+        "aliases": [
+          "Isuna Hasekura"
+        ],
+        "importance": "major",
+        "summary": "小说的作者，出现在制作信息页的作者信息中。",
+        "latest_seen_chunk_id": "volume_01-r000003",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "char_v2_000002",
+        "entity_type": "character",
+        "display_name": "文仓十",
+        "aliases": [
+          "Jyuu Ayakura"
+        ],
+        "importance": "major",
+        "summary": "小说的插画师，出现在制作信息页的插画师信息中。",
+        "latest_seen_chunk_id": "volume_01-r000003",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "mystery_v2_000014",
+        "entity_type": "mystery",
+        "display_name": "神秘女孩",
+        "aliases": [],
+        "importance": "medium",
+        "summary": "在罗伦斯的货台上出现的未知女孩，睡得香甜。罗伦斯发现她时感到震惊，不确定这是幻觉还是真实存在的人。她的出现打破了罗伦斯独自旅行的平静，暗示了新的互动即将展开。",
+        "latest_seen_chunk_id": "volume_01-r000016",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "mystery_v2_000009",
+        "entity_type": "mystery",
+        "display_name": "叶勒",
+        "aliases": [],
+        "importance": "medium",
+        "summary": "帕斯罗村的麦田耕作者，今年雇用年轻人进行耕作。在罗伦斯的询问下被提及，并被指出位于另一块麦田中。农夫提到叶勒的田里可能有今年的『赫萝』，暗示其与村庄祭典或象征性人物有关联。本 chunk 中，叶勒成功割下最后一束麦子，成为村民欢呼的对象，进一步强化了其与『赫萝』的关联。叶勒对罗伦斯心存感激，因为罗伦斯曾帮助村里销售麦子。",
+        "latest_seen_chunk_id": "volume_01-r000014",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "mystery_v2_000010",
+        "entity_type": "mystery",
+        "display_name": "赫萝",
+        "aliases": [],
+        "importance": "medium",
+        "summary": "在村民的叫喊中被提及的象征性人物，与狼和丰收之神相关。村民相信『赫萝』会藏在最后一束麦子中，并进入割下最后一束麦子的人体内。本 chunk 中，村民多次提到『赫萝』，并将其与祭典活动联系在一起。『赫萝』的出现引发了村民的热烈反应，并成为祭典的核心象征。",
+        "latest_seen_chunk_id": "volume_01-r000014",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "mystery_v2_000012",
+        "entity_type": "mystery",
+        "display_name": "丰收之神",
+        "aliases": [],
+        "importance": "medium",
+        "summary": "被村民认为会附在人类身上、象征丰收的神秘存在。在祭典中，丰收之神被认为藏在最后一束麦子里，并会附身在收割者身上。村民试图抓住祂，以确保祂留在村庄的麦田中。虽然没人知道祂是否真实存在，但这个习俗已延续很久。",
+        "latest_seen_chunk_id": "volume_01-r000014",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "char_v2_000006",
+        "entity_type": "character",
+        "display_name": "亚伦多伯爵",
+        "aliases": [],
+        "importance": "medium",
+        "summary": "管理帕斯罗村一带的贵族，以喜欢下田耕作为特点。他每年赞助村庄的丰收祭典，并在祭典上饮酒欢唱，是村庄的重要支持者。",
+        "latest_seen_chunk_id": "volume_01-r000012",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "mystery_v2_000007",
+        "entity_type": "character",
+        "display_name": "修道院的骑士",
+        "aliases": [],
+        "importance": "medium",
+        "summary": "出现在修道院附近的骑士，身穿银色盔甲，态度傲慢。他质疑罗伦斯的来历，并表现出对修道院安全的警觉。虽然被描述为下级骑士，但其行为显示出一定的权威性。本 chunk 中，骑士与罗伦斯发生对话，进一步揭示了修道院对外来者的戒备态度。骑士起初犹豫，但最终接受了罗伦斯递来的蜂蜜糖，表现出一定的软化迹象。他猜测祭典是异教徒的活动，并批评异教徒为胆小鬼，但罗伦斯并未纠正…",
+        "latest_seen_chunk_id": "volume_01-r000011",
+        "dialogue_count": 8
+      },
+      {
+        "entity_id": "mystery_v2_000008",
+        "entity_type": "mystery",
+        "display_name": "异教徒",
+        "aliases": [],
+        "importance": "medium",
+        "summary": "被修道院的骑士提及的群体，被认为是秘密举办祭典的异端。骑士对异教徒表现出强烈的敌意，称其为胆小鬼。然而，罗伦斯指出这并非事实，真正的祭典只是普通的丰收庆典。异教徒的提及揭示了修道院与教会之间的紧张关系，以及对异端的敏感态度。",
+        "latest_seen_chunk_id": "volume_01-r000011",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "mystery_v2_000006",
+        "entity_type": "mystery",
+        "display_name": "修道院的修道士",
+        "aliases": [],
+        "importance": "medium",
+        "summary": "位于草原远处的修道院中的修道士群体，人数约二十多位，还有男仆。他们不与民间商人往来，而是通过独立通路调度物资。罗伦斯曾对修道院抱有商业期望，但因无法建立联系而失望。本 chunk 中，修道院的骑士与罗伦斯发生互动，表现出对外来者的戒备态度，进一步揭示了修道院对外封闭的立场。",
+        "latest_seen_chunk_id": "volume_01-r000009",
+        "dialogue_count": 2
+      }
+    ]
+  },
+  "rules": {
+    "speaker_statuses": [
+      "known",
+      "mystery",
+      "npc_group",
+      "review",
+      "unknown"
+    ],
+    "importance_levels": [
+      "minor",
+      "medium",
+      "major"
+    ],
+    "general_novel_only": true
+  },
+  "task_a_annotations": [
+    {
+      "dialogue_id": "volume_01-d000049",
+      "dialogue_index": 48,
+      "volume_id": "",
+      "chapter_id": "",
+      "chapter_index": 0,
+      "chapter_title": "",
+      "scene_id": "",
+      "scene_index": 0,
+      "paragraph_id": "volume_01-c002-s002-p000220",
+      "paragraph_index": 219,
+      "local_dialogue_index": 1,
+      "text": "喂！我说你啊！",
+      "quote_text": "「喂！我说你啊！」",
+      "dialogue_kind": "standalone",
+      "char_start": 0,
+      "char_end": 9,
+      "speaker_entity_id": "char_v2_000004",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "「喂！我说你啊！」是罗伦斯为了叫醒女孩而说的话，前文明确提到「罗伦斯还是打起精神开口说道」"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false,
+      "review_reason": "",
+      "request_id": "volume_01-r000017--annotation--qwen3_32b"
+    },
+    {
+      "dialogue_id": "volume_01-d000050",
+      "dialogue_index": 49,
+      "volume_id": "",
+      "chapter_id": "",
+      "chapter_index": 0,
+      "chapter_title": "",
+      "scene_id": "",
+      "scene_index": 0,
+      "paragraph_id": "volume_01-c002-s002-p000222",
+      "paragraph_index": 221,
+      "local_dialogue_index": 1,
+      "text": "……嗯唔？",
+      "quote_text": "「……嗯唔？」",
+      "dialogue_kind": "standalone",
+      "char_start": 0,
+      "char_end": 7,
+      "speaker_entity_id": "mystery_v2_000014",
+      "speaker_display": "神秘女孩",
+      "speaker_status": "mystery",
+      "confidence": 0.9,
+      "evidence": [
+        "「……嗯唔？」是女孩在被叫醒时的反应，前文提到「随着罗伦斯的声音，女孩闭着双眼、慢了半拍做出反应」"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false,
+      "review_reason": "",
+      "request_id": "volume_01-r000017--annotation--qwen3_32b"
+    },
+    {
+      "dialogue_id": "volume_01-d000051",
+      "dialogue_index": 50,
+      "volume_id": "",
+      "chapter_id": "",
+      "chapter_index": 0,
+      "chapter_title": "",
+      "scene_id": "",
+      "scene_index": 0,
+      "paragraph_id": "volume_01-c002-s002-p000227",
+      "paragraph_index": 226,
+      "local_dialogue_index": 1,
+      "text": "喂！起床啊！你在我的马车上做什么？",
+      "quote_text": "「喂！起床啊！你在我的马车上做什么？」",
+      "dialogue_kind": "standalone",
+      "char_start": 0,
+      "char_end": 19,
+      "speaker_entity_id": "char_v2_000004",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "「喂！起床啊！你在我的马车上做什么？」是罗伦斯在女孩没有反应后再次叫醒她，前文提到「罗伦斯打起精神，提足丹田之力开口说」"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false,
+      "review_reason": "",
+      "request_id": "volume_01-r000017--annotation--qwen3_32b"
+    },
+    {
+      "dialogue_id": "volume_01-d000052",
+      "dialogue_index": 51,
+      "volume_id": "",
+      "chapter_id": "",
+      "chapter_index": 0,
+      "chapter_title": "",
+      "scene_id": "",
+      "scene_index": 0,
+      "paragraph_id": "volume_01-c002-s002-p000232",
+      "paragraph_index": 231,
+      "local_dialogue_index": 1,
+      "text": "嗯……啊……",
+      "quote_text": "「嗯……啊……」",
+      "dialogue_kind": "standalone",
+      "char_start": 0,
+      "char_end": 8,
+      "speaker_entity_id": "mystery_v2_000014",
+      "speaker_display": "神秘女孩",
+      "speaker_status": "mystery",
+      "confidence": 0.9,
+      "evidence": [
+        "「嗯……啊……」是女孩在被拉掉貂皮后发出的声音，前文提到「这时总算听见女孩显得不悦的声音」"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false,
+      "review_reason": "",
+      "request_id": "volume_01-r000017--annotation--qwen3_32b"
+    },
+    {
+      "dialogue_id": "volume_01-d000053",
+      "dialogue_index": 52,
+      "volume_id": "",
+      "chapter_id": "",
+      "chapter_index": 0,
+      "chapter_title": "",
+      "scene_id": "",
+      "scene_index": 0,
+      "paragraph_id": "volume_01-c002-s002-p000234",
+      "paragraph_index": 233,
+      "local_dialogue_index": 1,
+      "text": "喂！你擅自坐上别人的马车，想干什么？",
+      "quote_text": "「喂！你擅自坐上别人的马车，想干什么？」",
+      "dialogue_kind": "standalone",
+      "char_start": 0,
+      "char_end": 20,
+      "speaker_entity_id": "char_v2_000004",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "「喂！你擅自坐上别人的马车，想干什么？」是罗伦斯在女孩仍未回应后再次质问，前文提到「罗伦斯打起精神，提足丹田之力开口说」"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false,
+      "review_reason": "",
+      "request_id": "volume_01-r000017--annotation--qwen3_32b"
+    }
+  ],
+  "task_b_chunk_summary": {
+    "chunk_id": "volume_01-r000017",
+    "summary": "罗伦斯试图叫醒睡在自己马车上的神秘女孩，但女孩反应迟缓，仅以模糊的语气回应。罗伦斯因担心她可能是风尘女子而试图保持冷静，但女孩的美貌和魅力让他一度动摇。他最终抓住貂皮拉掉女孩的头部支撑，女孩发出不悦的声音。然而，罗伦斯在拉貂皮时发现女孩头上长着像小狗的耳朵，这一异常特征让他震惊并僵住。罗伦斯多次质问女孩为何擅自坐在他的马车上，但女孩仍未明确回应。这一场景揭示了女孩身份的神秘性，以及她与罗伦斯之间即将展开的互动。",
+    "active_entities": [
+      "char_v2_000004",
+      "mystery_v2_000014"
+    ],
+    "open_questions": [
+      "神秘女孩为何会出现在罗伦斯的马车上？",
+      "她头上的小狗耳朵意味着什么？",
+      "她是否与传说中的『赫萝』有关？"
+    ],
+    "evidence_refs": [
+      "volume_01-c002-s002-p000220",
+      "volume_01-c002-s002-p000221",
+      "volume_01-c002-s002-p000222",
+      "volume_01-c002-s002-p000223",
+      "volume_01-c002-s002-p000224",
+      "volume_01-c002-s002-p000225",
+      "volume_01-c002-s002-p000226",
+      "volume_01-c002-s002-p000227",
+      "volume_01-c002-s002-p000228",
+      "volume_01-c002-s002-p000229",
+      "volume_01-c002-s002-p000230",
+      "volume_01-c002-s002-p000231",
+      "volume_01-c002-s002-p000232",
+      "volume_01-c002-s002-p000233",
+      "volume_01-c002-s002-p000234",
+      "volume_01-d000049",
+      "volume_01-d000050",
+      "volume_01-d000051",
+      "volume_01-d000052",
+      "volume_01-d000053"
+    ]
+  },
+  "updated_global_summary": "本卷继续描绘旅行商人罗伦斯在离开帕斯罗村后的旅途。罗伦斯独自一人，内心感到寂寥，对陪伴的渴望愈发强烈。他回忆起旅行商人之间流传的马儿变成人类的传说，起初嗤之以鼻，但最近也开始相信这种事可能发生。他后悔当初没有选择母马，因为听说母马若变成人类，后悔就来不及了。罗伦斯现在骑着一匹强壮的公马，内心却充满对陪伴的渴望。在旅途中，他来到河边露宿，为马儿喂食、饮水，并准备就寝。然而，当他掀开麻布准备整理货台时，发现有人已经捷足先登。罗伦斯感到震惊，不确定这是幻觉还是真实存在的人。他试图确认，但女孩依旧在原地。这一发现打破了他独自旅行的平静，也暗示了新的互动即将展开。罗伦斯对马儿的陪伴感到遗憾，也对传说中马儿变成人类的可能性产生怀疑。他选择早睡，但显然内心仍被孤独与未知所困扰。随后，罗伦斯试图叫醒睡在自己马车上的神秘女孩，但女孩反应迟缓，仅以模糊的语气回应。罗伦斯因担心她可能是风尘女子而试图保持冷静，但女孩的美貌和魅力让他一度动摇。他最终抓住貂皮拉掉女孩的头部支撑，女孩发出不悦的声音。然而，罗伦斯在拉貂皮时发现女孩头上长着像小狗的耳朵，这一异常特征让他震惊并僵住。罗伦斯多次质问女孩为何擅自坐在他的马车上，但女孩仍未明确回应。这一场景揭示了女孩身份的神秘性，以及她与罗伦斯之间即将展开的互动。",
+  "updated_entity_memory": {
+    "characters": [
+      {
+        "entity_id": "char_v2_000001",
+        "entity_type": "character",
+        "display_name": "支仓冻砂",
+        "aliases": [
+          "Isuna Hasekura"
+        ],
+        "importance": "major",
+        "summary": "小说的作者，出现在制作信息页的作者信息中。",
+        "evidence_refs": [
+          "volume_01-c000-s001-p000011",
+          "volume_01-c000-s001-p000012",
+          "volume_01-c000-s002-p000019"
+        ],
+        "dialogue_count": 0,
+        "first_seen_chunk_id": "volume_01-r000001",
+        "latest_seen_chunk_id": "volume_01-r000003",
+        "relationship_updates": []
+      },
+      {
+        "entity_id": "char_v2_000002",
+        "entity_type": "character",
+        "display_name": "文仓十",
+        "aliases": [
+          "Jyuu Ayakura"
+        ],
+        "importance": "major",
+        "summary": "小说的插画师，出现在制作信息页的插画师信息中。",
+        "evidence_refs": [
+          "volume_01-c000-s001-p000013",
+          "volume_01-c000-s001-p000014",
+          "volume_01-c000-s001-p000015",
+          "volume_01-c000-s001-p000016",
+          "volume_01-c000-s002-p000020"
+        ],
+        "dialogue_count": 0,
+        "first_seen_chunk_id": "volume_01-r000001",
+        "latest_seen_chunk_id": "volume_01-r000003",
+        "relationship_updates": []
+      },
+      {
+        "entity_id": "char_v2_000003",
+        "entity_type": "character",
+        "display_name": "赫萝",
+        "aliases": [],
+        "importance": "major",
+        "summary": "自称是丰收之神的美丽少女，拥有狼的耳朵和尾巴，与罗伦斯一同旅行。本 chunk 中未出现对话，但提到‘引以为傲的尾巴’，暗示其身份特征与村落的象征意义相关。叙述者闲来无事时专注于梳理尾巴的毛，进一步强化了赫萝的存在感。",
+        "evidence_refs": [
+          "对话中自称是赫萝，且上下文提到‘自称是丰收之神赫萝的美丽少女’",
+          "volume_01-c000-s003-p000031",
+          "volume_01-c000-s003-p000034",
+          "volume_01-c000-s003-p000035",
+          "volume_01-c000-s003-p000032",
+          "volume_01-c000-s003-p000033",
+          "volume_01-c000-s004-p000045",
+          "volume_01-c001-s001-p000069",
+          "volume_01-c001-s001-p000070"
+        ],
+        "dialogue_count": 3,
+        "first_seen_chunk_id": "volume_01-r000004",
+        "latest_seen_chunk_id": "volume_01-r000007",
+        "relationship_updates": [
+          "{'target_entity_id': 'char_v2_000004', 'relation': 'travel_companion', 'evidence_ref': 'volume_01-c000-s003-p000035'}"
+        ]
+      },
+      {
+        "entity_id": "char_v2_000004",
+        "entity_type": "character",
+        "display_name": "罗伦斯",
+        "aliases": [],
+        "importance": "major",
+        "summary": "罗伦斯在旅途中来到河边，决定露宿于此。他为马儿喂食、饮水，并准备就寝。然而，当他掀开麻布准备整理货台时，发现有人已经捷足先登。罗伦斯感到震惊，不确定这是幻觉还是真实存在的人。他试图确认，但女孩依旧在原地。这一发现打破了他独自旅行的平静，也暗示了新的互动即将展开。罗伦斯对马儿的陪伴感到遗憾，也对传说中马儿变成人类的可能性产生怀疑。他选择早睡，但显然内心仍被孤…",
+        "evidence_refs": [
+          "volume_01-c002-s001-p000085",
+          "volume_01-c002-s001-p000081",
+          "volume_01-c002-s001-p000082",
+          "volume_01-c002-s001-p000093",
+          "volume_01-c002-s001-p000097",
+          "volume_01-c002-s001-p000101",
+          "volume_01-c002-s001-p000108",
+          "volume_01-c002-s001-p000112",
+          "volume_01-c002-s001-p000114",
+          "volume_01-c002-s001-p000117",
+          "volume_01-c002-s001-p000121",
+          "volume_01-c002-s001-p000124",
+          "volume_01-c002-s001-p000127",
+          "volume_01-c002-s001-p000133",
+          "volume_01-c002-s001-p000134",
+          "volume_01-c002-s001-p000135",
+          "volume_01-c002-s001-p000136",
+          "volume_01-c002-s001-p000137",
+          "volume_01-c002-s001-p000138",
+          "volume_01-c002-s001-p000144",
+          "volume_01-c002-s001-p000153",
+          "volume_01-c002-s002-p000156",
+          "volume_01-c002-s002-p000159",
+          "volume_01-c002-s002-p000163"
+        ],
+        "dialogue_count": 23,
+        "first_seen_chunk_id": "volume_01-r000008",
+        "latest_seen_chunk_id": "volume_01-r000016",
+        "relationship_updates": [
+          "{'target_entity_id': 'npc_group_v2_000002', 'relation': 'business_partner', 'evidence_ref': 'volume_01-c002-s001-p000081'}",
+          "{'target_entity_id': 'mystery_v2_000006', 'relation': 'observer', 'evidence_ref': 'volume_01-c002-s001-p000088'}",
+          "{'target_entity_id': 'mystery_v2_000007', 'relation': 'interlocutor', 'evidence_ref': 'volume_01-c002-s001-p000104'}",
+          "{'target_entity_id': 'mystery_v2_000007', 'relation': 'interlocutor', 'evidence_ref': 'volume_01-c002-s001-p000108'}",
+          "{'target_entity_id': 'char_v2_000005', 'relation': 'business_partner', 'evidence_ref': 'volume_01-c002-s001-p000117'}",
+          "{'target_entity_id': 'mystery_v2_000007', 'relation': 'interlocutor', 'evidence_ref': 'volume_01-c002-s001-p000126'}",
+          "{'target_entity_id': 'mystery_v2_000008', 'relation': 'observer', 'evidence_ref': 'volume_01-c002-s001-p000136'}",
+          "{'target_entity_id': 'mystery_v2_000012', 'relation': 'observer', 'evidence_ref': 'volume_01-c002-s002-p000179'}",
+          "{'target_entity_id': 'mystery_v2_000014', 'relation': 'observer', 'evidence_ref': 'volume_01-c002-s002-p000213'}"
+        ]
+      },
+      {
+        "entity_id": "mystery_v2_000007",
+        "entity_type": "character",
+        "display_name": "修道院的骑士",
+        "aliases": [],
+        "importance": "medium",
+        "summary": "出现在修道院附近的骑士，身穿银色盔甲，态度傲慢。他质疑罗伦斯的来历，并表现出对修道院安全的警觉。虽然被描述为下级骑士，但其行为显示出一定的权威性。本 chunk 中，骑士与罗伦斯发生对话，进一步揭示了修道院对外来者的戒备态度。骑士起初犹豫，但最终接受了罗伦斯递来的蜂蜜糖，表现出一定的软化迹象。他猜测祭典是异教徒的活动，并批评异教徒为胆小鬼，但罗伦斯并未纠正…",
+        "evidence_refs": [
+          "虽然骑士瞬间露出迟疑的神情，但终究敌不过糖果的诱惑。",
+          "volume_01-c002-s001-p000108",
+          "volume_01-c002-s001-p000112",
+          "volume_01-c002-s001-p000114",
+          "volume_01-c002-s001-p000116",
+          "volume_01-c002-s001-p000119",
+          "volume_01-c002-s001-p000124",
+          "volume_01-c002-s001-p000126",
+          "volume_01-c002-s001-p000128",
+          "volume_01-c002-s001-p000130"
+        ],
+        "dialogue_count": 8,
+        "first_seen_chunk_id": "volume_01-r000010",
+        "latest_seen_chunk_id": "volume_01-r000011",
+        "relationship_updates": [
+          "{'target_entity_id': 'char_v2_000004', 'relation': 'interlocutor', 'evidence_ref': 'volume_01-c002-s001-p000108'}",
+          "{'target_entity_id': 'char_v2_000004', 'relation': 'interlocutor', 'evidence_ref': 'volume_01-c002-s001-p000126'}",
+          "{'target_entity_id': 'mystery_v2_000008', 'relation': 'adversary', 'evidence_ref': 'volume_01-c002-s001-p000128'}"
+        ]
+      },
+      {
+        "entity_id": "char_v2_000005",
+        "entity_type": "character",
+        "display_name": "深山村落的村民",
+        "aliases": [],
+        "importance": "minor",
+        "summary": "居住在东边山头的小村落的无名村民，向罗伦斯提供麦子，并与他进行交易。他们的麦子耐寒且抗虫，罗伦斯计划将其带到西北方出售。本 chunk 中，罗伦斯提及村民赠予的麦子，并解释其商业价值，进一步揭示了他与村民的交易关系。",
+        "evidence_refs": [
+          "volume_01-c002-s001-p000117",
+          "volume_01-c002-s001-p000118"
+        ],
+        "dialogue_count": 0,
+        "first_seen_chunk_id": "volume_01-r000010",
+        "latest_seen_chunk_id": "volume_01-r000010",
+        "relationship_updates": [
+          "{'target_entity_id': 'char_v2_000004', 'relation': 'business_partner', 'evidence_ref': 'volume_01-c002-s001-p000117'}"
+        ]
+      },
+      {
+        "entity_id": "char_v2_000006",
+        "entity_type": "character",
+        "display_name": "亚伦多伯爵",
+        "aliases": [],
+        "importance": "medium",
+        "summary": "管理帕斯罗村一带的贵族，以喜欢下田耕作为特点。他每年赞助村庄的丰收祭典，并在祭典上饮酒欢唱，是村庄的重要支持者。",
+        "evidence_refs": [
+          "volume_01-c002-s001-p000148"
+        ],
+        "dialogue_count": 0,
+        "first_seen_chunk_id": "volume_01-r000012",
+        "latest_seen_chunk_id": "volume_01-r000012",
+        "relationship_updates": []
+      }
+    ],
+    "mysteries": [
+      {
+        "entity_id": "mystery_v2_000001",
+        "entity_type": "mystery",
+        "display_name": "狼与辛香料Ⅰ",
+        "aliases": [
+          "狼",
+          "辛",
+          "香",
+          "料",
+          "Ⅰ",
+          "Merchant meats spicy wolf."
+        ],
+        "importance": "medium",
+        "summary": "小说的标题或主题，由英文短语 'Merchant meats spicy wolf.' 和中文词汇 '狼'、'与'、'辛'、'香'、'料'、'Ⅰ' 组成，暗示小说可能与香料贸易或奇幻冒险有关。",
+        "evidence_refs": [
+          "volume_01-c000-s001-p000003",
+          "volume_01-c000-s001-p000004",
+          "volume_01-c000-s001-p000005",
+          "volume_01-c000-s001-p000006",
+          "volume_01-c000-s001-p000007",
+          "volume_01-c000-s001-p000008",
+          "volume_01-c000-s001-p000009"
+        ],
+        "dialogue_count": 0,
+        "first_seen_chunk_id": "volume_01-r000001",
+        "latest_seen_chunk_id": "volume_01-r000001",
+        "relationship_updates": []
+      },
+      {
+        "entity_id": "mystery_v2_000002",
+        "entity_type": "mystery",
+        "display_name": "linpop",
+        "aliases": [],
+        "importance": "medium",
+        "summary": "小说的图源提供者，出现在制作信息页中。",
+        "evidence_refs": [
+          "volume_01-c000-s002-p000021"
+        ],
+        "dialogue_count": 0,
+        "first_seen_chunk_id": "volume_01-r000003",
+        "latest_seen_chunk_id": "volume_01-r000003",
+        "relationship_updates": []
+      },
+      {
+        "entity_id": "mystery_v2_000003",
+        "entity_type": "mystery",
+        "display_name": "会灰的鸟弹",
+        "aliases": [],
+        "importance": "medium",
+        "summary": "小说的录入者，出现在制作信息页中。",
+        "evidence_refs": [
+          "volume_01-c000-s002-p000022"
+        ],
+        "dialogue_count": 0,
+        "first_seen_chunk_id": "volume_01-r000003",
+        "latest_seen_chunk_id": "volume_01-r000003",
+        "relationship_updates": []
+      },
+      {
+        "entity_id": "mystery_v2_000004",
+        "entity_type": "mystery",
+        "display_name": "天使动漫",
+        "aliases": [
+          "www.tsdm39.net"
+        ],
+        "importance": "medium",
+        "summary": "小说的发布网站，出现在制作信息页中。",
+        "evidence_refs": [
+          "volume_01-c000-s002-p000023",
+          "volume_01-c000-s002-p000024"
+        ],
+        "dialogue_count": 0,
+        "first_seen_chunk_id": "volume_01-r000003",
+        "latest_seen_chunk_id": "volume_01-r000003",
+        "relationship_updates": []
+      },
+      {
+        "entity_id": "mystery_v2_000005",
+        "entity_type": "mystery",
+        "display_name": "叙述者",
+        "aliases": [],
+        "importance": "medium",
+        "summary": "本 chunk 中的叙述者专注于梳理尾巴的毛，暗示与赫萝有关联。叙述者对北方故乡有所怀念，并提及村落的季节变化和麦田景象，可能与赫萝的象征意义相关。本 chunk 延续了叙述者的情感线索，进一步强化其与赫萝的潜在联系。",
+        "evidence_refs": [
+          "volume_01-c001-s001-p000066",
+          "volume_01-c001-s001-p000068",
+          "volume_01-c001-s001-p000069",
+          "volume_01-c001-s001-p000070"
+        ],
+        "dialogue_count": 0,
+        "first_seen_chunk_id": "volume_01-r000006",
+        "latest_seen_chunk_id": "volume_01-r000007",
+        "relationship_updates": []
+      },
+      {
+        "entity_id": "mystery_v2_000006",
+        "entity_type": "mystery",
+        "display_name": "修道院的修道士",
+        "aliases": [],
+        "importance": "medium",
+        "summary": "位于草原远处的修道院中的修道士群体，人数约二十多位，还有男仆。他们不与民间商人往来，而是通过独立通路调度物资。罗伦斯曾对修道院抱有商业期望，但因无法建立联系而失望。本 chunk 中，修道院的骑士与罗伦斯发生互动，表现出对外来者的戒备态度，进一步揭示了修道院对外封闭的立场。",
+        "evidence_refs": [
+          "volume_01-c002-s001-p000086",
+          "volume_01-c002-s001-p000087",
+          "volume_01-c002-s001-p000088",
+          "volume_01-c002-s001-p000099",
+          "volume_01-c002-s001-p000104"
+        ],
+        "dialogue_count": 2,
+        "first_seen_chunk_id": "volume_01-r000008",
+        "latest_seen_chunk_id": "volume_01-r000009",
+        "relationship_updates": [
+          "{'target_entity_id': 'char_v2_000004', 'relation': 'potential_business_target', 'evidence_ref': 'volume_01-c002-s001-p000088'}",
+          "{'target_entity_id': 'char_v2_000004', 'relation': 'interlocutor', 'evidence_ref': 'volume_01-c002-s001-p000104'}"
+        ]
+      },
+      {
+        "entity_id": "mystery_v2_000007",
+        "entity_type": "mystery",
+        "display_name": "修道院的骑士",
+        "aliases": [],
+        "importance": "medium",
+        "summary": "出现在修道院附近的骑士，身穿银色盔甲，态度傲慢。他质疑罗伦斯的来历，并表现出对修道院安全的警觉。虽然被描述为下级骑士，但其行为显示出一定的权威性。本 chunk 中，骑士与罗伦斯发生对话，进一步揭示了修道院对外来者的戒备态度。",
+        "evidence_refs": [
+          "volume_01-c002-s001-p000094",
+          "volume_01-c002-s001-p000098",
+          "volume_01-c002-s001-p000104",
+          "volume_01-c002-s001-p000105",
+          "volume_01-c002-s001-p000106",
+          "volume_01-c002-s001-p000099"
+        ],
+        "dialogue_count": 4,
+        "first_seen_chunk_id": "volume_01-r000009",
+        "latest_seen_chunk_id": "volume_01-r000009",
+        "relationship_updates": [
+          "{'target_entity_id': 'char_v2_000004', 'relation': 'interlocutor', 'evidence_ref': 'volume_01-c002-s001-p000104'}"
+        ]
+      },
+      {
+        "entity_id": "mystery_v2_000008",
+        "entity_type": "mystery",
+        "display_name": "异教徒",
+        "aliases": [],
+        "importance": "medium",
+        "summary": "被修道院的骑士提及的群体，被认为是秘密举办祭典的异端。骑士对异教徒表现出强烈的敌意，称其为胆小鬼。然而，罗伦斯指出这并非事实，真正的祭典只是普通的丰收庆典。异教徒的提及揭示了修道院与教会之间的紧张关系，以及对异端的敏感态度。",
+        "evidence_refs": [
+          "volume_01-c002-s001-p000126",
+          "volume_01-c002-s001-p000128",
+          "volume_01-c002-s001-p000136",
+          "volume_01-c002-s001-p000137"
+        ],
+        "dialogue_count": 0,
+        "first_seen_chunk_id": "volume_01-r000011",
+        "latest_seen_chunk_id": "volume_01-r000011",
+        "relationship_updates": [
+          "{'target_entity_id': 'mystery_v2_000007', 'relation': 'adversary', 'evidence_ref': 'volume_01-c002-s001-p000128'}",
+          "{'target_entity_id': 'char_v2_000004', 'relation': 'observer', 'evidence_ref': 'volume_01-c002-s001-p000136'}"
+        ]
+      },
+      {
+        "entity_id": "mystery_v2_000009",
+        "entity_type": "mystery",
+        "display_name": "叶勒",
+        "aliases": [],
+        "importance": "medium",
+        "summary": "帕斯罗村的麦田耕作者，今年雇用年轻人进行耕作。在罗伦斯的询问下被提及，并被指出位于另一块麦田中。农夫提到叶勒的田里可能有今年的『赫萝』，暗示其与村庄祭典或象征性人物有关联。本 chunk 中，叶勒成功割下最后一束麦子，成为村民欢呼的对象，进一步强化了其与『赫萝』的关联。叶勒对罗伦斯心存感激，因为罗伦斯曾帮助村里销售麦子。",
+        "evidence_refs": [
+          "volume_01-c002-s001-p000153",
+          "volume_01-c002-s001-p000154",
+          "volume_01-c002-s002-p000169",
+          "volume_01-c002-s002-p000170",
+          "volume_01-c002-s002-p000176",
+          "volume_01-c002-s002-p000186"
+        ],
+        "dialogue_count": 0,
+        "first_seen_chunk_id": "volume_01-r000012",
+        "latest_seen_chunk_id": "volume_01-r000014",
+        "relationship_updates": [
+          "{'target_entity_id': 'mystery_v2_000012', 'relation': 'potential_host', 'evidence_ref': 'volume_01-c002-s002-p000176'}",
+          "{'target_entity_id': 'char_v2_000004', 'relation': 'grateful', 'evidence_ref': 'volume_01-c002-s002-p000186'}"
+        ]
+      },
+      {
+        "entity_id": "mystery_v2_000010",
+        "entity_type": "mystery",
+        "display_name": "赫萝",
+        "aliases": [],
+        "importance": "medium",
+        "summary": "在村民的叫喊中被提及的象征性人物，与狼和丰收之神相关。村民相信『赫萝』会藏在最后一束麦子中，并进入割下最后一束麦子的人体内。本 chunk 中，村民多次提到『赫萝』，并将其与祭典活动联系在一起。『赫萝』的出现引发了村民的热烈反应，并成为祭典的核心象征。",
+        "evidence_refs": [
+          "volume_01-c002-s001-p000154",
+          "volume_01-c002-s002-p000164",
+          "volume_01-c002-s002-p000167",
+          "volume_01-c002-s002-p000171",
+          "volume_01-c002-s002-p000172",
+          "volume_01-c002-s002-p000173",
+          "volume_01-c002-s002-p000177"
+        ],
+        "dialogue_count": 0,
+        "first_seen_chunk_id": "volume_01-r000012",
+        "latest_seen_chunk_id": "volume_01-r000014",
+        "relationship_updates": [
+          "{'target_entity_id': 'mystery_v2_000012', 'relation': 'manifestation', 'evidence_ref': 'volume_01-c002-s002-p000177'}",
+          "{'target_entity_id': 'mystery_v2_000009', 'relation': 'potential_host', 'evidence_ref': 'volume_01-c002-s002-p000176'}"
+        ]
+      },
+      {
+        "entity_id": "mystery_v2_000011",
+        "entity_type": "mystery",
+        "display_name": "帕斯罗村的农夫",
+        "aliases": [],
+        "importance": "minor",
+        "summary": "在帕斯罗村麦田中与罗伦斯互动的农夫群体成员。他们参与收割工作，并与罗伦斯进行简短对话，提供关于叶勒和『赫萝』的信息。",
+        "evidence_refs": [
+          "volume_01-c002-s001-p000150",
+          "volume_01-c002-s001-p000152",
+          "volume_01-c002-s001-p000154"
+        ],
+        "dialogue_count": 0,
+        "first_seen_chunk_id": "volume_01-r000012",
+        "latest_seen_chunk_id": "volume_01-r000012",
+        "relationship_updates": []
+      },
+      {
+        "entity_id": "mystery_v2_000012",
+        "entity_type": "mystery",
+        "display_name": "丰收之神",
+        "aliases": [],
+        "importance": "medium",
+        "summary": "被村民认为会附在人类身上、象征丰收的神秘存在。在祭典中，丰收之神被认为藏在最后一束麦子里，并会附身在收割者身上。村民试图抓住祂，以确保祂留在村庄的麦田中。虽然没人知道祂是否真实存在，但这个习俗已延续很久。",
+        "evidence_refs": [
+          "volume_01-c002-s002-p000176",
+          "volume_01-c002-s002-p000177",
+          "volume_01-c002-s002-p000178"
+        ],
+        "dialogue_count": 0,
+        "first_seen_chunk_id": "volume_01-r000014",
+        "latest_seen_chunk_id": "volume_01-r000014",
+        "relationship_updates": []
+      },
+      {
+        "entity_id": "mystery_v2_000013",
+        "entity_type": "mystery",
+        "display_name": "马儿变成人类的传说",
+        "aliases": [],
+        "importance": "minor",
+        "summary": "旅行商人之间流传的传说，认为某些马儿可能会变成人类。罗伦斯起初对此嗤之以鼻，但随着旅途的孤独感加深，他开始相信这种传说可能发生。传说中甚至有贩马商建议旅行商人选择母马，以免后悔。",
+        "evidence_refs": [
+          "volume_01-c002-s002-p000199",
+          "volume_01-c002-s002-p000200",
+          "volume_01-c002-s002-p000201"
+        ],
+        "dialogue_count": 0,
+        "first_seen_chunk_id": "volume_01-r000015",
+        "latest_seen_chunk_id": "volume_01-r000015",
+        "relationship_updates": []
+      },
+      {
+        "entity_id": "mystery",
+        "entity_type": "mystery",
+        "display_name": "未知人物",
+        "aliases": [],
+        "importance": "minor",
+        "summary": "",
+        "evidence_refs": [
+          "对话为省略号，未明确说话人，但上下文提到‘竟然有人捷足先登’，暗示有他人存在。"
+        ],
+        "dialogue_count": 1,
+        "first_seen_chunk_id": "volume_01-r000016",
+        "latest_seen_chunk_id": "volume_01-r000016"
+      },
+      {
+        "entity_id": "mystery_v2_000014",
+        "entity_type": "mystery",
+        "display_name": "神秘女孩",
+        "aliases": [],
+        "importance": "medium",
+        "summary": "一名拥有小狗耳朵的神秘女孩，出现在罗伦斯的马车上。她睡得香甜，对罗伦斯的叫醒反应迟缓，仅以模糊的语气回应。她的美貌和异常特征（小狗耳朵）引起罗伦斯的注意和震惊。她的出现打破了罗伦斯独自旅行的平静，暗示了新的互动即将展开。",
+        "evidence_refs": [
+          "volume_01-c002-s002-p000213",
+          "volume_01-c002-s002-p000214",
+          "volume_01-c002-s002-p000215",
+          "volume_01-c002-s002-p000216",
+          "volume_01-c002-s002-p000217",
+          "volume_01-c002-s002-p000218",
+          "volume_01-c002-s002-p000221",
+          "volume_01-c002-s002-p000223",
+          "volume_01-c002-s002-p000224",
+          "volume_01-c002-s002-p000231"
+        ],
+        "dialogue_count": 4,
+        "first_seen_chunk_id": "volume_01-r000016",
+        "latest_seen_chunk_id": "volume_01-r000017",
+        "relationship_updates": [
+          "{'target_entity_id': 'char_v2_000004', 'relation': 'observer', 'evidence_ref': 'volume_01-c002-s002-p000230'}"
+        ]
+      }
+    ],
+    "npc_groups": [
+      {
+        "entity_id": "npc_group_v2_000001",
+        "entity_type": "npc_group",
+        "display_name": "麦田中的狼群",
+        "aliases": [],
+        "importance": "minor",
+        "summary": "成群的狼在麦田中奔跑，可能象征季节变化或某种威胁。狼群作为无名群体出现，未参与对话，仅作为环境描写的一部分。本 chunk 中狼群的出现进一步强化了麦田与季节变化的意象。",
+        "evidence_refs": [
+          "volume_01-c001-s001-p000073"
+        ],
+        "dialogue_count": 0,
+        "first_seen_chunk_id": "volume_01-r000007",
+        "latest_seen_chunk_id": "volume_01-r000007",
+        "relationship_updates": []
+      },
+      {
+        "entity_id": "npc_group_v2_000002",
+        "entity_type": "npc_group",
+        "display_name": "深山村落的村民",
+        "aliases": [],
+        "importance": "minor",
+        "summary": "与罗伦斯进行皮草交易的无名群体，居住在深山中。他们对罗伦斯的到访表示感激，并在对话中提及交易细节。",
+        "evidence_refs": [
+          "volume_01-c002-s001-p000080",
+          "volume_01-c002-s001-p000081"
+        ],
+        "dialogue_count": 0,
+        "first_seen_chunk_id": "volume_01-r000008",
+        "latest_seen_chunk_id": "volume_01-r000008",
+        "relationship_updates": [
+          "{'target_entity_id': 'char_v2_000004', 'relation': 'business_partner', 'evidence_ref': 'volume_01-c002-s001-p000081'}"
+        ]
+      },
+      {
+        "entity_id": "npc_group",
+        "entity_type": "npc_group",
+        "display_name": "村民群体",
+        "aliases": [],
+        "importance": "minor",
+        "summary": "",
+        "evidence_refs": [
+          "对话内容为「有狼喔！有狼！」，属于群体性叫喊，符合祭典活动的氛围"
+        ],
+        "dialogue_count": 1,
+        "first_seen_chunk_id": "volume_01-r000013",
+        "latest_seen_chunk_id": "volume_01-r000013"
+      }
+    ]
+  },
+  "unresolved_annotations": [
+    {
+      "dialogue_id": "volume_01-d000050",
+      "dialogue_index": 49,
+      "volume_id": "",
+      "chapter_id": "",
+      "chapter_index": 0,
+      "chapter_title": "",
+      "scene_id": "",
+      "scene_index": 0,
+      "paragraph_id": "volume_01-c002-s002-p000222",
+      "paragraph_index": 221,
+      "local_dialogue_index": 1,
+      "text": "……嗯唔？",
+      "quote_text": "「……嗯唔？」",
+      "dialogue_kind": "standalone",
+      "char_start": 0,
+      "char_end": 7,
+      "speaker_entity_id": "mystery_v2_000014",
+      "speaker_display": "神秘女孩",
+      "speaker_status": "mystery",
+      "confidence": 0.9,
+      "evidence": [
+        "「……嗯唔？」是女孩在被叫醒时的反应，前文提到「随着罗伦斯的声音，女孩闭着双眼、慢了半拍做出反应」"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false,
+      "review_reason": "",
+      "request_id": "volume_01-r000017--annotation--qwen3_32b"
+    },
+    {
+      "dialogue_id": "volume_01-d000052",
+      "dialogue_index": 51,
+      "volume_id": "",
+      "chapter_id": "",
+      "chapter_index": 0,
+      "chapter_title": "",
+      "scene_id": "",
+      "scene_index": 0,
+      "paragraph_id": "volume_01-c002-s002-p000232",
+      "paragraph_index": 231,
+      "local_dialogue_index": 1,
+      "text": "嗯……啊……",
+      "quote_text": "「嗯……啊……」",
+      "dialogue_kind": "standalone",
+      "char_start": 0,
+      "char_end": 8,
+      "speaker_entity_id": "mystery_v2_000014",
+      "speaker_display": "神秘女孩",
+      "speaker_status": "mystery",
+      "confidence": 0.9,
+      "evidence": [
+        "「嗯……啊……」是女孩在被拉掉貂皮后发出的声音，前文提到「这时总算听见女孩显得不悦的声音」"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false,
+      "review_reason": "",
+      "request_id": "volume_01-r000017--annotation--qwen3_32b"
+    }
+  ]
+}
