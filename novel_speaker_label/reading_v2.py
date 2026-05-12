@@ -16,6 +16,7 @@ READING_V2_TASKS = (
     "entity_discovery",
     "entity_update",
     "global_summary",
+    "mystery_resolution",
     "repair",
 )
 SPEAKER_STATUSES = {"known", "mystery", "npc_group", "unknown", "review"}
@@ -45,6 +46,8 @@ class ReadingV2Config:
     max_prompt_tokens: int = 24000
     hard_prompt_tokens: int = 30000
     max_candidate_entities: int = 12
+    max_pending_mysteries: int = 8
+    pending_mystery_ttl_chunks: int = 12
 
 
 @dataclass
@@ -57,6 +60,8 @@ class ReadingV2State:
     facts: list[dict] = field(default_factory=list)
     entity_events: list[dict] = field(default_factory=list)
     entity_aliases: dict[str, str] = field(default_factory=dict)
+    pending_mysteries: dict[str, dict] = field(default_factory=dict)
+    expired_mysteries: list[dict] = field(default_factory=list)
     next_character_id: int = 1
     next_mystery_id: int = 1
     next_npc_group_id: int = 1
@@ -109,7 +114,8 @@ def annotate_v2_volume(config: ReadingV2Config) -> dict:
     repairs: list[dict] = []
     failed_requests: list[dict] = []
     prompt_reports: list[dict] = []
-    skipped_no_dialogue_chunks = 0
+    skipped_non_narrative_chunks = 0
+    memory_only_chunks = 0
 
     for offset, chunk in enumerate(selected_chunks, start=1):
         print(
@@ -118,14 +124,22 @@ def annotate_v2_volume(config: ReadingV2Config) -> dict:
             f"paragraphs={len(chunk['paragraphs'])} dialogues={len(chunk['dialogues'])}",
             flush=True,
         )
-        if not chunk["dialogues"]:
-            skipped_no_dialogue_chunks += 1
+        has_dialogues = bool(chunk["dialogues"])
+        if not has_dialogues and _is_non_narrative_chunk(chunk):
+            skipped_non_narrative_chunks += 1
             print(
                 "[annotate-v2] skip "
-                f"{chunk['chunk_id']}: no dialogues to annotate",
+                f"{chunk['chunk_id']}: non-narrative no-dialogue chunk",
                 flush=True,
             )
             continue
+        if not has_dialogues:
+            memory_only_chunks += 1
+            print(
+                "[annotate-v2] memory-only "
+                f"{chunk['chunk_id']}: no dialogues, updating reading memory",
+                flush=True,
+            )
 
         payload = _build_base_payload(
             volume_meta=volume_meta,
@@ -134,30 +148,35 @@ def annotate_v2_volume(config: ReadingV2Config) -> dict:
             config=config,
         )
 
-        annotation_response = _run_reading_task(
-            task="annotation",
-            chunk=chunk,
-            payload=payload,
-            prompt_builder=_build_annotation_prompt,
-            client=client,
-            config=config,
-            prompt_dir=prompt_dir,
-            raw_dir=raw_dir,
-            cache_dir=cache_dir,
-            failure_dir=failure_dir,
-            failed_requests=failed_requests,
-            prompt_reports=prompt_reports,
-        )
-        chunk_annotations = _extract_annotations(
-            annotation_response,
-            chunk=chunk,
-            request_id=_task_request_id(chunk["chunk_id"], "annotation", config.model),
-            dry_run=config.dry_run,
-        )
-        chunk_annotations = _apply_entity_aliases_to_annotations(
-            chunk_annotations, state
-        )
-        _ensure_entities_from_annotations(chunk_annotations, state, chunk["chunk_id"])
+        if has_dialogues:
+            annotation_response = _run_reading_task(
+                task="annotation",
+                chunk=chunk,
+                payload=payload,
+                prompt_builder=_build_annotation_prompt,
+                client=client,
+                config=config,
+                prompt_dir=prompt_dir,
+                raw_dir=raw_dir,
+                cache_dir=cache_dir,
+                failure_dir=failure_dir,
+                failed_requests=failed_requests,
+                prompt_reports=prompt_reports,
+            )
+            chunk_annotations = _extract_annotations(
+                annotation_response,
+                chunk=chunk,
+                request_id=_task_request_id(
+                    chunk["chunk_id"], "annotation", config.model
+                ),
+                dry_run=config.dry_run,
+            )
+            chunk_annotations = _apply_entity_aliases_to_annotations(
+                chunk_annotations, state
+            )
+            _ensure_entities_from_annotations(chunk_annotations, state, chunk["chunk_id"])
+        else:
+            chunk_annotations = []
 
         summary_payload = {
             **payload,
@@ -205,6 +224,9 @@ def annotate_v2_volume(config: ReadingV2Config) -> dict:
         discovery_events = _apply_entity_discovery(
             entity_discovery_response, state=state, chunk_id=chunk["chunk_id"]
         )
+        pending_events = _refresh_pending_mysteries(
+            state=state, chunk_id=chunk["chunk_id"], config=config
+        )
         merge_events = _apply_entity_merges(
             entity_discovery_response,
             state=state,
@@ -240,6 +262,11 @@ def annotate_v2_volume(config: ReadingV2Config) -> dict:
         update_events = _apply_entity_updates(
             entity_update_response, state=state, chunk_id=chunk["chunk_id"]
         )
+        pending_events.extend(
+            _refresh_pending_mysteries(
+                state=state, chunk_id=chunk["chunk_id"], config=config
+            )
+        )
 
         global_payload = {
             **payload,
@@ -266,13 +293,55 @@ def annotate_v2_volume(config: ReadingV2Config) -> dict:
             global_summary_response, state=state, chunk_id=chunk["chunk_id"]
         )
 
+        resolution_events: list[dict] = []
+        resolution_merge_events: list[dict] = []
+        pending_mysteries = _pending_mystery_cards(state, config)
+        if pending_mysteries and state.characters:
+            resolution_payload = {
+                **payload,
+                "task_b_chunk_summary": chunk_summary,
+                "updated_global_summary": state.global_summary,
+                "candidate_entities": _candidate_entity_cards(state, config),
+                "pending_mysteries": pending_mysteries,
+            }
+            mystery_resolution_response = _run_reading_task(
+                task="mystery_resolution",
+                chunk=chunk,
+                payload=resolution_payload,
+                prompt_builder=_build_mystery_resolution_prompt,
+                client=client,
+                config=config,
+                prompt_dir=prompt_dir,
+                raw_dir=raw_dir,
+                cache_dir=cache_dir,
+                failure_dir=failure_dir,
+                failed_requests=failed_requests,
+                prompt_reports=prompt_reports,
+            )
+            resolution_merge_events = _apply_entity_merges(
+                mystery_resolution_response,
+                state=state,
+                chunk_id=chunk["chunk_id"],
+                annotations_by_id=annotations_by_id,
+                current_annotations=chunk_annotations,
+            )
+            resolution_events = _apply_mystery_resolution(
+                mystery_resolution_response, state=state, chunk_id=chunk["chunk_id"]
+            )
+            chunk_annotations = _apply_entity_aliases_to_annotations(
+                chunk_annotations, state
+            )
+        expiration_events = _expire_stale_pending_mysteries(
+            state=state, chunk_id=chunk["chunk_id"], config=config
+        )
+
         unresolved_annotations = [
             row
             for row in chunk_annotations
             if row.get("needs_review")
             or row.get("speaker_status") in {"unknown", "review", "mystery"}
         ]
-        if unresolved_annotations:
+        if has_dialogues and unresolved_annotations:
             repair_payload = {
                 **payload,
                 "task_a_annotations": _compact_annotations(chunk_annotations),
@@ -310,16 +379,25 @@ def annotate_v2_volume(config: ReadingV2Config) -> dict:
         )
 
         if not config.dry_run:
-            chunk_annotations = _fill_missing_annotations(
-                chunk=chunk,
-                annotations=chunk_annotations,
-            )
-            for annotation in chunk_annotations:
-                annotations_by_id[annotation["dialogue_id"]] = annotation
+            if has_dialogues:
+                chunk_annotations = _fill_missing_annotations(
+                    chunk=chunk,
+                    annotations=chunk_annotations,
+                )
+                for annotation in chunk_annotations:
+                    annotations_by_id[annotation["dialogue_id"]] = annotation
             _append_entity_events(
                 state=state,
                 chunk_id=chunk["chunk_id"],
-                events=[*discovery_events, *merge_events, *update_events],
+                events=[
+                    *discovery_events,
+                    *pending_events,
+                    *merge_events,
+                    *update_events,
+                    *resolution_merge_events,
+                    *resolution_events,
+                    *expiration_events,
+                ],
             )
 
     annotations = sorted(
@@ -348,7 +426,9 @@ def annotate_v2_volume(config: ReadingV2Config) -> dict:
         "dry_run": config.dry_run,
         "cache_only": config.cache_only,
         "chunk_count": len(selected_chunks),
-        "skipped_no_dialogue_chunk_count": skipped_no_dialogue_chunks,
+        "skipped_no_dialogue_chunk_count": skipped_non_narrative_chunks,
+        "skipped_non_narrative_chunk_count": skipped_non_narrative_chunks,
+        "memory_only_chunk_count": memory_only_chunks,
         "dialogue_count": sum(len(chunk["dialogues"]) for chunk in selected_chunks),
         "annotation_count": len(annotations),
         "repair_count": len(repairs),
@@ -636,6 +716,20 @@ def _select_chunks(chunks: list[dict], config: ReadingV2Config) -> list[dict]:
     return selected
 
 
+def _is_non_narrative_chunk(chunk: dict) -> bool:
+    if chunk["dialogues"]:
+        return False
+    if int(chunk.get("chapter_index") or 0) > 0:
+        return False
+    texts = [_clean_text(row.get("text")) for row in chunk.get("paragraphs", [])]
+    texts = [text for text in texts if text]
+    if not texts:
+        return True
+    total_chars = sum(len(text) for text in texts)
+    long_paragraph_count = sum(1 for text in texts if len(text) >= 40)
+    return total_chars < 220 and long_paragraph_count == 0
+
+
 def _build_base_payload(
     *,
     volume_meta: dict,
@@ -712,6 +806,8 @@ def _build_entity_discovery_prompt(payload: dict) -> str:
         "但不要直接修改角色库。\n"
         "建 character：有明确名字、稳定身份或多次影响剧情。建 mystery：可追踪但暂未命名的个体。"
         "建 npc_group：无名群体、路人、临时职能角色、围观者或低重要度群体。\n"
+        "对 mystery 也要估计重要性：如果后续很可能确认身份或影响多段剧情，使用 medium/major；"
+        "普通一次性未知路人保持 minor 或 npc_group。\n"
         "只返回 JSON，格式：{\"new_entities\":[{\"entity_type\":\"character|mystery|npc_group\","
         "\"display_name\":\"...\",\"aliases\":[],\"importance\":\"minor|medium|major\","
         "\"summary\":\"...\",\"evidence_refs\":[],\"dialogue_count_delta\":0}],"
@@ -740,6 +836,22 @@ def _build_global_summary_prompt(payload: dict) -> str:
         "更新卷级长期摘要。不得凭空新增当前 chunk 没有的事实。\n"
         "只返回 JSON，格式：{\"summary\":\"50到700字\","
         "\"new_facts\":[],\"retained_facts\":[],\"dropped_facts_reason\":[]}\n"
+        "输入 JSON：\n"
+        f"{json.dumps(payload, ensure_ascii=False, indent=2)}\n"
+    )
+
+
+def _build_mystery_resolution_prompt(payload: dict) -> str:
+    return (
+        "你是通用小说角色身份回填助手。任务：在读完当前 chunk 后，判断 pending_mysteries "
+        "中尚未确认身份的 mystery 是否已经可以与已有 character 合并。\n"
+        "只允许基于当前 chunk、短期摘要、长期摘要、候选实体卡和证据判断；不要使用任何外部作品知识。"
+        "证据不足时保持 pending，不要为了减少列表而强行合并。\n"
+        "只返回 JSON，格式：{\"merge_candidates\":[{\"source_entity_id\":\"mystery_id\","
+        "\"target_entity_id\":\"char_id\",\"confidence\":0.0,\"reason\":\"短证据\"}],"
+        "\"keep_pending\":[\"mystery_id\"],\"expire_pending\":[{\"entity_id\":\"mystery_id\","
+        "\"reason\":\"...\"}]}\n"
+        "合并置信度必须足够高；如果只是可能相似但证据不足，放入 keep_pending。\n"
         "输入 JSON：\n"
         f"{json.dumps(payload, ensure_ascii=False, indent=2)}\n"
     )
@@ -957,6 +1069,8 @@ def _apply_entity_merges(
         source_card["merge_confidence"] = confidence
         source_card["merge_reason"] = reason
         state.entity_aliases[source_id] = target_id
+        if source_id in state.pending_mysteries:
+            del state.pending_mysteries[source_id]
         _backfill_annotations_for_merge(
             annotations_by_id=annotations_by_id,
             current_annotations=current_annotations,
@@ -1062,6 +1176,153 @@ def _apply_entity_aliases_to_annotations(
                 )
             )
     return updated
+
+
+def _refresh_pending_mysteries(
+    *, state: ReadingV2State, chunk_id: str, config: ReadingV2Config
+) -> list[dict]:
+    events: list[dict] = []
+    for entity_id, card in state.mysteries.items():
+        if card.get("merged_into"):
+            state.pending_mysteries.pop(entity_id, None)
+            continue
+        if _clean_importance(card.get("importance")) == "minor":
+            continue
+        existing = state.pending_mysteries.get(entity_id)
+        pending_card = _pending_mystery_card(card, chunk_id=chunk_id, existing=existing)
+        state.pending_mysteries[entity_id] = pending_card
+        if existing is None:
+            events.append(
+                {
+                    "event_type": "pending_mystery_added",
+                    "entity_id": entity_id,
+                    "display_name": pending_card["display_name"],
+                    "importance": pending_card["importance"],
+                }
+            )
+    _trim_pending_mysteries(state, config)
+    return events
+
+
+def _pending_mystery_card(
+    card: dict, *, chunk_id: str, existing: dict | None
+) -> dict:
+    return {
+        "entity_id": card.get("entity_id"),
+        "display_name": card.get("display_name"),
+        "aliases": card.get("aliases", [])[:6],
+        "importance": card.get("importance", "medium"),
+        "summary": _truncate_chars(card.get("summary", ""), 140),
+        "evidence_refs": card.get("evidence_refs", [])[:12],
+        "first_seen_chunk_id": card.get("first_seen_chunk_id") or chunk_id,
+        "latest_seen_chunk_id": card.get("latest_seen_chunk_id") or chunk_id,
+        "first_pending_chunk_id": (existing or {}).get("first_pending_chunk_id")
+        or chunk_id,
+        "last_checked_chunk_id": (existing or {}).get("last_checked_chunk_id", ""),
+    }
+
+
+def _trim_pending_mysteries(state: ReadingV2State, config: ReadingV2Config) -> None:
+    limit = max(0, config.max_pending_mysteries)
+    if not limit or len(state.pending_mysteries) <= limit:
+        return
+    rows = sorted(
+        state.pending_mysteries.values(),
+        key=lambda row: (
+            IMPORTANCE_LEVELS.get(row.get("importance", "minor"), 1),
+            _chunk_number(row.get("latest_seen_chunk_id")),
+        ),
+        reverse=True,
+    )
+    keep_ids = {_clean_text(row.get("entity_id")) for row in rows[:limit]}
+    for entity_id in list(state.pending_mysteries):
+        if entity_id not in keep_ids:
+            del state.pending_mysteries[entity_id]
+
+
+def _pending_mystery_cards(
+    state: ReadingV2State, config: ReadingV2Config
+) -> list[dict]:
+    rows = [
+        pending
+        for entity_id, pending in state.pending_mysteries.items()
+        if _find_entity_card_by_id(state, entity_id) is not None
+    ]
+    rows.sort(
+        key=lambda row: (
+            IMPORTANCE_LEVELS.get(row.get("importance", "minor"), 1),
+            _chunk_number(row.get("latest_seen_chunk_id")),
+        ),
+        reverse=True,
+    )
+    return rows[: max(0, config.max_pending_mysteries)]
+
+
+def _apply_mystery_resolution(
+    response: Any, *, state: ReadingV2State, chunk_id: str
+) -> list[dict]:
+    events: list[dict] = []
+    if not isinstance(response, dict):
+        return events
+    for entity_id in _as_list(response.get("keep_pending")):
+        resolved_id = _resolve_entity_id(state, entity_id)
+        pending = state.pending_mysteries.get(resolved_id)
+        if pending is not None:
+            pending["last_checked_chunk_id"] = chunk_id
+    for row in _first_list_value(response, ("expire_pending", "expired_pending")):
+        if not isinstance(row, dict):
+            continue
+        entity_id = _resolve_entity_id(state, row.get("entity_id"))
+        pending = state.pending_mysteries.pop(entity_id, None)
+        if pending is None:
+            continue
+        reason = _clean_text(row.get("reason")) or "expired_by_model"
+        expired = {**pending, "expired_chunk_id": chunk_id, "expired_reason": reason}
+        state.expired_mysteries.append(expired)
+        card = _find_entity_card_by_id(state, entity_id)
+        if card is not None:
+            card["pending_status"] = "expired"
+            card["pending_expired_chunk_id"] = chunk_id
+            card["pending_expired_reason"] = reason
+        events.append(
+            {
+                "event_type": "pending_mystery_expired",
+                "entity_id": entity_id,
+                "reason": reason,
+            }
+        )
+    return events
+
+
+def _expire_stale_pending_mysteries(
+    *, state: ReadingV2State, chunk_id: str, config: ReadingV2Config
+) -> list[dict]:
+    events: list[dict] = []
+    ttl = max(0, config.pending_mystery_ttl_chunks)
+    if not ttl:
+        return events
+    current_number = _chunk_number(chunk_id)
+    for entity_id, pending in list(state.pending_mysteries.items()):
+        first_number = _chunk_number(pending.get("first_pending_chunk_id"))
+        if not first_number or current_number - first_number < ttl:
+            continue
+        del state.pending_mysteries[entity_id]
+        reason = f"unresolved_after_{ttl}_chunks"
+        expired = {**pending, "expired_chunk_id": chunk_id, "expired_reason": reason}
+        state.expired_mysteries.append(expired)
+        card = _find_entity_card_by_id(state, entity_id)
+        if card is not None:
+            card["pending_status"] = "expired"
+            card["pending_expired_chunk_id"] = chunk_id
+            card["pending_expired_reason"] = reason
+        events.append(
+            {
+                "event_type": "pending_mystery_expired",
+                "entity_id": entity_id,
+                "reason": reason,
+            }
+        )
+    return events
 
 
 def _annotation_with_entity(
@@ -1318,6 +1579,8 @@ def _write_memory_outputs(
     write_jsonl(memory_dir / "characters.jsonl", state.characters.values())
     write_jsonl(memory_dir / "mysteries.jsonl", state.mysteries.values())
     write_jsonl(memory_dir / "npc_groups.jsonl", state.npc_groups.values())
+    write_jsonl(memory_dir / "pending_mysteries.jsonl", state.pending_mysteries.values())
+    write_jsonl(memory_dir / "expired_mysteries.jsonl", state.expired_mysteries)
     write_jsonl(memory_dir / "entity_events.jsonl", state.entity_events)
 
 

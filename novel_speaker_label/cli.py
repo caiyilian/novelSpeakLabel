@@ -244,6 +244,8 @@ def main(argv: list[str] | None = None) -> int:
     annotate_v2_parser.add_argument("--max-prompt-tokens", type=int, default=24000)
     annotate_v2_parser.add_argument("--hard-prompt-tokens", type=int, default=30000)
     annotate_v2_parser.add_argument("--max-candidate-entities", type=int, default=12)
+    annotate_v2_parser.add_argument("--max-pending-mysteries", type=int, default=8)
+    annotate_v2_parser.add_argument("--pending-mystery-ttl-chunks", type=int, default=12)
 
     rebuild_parser = subparsers.add_parser(
         "rebuild-memory",
@@ -387,6 +389,8 @@ def main(argv: list[str] | None = None) -> int:
                 max_prompt_tokens=args.max_prompt_tokens,
                 hard_prompt_tokens=args.hard_prompt_tokens,
                 max_candidate_entities=args.max_candidate_entities,
+                max_pending_mysteries=args.max_pending_mysteries,
+                pending_mystery_ttl_chunks=args.pending_mystery_ttl_chunks,
             )
         )
         _print_summary("annotate-v2", summary)
