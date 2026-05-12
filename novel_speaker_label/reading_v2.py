@@ -20,33 +20,6 @@ READING_V2_TASKS = (
 )
 SPEAKER_STATUSES = {"known", "mystery", "npc_group", "unknown", "review"}
 IMPORTANCE_LEVELS = {"minor": 1, "medium": 2, "major": 3}
-DIRECT_ATTRIBUTION_VERBS = (
-    "反问",
-    "回答说",
-    "回答道",
-    "答道",
-    "问道",
-    "说道",
-    "说着",
-    "打招呼",
-    "喊道",
-    "叫道",
-)
-GENERIC_SPEAKER_DESCRIPTORS = {
-    "他",
-    "她",
-    "这个人",
-    "那个人",
-    "男人",
-    "女人",
-    "男子",
-    "女子",
-    "女孩",
-    "少女",
-    "姑娘",
-}
-COMMERCE_THANKS_MARKERS = ("多谢惠顾", "谢谢惠顾")
-MERCHANT_HINTS = ("商人", "行商", "商贩", "店主", "卖主", "摊主", "商")
 REVIEW_LABEL = "待复核"
 
 
@@ -184,11 +157,6 @@ def annotate_v2_volume(config: ReadingV2Config) -> dict:
         chunk_annotations = _apply_entity_aliases_to_annotations(
             chunk_annotations, state
         )
-        chunk_annotations = _apply_local_attribution_rules(
-            chunk=chunk,
-            annotations=chunk_annotations,
-            state=state,
-        )
         _ensure_entities_from_annotations(chunk_annotations, state, chunk["chunk_id"])
 
         summary_payload = {
@@ -246,11 +214,6 @@ def annotate_v2_volume(config: ReadingV2Config) -> dict:
         )
         chunk_annotations = _apply_entity_aliases_to_annotations(
             chunk_annotations, state
-        )
-        chunk_annotations = _apply_local_attribution_rules(
-            chunk=chunk,
-            annotations=chunk_annotations,
-            state=state,
         )
 
         update_payload = {
@@ -344,11 +307,6 @@ def annotate_v2_volume(config: ReadingV2Config) -> dict:
         chunk_annotations = _apply_repairs(chunk_annotations, chunk_repairs)
         chunk_annotations = _apply_entity_aliases_to_annotations(
             chunk_annotations, state
-        )
-        chunk_annotations = _apply_local_attribution_rules(
-            chunk=chunk,
-            annotations=chunk_annotations,
-            state=state,
         )
 
         if not config.dry_run:
@@ -725,7 +683,9 @@ def _build_annotation_prompt(payload: dict) -> str:
         "任务：给当前 chunk 内每条 dialogue 标注说话人。允许 unknown、mystery、npc_group、review，"
         "不要为了降低复核数而猜测重要角色。\n"
         "关键规则：被称呼者通常不是说话者；如果只能判断为无名低重要度群体，使用 npc_group；"
-        "可能误伤重要角色时使用 review。\n"
+        "可能误伤重要角色时使用 review。"
+        "要结合当前段落、前后文叙述、对话轮次、场景角色和称呼关系实时判断，"
+        "不要依赖任何特定作品、角色或固定剧情先验。\n"
         "只返回 JSON，格式：{\"annotations\":[{\"dialogue_id\":\"...\",\"speaker_entity_id\":\"...\","
         "\"speaker_display\":\"...\",\"speaker_status\":\"known|mystery|npc_group|unknown|review\","
         "\"confidence\":0.0,\"evidence\":[\"短证据\"],\"negative_evidence\":[],"
@@ -1104,245 +1064,6 @@ def _apply_entity_aliases_to_annotations(
     return updated
 
 
-def _apply_local_attribution_rules(
-    *, chunk: dict, annotations: list[dict], state: ReadingV2State
-) -> list[dict]:
-    if not annotations:
-        return annotations
-    updated: list[dict] = []
-    for annotation in annotations:
-        card, reason = _local_rule_speaker(
-            chunk=chunk,
-            annotation=annotation,
-            state=state,
-            previous_annotations=updated,
-        )
-        if card is None:
-            updated.append(annotation)
-            continue
-        if card.get("entity_id") == annotation.get("speaker_entity_id"):
-            updated.append(annotation)
-            continue
-        updated.append(
-            _annotation_with_entity(
-                annotation=annotation,
-                card=card,
-                confidence=max(_safe_float(annotation.get("confidence"), 0.0), 0.9),
-                evidence=reason,
-            )
-        )
-    return updated
-
-
-def _local_rule_speaker(
-    *,
-    chunk: dict,
-    annotation: dict,
-    state: ReadingV2State,
-    previous_annotations: list[dict],
-) -> tuple[dict | None, str]:
-    context_texts = _dialogue_context_texts(chunk, annotation)
-    for text, position in context_texts:
-        card = _speaker_from_direct_attribution(
-            text=text,
-            position=position,
-            state=state,
-            previous_annotations=previous_annotations,
-        )
-        if card is not None:
-            return card, "确定性叙述归因规则"
-
-    card = _speaker_from_previous_experience_context(
-        chunk=chunk,
-        annotation=annotation,
-        state=state,
-    )
-    if card is not None:
-        return card, "前文经验叙述指向第一人称话语"
-
-    dialogue_text = _clean_text(annotation.get("text"))
-    if any(marker in dialogue_text for marker in COMMERCE_THANKS_MARKERS):
-        card = _merchant_entity_card(state)
-        if card is not None:
-            return card, "交易致谢话语归因给商贩/商人"
-
-    return None, ""
-
-
-def _dialogue_context_texts(chunk: dict, annotation: dict) -> list[tuple[str, str]]:
-    paragraph_index = _safe_int(annotation.get("paragraph_index"), 0)
-    rows = [*chunk.get("paragraphs", []), *chunk.get("lookahead_paragraphs", [])]
-    by_index = {
-        _safe_int(row.get("paragraph_index"), -1): _clean_text(row.get("text"))
-        for row in rows
-    }
-    contexts = [
-        (by_index.get(paragraph_index - 1, ""), "previous"),
-        (by_index.get(paragraph_index, ""), "current"),
-        (by_index.get(paragraph_index + 1, ""), "next"),
-    ]
-    return [(text, position) for text, position in contexts if text]
-
-
-def _speaker_from_direct_attribution(
-    *,
-    text: str,
-    position: str,
-    state: ReadingV2State,
-    previous_annotations: list[dict],
-) -> dict | None:
-    if position == "previous" and not _clean_text(text).endswith(("：", ":")):
-        return None
-    if position == "next" and _clean_text(text).endswith(("：", ":")):
-        return None
-
-    for marker in ("朝", "向"):
-        for match in re.finditer(marker, text):
-            tail = text[match.end() : match.end() + 80]
-            if "打招呼" not in tail:
-                continue
-            phrase = _subject_phrase_before(text[: match.start()])
-            card = _entity_card_from_phrase(
-                phrase, state=state, previous_annotations=previous_annotations
-            )
-            if card is not None:
-                return card
-
-    for verb in DIRECT_ATTRIBUTION_VERBS:
-        for match in re.finditer(re.escape(verb), text):
-            if match.start() <= 0:
-                continue
-            phrase = _subject_phrase_before(text[: match.start()])
-            if not phrase:
-                continue
-            card = _entity_card_from_phrase(
-                phrase, state=state, previous_annotations=previous_annotations
-            )
-            if card is not None:
-                return card
-
-    for clause in re.split(r"[。！？；\n]", text):
-        for subclause in re.split(r"[，,]", clause):
-            for verb in DIRECT_ATTRIBUTION_VERBS:
-                index = subclause.find(verb)
-                if index <= 0:
-                    continue
-                phrase = _subject_phrase_before(subclause[:index])
-                if not phrase:
-                    continue
-                card = _entity_card_from_phrase(
-                    phrase, state=state, previous_annotations=previous_annotations
-                )
-                if card is not None:
-                    return card
-    return None
-
-
-def _speaker_from_previous_experience_context(
-    *, chunk: dict, annotation: dict, state: ReadingV2State
-) -> dict | None:
-    dialogue_text = _clean_text(annotation.get("text"))
-    if not re.search(r"(我|咱|俺).{0,12}(去过|到过|见过|经历过)", dialogue_text):
-        return None
-    previous = _paragraph_text_by_relative_index(chunk, annotation, -1)
-    if not previous or not any(
-        marker in previous
-        for marker in ("经验", "经历", "去过", "到过", "曾经", "远及")
-    ):
-        return None
-    candidates: list[dict] = []
-    for card in _active_entity_cards(state):
-        if card.get("entity_type") != "character":
-            continue
-        if any(name and name in previous for name in _entity_names(card)):
-            candidates.append(card)
-    return _best_entity_card(candidates) if candidates else None
-
-
-def _paragraph_text_by_relative_index(
-    chunk: dict, annotation: dict, relative_index: int
-) -> str:
-    paragraph_index = _safe_int(annotation.get("paragraph_index"), 0)
-    rows = [*chunk.get("paragraphs", []), *chunk.get("lookahead_paragraphs", [])]
-    by_index = {
-        _safe_int(row.get("paragraph_index"), -1): _clean_text(row.get("text"))
-        for row in rows
-    }
-    return by_index.get(paragraph_index + relative_index, "")
-
-
-def _subject_phrase_before(text: str) -> str:
-    cleaned = _clean_text(text)
-    if not cleaned:
-        return ""
-    cleaned = re.sub(r"[“”\"'「」『』（）()]+", " ", cleaned)
-    cleaned = cleaned.rstrip(" ，,。！？；、：:")
-    parts = re.split(r"[\s，,。！？；、：:]+", cleaned)
-    phrase = parts[-1] if parts else cleaned
-    phrase = re.sub(r"^(可是|不过|然后|于是|这时|那时|接着|听到|看见|看到)", "", phrase)
-    return phrase[-16:]
-
-
-def _entity_card_from_phrase(
-    phrase: str,
-    *,
-    state: ReadingV2State,
-    previous_annotations: list[dict],
-) -> dict | None:
-    phrase = _clean_text(phrase)
-    if not phrase:
-        return None
-    cards = _active_entity_cards(state)
-    exact_matches = [
-        card
-        for card in cards
-        if phrase in {_clean_text(card.get("display_name")), *card.get("aliases", [])}
-    ]
-    if exact_matches:
-        return _best_entity_card(exact_matches)
-
-    partial_matches: list[dict] = []
-    for card in cards:
-        names = [_clean_text(card.get("display_name")), *card.get("aliases", [])]
-        if any(name and (name in phrase or phrase in name) for name in names):
-            partial_matches.append(card)
-    if partial_matches:
-        return _best_entity_card(partial_matches)
-
-    if phrase in GENERIC_SPEAKER_DESCRIPTORS:
-        descriptor_matches = [
-            card
-            for card in cards
-            if any(phrase in _clean_text(name) for name in _entity_names(card))
-        ]
-        if descriptor_matches:
-            return _best_entity_card(descriptor_matches)
-        for annotation in reversed(previous_annotations):
-            card = _find_entity_card_by_id(
-                state, _clean_text(annotation.get("speaker_entity_id"))
-            )
-            if card is not None:
-                return card
-    return None
-
-
-def _merchant_entity_card(state: ReadingV2State) -> dict | None:
-    candidates: list[dict] = []
-    for card in _active_entity_cards(state):
-        if card.get("entity_type") != "character":
-            continue
-        haystack = " ".join(
-            [
-                _clean_text(card.get("display_name")),
-                *_entity_names(card),
-                _clean_text(card.get("summary")),
-            ]
-        )
-        if any(hint in haystack for hint in MERCHANT_HINTS):
-            candidates.append(card)
-    return _best_entity_card(candidates) if candidates else None
-
-
 def _annotation_with_entity(
     *, annotation: dict, card: dict, confidence: float, evidence: str
 ) -> dict:
@@ -1358,34 +1079,6 @@ def _annotation_with_entity(
         "needs_review": needs_review,
         "review_reason": "" if not needs_review else annotation.get("review_reason", ""),
     }
-
-
-def _active_entity_cards(state: ReadingV2State) -> list[dict]:
-    return [
-        card
-        for card in [
-            *state.characters.values(),
-            *state.mysteries.values(),
-            *state.npc_groups.values(),
-        ]
-        if not card.get("merged_into")
-    ]
-
-
-def _best_entity_card(cards: list[dict]) -> dict:
-    return sorted(
-        cards,
-        key=lambda card: (
-            IMPORTANCE_LEVELS.get(card.get("importance", "minor"), 1),
-            _chunk_number(card.get("latest_seen_chunk_id")),
-            int(card.get("dialogue_count", 0)),
-        ),
-        reverse=True,
-    )[0]
-
-
-def _entity_names(card: dict) -> list[str]:
-    return _unique_strings([card.get("display_name"), *card.get("aliases", [])], 16)
 
 
 def _status_for_entity_card(card: dict) -> str:
@@ -2002,13 +1695,6 @@ def _safe_model_name(model: str) -> str:
 def _safe_float(value: Any, default: float) -> float:
     try:
         return float(value)
-    except (TypeError, ValueError):
-        return default
-
-
-def _safe_int(value: Any, default: int) -> int:
-    try:
-        return int(value)
     except (TypeError, ValueError):
         return default
 
