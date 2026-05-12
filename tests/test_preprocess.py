@@ -25,6 +25,12 @@ from novel_speaker_label.discovery import CharacterStore, _split_scene_into_requ
 from novel_speaker_label.jsonl import read_json, read_jsonl, write_json, write_jsonl
 from novel_speaker_label.ollama_client import OllamaConfig, OllamaClient, collect_streaming_response
 from novel_speaker_label.preprocess import PreprocessConfig, preprocess_volume
+from novel_speaker_label.reading_v2 import (
+    ReadingV2Config,
+    annotate_v2_volume,
+    estimate_prompt_tokens,
+    prompt_length_status,
+)
 
 
 def _annotation_dialogue(
@@ -1505,6 +1511,188 @@ class AnnotationTests(unittest.TestCase):
         self.assertIn("candidate_speakers 最多 2 个候选", prompt)
         self.assertIn("evidence 最多 3 条", prompt)
         self.assertNotIn('"should_create_new_entity": false', prompt)
+
+
+class ReadingV2Tests(unittest.TestCase):
+    def _write_v2_fixture(self, output_dir: Path) -> None:
+        paragraph = "「Hello there.」"
+        write_json(output_dir / "volume.json", {"volume_id": "volume_01", "volume": 1})
+        write_jsonl(
+            output_dir / "preprocess" / "paragraphs.jsonl",
+            [
+                {
+                    "paragraph_id": "p1",
+                    "paragraph_index": 0,
+                    "volume_id": "volume_01",
+                    "chapter_id": "volume_01-c001",
+                    "chapter_index": 1,
+                    "chapter_title": "Chapter 1",
+                    "scene_id": "volume_01-c001-s001",
+                    "scene_index": 1,
+                    "text": paragraph,
+                }
+            ],
+        )
+        write_jsonl(
+            output_dir / "preprocess" / "dialogues.jsonl",
+            [
+                {
+                    "dialogue_id": "volume_01-d000001",
+                    "dialogue_index": 0,
+                    "volume_id": "volume_01",
+                    "chapter_id": "volume_01-c001",
+                    "chapter_index": 1,
+                    "chapter_title": "Chapter 1",
+                    "scene_id": "volume_01-c001-s001",
+                    "scene_index": 1,
+                    "paragraph_id": "p1",
+                    "paragraph_index": 0,
+                    "local_dialogue_index": 1,
+                    "text": "Hello there.",
+                    "quote_text": paragraph,
+                    "dialogue_kind": "standalone",
+                    "char_start": 0,
+                    "char_end": len(paragraph),
+                }
+            ],
+        )
+
+    def test_prompt_length_status_uses_hard_limit(self) -> None:
+        self.assertGreater(estimate_prompt_tokens("汉字abc{}"), 0)
+        self.assertEqual(prompt_length_status(8, 10, 20), "ok")
+        self.assertEqual(prompt_length_status(15, 10, 20), "near_limit")
+        self.assertEqual(prompt_length_status(25, 10, 20), "over_limit")
+
+    def test_annotate_v2_dry_run_writes_prompt_length_report(self) -> None:
+        with tempfile.TemporaryDirectory(dir=Path.cwd()) as tmp:
+            output_dir = Path(tmp) / "outputs" / "volume_01"
+            self._write_v2_fixture(output_dir)
+
+            summary = annotate_v2_volume(
+                ReadingV2Config(
+                    output_dir=output_dir,
+                    model="fake-model",
+                    dry_run=True,
+                    max_paragraphs_per_chunk=2,
+                    max_dialogues_per_chunk=2,
+                )
+            )
+
+            report = read_json(output_dir / "reading_v2" / "prompt_length_report.json")
+            rows = list(
+                read_jsonl(output_dir / "reading_v2" / "prompt_length_report.jsonl")
+            )
+            prompts = list((output_dir / "reading_v2" / "prompts").glob("*.txt"))
+            self.assertEqual(summary["pipeline"], "reading-v2")
+            self.assertEqual(summary["prompt_count"], 6)
+            self.assertEqual(summary["prompt_over_limit_count"], 0)
+            self.assertEqual(report["prompt_count"], 6)
+            self.assertEqual(report["task_counts"]["annotation"], 1)
+            self.assertEqual(len(rows), 6)
+            self.assertEqual(len(prompts), 6)
+
+    def test_annotate_v2_cache_only_writes_annotations_and_memory(self) -> None:
+        with tempfile.TemporaryDirectory(dir=Path.cwd()) as tmp:
+            output_dir = Path(tmp) / "outputs" / "volume_01"
+            self._write_v2_fixture(output_dir)
+            cache_dir = output_dir / "reading_v2" / "cache"
+            request_prefix = "volume_01-r000001"
+            model_suffix = "fake_model"
+            write_json(
+                cache_dir / f"{request_prefix}--annotation--{model_suffix}.json",
+                {
+                    "annotations": [
+                        {
+                            "dialogue_id": "volume_01-d000001",
+                            "speaker_entity_id": "char_0001",
+                            "speaker_display": "Alice",
+                            "speaker_status": "known",
+                            "confidence": 0.91,
+                            "evidence": ["Narration attributes the line to Alice."],
+                            "needs_review": False,
+                        }
+                    ]
+                },
+            )
+            write_json(
+                cache_dir / f"{request_prefix}--chunk_summary--{model_suffix}.json",
+                {
+                    "chunk_id": request_prefix,
+                    "summary": "Alice greets someone.",
+                    "active_entities": ["char_0001"],
+                    "open_questions": [],
+                    "evidence_refs": ["volume_01-d000001"],
+                },
+            )
+            write_json(
+                cache_dir / f"{request_prefix}--entity_discovery--{model_suffix}.json",
+                {
+                    "new_entities": [
+                        {
+                            "entity_id": "char_0001",
+                            "entity_type": "character",
+                            "display_name": "Alice",
+                            "importance": "medium",
+                            "summary": "A named speaker in the current chunk.",
+                            "evidence_refs": ["volume_01-d000001"],
+                            "dialogue_count_delta": 1,
+                        }
+                    ],
+                    "merge_candidates": [],
+                },
+            )
+            write_json(
+                cache_dir / f"{request_prefix}--entity_update--{model_suffix}.json",
+                {
+                    "updates": [
+                        {
+                            "entity_id": "char_0001",
+                            "summary": "Alice greets someone.",
+                            "importance": "medium",
+                            "dialogue_count_delta": 1,
+                            "latest_seen_chunk_id": request_prefix,
+                            "relationship_updates": [],
+                            "evidence_refs": ["volume_01-d000001"],
+                        }
+                    ]
+                },
+            )
+            write_json(
+                cache_dir / f"{request_prefix}--global_summary--{model_suffix}.json",
+                {
+                    "summary": "Alice has appeared and greeted someone.",
+                    "new_facts": ["Alice speaks in the opening chunk."],
+                    "retained_facts": [],
+                    "dropped_facts_reason": [],
+                },
+            )
+            write_json(
+                cache_dir / f"{request_prefix}--repair--{model_suffix}.json",
+                {"repairs": []},
+            )
+
+            summary = annotate_v2_volume(
+                ReadingV2Config(
+                    output_dir=output_dir,
+                    model="fake-model",
+                    cache_only=True,
+                    write_prompts=False,
+                )
+            )
+
+            annotations = list(
+                read_jsonl(output_dir / "annotation_v2" / "annotations.jsonl")
+            )
+            characters = list(read_jsonl(output_dir / "memory_v2" / "characters.jsonl"))
+            labeled = (output_dir / "annotation_v2" / "final_labeled.txt").read_text(
+                encoding="utf-8"
+            )
+            self.assertEqual(summary["annotation_count"], 1)
+            self.assertEqual(summary["failed_request_count"], 0)
+            self.assertEqual(annotations[0]["speaker_display"], "Alice")
+            self.assertFalse(annotations[0]["needs_review"])
+            self.assertEqual(characters[0]["display_name"], "Alice")
+            self.assertIn("【Alice】", labeled)
 
 
 class CliOutputPathTests(unittest.TestCase):
