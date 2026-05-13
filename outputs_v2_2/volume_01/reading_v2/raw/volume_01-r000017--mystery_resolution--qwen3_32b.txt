@@ -1,0 +1,19 @@
+```json
+{
+  "merge_candidates": [
+    {
+      "source_entity_id": "mystery_v2_000015",
+      "target_entity_id": "char_v2_000002",
+      "confidence": 0.95,
+      "reason": "当前 chunk 明确表明神秘女孩即为赫萝，她与罗伦斯的对话和行为与已确认的赫萝角色一致。"
+    }
+  ],
+  "keep_pending": [],
+  "expire_pending": [
+    {
+      "entity_id": "mystery_v2_000015",
+      "reason": "已确认神秘女孩即为赫萝，与 char_v2_000002 合并。"
+    }
+  ]
+}
+```

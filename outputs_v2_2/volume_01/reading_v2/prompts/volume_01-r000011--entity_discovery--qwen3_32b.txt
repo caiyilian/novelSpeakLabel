@@ -1,0 +1,584 @@
+你是通用小说实体发现助手。任务：从当前 chunk 和初标注结果中提出新增实体候选，但不要直接修改角色库。
+建 character：有明确名字、稳定身份或多次影响剧情。建 mystery：可追踪但暂未命名的个体。建 npc_group：无名群体、路人、临时职能角色、围观者或低重要度群体。
+对 mystery 也要估计重要性：如果后续很可能确认身份或影响多段剧情，使用 medium/major；普通一次性未知路人保持 minor 或 npc_group。
+只返回 JSON，格式：{"new_entities":[{"entity_type":"character|mystery|npc_group","display_name":"...","aliases":[],"importance":"minor|medium|major","summary":"...","evidence_refs":[],"dialogue_count_delta":0}],"merge_candidates":[{"source_entity_id":"...","target_entity_id":"...","reason":"...","confidence":0.0}]}
+输入 JSON：
+{
+  "volume": {
+    "volume_id": "volume_01",
+    "volume": 1,
+    "title": ""
+  },
+  "chunk": {
+    "chunk_id": "volume_01-r000011",
+    "chunk_index": 10,
+    "chapter_id": "volume_01-c001",
+    "chapter_title": "第一幕",
+    "scene_id": "volume_01-c001-s002",
+    "paragraphs": [
+      {
+        "paragraph_id": "volume_01-c001-s002-p000147",
+        "paragraph_index": 146,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s002",
+        "scene_index": 2,
+        "text": "那匹公马正是现在依旧精神奕奕为罗伦斯卖力的马儿。每当罗伦斯陷入希望有人陪伴的思绪里时，总会不禁后悔当初没有选择母马。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s002-p000148",
+        "paragraph_index": 147,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s002",
+        "scene_index": 2,
+        "text": "不过，话又说回来，马儿迎接的每一天，都是被迫搬运沉重的货物。就算马儿当真变成人类，也实在不觉得马儿会像经常听到的故事般，和旅行商人饲主坠入情网，或利用神奇的力量为主人招来好运。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s002-p000149",
+        "paragraph_index": 148,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s002",
+        "scene_index": 2,
+        "text": "马儿顶多会要求休息和薪水吧！"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s002-p000150",
+        "paragraph_index": 149,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s002",
+        "scene_index": 2,
+        "text": "一想到这里，不禁觉得马儿还是马儿就好的人类还真是自私呢。罗伦斯苦笑，像是受不了自己似的叹了口气。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s002-p000151",
+        "paragraph_index": 150,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s002",
+        "scene_index": 2,
+        "text": "想着想着来到河边，罗伦斯决定今天就露宿在这附近。尽管满月的光线把路面照得明亮，但不能保证不会掉进河里。万一不小心掉进河里，那可不是一句「糟糕」就能解决的事。罗伦斯可能因此没命，无论如何都得避免这种事发生。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s002-p000152",
+        "paragraph_index": 151,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s002",
+        "scene_index": 2,
+        "text": "罗伦斯拉紧缰绳，示意马儿停下。这时马儿似乎也察觉到总算可以休息，他在原地踏了两、三步后，叹息似地甩甩头。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s002-p000153",
+        "paragraph_index": 152,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s002",
+        "scene_index": 2,
+        "text": "罗伦斯先把吃剩的蔬菜喂给马儿吃，再用货台上的水桶取了河水放在马儿面前。瞧见马儿啪唰啪唰喝水的满足模样，罗伦斯也跟着喝了村民给他的水。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s002-p000154",
+        "paragraph_index": 153,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s002",
+        "scene_index": 2,
+        "text": "比起喝水，罗伦斯其实更想喝酒。不过，在没有谈话对象之下喝酒，只是徒增寂寞罢了。说不定还会一个不注意喝个烂醉，所以罗伦斯决定早早就寝。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s002-p000155",
+        "paragraph_index": 154,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s002",
+        "scene_index": 2,
+        "text": "因为来到这里的途中吃了点蔬菜，肚子不饿也不饱。罗伦斯只咬了一块肉干，便爬上货台。平常睡觉时，罗伦斯都是拿覆盖货台的麻布当棉被。不过难得今天有貂皮，当然没道理不睡在貂皮上面。虽然罗伦斯也觉得貂皮的动物腥味难闻，但总比挨冻好。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s002-p000156",
+        "paragraph_index": 155,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s002",
+        "scene_index": 2,
+        "text": "罗伦斯因为担心在钻进貂皮被窝之前压坏麦苗，于是他掀开麻布准备把麦苗搬开。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s002-p000157",
+        "paragraph_index": 156,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s002",
+        "scene_index": 2,
+        "text": "掀开麻布的那一刻，罗伦斯之所以没有叫出声，或许是因为眼前的光景太教人难以置信了。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s002-p000158",
+        "paragraph_index": 157,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s002",
+        "scene_index": 2,
+        "text": "「……」"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s002-p000159",
+        "paragraph_index": 158,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s002",
+        "scene_index": 2,
+        "text": "竟然有人捷足先登。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s002-p000160",
+        "paragraph_index": 159,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s002",
+        "scene_index": 2,
+        "text": "「喂！」"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s002-p000161",
+        "paragraph_index": 160,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s002",
+        "scene_index": 2,
+        "text": "罗伦斯不确定自己有没有喊出声。他心想自己可能单纯只是受到惊吓，也或许是过度寂寞而产生幻觉。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s002-p000162",
+        "paragraph_index": 161,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s002",
+        "scene_index": 2,
+        "text": "然而，不管他用力甩头还是搓揉眼睛，捷足先登的女孩依旧在眼前。"
+      }
+    ],
+    "dialogues": [
+      {
+        "dialogue_id": "volume_01-d000045",
+        "dialogue_index": 44,
+        "paragraph_id": "volume_01-c001-s002-p000151",
+        "paragraph_index": 150,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "inline",
+        "text": "糟糕",
+        "quote_text": "「糟糕」",
+        "char_start": 67,
+        "char_end": 71
+      },
+      {
+        "dialogue_id": "volume_01-d000046",
+        "dialogue_index": 45,
+        "paragraph_id": "volume_01-c001-s002-p000158",
+        "paragraph_index": 157,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "……",
+        "quote_text": "「……」",
+        "char_start": 0,
+        "char_end": 4
+      },
+      {
+        "dialogue_id": "volume_01-d000047",
+        "dialogue_index": 46,
+        "paragraph_id": "volume_01-c001-s002-p000160",
+        "paragraph_index": 159,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "喂！",
+        "quote_text": "「喂！」",
+        "char_start": 0,
+        "char_end": 4
+      }
+    ]
+  },
+  "near_context": {
+    "lookback_paragraphs": [
+      {
+        "paragraph_id": "volume_01-c001-s002-p000144",
+        "paragraph_index": 143,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s002",
+        "scene_index": 2,
+        "text": "所以，在旅行商人之间的谈话中，时有耳闻马儿变成人类的故事。罗伦斯起初听到时会觉得无稽而大笑不已，但是到了最近，他不自觉地开始相信这种事情真的会发生。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s002-p000145",
+        "paragraph_index": 144,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s002",
+        "scene_index": 2,
+        "text": "有些贩马商的老板看见年轻的旅行商人前来买马时，甚至会认真建议客人选择母马，以免马儿变成人类时，后悔就来不及了。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s002-p000146",
+        "paragraph_index": 145,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s002",
+        "scene_index": 2,
+        "text": "虽然罗伦斯也曾被如此推销过，但他当然不予理会，买了强壮有力的公马。"
+      }
+    ],
+    "lookahead_paragraphs": [
+      {
+        "paragraph_id": "volume_01-c001-s002-p000163",
+        "paragraph_index": 162,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s002",
+        "scene_index": 2,
+        "text": "有着美丽脸孔的女孩睡得香甜的模样，让人有些不忍心叫醒她。"
+      }
+    ]
+  },
+  "memory": {
+    "previous_chunk_summary": {
+      "chunk_id": "volume_01-r000010",
+      "summary": "罗伦斯离开村落，独自坐在马车上，感到一阵寂寥。他咀嚼着村民送的蔬菜，继续向西出发，与归村的农夫们擦肩而过。他羡慕农夫有同伴，而自己则是一个人踏上旅途。罗伦斯今年25岁，自12岁起跟随亲戚学习经商，18岁自立门户，成为一名旅行商人。他渴望拥有自己的商店，但现实却充满挑战，如货款拖欠、缺乏资金和机会被大商人垄断。他仰望满月，感叹自己近来频繁思考未来，也开始怀念旅途上认识的人们，包括商人们、村民和旅馆女子。他意识到自己对陪伴的渴望增强，甚至开始幻想马儿能说话。旅行商人之间流传着马儿变成人类的传说，罗伦斯起初不信，但最近也开始怀疑其真实性。他后悔当初没有选择母马，因为有传言称母马更可能变成人类。罗伦斯的孤独感和对未来的迷茫，为后续情节提供了情感基调。",
+      "active_entities": [
+        "char_v2_000001"
+      ],
+      "open_questions": [
+        "罗伦斯是否会在旅途中遇到能陪伴他的人？",
+        "马儿变成人类的传说是否会在后续情节中实现？",
+        "罗伦斯的孤独感是否会促使他做出重大人生决定？"
+      ],
+      "evidence_refs": [
+        "volume_01-c001-s002-p000131",
+        "volume_01-c001-s002-p000132",
+        "volume_01-c001-s002-p000133",
+        "volume_01-c001-s002-p000134",
+        "volume_01-c001-s002-p000135",
+        "volume_01-c001-s002-p000136",
+        "volume_01-c001-s002-p000137",
+        "volume_01-c001-s002-p000138",
+        "volume_01-c001-s002-p000139",
+        "volume_01-c001-s002-p000140",
+        "volume_01-c001-s002-p000141",
+        "volume_01-c001-s002-p000142",
+        "volume_01-c001-s002-p000143",
+        "volume_01-c001-s002-p000144",
+        "volume_01-c001-s002-p000145",
+        "volume_01-c001-s002-p000146",
+        "volume_01-d000044"
+      ]
+    },
+    "global_summary": "本卷继续描绘罗伦斯作为一名旅行商人的孤独与对未来的迷茫。他离开村落，独自坐在马车上，咀嚼着村民送的蔬菜，继续向西出发。他羡慕农夫有同伴，而自己则是一个人踏上旅途。罗伦斯今年25岁，自12岁起跟随亲戚学习经商，18岁自立门户。他渴望拥有自己的商店，但现实充满挑战，如货款拖欠、缺乏资金和机会被大商人垄断。他仰望满月，感叹自己近来频繁思考未来，也开始怀念旅途上认识的人们，包括商人们、村民和旅馆女子。他意识到自己对陪伴的渴望增强，甚至开始幻想马儿能说话。旅行商人之间流传着马儿变成人类的传说，罗伦斯起初不信，但最近也开始怀疑其真实性。他后悔当初没有选择母马，因为有传言称母马更可能变成人类。罗伦斯的孤独感和对未来的迷茫，为后续情节提供了情感基调。",
+    "candidate_entities": [
+      {
+        "entity_id": "char_v2_000001",
+        "entity_type": "character",
+        "display_name": "罗伦斯",
+        "aliases": [
+          "罗伦斯先生"
+        ],
+        "importance": "major",
+        "summary": "罗伦斯是一名25岁的旅行商人，自12岁起跟随亲戚学习经商，18岁自立门户。他独自一人踏上旅途，感到孤独，并开始思考未来。他渴望拥有自己的商店，但现实充满挑战，如货款拖欠、缺乏资金和机会被大商人垄断。…",
+        "latest_seen_chunk_id": "volume_01-r000010",
+        "dialogue_count": 27
+      },
+      {
+        "entity_id": "mystery_v2_000013",
+        "entity_type": "mystery",
+        "display_name": "马儿",
+        "aliases": [
+          "罗伦斯的马"
+        ],
+        "importance": "medium",
+        "summary": "罗伦斯的马是一匹强壮有力的公马，是他旅行的重要伙伴。罗伦斯开始幻想马儿能说话，并听说旅行商人之间流传着马儿变成人类的传说。他后悔当初没有选择母马，因为有传言称母马更可能变成人类。这匹马在罗伦斯的孤独…",
+        "latest_seen_chunk_id": "volume_01-r000010",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "mystery_v2_000008",
+        "entity_type": "mystery",
+        "display_name": "叶勒",
+        "aliases": [],
+        "importance": "medium",
+        "summary": "叶勒被村民认定为「赫萝」的继承者，因割下最后一束麦子而被追赶。他将被关在谷仓中，无法与罗伦斯交流，这使罗伦斯感到困扰。叶勒的处境表明他与丰收祭典的核心仪式有直接关联，可能揭示更多关于「赫萝」的传说。",
+        "latest_seen_chunk_id": "volume_01-r000009",
+        "dialogue_count": 2
+      },
+      {
+        "entity_id": "mystery_v2_000009",
+        "entity_type": "mystery",
+        "display_name": "赫萝",
+        "aliases": [
+          "赫萝（丰收之神）",
+          "丰收之神",
+          "狼",
+          "狼赫萝"
+        ],
+        "importance": "medium",
+        "summary": "『赫萝』被进一步揭示为丰收之神的化身，传说中它会进入割下最后一束麦子的人体内。村民的集体呼喊和仪式性行为表明，『赫萝』与丰收祭典有紧密联系，但其具体含义仍未明确。这一神秘存在可能在后续情节中揭示其真…",
+        "latest_seen_chunk_id": "volume_01-r000009",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "mystery_v2_000004",
+        "entity_type": "character",
+        "display_name": "骑士",
+        "aliases": [],
+        "importance": "medium",
+        "summary": "农夫与罗伦斯进行对话，回应其关于叶勒的询问，并提到叶勒雇用年轻人耕作，暗示今年的『赫萝』可能出自他们之中。农夫的对话透露出对地方农业和祭典的熟悉，但未表现出对教会或异教徒问题的直接态度。",
+        "latest_seen_chunk_id": "volume_01-r000007",
+        "dialogue_count": 7
+      },
+      {
+        "entity_id": "mystery_v2_000010",
+        "entity_type": "mystery",
+        "display_name": "亚伦多伯爵",
+        "aliases": [],
+        "importance": "medium",
+        "summary": "亚伦多伯爵是管理帕斯罗村一带的贵族，以亲自下田耕作为特点，并愿意赞助祭典。其行为可能影响地方与教会的关系，以及祭典的规模和性质。",
+        "latest_seen_chunk_id": "volume_01-r000007",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "mystery_v2_000003",
+        "entity_type": "mystery",
+        "display_name": "修道院的修道士",
+        "aliases": [
+          "修道士",
+          "修道院成员"
+        ],
+        "importance": "medium",
+        "summary": "一所偏僻修道院的居民，人数约二十多位，生活节俭且独立运作。他们不与民间商人往来，而是通过独自的通路调度物资。尽管罗伦斯对其商业潜力感到失望，但修道士的存在可能在后续情节中引发新的发展。",
+        "latest_seen_chunk_id": "volume_01-r000006",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "mystery_v2_000007",
+        "entity_type": "mystery",
+        "display_name": "异教徒",
+        "aliases": [
+          "异端徒",
+          "异教徒群体"
+        ],
+        "importance": "medium",
+        "summary": "被骑士提及的异教徒，据称在北边或东边出没，但骑士误认为该地的丰收祭典是异教徒活动。虽然罗伦斯指出这并非事实，但异教徒的存在仍可能在后续情节中引发冲突或调查。",
+        "latest_seen_chunk_id": "volume_01-r000006",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "mystery_v2_000004",
+        "entity_type": "mystery",
+        "display_name": "修道院的骑士",
+        "aliases": [
+          "银甲骑士",
+          "下级骑士",
+          "骑士"
+        ],
+        "importance": "medium",
+        "summary": "修道院的骑士出现在修道院附近，穿着银色盔甲，态度傲慢。他质疑罗伦斯的出现，并与罗伦斯展开对话。虽然被描述为下级骑士，但其行为显示出一定的自信和戒备，可能与修道院的特殊安排有关。修道院内还有另一名骑士…",
+        "latest_seen_chunk_id": "volume_01-r000005",
+        "dialogue_count": 14
+      },
+      {
+        "entity_id": "mystery_v2_000001",
+        "entity_type": "mystery",
+        "display_name": "叙述者",
+        "aliases": [
+          "我",
+          "他"
+        ],
+        "importance": "medium",
+        "summary": "本段的叙述者，具有非人类特征的暗示（如尾巴的存在），对村落文化有深刻观察，并流露出对北方故乡的怀念。其身份尚未明确，但对情节发展可能有重要影响。",
+        "latest_seen_chunk_id": "volume_01-r000001",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "mystery_v2_000002",
+        "entity_type": "mystery",
+        "display_name": "狼群",
+        "aliases": [
+          "狼",
+          "奔跑的狼"
+        ],
+        "importance": "medium",
+        "summary": "在段落结尾出现的‘成群无数的狼’，可能是比喻，也可能暗示真实事件。其出现为后续情节埋下伏笔，可能与村落文化或叙述者的身份有关。",
+        "latest_seen_chunk_id": "volume_01-r000001",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "mystery_v2_000014",
+        "entity_type": "mystery",
+        "display_name": "母马",
+        "aliases": [],
+        "importance": "minor",
+        "summary": "母马是旅行商人之间传说中更可能变成人类的马种。罗伦斯后悔当初没有选择母马，因为有传言称母马更可能变成人类。这一传说在罗伦斯的孤独感和对未来的迷茫中扮演了重要角色。",
+        "latest_seen_chunk_id": "volume_01-r000010",
+        "dialogue_count": 0
+      }
+    ]
+  },
+  "rules": {
+    "speaker_statuses": [
+      "known",
+      "mystery",
+      "npc_group",
+      "review",
+      "unknown"
+    ],
+    "importance_levels": [
+      "minor",
+      "medium",
+      "major"
+    ],
+    "general_novel_only": true
+  },
+  "task_a_annotations": [
+    {
+      "dialogue_id": "volume_01-d000045",
+      "dialogue_index": 44,
+      "volume_id": "",
+      "chapter_id": "",
+      "chapter_index": 0,
+      "chapter_title": "",
+      "scene_id": "",
+      "scene_index": 0,
+      "paragraph_id": "volume_01-c001-s002-p000151",
+      "paragraph_index": 150,
+      "local_dialogue_index": 1,
+      "text": "糟糕",
+      "quote_text": "「糟糕」",
+      "dialogue_kind": "inline",
+      "char_start": 67,
+      "char_end": 71,
+      "speaker_entity_id": "char_v2_000001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "罗伦斯在段落中自言自语，提到‘糟糕’，符合其内心独白的语气。"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false,
+      "review_reason": "",
+      "request_id": "volume_01-r000011--annotation--qwen3_32b"
+    },
+    {
+      "dialogue_id": "volume_01-d000046",
+      "dialogue_index": 45,
+      "volume_id": "",
+      "chapter_id": "",
+      "chapter_index": 0,
+      "chapter_title": "",
+      "scene_id": "",
+      "scene_index": 0,
+      "paragraph_id": "volume_01-c001-s002-p000158",
+      "paragraph_index": 157,
+      "local_dialogue_index": 1,
+      "text": "……",
+      "quote_text": "「……」",
+      "dialogue_kind": "standalone",
+      "char_start": 0,
+      "char_end": 4,
+      "speaker_entity_id": "unknown",
+      "speaker_display": "未知",
+      "speaker_status": "unknown",
+      "confidence": 0.6,
+      "evidence": [
+        "对话为‘……’，未明确说话者，且上下文未提及新角色。"
+      ],
+      "negative_evidence": [
+        "未出现新角色或明确说话者。"
+      ],
+      "is_backfillable": true,
+      "needs_review": true,
+      "review_reason": "",
+      "request_id": "volume_01-r000011--annotation--qwen3_32b"
+    },
+    {
+      "dialogue_id": "volume_01-d000047",
+      "dialogue_index": 46,
+      "volume_id": "",
+      "chapter_id": "",
+      "chapter_index": 0,
+      "chapter_title": "",
+      "scene_id": "",
+      "scene_index": 0,
+      "paragraph_id": "volume_01-c001-s002-p000160",
+      "paragraph_index": 159,
+      "local_dialogue_index": 1,
+      "text": "喂！",
+      "quote_text": "「喂！」",
+      "dialogue_kind": "standalone",
+      "char_start": 0,
+      "char_end": 4,
+      "speaker_entity_id": "unknown",
+      "speaker_display": "未知",
+      "speaker_status": "unknown",
+      "confidence": 0.5,
+      "evidence": [
+        "对话为‘喂！’，未明确说话者，且上下文未提及新角色。"
+      ],
+      "negative_evidence": [
+        "未出现新角色或明确说话者。"
+      ],
+      "is_backfillable": true,
+      "needs_review": true,
+      "review_reason": "",
+      "request_id": "volume_01-r000011--annotation--qwen3_32b"
+    }
+  ],
+  "task_b_chunk_summary": {
+    "chunk_id": "volume_01-r000011",
+    "summary": "罗伦斯在河边决定露宿，他给马儿喂食并饮水，随后准备休息。他原本想喝酒，但因无人交谈而放弃，决定早睡。他用货台上的貂皮保暖，掀开麻布准备整理麦苗时，发现有人已经先他一步占据货台。罗伦斯感到震惊，不确定是幻觉还是真实存在。他看到一个女孩睡在货台上，美丽而安静，让他不忍心叫醒。这一发现为罗伦斯的孤独旅途带来了意外的转折。",
+    "active_entities": [
+      "char_v2_000001"
+    ],
+    "open_questions": [
+      "占据货台的女孩是谁？",
+      "罗伦斯是否应该叫醒她？",
+      "女孩的出现是否与马儿变成人类的传说有关？"
+    ],
+    "evidence_refs": [
+      "volume_01-c001-s002-p000151",
+      "volume_01-c001-s002-p000153",
+      "volume_01-c001-s002-p000154",
+      "volume_01-c001-s002-p000155",
+      "volume_01-c001-s002-p000156",
+      "volume_01-c001-s002-p000157",
+      "volume_01-c001-s002-p000158",
+      "volume_01-c001-s002-p000159",
+      "volume_01-c001-s002-p000160",
+      "volume_01-c001-s002-p000162",
+      "volume_01-d000045",
+      "volume_01-d000046",
+      "volume_01-d000047"
+    ]
+  }
+}

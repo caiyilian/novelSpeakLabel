@@ -1,0 +1,26 @@
+```json
+{
+  "repairs": [
+    {
+      "dialogue_id": "volume_01-d000007",
+      "previous_speaker_entity_id": "mystery_v2_000003",
+      "new_speaker_entity_id": "mystery_v2_000004",
+      "speaker_display": "修道院的骑士",
+      "speaker_status": "mystery",
+      "confidence": 0.9,
+      "reason": "对话发生在修道院方向，且明确描述为‘骑士’，而非修道士。更新后的实体记忆中已新增‘修道院的骑士’实体，因此应修正为该实体。",
+      "stop_reason": "resolved"
+    },
+    {
+      "dialogue_id": "volume_01-d000009",
+      "previous_speaker_entity_id": "mystery_v2_000003",
+      "new_speaker_entity_id": "mystery_v2_000004",
+      "speaker_display": "修道院的骑士",
+      "speaker_status": "mystery",
+      "confidence": 0.9,
+      "reason": "对话发生在修道院方向，且明确描述为‘骑士’，而非修道士。更新后的实体记忆中已新增‘修道院的骑士’实体，因此应修正为该实体。",
+      "stop_reason": "resolved"
+    }
+  ]
+}
+```

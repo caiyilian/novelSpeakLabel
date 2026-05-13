@@ -1,0 +1,96 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000056",
+      "speaker_entity_id": "char_v2_000001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "对话中罗伦斯自称‘我的马车’，并质问对方‘为何在我的马车上睡觉’，表明说话者是罗伦斯。"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000057",
+      "speaker_entity_id": "mystery_v2_000015",
+      "speaker_display": "女孩（动物耳朵）",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "对话发生在罗伦斯和女孩之间，前一句是罗伦斯的质问，接下来是女孩的回应。"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000058",
+      "speaker_entity_id": "char_v2_000001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "罗伦斯在前文表现出对女孩的怀疑和警惕，此句是他对女孩的进一步质疑。"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000059",
+      "speaker_entity_id": "mystery_v2_000015",
+      "speaker_display": "女孩（动物耳朵）",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "对话发生在罗伦斯和女孩之间，前一句是罗伦斯的质疑，接下来是女孩的回应。"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000060",
+      "speaker_entity_id": "char_v2_000001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "罗伦斯对女孩的笑声感到不满，此句是他对女孩的直接回应。"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000061",
+      "speaker_entity_id": "mystery_v2_000015",
+      "speaker_display": "女孩（动物耳朵）",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "对话发生在罗伦斯和女孩之间，前一句是罗伦斯的质问，接下来是女孩的回应。"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000062",
+      "speaker_entity_id": "char_v2_000001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "罗伦斯在前文持续与女孩对话，此句是他对女孩的进一步质问。"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    }
+  ],
+  "chunk_notes": "本段对话主要发生在罗伦斯和神秘女孩之间，对话轮次清晰，角色身份明确。罗伦斯多次质问女孩，而女孩也多次回应，因此可以明确标注说话人。"
+}

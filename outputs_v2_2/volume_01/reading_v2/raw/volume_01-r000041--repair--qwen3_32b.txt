@@ -1,0 +1,26 @@
+```json
+{
+  "repairs": [
+    {
+      "dialogue_id": "volume_01-d000240",
+      "previous_speaker_entity_id": "unknown",
+      "new_speaker_entity_id": "unknown",
+      "speaker_display": "年轻商人",
+      "speaker_status": "unknown",
+      "confidence": 0.7,
+      "reason": "对话中称呼罗伦斯为「老板」，表明说话者是同行商人，但未提及姓名，且未在实体记忆中找到明确对应角色。",
+      "stop_reason": "unchanged"
+    },
+    {
+      "dialogue_id": "volume_01-d000242",
+      "previous_speaker_entity_id": "unknown",
+      "new_speaker_entity_id": "unknown",
+      "speaker_display": "年轻商人",
+      "speaker_status": "unknown",
+      "confidence": 0.7,
+      "reason": "对话中称呼罗伦斯为「老板」，表明说话者是同行商人，且是前一句的延续，但未提及姓名，且未在实体记忆中找到明确对应角色。",
+      "stop_reason": "unchanged"
+    }
+  ]
+}
+```

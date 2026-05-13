@@ -1,0 +1,97 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000251",
+      "speaker_entity_id": "char_v2_000013",
+      "speaker_display": "杰廉",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "对话中使用「小的」自称，符合杰廉的说话风格",
+        "对话内容是请求见「夫人」，而赫萝是唯一被称作「夫人」的角色",
+        "前文提到杰廉是市井无赖，对话风格与他相符"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000252",
+      "speaker_entity_id": "char_v2_000002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.98,
+      "evidence": [
+        "前文明确提到「赫萝本人却开口说」",
+        "对话内容是拒绝见人，符合赫萝的性格和行为",
+        "使用「咱」自称，符合赫萝的说话风格"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000253",
+      "speaker_entity_id": "char_v2_000013",
+      "speaker_display": "杰廉",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "对话中使用「嘿嘿」开头，语气与前一段杰廉的对话一致",
+        "对话内容是回应赫萝的拒绝，符合杰廉的反应",
+        "前文提到杰廉尴尬地笑笑，随后他继续对话"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000254",
+      "speaker_entity_id": "char_v2_000001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "前文提到「就连罗伦斯都非常佩服赫萝的妙语如珠」，暗示他接下来会回应",
+        "对话内容是表达对赫萝的佩服，符合罗伦斯的语气",
+        "使用「光是想要怎么不被踩在脚底下」，是罗伦斯的内心独白"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000255",
+      "speaker_entity_id": "char_v2_000013",
+      "speaker_display": "杰廉",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "对话中使用「小的」自称，符合杰廉的说话风格",
+        "对话内容是继续请求与罗伦斯和赫萝交谈",
+        "前文提到杰廉挨近罗伦斯说话，暗示他继续对话"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000256",
+      "speaker_entity_id": "char_v2_000002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.98,
+      "evidence": [
+        "前文提到赫萝坐在床上，悠哉地梳理尾巴",
+        "对话内容是闻到香味，符合赫萝灵敏的嗅觉",
+        "使用「嗯？」开头，是赫萝的典型语气"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    }
+  ],
+  "chunk_notes": "本 chunk 中的对话主要围绕杰廉试图接近赫萝、赫萝巧妙拒绝、罗伦斯的反应展开。对话轮次清晰，说话人身份明确，无明显混淆或模糊情况。杰廉和赫萝的对话风格和自称方式具有辨识度，罗伦斯的内心独白也明确指向其身份。无需进一步复核。"
+}
+```

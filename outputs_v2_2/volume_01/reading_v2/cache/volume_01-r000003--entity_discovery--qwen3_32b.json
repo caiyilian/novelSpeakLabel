@@ -1,0 +1,51 @@
+{
+  "new_entities": [
+    {
+      "entity_type": "character",
+      "display_name": "罗伦斯",
+      "aliases": [
+        "罗伦斯先生"
+      ],
+      "importance": "major",
+      "summary": "一位二十五岁的自力更生旅行商人，已有七年行商经验。他与深山村落的村民进行交易，表现出专业且友善的态度。他计划再次光顾，并对修道院的商业潜力持保留态度。",
+      "evidence_refs": [
+        "volume_01-c001-s001-p000025",
+        "volume_01-c001-s001-p000026",
+        "volume_01-c001-s001-p000029"
+      ],
+      "dialogue_count_delta": 4
+    },
+    {
+      "entity_type": "mystery",
+      "display_name": "修道院的修道士",
+      "aliases": [
+        "修道士",
+        "修道院成员"
+      ],
+      "importance": "medium",
+      "summary": "一所偏僻修道院的居民，人数约二十多位，生活节俭且独立运作。他们不与民间商人往来，而是通过独自的通路调度物资。尽管罗伦斯对其商业潜力感到失望，但修道士的存在可能在后续情节中引发新的发展。",
+      "evidence_refs": [
+        "volume_01-c001-s001-p000030",
+        "volume_01-c001-s001-p000031",
+        "volume_01-c001-s001-p000032"
+      ],
+      "dialogue_count_delta": 0
+    },
+    {
+      "entity_type": "npc_group",
+      "display_name": "深山村落的村民",
+      "aliases": [
+        "村民",
+        "深山居民"
+      ],
+      "importance": "minor",
+      "summary": "居住在深山中的普通村民，与罗伦斯进行交易。他们对罗伦斯的到访表示感激，并希望他能再次光顾。虽然未直接参与后续剧情，但他们的存在为罗伦斯的商业活动提供了背景。",
+      "evidence_refs": [
+        "volume_01-c001-s001-p000025",
+        "volume_01-c001-s001-p000026"
+      ],
+      "dialogue_count_delta": 0
+    }
+  ],
+  "merge_candidates": []
+}

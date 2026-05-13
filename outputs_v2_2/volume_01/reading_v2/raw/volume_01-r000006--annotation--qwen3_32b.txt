@@ -1,0 +1,77 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000020",
+      "speaker_entity_id": "mystery_v2_000004",
+      "speaker_display": "骑士",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "对话发生在罗伦斯递出蜂蜜糖之后，符合骑士接受礼物后表达感谢的语境",
+        "前文提到骑士接受蜂蜜糖，此处是其回应"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000021",
+      "speaker_entity_id": "mystery_v2_000004",
+      "speaker_display": "骑士",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "对话内容是骑士向罗伦斯询问关于异教徒祭典的消息",
+        "前文已明确骑士在场并主导对话"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000022",
+      "speaker_entity_id": "char_v2_000001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "对话内容是罗伦斯假装不知道消息，符合其策略性回应",
+        "前文提到罗伦斯假装思考后回答"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000023",
+      "speaker_entity_id": "mystery_v2_000004",
+      "speaker_display": "骑士",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "对话内容是骑士对异教徒的批评，符合其立场和态度",
+        "前文已明确骑士在场并主导对话"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000024",
+      "speaker_entity_id": "char_v2_000001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "对话内容是罗伦斯对骑士猜测的回应，符合其离开修道院后的独白",
+        "前文提到罗伦斯离开后喃喃自语"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    }
+  ],
+  "chunk_notes": "本段对话主要发生在罗伦斯与骑士之间。对话轮次清晰，说话人身份明确。所有对话均可通过上下文和角色行为推断说话人，无需额外审查。"
+}
+```

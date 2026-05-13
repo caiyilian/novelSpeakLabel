@@ -1,0 +1,16 @@
+{
+  "merge_candidates": [
+    {
+      "source_entity_id": "mystery_v2_000005",
+      "target_entity_id": "mystery_v2_000004",
+      "confidence": 0.95,
+      "reason": "当前 chunk 中的‘骑士’与‘修道院的骑士’共享相同的外貌特征（银色盔甲、下级骑士身份）和行为模式（态度傲慢、与罗伦斯对话、出现在偏远地区），且未出现矛盾信息，高度可能是同一角色。"
+    }
+  ],
+  "keep_pending": [
+    "mystery_v2_000003",
+    "mystery_v2_000001",
+    "mystery_v2_000002"
+  ],
+  "expire_pending": []
+}

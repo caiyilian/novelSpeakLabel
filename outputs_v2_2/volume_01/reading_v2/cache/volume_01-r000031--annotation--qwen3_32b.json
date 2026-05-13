@@ -1,0 +1,19 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000179",
+      "speaker_entity_id": "char_v2_000002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "赫萝从貂皮中探出头来对罗伦斯说话",
+        "前文已明确赫萝是对话的主导者"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    }
+  ],
+  "chunk_notes": "本 chunk 中只有一条对话，且明确由赫萝说出。赫萝在貂皮中探头并直接对罗伦斯说话，符合上下文逻辑。无其他说话人线索，无需 review。"
+}

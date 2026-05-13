@@ -1,0 +1,56 @@
+```json
+{
+  "repairs": [
+    {
+      "dialogue_id": "volume_01-d000011",
+      "previous_speaker_entity_id": "mystery_v2_000004",
+      "new_speaker_entity_id": "mystery_v2_000004",
+      "speaker_display": "骑士",
+      "speaker_status": "mystery",
+      "confidence": 0.9,
+      "reason": "骑士是前文已出现的角色，且是被罗伦斯递糖的对象，因此应为回应者",
+      "stop_reason": "unchanged"
+    },
+    {
+      "dialogue_id": "volume_01-d000013",
+      "previous_speaker_entity_id": "mystery_v2_000004",
+      "new_speaker_entity_id": "mystery_v2_000004",
+      "speaker_display": "骑士",
+      "speaker_status": "mystery",
+      "confidence": 0.9,
+      "reason": "骑士在前文已出现，且是对话的另一方，因此应为提问者",
+      "stop_reason": "unchanged"
+    },
+    {
+      "dialogue_id": "volume_01-d000015",
+      "previous_speaker_entity_id": "mystery_v2_000004",
+      "new_speaker_entity_id": "mystery_v2_000004",
+      "speaker_display": "骑士",
+      "speaker_status": "mystery",
+      "confidence": 0.9,
+      "reason": "骑士在前文已出现，且是对话的另一方，因此应为提问者",
+      "stop_reason": "unchanged"
+    },
+    {
+      "dialogue_id": "volume_01-d000017",
+      "previous_speaker_entity_id": "mystery_v2_000004",
+      "new_speaker_entity_id": "mystery_v2_000004",
+      "speaker_display": "骑士",
+      "speaker_status": "mystery",
+      "confidence": 0.9,
+      "reason": "骑士在前文已出现，且是对话的另一方，因此应为发令者",
+      "stop_reason": "unchanged"
+    },
+    {
+      "dialogue_id": "volume_01-d000019",
+      "previous_speaker_entity_id": "mystery_v2_000004",
+      "new_speaker_entity_id": "mystery_v2_000004",
+      "speaker_display": "骑士",
+      "speaker_status": "mystery",
+      "confidence": 0.9,
+      "reason": "骑士在前文已出现，且是对话的另一方，因此应为提问者",
+      "stop_reason": "unchanged"
+    }
+  ]
+}
+```

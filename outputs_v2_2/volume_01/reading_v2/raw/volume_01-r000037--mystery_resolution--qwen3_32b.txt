@@ -1,0 +1,22 @@
+```json
+{
+  "merge_candidates": [
+    {
+      "source_entity_id": "mystery_v2_000009",
+      "target_entity_id": "char_v2_000002",
+      "confidence": 0.95,
+      "reason": "当前 chunk 明确显示赫萝与麦子的寄宿关系，且与已确认角色 char_v2_000002（赫萝）的对话和行为完全一致，表明 mystery_v2_000009 可以与 char_v2_000002 合并。"
+    }
+  ],
+  "keep_pending": [
+    "mystery_v2_000015",
+    "mystery_v2_000018",
+    "mystery_v2_000010",
+    "mystery_v2_000017",
+    "mystery_v2_000013",
+    "mystery_v2_000008",
+    "mystery_v2_000003"
+  ],
+  "expire_pending": []
+}
+```

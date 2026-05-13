@@ -1,0 +1,51 @@
+{
+  "new_entities": [
+    {
+      "entity_type": "mystery",
+      "display_name": "叙述者",
+      "aliases": [
+        "我",
+        "他"
+      ],
+      "importance": "medium",
+      "summary": "本段的叙述者，具有非人类特征的暗示（如尾巴的存在），对村落文化有深刻观察，并流露出对北方故乡的怀念。其身份尚未明确，但对情节发展可能有重要影响。",
+      "evidence_refs": [
+        "volume_01-c000-s001-p000013",
+        "volume_01-c000-s001-p000014",
+        "volume_01-c000-s001-p000012"
+      ],
+      "dialogue_count_delta": 0
+    },
+    {
+      "entity_type": "mystery",
+      "display_name": "狼群",
+      "aliases": [
+        "狼",
+        "奔跑的狼"
+      ],
+      "importance": "medium",
+      "summary": "在段落结尾出现的‘成群无数的狼’，可能是比喻，也可能暗示真实事件。其出现为后续情节埋下伏笔，可能与村落文化或叙述者的身份有关。",
+      "evidence_refs": [
+        "volume_01-c000-s001-p000017"
+      ],
+      "dialogue_count_delta": 0
+    },
+    {
+      "entity_type": "npc_group",
+      "display_name": "村民",
+      "aliases": [
+        "村民们",
+        "村落居民"
+      ],
+      "importance": "minor",
+      "summary": "村落中的普通居民，以种麦为生。他们使用狼与麦穗的比喻，但这些说法已逐渐失去严肃意义。村民不再需要某种守护，暗示村落文化或社会结构的变化。",
+      "evidence_refs": [
+        "volume_01-c000-s001-p000001",
+        "volume_01-c000-s001-p000003",
+        "volume_01-c000-s001-p000010"
+      ],
+      "dialogue_count_delta": 0
+    }
+  ],
+  "merge_candidates": []
+}

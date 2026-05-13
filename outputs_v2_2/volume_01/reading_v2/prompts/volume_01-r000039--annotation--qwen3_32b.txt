@@ -1,0 +1,513 @@
+你是通用小说说话人标注助手。只根据输入文本和已形成的记忆判断，不使用任何外部作品知识。
+任务：给当前 chunk 内每条 dialogue 标注说话人。允许 unknown、mystery、npc_group、review，不要为了降低复核数而猜测重要角色。
+关键规则：被称呼者通常不是说话者；如果只能判断为无名低重要度群体，使用 npc_group；可能误伤重要角色时使用 review。要结合当前段落、前后文叙述、对话轮次、场景角色和称呼关系实时判断，不要依赖任何特定作品、角色或固定剧情先验。
+只返回 JSON，格式：{"annotations":[{"dialogue_id":"...","speaker_entity_id":"...","speaker_display":"...","speaker_status":"known|mystery|npc_group|unknown|review","confidence":0.0,"evidence":["短证据"],"negative_evidence":[],"is_backfillable":true,"needs_review":false}],"chunk_notes":"..."}
+输入 JSON：
+{
+  "volume": {
+    "volume_id": "volume_01",
+    "volume": 1,
+    "title": ""
+  },
+  "chunk": {
+    "chunk_id": "volume_01-r000039",
+    "chunk_index": 38,
+    "chapter_id": "volume_01-c002",
+    "chapter_title": "第二幕",
+    "scene_id": "volume_01-c002-s001",
+    "paragraphs": [
+      {
+        "paragraph_id": "volume_01-c002-s001-p000582",
+        "paragraph_index": 581,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s001",
+        "scene_index": 1,
+        "text": "「你说什么！」"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000583",
+        "paragraph_index": 582,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s001",
+        "scene_index": 1,
+        "text": "罗伦斯半认真地挥出拳头，却被赫萝轻松躲过而挥了个空。赫萝一边嗤嗤笑，一边微微倾着头继续说："
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000584",
+        "paragraph_index": 583,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s001",
+        "scene_index": 1,
+        "text": "「就算是狼，也会整理自己的毛。汝是长得挺不错，但好歹要把自己梳洗干净些。」"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000585",
+        "paragraph_index": 584,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s001",
+        "scene_index": 1,
+        "text": "虽然不知道赫萝是开玩笑还是认真的，但被她这种女孩一说，罗伦斯不禁也认同起来。一直以来，罗伦斯只会注意梳洗干净是否对谈生意有帮助，从来没想过梳洗干净可以讨女孩子喜欢。"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000586",
+        "paragraph_index": 585,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s001",
+        "scene_index": 1,
+        "text": "谈生意的对手如果是女人，或许罗伦斯还会有梳洗干净的念头。然而很可惜，他从未见过女性商人。"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000587",
+        "paragraph_index": 586,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s001",
+        "scene_index": 1,
+        "text": "罗伦斯不知该怎么回答，于是别过脸去，沉默不语。"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000588",
+        "paragraph_index": 587,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s001",
+        "scene_index": 1,
+        "text": "「咱觉得汝的胡子挺好看的。」"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000589",
+        "paragraph_index": 588,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s001",
+        "scene_index": 1,
+        "text": "罗伦斯的下巴留着适度的胡子，一向颇受好评。罗伦斯坦率地接受赫萝的夸奖，有些骄傲地转向赫萝。"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000590",
+        "paragraph_index": 589,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s001",
+        "scene_index": 1,
+        "text": "「不过，咱比较喜欢胡子长一些。」"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000591",
+        "paragraph_index": 590,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s001",
+        "scene_index": 1,
+        "text": "罗伦斯听了，反射性想到商人一向不喜欢长胡子。赫萝一边用双手的食指从鼻下的位置划线划到脸颊，一边说："
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000592",
+        "paragraph_index": 591,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s001",
+        "scene_index": 1,
+        "text": "「像这样，像狼一样的胡子。」"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000593",
+        "paragraph_index": 592,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s001",
+        "scene_index": 1,
+        "text": "这下子罗伦斯总算察觉自己被捉弄。虽然觉得这样做有点没度量，但罗伦斯还是决定不理会赫萝，往房门方向走去。"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000594",
+        "paragraph_index": 593,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s001",
+        "scene_index": 1,
+        "text": "赫萝开心地笑着，并跟随在罗伦斯后头。"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000595",
+        "paragraph_index": 594,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s001",
+        "scene_index": 1,
+        "text": "事实上，罗伦斯并不讨厌与赫萝的互动。"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000596",
+        "paragraph_index": 595,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s001",
+        "scene_index": 1,
+        "text": "「暖炉那儿还有其他人在，你可别露出马脚啊。」"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000597",
+        "paragraph_index": 596,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s001",
+        "scene_index": 1,
+        "text": "「咱是贤狼赫萝呐。再说，还没到帕斯罗村之前，咱也是以人类的模样一路旅行过来的。放心放心！」"
+      }
+    ],
+    "dialogues": [
+      {
+        "dialogue_id": "volume_01-d000219",
+        "dialogue_index": 218,
+        "paragraph_id": "volume_01-c002-s001-p000582",
+        "paragraph_index": 581,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "你说什么！",
+        "quote_text": "「你说什么！」",
+        "char_start": 0,
+        "char_end": 7
+      },
+      {
+        "dialogue_id": "volume_01-d000220",
+        "dialogue_index": 219,
+        "paragraph_id": "volume_01-c002-s001-p000584",
+        "paragraph_index": 583,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "就算是狼，也会整理自己的毛。汝是长得挺不错，但好歹要把自己梳洗干净些。",
+        "quote_text": "「就算是狼，也会整理自己的毛。汝是长得挺不错，但好歹要把自己梳洗干净些。」",
+        "char_start": 0,
+        "char_end": 37
+      },
+      {
+        "dialogue_id": "volume_01-d000221",
+        "dialogue_index": 220,
+        "paragraph_id": "volume_01-c002-s001-p000588",
+        "paragraph_index": 587,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "咱觉得汝的胡子挺好看的。",
+        "quote_text": "「咱觉得汝的胡子挺好看的。」",
+        "char_start": 0,
+        "char_end": 14
+      },
+      {
+        "dialogue_id": "volume_01-d000222",
+        "dialogue_index": 221,
+        "paragraph_id": "volume_01-c002-s001-p000590",
+        "paragraph_index": 589,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "不过，咱比较喜欢胡子长一些。",
+        "quote_text": "「不过，咱比较喜欢胡子长一些。」",
+        "char_start": 0,
+        "char_end": 16
+      },
+      {
+        "dialogue_id": "volume_01-d000223",
+        "dialogue_index": 222,
+        "paragraph_id": "volume_01-c002-s001-p000592",
+        "paragraph_index": 591,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "像这样，像狼一样的胡子。",
+        "quote_text": "「像这样，像狼一样的胡子。」",
+        "char_start": 0,
+        "char_end": 14
+      },
+      {
+        "dialogue_id": "volume_01-d000224",
+        "dialogue_index": 223,
+        "paragraph_id": "volume_01-c002-s001-p000596",
+        "paragraph_index": 595,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "暖炉那儿还有其他人在，你可别露出马脚啊。",
+        "quote_text": "「暖炉那儿还有其他人在，你可别露出马脚啊。」",
+        "char_start": 0,
+        "char_end": 22
+      },
+      {
+        "dialogue_id": "volume_01-d000225",
+        "dialogue_index": 224,
+        "paragraph_id": "volume_01-c002-s001-p000597",
+        "paragraph_index": 596,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "咱是贤狼赫萝呐。再说，还没到帕斯罗村之前，咱也是以人类的模样一路旅行过来的。放心放心！",
+        "quote_text": "「咱是贤狼赫萝呐。再说，还没到帕斯罗村之前，咱也是以人类的模样一路旅行过来的。放心放心！」",
+        "char_start": 0,
+        "char_end": 45
+      }
+    ]
+  },
+  "near_context": {
+    "lookback_paragraphs": [
+      {
+        "paragraph_id": "volume_01-c002-s001-p000579",
+        "paragraph_index": 578,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s001",
+        "scene_index": 1,
+        "text": "听到罗伦斯这么一说，赫萝像是收到期待已久的礼物似地露出笑容，然后刻意贴近过去。一阵香甜的气味随着赫萝飘来，刺激着罗伦斯的身体，让他差点伸手抱住赫萝。"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000580",
+        "paragraph_index": 579,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s001",
+        "scene_index": 1,
+        "text": "没料到赫萝根本不在意罗伦斯的反应，她用鼻子嗅了嗅罗伦斯，然后稍微挪开身子说："
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000581",
+        "paragraph_index": 580,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s001",
+        "scene_index": 1,
+        "text": "「汝被雨淋过，身上还这么臭啊。咱这只狼都这么说了，错不了。」"
+      }
+    ],
+    "lookahead_paragraphs": [
+      {
+        "paragraph_id": "volume_01-c002-s001-p000598",
+        "paragraph_index": 597,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s001",
+        "scene_index": 1,
+        "text": "罗伦斯回头一看，发现赫萝已经把头藏好在外套底下，完全进入状况了。"
+      }
+    ]
+  },
+  "memory": {
+    "previous_chunk_summary": {
+      "chunk_id": "volume_01-r000038",
+      "summary": "在暴雨中躲进教会后，罗伦斯和赫萝计划前往大厅烘干衣服。赫萝套上外套遮住脸，露出笑容，罗伦斯质疑她为何要遮脸，赫萝回应说脸上若有灼伤也是她的一部分，就像她的耳朵和尾巴一样。罗伦斯认为赫萝没有真正被灼伤，因此能轻松应对。赫萝打断罗伦斯的思绪，表示知道他在想什么，并挑衅地问是否要让她受伤。罗伦斯拒绝伤害赫萝，称自己是男人不会伤害漂亮的脸蛋。赫萝则继续调侃罗伦斯被雨淋湿、身上有臭味。赫萝的挑衅和罗伦斯的克制形成鲜明对比，两人之间的互动充满张力，但未爆发冲突。赫萝的自信和罗伦斯的谨慎暗示他们之间存在信任与试探的微妙关系。",
+      "active_entities": [
+        "char_v2_000001",
+        "char_v2_000002"
+      ],
+      "open_questions": [
+        "赫萝为何坚持认为脸上的灼伤是她的一部分？这是否暗示她对自身身份的认同？",
+        "罗伦斯是否真的相信赫萝不会受伤？他是否在压抑自己的情绪？",
+        "赫萝的挑衅行为是出于恶作剧，还是另有目的？"
+      ],
+      "evidence_refs": [
+        "volume_01-d000211",
+        "volume_01-d000212",
+        "volume_01-d000213",
+        "volume_01-d000214",
+        "volume_01-d000215",
+        "volume_01-d000216",
+        "volume_01-d000217",
+        "volume_01-d000218"
+      ]
+    },
+    "global_summary": "本卷继续描绘罗伦斯与赫萝之间的互动，试图揭开赫萝的真实身份。赫萝表达了对故乡约伊兹森林的思念，并提到离开故乡的时间已无法记起。她希望先旅行，以了解故乡的变化，同时增广见闻。赫萝随后向罗伦斯提出希望与他一同旅行，前提是罗伦斯不会将她交给教会。罗伦斯虽未完全确认赫萝的身份，但认为她并非坏人，且与她交谈有趣。然而，出于商人的谨慎，他并未立刻答应赫萝的请求。赫萝则表示理解，并以轻松的语气强调自己是只狼，而非人类。赫萝的请求和罗伦斯的犹豫揭示了两人之间信任与怀疑的微妙关系。赫萝的动机仍不明确，她是否真的想回故乡，还是另有目的，仍是未解之谜。赫萝提到北方，暗示这一地点对她而言具有重要意义，可能是她的出生地或与她过去的经历有关。这一地点的神秘性暗示它可能在未来剧情中扮演关键角色。赫萝的言行显示出她对罗伦斯心理的掌控，而罗伦斯则在试图理解她的动机。赫萝以轻松的态度主导了与罗伦斯的对话，表现出她对当前局势的掌控。她假装要睡觉，实则是在结束对话，随后又突然探头询问罗伦斯是否要让她睡在外面，语气中带着调侃。罗伦斯虽然觉得无奈，但也觉得有趣，并未真正拒绝。赫萝的举动让罗伦斯怀疑她之前的一些反应是否是演戏，但罗伦斯仍相信她对故乡和村民的不满是真实的。清晨，罗伦斯醒来发现赫萝已经起床，并擅自翻找他的行李，换上了他最上等的衣服。罗伦斯责备赫萝擅自翻找他人行李的行为，但赫萝完全不以为意，反而得意地展示衣服，并询问是否可以剪开裤子以方便她的尾巴。赫萝的举动大胆而自信，而罗伦斯虽然不满，却并未真正生气，反而觉得赫萝穿着他的衣服显得可爱。赫萝的言行表明她对罗伦斯的反应有一定程度的掌控，而罗伦斯则在权衡是否要让她继续穿着这些衣物。赫萝在货台上轻快地跳下，动作自然得让罗伦斯一时未能反应。罗伦斯并未阻止她，因为他内心确信赫萝不会逃跑。赫萝确认了这一点后，主动脱下罗伦斯为她订制的熊皮外套，并指出衣服对她来说太长了。罗伦斯注意到赫萝的体型比他想象的要娇小，足足比他矮了两个头。随后，赫萝向罗伦斯提出希望与他一起旅行，并表示自己不会逃跑。罗伦斯虽然仍保持谨慎，但认为赫萝不像会偷东西的人，与她同行应该无妨。他最终答应了赫…",
+    "candidate_entities": [
+      {
+        "entity_id": "char_v2_000001",
+        "entity_type": "character",
+        "display_name": "罗伦斯",
+        "aliases": [
+          "罗伦斯先生"
+        ],
+        "importance": "major",
+        "summary": "罗伦斯与赫萝在暴雨中躲进教会后，计划前往大厅烘干衣服。赫萝遮住脸并露出笑容，罗伦斯质疑她为何要遮脸，赫萝回应说脸上的灼伤是她的一部分。罗伦斯认为赫萝没有真正被灼伤，因此能轻松应对。赫萝打断罗伦斯的思…",
+        "latest_seen_chunk_id": "volume_01-r000038",
+        "dialogue_count": 96
+      },
+      {
+        "entity_id": "char_v2_000002",
+        "entity_type": "character",
+        "display_name": "赫萝",
+        "aliases": [
+          "赫萝（丰收之神）",
+          "丰收之神",
+          "狼赫萝",
+          "赫萝"
+        ],
+        "importance": "major",
+        "summary": "赫萝在暴雨中与罗伦斯躲进教会后，计划前往大厅烘干衣服。她套上外套遮住脸，露出笑容，罗伦斯质疑她为何要遮脸，赫萝回应说脸上若有灼伤也是她的一部分，就像她的耳朵和尾巴一样。罗伦斯认为赫萝没有真正被灼伤，…",
+        "latest_seen_chunk_id": "volume_01-r000038",
+        "dialogue_count": 118
+      },
+      {
+        "entity_id": "mystery_v2_000009",
+        "entity_type": "mystery",
+        "display_name": "赫萝",
+        "aliases": [
+          "赫萝（丰收之神）",
+          "丰收之神",
+          "狼",
+          "狼赫萝"
+        ],
+        "importance": "major",
+        "summary": "传说中在收割季节进入最后一束麦子中的人体内的神明。赫萝声称自己是丰收之神的化身，但罗伦斯的质疑和赫萝的解释暗示她可能并非传统意义上的神明，而是某种与麦子和丰收仪式相关的存在。",
+        "latest_seen_chunk_id": "volume_01-r000026",
+        "dialogue_count": 14
+      },
+      {
+        "entity_id": "char_v2_000005",
+        "entity_type": "character",
+        "display_name": "丰收之神赫萝",
+        "aliases": [
+          "赫萝（神明）",
+          "丰收之神"
+        ],
+        "importance": "major",
+        "summary": "赫萝进一步强调自己是「贤狼赫萝」，并否认自己是神明，但表现出对自身非人特征的自信。她的言行暗示她可能具有神性，但选择以狼的身份与罗伦斯互动。",
+        "latest_seen_chunk_id": "volume_01-r000025",
+        "dialogue_count": 2
+      },
+      {
+        "entity_id": "mystery_v2_000015",
+        "entity_type": "mystery",
+        "display_name": "女孩",
+        "aliases": [
+          "女孩（动物耳朵）",
+          "神秘女孩",
+          "有耳朵的女孩"
+        ],
+        "importance": "major",
+        "summary": "一名神秘的女孩，出现在罗伦斯的马车上，睡得香甜，美丽而安静。她反应迟缓，声音甜美，但头上长着像小狗的耳朵，暗示她可能并非普通人。她赤裸着身体缓缓站起，美丽得令人屏息，随后发出狼嚎，令罗伦斯误以为她是…",
+        "latest_seen_chunk_id": "volume_01-r000014",
+        "dialogue_count": 14
+      },
+      {
+        "entity_id": "char_v2_000006",
+        "entity_type": "character",
+        "display_name": "教会",
+        "aliases": [
+          "教会组织",
+          "宗教机构"
+        ],
+        "importance": "medium",
+        "summary": "教会是赫萝过往经历中的重要势力，她多次提及教会曾让她吃了不少苦头，并暗示她不愿再被教会抓住。在本段中，教会接纳了罗伦斯和赫萝的谎言，允许他们借宿，显示出教会对外来旅行者相对友善的态度，但对非人类存在…",
+        "latest_seen_chunk_id": "volume_01-r000036",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "char_v2_000010",
+        "entity_type": "character",
+        "display_name": "约伊兹森林",
+        "aliases": [
+          "赫萝的出生地",
+          "故乡森林"
+        ],
+        "importance": "medium",
+        "summary": "赫萝提到自己出生的故乡是约伊兹森林，并表示离开故乡的时间已无法记起。她对故乡充满思念，但未进一步解释其重要性。约伊兹森林可能是她身份或过去经历的关键地点。",
+        "latest_seen_chunk_id": "volume_01-r000030",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "mystery_v2_000018",
+        "entity_type": "mystery",
+        "display_name": "北方",
+        "aliases": [
+          "北方大地",
+          "赫萝的故乡"
+        ],
+        "importance": "medium",
+        "summary": "赫萝明确表示想回到北方，但未进一步解释原因。北方对她而言似乎具有重要的意义，可能是她的出生地或与她过去的经历有关。这一地点的神秘性暗示它可能在未来剧情中扮演关键角色。",
+        "latest_seen_chunk_id": "volume_01-r000029",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "char_v2_000009",
+        "entity_type": "character",
+        "display_name": "帕斯罗村的年轻村民",
+        "aliases": [
+          "年轻村民",
+          "赫萝承诺的年轻人"
+        ],
+        "importance": "medium",
+        "summary": "赫萝提到她曾答应过帕斯罗村的一名年轻人，要让村里的麦子丰收，并为此守护麦田多年。虽然未提及姓名，但此人对赫萝的承诺和行动有重要影响，是她留在村落的重要原因。",
+        "latest_seen_chunk_id": "volume_01-r000028",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "mystery_v2_000010",
+        "entity_type": "mystery",
+        "display_name": "亚伦多伯爵",
+        "aliases": [
+          "新领主",
+          "帕斯罗村的统治者"
+        ],
+        "importance": "medium",
+        "summary": "赫萝提到，几年前统治帕斯罗村一带的领主变成了现在的亚伦多伯爵，并开始引进南方的先进农耕方法。虽然未直接出场，但他的政策对村落和赫萝产生了深远影响，是导致赫萝离开的重要因素。",
+        "latest_seen_chunk_id": "volume_01-r000028",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "char_v2_000007",
+        "entity_type": "character",
+        "display_name": "叶勒",
+        "aliases": [],
+        "importance": "medium",
+        "summary": "叶勒是村民认为被赫萝附身的人，因割下最后一束麦子而被认定为「赫萝」的继承者。罗伦斯提到他时，暗示赫萝本应在他体内，但赫萝却出现在罗伦斯面前，引发对传说真实性的质疑。",
+        "latest_seen_chunk_id": "volume_01-r000026",
+        "dialogue_count": 4
+      },
+      {
+        "entity_id": "char_v2_000008",
+        "entity_type": "character",
+        "display_name": "帕斯罗村村民",
+        "aliases": [
+          "帕斯罗村人",
+          "村民"
+        ],
+        "importance": "medium",
+        "summary": "帕斯罗村的村民是丰收祭典的核心参与者，他们相信赫萝会进入割下最后一束麦子的人体内。罗伦斯提到自己与村民的长期关系，并提议将麦子带回村里，以避免他们因失去丰收之神而陷入困境。",
+        "latest_seen_chunk_id": "volume_01-r000026",
+        "dialogue_count": 0
+      }
+    ]
+  },
+  "rules": {
+    "speaker_statuses": [
+      "known",
+      "mystery",
+      "npc_group",
+      "review",
+      "unknown"
+    ],
+    "importance_levels": [
+      "minor",
+      "medium",
+      "major"
+    ],
+    "general_novel_only": true
+  }
+}

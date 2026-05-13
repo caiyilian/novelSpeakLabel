@@ -1,0 +1,23 @@
+```json
+{
+  "merge_candidates": [
+    {
+      "source_entity_id": "mystery_v2_000015",
+      "target_entity_id": "char_v2_000001",
+      "confidence": 0.0,
+      "reason": "女孩与罗伦斯是两个独立角色，对话和行为表明她们是不同个体，没有证据显示女孩是罗伦斯的化身或同一人物。"
+    }
+  ],
+  "keep_pending": [
+    "mystery_v2_000015",
+    "mystery_v2_000013",
+    "mystery_v2_000008",
+    "mystery_v2_000009",
+    "mystery_v2_000010",
+    "mystery_v2_000003",
+    "mystery_v2_000007",
+    "mystery_v2_000004"
+  ],
+  "expire_pending": []
+}
+```

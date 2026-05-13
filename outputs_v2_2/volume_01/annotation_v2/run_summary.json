@@ -1,0 +1,22 @@
+{
+  "volume_id": "volume_01",
+  "model": "qwen3:32b",
+  "pipeline": "reading-v2",
+  "output_dir": "outputs_v2/volume_01",
+  "dry_run": false,
+  "cache_only": false,
+  "chunk_count": 50,
+  "skipped_no_dialogue_chunk_count": 1,
+  "skipped_non_narrative_chunk_count": 1,
+  "memory_only_chunk_count": 2,
+  "dialogue_count": 314,
+  "annotation_count": 314,
+  "repair_count": 28,
+  "review_count": 3,
+  "prompt_count": 303,
+  "max_prompt_estimated_tokens": 20824,
+  "avg_prompt_estimated_tokens": 14091.18,
+  "prompt_near_limit_count": 0,
+  "prompt_over_limit_count": 0,
+  "failed_request_count": 1
+}

@@ -1,0 +1,635 @@
+你是通用小说实体发现助手。任务：从当前 chunk 和初标注结果中提出新增实体候选，但不要直接修改角色库。
+建 character：有明确名字、稳定身份或多次影响剧情。建 mystery：可追踪但暂未命名的个体。建 npc_group：无名群体、路人、临时职能角色、围观者或低重要度群体。
+对 mystery 也要估计重要性：如果后续很可能确认身份或影响多段剧情，使用 medium/major；普通一次性未知路人保持 minor 或 npc_group。
+只返回 JSON，格式：{"new_entities":[{"entity_type":"character|mystery|npc_group","display_name":"...","aliases":[],"importance":"minor|medium|major","summary":"...","evidence_refs":[],"dialogue_count_delta":0}],"merge_candidates":[{"source_entity_id":"...","target_entity_id":"...","reason":"...","confidence":0.0}]}
+输入 JSON：
+{
+  "volume": {
+    "volume_id": "volume_01",
+    "volume": 1,
+    "title": ""
+  },
+  "chunk": {
+    "chunk_id": "volume_01-r000050",
+    "chunk_index": 49,
+    "chapter_id": "volume_01-c002",
+    "chapter_title": "第二幕",
+    "scene_id": "volume_01-c002-s003",
+    "paragraphs": [
+      {
+        "paragraph_id": "volume_01-c002-s003-p000758",
+        "paragraph_index": 757,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s003",
+        "scene_index": 3,
+        "text": "只要是旅行商人，即使是离家出走愤而离开故乡的旅行商人，理所当然都会重视自己的故乡。在他乡能够安心依靠的也只有同乡的人。"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000759",
+        "paragraph_index": 758,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s003",
+        "scene_index": 3,
+        "text": "所以，每当旅行商人遇到多年不曾回到故乡的人时，都会这么说。"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000760",
+        "paragraph_index": 759,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s003",
+        "scene_index": 3,
+        "text": "赫萝点了点头，从外套底下探出脸说："
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000761",
+        "paragraph_index": 760,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s003",
+        "scene_index": 3,
+        "text": "「如果被汝安慰，就太有损咱贤狼的名誉了。」"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000762",
+        "paragraph_index": 761,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s003",
+        "scene_index": 3,
+        "text": "赫萝笑着说完，便转身往房间的方向走去。赫萝转身时的眼神，似乎在向罗伦斯道谢。"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000763",
+        "paragraph_index": 762,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s003",
+        "scene_index": 3,
+        "text": "如果赫萝的态度彻底是一个聪明绝顶，上了岁数的贤人，罗伦斯还有办法应付。"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000764",
+        "paragraph_index": 763,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s003",
+        "scene_index": 3,
+        "text": "然而，赫萝时而表现出来的孩子气举动，总会让罗伦斯不知所措。"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000765",
+        "paragraph_index": 764,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s003",
+        "scene_index": 3,
+        "text": "今年二十五岁的罗伦斯如果是一般人的话，早已娶妻生子，带着妻小一同上教会。对于人生已走了一大半的罗伦斯来说，赫萝这样的举动总是毫不客气地闯入他单身寂寞的心里。"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000766",
+        "paragraph_index": 765,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s003",
+        "scene_index": 3,
+        "text": "「喂，快来啊！汝在发什么呆？」"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000767",
+        "paragraph_index": 766,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s003",
+        "scene_index": 3,
+        "text": "赫萝在不远的地方，回过头来喊罗伦斯。"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000768",
+        "paragraph_index": 767,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s003",
+        "scene_index": 3,
+        "text": "虽然和赫萝相遇只过了两天的时间，但感觉却不像这样。"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000769",
+        "paragraph_index": 768,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s003",
+        "scene_index": 3,
+        "text": "罗伦斯终究还是向杰廉表示自己愿意接受他的提议。"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000770",
+        "paragraph_index": 769,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s003",
+        "scene_index": 3,
+        "text": "然而，杰廉不可能只凭与罗伦斯的口头约定，就把所有情报告诉罗伦斯；而罗伦斯也不可能先付订金给杰廉。不管怎么说，罗伦斯得先卖了貂皮才有现金，于是两人最后决定约在河口城镇帕兹欧，在公证人的见证下签订正式合约。"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000771",
+        "paragraph_index": 770,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s003",
+        "scene_index": 3,
+        "text": "「那么，小的就先走一步了。等你们到了帕兹欧，一切安顿好后，请到一间叫做优伦朵的酒吧；在那里就可以联络到小的。」"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000772",
+        "paragraph_index": 771,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s003",
+        "scene_index": 3,
+        "text": "「优伦朵吗？知道了。」"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000773",
+        "paragraph_index": 772,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s003",
+        "scene_index": 3,
+        "text": "杰廉露出他那可爱的笑脸敬了个礼，便扛起装满干果的麻袋往前走去。"
+      }
+    ],
+    "dialogues": [
+      {
+        "dialogue_id": "volume_01-d000311",
+        "dialogue_index": 310,
+        "paragraph_id": "volume_01-c002-s003-p000761",
+        "paragraph_index": 760,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "如果被汝安慰，就太有损咱贤狼的名誉了。",
+        "quote_text": "「如果被汝安慰，就太有损咱贤狼的名誉了。」",
+        "char_start": 0,
+        "char_end": 21
+      },
+      {
+        "dialogue_id": "volume_01-d000312",
+        "dialogue_index": 311,
+        "paragraph_id": "volume_01-c002-s003-p000766",
+        "paragraph_index": 765,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "喂，快来啊！汝在发什么呆？",
+        "quote_text": "「喂，快来啊！汝在发什么呆？」",
+        "char_start": 0,
+        "char_end": 15
+      },
+      {
+        "dialogue_id": "volume_01-d000313",
+        "dialogue_index": 312,
+        "paragraph_id": "volume_01-c002-s003-p000771",
+        "paragraph_index": 770,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "那么，小的就先走一步了。等你们到了帕兹欧，一切安顿好后，请到一间叫做优伦朵的酒吧；在那里就可以联络到小的。",
+        "quote_text": "「那么，小的就先走一步了。等你们到了帕兹欧，一切安顿好后，请到一间叫做优伦朵的酒吧；在那里就可以联络到小的。」",
+        "char_start": 0,
+        "char_end": 55
+      },
+      {
+        "dialogue_id": "volume_01-d000314",
+        "dialogue_index": 313,
+        "paragraph_id": "volume_01-c002-s003-p000772",
+        "paragraph_index": 771,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "优伦朵吗？知道了。",
+        "quote_text": "「优伦朵吗？知道了。」",
+        "char_start": 0,
+        "char_end": 11
+      }
+    ]
+  },
+  "near_context": {
+    "lookback_paragraphs": [
+      {
+        "paragraph_id": "volume_01-c002-s003-p000755",
+        "paragraph_index": 754,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s003",
+        "scene_index": 3,
+        "text": "赫萝沉默地摇摇头，那动作看来十分孩子气。"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000756",
+        "paragraph_index": 755,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s003",
+        "scene_index": 3,
+        "text": "「既然你没变，故乡也一定没变啊。」"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000757",
+        "paragraph_index": 756,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s003",
+        "scene_index": 3,
+        "text": "虽然年纪还轻，但罗伦斯自认已走过不少岁月风霜。正因为一路以来，罗伦斯踏遍各地，与各种不同人相遇，累积各种不同经验，所以他有资格对赫萝说出这样的话。"
+      }
+    ],
+    "lookahead_paragraphs": [
+      {
+        "paragraph_id": "volume_01-c002-s004-p000774",
+        "paragraph_index": 773,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s004",
+        "scene_index": 4,
+        "text": "初入门的旅行商人首先会做的事情除了生意之外，更重要的是到各地方熟悉当地的人事物，同时让对方记住自己。这个时候最适合带着走的商品就是保存期限久，还可以当成聊天话题在教会或旅馆里兜售的干果或肉干。"
+      }
+    ]
+  },
+  "memory": {
+    "previous_chunk_summary": {
+      "chunk_id": "volume_01-r000049",
+      "summary": "在第二幕的场景中，罗伦斯与赫萝继续围绕教会和故乡展开对话。赫萝批评教会地位的提升，认为教会过去曾夸张地宣称神与天使创造世界，而大自然并非人类可以创造的。罗伦斯则回应称教会地位从前就很高。赫萝随后提到时代变迁，语气中透露出对故乡的思念，但神情略显落寞。罗伦斯则以轻松的语气敲了赫萝的头，问她是否变过。赫萝沉默地摇头，表现出孩子气的一面。罗伦斯进一步表示，如果赫萝没变，那么她的故乡也一定没变。赫萝的言行暗示她对故乡的变化感到复杂，而罗伦斯则试图以理性分析回应她的情感。赫萝是否真的对故乡有深厚情感，还是另有隐情，仍是未解之谜。",
+      "active_entities": [
+        "char_v2_000001",
+        "char_v2_000002",
+        "char_v2_000006"
+      ],
+      "open_questions": [
+        "赫萝对故乡的真实情感是什么？",
+        "赫萝是否真的认为教会的言论是笑话？",
+        "赫萝是否会在未来因对故乡的情感而引发新的冲突？"
+      ],
+      "evidence_refs": [
+        "volume_01-c002-s003-p000742",
+        "volume_01-c002-s003-p000745",
+        "volume_01-c002-s003-p000746",
+        "volume_01-c002-s003-p000747",
+        "volume_01-c002-s003-p000750",
+        "volume_01-c002-s003-p000753",
+        "volume_01-c002-s003-p000754",
+        "volume_01-c002-s003-p000756"
+      ]
+    },
+    "global_summary": "本卷继续描绘罗伦斯与赫萝之间的互动，试图揭开赫萝的真实身份。赫萝表达了对故乡约伊兹森林的思念，并提到离开故乡的时间已无法记起。她希望先旅行，以了解故乡的变化，同时增广见闻。赫萝随后向罗伦斯提出希望与他一同旅行，前提是罗伦斯不会将她交给教会。罗伦斯虽未完全确认赫萝的身份，但认为她并非坏人，且与她交谈有趣。然而，出于商人的谨慎，他并未立刻答应赫萝的请求。赫萝则表示理解，并以轻松的语气强调自己是只狼，而非人类。赫萝的请求和罗伦斯的犹豫揭示了两人之间信任与怀疑的微妙关系。赫萝的动机仍不明确，她是否真的想回故乡，还是另有目的，仍是未解之谜。赫萝提到北方，暗示这一地点对她而言具有重要意义，可能是她的出生地或与她过去的经历有关。这一地点的神秘性暗示它可能在未来剧情中扮演关键角色。赫萝的言行显示出她对罗伦斯心理的掌控，而罗伦斯则在试图理解她的动机。赫萝以轻松的态度主导了与罗伦斯的对话，表现出她对当前局势的掌控。她假装要睡觉，实则是在结束对话，随后又突然探头询问罗伦斯是否要让她睡在外面，语气中带着调侃。罗伦斯虽然觉得无奈，但也觉得有趣，并未真正拒绝。赫萝的举动让罗伦斯怀疑她之前的一些反应是否是演戏，但罗伦斯仍相信她对故乡和村民的不满是真实的。清晨，罗伦斯醒来发现赫萝已经起床，并擅自翻找他的行李，换上了他最上等的衣服。罗伦斯责备赫萝擅自翻找他人行李的行为，但赫萝完全不以为意，反而得意地展示衣服，并询问是否可以剪开裤子以方便她的尾巴。赫萝的举动大胆而自信，而罗伦斯虽然不满，却并未真正生气，反而觉得赫萝穿着他的衣服显得可爱。赫萝的言行表明她对罗伦斯的反应有一定程度的掌控，而罗伦斯则在权衡是否要让她继续穿着这些衣物。赫萝在货台上轻快地跳下，动作自然得让罗伦斯一时未能反应。罗伦斯并未阻止她，因为他内心确信赫萝不会逃跑。赫萝确认了这一点后，主动脱下罗伦斯为她订制的熊皮外套，并指出衣服对她来说太长了。罗伦斯注意到赫萝的体型比他想象的要娇小，足足比他矮了两个头。随后，赫萝向罗伦斯提出希望与他一起旅行，并表示自己不会逃跑。罗伦斯虽然仍保持谨慎，但认为赫萝不像会偷东西的人，与她同行应该无妨。他最终答应了赫…",
+    "candidate_entities": [
+      {
+        "entity_id": "char_v2_000001",
+        "entity_type": "character",
+        "display_name": "罗伦斯",
+        "aliases": [
+          "罗伦斯先生"
+        ],
+        "importance": "major",
+        "summary": "罗伦斯继续与赫萝互动，表现出对赫萝情感的关心和理性分析。他通过敲赫萝的头和提出「你自己变了吗？」的问题，试图理解赫萝的内心变化。罗伦斯的言行表明他试图在信任与怀疑之间找到平衡。",
+        "latest_seen_chunk_id": "volume_01-r000049",
+        "dialogue_count": 134
+      },
+      {
+        "entity_id": "char_v2_000002",
+        "entity_type": "character",
+        "display_name": "赫萝",
+        "aliases": [
+          "赫萝（丰收之神）",
+          "丰收之神",
+          "狼赫萝",
+          "赫萝"
+        ],
+        "importance": "major",
+        "summary": "赫萝继续表现出对教会的批评态度，并提到故乡的变化。她的语气中透露出对过去的怀念和对现实的不满。赫萝的沉默和孩子气的反应表明她对罗伦斯的提问感到复杂，但并未完全否定自己的过去。",
+        "latest_seen_chunk_id": "volume_01-r000049",
+        "dialogue_count": 162
+      },
+      {
+        "entity_id": "mystery_v2_000009",
+        "entity_type": "mystery",
+        "display_name": "赫萝",
+        "aliases": [
+          "赫萝（丰收之神）",
+          "丰收之神",
+          "狼",
+          "狼赫萝"
+        ],
+        "importance": "major",
+        "summary": "传说中在收割季节进入最后一束麦子中的人体内的神明。赫萝声称自己是丰收之神的化身，但罗伦斯的质疑和赫萝的解释暗示她可能并非传统意义上的神明，而是某种与麦子和丰收仪式相关的存在。",
+        "latest_seen_chunk_id": "volume_01-r000026",
+        "dialogue_count": 14
+      },
+      {
+        "entity_id": "char_v2_000005",
+        "entity_type": "character",
+        "display_name": "丰收之神赫萝",
+        "aliases": [
+          "赫萝（神明）",
+          "丰收之神"
+        ],
+        "importance": "major",
+        "summary": "赫萝进一步强调自己是「贤狼赫萝」，并否认自己是神明，但表现出对自身非人特征的自信。她的言行暗示她可能具有神性，但选择以狼的身份与罗伦斯互动。",
+        "latest_seen_chunk_id": "volume_01-r000025",
+        "dialogue_count": 2
+      },
+      {
+        "entity_id": "mystery_v2_000015",
+        "entity_type": "mystery",
+        "display_name": "女孩",
+        "aliases": [
+          "女孩（动物耳朵）",
+          "神秘女孩",
+          "有耳朵的女孩"
+        ],
+        "importance": "major",
+        "summary": "一名神秘的女孩，出现在罗伦斯的马车上，睡得香甜，美丽而安静。她反应迟缓，声音甜美，但头上长着像小狗的耳朵，暗示她可能并非普通人。她赤裸着身体缓缓站起，美丽得令人屏息，随后发出狼嚎，令罗伦斯误以为她是…",
+        "latest_seen_chunk_id": "volume_01-r000014",
+        "dialogue_count": 14
+      },
+      {
+        "entity_id": "char_v2_000006",
+        "entity_type": "character",
+        "display_name": "教会",
+        "aliases": [
+          "教会组织",
+          "宗教机构"
+        ],
+        "importance": "medium",
+        "summary": "教会继续在场景中出现，其地位和影响力成为赫萝和罗伦斯讨论的话题。赫萝批评教会的言论，认为其夸张的信仰主张缺乏逻辑，而罗伦斯则指出教会的地位一直很高。教会的存在和影响力在本段中进一步被提及，暗示其在未…",
+        "latest_seen_chunk_id": "volume_01-r000049",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "char_v2_000013",
+        "entity_type": "character",
+        "display_name": "杰廉",
+        "aliases": [
+          "杰廉商人",
+          "新手杰廉",
+          "年轻商人杰廉",
+          "信徒"
+        ],
+        "importance": "medium",
+        "summary": "杰廉的提议继续引发罗伦斯和赫萝的讨论，赫萝认为提议中可能包含谎言，而罗伦斯则谨慎分析其动机。杰廉的动机和信息的真实性仍是未知数，但他的提议促使罗伦斯采取策略性应对。",
+        "latest_seen_chunk_id": "volume_01-r000048",
+        "dialogue_count": 13
+      },
+      {
+        "entity_id": "char_v2_000011",
+        "entity_type": "character",
+        "display_name": "佩连佐的葡萄园主人",
+        "aliases": [
+          "年长的丈夫",
+          "佩连佐的商人"
+        ],
+        "importance": "medium",
+        "summary": "佩连佐的葡萄园主人与罗伦斯在教会中对话，表现出对汇兑体制的兴趣，并邀请罗伦斯到佩连佐做客。随后，他与妻子一同告辞离开。他的对话表明他对商业知识的渴望，可能在未来与罗伦斯有进一步互动。",
+        "latest_seen_chunk_id": "volume_01-r000041",
+        "dialogue_count": 4
+      },
+      {
+        "entity_id": "char_v2_000012",
+        "entity_type": "character",
+        "display_name": "佩连佐的葡萄园主人的妻子",
+        "aliases": [
+          "年长丈夫的妻子"
+        ],
+        "importance": "medium",
+        "summary": "佩连佐的葡萄园主人的妻子，与丈夫一同出现在教会中。她未参与对话，但在对话中被提及为「妻子」，并随丈夫一同告辞离开。虽然未直接发言，但她的存在表明这对夫妻是重要人物，可能在未来剧情中与罗伦斯有进一步互…",
+        "latest_seen_chunk_id": "volume_01-r000041",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "char_v2_000010",
+        "entity_type": "character",
+        "display_name": "约伊兹森林",
+        "aliases": [
+          "赫萝的出生地",
+          "故乡森林"
+        ],
+        "importance": "medium",
+        "summary": "赫萝提到自己出生的故乡是约伊兹森林，并表示离开故乡的时间已无法记起。她对故乡充满思念，但未进一步解释其重要性。约伊兹森林可能是她身份或过去经历的关键地点。",
+        "latest_seen_chunk_id": "volume_01-r000030",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "mystery_v2_000018",
+        "entity_type": "mystery",
+        "display_name": "北方",
+        "aliases": [
+          "北方大地",
+          "赫萝的故乡"
+        ],
+        "importance": "medium",
+        "summary": "赫萝明确表示想回到北方，但未进一步解释原因。北方对她而言似乎具有重要的意义，可能是她的出生地或与她过去的经历有关。这一地点的神秘性暗示它可能在未来剧情中扮演关键角色。",
+        "latest_seen_chunk_id": "volume_01-r000029",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "char_v2_000009",
+        "entity_type": "character",
+        "display_name": "帕斯罗村的年轻村民",
+        "aliases": [
+          "年轻村民",
+          "赫萝承诺的年轻人"
+        ],
+        "importance": "medium",
+        "summary": "赫萝提到她曾答应过帕斯罗村的一名年轻人，要让村里的麦子丰收，并为此守护麦田多年。虽然未提及姓名，但此人对赫萝的承诺和行动有重要影响，是她留在村落的重要原因。",
+        "latest_seen_chunk_id": "volume_01-r000028",
+        "dialogue_count": 0
+      }
+    ]
+  },
+  "rules": {
+    "speaker_statuses": [
+      "known",
+      "mystery",
+      "npc_group",
+      "review",
+      "unknown"
+    ],
+    "importance_levels": [
+      "minor",
+      "medium",
+      "major"
+    ],
+    "general_novel_only": true
+  },
+  "task_a_annotations": [
+    {
+      "dialogue_id": "volume_01-d000311",
+      "dialogue_index": 310,
+      "volume_id": "",
+      "chapter_id": "",
+      "chapter_index": 0,
+      "chapter_title": "",
+      "scene_id": "",
+      "scene_index": 0,
+      "paragraph_id": "volume_01-c002-s003-p000761",
+      "paragraph_index": 760,
+      "local_dialogue_index": 1,
+      "text": "如果被汝安慰，就太有损咱贤狼的名誉了。",
+      "quote_text": "「如果被汝安慰，就太有损咱贤狼的名誉了。」",
+      "dialogue_kind": "standalone",
+      "char_start": 0,
+      "char_end": 21,
+      "speaker_entity_id": "char_v2_000002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "赫萝点了点头，从外套底下探出脸说："
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false,
+      "review_reason": "",
+      "request_id": "volume_01-r000050--annotation--qwen3_32b"
+    },
+    {
+      "dialogue_id": "volume_01-d000312",
+      "dialogue_index": 311,
+      "volume_id": "",
+      "chapter_id": "",
+      "chapter_index": 0,
+      "chapter_title": "",
+      "scene_id": "",
+      "scene_index": 0,
+      "paragraph_id": "volume_01-c002-s003-p000766",
+      "paragraph_index": 765,
+      "local_dialogue_index": 1,
+      "text": "喂，快来啊！汝在发什么呆？",
+      "quote_text": "「喂，快来啊！汝在发什么呆？」",
+      "dialogue_kind": "standalone",
+      "char_start": 0,
+      "char_end": 15,
+      "speaker_entity_id": "char_v2_000002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "赫萝在不远的地方，回过头来喊罗伦斯。"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false,
+      "review_reason": "",
+      "request_id": "volume_01-r000050--annotation--qwen3_32b"
+    },
+    {
+      "dialogue_id": "volume_01-d000313",
+      "dialogue_index": 312,
+      "volume_id": "",
+      "chapter_id": "",
+      "chapter_index": 0,
+      "chapter_title": "",
+      "scene_id": "",
+      "scene_index": 0,
+      "paragraph_id": "volume_01-c002-s003-p000771",
+      "paragraph_index": 770,
+      "local_dialogue_index": 1,
+      "text": "那么，小的就先走一步了。等你们到了帕兹欧，一切安顿好后，请到一间叫做优伦朵的酒吧；在那里就可以联络到小的。",
+      "quote_text": "「那么，小的就先走一步了。等你们到了帕兹欧，一切安顿好后，请到一间叫做优伦朵的酒吧；在那里就可以联络到小的。」",
+      "dialogue_kind": "standalone",
+      "char_start": 0,
+      "char_end": 55,
+      "speaker_entity_id": "char_v2_000013",
+      "speaker_display": "杰廉",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "杰廉露出他那可爱的笑脸敬了个礼，便扛起装满干果的麻袋往前走去。"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false,
+      "review_reason": "",
+      "request_id": "volume_01-r000050--annotation--qwen3_32b"
+    },
+    {
+      "dialogue_id": "volume_01-d000314",
+      "dialogue_index": 313,
+      "volume_id": "",
+      "chapter_id": "",
+      "chapter_index": 0,
+      "chapter_title": "",
+      "scene_id": "",
+      "scene_index": 0,
+      "paragraph_id": "volume_01-c002-s003-p000772",
+      "paragraph_index": 771,
+      "local_dialogue_index": 1,
+      "text": "优伦朵吗？知道了。",
+      "quote_text": "「优伦朵吗？知道了。」",
+      "dialogue_kind": "standalone",
+      "char_start": 0,
+      "char_end": 11,
+      "speaker_entity_id": "char_v2_000001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "「优伦朵吗？知道了。」"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false,
+      "review_reason": "",
+      "request_id": "volume_01-r000050--annotation--qwen3_32b"
+    }
+  ],
+  "task_b_chunk_summary": {
+    "chunk_id": "volume_01-r000050",
+    "summary": "在第二幕的场景中，罗伦斯与赫萝继续互动，赫萝表现出孩子气的一面，同时又展现出她作为「贤狼」的自信。赫萝拒绝被安慰，强调自己的独立性，并转身离开房间，眼神中透露出对罗伦斯的感谢。罗伦斯则感到赫萝的举动既让他感到温暖，又让他因单身寂寞而不知所措。赫萝随后催促罗伦斯快点跟上，表现出她对旅程的期待。与此同时，罗伦斯与杰廉达成初步协议，决定在河口城镇帕兹欧，在公证人见证下签订正式合约。杰廉离开前告知罗伦斯可在帕兹欧的「优伦朵」酒吧找到他。赫萝与罗伦斯的互动揭示了两人之间逐渐加深的默契，但赫萝的真实情感和动机仍未完全明朗。罗伦斯是否能完全信任赫萝，以及杰廉的提议是否隐藏着其他目的，仍是未解之谜。",
+    "active_entities": [
+      "char_v2_000001",
+      "char_v2_000002",
+      "char_v2_000013"
+    ],
+    "open_questions": [
+      "赫萝是否真的对罗伦斯怀有感激之情，还是另有目的？",
+      "罗伦斯是否能完全信任赫萝，尤其是在她表现出孩子气和独立性之间反复无常的举动？",
+      "杰廉的提议是否隐藏着其他目的，还是单纯的合作？",
+      "赫萝在「优伦朵」酒吧的出现是否会引发新的冲突？"
+    ],
+    "evidence_refs": [
+      "volume_01-c002-s003-p000760",
+      "volume_01-c002-s003-p000761",
+      "volume_01-c002-s003-p000762",
+      "volume_01-c002-s003-p000763",
+      "volume_01-c002-s003-p000764",
+      "volume_01-c002-s003-p000765",
+      "volume_01-c002-s003-p000766",
+      "volume_01-c002-s003-p000767",
+      "volume_01-c002-s003-p000768",
+      "volume_01-c002-s003-p000769",
+      "volume_01-c002-s003-p000770",
+      "volume_01-c002-s003-p000771",
+      "volume_01-c002-s003-p000772",
+      "volume_01-c002-s003-p000773"
+    ]
+  }
+}

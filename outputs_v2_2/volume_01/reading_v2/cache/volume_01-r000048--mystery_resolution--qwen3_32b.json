@@ -1,0 +1,34 @@
+{
+  "merge_candidates": [
+    {
+      "source_entity_id": "mystery_v2_000009",
+      "target_entity_id": "char_v2_000002",
+      "confidence": 0.95,
+      "reason": "当前 chunk 明确提到赫萝自称「贤狼赫萝」，并表现出与已确认角色 char_v2_000002（赫萝）一致的言行特征，包括与罗伦斯的互动、对教会的态度、以及识破谎言的能力。"
+    },
+    {
+      "source_entity_id": "mystery_v2_000015",
+      "target_entity_id": "char_v2_000002",
+      "confidence": 0.85,
+      "reason": "mystery_v2_000015（女孩）的描述与赫萝的外貌和行为高度相似，包括动物耳朵和狼的特征，且在后续剧情中被确认为赫萝。"
+    }
+  ],
+  "keep_pending": [
+    "mystery_v2_000018",
+    "mystery_v2_000010",
+    "mystery_v2_000017",
+    "mystery_v2_000013",
+    "mystery_v2_000008",
+    "mystery_v2_000003"
+  ],
+  "expire_pending": [
+    {
+      "entity_id": "mystery_v2_000009",
+      "reason": "已确认与 char_v2_000002（赫萝）为同一角色。"
+    },
+    {
+      "entity_id": "mystery_v2_000015",
+      "reason": "已确认与 char_v2_000002（赫萝）为同一角色。"
+    }
+  ]
+}

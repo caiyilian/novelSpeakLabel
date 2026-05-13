@@ -1,0 +1,217 @@
+你是通用小说阅读记忆助手。任务：把刚读完的 chunk 压缩成短期摘要，供后续几个 chunk 使用。
+摘要要围绕事件、人物关系、对话轮次和仍未解决的问题；不得添加输入中没有的信息。
+只返回 JSON，格式：{"chunk_id":"...","summary":"50到450字","active_entities":["entity_id"],"open_questions":[],"evidence_refs":["paragraph_id或dialogue_id"]}
+输入 JSON：
+{
+  "volume": {
+    "volume_id": "volume_01",
+    "volume": 1,
+    "title": ""
+  },
+  "chunk": {
+    "chunk_id": "volume_01-r000001",
+    "chunk_index": 0,
+    "chapter_id": "volume_01-c000",
+    "chapter_title": "front_matter",
+    "scene_id": "volume_01-c000-s001",
+    "paragraphs": [
+      {
+        "paragraph_id": "volume_01-c000-s001-p000001",
+        "paragraph_index": 0,
+        "chapter_id": "volume_01-c000",
+        "chapter_index": 0,
+        "chapter_title": "front_matter",
+        "scene_id": "volume_01-c000-s001",
+        "scene_index": 1,
+        "text": "在这个村落，人们会把迎风摇曳的饱满麦穗形容成狼在奔跑。"
+      },
+      {
+        "paragraph_id": "volume_01-c000-s001-p000002",
+        "paragraph_index": 1,
+        "chapter_id": "volume_01-c000",
+        "chapter_index": 0,
+        "chapter_title": "front_matter",
+        "scene_id": "volume_01-c000-s001",
+        "scene_index": 1,
+        "text": "因为麦穗迎风摇曳的姿态，就像在麦田里奔跑的狼。"
+      },
+      {
+        "paragraph_id": "volume_01-c000-s001-p000003",
+        "paragraph_index": 2,
+        "chapter_id": "volume_01-c000",
+        "chapter_index": 0,
+        "chapter_title": "front_matter",
+        "scene_id": "volume_01-c000-s001",
+        "scene_index": 1,
+        "text": "人们还会说被强风吹倒的麦穗是遭狼践踏，收成不好时会说是被狼给吃了。"
+      },
+      {
+        "paragraph_id": "volume_01-c000-s001-p000004",
+        "paragraph_index": 3,
+        "chapter_id": "volume_01-c000",
+        "chapter_index": 0,
+        "chapter_title": "front_matter",
+        "scene_id": "volume_01-c000-s001",
+        "scene_index": 1,
+        "text": "这种比喻虽然贴切，但其中也包含了负面的意味，显得美中不足。"
+      },
+      {
+        "paragraph_id": "volume_01-c000-s001-p000005",
+        "paragraph_index": 4,
+        "chapter_id": "volume_01-c000",
+        "chapter_index": 0,
+        "chapter_title": "front_matter",
+        "scene_id": "volume_01-c000-s001",
+        "scene_index": 1,
+        "text": "不过，如今这些比喻只是带点玩笑性质的说法，几乎不再有人会像从前一样，带着亲密感与恐惧感来使用这些话语。"
+      },
+      {
+        "paragraph_id": "volume_01-c000-s001-p000006",
+        "paragraph_index": 5,
+        "chapter_id": "volume_01-c000",
+        "chapter_index": 0,
+        "chapter_title": "front_matter",
+        "scene_id": "volume_01-c000-s001",
+        "scene_index": 1,
+        "text": "从阵阵摇摆的麦穗缝中仰望的秋天天空，即使过了好几百年也不曾改变，但是底下的人事物全变了样。"
+      },
+      {
+        "paragraph_id": "volume_01-c000-s001-p000007",
+        "paragraph_index": 6,
+        "chapter_id": "volume_01-c000",
+        "chapter_index": 0,
+        "chapter_title": "front_matter",
+        "scene_id": "volume_01-c000-s001",
+        "scene_index": 1,
+        "text": "年复一年，勤奋种麦的村民们再怎么长寿，也不过活到七十岁。"
+      },
+      {
+        "paragraph_id": "volume_01-c000-s001-p000008",
+        "paragraph_index": 7,
+        "chapter_id": "volume_01-c000",
+        "chapter_index": 0,
+        "chapter_title": "front_matter",
+        "scene_id": "volume_01-c000-s001",
+        "scene_index": 1,
+        "text": "要是人事物好几百年都没有改变，反而不见得好。"
+      },
+      {
+        "paragraph_id": "volume_01-c000-s001-p000009",
+        "paragraph_index": 8,
+        "chapter_id": "volume_01-c000",
+        "chapter_index": 0,
+        "chapter_title": "front_matter",
+        "scene_id": "volume_01-c000-s001",
+        "scene_index": 1,
+        "text": "只是，不禁让人觉得，或许没必要再为了情义而守护以往的承诺。"
+      },
+      {
+        "paragraph_id": "volume_01-c000-s001-p000010",
+        "paragraph_index": 9,
+        "chapter_id": "volume_01-c000",
+        "chapter_index": 0,
+        "chapter_title": "front_matter",
+        "scene_id": "volume_01-c000-s001",
+        "scene_index": 1,
+        "text": "这里的村民已不再需要咱了。"
+      },
+      {
+        "paragraph_id": "volume_01-c000-s001-p000011",
+        "paragraph_index": 10,
+        "chapter_id": "volume_01-c000",
+        "chapter_index": 0,
+        "chapter_title": "front_matter",
+        "scene_id": "volume_01-c000-s001",
+        "scene_index": 1,
+        "text": "耸立在东方的高山，使得村落天空的云朵多半飘向北方。"
+      },
+      {
+        "paragraph_id": "volume_01-c000-s001-p000012",
+        "paragraph_index": 11,
+        "chapter_id": "volume_01-c000",
+        "chapter_index": 0,
+        "chapter_title": "front_matter",
+        "scene_id": "volume_01-c000-s001",
+        "scene_index": 1,
+        "text": "想起位在云朵飘去那一头的北方故乡，便忍不住叹了口气。"
+      },
+      {
+        "paragraph_id": "volume_01-c000-s001-p000013",
+        "paragraph_index": 12,
+        "chapter_id": "volume_01-c000",
+        "chapter_index": 0,
+        "chapter_title": "front_matter",
+        "scene_id": "volume_01-c000-s001",
+        "scene_index": 1,
+        "text": "把视线从天空拉回麦田，引以为傲的尾巴就在面前摇摆。"
+      },
+      {
+        "paragraph_id": "volume_01-c000-s001-p000014",
+        "paragraph_index": 13,
+        "chapter_id": "volume_01-c000",
+        "chapter_index": 0,
+        "chapter_title": "front_matter",
+        "scene_id": "volume_01-c000-s001",
+        "scene_index": 1,
+        "text": "闲来无事只好专心梳理尾巴的毛。"
+      },
+      {
+        "paragraph_id": "volume_01-c000-s001-p000015",
+        "paragraph_index": 14,
+        "chapter_id": "volume_01-c000",
+        "chapter_index": 0,
+        "chapter_title": "front_matter",
+        "scene_id": "volume_01-c000-s001",
+        "scene_index": 1,
+        "text": "秋天的天空高而清澈。"
+      },
+      {
+        "paragraph_id": "volume_01-c000-s001-p000016",
+        "paragraph_index": 15,
+        "chapter_id": "volume_01-c000",
+        "chapter_index": 0,
+        "chapter_title": "front_matter",
+        "scene_id": "volume_01-c000-s001",
+        "scene_index": 1,
+        "text": "今年又到了收割的时期。"
+      }
+    ],
+    "dialogues": []
+  },
+  "near_context": {
+    "lookback_paragraphs": [],
+    "lookahead_paragraphs": [
+      {
+        "paragraph_id": "volume_01-c000-s001-p000017",
+        "paragraph_index": 16,
+        "chapter_id": "volume_01-c000",
+        "chapter_index": 0,
+        "chapter_title": "front_matter",
+        "scene_id": "volume_01-c000-s001",
+        "scene_index": 1,
+        "text": "成群无数的狼在麦田里奔跑。"
+      }
+    ]
+  },
+  "memory": {
+    "previous_chunk_summary": {},
+    "global_summary": "",
+    "candidate_entities": []
+  },
+  "rules": {
+    "speaker_statuses": [
+      "known",
+      "mystery",
+      "npc_group",
+      "review",
+      "unknown"
+    ],
+    "importance_levels": [
+      "minor",
+      "medium",
+      "major"
+    ],
+    "general_novel_only": true
+  },
+  "task_a_annotations": []
+}

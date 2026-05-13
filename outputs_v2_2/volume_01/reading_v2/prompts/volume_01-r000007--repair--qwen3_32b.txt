@@ -1,0 +1,744 @@
+你是通用小说当前 chunk 回看补标助手。任务：只回看 unresolved_annotations 中的 dialogue，利用当前 chunk 摘要、更新后的长期摘要和实体记忆尝试修正。仍不能判断就保留 unknown 或 review。
+只返回 JSON，格式：{"repairs":[{"dialogue_id":"...","previous_speaker_entity_id":"...","new_speaker_entity_id":"...","speaker_display":"...","speaker_status":"known|mystery|npc_group|unknown|review","confidence":0.0,"reason":"...","stop_reason":"resolved|unchanged|needs_review"}]}
+输入 JSON：
+{
+  "volume": {
+    "volume_id": "volume_01",
+    "volume": 1,
+    "title": ""
+  },
+  "chunk": {
+    "chunk_id": "volume_01-r000007",
+    "chunk_index": 6,
+    "chapter_id": "volume_01-c001",
+    "chapter_title": "第一幕",
+    "scene_id": "volume_01-c001-s001",
+    "paragraphs": [
+      {
+        "paragraph_id": "volume_01-c001-s001-p000083",
+        "paragraph_index": 82,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s001",
+        "scene_index": 1,
+        "text": "再说，教会近来热衷异端"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s001-p000084",
+        "paragraph_index": 83,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s001",
+        "scene_index": 1,
+        "text": "审判及异教徒改教活动，最近也常听说城里的神学者与自然学者发生言论斗争的消息。民众已渐渐不像从前那样，无条件服从教会。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s001-p000085",
+        "paragraph_index": 84,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s001",
+        "scene_index": 1,
+        "text": "注：指非正统的宗教派别"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s001-p000086",
+        "paragraph_index": 85,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s001",
+        "scene_index": 1,
+        "text": "就算城里的居民没有说出口，但相信大家都能够感觉到教会的绝对性威严已逐渐消失。事实上，据说因为教皇收到的教会税比预期来得少，而向多国国王请求捐助费用修复大神殿。早在十年前，这根本是不可能发生的事。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s001-p000087",
+        "paragraph_index": 86,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s001",
+        "scene_index": 1,
+        "text": "面对这样的局势，也难怪教会急于设法找回威严。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s001-p000088",
+        "paragraph_index": 87,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s001",
+        "scene_index": 1,
+        "text": "「不管哪一行的生意都不好做呢。」"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s001-p000089",
+        "paragraph_index": 88,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s001",
+        "scene_index": 1,
+        "text": "罗伦斯苦笑，把蜂蜜糖丢入口中。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s001-p000090",
+        "paragraph_index": 89,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s001",
+        "scene_index": 1,
+        "text": "当罗伦斯来到宽广的麦田时，西边的天空已经泛起比麦穗还要美丽的金黄色。远方鸟儿小小的身影赶着回家，处处传来的青蛙鸣，仿佛在宣告自己即将入眠似的。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s001-p000091",
+        "paragraph_index": 90,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s001",
+        "scene_index": 1,
+        "text": "几乎所有麦田都已完成收割，应该这几天就会举办祭典。快的话，或许后天就会举办了。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s001-p000092",
+        "paragraph_index": 91,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s001",
+        "scene_index": 1,
+        "text": "在罗伦斯眼前延伸开来的这片麦田，是这个区域中以高收割量而自豪的帕斯罗村麦田。收割量越高，村民的生活也就越富裕。再加上管理这一带的亚伦多伯爵是个附近无人不知的怪人，他身为贵族却喜欢下田耕作，因此自然愿意赞助祭典，每年都会在祭典上饮酒欢唱，好不热闹。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s001-p000093",
+        "paragraph_index": 92,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s001",
+        "scene_index": 1,
+        "text": "然而，罗伦斯从未曾参加过他们的祭典。很遗憾，外人是不允许参加的。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s001-p000094",
+        "paragraph_index": 93,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s001",
+        "scene_index": 1,
+        "text": "「嗨！辛苦了。」"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s001-p000095",
+        "paragraph_index": 94,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s001",
+        "scene_index": 1,
+        "text": "罗伦斯朝正在帕斯罗村的麦田一角，把麦子往马车上堆的农夫打招呼。马车上的麦穗十分饱满，看来可以让购买麦子期货的人们松一口气吧。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s001-p000096",
+        "paragraph_index": 95,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s001",
+        "scene_index": 1,
+        "text": "「喔？」"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s001-p000097",
+        "paragraph_index": 96,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s001",
+        "scene_index": 1,
+        "text": "「请问叶勒在哪里啊？」"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s001-p000098",
+        "paragraph_index": 97,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s001",
+        "scene_index": 1,
+        "text": "「喔！叶勒在那儿。有没有看到很多人聚集在那边？他就在那块麦田里。叶勒今年都雇用年轻人来种田，因为他们比较不得要领，今年应该是他们田里的某个人会是『赫萝』吧。」"
+      }
+    ],
+    "dialogues": [
+      {
+        "dialogue_id": "volume_01-d000025",
+        "dialogue_index": 24,
+        "paragraph_id": "volume_01-c001-s001-p000088",
+        "paragraph_index": 87,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "不管哪一行的生意都不好做呢。",
+        "quote_text": "「不管哪一行的生意都不好做呢。」",
+        "char_start": 0,
+        "char_end": 16
+      },
+      {
+        "dialogue_id": "volume_01-d000026",
+        "dialogue_index": 25,
+        "paragraph_id": "volume_01-c001-s001-p000094",
+        "paragraph_index": 93,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "嗨！辛苦了。",
+        "quote_text": "「嗨！辛苦了。」",
+        "char_start": 0,
+        "char_end": 8
+      },
+      {
+        "dialogue_id": "volume_01-d000027",
+        "dialogue_index": 26,
+        "paragraph_id": "volume_01-c001-s001-p000096",
+        "paragraph_index": 95,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "喔？",
+        "quote_text": "「喔？」",
+        "char_start": 0,
+        "char_end": 4
+      },
+      {
+        "dialogue_id": "volume_01-d000028",
+        "dialogue_index": 27,
+        "paragraph_id": "volume_01-c001-s001-p000097",
+        "paragraph_index": 96,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "请问叶勒在哪里啊？",
+        "quote_text": "「请问叶勒在哪里啊？」",
+        "char_start": 0,
+        "char_end": 11
+      },
+      {
+        "dialogue_id": "volume_01-d000029",
+        "dialogue_index": 28,
+        "paragraph_id": "volume_01-c001-s001-p000098",
+        "paragraph_index": 97,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "喔！叶勒在那儿。有没有看到很多人聚集在那边？他就在那块麦田里。叶勒今年都雇用年轻人来种田，因为他们比较不得要领，今年应该是他们田里的某个人会是『赫萝』吧。",
+        "quote_text": "「喔！叶勒在那儿。有没有看到很多人聚集在那边？他就在那块麦田里。叶勒今年都雇用年轻人来种田，因为他们比较不得要领，今年应该是他们田里的某个人会是『赫萝』吧。」",
+        "char_start": 0,
+        "char_end": 79
+      }
+    ]
+  },
+  "near_context": {
+    "lookback_paragraphs": [
+      {
+        "paragraph_id": "volume_01-c001-s001-p000080",
+        "paragraph_index": 79,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s001",
+        "scene_index": 1,
+        "text": "那根本不是什么异教徒祭典。况且异教徒不是在更北边、就是在更东边的地方出没。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s001-p000081",
+        "paragraph_index": 80,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s001",
+        "scene_index": 1,
+        "text": "这附近所举办的祭典，不过是随处可见，为了庆祝麦田收割、祈祷丰收的祭典罢了，根本不需要特地派驻骑士。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s001-p000082",
+        "paragraph_index": 81,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s001",
+        "scene_index": 1,
+        "text": "但是，这附近的祭典比其他地方盛大且特别，所以修道院的人可能因此特别向城里的教会提出报告。或许是长久以来，这地方从不曾正式纳入教会的版图，所以教会才显得特别敏感。"
+      }
+    ],
+    "lookahead_paragraphs": [
+      {
+        "paragraph_id": "volume_01-c001-s002-p000099",
+        "paragraph_index": 98,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s002",
+        "scene_index": 2,
+        "text": "农夫晒得黝黑的脸上堆满了笑容说道。那是绝对不会出现在商人脸上，只有没心机的人才会露出的笑容。"
+      }
+    ]
+  },
+  "memory": {
+    "previous_chunk_summary": {
+      "chunk_id": "volume_01-r000006",
+      "summary": "罗伦斯用蜂蜜糖缓和了骑士的戒备，骑士表示感谢并透露自己因‘异教徒祭典’而在此地防卫。罗伦斯假装不知道消息，实则撒谎，因为祭典其实是当地常见的丰收庆典，与异教徒无关。骑士的猜测被罗伦斯私下嘲笑，但他并未纠正骑士的误解。罗伦斯离开后，认为骑士的猜测过于敏感，可能与修道院对地方的控制有关。骑士的发言暗示教会对此地的祭典异常关注，可能因为该地尚未正式纳入教会版图。罗伦斯对骑士的贫穷生活表示理解，但并未多给蜂蜜糖，因其价格不菲。本段揭示了骑士的职责与修道院的潜在动机，以及罗伦斯的策略性应对。",
+      "active_entities": [
+        "char_v2_000001",
+        "mystery_v2_000004"
+      ],
+      "open_questions": [
+        "骑士为何将丰收祭典误认为异教徒祭典？",
+        "修道院为何对地方祭典特别敏感？",
+        "教会是否在试图扩大对地方的控制？"
+      ],
+      "evidence_refs": [
+        "volume_01-c001-s001-p000067",
+        "volume_01-c001-s001-p000068",
+        "volume_01-c001-s001-p000070",
+        "volume_01-c001-s001-p000071",
+        "volume_01-c001-s001-p000072",
+        "volume_01-c001-s001-p000077",
+        "volume_01-c001-s001-p000078",
+        "volume_01-c001-s001-p000080",
+        "volume_01-c001-s001-p000081",
+        "volume_01-c001-s001-p000082"
+      ]
+    },
+    "global_summary": "罗伦斯继续与骑士互动，通过递出蜂蜜糖缓和气氛，骑士表示感谢并透露自己因‘异教徒祭典’而在此地防卫。罗伦斯假装不知道消息，实则撒谎，因为祭典其实是当地常见的丰收庆典，与异教徒无关。骑士的猜测被罗伦斯私下嘲笑，但他并未纠正骑士的误解。罗伦斯离开后，认为骑士的猜测过于敏感，可能与修道院对地方的控制有关。骑士的发言暗示教会对此地的祭典异常关注，可能因为该地尚未正式纳入教会版图。罗伦斯对骑士的贫穷生活表示理解，但并未多给蜂蜜糖，因其价格不菲。本段揭示了骑士的职责与修道院的潜在动机，以及罗伦斯的策略性应对。",
+    "candidate_entities": [
+      {
+        "entity_id": "char_v2_000001",
+        "entity_type": "character",
+        "display_name": "罗伦斯",
+        "aliases": [
+          "罗伦斯先生"
+        ],
+        "importance": "major",
+        "summary": "罗伦斯用蜂蜜糖缓和了骑士的戒备，假装不知道关于异教徒祭典的消息，实则撒谎。他私下认为骑士的猜测过于敏感，可能与修道院对地方的控制有关。罗伦斯对骑士的贫穷生活表示理解，但并未多给蜂蜜糖，因其价格不菲。…",
+        "latest_seen_chunk_id": "volume_01-r000006",
+        "dialogue_count": 22
+      },
+      {
+        "entity_id": "mystery_v2_000004",
+        "entity_type": "character",
+        "display_name": "骑士",
+        "aliases": [],
+        "importance": "medium",
+        "summary": "骑士因‘异教徒祭典’而在此地防卫，态度傲慢且戒备。他误将丰收祭典当作异教徒活动，并批评异教徒为胆小鬼。罗伦斯并未纠正他的误解，而是假装赞同。骑士的发言暗示教会对此地的祭典异常关注，可能因为该地尚未正…",
+        "latest_seen_chunk_id": "volume_01-r000006",
+        "dialogue_count": 4
+      },
+      {
+        "entity_id": "mystery_v2_000003",
+        "entity_type": "mystery",
+        "display_name": "修道院的修道士",
+        "aliases": [
+          "修道士",
+          "修道院成员"
+        ],
+        "importance": "medium",
+        "summary": "一所偏僻修道院的居民，人数约二十多位，生活节俭且独立运作。他们不与民间商人往来，而是通过独自的通路调度物资。尽管罗伦斯对其商业潜力感到失望，但修道士的存在可能在后续情节中引发新的发展。",
+        "latest_seen_chunk_id": "volume_01-r000006",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "mystery_v2_000007",
+        "entity_type": "mystery",
+        "display_name": "异教徒",
+        "aliases": [
+          "异端徒",
+          "异教徒群体"
+        ],
+        "importance": "medium",
+        "summary": "被骑士提及的异教徒，据称在北边或东边出没，但骑士误认为该地的丰收祭典是异教徒活动。虽然罗伦斯指出这并非事实，但异教徒的存在仍可能在后续情节中引发冲突或调查。",
+        "latest_seen_chunk_id": "volume_01-r000006",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "mystery_v2_000004",
+        "entity_type": "mystery",
+        "display_name": "修道院的骑士",
+        "aliases": [
+          "银甲骑士",
+          "下级骑士",
+          "骑士"
+        ],
+        "importance": "medium",
+        "summary": "修道院的骑士出现在修道院附近，穿着银色盔甲，态度傲慢。他质疑罗伦斯的出现，并与罗伦斯展开对话。虽然被描述为下级骑士，但其行为显示出一定的自信和戒备，可能与修道院的特殊安排有关。修道院内还有另一名骑士…",
+        "latest_seen_chunk_id": "volume_01-r000005",
+        "dialogue_count": 14
+      },
+      {
+        "entity_id": "mystery_v2_000001",
+        "entity_type": "mystery",
+        "display_name": "叙述者",
+        "aliases": [
+          "我",
+          "他"
+        ],
+        "importance": "medium",
+        "summary": "本段的叙述者，具有非人类特征的暗示（如尾巴的存在），对村落文化有深刻观察，并流露出对北方故乡的怀念。其身份尚未明确，但对情节发展可能有重要影响。",
+        "latest_seen_chunk_id": "volume_01-r000001",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "mystery_v2_000002",
+        "entity_type": "mystery",
+        "display_name": "狼群",
+        "aliases": [
+          "狼",
+          "奔跑的狼"
+        ],
+        "importance": "medium",
+        "summary": "在段落结尾出现的‘成群无数的狼’，可能是比喻，也可能暗示真实事件。其出现为后续情节埋下伏笔，可能与村落文化或叙述者的身份有关。",
+        "latest_seen_chunk_id": "volume_01-r000001",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "mystery_v2_000006",
+        "entity_type": "mystery",
+        "display_name": "深山村落的村民",
+        "aliases": [
+          "村民",
+          "山里居民"
+        ],
+        "importance": "minor",
+        "summary": "居住在东边山头的小村落居民，种植耐寒且抗虫的麦子，并与罗伦斯进行交易。他们赠予罗伦斯麦子，作为其商业路线的一部分。虽然未直接参与当前对话，但他们的存在为罗伦斯的货物来源提供了背景。",
+        "latest_seen_chunk_id": "volume_01-r000005",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "npc_group_v2_000002",
+        "entity_type": "npc_group",
+        "display_name": "深山村落的村民",
+        "aliases": [
+          "村民",
+          "深山居民"
+        ],
+        "importance": "minor",
+        "summary": "居住在深山中的普通村民，与罗伦斯进行交易。他们对罗伦斯的到访表示感激，并希望他能再次光顾。虽然未直接参与后续剧情，但他们的存在为罗伦斯的商业活动提供了背景。",
+        "latest_seen_chunk_id": "volume_01-r000003",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "npc_group_v2_000001",
+        "entity_type": "npc_group",
+        "display_name": "村民",
+        "aliases": [
+          "村民们",
+          "村落居民"
+        ],
+        "importance": "minor",
+        "summary": "村落中的普通居民，以种麦为生。他们使用狼与麦穗的比喻，但这些说法已逐渐失去严肃意义。村民不再需要某种守护，暗示村落文化或社会结构的变化。",
+        "latest_seen_chunk_id": "volume_01-r000001",
+        "dialogue_count": 0
+      }
+    ]
+  },
+  "rules": {
+    "speaker_statuses": [
+      "known",
+      "mystery",
+      "npc_group",
+      "review",
+      "unknown"
+    ],
+    "importance_levels": [
+      "minor",
+      "medium",
+      "major"
+    ],
+    "general_novel_only": true
+  },
+  "task_a_annotations": [
+    {
+      "dialogue_id": "volume_01-d000025",
+      "dialogue_index": 24,
+      "text": "不管哪一行的生意都不好做呢。",
+      "speaker_entity_id": "char_v2_000001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "前文已明确提到罗伦斯在麦田中，且上下文显示他正在思考生意的困难"
+      ],
+      "needs_review": false,
+      "review_reason": ""
+    },
+    {
+      "dialogue_id": "volume_01-d000026",
+      "dialogue_index": 25,
+      "text": "嗨！辛苦了。",
+      "speaker_entity_id": "mystery_v2_000004",
+      "speaker_display": "农夫",
+      "speaker_status": "mystery",
+      "confidence": 0.85,
+      "evidence": [
+        "罗伦斯朝正在帕斯罗村的麦田一角，把麦子往马车上堆的农夫打招呼"
+      ],
+      "needs_review": false,
+      "review_reason": ""
+    },
+    {
+      "dialogue_id": "volume_01-d000027",
+      "dialogue_index": 26,
+      "text": "喔？",
+      "speaker_entity_id": "mystery_v2_000004",
+      "speaker_display": "农夫",
+      "speaker_status": "mystery",
+      "confidence": 0.85,
+      "evidence": [
+        "罗伦斯朝正在帕斯罗村的麦田一角，把麦子往马车上堆的农夫打招呼"
+      ],
+      "needs_review": false,
+      "review_reason": ""
+    },
+    {
+      "dialogue_id": "volume_01-d000028",
+      "dialogue_index": 27,
+      "text": "请问叶勒在哪里啊？",
+      "speaker_entity_id": "char_v2_000001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "罗伦斯朝正在帕斯罗村的麦田一角，把麦子往马车上堆的农夫打招呼"
+      ],
+      "needs_review": false,
+      "review_reason": ""
+    },
+    {
+      "dialogue_id": "volume_01-d000029",
+      "dialogue_index": 28,
+      "text": "喔！叶勒在那儿。有没有看到很多人聚集在那边？他就在那块麦田里。叶勒今年都雇用年轻人来种田，因为他们比较不得要领，今年应该是他们田里的某个人会是『赫萝』吧。",
+      "speaker_entity_id": "mystery_v2_000004",
+      "speaker_display": "农夫",
+      "speaker_status": "mystery",
+      "confidence": 0.85,
+      "evidence": [
+        "罗伦斯朝正在帕斯罗村的麦田一角，把麦子往马车上堆的农夫打招呼"
+      ],
+      "needs_review": false,
+      "review_reason": ""
+    }
+  ],
+  "task_b_chunk_summary": {
+    "chunk_id": "volume_01-r000007",
+    "summary": "本段描述了教会权威逐渐衰落的背景，包括对异端审判和神学者与自然学者的言论斗争。民众不再无条件服从教会，甚至教皇因教会税减少而向国王求助。罗伦斯在麦田中感叹生意艰难，随后与一名农夫对话，询问叶勒的下落。农夫指出叶勒在另一块麦田，并提到叶勒雇用年轻人耕作，暗示今年的『赫萝』可能出自他们之中。『赫萝』一词未明确定义，但可能与丰收祭典有关。罗伦斯与农夫的对话揭示了地方农业活动的繁荣，以及帕斯罗村因高产麦田而富裕的背景。然而，外人无法参与该村的祭典，暗示地方封闭性与教会控制的潜在关联。",
+    "active_entities": [
+      "char_v2_000001",
+      "mystery_v2_000004"
+    ],
+    "open_questions": [
+      "『赫萝』具体指什么？是否与丰收祭典有关？",
+      "教会为何对地方祭典特别敏感？是否试图扩大控制？",
+      "帕斯罗村的祭典为何对外人封闭？是否涉及教会或地方势力的限制？"
+    ],
+    "evidence_refs": [
+      "volume_01-c001-s001-p000083",
+      "volume_01-c001-s001-p000084",
+      "volume_01-c001-s001-p000086",
+      "volume_01-c001-s001-p000088",
+      "volume_01-c001-s001-p000094",
+      "volume_01-c001-s001-p000097",
+      "volume_01-c001-s001-p000098"
+    ]
+  },
+  "updated_global_summary": "本卷继续描绘教会权威逐渐衰落的背景，包括对异端审判的热衷、神学者与自然学者的言论斗争，以及民众对教会的服从度下降。教皇因教会税减少而向国王求助，显示出教会财政和威望的双重危机。罗伦斯在麦田中感叹生意艰难，并与一名农夫对话，询问叶勒的下落。农夫指出叶勒在另一块麦田，并提到叶勒雇用年轻人耕作，暗示今年的『赫萝』可能出自他们之中。『赫萝』一词未明确定义，但可能与丰收祭典有关。罗伦斯与农夫的对话揭示了地方农业活动的繁荣，以及帕斯罗村因高产麦田而富裕的背景。然而，外人无法参与该村的祭典，暗示地方封闭性与教会控制的潜在关联。亚伦多伯爵作为地方贵族，亲自下田耕作并赞助祭典，其行为可能影响地方与教会的关系。",
+  "updated_entity_memory": [
+    {
+      "entity_id": "char_v2_000001",
+      "entity_type": "character",
+      "display_name": "罗伦斯",
+      "aliases": [
+        "罗伦斯先生"
+      ],
+      "importance": "major",
+      "summary": "罗伦斯在麦田中感叹生意艰难，并与一名农夫对话，询问叶勒的下落。他表现出对地方农业活动的兴趣，并试图了解帕斯罗村的祭典背景。罗伦斯的对话风格依旧谨慎，避免透露过多信息。",
+      "latest_seen_chunk_id": "volume_01-r000007",
+      "dialogue_count": 24
+    },
+    {
+      "entity_id": "mystery_v2_000004",
+      "entity_type": "character",
+      "display_name": "骑士",
+      "aliases": [],
+      "importance": "medium",
+      "summary": "农夫与罗伦斯进行对话，回应其关于叶勒的询问，并提到叶勒雇用年轻人耕作，暗示今年的『赫萝』可能出自他们之中。农夫的对话透露出对地方农业和祭典的熟悉，但未表现出对教会或异教徒问题的直接态度。",
+      "latest_seen_chunk_id": "volume_01-r000007",
+      "dialogue_count": 7
+    },
+    {
+      "entity_id": "mystery_v2_000008",
+      "entity_type": "mystery",
+      "display_name": "叶勒",
+      "aliases": [],
+      "importance": "medium",
+      "summary": "叶勒是帕斯罗村的麦田管理者，今年雇用年轻人耕作，并被提及可能与『赫萝』有关。虽然未直接出场，但其行为和决策对地方农业和祭典有潜在影响。",
+      "latest_seen_chunk_id": "volume_01-r000007",
+      "dialogue_count": 0
+    },
+    {
+      "entity_id": "mystery_v2_000009",
+      "entity_type": "mystery",
+      "display_name": "赫萝",
+      "aliases": [],
+      "importance": "medium",
+      "summary": "农夫提及的『赫萝』，可能与丰收祭典或地方传统有关，但具体含义尚未明确。该词的出现暗示了地方文化或宗教仪式中的某种象征或人物。",
+      "latest_seen_chunk_id": "volume_01-r000007",
+      "dialogue_count": 0
+    },
+    {
+      "entity_id": "mystery_v2_000010",
+      "entity_type": "mystery",
+      "display_name": "亚伦多伯爵",
+      "aliases": [],
+      "importance": "medium",
+      "summary": "亚伦多伯爵是管理帕斯罗村一带的贵族，以亲自下田耕作为特点，并愿意赞助祭典。其行为可能影响地方与教会的关系，以及祭典的规模和性质。",
+      "latest_seen_chunk_id": "volume_01-r000007",
+      "dialogue_count": 0
+    },
+    {
+      "entity_id": "mystery_v2_000003",
+      "entity_type": "mystery",
+      "display_name": "修道院的修道士",
+      "aliases": [
+        "修道士",
+        "修道院成员"
+      ],
+      "importance": "medium",
+      "summary": "一所偏僻修道院的居民，人数约二十多位，生活节俭且独立运作。他们不与民间商人往来，而是通过独自的通路调度物资。尽管罗伦斯对其商业潜力感到失望，但修道士的存在可能在后续情节中引发新的发展。",
+      "latest_seen_chunk_id": "volume_01-r000006",
+      "dialogue_count": 0
+    },
+    {
+      "entity_id": "mystery_v2_000007",
+      "entity_type": "mystery",
+      "display_name": "异教徒",
+      "aliases": [
+        "异端徒",
+        "异教徒群体"
+      ],
+      "importance": "medium",
+      "summary": "被骑士提及的异教徒，据称在北边或东边出没，但骑士误认为该地的丰收祭典是异教徒活动。虽然罗伦斯指出这并非事实，但异教徒的存在仍可能在后续情节中引发冲突或调查。",
+      "latest_seen_chunk_id": "volume_01-r000006",
+      "dialogue_count": 0
+    },
+    {
+      "entity_id": "mystery_v2_000004",
+      "entity_type": "mystery",
+      "display_name": "修道院的骑士",
+      "aliases": [
+        "银甲骑士",
+        "下级骑士",
+        "骑士"
+      ],
+      "importance": "medium",
+      "summary": "修道院的骑士出现在修道院附近，穿着银色盔甲，态度傲慢。他质疑罗伦斯的出现，并与罗伦斯展开对话。虽然被描述为下级骑士，但其行为显示出一定的自信和戒备，可能与修道院的特殊安排有关。修道院内还有另一名骑士…",
+      "latest_seen_chunk_id": "volume_01-r000005",
+      "dialogue_count": 14
+    },
+    {
+      "entity_id": "mystery_v2_000001",
+      "entity_type": "mystery",
+      "display_name": "叙述者",
+      "aliases": [
+        "我",
+        "他"
+      ],
+      "importance": "medium",
+      "summary": "本段的叙述者，具有非人类特征的暗示（如尾巴的存在），对村落文化有深刻观察，并流露出对北方故乡的怀念。其身份尚未明确，但对情节发展可能有重要影响。",
+      "latest_seen_chunk_id": "volume_01-r000001",
+      "dialogue_count": 0
+    },
+    {
+      "entity_id": "mystery_v2_000002",
+      "entity_type": "mystery",
+      "display_name": "狼群",
+      "aliases": [
+        "狼",
+        "奔跑的狼"
+      ],
+      "importance": "medium",
+      "summary": "在段落结尾出现的‘成群无数的狼’，可能是比喻，也可能暗示真实事件。其出现为后续情节埋下伏笔，可能与村落文化或叙述者的身份有关。",
+      "latest_seen_chunk_id": "volume_01-r000001",
+      "dialogue_count": 0
+    },
+    {
+      "entity_id": "mystery_v2_000006",
+      "entity_type": "mystery",
+      "display_name": "深山村落的村民",
+      "aliases": [
+        "村民",
+        "山里居民"
+      ],
+      "importance": "minor",
+      "summary": "居住在东边山头的小村落居民，种植耐寒且抗虫的麦子，并与罗伦斯进行交易。他们赠予罗伦斯麦子，作为其商业路线的一部分。虽然未直接参与当前对话，但他们的存在为罗伦斯的货物来源提供了背景。",
+      "latest_seen_chunk_id": "volume_01-r000005",
+      "dialogue_count": 0
+    },
+    {
+      "entity_id": "npc_group_v2_000002",
+      "entity_type": "npc_group",
+      "display_name": "深山村落的村民",
+      "aliases": [
+        "村民",
+        "深山居民"
+      ],
+      "importance": "minor",
+      "summary": "居住在深山中的普通村民，与罗伦斯进行交易。他们对罗伦斯的到访表示感激，并希望他能再次光顾。虽然未直接参与后续剧情，但他们的存在为罗伦斯的商业活动提供了背景。",
+      "latest_seen_chunk_id": "volume_01-r000003",
+      "dialogue_count": 0
+    }
+  ],
+  "unresolved_annotations": [
+    {
+      "dialogue_id": "volume_01-d000026",
+      "dialogue_index": 25,
+      "text": "嗨！辛苦了。",
+      "speaker_entity_id": "mystery_v2_000004",
+      "speaker_display": "农夫",
+      "speaker_status": "mystery",
+      "confidence": 0.85,
+      "evidence": [
+        "罗伦斯朝正在帕斯罗村的麦田一角，把麦子往马车上堆的农夫打招呼"
+      ],
+      "needs_review": false,
+      "review_reason": ""
+    },
+    {
+      "dialogue_id": "volume_01-d000027",
+      "dialogue_index": 26,
+      "text": "喔？",
+      "speaker_entity_id": "mystery_v2_000004",
+      "speaker_display": "农夫",
+      "speaker_status": "mystery",
+      "confidence": 0.85,
+      "evidence": [
+        "罗伦斯朝正在帕斯罗村的麦田一角，把麦子往马车上堆的农夫打招呼"
+      ],
+      "needs_review": false,
+      "review_reason": ""
+    },
+    {
+      "dialogue_id": "volume_01-d000029",
+      "dialogue_index": 28,
+      "text": "喔！叶勒在那儿。有没有看到很多人聚集在那边？他就在那块麦田里。叶勒今年都雇用年轻人来种田，因为他们比较不得要领，今年应该是他们田里的某个人会是『赫萝』吧。",
+      "speaker_entity_id": "mystery_v2_000004",
+      "speaker_display": "农夫",
+      "speaker_status": "mystery",
+      "confidence": 0.85,
+      "evidence": [
+        "罗伦斯朝正在帕斯罗村的麦田一角，把麦子往马车上堆的农夫打招呼"
+      ],
+      "needs_review": false,
+      "review_reason": ""
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+```json
+{
+  "merge_candidates": [
+    {
+      "source_entity_id": "mystery_v2_000015",
+      "target_entity_id": "char_v2_000002",
+      "confidence": 0.95,
+      "reason": "当前 chunk 明确描述赫萝展示巨大前脚并与罗伦斯互动，而 mystery_v2_000015（女孩）的特征（如动物耳朵、非人特征）与赫萝早期表现一致，且赫萝的变身行为与该神秘女孩的非人特征相符，表明两者为同一角色。"
+    }
+  ],
+  "keep_pending": [
+    "mystery_v2_000017",
+    "mystery_v2_000013",
+    "mystery_v2_000008",
+    "mystery_v2_000010",
+    "mystery_v2_000003",
+    "mystery_v2_000007",
+    "mystery_v2_000004"
+  ],
+  "expire_pending": []
+}
+```

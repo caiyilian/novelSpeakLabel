@@ -1,0 +1,72 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000161",
+      "speaker_entity_id": "char_v2_000001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "罗伦斯忍不住开口问"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000162",
+      "speaker_entity_id": "char_v2_000002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.98,
+      "evidence": [
+        "赫萝面带不悦的表情说道"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000163",
+      "speaker_entity_id": "char_v2_000001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "罗伦斯虽然如此回答"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000164",
+      "speaker_entity_id": "char_v2_000002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.98,
+      "evidence": [
+        "赫萝说道，她的声音听来极为愤怒"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000165",
+      "speaker_entity_id": "char_v2_000002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.98,
+      "evidence": [
+        "赫萝的语气显得急躁，说话时完全没看罗伦斯一眼"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    }
+  ],
+  "chunk_notes": "当前 chunk 中的对话轮次清晰，赫萝和罗伦斯的对话交替明确。赫萝表现出强烈情绪，多次发言，罗伦斯则以回应为主。无其他说话人出现，无需标记为 review 或 unknown。"
+}
+```

@@ -1,0 +1,17 @@
+{
+  "merge_candidates": [
+    {
+      "source_entity_id": "mystery_v2_000015",
+      "target_entity_id": "char_v2_000002",
+      "confidence": 0.95,
+      "reason": "女孩自称赫萝，并多次确认自己就是赫萝，与已知角色赫萝的特征（如耳朵、尖牙、自称神明）高度一致。"
+    }
+  ],
+  "keep_pending": [],
+  "expire_pending": [
+    {
+      "entity_id": "mystery_v2_000015",
+      "reason": "已确认与赫萝（char_v2_000002）为同一实体。"
+    }
+  ]
+}

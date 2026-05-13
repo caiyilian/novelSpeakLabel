@@ -1,0 +1,22 @@
+```json
+{
+  "merge_candidates": [
+    {
+      "source_entity_id": "mystery_v2_000009",
+      "target_entity_id": "char_v2_000002",
+      "confidence": 0.95,
+      "reason": "当前 chunk 明确描述了赫萝作为狼的特征和行为，与已确认角色「赫萝」的描述一致，且无矛盾。"
+    }
+  ],
+  "keep_pending": [
+    "mystery_v2_000015",
+    "mystery_v2_000018",
+    "mystery_v2_000010",
+    "mystery_v2_000017",
+    "mystery_v2_000013",
+    "mystery_v2_000008",
+    "mystery_v2_000003"
+  ],
+  "expire_pending": []
+}
+```

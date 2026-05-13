@@ -1,0 +1,939 @@
+你是通用小说角色记忆维护助手。任务：更新当前 chunk 出现过的已有实体卡片。只更新输入证据支持的内容，重要性只允许 minor、medium、major；升级可以提出，降级必须谨慎。
+只返回 JSON，格式：{"updates":[{"entity_id":"...","summary":"...","importance":"minor|medium|major","dialogue_count_delta":0,"latest_seen_chunk_id":"...","relationship_updates":[],"evidence_refs":[]}]}
+输入 JSON：
+{
+  "volume": {
+    "volume_id": "volume_01",
+    "volume": 1,
+    "title": ""
+  },
+  "chunk": {
+    "chunk_id": "volume_01-r000048",
+    "chunk_index": 47,
+    "chapter_id": "volume_01-c002",
+    "chapter_title": "第二幕",
+    "scene_id": "volume_01-c002-s003",
+    "paragraphs": [
+      {
+        "paragraph_id": "volume_01-c002-s003-p000726",
+        "paragraph_index": 725,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s003",
+        "scene_index": 3,
+        "text": "「如果是真话，只要顺着事态发展下去就有钱赚；如果是谎言，就表示有某人在计谋些什么。遇到这种情形，只要谨慎点不要被骗的话，大致上来说还是可以发到财。」"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000727",
+        "paragraph_index": 726,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s003",
+        "scene_index": 3,
+        "text": "「嗯。那么，既然咱在，又跟汝说那是谎言，汝会？」"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000728",
+        "paragraph_index": 727,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s003",
+        "scene_index": 3,
+        "text": "「嗯？」"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000729",
+        "paragraph_index": 728,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s003",
+        "scene_index": 3,
+        "text": "罗伦斯发现赫萝似乎话中有话，最后他终于发现了。"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000730",
+        "paragraph_index": 729,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s003",
+        "scene_index": 3,
+        "text": "「……啊。」"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000731",
+        "paragraph_index": 730,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s003",
+        "scene_index": 3,
+        "text": "「呵，汝一开始就不必烦恼这个问题。不管怎样，汝都会假装接受提议，是呗？」"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000732",
+        "paragraph_index": 731,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s003",
+        "scene_index": 3,
+        "text": "看着赫萝显得有些邪恶的笑脸，罗伦斯却找不到半点字眼反驳。"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000733",
+        "paragraph_index": 732,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s003",
+        "scene_index": 3,
+        "text": "「最后这颗马铃薯是咱的。」"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000734",
+        "paragraph_index": 733,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s003",
+        "scene_index": 3,
+        "text": "赫萝从床上伸手拿起桌上的马铃薯，开心地把马铃薯剖成两半。"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000735",
+        "paragraph_index": 734,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s003",
+        "scene_index": 3,
+        "text": "懊恼不已的罗伦斯却是连剖开手上第二颗马铃薯的心情都没有。"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000736",
+        "paragraph_index": 735,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s003",
+        "scene_index": 3,
+        "text": "「咱是贤狼赫萝呐，汝以为咱比汝多活了几十倍呀。」"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000737",
+        "paragraph_index": 736,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s003",
+        "scene_index": 3,
+        "text": "听到赫萝因顾虑到罗伦斯的感受而刻意这么说，罗伦斯的心情变得更烦闷了。他抓起马铃薯，用力咬了一大口。"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000738",
+        "paragraph_index": 737,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s003",
+        "scene_index": 3,
+        "text": "罗伦斯不禁想起初拜旅行商人亲戚为师时，那种当学徒的心情。"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000739",
+        "paragraph_index": 738,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s003",
+        "scene_index": 3,
+        "text": "隔天，天空明丽，一片秋高气爽。教会的早晨比商人来得更早，当罗伦斯醒来时，早晨的日课已经结束。罗伦斯对于教会的作息已相当熟悉，所以不觉讶异。然而，当他走到外面的水井洗脸时，却看到原以为跑去上厕所而不在房里的赫萝，与教会的人一同从圣堂里走出来，让他吃了一惊。赫萝虽然有把外套套在头上低着头走路，但却不时与信徒们亲密地交谈。"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000740",
+        "paragraph_index": 739,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s003",
+        "scene_index": 3,
+        "text": "不承认丰收之神存在的信徒们，与丰收之神本尊亲密交谈的光景虽然有趣，但很遗憾，罗伦斯并没有享受此般乐趣的胆量。"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000741",
+        "paragraph_index": 740,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s003",
+        "scene_index": 3,
+        "text": "赫萝与信徒们告别，安静地走到站在水井旁，一脸愕然的罗伦斯身边，然后把小小的双手交叉摆在胸前，小声说道："
+      }
+    ],
+    "dialogues": [
+      {
+        "dialogue_id": "volume_01-d000296",
+        "dialogue_index": 295,
+        "paragraph_id": "volume_01-c002-s003-p000726",
+        "paragraph_index": 725,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "如果是真话，只要顺着事态发展下去就有钱赚；如果是谎言，就表示有某人在计谋些什么。遇到这种情形，只要谨慎点不要被骗的话，大致上来说还是可以发到财。",
+        "quote_text": "「如果是真话，只要顺着事态发展下去就有钱赚；如果是谎言，就表示有某人在计谋些什么。遇到这种情形，只要谨慎点不要被骗的话，大致上来说还是可以发到财。」",
+        "char_start": 0,
+        "char_end": 74
+      },
+      {
+        "dialogue_id": "volume_01-d000297",
+        "dialogue_index": 296,
+        "paragraph_id": "volume_01-c002-s003-p000727",
+        "paragraph_index": 726,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "嗯。那么，既然咱在，又跟汝说那是谎言，汝会？",
+        "quote_text": "「嗯。那么，既然咱在，又跟汝说那是谎言，汝会？」",
+        "char_start": 0,
+        "char_end": 24
+      },
+      {
+        "dialogue_id": "volume_01-d000298",
+        "dialogue_index": 297,
+        "paragraph_id": "volume_01-c002-s003-p000728",
+        "paragraph_index": 727,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "嗯？",
+        "quote_text": "「嗯？」",
+        "char_start": 0,
+        "char_end": 4
+      },
+      {
+        "dialogue_id": "volume_01-d000299",
+        "dialogue_index": 298,
+        "paragraph_id": "volume_01-c002-s003-p000730",
+        "paragraph_index": 729,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "……啊。",
+        "quote_text": "「……啊。」",
+        "char_start": 0,
+        "char_end": 6
+      },
+      {
+        "dialogue_id": "volume_01-d000300",
+        "dialogue_index": 299,
+        "paragraph_id": "volume_01-c002-s003-p000731",
+        "paragraph_index": 730,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "呵，汝一开始就不必烦恼这个问题。不管怎样，汝都会假装接受提议，是呗？",
+        "quote_text": "「呵，汝一开始就不必烦恼这个问题。不管怎样，汝都会假装接受提议，是呗？」",
+        "char_start": 0,
+        "char_end": 36
+      },
+      {
+        "dialogue_id": "volume_01-d000301",
+        "dialogue_index": 300,
+        "paragraph_id": "volume_01-c002-s003-p000733",
+        "paragraph_index": 732,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "最后这颗马铃薯是咱的。",
+        "quote_text": "「最后这颗马铃薯是咱的。」",
+        "char_start": 0,
+        "char_end": 13
+      },
+      {
+        "dialogue_id": "volume_01-d000302",
+        "dialogue_index": 301,
+        "paragraph_id": "volume_01-c002-s003-p000736",
+        "paragraph_index": 735,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "咱是贤狼赫萝呐，汝以为咱比汝多活了几十倍呀。",
+        "quote_text": "「咱是贤狼赫萝呐，汝以为咱比汝多活了几十倍呀。」",
+        "char_start": 0,
+        "char_end": 24
+      }
+    ]
+  },
+  "near_context": {
+    "lookback_paragraphs": [
+      {
+        "paragraph_id": "volume_01-c002-s003-p000723",
+        "paragraph_index": 722,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s003",
+        "scene_index": 3,
+        "text": "「如果咱不在这儿的话，汝会怎么判断？」"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000724",
+        "paragraph_index": 723,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s003",
+        "scene_index": 3,
+        "text": "「嗯……我会先不判断是谎言还是真话，假装接受杰廉的提议。」"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000725",
+        "paragraph_index": 724,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s003",
+        "scene_index": 3,
+        "text": "「为何要这么做？」"
+      }
+    ],
+    "lookahead_paragraphs": [
+      {
+        "paragraph_id": "volume_01-c002-s003-p000742",
+        "paragraph_index": 741,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s003",
+        "scene_index": 3,
+        "text": "「希望咱的丈夫可以更有胆量些。」"
+      }
+    ]
+  },
+  "memory": {
+    "previous_chunk_summary": {
+      "chunk_id": "volume_01-r000047",
+      "summary": "在第二幕的场景中，赫萝和罗伦斯继续讨论杰廉的提议。赫萝承认自己无法分辨杰廉谈话中的具体谎言，但罗伦斯认为只要货币交易本身合理，就可以推断杰廉在银币部分说谎。罗伦斯指出，说谎的重点不在于内容，而在于动机，并感叹自己花了多年才明白这个道理。赫萝则讽刺罗伦斯五十步笑百步，暗示他也有说谎的倾向。罗伦斯表示，如果赫萝不在场，他会假装接受杰廉的提议，以观察事态发展。赫萝追问为何要这么做，但罗伦斯尚未给出明确答案。赫萝的识破谎言能力仍是未解之谜，而罗伦斯的策略和杰廉的动机也尚未明确。赫萝的言行表明她对罗伦斯的反应有一定程度的掌控，而罗伦斯则在权衡是否要相信赫萝的判断。",
+      "active_entities": [
+        "char_v2_000001",
+        "char_v2_000002",
+        "char_v2_000005",
+        "char_v2_000013"
+      ],
+      "open_questions": [
+        "赫萝识破谎言的能力是否真实？",
+        "杰廉的提议是否可信？",
+        "赫萝是否会在未来因识破谎言的能力引发新的冲突？"
+      ],
+      "evidence_refs": [
+        "volume_01-c002-s003-p000711",
+        "volume_01-c002-s003-p000714",
+        "volume_01-c002-s003-p000715",
+        "volume_01-c002-s003-p000718",
+        "volume_01-c002-s003-p000719",
+        "volume_01-c002-s003-p000720",
+        "volume_01-c002-s003-p000723",
+        "volume_01-c002-s003-p000724",
+        "volume_01-c002-s003-p000725"
+      ]
+    },
+    "global_summary": "本卷继续描绘罗伦斯与赫萝之间的互动，试图揭开赫萝的真实身份。赫萝表达了对故乡约伊兹森林的思念，并提到离开故乡的时间已无法记起。她希望先旅行，以了解故乡的变化，同时增广见闻。赫萝随后向罗伦斯提出希望与他一同旅行，前提是罗伦斯不会将她交给教会。罗伦斯虽未完全确认赫萝的身份，但认为她并非坏人，且与她交谈有趣。然而，出于商人的谨慎，他并未立刻答应赫萝的请求。赫萝则表示理解，并以轻松的语气强调自己是只狼，而非人类。赫萝的请求和罗伦斯的犹豫揭示了两人之间信任与怀疑的微妙关系。赫萝的动机仍不明确，她是否真的想回故乡，还是另有目的，仍是未解之谜。赫萝提到北方，暗示这一地点对她而言具有重要意义，可能是她的出生地或与她过去的经历有关。这一地点的神秘性暗示它可能在未来剧情中扮演关键角色。赫萝的言行显示出她对罗伦斯心理的掌控，而罗伦斯则在试图理解她的动机。赫萝以轻松的态度主导了与罗伦斯的对话，表现出她对当前局势的掌控。她假装要睡觉，实则是在结束对话，随后又突然探头询问罗伦斯是否要让她睡在外面，语气中带着调侃。罗伦斯虽然觉得无奈，但也觉得有趣，并未真正拒绝。赫萝的举动让罗伦斯怀疑她之前的一些反应是否是演戏，但罗伦斯仍相信她对故乡和村民的不满是真实的。清晨，罗伦斯醒来发现赫萝已经起床，并擅自翻找他的行李，换上了他最上等的衣服。罗伦斯责备赫萝擅自翻找他人行李的行为，但赫萝完全不以为意，反而得意地展示衣服，并询问是否可以剪开裤子以方便她的尾巴。赫萝的举动大胆而自信，而罗伦斯虽然不满，却并未真正生气，反而觉得赫萝穿着他的衣服显得可爱。赫萝的言行表明她对罗伦斯的反应有一定程度的掌控，而罗伦斯则在权衡是否要让她继续穿着这些衣物。赫萝在货台上轻快地跳下，动作自然得让罗伦斯一时未能反应。罗伦斯并未阻止她，因为他内心确信赫萝不会逃跑。赫萝确认了这一点后，主动脱下罗伦斯为她订制的熊皮外套，并指出衣服对她来说太长了。罗伦斯注意到赫萝的体型比他想象的要娇小，足足比他矮了两个头。随后，赫萝向罗伦斯提出希望与他一起旅行，并表示自己不会逃跑。罗伦斯虽然仍保持谨慎，但认为赫萝不像会偷东西的人，与她同行应该无妨。他最终答应了赫…",
+    "candidate_entities": [
+      {
+        "entity_id": "char_v2_000001",
+        "entity_type": "character",
+        "display_name": "罗伦斯",
+        "aliases": [
+          "罗伦斯先生"
+        ],
+        "importance": "major",
+        "summary": "罗伦斯继续以理性商人的方式分析杰廉的提议，指出说谎的重点在于动机而非内容，并感叹自己花了多年才明白这个道理。他提出如果赫萝不在场，他会假装接受杰廉的提议以观察事态发展，表现出他谨慎且策略性的思维方式。",
+        "latest_seen_chunk_id": "volume_01-r000047",
+        "dialogue_count": 125
+      },
+      {
+        "entity_id": "char_v2_000002",
+        "entity_type": "character",
+        "display_name": "赫萝",
+        "aliases": [
+          "赫萝（丰收之神）",
+          "丰收之神",
+          "狼赫萝",
+          "赫萝"
+        ],
+        "importance": "major",
+        "summary": "赫萝表现出对罗伦斯的调侃和讽刺，指出他也有说谎的倾向，并质疑他的判断方式。她继续展现出自信和幽默感，同时对罗伦斯的策略提出疑问，显示出她对局势的掌控和对罗伦斯心理的洞察。",
+        "latest_seen_chunk_id": "volume_01-r000047",
+        "dialogue_count": 150
+      },
+      {
+        "entity_id": "mystery_v2_000009",
+        "entity_type": "mystery",
+        "display_name": "赫萝",
+        "aliases": [
+          "赫萝（丰收之神）",
+          "丰收之神",
+          "狼",
+          "狼赫萝"
+        ],
+        "importance": "major",
+        "summary": "传说中在收割季节进入最后一束麦子中的人体内的神明。赫萝声称自己是丰收之神的化身，但罗伦斯的质疑和赫萝的解释暗示她可能并非传统意义上的神明，而是某种与麦子和丰收仪式相关的存在。",
+        "latest_seen_chunk_id": "volume_01-r000026",
+        "dialogue_count": 14
+      },
+      {
+        "entity_id": "char_v2_000005",
+        "entity_type": "character",
+        "display_name": "丰收之神赫萝",
+        "aliases": [
+          "赫萝（神明）",
+          "丰收之神"
+        ],
+        "importance": "major",
+        "summary": "赫萝进一步强调自己是「贤狼赫萝」，并否认自己是神明，但表现出对自身非人特征的自信。她的言行暗示她可能具有神性，但选择以狼的身份与罗伦斯互动。",
+        "latest_seen_chunk_id": "volume_01-r000025",
+        "dialogue_count": 2
+      },
+      {
+        "entity_id": "mystery_v2_000015",
+        "entity_type": "mystery",
+        "display_name": "女孩",
+        "aliases": [
+          "女孩（动物耳朵）",
+          "神秘女孩",
+          "有耳朵的女孩"
+        ],
+        "importance": "major",
+        "summary": "一名神秘的女孩，出现在罗伦斯的马车上，睡得香甜，美丽而安静。她反应迟缓，声音甜美，但头上长着像小狗的耳朵，暗示她可能并非普通人。她赤裸着身体缓缓站起，美丽得令人屏息，随后发出狼嚎，令罗伦斯误以为她是…",
+        "latest_seen_chunk_id": "volume_01-r000014",
+        "dialogue_count": 14
+      },
+      {
+        "entity_id": "char_v2_000013",
+        "entity_type": "character",
+        "display_name": "杰廉",
+        "aliases": [
+          "杰廉商人",
+          "新手杰廉",
+          "年轻商人杰廉"
+        ],
+        "importance": "medium",
+        "summary": "杰廉的提议被罗伦斯和赫萝质疑，赫萝认为他在说谎，而罗伦斯则谨慎地分析其动机。杰廉的动机和信息的真实性仍是未知数，但他的提议引发了罗伦斯的策略性思考。",
+        "latest_seen_chunk_id": "volume_01-r000047",
+        "dialogue_count": 13
+      },
+      {
+        "entity_id": "char_v2_000011",
+        "entity_type": "character",
+        "display_name": "佩连佐的葡萄园主人",
+        "aliases": [
+          "年长的丈夫",
+          "佩连佐的商人"
+        ],
+        "importance": "medium",
+        "summary": "佩连佐的葡萄园主人与罗伦斯在教会中对话，表现出对汇兑体制的兴趣，并邀请罗伦斯到佩连佐做客。随后，他与妻子一同告辞离开。他的对话表明他对商业知识的渴望，可能在未来与罗伦斯有进一步互动。",
+        "latest_seen_chunk_id": "volume_01-r000041",
+        "dialogue_count": 4
+      },
+      {
+        "entity_id": "char_v2_000012",
+        "entity_type": "character",
+        "display_name": "佩连佐的葡萄园主人的妻子",
+        "aliases": [
+          "年长丈夫的妻子"
+        ],
+        "importance": "medium",
+        "summary": "佩连佐的葡萄园主人的妻子，与丈夫一同出现在教会中。她未参与对话，但在对话中被提及为「妻子」，并随丈夫一同告辞离开。虽然未直接发言，但她的存在表明这对夫妻是重要人物，可能在未来剧情中与罗伦斯有进一步互…",
+        "latest_seen_chunk_id": "volume_01-r000041",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "char_v2_000006",
+        "entity_type": "character",
+        "display_name": "教会",
+        "aliases": [
+          "教会组织",
+          "宗教机构"
+        ],
+        "importance": "medium",
+        "summary": "教会是赫萝过往经历中的重要势力，她多次提及教会曾让她吃了不少苦头，并暗示她不愿再被教会抓住。在本段中，教会接纳了罗伦斯和赫萝的谎言，允许他们借宿，显示出教会对外来旅行者相对友善的态度，但对非人类存在…",
+        "latest_seen_chunk_id": "volume_01-r000036",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "char_v2_000010",
+        "entity_type": "character",
+        "display_name": "约伊兹森林",
+        "aliases": [
+          "赫萝的出生地",
+          "故乡森林"
+        ],
+        "importance": "medium",
+        "summary": "赫萝提到自己出生的故乡是约伊兹森林，并表示离开故乡的时间已无法记起。她对故乡充满思念，但未进一步解释其重要性。约伊兹森林可能是她身份或过去经历的关键地点。",
+        "latest_seen_chunk_id": "volume_01-r000030",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "mystery_v2_000018",
+        "entity_type": "mystery",
+        "display_name": "北方",
+        "aliases": [
+          "北方大地",
+          "赫萝的故乡"
+        ],
+        "importance": "medium",
+        "summary": "赫萝明确表示想回到北方，但未进一步解释原因。北方对她而言似乎具有重要的意义，可能是她的出生地或与她过去的经历有关。这一地点的神秘性暗示它可能在未来剧情中扮演关键角色。",
+        "latest_seen_chunk_id": "volume_01-r000029",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "char_v2_000009",
+        "entity_type": "character",
+        "display_name": "帕斯罗村的年轻村民",
+        "aliases": [
+          "年轻村民",
+          "赫萝承诺的年轻人"
+        ],
+        "importance": "medium",
+        "summary": "赫萝提到她曾答应过帕斯罗村的一名年轻人，要让村里的麦子丰收，并为此守护麦田多年。虽然未提及姓名，但此人对赫萝的承诺和行动有重要影响，是她留在村落的重要原因。",
+        "latest_seen_chunk_id": "volume_01-r000028",
+        "dialogue_count": 0
+      }
+    ]
+  },
+  "rules": {
+    "speaker_statuses": [
+      "known",
+      "mystery",
+      "npc_group",
+      "review",
+      "unknown"
+    ],
+    "importance_levels": [
+      "minor",
+      "medium",
+      "major"
+    ],
+    "general_novel_only": true
+  },
+  "task_a_annotations": [
+    {
+      "dialogue_id": "volume_01-d000296",
+      "dialogue_index": 295,
+      "volume_id": "",
+      "chapter_id": "",
+      "chapter_index": 0,
+      "chapter_title": "",
+      "scene_id": "",
+      "scene_index": 0,
+      "paragraph_id": "volume_01-c002-s003-p000726",
+      "paragraph_index": 725,
+      "local_dialogue_index": 1,
+      "text": "如果是真话，只要顺着事态发展下去就有钱赚；如果是谎言，就表示有某人在计谋些什么。遇到这种情形，只要谨慎点不要被骗的话，大致上来说还是可以发到财。",
+      "quote_text": "「如果是真话，只要顺着事态发展下去就有钱赚；如果是谎言，就表示有某人在计谋些什么。遇到这种情形，只要谨慎点不要被骗的话，大致上来说还是可以发到财。」",
+      "dialogue_kind": "standalone",
+      "char_start": 0,
+      "char_end": 74,
+      "speaker_entity_id": "char_v2_000001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "对话内容符合罗伦斯理性分析的商人思维"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false,
+      "review_reason": "",
+      "request_id": "volume_01-r000048--annotation--qwen3_32b"
+    },
+    {
+      "dialogue_id": "volume_01-d000297",
+      "dialogue_index": 296,
+      "volume_id": "",
+      "chapter_id": "",
+      "chapter_index": 0,
+      "chapter_title": "",
+      "scene_id": "",
+      "scene_index": 0,
+      "paragraph_id": "volume_01-c002-s003-p000727",
+      "paragraph_index": 726,
+      "local_dialogue_index": 1,
+      "text": "嗯。那么，既然咱在，又跟汝说那是谎言，汝会？",
+      "quote_text": "「嗯。那么，既然咱在，又跟汝说那是谎言，汝会？」",
+      "dialogue_kind": "standalone",
+      "char_start": 0,
+      "char_end": 24,
+      "speaker_entity_id": "char_v2_000002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.98,
+      "evidence": [
+        "使用自称「咱」，符合赫萝的说话风格"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false,
+      "review_reason": "",
+      "request_id": "volume_01-r000048--annotation--qwen3_32b"
+    },
+    {
+      "dialogue_id": "volume_01-d000298",
+      "dialogue_index": 297,
+      "volume_id": "",
+      "chapter_id": "",
+      "chapter_index": 0,
+      "chapter_title": "",
+      "scene_id": "",
+      "scene_index": 0,
+      "paragraph_id": "volume_01-c002-s003-p000728",
+      "paragraph_index": 727,
+      "local_dialogue_index": 1,
+      "text": "嗯？",
+      "quote_text": "「嗯？」",
+      "dialogue_kind": "standalone",
+      "char_start": 0,
+      "char_end": 4,
+      "speaker_entity_id": "char_v2_000001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "对话轮次中罗伦斯是唯一可能的回应者"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false,
+      "review_reason": "",
+      "request_id": "volume_01-r000048--annotation--qwen3_32b"
+    },
+    {
+      "dialogue_id": "volume_01-d000299",
+      "dialogue_index": 298,
+      "volume_id": "",
+      "chapter_id": "",
+      "chapter_index": 0,
+      "chapter_title": "",
+      "scene_id": "",
+      "scene_index": 0,
+      "paragraph_id": "volume_01-c002-s003-p000730",
+      "paragraph_index": 729,
+      "local_dialogue_index": 1,
+      "text": "……啊。",
+      "quote_text": "「……啊。」",
+      "dialogue_kind": "standalone",
+      "char_start": 0,
+      "char_end": 6,
+      "speaker_entity_id": "char_v2_000001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "对话轮次中罗伦斯是唯一可能的回应者"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false,
+      "review_reason": "",
+      "request_id": "volume_01-r000048--annotation--qwen3_32b"
+    },
+    {
+      "dialogue_id": "volume_01-d000300",
+      "dialogue_index": 299,
+      "volume_id": "",
+      "chapter_id": "",
+      "chapter_index": 0,
+      "chapter_title": "",
+      "scene_id": "",
+      "scene_index": 0,
+      "paragraph_id": "volume_01-c002-s003-p000731",
+      "paragraph_index": 730,
+      "local_dialogue_index": 1,
+      "text": "呵，汝一开始就不必烦恼这个问题。不管怎样，汝都会假装接受提议，是呗？",
+      "quote_text": "「呵，汝一开始就不必烦恼这个问题。不管怎样，汝都会假装接受提议，是呗？」",
+      "dialogue_kind": "standalone",
+      "char_start": 0,
+      "char_end": 36,
+      "speaker_entity_id": "char_v2_000002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.98,
+      "evidence": [
+        "使用自称「咱」，符合赫萝的说话风格"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false,
+      "review_reason": "",
+      "request_id": "volume_01-r000048--annotation--qwen3_32b"
+    },
+    {
+      "dialogue_id": "volume_01-d000301",
+      "dialogue_index": 300,
+      "volume_id": "",
+      "chapter_id": "",
+      "chapter_index": 0,
+      "chapter_title": "",
+      "scene_id": "",
+      "scene_index": 0,
+      "paragraph_id": "volume_01-c002-s003-p000733",
+      "paragraph_index": 732,
+      "local_dialogue_index": 1,
+      "text": "最后这颗马铃薯是咱的。",
+      "quote_text": "「最后这颗马铃薯是咱的。」",
+      "dialogue_kind": "standalone",
+      "char_start": 0,
+      "char_end": 13,
+      "speaker_entity_id": "char_v2_000002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.98,
+      "evidence": [
+        "使用自称「咱」，符合赫萝的说话风格"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false,
+      "review_reason": "",
+      "request_id": "volume_01-r000048--annotation--qwen3_32b"
+    },
+    {
+      "dialogue_id": "volume_01-d000302",
+      "dialogue_index": 301,
+      "volume_id": "",
+      "chapter_id": "",
+      "chapter_index": 0,
+      "chapter_title": "",
+      "scene_id": "",
+      "scene_index": 0,
+      "paragraph_id": "volume_01-c002-s003-p000736",
+      "paragraph_index": 735,
+      "local_dialogue_index": 1,
+      "text": "咱是贤狼赫萝呐，汝以为咱比汝多活了几十倍呀。",
+      "quote_text": "「咱是贤狼赫萝呐，汝以为咱比汝多活了几十倍呀。」",
+      "dialogue_kind": "standalone",
+      "char_start": 0,
+      "char_end": 24,
+      "speaker_entity_id": "char_v2_000002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.98,
+      "evidence": [
+        "使用自称「咱」，符合赫萝的说话风格"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false,
+      "review_reason": "",
+      "request_id": "volume_01-r000048--annotation--qwen3_32b"
+    }
+  ],
+  "task_b_chunk_summary": {
+    "chunk_id": "volume_01-r000048",
+    "summary": "在第二幕的场景中，罗伦斯与赫萝继续围绕杰廉的提议进行讨论。赫萝指出，如果提议是真话，顺着事态发展就有利可图；如果是谎言，则意味着有人在图谋不轨。罗伦斯对此表示认同，但赫萝进一步追问，如果她指出这是谎言，罗伦斯会如何应对。罗伦斯一时语塞，赫萝则自信地表示，罗伦斯无论如何都会假装接受提议。赫萝的自信让罗伦斯感到无奈，他甚至无法反驳。赫萝随后拿走最后一颗马铃薯，并剖开享用，而罗伦斯则因烦闷而用力咬了一口手上的马铃薯。赫萝提到自己是「贤狼赫萝」，并讽刺罗伦斯没有她活得久，暗示她对局势的掌控。隔天清晨，赫萝与教会信徒交谈，让罗伦斯感到惊讶。赫萝的言行表明她对罗伦斯的反应有一定程度的掌控，而罗伦斯则在权衡是否要相信赫萝的判断。赫萝识破谎言的能力、杰廉提议的可信度，以及赫萝是否会在未来因识破谎言的能力引发新的冲突，仍是未解之谜。",
+    "active_entities": [
+      "char_v2_000001",
+      "char_v2_000002",
+      "char_v2_000005",
+      "char_v2_000013"
+    ],
+    "open_questions": [
+      "赫萝识破谎言的能力是否真实？",
+      "杰廉的提议是否可信？",
+      "赫萝是否会在未来因识破谎言的能力引发新的冲突？"
+    ],
+    "evidence_refs": [
+      "volume_01-c002-s003-p000726",
+      "volume_01-c002-s003-p000727",
+      "volume_01-c002-s003-p000728",
+      "volume_01-c002-s003-p000730",
+      "volume_01-c002-s003-p000731",
+      "volume_01-c002-s003-p000733",
+      "volume_01-c002-s003-p000736",
+      "volume_01-c002-s003-p000739",
+      "volume_01-c002-s003-p000740",
+      "volume_01-c002-s003-p000741"
+    ]
+  },
+  "task_d_entity_discovery": {
+    "new_entities": [
+      {
+        "entity_type": "character",
+        "display_name": "教会信徒",
+        "aliases": [
+          "信徒",
+          "教会成员"
+        ],
+        "importance": "medium",
+        "summary": "教会信徒是赫萝在清晨与之交谈的群体，他们虽不承认丰收之神的存在，却与赫萝亲密交谈。这一群体的出现表明赫萝在教会中具有一定的影响力，而信徒们的态度也暗示了教会内部对非传统信仰的包容性。",
+        "evidence_refs": [
+          "volume_01-c002-s003-p000739",
+          "volume_01-c002-s003-p000740"
+        ],
+        "dialogue_count_delta": 0
+      }
+    ],
+    "merge_candidates": []
+  },
+  "current_entity_memory": [
+    {
+      "entity_id": "char_v2_000001",
+      "entity_type": "character",
+      "display_name": "罗伦斯",
+      "aliases": [
+        "罗伦斯先生"
+      ],
+      "importance": "major",
+      "summary": "罗伦斯继续以理性商人的方式分析杰廉的提议，指出说谎的重点在于动机而非内容，并感叹自己花了多年才明白这个道理。他提出如果赫萝不在场，他会假装接受杰廉的提议以观察事态发展，表现出他谨慎且策略性的思维方式。",
+      "latest_seen_chunk_id": "volume_01-r000047",
+      "dialogue_count": 125
+    },
+    {
+      "entity_id": "char_v2_000002",
+      "entity_type": "character",
+      "display_name": "赫萝",
+      "aliases": [
+        "赫萝（丰收之神）",
+        "丰收之神",
+        "狼赫萝",
+        "赫萝"
+      ],
+      "importance": "major",
+      "summary": "赫萝表现出对罗伦斯的调侃和讽刺，指出他也有说谎的倾向，并质疑他的判断方式。她继续展现出自信和幽默感，同时对罗伦斯的策略提出疑问，显示出她对局势的掌控和对罗伦斯心理的洞察。",
+      "latest_seen_chunk_id": "volume_01-r000047",
+      "dialogue_count": 150
+    },
+    {
+      "entity_id": "mystery_v2_000009",
+      "entity_type": "mystery",
+      "display_name": "赫萝",
+      "aliases": [
+        "赫萝（丰收之神）",
+        "丰收之神",
+        "狼",
+        "狼赫萝"
+      ],
+      "importance": "major",
+      "summary": "传说中在收割季节进入最后一束麦子中的人体内的神明。赫萝声称自己是丰收之神的化身，但罗伦斯的质疑和赫萝的解释暗示她可能并非传统意义上的神明，而是某种与麦子和丰收仪式相关的存在。",
+      "latest_seen_chunk_id": "volume_01-r000026",
+      "dialogue_count": 14
+    },
+    {
+      "entity_id": "char_v2_000005",
+      "entity_type": "character",
+      "display_name": "丰收之神赫萝",
+      "aliases": [
+        "赫萝（神明）",
+        "丰收之神"
+      ],
+      "importance": "major",
+      "summary": "赫萝进一步强调自己是「贤狼赫萝」，并否认自己是神明，但表现出对自身非人特征的自信。她的言行暗示她可能具有神性，但选择以狼的身份与罗伦斯互动。",
+      "latest_seen_chunk_id": "volume_01-r000025",
+      "dialogue_count": 2
+    },
+    {
+      "entity_id": "mystery_v2_000015",
+      "entity_type": "mystery",
+      "display_name": "女孩",
+      "aliases": [
+        "女孩（动物耳朵）",
+        "神秘女孩",
+        "有耳朵的女孩"
+      ],
+      "importance": "major",
+      "summary": "一名神秘的女孩，出现在罗伦斯的马车上，睡得香甜，美丽而安静。她反应迟缓，声音甜美，但头上长着像小狗的耳朵，暗示她可能并非普通人。她赤裸着身体缓缓站起，美丽得令人屏息，随后发出狼嚎，令罗伦斯误以为她是…",
+      "latest_seen_chunk_id": "volume_01-r000014",
+      "dialogue_count": 14
+    },
+    {
+      "entity_id": "char_v2_000013",
+      "entity_type": "character",
+      "display_name": "杰廉",
+      "aliases": [
+        "杰廉商人",
+        "新手杰廉",
+        "年轻商人杰廉",
+        "信徒"
+      ],
+      "importance": "medium",
+      "summary": "教会信徒是赫萝在清晨与之交谈的群体，他们虽不承认丰收之神的存在，却与赫萝亲密交谈。这一群体的出现表明赫萝在教会中具有一定的影响力，而信徒们的态度也暗示了教会内部对非传统信仰的包容性。",
+      "latest_seen_chunk_id": "volume_01-r000048",
+      "dialogue_count": 13
+    },
+    {
+      "entity_id": "char_v2_000011",
+      "entity_type": "character",
+      "display_name": "佩连佐的葡萄园主人",
+      "aliases": [
+        "年长的丈夫",
+        "佩连佐的商人"
+      ],
+      "importance": "medium",
+      "summary": "佩连佐的葡萄园主人与罗伦斯在教会中对话，表现出对汇兑体制的兴趣，并邀请罗伦斯到佩连佐做客。随后，他与妻子一同告辞离开。他的对话表明他对商业知识的渴望，可能在未来与罗伦斯有进一步互动。",
+      "latest_seen_chunk_id": "volume_01-r000041",
+      "dialogue_count": 4
+    },
+    {
+      "entity_id": "char_v2_000012",
+      "entity_type": "character",
+      "display_name": "佩连佐的葡萄园主人的妻子",
+      "aliases": [
+        "年长丈夫的妻子"
+      ],
+      "importance": "medium",
+      "summary": "佩连佐的葡萄园主人的妻子，与丈夫一同出现在教会中。她未参与对话，但在对话中被提及为「妻子」，并随丈夫一同告辞离开。虽然未直接发言，但她的存在表明这对夫妻是重要人物，可能在未来剧情中与罗伦斯有进一步互…",
+      "latest_seen_chunk_id": "volume_01-r000041",
+      "dialogue_count": 0
+    },
+    {
+      "entity_id": "char_v2_000006",
+      "entity_type": "character",
+      "display_name": "教会",
+      "aliases": [
+        "教会组织",
+        "宗教机构"
+      ],
+      "importance": "medium",
+      "summary": "教会是赫萝过往经历中的重要势力，她多次提及教会曾让她吃了不少苦头，并暗示她不愿再被教会抓住。在本段中，教会接纳了罗伦斯和赫萝的谎言，允许他们借宿，显示出教会对外来旅行者相对友善的态度，但对非人类存在…",
+      "latest_seen_chunk_id": "volume_01-r000036",
+      "dialogue_count": 0
+    },
+    {
+      "entity_id": "char_v2_000010",
+      "entity_type": "character",
+      "display_name": "约伊兹森林",
+      "aliases": [
+        "赫萝的出生地",
+        "故乡森林"
+      ],
+      "importance": "medium",
+      "summary": "赫萝提到自己出生的故乡是约伊兹森林，并表示离开故乡的时间已无法记起。她对故乡充满思念，但未进一步解释其重要性。约伊兹森林可能是她身份或过去经历的关键地点。",
+      "latest_seen_chunk_id": "volume_01-r000030",
+      "dialogue_count": 0
+    },
+    {
+      "entity_id": "mystery_v2_000018",
+      "entity_type": "mystery",
+      "display_name": "北方",
+      "aliases": [
+        "北方大地",
+        "赫萝的故乡"
+      ],
+      "importance": "medium",
+      "summary": "赫萝明确表示想回到北方，但未进一步解释原因。北方对她而言似乎具有重要的意义，可能是她的出生地或与她过去的经历有关。这一地点的神秘性暗示它可能在未来剧情中扮演关键角色。",
+      "latest_seen_chunk_id": "volume_01-r000029",
+      "dialogue_count": 0
+    },
+    {
+      "entity_id": "char_v2_000009",
+      "entity_type": "character",
+      "display_name": "帕斯罗村的年轻村民",
+      "aliases": [
+        "年轻村民",
+        "赫萝承诺的年轻人"
+      ],
+      "importance": "medium",
+      "summary": "赫萝提到她曾答应过帕斯罗村的一名年轻人，要让村里的麦子丰收，并为此守护麦田多年。虽然未提及姓名，但此人对赫萝的承诺和行动有重要影响，是她留在村落的重要原因。",
+      "latest_seen_chunk_id": "volume_01-r000028",
+      "dialogue_count": 0
+    }
+  ]
+}

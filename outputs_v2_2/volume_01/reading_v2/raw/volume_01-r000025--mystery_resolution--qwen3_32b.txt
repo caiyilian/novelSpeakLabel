@@ -1,0 +1,22 @@
+```json
+{
+  "merge_candidates": [
+    {
+      "source_entity_id": "mystery_v2_000015",
+      "target_entity_id": "char_v2_000002",
+      "confidence": 0.95,
+      "reason": "当前 chunk 明确提到赫萝自称是「体型较大且聪明的狼」，并展示她的前脚，与「女孩（动物耳朵）」的神秘身份高度吻合。此外，赫萝的非人特征（如狼的前脚）与「女孩」的动物耳朵和狼嚎行为一致，表明两者是同一角色。"
+    }
+  ],
+  "keep_pending": [
+    "mystery_v2_000017",
+    "mystery_v2_000013",
+    "mystery_v2_000008",
+    "mystery_v2_000010",
+    "mystery_v2_000003",
+    "mystery_v2_000007",
+    "mystery_v2_000004"
+  ],
+  "expire_pending": []
+}
+```

@@ -1,0 +1,22 @@
+```json
+{
+  "merge_candidates": [
+    {
+      "source_entity_id": "mystery_v2_000015",
+      "target_entity_id": "char_v2_000002",
+      "confidence": 0.95,
+      "reason": "当前 chunk 明确显示赫萝以人类形态出现，并与罗伦斯进行对话，与「女孩（动物耳朵）」的描述完全一致。赫萝的非人类特征（如耳朵、尾巴）和行为（如抱怨人类身体太冷）与「女孩」的神秘身份相符，且无矛盾。"
+    }
+  ],
+  "keep_pending": [
+    "mystery_v2_000017",
+    "mystery_v2_000013",
+    "mystery_v2_000008",
+    "mystery_v2_000010",
+    "mystery_v2_000007",
+    "mystery_v2_000003",
+    "mystery_v2_000004"
+  ],
+  "expire_pending": []
+}
+```

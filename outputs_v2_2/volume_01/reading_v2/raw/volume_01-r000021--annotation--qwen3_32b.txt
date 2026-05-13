@@ -1,0 +1,163 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000111",
+      "speaker_entity_id": "mystery_v2_000015",
+      "speaker_display": "神秘女孩",
+      "speaker_status": "mystery",
+      "confidence": 0.9,
+      "evidence": [
+        "对话语气和用词风格与赫萝一致，如「是呗？」和「咱」的自称"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000112",
+      "speaker_entity_id": "char_v2_000001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "这是罗伦斯对神秘女孩提出的问题，符合他试图获取信息的风格"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000113",
+      "speaker_entity_id": "mystery_v2_000015",
+      "speaker_display": "神秘女孩",
+      "speaker_status": "mystery",
+      "confidence": 0.9,
+      "evidence": [
+        "使用「咱」自称，与赫萝的自称一致，且内容与变身相关"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000114",
+      "speaker_entity_id": "mystery_v2_000015",
+      "speaker_display": "神秘女孩",
+      "speaker_status": "mystery",
+      "confidence": 0.9,
+      "evidence": [
+        "延续前一句的对话，内容仍是关于变身所需的代价"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000115",
+      "speaker_entity_id": "char_v2_000001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "罗伦斯对「鲜血」的反应符合他谨慎和惊讶的性格"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000116",
+      "speaker_entity_id": "mystery_v2_000015",
+      "speaker_display": "神秘女孩",
+      "speaker_status": "mystery",
+      "confidence": 0.9,
+      "evidence": [
+        "继续解释鲜血的使用量，语气自然，符合神秘女孩的说话风格"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000117",
+      "speaker_entity_id": "mystery_v2_000015",
+      "speaker_display": "神秘女孩",
+      "speaker_status": "mystery",
+      "confidence": 0.9,
+      "evidence": [
+        "赫萝式的挑衅语气，符合她对罗伦斯反应的回应"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000118",
+      "speaker_entity_id": "char_v2_000001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "这是罗伦斯对赫萝挑衅的反射性回应，语气强硬"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000119",
+      "speaker_entity_id": "mystery_v2_000015",
+      "speaker_display": "神秘女孩",
+      "speaker_status": "mystery",
+      "confidence": 0.9,
+      "evidence": [
+        "使用「咱」自称，语气低落，符合赫萝的表达方式"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000120",
+      "speaker_entity_id": "char_v2_000001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "罗伦斯对赫萝的反应感到困惑，提出「为什么」"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000121",
+      "speaker_entity_id": "mystery_v2_000015",
+      "speaker_display": "神秘女孩",
+      "speaker_status": "mystery",
+      "confidence": 0.9,
+      "evidence": [
+        "语气哀伤，内容涉及身份和恐惧，符合赫萝的表达方式"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000122",
+      "speaker_entity_id": "char_v2_000001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "罗伦斯试图安抚赫萝，语气坚定，符合他的性格"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    }
+  ],
+  "chunk_notes": "本段对话主要围绕赫萝（或神秘女孩）的变身条件展开，她使用「咱」自称，语气和内容与赫萝一致。罗伦斯的反应和提问也符合其性格。由于赫萝身份尚未完全确认，因此将神秘女孩标注为 mystery，而非直接确认为赫萝。"
+}
+```

@@ -1,0 +1,26 @@
+```json
+{
+  "repairs": [
+    {
+      "dialogue_id": "volume_01-d000053",
+      "previous_speaker_entity_id": "mystery_v2_000015",
+      "new_speaker_entity_id": "mystery_v2_000015",
+      "speaker_display": "女孩",
+      "speaker_status": "mystery",
+      "confidence": 0.95,
+      "reason": "对话明确由女孩发出，且上下文描述了她发出狼嚎的行为，与她的动物耳朵特征一致。",
+      "stop_reason": "resolved"
+    },
+    {
+      "dialogue_id": "volume_01-d000055",
+      "previous_speaker_entity_id": "mystery_v2_000015",
+      "new_speaker_entity_id": "mystery_v2_000015",
+      "speaker_display": "女孩",
+      "speaker_status": "mystery",
+      "confidence": 0.95,
+      "reason": "对话明确由女孩发出，且上下文描述了她微笑着说话，与她的动物耳朵特征一致。",
+      "stop_reason": "resolved"
+    }
+  ]
+}
+```

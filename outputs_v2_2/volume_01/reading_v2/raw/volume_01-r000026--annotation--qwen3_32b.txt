@@ -1,0 +1,84 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000150",
+      "speaker_entity_id": "char_v2_000001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": ["对话中提到赫萝，且是质疑语气，符合罗伦斯的立场"],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000151",
+      "speaker_entity_id": "char_v2_000002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.98,
+      "evidence": ["自称「咱是贤狼」，符合赫萝的自称方式"],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000152",
+      "speaker_entity_id": "char_v2_000002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.97,
+      "evidence": ["使用「咱」自称，内容延续前一段赫萝的解释"],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000153",
+      "speaker_entity_id": "char_v2_000002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.96,
+      "evidence": ["使用「咱」自称，且是回应罗伦斯的对话"],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000154",
+      "speaker_entity_id": "char_v2_000001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": ["对话内容是罗伦斯的提议，语气符合其性格"],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000155",
+      "speaker_entity_id": "char_v2_000002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.97,
+      "evidence": ["使用「咱」自称，且是回应罗伦斯的提议"],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000156",
+      "speaker_entity_id": "char_v2_000001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": ["对话是罗伦斯对赫萝的回应，语气轻松"],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    }
+  ],
+  "chunk_notes": "本段对话主要围绕赫萝与罗伦斯之间的互动展开，赫萝多次使用「咱」自称，符合其已知说话风格。罗伦斯则以质疑和回应为主，语气符合其角色设定。所有对话轮次均可明确归因于已知角色，无模糊或群体性说话人。"
+}
+```

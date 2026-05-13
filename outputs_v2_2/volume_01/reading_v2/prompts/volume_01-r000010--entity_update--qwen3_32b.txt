@@ -1,0 +1,707 @@
+你是通用小说角色记忆维护助手。任务：更新当前 chunk 出现过的已有实体卡片。只更新输入证据支持的内容，重要性只允许 minor、medium、major；升级可以提出，降级必须谨慎。
+只返回 JSON，格式：{"updates":[{"entity_id":"...","summary":"...","importance":"minor|medium|major","dialogue_count_delta":0,"latest_seen_chunk_id":"...","relationship_updates":[],"evidence_refs":[]}]}
+输入 JSON：
+{
+  "volume": {
+    "volume_id": "volume_01",
+    "volume": 1,
+    "title": ""
+  },
+  "chunk": {
+    "chunk_id": "volume_01-r000010",
+    "chunk_index": 9,
+    "chapter_id": "volume_01-c001",
+    "chapter_title": "第一幕",
+    "scene_id": "volume_01-c001-s002",
+    "paragraphs": [
+      {
+        "paragraph_id": "volume_01-c001-s002-p000131",
+        "paragraph_index": 130,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s002",
+        "scene_index": 2,
+        "text": "虽然不能和叶勒喝上几杯十分遗憾，但不管怎样，只要赫萝一出现，没多久村民就会赶走外人，好让祭典进入最高潮。即使留下来过夜，也只会落得被赶走的命运。这股疏离感，着着实实让独自坐在马车上的罗伦斯，心里觉得阵阵寂寥。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s002-p000132",
+        "paragraph_index": 131,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s002",
+        "scene_index": 2,
+        "text": "罗伦斯咬着村民送他的蔬菜，往西方出发。与刚完成田里的工作，开心地朝村落归去的农夫们擦肩而过。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s002-p000133",
+        "paragraph_index": 132,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s002",
+        "scene_index": 2,
+        "text": "罗伦斯再度踏上一个人的旅途，不禁羡慕起那些有同伴的农夫们。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s002-p000134",
+        "paragraph_index": 133,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s002",
+        "scene_index": 2,
+        "text": "今年满二十五岁的罗伦斯是一名旅行商人。他在十二岁时开始跟随旅行商人亲戚学习，到了十八岁便自立门户。身为一名旅行商人，罗伦斯还有很多不曾去过的地方，对他来说，接下来的日子才是真正的考验。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s002-p000135",
+        "paragraph_index": 134,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s002",
+        "scene_index": 2,
+        "text": "罗伦斯也有着旅行商人都会怀抱的美梦，那就是累积积蓄后，在某个城镇拥有一间商店。然而，距离美梦成真的那一天依旧遥远。如果能够碰上什么好机会，要实现美梦或许不难，可惜那样的好机会都被大商人用钱买走了。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s002-p000136",
+        "paragraph_index": 135,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s002",
+        "scene_index": 2,
+        "text": "况且罗伦斯还常因为别人拖欠货款，而必须载着堆满马车的货物四处奔走。就算发现好机会，恐怕也没有余力去抓住。对旅行商人来说，好机会就像高挂夜空的月亮一样，遥不可及。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s002-p000137",
+        "paragraph_index": 136,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s002",
+        "scene_index": 2,
+        "text": "罗伦斯抬头仰望天空，对皎洁的满月叹气。罗伦斯虽然有察觉自己近来叹气的次数增多，但不知道这是自己为了生存而过度打拚所产生的反弹，还是因为生意比较上轨道，所以最近老是思考到未来的事造成的。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s002-p000138",
+        "paragraph_index": 137,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s002",
+        "scene_index": 2,
+        "text": "以往罗伦斯的脑袋里，想得尽是应收款项的债权及付款期限，他总是拚命想尽早赶到下一个城镇。那时根本没有余力去思考的事情，现在却经常浮现在脑海里。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s002-p000139",
+        "paragraph_index": 138,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s002",
+        "scene_index": 2,
+        "text": "具体来说，罗伦斯在想一路上所认识的人们。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s002-p000140",
+        "paragraph_index": 139,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s002",
+        "scene_index": 2,
+        "text": "每次行商都会前往的城镇所混熟的商人们、或是采买地区熟识的村民们、还有因大雪困住而久留旅馆时喜欢上的女子等等。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s002-p000141",
+        "paragraph_index": 140,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s002",
+        "scene_index": 2,
+        "text": "也就是说，罗伦斯希望有人陪伴的感觉增强了。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s002-p000142",
+        "paragraph_index": 141,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s002",
+        "scene_index": 2,
+        "text": "对于整年都一个人在马车上度过的旅行商人来说，希望有人陪伴的毛病可算是一种职业病。但罗伦斯是到了最近，才开始有这样的感觉。在这之前，罗伦斯总是夸口说：「这种事不可能发生在我身上。」"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s002-p000143",
+        "paragraph_index": 142,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s002",
+        "scene_index": 2,
+        "text": "然而，孤单一个人和马儿相处好几天下来，甚至会觉得要是马儿能说话该有多好。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s002-p000144",
+        "paragraph_index": 143,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s002",
+        "scene_index": 2,
+        "text": "所以，在旅行商人之间的谈话中，时有耳闻马儿变成人类的故事。罗伦斯起初听到时会觉得无稽而大笑不已，但是到了最近，他不自觉地开始相信这种事情真的会发生。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s002-p000145",
+        "paragraph_index": 144,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s002",
+        "scene_index": 2,
+        "text": "有些贩马商的老板看见年轻的旅行商人前来买马时，甚至会认真建议客人选择母马，以免马儿变成人类时，后悔就来不及了。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s002-p000146",
+        "paragraph_index": 145,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s002",
+        "scene_index": 2,
+        "text": "虽然罗伦斯也曾被如此推销过，但他当然不予理会，买了强壮有力的公马。"
+      }
+    ],
+    "dialogues": [
+      {
+        "dialogue_id": "volume_01-d000044",
+        "dialogue_index": 43,
+        "paragraph_id": "volume_01-c001-s002-p000142",
+        "paragraph_index": 141,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "inline",
+        "text": "这种事不可能发生在我身上。",
+        "quote_text": "「这种事不可能发生在我身上。」",
+        "char_start": 74,
+        "char_end": 89
+      }
+    ]
+  },
+  "near_context": {
+    "lookback_paragraphs": [
+      {
+        "paragraph_id": "volume_01-c001-s002-p000128",
+        "paragraph_index": 127,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s002",
+        "scene_index": 2,
+        "text": "罗伦斯原本打算跟叶勒聊聊修道院发生的事，顺便与他小酌几杯。但是如果不赶紧把堆在货台上的貂皮变卖成现金，就来不及支付在其他地方采买商品的货款。再加上罗伦斯想要早些卖掉从深山村落带下山的麦子，所以他不能一直等到祭典结束。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s002-p000129",
+        "paragraph_index": 128,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s002",
+        "scene_index": 2,
+        "text": "罗伦斯向忙着指挥祭典准备工作的村长，简单说明中午发生的事情后，推辞村长要他留下来过夜的邀请，离开村落。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s002-p000130",
+        "paragraph_index": 129,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s002",
+        "scene_index": 2,
+        "text": "从前，当现在的伯爵还没来到这块领土以前，高额的税金使得这里的麦子价格高涨，在市场上变得不受欢迎。那时罗伦斯曾买下这里的麦子，靠着微薄的利润勤恳地销售。罗伦斯这么做并非为了施舍恩惠给这里的居民，单纯只是因为他没有雄厚的资金，能够与其他商人竞争购买便宜又受欢迎的麦子。因为当时的事，叶勒至今仍然对罗伦斯抱着感恩之心。叶勒是当时村里负责交涉价格的人。"
+      }
+    ],
+    "lookahead_paragraphs": [
+      {
+        "paragraph_id": "volume_01-c001-s002-p000147",
+        "paragraph_index": 146,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s002",
+        "scene_index": 2,
+        "text": "那匹公马正是现在依旧精神奕奕为罗伦斯卖力的马儿。每当罗伦斯陷入希望有人陪伴的思绪里时，总会不禁后悔当初没有选择母马。"
+      }
+    ]
+  },
+  "memory": {
+    "previous_chunk_summary": {
+      "chunk_id": "volume_01-r000009",
+      "summary": "村民围绕叶勒展开追逐，认为他已被丰收之神附身，成为「狼赫萝」的化身。叶勒被村民追赶，试图逃离，而罗伦斯对此并不关心，因为他不相信教会的教诲，也不在意这些仪式。然而，叶勒成为「赫萝」意味着他将在祭典期间被关在谷仓中，无法与罗伦斯交流，这使罗伦斯感到困扰。罗伦斯决定离开村落，前往村长处说明情况，并尽快处理貂皮和麦子的交易。他与叶勒原本计划在祭典前讨论修道院的事并小酌，但如今只能放弃。罗伦斯离开村落，独自坐在马车上，感到一阵寂寥。村民的集体呼喊和仪式性行为进一步强化了「赫萝」与丰收祭典的联系，但其具体含义仍未明确。叶勒的处境和罗伦斯的反应为后续情节提供了关键线索。",
+      "active_entities": [
+        "char_v2_000001",
+        "mystery_v2_000008",
+        "mystery_v2_000009"
+      ],
+      "open_questions": [
+        "叶勒是否真的被丰收之神附身？这将如何影响祭典的进行？",
+        "罗伦斯为何对叶勒的处境感到困扰？他与叶勒之间是否存在更深层的联系？",
+        "「赫萝」的象征意义是否会在后续情节中被进一步揭示？"
+      ],
+      "evidence_refs": [
+        "volume_01-c001-s002-p000115",
+        "volume_01-c001-s002-p000116",
+        "volume_01-c001-s002-p000117",
+        "volume_01-c001-s002-p000118",
+        "volume_01-c001-s002-p000119",
+        "volume_01-c001-s002-p000120",
+        "volume_01-c001-s002-p000121",
+        "volume_01-c001-s002-p000122",
+        "volume_01-c001-s002-p000123",
+        "volume_01-c001-s002-p000124",
+        "volume_01-c001-s002-p000125",
+        "volume_01-c001-s002-p000126",
+        "volume_01-c001-s002-p000127",
+        "volume_01-c001-s002-p000128",
+        "volume_01-c001-s002-p000129"
+      ]
+    },
+    "global_summary": "本卷继续描绘教会权威逐渐衰落的背景，包括对异端审判的热衷、神学者与自然学者的言论斗争，以及民众对教会的服从度下降。教皇因教会税减少而向国王求助，显示出教会财政和威望的双重危机。罗伦斯在麦田中感叹生意艰难，并与一名农夫对话，询问叶勒的下落。农夫指出叶勒在另一块麦田，并提到叶勒雇用年轻人耕作，暗示今年的『赫萝』可能出自他们之中。『赫萝』一词未明确定义，但可能与丰收祭典有关。罗伦斯与农夫的对话揭示了地方农业活动的繁荣，以及帕斯罗村因高产麦田而富裕的背景。然而，外人无法参与该村的祭典，暗示地方封闭性与教会控制的潜在关联。亚伦多伯爵作为地方贵族，亲自下田耕作并赞助祭典，其行为可能影响地方与教会的关系。罗伦斯在农夫的指引下前往叶勒所在的麦田，发现村民正在举行一场类似丰收祭典的活动。人们围绕麦田中央高声呼喊，称「有狼」，并庆祝最后一束麦子的收割。村民认为狼是丰收之神的化身，传说中它会进入割下最后一束麦子的人体内。叶勒最终割下最后一束麦子，被村民欢呼为「赫萝」的继承者。罗伦斯在人墙后观察，未被发现。村民的集体呼喊和仪式性行为暗示了「赫萝」与丰收祭典的紧密联系，但其具体含义仍未明确。叶勒的出现和村民的反应为后续情节提供了关键线索。村民围绕叶勒展开追逐，认为他已被丰收之神附身，成为「狼赫萝」的化身。叶勒被村民追赶，试图逃离，而罗伦斯对此并不关心，因为他不相信教会的教诲，也不在意这些仪式。然而，叶勒成为「赫萝」意味着他将在祭典期间被关在谷仓中，无法与罗伦斯交流，这使罗伦斯感到困扰。罗伦斯决定离开村落，前往村长处说明情况，并尽快处理貂皮和麦子的交易。他与叶勒原本计划在祭典前讨论修道院的事并小酌，但如今只能放弃。罗伦斯离开村落，独自坐在马车上，感到一阵寂寥。村民的集体呼喊和仪式性行为进一步强化了「赫萝」与丰收祭典的联系，但其具体含义仍未明确。叶勒的处境和罗伦斯的反应为后续情节提供了关键线索。",
+    "candidate_entities": [
+      {
+        "entity_id": "char_v2_000001",
+        "entity_type": "character",
+        "display_name": "罗伦斯",
+        "aliases": [
+          "罗伦斯先生"
+        ],
+        "importance": "major",
+        "summary": "罗伦斯在村民举行仪式时观察叶勒被认定为「赫萝」继承者，但对仪式本身不感兴趣。他因叶勒被关在谷仓而无法交流感到困扰，决定离开村落处理商业事务。罗伦斯的行动显示出他对地方文化和潜在商机的持续关注，同时也…",
+        "latest_seen_chunk_id": "volume_01-r000009",
+        "dialogue_count": 25
+      },
+      {
+        "entity_id": "mystery_v2_000008",
+        "entity_type": "mystery",
+        "display_name": "叶勒",
+        "aliases": [],
+        "importance": "medium",
+        "summary": "叶勒被村民认定为「赫萝」的继承者，因割下最后一束麦子而被追赶。他将被关在谷仓中，无法与罗伦斯交流，这使罗伦斯感到困扰。叶勒的处境表明他与丰收祭典的核心仪式有直接关联，可能揭示更多关于「赫萝」的传说。",
+        "latest_seen_chunk_id": "volume_01-r000009",
+        "dialogue_count": 2
+      },
+      {
+        "entity_id": "mystery_v2_000009",
+        "entity_type": "mystery",
+        "display_name": "赫萝",
+        "aliases": [
+          "赫萝（丰收之神）",
+          "丰收之神",
+          "狼",
+          "狼赫萝"
+        ],
+        "importance": "medium",
+        "summary": "『赫萝』被进一步揭示为丰收之神的化身，传说中它会进入割下最后一束麦子的人体内。村民的集体呼喊和仪式性行为表明，『赫萝』与丰收祭典有紧密联系，但其具体含义仍未明确。这一神秘存在可能在后续情节中揭示其真…",
+        "latest_seen_chunk_id": "volume_01-r000009",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "mystery_v2_000004",
+        "entity_type": "character",
+        "display_name": "骑士",
+        "aliases": [],
+        "importance": "medium",
+        "summary": "农夫与罗伦斯进行对话，回应其关于叶勒的询问，并提到叶勒雇用年轻人耕作，暗示今年的『赫萝』可能出自他们之中。农夫的对话透露出对地方农业和祭典的熟悉，但未表现出对教会或异教徒问题的直接态度。",
+        "latest_seen_chunk_id": "volume_01-r000007",
+        "dialogue_count": 7
+      },
+      {
+        "entity_id": "mystery_v2_000010",
+        "entity_type": "mystery",
+        "display_name": "亚伦多伯爵",
+        "aliases": [],
+        "importance": "medium",
+        "summary": "亚伦多伯爵是管理帕斯罗村一带的贵族，以亲自下田耕作为特点，并愿意赞助祭典。其行为可能影响地方与教会的关系，以及祭典的规模和性质。",
+        "latest_seen_chunk_id": "volume_01-r000007",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "mystery_v2_000003",
+        "entity_type": "mystery",
+        "display_name": "修道院的修道士",
+        "aliases": [
+          "修道士",
+          "修道院成员"
+        ],
+        "importance": "medium",
+        "summary": "一所偏僻修道院的居民，人数约二十多位，生活节俭且独立运作。他们不与民间商人往来，而是通过独自的通路调度物资。尽管罗伦斯对其商业潜力感到失望，但修道士的存在可能在后续情节中引发新的发展。",
+        "latest_seen_chunk_id": "volume_01-r000006",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "mystery_v2_000007",
+        "entity_type": "mystery",
+        "display_name": "异教徒",
+        "aliases": [
+          "异端徒",
+          "异教徒群体"
+        ],
+        "importance": "medium",
+        "summary": "被骑士提及的异教徒，据称在北边或东边出没，但骑士误认为该地的丰收祭典是异教徒活动。虽然罗伦斯指出这并非事实，但异教徒的存在仍可能在后续情节中引发冲突或调查。",
+        "latest_seen_chunk_id": "volume_01-r000006",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "mystery_v2_000004",
+        "entity_type": "mystery",
+        "display_name": "修道院的骑士",
+        "aliases": [
+          "银甲骑士",
+          "下级骑士",
+          "骑士"
+        ],
+        "importance": "medium",
+        "summary": "修道院的骑士出现在修道院附近，穿着银色盔甲，态度傲慢。他质疑罗伦斯的出现，并与罗伦斯展开对话。虽然被描述为下级骑士，但其行为显示出一定的自信和戒备，可能与修道院的特殊安排有关。修道院内还有另一名骑士…",
+        "latest_seen_chunk_id": "volume_01-r000005",
+        "dialogue_count": 14
+      },
+      {
+        "entity_id": "mystery_v2_000001",
+        "entity_type": "mystery",
+        "display_name": "叙述者",
+        "aliases": [
+          "我",
+          "他"
+        ],
+        "importance": "medium",
+        "summary": "本段的叙述者，具有非人类特征的暗示（如尾巴的存在），对村落文化有深刻观察，并流露出对北方故乡的怀念。其身份尚未明确，但对情节发展可能有重要影响。",
+        "latest_seen_chunk_id": "volume_01-r000001",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "mystery_v2_000002",
+        "entity_type": "mystery",
+        "display_name": "狼群",
+        "aliases": [
+          "狼",
+          "奔跑的狼"
+        ],
+        "importance": "medium",
+        "summary": "在段落结尾出现的‘成群无数的狼’，可能是比喻，也可能暗示真实事件。其出现为后续情节埋下伏笔，可能与村落文化或叙述者的身份有关。",
+        "latest_seen_chunk_id": "volume_01-r000001",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "mystery_v2_000006",
+        "entity_type": "mystery",
+        "display_name": "深山村落的村民",
+        "aliases": [
+          "村民",
+          "山里居民"
+        ],
+        "importance": "minor",
+        "summary": "居住在东边山头的小村落居民，种植耐寒且抗虫的麦子，并与罗伦斯进行交易。他们赠予罗伦斯麦子，作为其商业路线的一部分。虽然未直接参与当前对话，但他们的存在为罗伦斯的货物来源提供了背景。",
+        "latest_seen_chunk_id": "volume_01-r000005",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "npc_group_v2_000002",
+        "entity_type": "npc_group",
+        "display_name": "深山村落的村民",
+        "aliases": [
+          "村民",
+          "深山居民"
+        ],
+        "importance": "minor",
+        "summary": "居住在深山中的普通村民，与罗伦斯进行交易。他们对罗伦斯的到访表示感激，并希望他能再次光顾。虽然未直接参与后续剧情，但他们的存在为罗伦斯的商业活动提供了背景。",
+        "latest_seen_chunk_id": "volume_01-r000003",
+        "dialogue_count": 0
+      }
+    ]
+  },
+  "rules": {
+    "speaker_statuses": [
+      "known",
+      "mystery",
+      "npc_group",
+      "review",
+      "unknown"
+    ],
+    "importance_levels": [
+      "minor",
+      "medium",
+      "major"
+    ],
+    "general_novel_only": true
+  },
+  "task_a_annotations": [
+    {
+      "dialogue_id": "volume_01-d000044",
+      "dialogue_index": 43,
+      "volume_id": "",
+      "chapter_id": "",
+      "chapter_index": 0,
+      "chapter_title": "",
+      "scene_id": "",
+      "scene_index": 0,
+      "paragraph_id": "volume_01-c001-s002-p000142",
+      "paragraph_index": 141,
+      "local_dialogue_index": 1,
+      "text": "这种事不可能发生在我身上。",
+      "quote_text": "「这种事不可能发生在我身上。」",
+      "dialogue_kind": "inline",
+      "char_start": 74,
+      "char_end": 89,
+      "speaker_entity_id": "char_v2_000001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "对话出现在罗伦斯的内心独白段落中，且是直接引语，符合罗伦斯的语气和语境。"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false,
+      "review_reason": "",
+      "request_id": "volume_01-r000010--annotation--qwen3_32b"
+    }
+  ],
+  "task_b_chunk_summary": {
+    "chunk_id": "volume_01-r000010",
+    "summary": "罗伦斯离开村落，独自坐在马车上，感到一阵寂寥。他咀嚼着村民送的蔬菜，继续向西出发，与归村的农夫们擦肩而过。他羡慕农夫有同伴，而自己则是一个人踏上旅途。罗伦斯今年25岁，自12岁起跟随亲戚学习经商，18岁自立门户，成为一名旅行商人。他渴望拥有自己的商店，但现实却充满挑战，如货款拖欠、缺乏资金和机会被大商人垄断。他仰望满月，感叹自己近来频繁思考未来，也开始怀念旅途上认识的人们，包括商人们、村民和旅馆女子。他意识到自己对陪伴的渴望增强，甚至开始幻想马儿能说话。旅行商人之间流传着马儿变成人类的传说，罗伦斯起初不信，但最近也开始怀疑其真实性。他后悔当初没有选择母马，因为有传言称母马更可能变成人类。罗伦斯的孤独感和对未来的迷茫，为后续情节提供了情感基调。",
+    "active_entities": [
+      "char_v2_000001"
+    ],
+    "open_questions": [
+      "罗伦斯是否会在旅途中遇到能陪伴他的人？",
+      "马儿变成人类的传说是否会在后续情节中实现？",
+      "罗伦斯的孤独感是否会促使他做出重大人生决定？"
+    ],
+    "evidence_refs": [
+      "volume_01-c001-s002-p000131",
+      "volume_01-c001-s002-p000132",
+      "volume_01-c001-s002-p000133",
+      "volume_01-c001-s002-p000134",
+      "volume_01-c001-s002-p000135",
+      "volume_01-c001-s002-p000136",
+      "volume_01-c001-s002-p000137",
+      "volume_01-c001-s002-p000138",
+      "volume_01-c001-s002-p000139",
+      "volume_01-c001-s002-p000140",
+      "volume_01-c001-s002-p000141",
+      "volume_01-c001-s002-p000142",
+      "volume_01-c001-s002-p000143",
+      "volume_01-c001-s002-p000144",
+      "volume_01-c001-s002-p000145",
+      "volume_01-c001-s002-p000146",
+      "volume_01-d000044"
+    ]
+  },
+  "task_d_entity_discovery": {
+    "new_entities": [
+      {
+        "entity_type": "character",
+        "display_name": "罗伦斯",
+        "aliases": [
+          "罗伦斯先生"
+        ],
+        "importance": "major",
+        "summary": "罗伦斯是一名25岁的旅行商人，自12岁起跟随亲戚学习经商，18岁自立门户。他独自一人踏上旅途，感到孤独，并开始思考未来。他渴望拥有自己的商店，但现实充满挑战，如货款拖欠、缺乏资金和机会被大商人垄断。他羡慕有同伴的人，并开始幻想马儿能说话。他对马儿变成人类的传说从不信到怀疑，甚至后悔当初没有选择母马。",
+        "evidence_refs": [
+          "volume_01-c001-s002-p000134",
+          "volume_01-c001-s002-p000135",
+          "volume_01-c001-s002-p000136",
+          "volume_01-c001-s002-p000137",
+          "volume_01-c001-s002-p000138",
+          "volume_01-c001-s002-p000139",
+          "volume_01-c001-s002-p000140",
+          "volume_01-c001-s002-p000141",
+          "volume_01-c001-s002-p000142",
+          "volume_01-c001-s002-p000143",
+          "volume_01-c001-s002-p000144",
+          "volume_01-c001-s002-p000145",
+          "volume_01-c001-s002-p000146"
+        ],
+        "dialogue_count_delta": 1
+      },
+      {
+        "entity_type": "mystery",
+        "display_name": "马儿",
+        "aliases": [
+          "罗伦斯的马"
+        ],
+        "importance": "medium",
+        "summary": "罗伦斯的马是一匹强壮有力的公马，是他旅行的重要伙伴。罗伦斯开始幻想马儿能说话，并听说旅行商人之间流传着马儿变成人类的传说。他后悔当初没有选择母马，因为有传言称母马更可能变成人类。这匹马在罗伦斯的孤独感和对未来的迷茫中扮演了重要角色。",
+        "evidence_refs": [
+          "volume_01-c001-s002-p000143",
+          "volume_01-c001-s002-p000144",
+          "volume_01-c001-s002-p000145",
+          "volume_01-c001-s002-p000146"
+        ],
+        "dialogue_count_delta": 0
+      },
+      {
+        "entity_type": "mystery",
+        "display_name": "母马",
+        "aliases": [],
+        "importance": "minor",
+        "summary": "母马是旅行商人之间传说中更可能变成人类的马种。罗伦斯后悔当初没有选择母马，因为有传言称母马更可能变成人类。这一传说在罗伦斯的孤独感和对未来的迷茫中扮演了重要角色。",
+        "evidence_refs": [
+          "volume_01-c001-s002-p000145",
+          "volume_01-c001-s002-p000146"
+        ],
+        "dialogue_count_delta": 0
+      }
+    ],
+    "merge_candidates": []
+  },
+  "current_entity_memory": [
+    {
+      "entity_id": "char_v2_000001",
+      "entity_type": "character",
+      "display_name": "罗伦斯",
+      "aliases": [
+        "罗伦斯先生"
+      ],
+      "importance": "major",
+      "summary": "罗伦斯是一名25岁的旅行商人，自12岁起跟随亲戚学习经商，18岁自立门户。他独自一人踏上旅途，感到孤独，并开始思考未来。他渴望拥有自己的商店，但现实充满挑战，如货款拖欠、缺乏资金和机会被大商人垄断。…",
+      "latest_seen_chunk_id": "volume_01-r000010",
+      "dialogue_count": 26
+    },
+    {
+      "entity_id": "mystery_v2_000013",
+      "entity_type": "mystery",
+      "display_name": "马儿",
+      "aliases": [
+        "罗伦斯的马"
+      ],
+      "importance": "medium",
+      "summary": "罗伦斯的马是一匹强壮有力的公马，是他旅行的重要伙伴。罗伦斯开始幻想马儿能说话，并听说旅行商人之间流传着马儿变成人类的传说。他后悔当初没有选择母马，因为有传言称母马更可能变成人类。这匹马在罗伦斯的孤独…",
+      "latest_seen_chunk_id": "volume_01-r000010",
+      "dialogue_count": 0
+    },
+    {
+      "entity_id": "mystery_v2_000008",
+      "entity_type": "mystery",
+      "display_name": "叶勒",
+      "aliases": [],
+      "importance": "medium",
+      "summary": "叶勒被村民认定为「赫萝」的继承者，因割下最后一束麦子而被追赶。他将被关在谷仓中，无法与罗伦斯交流，这使罗伦斯感到困扰。叶勒的处境表明他与丰收祭典的核心仪式有直接关联，可能揭示更多关于「赫萝」的传说。",
+      "latest_seen_chunk_id": "volume_01-r000009",
+      "dialogue_count": 2
+    },
+    {
+      "entity_id": "mystery_v2_000009",
+      "entity_type": "mystery",
+      "display_name": "赫萝",
+      "aliases": [
+        "赫萝（丰收之神）",
+        "丰收之神",
+        "狼",
+        "狼赫萝"
+      ],
+      "importance": "medium",
+      "summary": "『赫萝』被进一步揭示为丰收之神的化身，传说中它会进入割下最后一束麦子的人体内。村民的集体呼喊和仪式性行为表明，『赫萝』与丰收祭典有紧密联系，但其具体含义仍未明确。这一神秘存在可能在后续情节中揭示其真…",
+      "latest_seen_chunk_id": "volume_01-r000009",
+      "dialogue_count": 0
+    },
+    {
+      "entity_id": "mystery_v2_000004",
+      "entity_type": "character",
+      "display_name": "骑士",
+      "aliases": [],
+      "importance": "medium",
+      "summary": "农夫与罗伦斯进行对话，回应其关于叶勒的询问，并提到叶勒雇用年轻人耕作，暗示今年的『赫萝』可能出自他们之中。农夫的对话透露出对地方农业和祭典的熟悉，但未表现出对教会或异教徒问题的直接态度。",
+      "latest_seen_chunk_id": "volume_01-r000007",
+      "dialogue_count": 7
+    },
+    {
+      "entity_id": "mystery_v2_000010",
+      "entity_type": "mystery",
+      "display_name": "亚伦多伯爵",
+      "aliases": [],
+      "importance": "medium",
+      "summary": "亚伦多伯爵是管理帕斯罗村一带的贵族，以亲自下田耕作为特点，并愿意赞助祭典。其行为可能影响地方与教会的关系，以及祭典的规模和性质。",
+      "latest_seen_chunk_id": "volume_01-r000007",
+      "dialogue_count": 0
+    },
+    {
+      "entity_id": "mystery_v2_000003",
+      "entity_type": "mystery",
+      "display_name": "修道院的修道士",
+      "aliases": [
+        "修道士",
+        "修道院成员"
+      ],
+      "importance": "medium",
+      "summary": "一所偏僻修道院的居民，人数约二十多位，生活节俭且独立运作。他们不与民间商人往来，而是通过独自的通路调度物资。尽管罗伦斯对其商业潜力感到失望，但修道士的存在可能在后续情节中引发新的发展。",
+      "latest_seen_chunk_id": "volume_01-r000006",
+      "dialogue_count": 0
+    },
+    {
+      "entity_id": "mystery_v2_000007",
+      "entity_type": "mystery",
+      "display_name": "异教徒",
+      "aliases": [
+        "异端徒",
+        "异教徒群体"
+      ],
+      "importance": "medium",
+      "summary": "被骑士提及的异教徒，据称在北边或东边出没，但骑士误认为该地的丰收祭典是异教徒活动。虽然罗伦斯指出这并非事实，但异教徒的存在仍可能在后续情节中引发冲突或调查。",
+      "latest_seen_chunk_id": "volume_01-r000006",
+      "dialogue_count": 0
+    },
+    {
+      "entity_id": "mystery_v2_000004",
+      "entity_type": "mystery",
+      "display_name": "修道院的骑士",
+      "aliases": [
+        "银甲骑士",
+        "下级骑士",
+        "骑士"
+      ],
+      "importance": "medium",
+      "summary": "修道院的骑士出现在修道院附近，穿着银色盔甲，态度傲慢。他质疑罗伦斯的出现，并与罗伦斯展开对话。虽然被描述为下级骑士，但其行为显示出一定的自信和戒备，可能与修道院的特殊安排有关。修道院内还有另一名骑士…",
+      "latest_seen_chunk_id": "volume_01-r000005",
+      "dialogue_count": 14
+    },
+    {
+      "entity_id": "mystery_v2_000001",
+      "entity_type": "mystery",
+      "display_name": "叙述者",
+      "aliases": [
+        "我",
+        "他"
+      ],
+      "importance": "medium",
+      "summary": "本段的叙述者，具有非人类特征的暗示（如尾巴的存在），对村落文化有深刻观察，并流露出对北方故乡的怀念。其身份尚未明确，但对情节发展可能有重要影响。",
+      "latest_seen_chunk_id": "volume_01-r000001",
+      "dialogue_count": 0
+    },
+    {
+      "entity_id": "mystery_v2_000002",
+      "entity_type": "mystery",
+      "display_name": "狼群",
+      "aliases": [
+        "狼",
+        "奔跑的狼"
+      ],
+      "importance": "medium",
+      "summary": "在段落结尾出现的‘成群无数的狼’，可能是比喻，也可能暗示真实事件。其出现为后续情节埋下伏笔，可能与村落文化或叙述者的身份有关。",
+      "latest_seen_chunk_id": "volume_01-r000001",
+      "dialogue_count": 0
+    },
+    {
+      "entity_id": "mystery_v2_000014",
+      "entity_type": "mystery",
+      "display_name": "母马",
+      "aliases": [],
+      "importance": "minor",
+      "summary": "母马是旅行商人之间传说中更可能变成人类的马种。罗伦斯后悔当初没有选择母马，因为有传言称母马更可能变成人类。这一传说在罗伦斯的孤独感和对未来的迷茫中扮演了重要角色。",
+      "latest_seen_chunk_id": "volume_01-r000010",
+      "dialogue_count": 0
+    }
+  ]
+}

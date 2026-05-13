@@ -1,0 +1,72 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000048",
+      "speaker_entity_id": "char_v2_000001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "罗伦斯还是打起精神开口说道"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000049",
+      "speaker_entity_id": "mystery_v2_000015",
+      "speaker_display": "女孩",
+      "speaker_status": "mystery",
+      "confidence": 0.9,
+      "evidence": [
+        "随着罗伦斯的声音，女孩闭着双眼、慢了半拍做出反应"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000050",
+      "speaker_entity_id": "char_v2_000001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "罗伦斯打起精神，提足丹田之力开口说"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000051",
+      "speaker_entity_id": "mystery_v2_000015",
+      "speaker_display": "女孩",
+      "speaker_status": "mystery",
+      "confidence": 0.9,
+      "evidence": [
+        "看女孩总算是醒了过来"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000052",
+      "speaker_entity_id": "char_v2_000001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "罗伦斯打起精神，提足丹田之力开口说"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    }
+  ],
+  "chunk_notes": "本 chunk 中的对话主要发生在罗伦斯与神秘女孩之间。罗伦斯是已知主要角色，其对话明确。女孩是当前场景中的神秘角色，对话符合其行为逻辑。无其他说话人出现，无需标记为群体或未知。"
+}
+```

@@ -1,0 +1,24 @@
+{
+  "repairs": [
+    {
+      "dialogue_id": "volume_01-d000137",
+      "previous_speaker_entity_id": "unknown",
+      "new_speaker_entity_id": "unknown",
+      "speaker_display": "未知",
+      "speaker_status": "unknown",
+      "confidence": 0.3,
+      "reason": "「龙脚」是罗伦斯的内心独白，非直接对话，无法确定说话者。",
+      "stop_reason": "unchanged"
+    },
+    {
+      "dialogue_id": "volume_01-d000141",
+      "previous_speaker_entity_id": "unknown",
+      "new_speaker_entity_id": "char_v2_000002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "reason": "「真搞不过你」是赫萝的对话内容，上下文明确显示赫萝以「真搞不过你」的态度回应罗伦斯。",
+      "stop_reason": "resolved"
+    }
+  ]
+}

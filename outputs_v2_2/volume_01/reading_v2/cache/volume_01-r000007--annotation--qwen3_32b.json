@@ -1,0 +1,70 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000025",
+      "speaker_entity_id": "char_v2_000001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "前文已明确提到罗伦斯在麦田中，且上下文显示他正在思考生意的困难"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000026",
+      "speaker_entity_id": "mystery_v2_000004",
+      "speaker_display": "农夫",
+      "speaker_status": "mystery",
+      "confidence": 0.85,
+      "evidence": [
+        "罗伦斯朝正在帕斯罗村的麦田一角，把麦子往马车上堆的农夫打招呼"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000027",
+      "speaker_entity_id": "mystery_v2_000004",
+      "speaker_display": "农夫",
+      "speaker_status": "mystery",
+      "confidence": 0.85,
+      "evidence": [
+        "罗伦斯朝正在帕斯罗村的麦田一角，把麦子往马车上堆的农夫打招呼"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000028",
+      "speaker_entity_id": "char_v2_000001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "罗伦斯朝正在帕斯罗村的麦田一角，把麦子往马车上堆的农夫打招呼"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000029",
+      "speaker_entity_id": "mystery_v2_000004",
+      "speaker_display": "农夫",
+      "speaker_status": "mystery",
+      "confidence": 0.85,
+      "evidence": [
+        "罗伦斯朝正在帕斯罗村的麦田一角，把麦子往马车上堆的农夫打招呼"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    }
+  ],
+  "chunk_notes": "对话主要发生在罗伦斯与一位农夫之间。罗伦斯主动打招呼，农夫回应并提供关于叶勒的信息。由于农夫未被明确命名，且无进一步身份线索，因此标记为 mystery。"
+}

@@ -1,0 +1,685 @@
+你是通用小说阅读记忆助手。任务：把刚读完的 chunk 压缩成短期摘要，供后续几个 chunk 使用。
+摘要要围绕事件、人物关系、对话轮次和仍未解决的问题；不得添加输入中没有的信息。
+只返回 JSON，格式：{"chunk_id":"...","summary":"50到450字","active_entities":["entity_id"],"open_questions":[],"evidence_refs":["paragraph_id或dialogue_id"]}
+输入 JSON：
+{
+  "volume": {
+    "volume_id": "volume_01",
+    "volume": 1,
+    "title": ""
+  },
+  "chunk": {
+    "chunk_id": "volume_01-r000030",
+    "chunk_index": 29,
+    "chapter_id": "volume_01-c001",
+    "chapter_title": "第一幕",
+    "scene_id": "volume_01-c001-s006",
+    "paragraphs": [
+      {
+        "paragraph_id": "volume_01-c001-s006-p000451",
+        "paragraph_index": 450,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s006",
+        "scene_index": 6,
+        "text": "赫萝点点头，然后把视线从货台拉向远方。即使不用随着赫萝的视线看去，罗伦斯也知道她正看向何方。赫萝的视线准确地望着正北方。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s006-p000452",
+        "paragraph_index": 451,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s006",
+        "scene_index": 6,
+        "text": "「咱出生的故乡——约伊兹森林。咱都记不得离开故乡多久了……好想回去。」"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s006-p000453",
+        "paragraph_index": 452,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s006",
+        "scene_index": 6,
+        "text": "听到「出生的故乡」这句话，让罗伦斯的心头一惊，并凝视着赫萝的侧脸。罗伦斯自己就如同抛弃了故乡一样，自从踏上行商的旅程后，未曾回到故乡过。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s006-p000454",
+        "paragraph_index": 453,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s006",
+        "scene_index": 6,
+        "text": "虽然罗伦斯对于故乡只有贫穷又狭窄等不好的回忆，然而，独自坐在驾座上，被寂寞感包围时，依旧会思念起故乡。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s006-p000455",
+        "paragraph_index": 454,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s006",
+        "scene_index": 6,
+        "text": "如果赫萝是真的赫萝，她离开故乡好几百年以上，而且又在长久停留的地方受人轻蔑。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s006-p000456",
+        "paragraph_index": 455,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s006",
+        "scene_index": 6,
+        "text": "那么，也就不难猜想赫萝思念故乡的感觉了。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s006-p000457",
+        "paragraph_index": 456,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s006",
+        "scene_index": 6,
+        "text": "「不过，咱想要先旅行。难得人在远离故乡的异国，而且过了这么漫长的岁月，许多人事物应该都变了，借机增广见闻也是一件好事。」"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s006-p000458",
+        "paragraph_index": 457,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s006",
+        "scene_index": 6,
+        "text": "赫萝说罢，她回过头以平静的表情看着罗伦斯，继续说："
+      },
+      {
+        "paragraph_id": "volume_01-c001-s006-p000459",
+        "paragraph_index": 458,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s006",
+        "scene_index": 6,
+        "text": "「就算汝想带着麦子回到帕斯罗村，但只要不打算把咱交给教会的话，咱希望可以和汝一同旅行。汝是不停旅行的旅行商人呗？」"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s006-p000460",
+        "paragraph_index": 459,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s006",
+        "scene_index": 6,
+        "text": "赫萝微笑着说道。那神情仿佛在说她相信罗伦斯绝对不会那么做，也仿佛在说她早已看透罗伦斯的心。赫萝的语气就像有事拜托认识多年的好友一样。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s006-p000461",
+        "paragraph_index": 460,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s006",
+        "scene_index": 6,
+        "text": "罗伦斯虽仍无法判断赫萝是否就是真的赫萝，但他想至少赫萝的模样看起来不像坏人。再说，罗伦斯开始觉得与这不可思议的女孩交谈还挺有趣的。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s006-p000462",
+        "paragraph_index": 461,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s006",
+        "scene_index": 6,
+        "text": "然而，因为罗伦斯的商人本性使然，所以他没有立刻答应赫萝。身为一名商人，必须具备不畏神明的胆量，以及连亲近的人都怀疑的谨慎态度。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s006-p000463",
+        "paragraph_index": 462,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s006",
+        "scene_index": 6,
+        "text": "罗伦斯思考了一会儿后，缓缓开口说："
+      },
+      {
+        "paragraph_id": "volume_01-c001-s006-p000464",
+        "paragraph_index": 463,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s006",
+        "scene_index": 6,
+        "text": "「我没办法立刻下决定。」"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s006-p000465",
+        "paragraph_index": 464,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s006",
+        "scene_index": 6,
+        "text": "罗伦斯原以为他的答案会惹来赫萝不满，但看来他的推测似乎错误，赫萝一副很能理解似地点了点头。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s006-p000466",
+        "paragraph_index": 465,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s006",
+        "scene_index": 6,
+        "text": "「做人小心谨慎是件好事。不过，咱看人的眼光不会错。咱相信汝不是那种会随便拒绝他人请求的冷血家伙。不过咱不是人，是只狼就是了。」"
+      }
+    ],
+    "dialogues": [
+      {
+        "dialogue_id": "volume_01-d000173",
+        "dialogue_index": 172,
+        "paragraph_id": "volume_01-c001-s006-p000452",
+        "paragraph_index": 451,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "咱出生的故乡——约伊兹森林。咱都记不得离开故乡多久了……好想回去。",
+        "quote_text": "「咱出生的故乡——约伊兹森林。咱都记不得离开故乡多久了……好想回去。」",
+        "char_start": 0,
+        "char_end": 35
+      },
+      {
+        "dialogue_id": "volume_01-d000174",
+        "dialogue_index": 173,
+        "paragraph_id": "volume_01-c001-s006-p000453",
+        "paragraph_index": 452,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "inline",
+        "text": "出生的故乡",
+        "quote_text": "「出生的故乡」",
+        "char_start": 2,
+        "char_end": 9
+      },
+      {
+        "dialogue_id": "volume_01-d000175",
+        "dialogue_index": 174,
+        "paragraph_id": "volume_01-c001-s006-p000457",
+        "paragraph_index": 456,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "不过，咱想要先旅行。难得人在远离故乡的异国，而且过了这么漫长的岁月，许多人事物应该都变了，借机增广见闻也是一件好事。",
+        "quote_text": "「不过，咱想要先旅行。难得人在远离故乡的异国，而且过了这么漫长的岁月，许多人事物应该都变了，借机增广见闻也是一件好事。」",
+        "char_start": 0,
+        "char_end": 60
+      },
+      {
+        "dialogue_id": "volume_01-d000176",
+        "dialogue_index": 175,
+        "paragraph_id": "volume_01-c001-s006-p000459",
+        "paragraph_index": 458,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "就算汝想带着麦子回到帕斯罗村，但只要不打算把咱交给教会的话，咱希望可以和汝一同旅行。汝是不停旅行的旅行商人呗？",
+        "quote_text": "「就算汝想带着麦子回到帕斯罗村，但只要不打算把咱交给教会的话，咱希望可以和汝一同旅行。汝是不停旅行的旅行商人呗？」",
+        "char_start": 0,
+        "char_end": 57
+      },
+      {
+        "dialogue_id": "volume_01-d000177",
+        "dialogue_index": 176,
+        "paragraph_id": "volume_01-c001-s006-p000464",
+        "paragraph_index": 463,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "我没办法立刻下决定。",
+        "quote_text": "「我没办法立刻下决定。」",
+        "char_start": 0,
+        "char_end": 12
+      },
+      {
+        "dialogue_id": "volume_01-d000178",
+        "dialogue_index": 177,
+        "paragraph_id": "volume_01-c001-s006-p000466",
+        "paragraph_index": 465,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "做人小心谨慎是件好事。不过，咱看人的眼光不会错。咱相信汝不是那种会随便拒绝他人请求的冷血家伙。不过咱不是人，是只狼就是了。",
+        "quote_text": "「做人小心谨慎是件好事。不过，咱看人的眼光不会错。咱相信汝不是那种会随便拒绝他人请求的冷血家伙。不过咱不是人，是只狼就是了。」",
+        "char_start": 0,
+        "char_end": 63
+      }
+    ]
+  },
+  "near_context": {
+    "lookback_paragraphs": [
+      {
+        "paragraph_id": "volume_01-c001-s006-p000448",
+        "paragraph_index": 447,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s006",
+        "scene_index": 6,
+        "text": "「咱想回到北方去。」"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s006-p000449",
+        "paragraph_index": 448,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s006",
+        "scene_index": 6,
+        "text": "赫萝只说了短短一句。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s006-p000450",
+        "paragraph_index": 449,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s006",
+        "scene_index": 6,
+        "text": "「北方？」"
+      }
+    ],
+    "lookahead_paragraphs": [
+      {
+        "paragraph_id": "volume_01-c001-s006-p000467",
+        "paragraph_index": 466,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s006",
+        "scene_index": 6,
+        "text": "虽然赫萝口中这么说，但她的脸上却是挂着恶作剧的笑容。赫萝再次躺了下来，钻进貂皮底下。不过，这次她当然不是像刚刚那样闷头睡觉，而像在告诉罗伦斯今天的对话就到此结束。"
+      }
+    ]
+  },
+  "memory": {
+    "previous_chunk_summary": {
+      "chunk_id": "volume_01-r000029",
+      "summary": "赫萝在情绪激动后扑倒在貂皮上，表现出脆弱的一面，罗伦斯则因无法看清她的表情而不知所措。赫萝短暂地反击罗伦斯的质疑，随后意识到自己的情绪化而道歉。罗伦斯试图引导对话，询问赫萝离开村落后的去向，赫萝简短地表示想回到北方。罗伦斯对此感到意外，并继续追问。赫萝的回应表明她对北方有明确的归属感，但未进一步解释原因。对话中，赫萝的情绪波动和罗伦斯的谨慎态度凸显了两人之间的微妙关系。赫萝的脆弱与坚强交替出现，暗示她对帕斯罗村仍有复杂的情感。罗伦斯则试图理解赫萝的动机，但尚未获得明确答案。",
+      "active_entities": [
+        "char_v2_000001",
+        "char_v2_000002"
+      ],
+      "open_questions": [
+        "赫萝为何想回到北方？北方对她而言意味着什么？",
+        "赫萝的情绪波动是否暗示她对帕斯罗村仍有未解决的情感？",
+        "罗伦斯是否能说服赫萝留在身边，还是她最终会选择离开？",
+        "赫萝提到的「北方」是否与她过去的经历有关？",
+        "赫萝是否会在后续对话中进一步解释她与北方的联系？"
+      ],
+      "evidence_refs": [
+        "volume_01-d000166",
+        "volume_01-d000167",
+        "volume_01-d000168",
+        "volume_01-d000169",
+        "volume_01-d000170",
+        "volume_01-d000171",
+        "volume_01-d000172"
+      ]
+    },
+    "global_summary": "本卷继续描绘罗伦斯与赫萝之间的互动，试图揭开赫萝的真实身份。赫萝在情绪激动后表现出脆弱的一面，随后短暂反击罗伦斯的质疑，并道歉。她明确表示想回到北方，暗示她对北方有强烈的归属感。赫萝的情绪波动和简短的回应表明她对帕斯罗村仍有复杂的情感，但已决定离开。罗伦斯在赫萝情绪波动时表现出不知所措，并试图引导对话，询问赫萝离开村落后的去向。他对赫萝的动机保持谨慎态度，并继续追问北方的意义。罗伦斯的提问和反应显示出他对赫萝的关心和试图理解她的努力。赫萝的脆弱与坚强交替出现，凸显了她对帕斯罗村的复杂情感，而罗伦斯则在怀疑与信任之间挣扎。赫萝的回应并未直接回答罗伦斯的逻辑性问题，而是留下悬念，显示出她对自身非人特征的自信。赫萝提到北方，暗示这一地点对她而言具有重要意义，可能是她的出生地或与她过去的经历有关。这一地点的神秘性暗示它可能在未来剧情中扮演关键角色。赫萝的言行显示出她对罗伦斯心理的掌控，而罗伦斯则在试图理解她的动机。",
+    "candidate_entities": [
+      {
+        "entity_id": "char_v2_000001",
+        "entity_type": "character",
+        "display_name": "罗伦斯",
+        "aliases": [
+          "罗伦斯先生"
+        ],
+        "importance": "major",
+        "summary": "罗伦斯在赫萝情绪波动时表现出不知所措，并试图引导对话，询问赫萝离开村落后的去向。他对赫萝的动机保持谨慎态度，并继续追问北方的意义。罗伦斯的提问和反应显示出他对赫萝的关心和试图理解她的努力。",
+        "latest_seen_chunk_id": "volume_01-r000029",
+        "dialogue_count": 76
+      },
+      {
+        "entity_id": "char_v2_000002",
+        "entity_type": "character",
+        "display_name": "赫萝",
+        "aliases": [
+          "赫萝（丰收之神）",
+          "丰收之神",
+          "狼赫萝",
+          "赫萝"
+        ],
+        "importance": "major",
+        "summary": "赫萝在情绪激动后表现出脆弱的一面，随后短暂反击罗伦斯的质疑，并道歉。她明确表示想回到北方，暗示她对北方有强烈的归属感。赫萝的情绪波动和简短的回应表明她对帕斯罗村仍有复杂的情感，但已决定离开。",
+        "latest_seen_chunk_id": "volume_01-r000029",
+        "dialogue_count": 92
+      },
+      {
+        "entity_id": "mystery_v2_000009",
+        "entity_type": "mystery",
+        "display_name": "赫萝",
+        "aliases": [
+          "赫萝（丰收之神）",
+          "丰收之神",
+          "狼",
+          "狼赫萝"
+        ],
+        "importance": "major",
+        "summary": "传说中在收割季节进入最后一束麦子中的人体内的神明。赫萝声称自己是丰收之神的化身，但罗伦斯的质疑和赫萝的解释暗示她可能并非传统意义上的神明，而是某种与麦子和丰收仪式相关的存在。",
+        "latest_seen_chunk_id": "volume_01-r000026",
+        "dialogue_count": 14
+      },
+      {
+        "entity_id": "char_v2_000005",
+        "entity_type": "character",
+        "display_name": "丰收之神赫萝",
+        "aliases": [
+          "赫萝（神明）",
+          "丰收之神"
+        ],
+        "importance": "major",
+        "summary": "赫萝进一步强调自己是「贤狼赫萝」，并否认自己是神明，但表现出对自身非人特征的自信。她的言行暗示她可能具有神性，但选择以狼的身份与罗伦斯互动。",
+        "latest_seen_chunk_id": "volume_01-r000025",
+        "dialogue_count": 2
+      },
+      {
+        "entity_id": "mystery_v2_000015",
+        "entity_type": "mystery",
+        "display_name": "女孩",
+        "aliases": [
+          "女孩（动物耳朵）",
+          "神秘女孩",
+          "有耳朵的女孩"
+        ],
+        "importance": "major",
+        "summary": "一名神秘的女孩，出现在罗伦斯的马车上，睡得香甜，美丽而安静。她反应迟缓，声音甜美，但头上长着像小狗的耳朵，暗示她可能并非普通人。她赤裸着身体缓缓站起，美丽得令人屏息，随后发出狼嚎，令罗伦斯误以为她是…",
+        "latest_seen_chunk_id": "volume_01-r000014",
+        "dialogue_count": 14
+      },
+      {
+        "entity_id": "mystery_v2_000018",
+        "entity_type": "mystery",
+        "display_name": "北方",
+        "aliases": [
+          "北方大地",
+          "赫萝的故乡"
+        ],
+        "importance": "medium",
+        "summary": "赫萝明确表示想回到北方，但未进一步解释原因。北方对她而言似乎具有重要的意义，可能是她的出生地或与她过去的经历有关。这一地点的神秘性暗示它可能在未来剧情中扮演关键角色。",
+        "latest_seen_chunk_id": "volume_01-r000029",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "char_v2_000009",
+        "entity_type": "character",
+        "display_name": "帕斯罗村的年轻村民",
+        "aliases": [
+          "年轻村民",
+          "赫萝承诺的年轻人"
+        ],
+        "importance": "medium",
+        "summary": "赫萝提到她曾答应过帕斯罗村的一名年轻人，要让村里的麦子丰收，并为此守护麦田多年。虽然未提及姓名，但此人对赫萝的承诺和行动有重要影响，是她留在村落的重要原因。",
+        "latest_seen_chunk_id": "volume_01-r000028",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "mystery_v2_000010",
+        "entity_type": "mystery",
+        "display_name": "亚伦多伯爵",
+        "aliases": [
+          "新领主",
+          "帕斯罗村的统治者"
+        ],
+        "importance": "medium",
+        "summary": "赫萝提到，几年前统治帕斯罗村一带的领主变成了现在的亚伦多伯爵，并开始引进南方的先进农耕方法。虽然未直接出场，但他的政策对村落和赫萝产生了深远影响，是导致赫萝离开的重要因素。",
+        "latest_seen_chunk_id": "volume_01-r000028",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "char_v2_000007",
+        "entity_type": "character",
+        "display_name": "叶勒",
+        "aliases": [],
+        "importance": "medium",
+        "summary": "叶勒是村民认为被赫萝附身的人，因割下最后一束麦子而被认定为「赫萝」的继承者。罗伦斯提到他时，暗示赫萝本应在他体内，但赫萝却出现在罗伦斯面前，引发对传说真实性的质疑。",
+        "latest_seen_chunk_id": "volume_01-r000026",
+        "dialogue_count": 4
+      },
+      {
+        "entity_id": "char_v2_000008",
+        "entity_type": "character",
+        "display_name": "帕斯罗村村民",
+        "aliases": [
+          "帕斯罗村人",
+          "村民"
+        ],
+        "importance": "medium",
+        "summary": "帕斯罗村的村民是丰收祭典的核心参与者，他们相信赫萝会进入割下最后一束麦子的人体内。罗伦斯提到自己与村民的长期关系，并提议将麦子带回村里，以避免他们因失去丰收之神而陷入困境。",
+        "latest_seen_chunk_id": "volume_01-r000026",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "char_v2_000006",
+        "entity_type": "character",
+        "display_name": "教会",
+        "aliases": [
+          "教会组织",
+          "宗教机构"
+        ],
+        "importance": "medium",
+        "summary": "教会是赫萝过往经历中的重要势力，她多次提及教会曾让她吃了不少苦头，并暗示她不愿再被教会抓住。这表明教会可能与她的身份和变身能力有关，是她不愿提及的敏感话题。",
+        "latest_seen_chunk_id": "volume_01-r000022",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "char_v2_000004",
+        "entity_type": "character",
+        "display_name": "纽希拉",
+        "aliases": [
+          "纽希拉镇",
+          "纽希拉城"
+        ],
+        "importance": "medium",
+        "summary": "纽希拉是赫萝提到的北方大地上的一个城镇，以热泉闻名，是王室贵族度假的温泉街。赫萝称自己曾经常去那里泡泉水，暗示她与该地有长期联系。纽希拉至今仍然存在，与约伊兹不同，未被传说毁灭。",
+        "latest_seen_chunk_id": "volume_01-r000018",
+        "dialogue_count": 0
+      }
+    ]
+  },
+  "rules": {
+    "speaker_statuses": [
+      "known",
+      "mystery",
+      "npc_group",
+      "review",
+      "unknown"
+    ],
+    "importance_levels": [
+      "minor",
+      "medium",
+      "major"
+    ],
+    "general_novel_only": true
+  },
+  "task_a_annotations": [
+    {
+      "dialogue_id": "volume_01-d000173",
+      "dialogue_index": 172,
+      "volume_id": "",
+      "chapter_id": "",
+      "chapter_index": 0,
+      "chapter_title": "",
+      "scene_id": "",
+      "scene_index": 0,
+      "paragraph_id": "volume_01-c001-s006-p000452",
+      "paragraph_index": 451,
+      "local_dialogue_index": 1,
+      "text": "咱出生的故乡——约伊兹森林。咱都记不得离开故乡多久了……好想回去。",
+      "quote_text": "「咱出生的故乡——约伊兹森林。咱都记不得离开故乡多久了……好想回去。」",
+      "dialogue_kind": "standalone",
+      "char_start": 0,
+      "char_end": 35,
+      "speaker_entity_id": "char_v2_000002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "赫萝点点头，然后把视线从货台拉向远方。"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false,
+      "review_reason": "",
+      "request_id": "volume_01-r000030--annotation--qwen3_32b"
+    },
+    {
+      "dialogue_id": "volume_01-d000174",
+      "dialogue_index": 173,
+      "volume_id": "",
+      "chapter_id": "",
+      "chapter_index": 0,
+      "chapter_title": "",
+      "scene_id": "",
+      "scene_index": 0,
+      "paragraph_id": "volume_01-c001-s006-p000453",
+      "paragraph_index": 452,
+      "local_dialogue_index": 1,
+      "text": "出生的故乡",
+      "quote_text": "「出生的故乡」",
+      "dialogue_kind": "inline",
+      "char_start": 2,
+      "char_end": 9,
+      "speaker_entity_id": "unknown",
+      "speaker_display": "未知说话者",
+      "speaker_status": "unknown",
+      "confidence": 0.2,
+      "evidence": [
+        "「出生的故乡」是赫萝前一句对话的延续，但此句为内嵌引用，未明确说话人"
+      ],
+      "negative_evidence": [
+        "没有明确说话人，且上下文未提供新说话者信息"
+      ],
+      "is_backfillable": true,
+      "needs_review": true,
+      "review_reason": "",
+      "request_id": "volume_01-r000030--annotation--qwen3_32b"
+    },
+    {
+      "dialogue_id": "volume_01-d000175",
+      "dialogue_index": 174,
+      "volume_id": "",
+      "chapter_id": "",
+      "chapter_index": 0,
+      "chapter_title": "",
+      "scene_id": "",
+      "scene_index": 0,
+      "paragraph_id": "volume_01-c001-s006-p000457",
+      "paragraph_index": 456,
+      "local_dialogue_index": 1,
+      "text": "不过，咱想要先旅行。难得人在远离故乡的异国，而且过了这么漫长的岁月，许多人事物应该都变了，借机增广见闻也是一件好事。",
+      "quote_text": "「不过，咱想要先旅行。难得人在远离故乡的异国，而且过了这么漫长的岁月，许多人事物应该都变了，借机增广见闻也是一件好事。」",
+      "dialogue_kind": "standalone",
+      "char_start": 0,
+      "char_end": 60,
+      "speaker_entity_id": "char_v2_000002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "赫萝说罢，她回过头以平静的表情看着罗伦斯，继续说："
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false,
+      "review_reason": "",
+      "request_id": "volume_01-r000030--annotation--qwen3_32b"
+    },
+    {
+      "dialogue_id": "volume_01-d000176",
+      "dialogue_index": 175,
+      "volume_id": "",
+      "chapter_id": "",
+      "chapter_index": 0,
+      "chapter_title": "",
+      "scene_id": "",
+      "scene_index": 0,
+      "paragraph_id": "volume_01-c001-s006-p000459",
+      "paragraph_index": 458,
+      "local_dialogue_index": 1,
+      "text": "就算汝想带着麦子回到帕斯罗村，但只要不打算把咱交给教会的话，咱希望可以和汝一同旅行。汝是不停旅行的旅行商人呗？",
+      "quote_text": "「就算汝想带着麦子回到帕斯罗村，但只要不打算把咱交给教会的话，咱希望可以和汝一同旅行。汝是不停旅行的旅行商人呗？」",
+      "dialogue_kind": "standalone",
+      "char_start": 0,
+      "char_end": 57,
+      "speaker_entity_id": "char_v2_000002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "赫萝微笑着说道。那神情仿佛在说她相信罗伦斯绝对不会那么做，也仿佛在说她早已看透罗伦斯的心。"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false,
+      "review_reason": "",
+      "request_id": "volume_01-r000030--annotation--qwen3_32b"
+    },
+    {
+      "dialogue_id": "volume_01-d000177",
+      "dialogue_index": 176,
+      "volume_id": "",
+      "chapter_id": "",
+      "chapter_index": 0,
+      "chapter_title": "",
+      "scene_id": "",
+      "scene_index": 0,
+      "paragraph_id": "volume_01-c001-s006-p000464",
+      "paragraph_index": 463,
+      "local_dialogue_index": 1,
+      "text": "我没办法立刻下决定。",
+      "quote_text": "「我没办法立刻下决定。」",
+      "dialogue_kind": "standalone",
+      "char_start": 0,
+      "char_end": 12,
+      "speaker_entity_id": "char_v2_000001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "罗伦斯思考了一会儿后，缓缓开口说："
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false,
+      "review_reason": "",
+      "request_id": "volume_01-r000030--annotation--qwen3_32b"
+    },
+    {
+      "dialogue_id": "volume_01-d000178",
+      "dialogue_index": 177,
+      "volume_id": "",
+      "chapter_id": "",
+      "chapter_index": 0,
+      "chapter_title": "",
+      "scene_id": "",
+      "scene_index": 0,
+      "paragraph_id": "volume_01-c001-s006-p000466",
+      "paragraph_index": 465,
+      "local_dialogue_index": 1,
+      "text": "做人小心谨慎是件好事。不过，咱看人的眼光不会错。咱相信汝不是那种会随便拒绝他人请求的冷血家伙。不过咱不是人，是只狼就是了。",
+      "quote_text": "「做人小心谨慎是件好事。不过，咱看人的眼光不会错。咱相信汝不是那种会随便拒绝他人请求的冷血家伙。不过咱不是人，是只狼就是了。」",
+      "dialogue_kind": "standalone",
+      "char_start": 0,
+      "char_end": 63,
+      "speaker_entity_id": "char_v2_000002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "赫萝一副很能理解似地点了点头。"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false,
+      "review_reason": "",
+      "request_id": "volume_01-r000030--annotation--qwen3_32b"
+    }
+  ]
+}

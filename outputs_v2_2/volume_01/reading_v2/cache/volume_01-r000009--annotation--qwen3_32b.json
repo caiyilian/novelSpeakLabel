@@ -1,0 +1,83 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000038",
+      "speaker_entity_id": "mystery_v2_000009",
+      "speaker_display": "赫萝（丰收之神）",
+      "speaker_status": "mystery",
+      "confidence": 0.8,
+      "evidence": [
+        "对话内容为嚎叫，符合「狼赫萝」的象征性表现"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000039",
+      "speaker_entity_id": "npc_group_v2_000001",
+      "speaker_display": "村民群体",
+      "speaker_status": "npc_group",
+      "confidence": 0.9,
+      "evidence": [
+        "重复呼喊「赫萝」，符合村民集体庆祝的场景"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000040",
+      "speaker_entity_id": "npc_group_v2_000001",
+      "speaker_display": "村民群体",
+      "speaker_status": "npc_group",
+      "confidence": 0.9,
+      "evidence": [
+        "重复呼喊「狼赫萝出现了」，符合村民集体庆祝的场景"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000041",
+      "speaker_entity_id": "npc_group_v2_000001",
+      "speaker_display": "村民群体",
+      "speaker_status": "npc_group",
+      "confidence": 0.9,
+      "evidence": [
+        "集体呼喊「抓住祂」，符合村民集体行动的场景"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000042",
+      "speaker_entity_id": "npc_group_v2_000001",
+      "speaker_display": "村民群体",
+      "speaker_status": "npc_group",
+      "confidence": 0.9,
+      "evidence": [
+        "集体呼喊「别让祂逃走了」，符合村民集体行动的场景"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000043",
+      "speaker_entity_id": "char_v2_000001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "「算了……」是罗伦斯在前文场景中观察后的情绪表达，符合其性格和行为模式"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    }
+  ],
+  "chunk_notes": "本段对话主要围绕「赫萝」的祭典展开，前文已确认罗伦斯在场并观察仪式，因此其独白可明确归属。其余对话为村民集体呼喊，符合「npc_group」的使用条件。赫萝嚎叫为象征性表现，归为神秘实体。"
+}

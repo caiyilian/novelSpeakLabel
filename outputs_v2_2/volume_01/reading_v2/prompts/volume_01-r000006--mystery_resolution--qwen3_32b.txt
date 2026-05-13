@@ -1,0 +1,702 @@
+你是通用小说角色身份回填助手。任务：在读完当前 chunk 后，判断 pending_mysteries 中尚未确认身份的 mystery 是否已经可以与已有 character 合并。
+只允许基于当前 chunk、短期摘要、长期摘要、候选实体卡和证据判断；不要使用任何外部作品知识。证据不足时保持 pending，不要为了减少列表而强行合并。
+只返回 JSON，格式：{"merge_candidates":[{"source_entity_id":"mystery_id","target_entity_id":"char_id","confidence":0.0,"reason":"短证据"}],"keep_pending":["mystery_id"],"expire_pending":[{"entity_id":"mystery_id","reason":"..."}]}
+合并置信度必须足够高；如果只是可能相似但证据不足，放入 keep_pending。
+输入 JSON：
+{
+  "volume": {
+    "volume_id": "volume_01",
+    "volume": 1,
+    "title": ""
+  },
+  "chunk": {
+    "chunk_id": "volume_01-r000006",
+    "chunk_index": 5,
+    "chapter_id": "volume_01-c001",
+    "chapter_title": "第一幕",
+    "scene_id": "volume_01-c001-s001",
+    "paragraphs": [
+      {
+        "paragraph_id": "volume_01-c001-s001-p000067",
+        "paragraph_index": 66,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s001",
+        "scene_index": 1,
+        "text": "看来骑士似乎是上钩了。罗伦斯解开绳子，拿出一颗蜂蜜糖递给骑士。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s001-p000068",
+        "paragraph_index": 67,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s001",
+        "scene_index": 1,
+        "text": "「嗯……真好吃，我得好好答谢你才行。」"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s001-p000069",
+        "paragraph_index": 68,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s001",
+        "scene_index": 1,
+        "text": "骑士喜欢讲道理。罗伦斯露出营业用笑容，表现出非常感谢的模样，向骑士鞠躬。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s001-p000070",
+        "paragraph_index": 69,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s001",
+        "scene_index": 1,
+        "text": "「听说最近，这一带会有异教徒祭典，所以我们才受命在这里防卫。你知道什么消息吗？」"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s001-p000071",
+        "paragraph_index": 70,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s001",
+        "scene_index": 1,
+        "text": "这时，如果表现出失望的表情，那么演技就太差了。罗伦斯假装想了好一会儿后，回答说：「我不知道耶。」事实上，罗伦斯是在撒谎，不过骑士说的话也不甚正确，所以他不得不扯谎。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s001-p000072",
+        "paragraph_index": 71,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s001",
+        "scene_index": 1,
+        "text": "「他们果然想在背地里偷偷举办祭典，异教徒真是一群胆小鬼。」"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s001-p000073",
+        "paragraph_index": 72,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s001",
+        "scene_index": 1,
+        "text": "虽然骑士完全猜想错误的发言听来好笑，但罗伦斯当然没有予以指正，他表示赞同骑士说的话后，随即向骑士告辞。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s001-p000074",
+        "paragraph_index": 73,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s001",
+        "scene_index": 1,
+        "text": "骑士点点头，再度为蜂蜜糖向罗伦斯道谢。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s001-p000075",
+        "paragraph_index": 74,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s001",
+        "scene_index": 1,
+        "text": "可见骑士是真的喜欢吃蜂蜜糖。下级骑士的钱都花费在装备和旅费上。事实上，他们的生活还不如初入门的鞋匠学徒。骑士肯定很久没吃到甜的东西了。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s001-p000076",
+        "paragraph_index": 75,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s001",
+        "scene_index": 1,
+        "text": "话虽如此，但罗伦斯并不打算再多拿蜂蜜糖分给骑士，毕竟蜂蜜糖并不便宜。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s001-p000077",
+        "paragraph_index": 76,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s001",
+        "scene_index": 1,
+        "text": "「异教徒祭典……还真会猜啊。」"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s001-p000078",
+        "paragraph_index": 77,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s001",
+        "scene_index": 1,
+        "text": "离开修道院一会儿后，罗伦斯喃喃念着骑士说的话，苦笑了一下。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s001-p000079",
+        "paragraph_index": 78,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s001",
+        "scene_index": 1,
+        "text": "罗伦斯知道骑士在说什么。应该说，只要是这附近的人都会知道吧。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s001-p000080",
+        "paragraph_index": 79,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s001",
+        "scene_index": 1,
+        "text": "那根本不是什么异教徒祭典。况且异教徒不是在更北边、就是在更东边的地方出没。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s001-p000081",
+        "paragraph_index": 80,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s001",
+        "scene_index": 1,
+        "text": "这附近所举办的祭典，不过是随处可见，为了庆祝麦田收割、祈祷丰收的祭典罢了，根本不需要特地派驻骑士。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s001-p000082",
+        "paragraph_index": 81,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s001",
+        "scene_index": 1,
+        "text": "但是，这附近的祭典比其他地方盛大且特别，所以修道院的人可能因此特别向城里的教会提出报告。或许是长久以来，这地方从不曾正式纳入教会的版图，所以教会才显得特别敏感。"
+      }
+    ],
+    "dialogues": [
+      {
+        "dialogue_id": "volume_01-d000020",
+        "dialogue_index": 19,
+        "paragraph_id": "volume_01-c001-s001-p000068",
+        "paragraph_index": 67,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "嗯……真好吃，我得好好答谢你才行。",
+        "quote_text": "「嗯……真好吃，我得好好答谢你才行。」",
+        "char_start": 0,
+        "char_end": 19
+      },
+      {
+        "dialogue_id": "volume_01-d000021",
+        "dialogue_index": 20,
+        "paragraph_id": "volume_01-c001-s001-p000070",
+        "paragraph_index": 69,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "听说最近，这一带会有异教徒祭典，所以我们才受命在这里防卫。你知道什么消息吗？",
+        "quote_text": "「听说最近，这一带会有异教徒祭典，所以我们才受命在这里防卫。你知道什么消息吗？」",
+        "char_start": 0,
+        "char_end": 40
+      },
+      {
+        "dialogue_id": "volume_01-d000022",
+        "dialogue_index": 21,
+        "paragraph_id": "volume_01-c001-s001-p000071",
+        "paragraph_index": 70,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "inline",
+        "text": "我不知道耶。",
+        "quote_text": "「我不知道耶。」",
+        "char_start": 40,
+        "char_end": 48
+      },
+      {
+        "dialogue_id": "volume_01-d000023",
+        "dialogue_index": 22,
+        "paragraph_id": "volume_01-c001-s001-p000072",
+        "paragraph_index": 71,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "他们果然想在背地里偷偷举办祭典，异教徒真是一群胆小鬼。",
+        "quote_text": "「他们果然想在背地里偷偷举办祭典，异教徒真是一群胆小鬼。」",
+        "char_start": 0,
+        "char_end": 29
+      },
+      {
+        "dialogue_id": "volume_01-d000024",
+        "dialogue_index": 23,
+        "paragraph_id": "volume_01-c001-s001-p000077",
+        "paragraph_index": 76,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "异教徒祭典……还真会猜啊。",
+        "quote_text": "「异教徒祭典……还真会猜啊。」",
+        "char_start": 0,
+        "char_end": 15
+      }
+    ]
+  },
+  "near_context": {
+    "lookback_paragraphs": [
+      {
+        "paragraph_id": "volume_01-c001-s001-p000064",
+        "paragraph_index": 63,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s001",
+        "scene_index": 1,
+        "text": "自己把人叫来，现在又想随便打发我，如果乖乖说「是」的话，就不配当商人了。罗伦斯一边有意无意地把玩刚刚的皮袋，一边转回骑士的方向。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s001-p000065",
+        "paragraph_index": 64,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s001",
+        "scene_index": 1,
+        "text": "「发生什么事了吗？平常在这里应该见不到骑士吧？」"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s001-p000066",
+        "paragraph_index": 65,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s001",
+        "scene_index": 1,
+        "text": "年轻骑士可能是因为被询问而感到不悦，稍稍皱起眉头，再看到罗伦斯手中的皮袋，眉头皱得更深了。"
+      }
+    ],
+    "lookahead_paragraphs": [
+      {
+        "paragraph_id": "volume_01-c001-s001-p000083",
+        "paragraph_index": 82,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s001",
+        "scene_index": 1,
+        "text": "再说，教会近来热衷异端"
+      }
+    ]
+  },
+  "memory": {
+    "previous_chunk_summary": {
+      "chunk_id": "volume_01-r000005",
+      "summary": "罗伦斯与骑士的对话继续展开。罗伦斯递出蜂蜜糖缓和气氛，骑士虽然迟疑但最终接受。罗伦斯解释自己是从东边山头的小村落卖盐回来，并掀开麻布展示价值高昂的貂皮。骑士继续询问车上货物，罗伦斯说明皮草和麦子的来源，麦子是耐寒且抗虫的品种，计划运往受寒害影响的西北方。骑士随后命令罗伦斯离开，但罗伦斯以商人身份坚持继续对话，并反问骑士为何出现在此地。骑士的反应显示其态度仍带有戒备，但罗伦斯的策略似乎开始奏效。本段揭示了罗伦斯的商业路线和货物价值，以及骑士的职责和可能的异常任务。",
+      "active_entities": [
+        "char_v2_000001",
+        "mystery_v2_000004"
+      ],
+      "open_questions": [
+        "骑士为何出现在偏远地区？",
+        "罗伦斯的麦子是否真的能帮助西北方的灾情？",
+        "骑士的戒备是否与修道院的异常有关？"
+      ],
+      "evidence_refs": [
+        "volume_01-c001-s001-p000051",
+        "volume_01-c001-s001-p000052",
+        "volume_01-c001-s001-p000053",
+        "volume_01-c001-s001-p000054",
+        "volume_01-c001-s001-p000055",
+        "volume_01-c001-s001-p000056",
+        "volume_01-c001-s001-p000057",
+        "volume_01-c001-s001-p000058",
+        "volume_01-c001-s001-p000059",
+        "volume_01-c001-s001-p000060",
+        "volume_01-c001-s001-p000061",
+        "volume_01-c001-s001-p000062",
+        "volume_01-c001-s001-p000063",
+        "volume_01-c001-s001-p000064",
+        "volume_01-c001-s001-p000065"
+      ]
+    },
+    "global_summary": "本卷开篇描绘了一个村落中独特的文化现象：村民们将麦田与狼进行比喻。饱满摇曳的麦穗被形容为奔跑的狼，风吹倒麦穗则被比喻为狼的践踏，这些说法虽贴切但带有负面意味。如今，这些比喻已逐渐失去原有的严肃意义，变成一种玩笑性质的表达。文中提到，尽管秋天的天空和麦田的景象数百年不变，但村落的人事物已发生巨大变化。村民不再需要某种守护，暗示村落文化或社会结构的变化。叙述者似乎对北方故乡有所怀念，并流露出对当前处境的复杂情绪。叙述者专注于梳理尾巴的毛，暗示其可能具有非人类的特征。段落结尾提到‘成群无数的狼在麦田里奔跑’，为后续情节埋下伏笔。随后，罗伦斯在深山村落完成交易后，离开并途经草原的场景。对话中，罗伦斯与村民互动，确认交易物品数量为七十件，并表达对村民的感谢。村民则称赞罗伦斯愿意深入山区，罗伦斯也表示会再次光顾。离开村落五小时后，罗伦斯坐在马车上，穿越晴朗无风的草原，途中观察到远处的修道院。修道院虽建筑坚固、设施完善，但罗伦斯因无法与修道士做生意而感到失望。修道院的物资调度独立，且修道士生活节俭，罗伦斯认为与他们做生意可能无利可图，甚至可能带来风险。罗伦斯在前往修道院的过程中，注意到有人挥手示意。起初他以为是修道院的仆人，但对方穿着银色盔甲，被确认为一名骑士。罗伦斯与骑士展开对话，骑士态度傲慢，质疑罗伦斯为何出现在没有城镇的区域。罗伦斯表明自己是旅行商人，试图缓和气氛。骑士虽为下级骑士，但态度强硬，暗示其身份与修道院有关。修道院内还有另一名骑士在站岗，显示修道院可能处于某种戒备状态。罗伦斯试图以蜂蜜糖缓和气氛，为后续互动铺垫。本段揭示了修道院与外界的隔绝状态，以及罗伦斯试图与修道院建立联系的意图。罗伦斯与骑士的对话继续展开。罗伦斯递出蜂蜜糖缓和气氛，骑士虽然迟疑但最终接受。罗伦斯解释自己是从东边山头的小村落卖盐回来，并掀开麻布展示价值高昂的貂皮。骑士继续询问车上货物，罗伦斯说明皮草和麦子的来源，麦子是耐寒且抗虫的品种，计划运往受寒害影响的西北方。骑士随后命令罗伦斯离开，但罗伦斯以商人身份坚持继续对话，并反问骑士为何出现在此地。骑士的反应显示其态度仍带有戒备，但罗伦斯的策略似乎开始…",
+    "candidate_entities": [
+      {
+        "entity_id": "char_v2_000001",
+        "entity_type": "character",
+        "display_name": "罗伦斯",
+        "aliases": [
+          "罗伦斯先生"
+        ],
+        "importance": "major",
+        "summary": "罗伦斯是一位旅行商人，擅长与各类人物交涉。他通过递出蜂蜜糖缓和骑士的戒备，展示貂皮和麦子等高价值货物，并试图与骑士建立联系。他表现出冷静、机智和商业头脑，是推动情节发展的核心人物。",
+        "latest_seen_chunk_id": "volume_01-r000005",
+        "dialogue_count": 20
+      },
+      {
+        "entity_id": "mystery_v2_000004",
+        "entity_type": "mystery",
+        "display_name": "修道院的骑士",
+        "aliases": [
+          "银甲骑士",
+          "下级骑士",
+          "骑士"
+        ],
+        "importance": "medium",
+        "summary": "修道院的骑士出现在修道院附近，穿着银色盔甲，态度傲慢。他质疑罗伦斯的出现，并与罗伦斯展开对话。虽然被描述为下级骑士，但其行为显示出一定的自信和戒备，可能与修道院的特殊安排有关。修道院内还有另一名骑士…",
+        "latest_seen_chunk_id": "volume_01-r000005",
+        "dialogue_count": 14
+      },
+      {
+        "entity_id": "mystery_v2_000003",
+        "entity_type": "mystery",
+        "display_name": "修道院的修道士",
+        "aliases": [
+          "修道士",
+          "修道院成员"
+        ],
+        "importance": "medium",
+        "summary": "一所偏僻修道院的居民，人数约二十多位，生活节俭且独立运作。他们不与民间商人往来，而是通过独自的通路调度物资。尽管罗伦斯对其商业潜力感到失望，但修道士的存在可能在后续情节中引发新的发展。",
+        "latest_seen_chunk_id": "volume_01-r000003",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "mystery_v2_000001",
+        "entity_type": "mystery",
+        "display_name": "叙述者",
+        "aliases": [
+          "我",
+          "他"
+        ],
+        "importance": "medium",
+        "summary": "本段的叙述者，具有非人类特征的暗示（如尾巴的存在），对村落文化有深刻观察，并流露出对北方故乡的怀念。其身份尚未明确，但对情节发展可能有重要影响。",
+        "latest_seen_chunk_id": "volume_01-r000001",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "mystery_v2_000002",
+        "entity_type": "mystery",
+        "display_name": "狼群",
+        "aliases": [
+          "狼",
+          "奔跑的狼"
+        ],
+        "importance": "medium",
+        "summary": "在段落结尾出现的‘成群无数的狼’，可能是比喻，也可能暗示真实事件。其出现为后续情节埋下伏笔，可能与村落文化或叙述者的身份有关。",
+        "latest_seen_chunk_id": "volume_01-r000001",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "mystery_v2_000006",
+        "entity_type": "mystery",
+        "display_name": "深山村落的村民",
+        "aliases": [
+          "村民",
+          "山里居民"
+        ],
+        "importance": "minor",
+        "summary": "居住在东边山头的小村落居民，种植耐寒且抗虫的麦子，并与罗伦斯进行交易。他们赠予罗伦斯麦子，作为其商业路线的一部分。虽然未直接参与当前对话，但他们的存在为罗伦斯的货物来源提供了背景。",
+        "latest_seen_chunk_id": "volume_01-r000005",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "npc_group_v2_000002",
+        "entity_type": "npc_group",
+        "display_name": "深山村落的村民",
+        "aliases": [
+          "村民",
+          "深山居民"
+        ],
+        "importance": "minor",
+        "summary": "居住在深山中的普通村民，与罗伦斯进行交易。他们对罗伦斯的到访表示感激，并希望他能再次光顾。虽然未直接参与后续剧情，但他们的存在为罗伦斯的商业活动提供了背景。",
+        "latest_seen_chunk_id": "volume_01-r000003",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "npc_group_v2_000001",
+        "entity_type": "npc_group",
+        "display_name": "村民",
+        "aliases": [
+          "村民们",
+          "村落居民"
+        ],
+        "importance": "minor",
+        "summary": "村落中的普通居民，以种麦为生。他们使用狼与麦穗的比喻，但这些说法已逐渐失去严肃意义。村民不再需要某种守护，暗示村落文化或社会结构的变化。",
+        "latest_seen_chunk_id": "volume_01-r000001",
+        "dialogue_count": 0
+      }
+    ]
+  },
+  "rules": {
+    "speaker_statuses": [
+      "known",
+      "mystery",
+      "npc_group",
+      "review",
+      "unknown"
+    ],
+    "importance_levels": [
+      "minor",
+      "medium",
+      "major"
+    ],
+    "general_novel_only": true
+  },
+  "task_b_chunk_summary": {
+    "chunk_id": "volume_01-r000006",
+    "summary": "罗伦斯用蜂蜜糖缓和了骑士的戒备，骑士表示感谢并透露自己因‘异教徒祭典’而在此地防卫。罗伦斯假装不知道消息，实则撒谎，因为祭典其实是当地常见的丰收庆典，与异教徒无关。骑士的猜测被罗伦斯私下嘲笑，但他并未纠正骑士的误解。罗伦斯离开后，认为骑士的猜测过于敏感，可能与修道院对地方的控制有关。骑士的发言暗示教会对此地的祭典异常关注，可能因为该地尚未正式纳入教会版图。罗伦斯对骑士的贫穷生活表示理解，但并未多给蜂蜜糖，因其价格不菲。本段揭示了骑士的职责与修道院的潜在动机，以及罗伦斯的策略性应对。",
+    "active_entities": [
+      "char_v2_000001",
+      "mystery_v2_000004"
+    ],
+    "open_questions": [
+      "骑士为何将丰收祭典误认为异教徒祭典？",
+      "修道院为何对地方祭典特别敏感？",
+      "教会是否在试图扩大对地方的控制？"
+    ],
+    "evidence_refs": [
+      "volume_01-c001-s001-p000067",
+      "volume_01-c001-s001-p000068",
+      "volume_01-c001-s001-p000070",
+      "volume_01-c001-s001-p000071",
+      "volume_01-c001-s001-p000072",
+      "volume_01-c001-s001-p000077",
+      "volume_01-c001-s001-p000078",
+      "volume_01-c001-s001-p000080",
+      "volume_01-c001-s001-p000081",
+      "volume_01-c001-s001-p000082"
+    ]
+  },
+  "updated_global_summary": "罗伦斯继续与骑士互动，通过递出蜂蜜糖缓和气氛，骑士表示感谢并透露自己因‘异教徒祭典’而在此地防卫。罗伦斯假装不知道消息，实则撒谎，因为祭典其实是当地常见的丰收庆典，与异教徒无关。骑士的猜测被罗伦斯私下嘲笑，但他并未纠正骑士的误解。罗伦斯离开后，认为骑士的猜测过于敏感，可能与修道院对地方的控制有关。骑士的发言暗示教会对此地的祭典异常关注，可能因为该地尚未正式纳入教会版图。罗伦斯对骑士的贫穷生活表示理解，但并未多给蜂蜜糖，因其价格不菲。本段揭示了骑士的职责与修道院的潜在动机，以及罗伦斯的策略性应对。",
+  "candidate_entities": [
+    {
+      "entity_id": "char_v2_000001",
+      "entity_type": "character",
+      "display_name": "罗伦斯",
+      "aliases": [
+        "罗伦斯先生"
+      ],
+      "importance": "major",
+      "summary": "罗伦斯用蜂蜜糖缓和了骑士的戒备，假装不知道关于异教徒祭典的消息，实则撒谎。他私下认为骑士的猜测过于敏感，可能与修道院对地方的控制有关。罗伦斯对骑士的贫穷生活表示理解，但并未多给蜂蜜糖，因其价格不菲。…",
+      "latest_seen_chunk_id": "volume_01-r000006",
+      "dialogue_count": 22
+    },
+    {
+      "entity_id": "mystery_v2_000004",
+      "entity_type": "character",
+      "display_name": "骑士",
+      "aliases": [],
+      "importance": "medium",
+      "summary": "骑士因‘异教徒祭典’而在此地防卫，态度傲慢且戒备。他误将丰收祭典当作异教徒活动，并批评异教徒为胆小鬼。罗伦斯并未纠正他的误解，而是假装赞同。骑士的发言暗示教会对此地的祭典异常关注，可能因为该地尚未正…",
+      "latest_seen_chunk_id": "volume_01-r000006",
+      "dialogue_count": 4
+    },
+    {
+      "entity_id": "mystery_v2_000003",
+      "entity_type": "mystery",
+      "display_name": "修道院的修道士",
+      "aliases": [
+        "修道士",
+        "修道院成员"
+      ],
+      "importance": "medium",
+      "summary": "一所偏僻修道院的居民，人数约二十多位，生活节俭且独立运作。他们不与民间商人往来，而是通过独自的通路调度物资。尽管罗伦斯对其商业潜力感到失望，但修道士的存在可能在后续情节中引发新的发展。",
+      "latest_seen_chunk_id": "volume_01-r000006",
+      "dialogue_count": 0
+    },
+    {
+      "entity_id": "mystery_v2_000007",
+      "entity_type": "mystery",
+      "display_name": "异教徒",
+      "aliases": [
+        "异端徒",
+        "异教徒群体"
+      ],
+      "importance": "medium",
+      "summary": "被骑士提及的异教徒，据称在北边或东边出没，但骑士误认为该地的丰收祭典是异教徒活动。虽然罗伦斯指出这并非事实，但异教徒的存在仍可能在后续情节中引发冲突或调查。",
+      "latest_seen_chunk_id": "volume_01-r000006",
+      "dialogue_count": 0
+    },
+    {
+      "entity_id": "mystery_v2_000004",
+      "entity_type": "mystery",
+      "display_name": "修道院的骑士",
+      "aliases": [
+        "银甲骑士",
+        "下级骑士",
+        "骑士"
+      ],
+      "importance": "medium",
+      "summary": "修道院的骑士出现在修道院附近，穿着银色盔甲，态度傲慢。他质疑罗伦斯的出现，并与罗伦斯展开对话。虽然被描述为下级骑士，但其行为显示出一定的自信和戒备，可能与修道院的特殊安排有关。修道院内还有另一名骑士…",
+      "latest_seen_chunk_id": "volume_01-r000005",
+      "dialogue_count": 14
+    },
+    {
+      "entity_id": "mystery_v2_000001",
+      "entity_type": "mystery",
+      "display_name": "叙述者",
+      "aliases": [
+        "我",
+        "他"
+      ],
+      "importance": "medium",
+      "summary": "本段的叙述者，具有非人类特征的暗示（如尾巴的存在），对村落文化有深刻观察，并流露出对北方故乡的怀念。其身份尚未明确，但对情节发展可能有重要影响。",
+      "latest_seen_chunk_id": "volume_01-r000001",
+      "dialogue_count": 0
+    },
+    {
+      "entity_id": "mystery_v2_000002",
+      "entity_type": "mystery",
+      "display_name": "狼群",
+      "aliases": [
+        "狼",
+        "奔跑的狼"
+      ],
+      "importance": "medium",
+      "summary": "在段落结尾出现的‘成群无数的狼’，可能是比喻，也可能暗示真实事件。其出现为后续情节埋下伏笔，可能与村落文化或叙述者的身份有关。",
+      "latest_seen_chunk_id": "volume_01-r000001",
+      "dialogue_count": 0
+    },
+    {
+      "entity_id": "mystery_v2_000006",
+      "entity_type": "mystery",
+      "display_name": "深山村落的村民",
+      "aliases": [
+        "村民",
+        "山里居民"
+      ],
+      "importance": "minor",
+      "summary": "居住在东边山头的小村落居民，种植耐寒且抗虫的麦子，并与罗伦斯进行交易。他们赠予罗伦斯麦子，作为其商业路线的一部分。虽然未直接参与当前对话，但他们的存在为罗伦斯的货物来源提供了背景。",
+      "latest_seen_chunk_id": "volume_01-r000005",
+      "dialogue_count": 0
+    },
+    {
+      "entity_id": "npc_group_v2_000002",
+      "entity_type": "npc_group",
+      "display_name": "深山村落的村民",
+      "aliases": [
+        "村民",
+        "深山居民"
+      ],
+      "importance": "minor",
+      "summary": "居住在深山中的普通村民，与罗伦斯进行交易。他们对罗伦斯的到访表示感激，并希望他能再次光顾。虽然未直接参与后续剧情，但他们的存在为罗伦斯的商业活动提供了背景。",
+      "latest_seen_chunk_id": "volume_01-r000003",
+      "dialogue_count": 0
+    },
+    {
+      "entity_id": "npc_group_v2_000001",
+      "entity_type": "npc_group",
+      "display_name": "村民",
+      "aliases": [
+        "村民们",
+        "村落居民"
+      ],
+      "importance": "minor",
+      "summary": "村落中的普通居民，以种麦为生。他们使用狼与麦穗的比喻，但这些说法已逐渐失去严肃意义。村民不再需要某种守护，暗示村落文化或社会结构的变化。",
+      "latest_seen_chunk_id": "volume_01-r000001",
+      "dialogue_count": 0
+    }
+  ],
+  "pending_mysteries": [
+    {
+      "entity_id": "mystery_v2_000003",
+      "display_name": "修道院的修道士",
+      "aliases": [
+        "修道士",
+        "修道院成员"
+      ],
+      "importance": "medium",
+      "summary": "一所偏僻修道院的居民，人数约二十多位，生活节俭且独立运作。他们不与民间商人往来，而是通过独自的通路调度物资。尽管罗伦斯对其商业潜力感到失望，但修道士的存在可能在后续情节中引发新的发展。",
+      "evidence_refs": [
+        "volume_01-c001-s001-p000030",
+        "volume_01-c001-s001-p000031",
+        "volume_01-c001-s001-p000032",
+        "volume_01-c001-s001-p000082"
+      ],
+      "first_seen_chunk_id": "volume_01-r000003",
+      "latest_seen_chunk_id": "volume_01-r000006",
+      "first_pending_chunk_id": "volume_01-r000003",
+      "last_checked_chunk_id": "volume_01-r000005"
+    },
+    {
+      "entity_id": "mystery_v2_000007",
+      "display_name": "异教徒",
+      "aliases": [
+        "异端徒",
+        "异教徒群体"
+      ],
+      "importance": "medium",
+      "summary": "被骑士提及的异教徒，据称在北边或东边出没，但骑士误认为该地的丰收祭典是异教徒活动。虽然罗伦斯指出这并非事实，但异教徒的存在仍可能在后续情节中引发冲突或调查。",
+      "evidence_refs": [
+        "volume_01-c001-s001-p000070",
+        "volume_01-c001-s001-p000080",
+        "volume_01-c001-s001-p000082"
+      ],
+      "first_seen_chunk_id": "volume_01-r000006",
+      "latest_seen_chunk_id": "volume_01-r000006",
+      "first_pending_chunk_id": "volume_01-r000006",
+      "last_checked_chunk_id": ""
+    },
+    {
+      "entity_id": "mystery_v2_000004",
+      "display_name": "修道院的骑士",
+      "aliases": [
+        "银甲骑士",
+        "下级骑士",
+        "骑士"
+      ],
+      "importance": "medium",
+      "summary": "修道院的骑士出现在修道院附近，穿着银色盔甲，态度傲慢。他质疑罗伦斯的出现，并与罗伦斯展开对话。虽然被描述为下级骑士，但其行为显示出一定的自信和戒备，可能与修道院的特殊安排有关。修道院内还有另一名骑士在站岗，显示修道院可能处于某种戒备状态。 一名穿着银色盔甲的下级骑士，态度傲慢但…",
+      "evidence_refs": [
+        "volume_01-c001-s001-p000038",
+        "volume_01-c001-s001-p000042",
+        "volume_01-c001-s001-p000043",
+        "volume_01-c001-s001-p000048",
+        "volume_01-c001-s001-p000049",
+        "volume_01-c001-s001-p000050",
+        "volume_01-c001-s001-p000053",
+        "volume_01-c001-s001-p000057",
+        "volume_01-c001-s001-p000063",
+        "volume_01-c001-s001-p000065"
+      ],
+      "first_seen_chunk_id": "volume_01-r000004",
+      "latest_seen_chunk_id": "volume_01-r000005",
+      "first_pending_chunk_id": "volume_01-r000004",
+      "last_checked_chunk_id": "volume_01-r000004"
+    },
+    {
+      "entity_id": "mystery_v2_000001",
+      "display_name": "叙述者",
+      "aliases": [
+        "我",
+        "他"
+      ],
+      "importance": "medium",
+      "summary": "本段的叙述者，具有非人类特征的暗示（如尾巴的存在），对村落文化有深刻观察，并流露出对北方故乡的怀念。其身份尚未明确，但对情节发展可能有重要影响。",
+      "evidence_refs": [
+        "volume_01-c000-s001-p000013",
+        "volume_01-c000-s001-p000014",
+        "volume_01-c000-s001-p000012"
+      ],
+      "first_seen_chunk_id": "volume_01-r000001",
+      "latest_seen_chunk_id": "volume_01-r000001",
+      "first_pending_chunk_id": "volume_01-r000001",
+      "last_checked_chunk_id": "volume_01-r000005"
+    },
+    {
+      "entity_id": "mystery_v2_000002",
+      "display_name": "狼群",
+      "aliases": [
+        "狼",
+        "奔跑的狼"
+      ],
+      "importance": "medium",
+      "summary": "在段落结尾出现的‘成群无数的狼’，可能是比喻，也可能暗示真实事件。其出现为后续情节埋下伏笔，可能与村落文化或叙述者的身份有关。",
+      "evidence_refs": [
+        "volume_01-c000-s001-p000017"
+      ],
+      "first_seen_chunk_id": "volume_01-r000001",
+      "latest_seen_chunk_id": "volume_01-r000001",
+      "first_pending_chunk_id": "volume_01-r000001",
+      "last_checked_chunk_id": "volume_01-r000005"
+    }
+  ]
+}

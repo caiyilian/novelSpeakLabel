@@ -1,0 +1,20 @@
+```json
+{
+  "merge_candidates": [
+    {
+      "source_entity_id": "mystery_v2_000004",
+      "target_entity_id": "char_v2_000001",
+      "confidence": 0.0,
+      "reason": "未提供足够证据表明‘修道院的骑士’与罗伦斯是同一实体。"
+    }
+  ],
+  "keep_pending": [
+    "mystery_v2_000003",
+    "mystery_v2_000007",
+    "mystery_v2_000004",
+    "mystery_v2_000001",
+    "mystery_v2_000002"
+  ],
+  "expire_pending": []
+}
+```

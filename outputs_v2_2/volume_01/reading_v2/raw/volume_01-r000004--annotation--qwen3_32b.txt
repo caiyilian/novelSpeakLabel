@@ -1,0 +1,72 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000005",
+      "speaker_entity_id": "char_v2_000001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "罗伦斯是当前场景的主角，他观察修道院并做出反应，对话符合他的视角"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000006",
+      "speaker_entity_id": "char_v2_000001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "罗伦斯在靠近修道院后发出声音，对话内容是他对骑士身份的确认"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000007",
+      "speaker_entity_id": "mystery_v2_000003",
+      "speaker_display": "修道院的修道士",
+      "speaker_status": "mystery",
+      "confidence": 0.85,
+      "evidence": [
+        "对话发生在修道院方向，且描述为‘骑士’，与修道院相关"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000008",
+      "speaker_entity_id": "char_v2_000001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "罗伦斯主动回应骑士的提问，对话内容为自我介绍"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000009",
+      "speaker_entity_id": "mystery_v2_000003",
+      "speaker_display": "修道院的修道士",
+      "speaker_status": "mystery",
+      "confidence": 0.85,
+      "evidence": [
+        "对话发生在修道院方向，且描述为‘骑士’，与修道院相关"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    }
+  ],
+  "chunk_notes": "本段对话主要发生在罗伦斯与修道院方向的骑士之间。罗伦斯是明确的说话者，而骑士身份尚不明确，但与修道院相关，因此标记为 mystery。未出现无名群体或需要复核的情况。"
+}
+```

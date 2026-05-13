@@ -1,0 +1,613 @@
+你是通用小说长期摘要维护助手。任务：用旧长期摘要、当前 chunk 短期摘要和结构化事实，更新卷级长期摘要。不得凭空新增当前 chunk 没有的事实。
+只返回 JSON，格式：{"summary":"50到700字","new_facts":[],"retained_facts":[],"dropped_facts_reason":[]}
+输入 JSON：
+{
+  "volume": {
+    "volume_id": "volume_01",
+    "volume": 1,
+    "title": ""
+  },
+  "chunk": {
+    "chunk_id": "volume_01-r000014",
+    "chunk_index": 13,
+    "chapter_id": "volume_01-c001",
+    "chapter_title": "第一幕",
+    "scene_id": "volume_01-c001-s003",
+    "paragraphs": [
+      {
+        "paragraph_id": "volume_01-c001-s003-p000195",
+        "paragraph_index": 194,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s003",
+        "scene_index": 3,
+        "text": "「没有。话说你究竟是谁？为何在我的马车上睡觉？该不会是因为不想被卖到城里，所以逃了出来吧？」"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s003-p000196",
+        "paragraph_index": 195,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s003",
+        "scene_index": 3,
+        "text": "罗伦斯试图努力表现得咄咄逼人，然而女孩却全然不为所动。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s003-p000197",
+        "paragraph_index": 196,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s003",
+        "scene_index": 3,
+        "text": "「搞什么，没酒啊。那食物……哦哟，真浪费。」"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s003-p000198",
+        "paragraph_index": 197,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s003",
+        "scene_index": 3,
+        "text": "女孩懒洋洋地说着，皱起小鼻子嗅了嗅，似乎发现刚刚罗伦斯咬在口中的肉干，她捡起掉落在货台上的肉干往嘴里放。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s003-p000199",
+        "paragraph_index": 198,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s003",
+        "scene_index": 3,
+        "text": "在女孩咬肉干的时候，罗伦斯没漏看女孩嘴唇内侧的两根锐利尖牙。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s003-p000200",
+        "paragraph_index": 199,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s003",
+        "scene_index": 3,
+        "text": "「你该不会是被恶魔附身的妖怪吧。」"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s003-p000201",
+        "paragraph_index": 200,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s003",
+        "scene_index": 3,
+        "text": "罗伦斯一边说，一边把手摸向绑在腰际的短剑上。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s003-p000202",
+        "paragraph_index": 201,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s003",
+        "scene_index": 3,
+        "text": "因为货币价值的变动太大，所以旅行商人会把赚来的钱换成物品携带在身，银短剑就是此类物品之一。银是属于神的金属，能够打倒所有妖魔鬼怪。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s003-p000203",
+        "paragraph_index": 202,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s003",
+        "scene_index": 3,
+        "text": "听见罗伦斯说的话，女孩先是愣住，然后突然笑了出来："
+      },
+      {
+        "paragraph_id": "volume_01-c001-s003-p000204",
+        "paragraph_index": 203,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s003",
+        "scene_index": 3,
+        "text": "「哈哈哈哈哈，咱是恶魔？」"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s003-p000205",
+        "paragraph_index": 204,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s003",
+        "scene_index": 3,
+        "text": "女孩口中的肉干都快掉下来了，她咧嘴大笑的模样可爱得教人有些招架不住。两根锐利的尖牙在此刻反而显得迷人。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s003-p000206",
+        "paragraph_index": 205,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s003",
+        "scene_index": 3,
+        "text": "然而，正因为女孩的模样迷人，所以感觉像被取笑似地令人生气。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s003-p000207",
+        "paragraph_index": 206,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s003",
+        "scene_index": 3,
+        "text": "「喂！有什么好笑的？」"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s003-p000208",
+        "paragraph_index": 207,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s003",
+        "scene_index": 3,
+        "text": "「当然好笑啊，咱还是第一次被说是恶魔呢。」"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s003-p000209",
+        "paragraph_index": 208,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s003",
+        "scene_index": 3,
+        "text": "女孩一边继续笑，一边捡起掉落的肉干再咬了一口。她果然有着锐利尖牙，接着看看她的耳朵，可以知道这女孩绝对不是正常人类。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s003-p000210",
+        "paragraph_index": 209,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s003",
+        "scene_index": 3,
+        "text": "「你是谁？」"
+      }
+    ],
+    "dialogues": [
+      {
+        "dialogue_id": "volume_01-d000056",
+        "dialogue_index": 55,
+        "paragraph_id": "volume_01-c001-s003-p000195",
+        "paragraph_index": 194,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "没有。话说你究竟是谁？为何在我的马车上睡觉？该不会是因为不想被卖到城里，所以逃了出来吧？",
+        "quote_text": "「没有。话说你究竟是谁？为何在我的马车上睡觉？该不会是因为不想被卖到城里，所以逃了出来吧？」",
+        "char_start": 0,
+        "char_end": 46
+      },
+      {
+        "dialogue_id": "volume_01-d000057",
+        "dialogue_index": 56,
+        "paragraph_id": "volume_01-c001-s003-p000197",
+        "paragraph_index": 196,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "搞什么，没酒啊。那食物……哦哟，真浪费。",
+        "quote_text": "「搞什么，没酒啊。那食物……哦哟，真浪费。」",
+        "char_start": 0,
+        "char_end": 22
+      },
+      {
+        "dialogue_id": "volume_01-d000058",
+        "dialogue_index": 57,
+        "paragraph_id": "volume_01-c001-s003-p000200",
+        "paragraph_index": 199,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "你该不会是被恶魔附身的妖怪吧。",
+        "quote_text": "「你该不会是被恶魔附身的妖怪吧。」",
+        "char_start": 0,
+        "char_end": 17
+      },
+      {
+        "dialogue_id": "volume_01-d000059",
+        "dialogue_index": 58,
+        "paragraph_id": "volume_01-c001-s003-p000204",
+        "paragraph_index": 203,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "哈哈哈哈哈，咱是恶魔？",
+        "quote_text": "「哈哈哈哈哈，咱是恶魔？」",
+        "char_start": 0,
+        "char_end": 13
+      },
+      {
+        "dialogue_id": "volume_01-d000060",
+        "dialogue_index": 59,
+        "paragraph_id": "volume_01-c001-s003-p000207",
+        "paragraph_index": 206,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "喂！有什么好笑的？",
+        "quote_text": "「喂！有什么好笑的？」",
+        "char_start": 0,
+        "char_end": 11
+      },
+      {
+        "dialogue_id": "volume_01-d000061",
+        "dialogue_index": 60,
+        "paragraph_id": "volume_01-c001-s003-p000208",
+        "paragraph_index": 207,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "当然好笑啊，咱还是第一次被说是恶魔呢。",
+        "quote_text": "「当然好笑啊，咱还是第一次被说是恶魔呢。」",
+        "char_start": 0,
+        "char_end": 21
+      },
+      {
+        "dialogue_id": "volume_01-d000062",
+        "dialogue_index": 61,
+        "paragraph_id": "volume_01-c001-s003-p000210",
+        "paragraph_index": 209,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "你是谁？",
+        "quote_text": "「你是谁？」",
+        "char_start": 0,
+        "char_end": 6
+      }
+    ]
+  },
+  "near_context": {
+    "lookback_paragraphs": [
+      {
+        "paragraph_id": "volume_01-c001-s003-p000192",
+        "paragraph_index": 191,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s003",
+        "scene_index": 3,
+        "text": "「……呼，真是好月色，有没有酒啊？」"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s003-p000193",
+        "paragraph_index": 192,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s003",
+        "scene_index": 3,
+        "text": "女孩把狼嚎余音慢慢收回闭起的口中，压低下腭微笑着说。女孩的声音让罗伦斯回过神来。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s003-p000194",
+        "paragraph_index": 193,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s003",
+        "scene_index": 3,
+        "text": "眼前看到的既不是狼，也不是狗，只是有着类似他们耳朵的美丽女孩。"
+      }
+    ],
+    "lookahead_paragraphs": [
+      {
+        "paragraph_id": "volume_01-c001-s003-p000211",
+        "paragraph_index": 210,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s003",
+        "scene_index": 3,
+        "text": "「汝问咱？」"
+      }
+    ]
+  },
+  "memory": {
+    "previous_chunk_summary": {
+      "chunk_id": "volume_01-r000013",
+      "summary": "罗伦斯在河边露宿时，发现女孩占据了货台并赤裸着身体缓缓站起，美丽得令人屏息。尽管她头上有动物耳朵，罗伦斯起初并未意识到其特殊之处。女孩突然发出狼嚎，令罗伦斯惊恐，误以为她是在召唤狼群。然而，女孩随后恢复平静，微笑着询问是否有酒，表明她并非真正的野兽，而是拥有动物特征的人类。罗伦斯意识到她并非普通女孩，而是与传说中神秘存在有关的人物。女孩的出现为罗伦斯的孤独旅途带来了意外的转折。",
+      "active_entities": [
+        "char_v2_000001",
+        "mystery_v2_000015"
+      ],
+      "open_questions": [
+        "女孩为何会出现在罗伦斯的货台上？",
+        "她头上的动物耳朵是否与传说中的神秘存在有关？",
+        "她发出的狼嚎是否具有特殊意义？",
+        "罗伦斯会如何应对这个神秘女孩？"
+      ],
+      "evidence_refs": [
+        "volume_01-c001-s003-p000186",
+        "volume_01-c001-s003-p000187",
+        "volume_01-c001-s003-p000192",
+        "volume_01-d000053",
+        "volume_01-d000054",
+        "volume_01-d000055"
+      ]
+    },
+    "global_summary": "本卷继续描绘罗伦斯作为一名旅行商人的孤独与对未来的迷茫。他离开村落，独自坐在马车上，咀嚼着村民送的蔬菜，继续向西出发。他羡慕农夫有同伴，而自己则是一个人踏上旅途。罗伦斯今年25岁，自12岁起跟随亲戚学习经商，18岁自立门户。他渴望拥有自己的商店，但现实充满挑战，如货款拖欠、缺乏资金和机会被大商人垄断。他仰望满月，感叹自己近来频繁思考未来，也开始怀念旅途上认识的人们，包括商人们、村民和旅馆女子。他意识到自己对陪伴的渴望增强，甚至开始幻想马儿能说话。旅行商人之间流传着马儿变成人类的传说，罗伦斯起初不信，但最近也开始怀疑其真实性。他后悔当初没有选择母马，因为有传言称母马更可能变成人类。在河边露宿时，罗伦斯发现有人捷足先登占据货台，那是一个美丽而安静的女孩，让他感到震惊且不忍心叫醒。这一发现为罗伦斯的孤独旅途带来了意外的转折，可能与马儿变成人类的传说有关。罗伦斯试图叫醒女孩，但她的反应迟缓，声音甜美，令他一时心神不宁。他试图用金钱问题让自己冷静，但女孩毫无起身之意。最终，罗伦斯抓住貂皮拉扯女孩，却发现她头上长着像小狗的耳朵，令他震惊。这一发现暗示女孩可能并非普通人，与传说中的神秘存在有关。女孩赤裸着身体缓缓站起，美丽得令人屏息，随后发出狼嚎，令罗伦斯误以为她是在召唤狼群。然而，她很快恢复平静，微笑着询问是否有酒，表明她并非真正的野兽，而是拥有动物特征的人类。罗伦斯意识到她可能与传说中的神秘存在有关，这一发现为他的孤独旅途带来了新的可能性。",
+    "candidate_entities": [
+      {
+        "entity_id": "char_v2_000001",
+        "entity_type": "character",
+        "display_name": "罗伦斯",
+        "aliases": [
+          "罗伦斯先生"
+        ],
+        "importance": "major",
+        "summary": "罗伦斯在河边决定露宿，他给马儿喂食并饮水，随后准备休息。他原本想喝酒，但因无人交谈而放弃，决定早睡。他用货台上的貂皮保暖，掀开麻布准备整理麦苗时，发现有人已经先他一步占据货台。罗伦斯感到震惊，不确定…",
+        "latest_seen_chunk_id": "volume_01-r000013",
+        "dialogue_count": 27
+      },
+      {
+        "entity_id": "mystery_v2_000015",
+        "entity_type": "mystery",
+        "display_name": "女孩",
+        "aliases": [
+          "女孩（动物耳朵）",
+          "神秘女孩",
+          "有耳朵的女孩"
+        ],
+        "importance": "major",
+        "summary": "一名神秘的女孩，出现在罗伦斯的马车上，睡得香甜，美丽而安静。她反应迟缓，声音甜美，但头上长着像小狗的耳朵，暗示她可能并非普通人。她赤裸着身体缓缓站起，美丽得令人屏息，随后发出狼嚎，令罗伦斯误以为她是…",
+        "latest_seen_chunk_id": "volume_01-r000013",
+        "dialogue_count": 8
+      },
+      {
+        "entity_id": "mystery_v2_000013",
+        "entity_type": "mystery",
+        "display_name": "马儿",
+        "aliases": [
+          "罗伦斯的马"
+        ],
+        "importance": "medium",
+        "summary": "罗伦斯的马是一匹强壮有力的公马，是他旅行的重要伙伴。罗伦斯开始幻想马儿能说话，并听说旅行商人之间流传着马儿变成人类的传说。他后悔当初没有选择母马，因为有传言称母马更可能变成人类。这匹马在罗伦斯的孤独…",
+        "latest_seen_chunk_id": "volume_01-r000010",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "mystery_v2_000008",
+        "entity_type": "mystery",
+        "display_name": "叶勒",
+        "aliases": [],
+        "importance": "medium",
+        "summary": "叶勒被村民认定为「赫萝」的继承者，因割下最后一束麦子而被追赶。他将被关在谷仓中，无法与罗伦斯交流，这使罗伦斯感到困扰。叶勒的处境表明他与丰收祭典的核心仪式有直接关联，可能揭示更多关于「赫萝」的传说。",
+        "latest_seen_chunk_id": "volume_01-r000009",
+        "dialogue_count": 2
+      },
+      {
+        "entity_id": "mystery_v2_000009",
+        "entity_type": "mystery",
+        "display_name": "赫萝",
+        "aliases": [
+          "赫萝（丰收之神）",
+          "丰收之神",
+          "狼",
+          "狼赫萝"
+        ],
+        "importance": "medium",
+        "summary": "『赫萝』被进一步揭示为丰收之神的化身，传说中它会进入割下最后一束麦子的人体内。村民的集体呼喊和仪式性行为表明，『赫萝』与丰收祭典有紧密联系，但其具体含义仍未明确。这一神秘存在可能在后续情节中揭示其真…",
+        "latest_seen_chunk_id": "volume_01-r000009",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "mystery_v2_000004",
+        "entity_type": "character",
+        "display_name": "骑士",
+        "aliases": [],
+        "importance": "medium",
+        "summary": "农夫与罗伦斯进行对话，回应其关于叶勒的询问，并提到叶勒雇用年轻人耕作，暗示今年的『赫萝』可能出自他们之中。农夫的对话透露出对地方农业和祭典的熟悉，但未表现出对教会或异教徒问题的直接态度。",
+        "latest_seen_chunk_id": "volume_01-r000007",
+        "dialogue_count": 7
+      },
+      {
+        "entity_id": "mystery_v2_000010",
+        "entity_type": "mystery",
+        "display_name": "亚伦多伯爵",
+        "aliases": [],
+        "importance": "medium",
+        "summary": "亚伦多伯爵是管理帕斯罗村一带的贵族，以亲自下田耕作为特点，并愿意赞助祭典。其行为可能影响地方与教会的关系，以及祭典的规模和性质。",
+        "latest_seen_chunk_id": "volume_01-r000007",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "mystery_v2_000003",
+        "entity_type": "mystery",
+        "display_name": "修道院的修道士",
+        "aliases": [
+          "修道士",
+          "修道院成员"
+        ],
+        "importance": "medium",
+        "summary": "一所偏僻修道院的居民，人数约二十多位，生活节俭且独立运作。他们不与民间商人往来，而是通过独自的通路调度物资。尽管罗伦斯对其商业潜力感到失望，但修道士的存在可能在后续情节中引发新的发展。",
+        "latest_seen_chunk_id": "volume_01-r000006",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "mystery_v2_000007",
+        "entity_type": "mystery",
+        "display_name": "异教徒",
+        "aliases": [
+          "异端徒",
+          "异教徒群体"
+        ],
+        "importance": "medium",
+        "summary": "被骑士提及的异教徒，据称在北边或东边出没，但骑士误认为该地的丰收祭典是异教徒活动。虽然罗伦斯指出这并非事实，但异教徒的存在仍可能在后续情节中引发冲突或调查。",
+        "latest_seen_chunk_id": "volume_01-r000006",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "mystery_v2_000004",
+        "entity_type": "mystery",
+        "display_name": "修道院的骑士",
+        "aliases": [
+          "银甲骑士",
+          "下级骑士",
+          "骑士"
+        ],
+        "importance": "medium",
+        "summary": "修道院的骑士出现在修道院附近，穿着银色盔甲，态度傲慢。他质疑罗伦斯的出现，并与罗伦斯展开对话。虽然被描述为下级骑士，但其行为显示出一定的自信和戒备，可能与修道院的特殊安排有关。修道院内还有另一名骑士…",
+        "latest_seen_chunk_id": "volume_01-r000005",
+        "dialogue_count": 14
+      },
+      {
+        "entity_id": "mystery_v2_000001",
+        "entity_type": "mystery",
+        "display_name": "叙述者",
+        "aliases": [
+          "我",
+          "他"
+        ],
+        "importance": "medium",
+        "summary": "本段的叙述者，具有非人类特征的暗示（如尾巴的存在），对村落文化有深刻观察，并流露出对北方故乡的怀念。其身份尚未明确，但对情节发展可能有重要影响。",
+        "latest_seen_chunk_id": "volume_01-r000001",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "mystery_v2_000002",
+        "entity_type": "mystery",
+        "display_name": "狼群",
+        "aliases": [
+          "狼",
+          "奔跑的狼"
+        ],
+        "importance": "medium",
+        "summary": "在段落结尾出现的‘成群无数的狼’，可能是比喻，也可能暗示真实事件。其出现为后续情节埋下伏笔，可能与村落文化或叙述者的身份有关。",
+        "latest_seen_chunk_id": "volume_01-r000001",
+        "dialogue_count": 0
+      }
+    ]
+  },
+  "rules": {
+    "speaker_statuses": [
+      "known",
+      "mystery",
+      "npc_group",
+      "review",
+      "unknown"
+    ],
+    "importance_levels": [
+      "minor",
+      "medium",
+      "major"
+    ],
+    "general_novel_only": true
+  },
+  "task_b_chunk_summary": {
+    "chunk_id": "volume_01-r000014",
+    "summary": "罗伦斯继续与神秘女孩对话，试图弄清她的身份。女孩在罗伦斯的马车上睡觉，被发现后表现出懒散和不以为意的态度。罗伦斯怀疑她可能是妖怪或恶魔，甚至摸出银短剑以防万一，但女孩只是大笑，否认自己是恶魔，并表现出对罗伦斯的质疑感到好笑。女孩拥有锐利的尖牙和非人类的耳朵，暗示她并非普通人。罗伦斯最终直接质问她是谁，但女孩尚未给出明确回答。两人之间的对话轮次表明罗伦斯对女孩的警惕和困惑，而女孩则显得轻松且自信。仍未解决的问题包括女孩的真实身份、她为何出现在罗伦斯的马车上，以及她是否与传说中的神秘存在有关。",
+    "active_entities": [
+      "char_v2_000001",
+      "mystery_v2_000015"
+    ],
+    "open_questions": [
+      "女孩的真实身份是什么？",
+      "她为何出现在罗伦斯的马车上？",
+      "她是否与传说中的神秘存在有关？"
+    ],
+    "evidence_refs": [
+      "volume_01-c001-s003-p000195",
+      "volume_01-c001-s003-p000197",
+      "volume_01-c001-s003-p000200",
+      "volume_01-c001-s003-p000204",
+      "volume_01-c001-s003-p000207",
+      "volume_01-c001-s003-p000208",
+      "volume_01-c001-s003-p000210",
+      "volume_01-d000056",
+      "volume_01-d000057",
+      "volume_01-d000058",
+      "volume_01-d000059",
+      "volume_01-d000060",
+      "volume_01-d000061",
+      "volume_01-d000062"
+    ]
+  },
+  "task_d_entity_discovery": {
+    "new_entities": [
+      {
+        "entity_type": "mystery",
+        "display_name": "女孩（动物耳朵）",
+        "aliases": [
+          "神秘女孩",
+          "有耳朵的女孩"
+        ],
+        "importance": "major",
+        "summary": "一名神秘的女孩，出现在罗伦斯的马车上，睡得香甜，美丽而安静。她反应迟缓，声音甜美，但头上长着像小狗的耳朵，暗示她可能并非普通人。她赤裸着身体缓缓站起，美丽得令人屏息，随后发出狼嚎，令罗伦斯误以为她是野兽。然而，她很快恢复平静，微笑着询问是否有酒，表明她并非真正的野兽，而是拥有动物特征的人类。她拥有锐利的尖牙和非人类的耳朵，暗示她并非普通人。罗伦斯怀疑她可能是妖怪或恶魔，甚至摸出银短剑以防万一，但女孩只是大笑，否认自己是恶魔，并表现出对罗伦斯的质疑感到好笑。两人之间的对话轮次表明罗伦斯对女孩的警惕和困惑，而女孩则显得轻松且自信。",
+        "evidence_refs": [
+          "volume_01-c001-s003-p000192",
+          "volume_01-c001-s003-p000193",
+          "volume_01-c001-s003-p000194",
+          "volume_01-c001-s003-p000195",
+          "volume_01-c001-s003-p000197",
+          "volume_01-c001-s003-p000200",
+          "volume_01-c001-s003-p000204",
+          "volume_01-c001-s003-p000207",
+          "volume_01-c001-s003-p000208",
+          "volume_01-c001-s003-p000210",
+          "volume_01-d000056",
+          "volume_01-d000057",
+          "volume_01-d000058",
+          "volume_01-d000059",
+          "volume_01-d000060",
+          "volume_01-d000061",
+          "volume_01-d000062"
+        ],
+        "dialogue_count_delta": 6
+      }
+    ],
+    "merge_candidates": []
+  },
+  "task_e_entity_update": {
+    "updates": [
+      {
+        "entity_id": "mystery_v2_000015",
+        "summary": "一名神秘的女孩，出现在罗伦斯的马车上，睡得香甜，美丽而安静。她反应迟缓，声音甜美，但头上长着像小狗的耳朵，暗示她可能并非普通人。她赤裸着身体缓缓站起，美丽得令人屏息，随后发出狼嚎，令罗伦斯误以为她是野兽。然而，她很快恢复平静，微笑着询问是否有酒，表明她并非真正的野兽，而是拥有动物特征的人类。她拥有锐利的尖牙和非人类的耳朵，暗示她并非普通人。罗伦斯怀疑她可能是妖怪或恶魔，甚至摸出银短剑以防万一，但女孩只是大笑，否认自己是恶魔，并表现出对罗伦斯的质疑感到好笑。两人之间的对话轮次表明罗伦斯对女孩的警惕和困惑，而女孩则显得轻松且自信。",
+        "importance": "major",
+        "dialogue_count_delta": 6,
+        "latest_seen_chunk_id": "volume_01-r000014",
+        "relationship_updates": [],
+        "evidence_refs": [
+          "volume_01-c001-s003-p000195",
+          "volume_01-c001-s003-p000197",
+          "volume_01-c001-s003-p000200",
+          "volume_01-c001-s003-p000204",
+          "volume_01-c001-s003-p000207",
+          "volume_01-c001-s003-p000208",
+          "volume_01-c001-s003-p000210",
+          "volume_01-d000056",
+          "volume_01-d000057",
+          "volume_01-d000058",
+          "volume_01-d000059",
+          "volume_01-d000060",
+          "volume_01-d000061",
+          "volume_01-d000062"
+        ]
+      },
+      {
+        "entity_id": "char_v2_000001",
+        "summary": "罗伦斯在河边决定露宿，他给马儿喂食并饮水，随后准备休息。他原本想喝酒，但因无人交谈而放弃，决定早睡。他用货台上的貂皮保暖，掀开麻布准备整理麦苗时，发现有人已经先他一步占据货台。罗伦斯感到震惊，不确定…他继续与神秘女孩对话，试图弄清她的身份。罗伦斯怀疑她可能是妖怪或恶魔，甚至摸出银短剑以防万一，但女孩只是大笑，否认自己是恶魔，并表现出对罗伦斯的质疑感到好笑。两人之间的对话轮次表明罗伦斯对女孩的警惕和困惑，而女孩则显得轻松且自信。",
+        "importance": "major",
+        "dialogue_count_delta": 3,
+        "latest_seen_chunk_id": "volume_01-r000014",
+        "relationship_updates": [],
+        "evidence_refs": [
+          "volume_01-c001-s003-p000195",
+          "volume_01-c001-s003-p000200",
+          "volume_01-c001-s003-p000207",
+          "volume_01-c001-s003-p000210",
+          "volume_01-d000056",
+          "volume_01-d000058",
+          "volume_01-d000060",
+          "volume_01-d000062"
+        ]
+      }
+    ]
+  },
+  "old_global_summary": "本卷继续描绘罗伦斯作为一名旅行商人的孤独与对未来的迷茫。他离开村落，独自坐在马车上，咀嚼着村民送的蔬菜，继续向西出发。他羡慕农夫有同伴，而自己则是一个人踏上旅途。罗伦斯今年25岁，自12岁起跟随亲戚学习经商，18岁自立门户。他渴望拥有自己的商店，但现实充满挑战，如货款拖欠、缺乏资金和机会被大商人垄断。他仰望满月，感叹自己近来频繁思考未来，也开始怀念旅途上认识的人们，包括商人们、村民和旅馆女子。他意识到自己对陪伴的渴望增强，甚至开始幻想马儿能说话。旅行商人之间流传着马儿变成人类的传说，罗伦斯起初不信，但最近也开始怀疑其真实性。他后悔当初没有选择母马，因为有传言称母马更可能变成人类。在河边露宿时，罗伦斯发现有人捷足先登占据货台，那是一个美丽而安静的女孩，让他感到震惊且不忍心叫醒。这一发现为罗伦斯的孤独旅途带来了意外的转折，可能与马儿变成人类的传说有关。罗伦斯试图叫醒女孩，但她的反应迟缓，声音甜美，令他一时心神不宁。他试图用金钱问题让自己冷静，但女孩毫无起身之意。最终，罗伦斯抓住貂皮拉扯女孩，却发现她头上长着像小狗的耳朵，令他震惊。这一发现暗示女孩可能并非普通人，与传说中的神秘存在有关。女孩赤裸着身体缓缓站起，美丽得令人屏息，随后发出狼嚎，令罗伦斯误以为她是在召唤狼群。然而，她很快恢复平静，微笑着询问是否有酒，表明她并非真正的野兽，而是拥有动物特征的人类。罗伦斯意识到她可能与传说中的神秘存在有关，这一发现为他的孤独旅途带来了新的可能性。"
+}
