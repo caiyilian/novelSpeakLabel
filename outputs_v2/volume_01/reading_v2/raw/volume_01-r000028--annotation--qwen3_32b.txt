@@ -1,0 +1,59 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000133",
+      "speaker_entity_id": "char_v2_000003",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "赫萝突然呻吟起来，她抱住左手臂，扑倒在貂皮上。"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000134",
+      "speaker_entity_id": "char_v2_000003",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "赫萝似乎无法用身体支撑住变得太大的手臂，她把那从肩膀上长出来的野兽前脚放在貂皮上，躺了下来。"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000135",
+      "speaker_entity_id": "char_v2_000003",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "赫萝仰头看着罗伦斯说。"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000136",
+      "speaker_entity_id": "char_v2_000004",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "罗伦斯回答不出来。他揉揉自己的眼睛好几次，还不停甩头，反复看着那只脚。"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    }
+  ],
+  "chunk_notes": "本 chunk 中的对话均来自已知角色：赫萝和罗伦斯。赫萝的三段对话均与其变身后的状态和反应有关，罗伦斯的回应则表现出困惑和震惊。无未知说话人或群体对话迹象。"
+}
+```

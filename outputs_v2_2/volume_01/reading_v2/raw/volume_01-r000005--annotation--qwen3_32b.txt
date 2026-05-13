@@ -1,0 +1,137 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000010",
+      "speaker_entity_id": "char_v2_000001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "前文提到罗伦斯拿出蜂蜜糖递给骑士，接着说「要不要来一颗？」"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000011",
+      "speaker_entity_id": "mystery_v2_000004",
+      "speaker_display": "骑士",
+      "speaker_status": "mystery",
+      "confidence": 0.9,
+      "evidence": [
+        "骑士是前文已出现的角色，且是被罗伦斯递糖的对象，因此应为回应者"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000012",
+      "speaker_entity_id": "char_v2_000001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "罗伦斯在前文刚刚递糖给骑士，接下来继续说明自己的行程"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000013",
+      "speaker_entity_id": "mystery_v2_000004",
+      "speaker_display": "骑士",
+      "speaker_status": "mystery",
+      "confidence": 0.9,
+      "evidence": [
+        "骑士在前文已出现，且是对话的另一方，因此应为提问者"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000014",
+      "speaker_entity_id": "char_v2_000001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "罗伦斯在前文刚刚回应骑士的问题，继续说明车上货物的内容"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000015",
+      "speaker_entity_id": "mystery_v2_000004",
+      "speaker_display": "骑士",
+      "speaker_status": "mystery",
+      "confidence": 0.9,
+      "evidence": [
+        "骑士在前文已出现，且是对话的另一方，因此应为提问者"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000016",
+      "speaker_entity_id": "char_v2_000001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "罗伦斯在前文刚刚回应骑士的问题，继续说明麦子的来源"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000017",
+      "speaker_entity_id": "mystery_v2_000004",
+      "speaker_display": "骑士",
+      "speaker_status": "mystery",
+      "confidence": 0.9,
+      "evidence": [
+        "骑士在前文已出现，且是对话的另一方，因此应为发令者"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000018",
+      "speaker_entity_id": "char_v2_000001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "罗伦斯在前文刚刚被骑士命令离开，此处为回应"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000019",
+      "speaker_entity_id": "mystery_v2_000004",
+      "speaker_display": "骑士",
+      "speaker_status": "mystery",
+      "confidence": 0.9,
+      "evidence": [
+        "骑士在前文已出现，且是对话的另一方，因此应为提问者"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    }
+  ],
+  "chunk_notes": "本段对话主要发生在罗伦斯与骑士之间，对话轮次清晰，角色身份明确。罗伦斯为已知主要角色，骑士为前文已出现的神秘角色，因此对话归属明确，无需进一步复核。"
+}
+```

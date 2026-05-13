@@ -1,0 +1,111 @@
+```json
+{
+  "updates": [
+    {
+      "entity_id": "char_v2_000003",
+      "summary": "赫萝继续挑衅罗伦斯，让他摸摸她的巨大前脚，以证明这不是幻觉。她表现出调皮和自夸的态度，试图让罗伦斯放松警惕。赫萝的言行表明她希望罗伦斯相信她，但又不愿完全暴露自己的真实身份。她自称是体型较大且聪明的狼，并强调自己是「贤狼赫萝」。",
+      "importance": "major",
+      "dialogue_count_delta": 5,
+      "latest_seen_chunk_id": "volume_01-r000030",
+      "relationship_updates": [
+        {
+          "target_entity_id": "char_v2_000004",
+          "relation": "interlocutor",
+          "evidence_ref": "volume_01-d000146"
+        },
+        {
+          "target_entity_id": "char_v2_000004",
+          "relation": "interlocutor",
+          "evidence_ref": "volume_01-d000147"
+        },
+        {
+          "target_entity_id": "char_v2_000004",
+          "relation": "interlocutor",
+          "evidence_ref": "volume_01-d000149"
+        },
+        {
+          "target_entity_id": "char_v2_000004",
+          "relation": "interlocutor",
+          "evidence_ref": "volume_01-d000150"
+        }
+      ],
+      "evidence_refs": [
+        "volume_01-c002-s005-p000427",
+        "volume_01-c002-s005-p000428",
+        "volume_01-c002-s005-p000429",
+        "volume_01-c002-s005-p000430",
+        "volume_01-c002-s005-p000431",
+        "volume_01-c002-s005-p000432",
+        "volume_01-c002-s005-p000433",
+        "volume_01-c002-s005-p000434",
+        "volume_01-c002-s005-p000435",
+        "volume_01-c002-s005-p000436",
+        "volume_01-c002-s005-p000437",
+        "volume_01-c002-s005-p000438",
+        "volume_01-c002-s005-p000439",
+        "volume_01-c002-s005-p000440",
+        "volume_01-c002-s005-p000441",
+        "volume_01-d000146",
+        "volume_01-d000147",
+        "volume_01-d000148",
+        "volume_01-d000149",
+        "volume_01-d000150"
+      ]
+    },
+    {
+      "entity_id": "char_v2_000004",
+      "summary": "罗伦斯对赫萝的非人类身份感到怀疑和不安。他粗鲁地触碰赫萝的前脚，试图确认这是否是幻觉。罗伦斯因触感真实而感到震惊，甚至怀疑赫萝是否是神。他的反应显示出他的疑虑和逐渐接受的矛盾心理。罗伦斯最终只能暧昧地点点头，仍未完全相信赫萝的解释。",
+      "importance": "major",
+      "dialogue_count_delta": 1,
+      "latest_seen_chunk_id": "volume_01-r000030",
+      "relationship_updates": [
+        {
+          "target_entity_id": "char_v2_000003",
+          "relation": "interlocutor",
+          "evidence_ref": "volume_01-d000148"
+        }
+      ],
+      "evidence_refs": [
+        "volume_01-c002-s005-p000427",
+        "volume_01-c002-s005-p000428",
+        "volume_01-c002-s005-p000429",
+        "volume_01-c002-s005-p000430",
+        "volume_01-c002-s005-p000431",
+        "volume_01-c002-s005-p000432",
+        "volume_01-c002-s005-p000433",
+        "volume_01-c002-s005-p000434",
+        "volume_01-c002-s005-p000435",
+        "volume_01-c002-s005-p000436",
+        "volume_01-c002-s005-p000437",
+        "volume_01-c002-s005-p000438",
+        "volume_01-c002-s005-p000439",
+        "volume_01-c002-s005-p000440",
+        "volume_01-c002-s005-p000441",
+        "volume_01-d000146",
+        "volume_01-d000147",
+        "volume_01-d000148",
+        "volume_01-d000149",
+        "volume_01-d000150"
+      ]
+    },
+    {
+      "entity_id": "mystery_v2_000018",
+      "summary": "赫萝自称是「约伊兹的贤狼」，并强调自己是唯一一位。这一称号与她的狼身份和北方背景相关，但其真实性尚未得到证实。罗伦斯对此表示怀疑，认为约伊兹可能只是传说中的地名。赫萝的自称进一步加深了她的神秘感，并为她的身份增添了新的层次。赫萝的自称表明她希望罗伦斯相信她的身份，但又不愿完全暴露自己的真实面目。",
+      "importance": "medium",
+      "dialogue_count_delta": 0,
+      "latest_seen_chunk_id": "volume_01-r000030",
+      "relationship_updates": [
+        {
+          "target_entity_id": "char_v2_000003",
+          "relation": "title",
+          "evidence_ref": "volume_01-d000149"
+        }
+      ],
+      "evidence_refs": [
+        "volume_01-c002-s005-p000437",
+        "volume_01-d000149"
+      ]
+    }
+  ]
+}
+```

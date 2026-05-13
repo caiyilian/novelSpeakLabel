@@ -1,0 +1,105 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000097",
+      "speaker_entity_id": "char_v2_000002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "对话中自称「咱」，并提到「狼耳朵及尾巴」，与赫萝的特征一致",
+        "前文提到赫萝「窝在貂皮底下」，说明说话者是赫萝"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000098",
+      "speaker_entity_id": "char_v2_000001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "对话内容为「不，不可能。」，符合罗伦斯对赫萝身份的质疑语气",
+        "前文提到「罗伦斯有些看呆了」，说明他正在思考赫萝的真伪"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000099",
+      "speaker_entity_id": "char_v2_000001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "对话内容为「你说你是赫萝，对吧？」，是罗伦斯对赫萝的直接提问",
+        "前文提到「罗伦斯往赫萝的方向望去」，说明他正在与赫萝对话"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000100",
+      "speaker_entity_id": "char_v2_000002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "对话内容为「嗯？」，是对罗伦斯提问的回应",
+        "前文提到「赫萝窝在貂皮底下」，说明说话者是赫萝"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000101",
+      "speaker_entity_id": "char_v2_000001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "对话内容为「你还说自己是狼。」，是罗伦斯继续质疑赫萝身份",
+        "对话轮次中罗伦斯与赫萝交替发言，符合说话顺序"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000102",
+      "speaker_entity_id": "char_v2_000002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "对话内容为「嗯。」，是对罗伦斯质疑的回应",
+        "赫萝在对话中持续回应罗伦斯的提问，符合说话顺序"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000103",
+      "speaker_entity_id": "char_v2_000001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "对话内容为「可是你身上只有狼耳朵和尾巴啊...」，是罗伦斯继续质疑赫萝的非人类身份",
+        "对话轮次中罗伦斯与赫萝交替发言，符合说话顺序"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    }
+  ],
+  "chunk_notes": "本 chunk 中对话主要发生在罗伦斯与赫萝之间，对话内容围绕赫萝的非人类身份展开。所有对话者均可明确对应已知角色，无需要标记为 review 或 mystery。"
+}
+```

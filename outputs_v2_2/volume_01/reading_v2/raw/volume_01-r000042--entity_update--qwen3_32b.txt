@@ -1,0 +1,68 @@
+```json
+{
+  "updates": [
+    {
+      "entity_id": "char_v2_000001",
+      "summary": "罗伦斯与初入行的旅行商人杰廉展开对话，表示自己刚入行时也对同行充满敬畏，并鼓励杰廉通过努力获得成功。他介绍赫萝是自己的妻子，并解释她性格古怪，更喜欢旅行而非居家生活。罗伦斯对杰廉的动机保持谨慎，但未表现出敌意。",
+      "importance": "major",
+      "dialogue_count_delta": 4,
+      "latest_seen_chunk_id": "volume_01-r000042",
+      "relationship_updates": [
+        {
+          "entity_id": "char_v2_000013",
+          "relation": "interacting_with",
+          "importance": "medium"
+        }
+      ],
+      "evidence_refs": [
+        "volume_01-c002-s002-p000633",
+        "volume_01-c002-s002-p000635",
+        "volume_01-c002-s002-p000640",
+        "volume_01-c002-s002-p000644"
+      ]
+    },
+    {
+      "entity_id": "char_v2_000002",
+      "summary": "赫萝在罗伦斯与杰廉的对话中点头回应杰廉的问候，但未直接参与对话。她依然完全隐藏身份，将头藏在外套下，表明她对非人类身份的谨慎。赫萝对罗伦斯与杰廉的互动保持观察，但未表现出敌意或兴趣。",
+      "importance": "major",
+      "dialogue_count_delta": 1,
+      "latest_seen_chunk_id": "volume_01-r000042",
+      "relationship_updates": [
+        {
+          "entity_id": "char_v2_000013",
+          "relation": "observed_by",
+          "importance": "medium"
+        }
+      ],
+      "evidence_refs": [
+        "volume_01-c002-s002-p000642"
+      ]
+    },
+    {
+      "entity_id": "char_v2_000013",
+      "summary": "杰廉是一名刚入行的旅行商人，主动向罗伦斯请教，并表现出对情报的渴望。他因缺了一颗门牙而显得稚气，但罗伦斯认为他不可小觑。杰廉的言行暗示他可能成为罗伦斯的潜在同行或对手。",
+      "importance": "medium",
+      "dialogue_count_delta": 4,
+      "latest_seen_chunk_id": "volume_01-r000042",
+      "relationship_updates": [
+        {
+          "entity_id": "char_v2_000001",
+          "relation": "interacting_with",
+          "importance": "medium"
+        },
+        {
+          "entity_id": "char_v2_000002",
+          "relation": "observed_by",
+          "importance": "medium"
+        }
+      ],
+      "evidence_refs": [
+        "volume_01-c002-s002-p000634",
+        "volume_01-c002-s002-p000638",
+        "volume_01-c002-s002-p000643",
+        "volume_01-c002-s002-p000645"
+      ]
+    }
+  ]
+}
+```

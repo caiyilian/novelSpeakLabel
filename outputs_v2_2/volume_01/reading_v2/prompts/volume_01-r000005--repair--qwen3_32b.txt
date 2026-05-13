@@ -1,0 +1,839 @@
+你是通用小说当前 chunk 回看补标助手。任务：只回看 unresolved_annotations 中的 dialogue，利用当前 chunk 摘要、更新后的长期摘要和实体记忆尝试修正。仍不能判断就保留 unknown 或 review。
+只返回 JSON，格式：{"repairs":[{"dialogue_id":"...","previous_speaker_entity_id":"...","new_speaker_entity_id":"...","speaker_display":"...","speaker_status":"known|mystery|npc_group|unknown|review","confidence":0.0,"reason":"...","stop_reason":"resolved|unchanged|needs_review"}]}
+输入 JSON：
+{
+  "volume": {
+    "volume_id": "volume_01",
+    "volume": 1,
+    "title": ""
+  },
+  "chunk": {
+    "chunk_id": "volume_01-r000005",
+    "chunk_index": 4,
+    "chapter_id": "volume_01-c001",
+    "chapter_title": "第一幕",
+    "scene_id": "volume_01-c001-s001",
+    "paragraphs": [
+      {
+        "paragraph_id": "volume_01-c001-s001-p000051",
+        "paragraph_index": 50,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s001",
+        "scene_index": 1,
+        "text": "罗伦斯没有马上回答，他从怀里拿出一只皮袋，缓缓解开绑住袋口的绳子，袋子里装着蜂蜜糖。罗伦斯拿出一颗放入口中，再把整袋蜂蜜糖递给骑士。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s001-p000052",
+        "paragraph_index": 51,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s001",
+        "scene_index": 1,
+        "text": "「要不要来一颗？」"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s001-p000053",
+        "paragraph_index": 52,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s001",
+        "scene_index": 1,
+        "text": "「呃……」"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s001-p000054",
+        "paragraph_index": 53,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s001",
+        "scene_index": 1,
+        "text": "虽然骑士瞬间露出迟疑的神情，但终究敌不过糖果的诱惑。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s001-p000055",
+        "paragraph_index": 54,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s001",
+        "scene_index": 1,
+        "text": "不过，身为骑士的自尊，让他从点头到伸手取糖花了不少时间。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s001-p000056",
+        "paragraph_index": 55,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s001",
+        "scene_index": 1,
+        "text": "「从这里往东边山头走上约半天的时间，就可以看到一座小村落。我是到那里卖盐回来的。」"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s001-p000057",
+        "paragraph_index": 56,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s001",
+        "scene_index": 1,
+        "text": "「原来如此。我看你车上还有货，是盐吗？」"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s001-p000058",
+        "paragraph_index": 57,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s001",
+        "scene_index": 1,
+        "text": "「不，这些是皮草。您瞧。」"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s001-p000059",
+        "paragraph_index": 58,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s001",
+        "scene_index": 1,
+        "text": "罗伦斯一边说，一边转向货台掀开覆盖的麻布。那是非常漂亮的貂皮。如果以眼前这位骑士的薪水来看，相信貂皮的价值比他的年薪还要高。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s001-p000060",
+        "paragraph_index": 59,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s001",
+        "scene_index": 1,
+        "text": "「喔，那这是什么？」"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s001-p000061",
+        "paragraph_index": 60,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s001",
+        "scene_index": 1,
+        "text": "「啊，这是山里的村民给我的麦子。」"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s001-p000062",
+        "paragraph_index": 61,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s001",
+        "scene_index": 1,
+        "text": "成束的麦子就放在貂皮堆旁边，那是罗伦斯前去卖盐的村落所种植的麦子。那里的麦子不但耐寒，也不容易被虫咬。去年西北方受到严重的寒害，罗伦斯打算把麦子拿到西北方去卖。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s001-p000063",
+        "paragraph_index": 62,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s001",
+        "scene_index": 1,
+        "text": "「嗯。好了，你可以走了。」"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s001-p000064",
+        "paragraph_index": 63,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s001",
+        "scene_index": 1,
+        "text": "自己把人叫来，现在又想随便打发我，如果乖乖说「是」的话，就不配当商人了。罗伦斯一边有意无意地把玩刚刚的皮袋，一边转回骑士的方向。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s001-p000065",
+        "paragraph_index": 64,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s001",
+        "scene_index": 1,
+        "text": "「发生什么事了吗？平常在这里应该见不到骑士吧？」"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s001-p000066",
+        "paragraph_index": 65,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s001",
+        "scene_index": 1,
+        "text": "年轻骑士可能是因为被询问而感到不悦，稍稍皱起眉头，再看到罗伦斯手中的皮袋，眉头皱得更深了。"
+      }
+    ],
+    "dialogues": [
+      {
+        "dialogue_id": "volume_01-d000010",
+        "dialogue_index": 9,
+        "paragraph_id": "volume_01-c001-s001-p000052",
+        "paragraph_index": 51,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "要不要来一颗？",
+        "quote_text": "「要不要来一颗？」",
+        "char_start": 0,
+        "char_end": 9
+      },
+      {
+        "dialogue_id": "volume_01-d000011",
+        "dialogue_index": 10,
+        "paragraph_id": "volume_01-c001-s001-p000053",
+        "paragraph_index": 52,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "呃……",
+        "quote_text": "「呃……」",
+        "char_start": 0,
+        "char_end": 5
+      },
+      {
+        "dialogue_id": "volume_01-d000012",
+        "dialogue_index": 11,
+        "paragraph_id": "volume_01-c001-s001-p000056",
+        "paragraph_index": 55,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "从这里往东边山头走上约半天的时间，就可以看到一座小村落。我是到那里卖盐回来的。",
+        "quote_text": "「从这里往东边山头走上约半天的时间，就可以看到一座小村落。我是到那里卖盐回来的。」",
+        "char_start": 0,
+        "char_end": 41
+      },
+      {
+        "dialogue_id": "volume_01-d000013",
+        "dialogue_index": 12,
+        "paragraph_id": "volume_01-c001-s001-p000057",
+        "paragraph_index": 56,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "原来如此。我看你车上还有货，是盐吗？",
+        "quote_text": "「原来如此。我看你车上还有货，是盐吗？」",
+        "char_start": 0,
+        "char_end": 20
+      },
+      {
+        "dialogue_id": "volume_01-d000014",
+        "dialogue_index": 13,
+        "paragraph_id": "volume_01-c001-s001-p000058",
+        "paragraph_index": 57,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "不，这些是皮草。您瞧。",
+        "quote_text": "「不，这些是皮草。您瞧。」",
+        "char_start": 0,
+        "char_end": 13
+      },
+      {
+        "dialogue_id": "volume_01-d000015",
+        "dialogue_index": 14,
+        "paragraph_id": "volume_01-c001-s001-p000060",
+        "paragraph_index": 59,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "喔，那这是什么？",
+        "quote_text": "「喔，那这是什么？」",
+        "char_start": 0,
+        "char_end": 10
+      },
+      {
+        "dialogue_id": "volume_01-d000016",
+        "dialogue_index": 15,
+        "paragraph_id": "volume_01-c001-s001-p000061",
+        "paragraph_index": 60,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "啊，这是山里的村民给我的麦子。",
+        "quote_text": "「啊，这是山里的村民给我的麦子。」",
+        "char_start": 0,
+        "char_end": 17
+      },
+      {
+        "dialogue_id": "volume_01-d000017",
+        "dialogue_index": 16,
+        "paragraph_id": "volume_01-c001-s001-p000063",
+        "paragraph_index": 62,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "嗯。好了，你可以走了。",
+        "quote_text": "「嗯。好了，你可以走了。」",
+        "char_start": 0,
+        "char_end": 13
+      },
+      {
+        "dialogue_id": "volume_01-d000018",
+        "dialogue_index": 17,
+        "paragraph_id": "volume_01-c001-s001-p000064",
+        "paragraph_index": 63,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "inline",
+        "text": "是",
+        "quote_text": "「是」",
+        "char_start": 22,
+        "char_end": 25
+      },
+      {
+        "dialogue_id": "volume_01-d000019",
+        "dialogue_index": 18,
+        "paragraph_id": "volume_01-c001-s001-p000065",
+        "paragraph_index": 64,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "发生什么事了吗？平常在这里应该见不到骑士吧？",
+        "quote_text": "「发生什么事了吗？平常在这里应该见不到骑士吧？」",
+        "char_start": 0,
+        "char_end": 24
+      }
+    ]
+  },
+  "near_context": {
+    "lookback_paragraphs": [
+      {
+        "paragraph_id": "volume_01-c001-s001-p000048",
+        "paragraph_index": 47,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s001",
+        "scene_index": 1,
+        "text": "「旅行商人？你来的方向应该没有任何城镇。」"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s001-p000049",
+        "paragraph_index": 48,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s001",
+        "scene_index": 1,
+        "text": "骑士骄傲地挺起刻有红色十字架的银制胸甲，态度蛮横地说道。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s001-p000050",
+        "paragraph_index": 49,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s001",
+        "scene_index": 1,
+        "text": "然而，骑士直接套在肩上的大衣同样是灰色，这代表他只是一名下级骑士。短短的金发似乎刚剃不久，体格也看不出身经百战的样子。或许是刚刚成为骑士，所以显得趾高气扬。面对这种人，必须从容应付，免得他们一下子就得意忘形。"
+      }
+    ],
+    "lookahead_paragraphs": [
+      {
+        "paragraph_id": "volume_01-c001-s001-p000067",
+        "paragraph_index": 66,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s001",
+        "scene_index": 1,
+        "text": "看来骑士似乎是上钩了。罗伦斯解开绳子，拿出一颗蜂蜜糖递给骑士。"
+      }
+    ]
+  },
+  "memory": {
+    "previous_chunk_summary": {
+      "chunk_id": "volume_01-r000004",
+      "summary": "罗伦斯在前往修道院的过程中，注意到有人挥手示意。起初他以为是修道院的仆人，但对方穿着银色盔甲，被确认为一名骑士。罗伦斯与骑士展开对话，骑士态度傲慢，质疑罗伦斯为何出现在没有城镇的区域。罗伦斯表明自己是旅行商人，试图缓和气氛。骑士虽为下级骑士，但态度强硬，暗示其身份与修道院有关。修道院内还有另一名骑士在站岗，显示修道院可能处于某种戒备状态。罗伦斯试图以蜂蜜糖缓和气氛，为后续互动铺垫。本段揭示了修道院与外界的隔绝状态，以及罗伦斯试图与修道院建立联系的意图。",
+      "active_entities": [
+        "char_v2_000001",
+        "mystery_v2_000003"
+      ],
+      "open_questions": [
+        "修道院为何派出骑士与罗伦斯接触？",
+        "骑士的戒备态度是否暗示修道院内部存在某种危机？",
+        "罗伦斯的蜂蜜糖是否能成功缓和骑士的态度？"
+      ],
+      "evidence_refs": [
+        "volume_01-c001-s001-p000035",
+        "volume_01-c001-s001-p000036",
+        "volume_01-c001-s001-p000037",
+        "volume_01-c001-s001-p000038",
+        "volume_01-c001-s001-p000039",
+        "volume_01-c001-s001-p000040",
+        "volume_01-c001-s001-p000041",
+        "volume_01-c001-s001-p000042",
+        "volume_01-c001-s001-p000043",
+        "volume_01-c001-s001-p000044",
+        "volume_01-c001-s001-p000045",
+        "volume_01-c001-s001-p000046",
+        "volume_01-c001-s001-p000047",
+        "volume_01-c001-s001-p000048",
+        "volume_01-c001-s001-p000049",
+        "volume_01-c001-s001-p000050"
+      ]
+    },
+    "global_summary": "本卷开篇描绘了一个村落中独特的文化现象：村民们将麦田与狼进行比喻。饱满摇曳的麦穗被形容为奔跑的狼，风吹倒麦穗则被比喻为狼的践踏，这些说法虽贴切但带有负面意味。如今，这些比喻已逐渐失去原有的严肃意义，变成一种玩笑性质的表达。文中提到，尽管秋天的天空和麦田的景象数百年不变，但村落的人事物已发生巨大变化。村民不再需要某种守护，暗示村落文化或社会结构的变化。叙述者似乎对北方故乡有所怀念，并流露出对当前处境的复杂情绪。叙述者专注于梳理尾巴的毛，暗示其可能具有非人类的特征。段落结尾提到‘成群无数的狼在麦田里奔跑’，为后续情节埋下伏笔。随后，罗伦斯在深山村落完成交易后，离开并途经草原的场景。对话中，罗伦斯与村民互动，确认交易物品数量为七十件，并表达对村民的感谢。村民则称赞罗伦斯愿意深入山区，罗伦斯也表示会再次光顾。离开村落五小时后，罗伦斯坐在马车上，穿越晴朗无风的草原，途中观察到远处的修道院。修道院虽建筑坚固、设施完善，但罗伦斯因无法与修道士做生意而感到失望。修道院的物资调度独立，且修道士生活节俭，罗伦斯认为与他们做生意可能无利可图，甚至可能带来风险。罗伦斯在前往修道院的过程中，注意到有人挥手示意。起初他以为是修道院的仆人，但对方穿着银色盔甲，被确认为一名骑士。罗伦斯与骑士展开对话，骑士态度傲慢，质疑罗伦斯为何出现在没有城镇的区域。罗伦斯表明自己是旅行商人，试图缓和气氛。骑士虽为下级骑士，但态度强硬，暗示其身份与修道院有关。修道院内还有另一名骑士在站岗，显示修道院可能处于某种戒备状态。罗伦斯试图以蜂蜜糖缓和气氛，为后续互动铺垫。本段揭示了修道院与外界的隔绝状态，以及罗伦斯试图与修道院建立联系的意图。",
+    "candidate_entities": [
+      {
+        "entity_id": "char_v2_000001",
+        "entity_type": "character",
+        "display_name": "罗伦斯",
+        "aliases": [
+          "罗伦斯先生"
+        ],
+        "importance": "major",
+        "summary": "罗伦斯在前往修道院的过程中，注意到有人挥手示意。起初他以为是修道院的仆人，但对方穿着银色盔甲，被确认为一名骑士。罗伦斯与骑士展开对话，骑士态度傲慢，质疑罗伦斯为何出现在没有城镇的区域。罗伦斯表明自己…",
+        "latest_seen_chunk_id": "volume_01-r000004",
+        "dialogue_count": 10
+      },
+      {
+        "entity_id": "mystery_v2_000004",
+        "entity_type": "mystery",
+        "display_name": "修道院的骑士",
+        "aliases": [
+          "银甲骑士",
+          "下级骑士"
+        ],
+        "importance": "medium",
+        "summary": "修道院的骑士出现在修道院附近，穿着银色盔甲，态度傲慢。他质疑罗伦斯的出现，并与罗伦斯展开对话。虽然被描述为下级骑士，但其行为显示出一定的自信和戒备，可能与修道院的特殊安排有关。修道院内还有另一名骑士…",
+        "latest_seen_chunk_id": "volume_01-r000004",
+        "dialogue_count": 4
+      },
+      {
+        "entity_id": "mystery_v2_000003",
+        "entity_type": "mystery",
+        "display_name": "修道院的修道士",
+        "aliases": [
+          "修道士",
+          "修道院成员"
+        ],
+        "importance": "medium",
+        "summary": "一所偏僻修道院的居民，人数约二十多位，生活节俭且独立运作。他们不与民间商人往来，而是通过独自的通路调度物资。尽管罗伦斯对其商业潜力感到失望，但修道士的存在可能在后续情节中引发新的发展。",
+        "latest_seen_chunk_id": "volume_01-r000003",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "mystery_v2_000001",
+        "entity_type": "mystery",
+        "display_name": "叙述者",
+        "aliases": [
+          "我",
+          "他"
+        ],
+        "importance": "medium",
+        "summary": "本段的叙述者，具有非人类特征的暗示（如尾巴的存在），对村落文化有深刻观察，并流露出对北方故乡的怀念。其身份尚未明确，但对情节发展可能有重要影响。",
+        "latest_seen_chunk_id": "volume_01-r000001",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "mystery_v2_000002",
+        "entity_type": "mystery",
+        "display_name": "狼群",
+        "aliases": [
+          "狼",
+          "奔跑的狼"
+        ],
+        "importance": "medium",
+        "summary": "在段落结尾出现的‘成群无数的狼’，可能是比喻，也可能暗示真实事件。其出现为后续情节埋下伏笔，可能与村落文化或叙述者的身份有关。",
+        "latest_seen_chunk_id": "volume_01-r000001",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "npc_group_v2_000002",
+        "entity_type": "npc_group",
+        "display_name": "深山村落的村民",
+        "aliases": [
+          "村民",
+          "深山居民"
+        ],
+        "importance": "minor",
+        "summary": "居住在深山中的普通村民，与罗伦斯进行交易。他们对罗伦斯的到访表示感激，并希望他能再次光顾。虽然未直接参与后续剧情，但他们的存在为罗伦斯的商业活动提供了背景。",
+        "latest_seen_chunk_id": "volume_01-r000003",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "npc_group_v2_000001",
+        "entity_type": "npc_group",
+        "display_name": "村民",
+        "aliases": [
+          "村民们",
+          "村落居民"
+        ],
+        "importance": "minor",
+        "summary": "村落中的普通居民，以种麦为生。他们使用狼与麦穗的比喻，但这些说法已逐渐失去严肃意义。村民不再需要某种守护，暗示村落文化或社会结构的变化。",
+        "latest_seen_chunk_id": "volume_01-r000001",
+        "dialogue_count": 0
+      }
+    ]
+  },
+  "rules": {
+    "speaker_statuses": [
+      "known",
+      "mystery",
+      "npc_group",
+      "review",
+      "unknown"
+    ],
+    "importance_levels": [
+      "minor",
+      "medium",
+      "major"
+    ],
+    "general_novel_only": true
+  },
+  "task_a_annotations": [
+    {
+      "dialogue_id": "volume_01-d000010",
+      "dialogue_index": 9,
+      "text": "要不要来一颗？",
+      "speaker_entity_id": "char_v2_000001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "前文提到罗伦斯拿出蜂蜜糖递给骑士，接着说「要不要来一颗？」"
+      ],
+      "needs_review": false,
+      "review_reason": ""
+    },
+    {
+      "dialogue_id": "volume_01-d000011",
+      "dialogue_index": 10,
+      "text": "呃……",
+      "speaker_entity_id": "mystery_v2_000004",
+      "speaker_display": "骑士",
+      "speaker_status": "mystery",
+      "confidence": 0.9,
+      "evidence": [
+        "骑士是前文已出现的角色，且是被罗伦斯递糖的对象，因此应为回应者"
+      ],
+      "needs_review": false,
+      "review_reason": ""
+    },
+    {
+      "dialogue_id": "volume_01-d000012",
+      "dialogue_index": 11,
+      "text": "从这里往东边山头走上约半天的时间，就可以看到一座小村落。我是到那里卖盐回来的。",
+      "speaker_entity_id": "char_v2_000001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "罗伦斯在前文刚刚递糖给骑士，接下来继续说明自己的行程"
+      ],
+      "needs_review": false,
+      "review_reason": ""
+    },
+    {
+      "dialogue_id": "volume_01-d000013",
+      "dialogue_index": 12,
+      "text": "原来如此。我看你车上还有货，是盐吗？",
+      "speaker_entity_id": "mystery_v2_000004",
+      "speaker_display": "骑士",
+      "speaker_status": "mystery",
+      "confidence": 0.9,
+      "evidence": [
+        "骑士在前文已出现，且是对话的另一方，因此应为提问者"
+      ],
+      "needs_review": false,
+      "review_reason": ""
+    },
+    {
+      "dialogue_id": "volume_01-d000014",
+      "dialogue_index": 13,
+      "text": "不，这些是皮草。您瞧。",
+      "speaker_entity_id": "char_v2_000001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "罗伦斯在前文刚刚回应骑士的问题，继续说明车上货物的内容"
+      ],
+      "needs_review": false,
+      "review_reason": ""
+    },
+    {
+      "dialogue_id": "volume_01-d000015",
+      "dialogue_index": 14,
+      "text": "喔，那这是什么？",
+      "speaker_entity_id": "mystery_v2_000004",
+      "speaker_display": "骑士",
+      "speaker_status": "mystery",
+      "confidence": 0.9,
+      "evidence": [
+        "骑士在前文已出现，且是对话的另一方，因此应为提问者"
+      ],
+      "needs_review": false,
+      "review_reason": ""
+    },
+    {
+      "dialogue_id": "volume_01-d000016",
+      "dialogue_index": 15,
+      "text": "啊，这是山里的村民给我的麦子。",
+      "speaker_entity_id": "char_v2_000001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "罗伦斯在前文刚刚回应骑士的问题，继续说明麦子的来源"
+      ],
+      "needs_review": false,
+      "review_reason": ""
+    },
+    {
+      "dialogue_id": "volume_01-d000017",
+      "dialogue_index": 16,
+      "text": "嗯。好了，你可以走了。",
+      "speaker_entity_id": "mystery_v2_000004",
+      "speaker_display": "骑士",
+      "speaker_status": "mystery",
+      "confidence": 0.9,
+      "evidence": [
+        "骑士在前文已出现，且是对话的另一方，因此应为发令者"
+      ],
+      "needs_review": false,
+      "review_reason": ""
+    },
+    {
+      "dialogue_id": "volume_01-d000018",
+      "dialogue_index": 17,
+      "text": "是",
+      "speaker_entity_id": "char_v2_000001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "罗伦斯在前文刚刚被骑士命令离开，此处为回应"
+      ],
+      "needs_review": false,
+      "review_reason": ""
+    },
+    {
+      "dialogue_id": "volume_01-d000019",
+      "dialogue_index": 18,
+      "text": "发生什么事了吗？平常在这里应该见不到骑士吧？",
+      "speaker_entity_id": "mystery_v2_000004",
+      "speaker_display": "骑士",
+      "speaker_status": "mystery",
+      "confidence": 0.9,
+      "evidence": [
+        "骑士在前文已出现，且是对话的另一方，因此应为提问者"
+      ],
+      "needs_review": false,
+      "review_reason": ""
+    }
+  ],
+  "task_b_chunk_summary": {
+    "chunk_id": "volume_01-r000005",
+    "summary": "罗伦斯与骑士的对话继续展开。罗伦斯递出蜂蜜糖缓和气氛，骑士虽然迟疑但最终接受。罗伦斯解释自己是从东边山头的小村落卖盐回来，并掀开麻布展示价值高昂的貂皮。骑士继续询问车上货物，罗伦斯说明皮草和麦子的来源，麦子是耐寒且抗虫的品种，计划运往受寒害影响的西北方。骑士随后命令罗伦斯离开，但罗伦斯以商人身份坚持继续对话，并反问骑士为何出现在此地。骑士的反应显示其态度仍带有戒备，但罗伦斯的策略似乎开始奏效。本段揭示了罗伦斯的商业路线和货物价值，以及骑士的职责和可能的异常任务。",
+    "active_entities": [
+      "char_v2_000001",
+      "mystery_v2_000004"
+    ],
+    "open_questions": [
+      "骑士为何出现在偏远地区？",
+      "罗伦斯的麦子是否真的能帮助西北方的灾情？",
+      "骑士的戒备是否与修道院的异常有关？"
+    ],
+    "evidence_refs": [
+      "volume_01-c001-s001-p000051",
+      "volume_01-c001-s001-p000052",
+      "volume_01-c001-s001-p000053",
+      "volume_01-c001-s001-p000054",
+      "volume_01-c001-s001-p000055",
+      "volume_01-c001-s001-p000056",
+      "volume_01-c001-s001-p000057",
+      "volume_01-c001-s001-p000058",
+      "volume_01-c001-s001-p000059",
+      "volume_01-c001-s001-p000060",
+      "volume_01-c001-s001-p000061",
+      "volume_01-c001-s001-p000062",
+      "volume_01-c001-s001-p000063",
+      "volume_01-c001-s001-p000064",
+      "volume_01-c001-s001-p000065"
+    ]
+  },
+  "updated_global_summary": "本卷开篇描绘了一个村落中独特的文化现象：村民们将麦田与狼进行比喻。饱满摇曳的麦穗被形容为奔跑的狼，风吹倒麦穗则被比喻为狼的践踏，这些说法虽贴切但带有负面意味。如今，这些比喻已逐渐失去原有的严肃意义，变成一种玩笑性质的表达。文中提到，尽管秋天的天空和麦田的景象数百年不变，但村落的人事物已发生巨大变化。村民不再需要某种守护，暗示村落文化或社会结构的变化。叙述者似乎对北方故乡有所怀念，并流露出对当前处境的复杂情绪。叙述者专注于梳理尾巴的毛，暗示其可能具有非人类的特征。段落结尾提到‘成群无数的狼在麦田里奔跑’，为后续情节埋下伏笔。随后，罗伦斯在深山村落完成交易后，离开并途经草原的场景。对话中，罗伦斯与村民互动，确认交易物品数量为七十件，并表达对村民的感谢。村民则称赞罗伦斯愿意深入山区，罗伦斯也表示会再次光顾。离开村落五小时后，罗伦斯坐在马车上，穿越晴朗无风的草原，途中观察到远处的修道院。修道院虽建筑坚固、设施完善，但罗伦斯因无法与修道士做生意而感到失望。修道院的物资调度独立，且修道士生活节俭，罗伦斯认为与他们做生意可能无利可图，甚至可能带来风险。罗伦斯在前往修道院的过程中，注意到有人挥手示意。起初他以为是修道院的仆人，但对方穿着银色盔甲，被确认为一名骑士。罗伦斯与骑士展开对话，骑士态度傲慢，质疑罗伦斯为何出现在没有城镇的区域。罗伦斯表明自己是旅行商人，试图缓和气氛。骑士虽为下级骑士，但态度强硬，暗示其身份与修道院有关。修道院内还有另一名骑士在站岗，显示修道院可能处于某种戒备状态。罗伦斯试图以蜂蜜糖缓和气氛，为后续互动铺垫。本段揭示了修道院与外界的隔绝状态，以及罗伦斯试图与修道院建立联系的意图。罗伦斯与骑士的对话继续展开。罗伦斯递出蜂蜜糖缓和气氛，骑士虽然迟疑但最终接受。罗伦斯解释自己是从东边山头的小村落卖盐回来，并掀开麻布展示价值高昂的貂皮。骑士继续询问车上货物，罗伦斯说明皮草和麦子的来源，麦子是耐寒且抗虫的品种，计划运往受寒害影响的西北方。骑士随后命令罗伦斯离开，但罗伦斯以商人身份坚持继续对话，并反问骑士为何出现在此地。骑士的反应显示其态度仍带有戒备，但罗伦斯的策略似乎开始…",
+  "updated_entity_memory": [
+    {
+      "entity_id": "char_v2_000001",
+      "entity_type": "character",
+      "display_name": "罗伦斯",
+      "aliases": [
+        "罗伦斯先生"
+      ],
+      "importance": "major",
+      "summary": "罗伦斯是一位旅行商人，擅长与各类人物交涉。他通过递出蜂蜜糖缓和骑士的戒备，展示貂皮和麦子等高价值货物，并试图与骑士建立联系。他表现出冷静、机智和商业头脑，是推动情节发展的核心人物。",
+      "latest_seen_chunk_id": "volume_01-r000005",
+      "dialogue_count": 20
+    },
+    {
+      "entity_id": "mystery_v2_000004",
+      "entity_type": "mystery",
+      "display_name": "修道院的骑士",
+      "aliases": [
+        "银甲骑士",
+        "下级骑士",
+        "骑士"
+      ],
+      "importance": "medium",
+      "summary": "修道院的骑士出现在修道院附近，穿着银色盔甲，态度傲慢。他质疑罗伦斯的出现，并与罗伦斯展开对话。虽然被描述为下级骑士，但其行为显示出一定的自信和戒备，可能与修道院的特殊安排有关。修道院内还有另一名骑士…",
+      "latest_seen_chunk_id": "volume_01-r000005",
+      "dialogue_count": 14
+    },
+    {
+      "entity_id": "mystery_v2_000003",
+      "entity_type": "mystery",
+      "display_name": "修道院的修道士",
+      "aliases": [
+        "修道士",
+        "修道院成员"
+      ],
+      "importance": "medium",
+      "summary": "一所偏僻修道院的居民，人数约二十多位，生活节俭且独立运作。他们不与民间商人往来，而是通过独自的通路调度物资。尽管罗伦斯对其商业潜力感到失望，但修道士的存在可能在后续情节中引发新的发展。",
+      "latest_seen_chunk_id": "volume_01-r000003",
+      "dialogue_count": 0
+    },
+    {
+      "entity_id": "mystery_v2_000001",
+      "entity_type": "mystery",
+      "display_name": "叙述者",
+      "aliases": [
+        "我",
+        "他"
+      ],
+      "importance": "medium",
+      "summary": "本段的叙述者，具有非人类特征的暗示（如尾巴的存在），对村落文化有深刻观察，并流露出对北方故乡的怀念。其身份尚未明确，但对情节发展可能有重要影响。",
+      "latest_seen_chunk_id": "volume_01-r000001",
+      "dialogue_count": 0
+    },
+    {
+      "entity_id": "mystery_v2_000002",
+      "entity_type": "mystery",
+      "display_name": "狼群",
+      "aliases": [
+        "狼",
+        "奔跑的狼"
+      ],
+      "importance": "medium",
+      "summary": "在段落结尾出现的‘成群无数的狼’，可能是比喻，也可能暗示真实事件。其出现为后续情节埋下伏笔，可能与村落文化或叙述者的身份有关。",
+      "latest_seen_chunk_id": "volume_01-r000001",
+      "dialogue_count": 0
+    },
+    {
+      "entity_id": "mystery_v2_000006",
+      "entity_type": "mystery",
+      "display_name": "深山村落的村民",
+      "aliases": [
+        "村民",
+        "山里居民"
+      ],
+      "importance": "minor",
+      "summary": "居住在东边山头的小村落居民，种植耐寒且抗虫的麦子，并与罗伦斯进行交易。他们赠予罗伦斯麦子，作为其商业路线的一部分。虽然未直接参与当前对话，但他们的存在为罗伦斯的货物来源提供了背景。",
+      "latest_seen_chunk_id": "volume_01-r000005",
+      "dialogue_count": 0
+    },
+    {
+      "entity_id": "npc_group_v2_000002",
+      "entity_type": "npc_group",
+      "display_name": "深山村落的村民",
+      "aliases": [
+        "村民",
+        "深山居民"
+      ],
+      "importance": "minor",
+      "summary": "居住在深山中的普通村民，与罗伦斯进行交易。他们对罗伦斯的到访表示感激，并希望他能再次光顾。虽然未直接参与后续剧情，但他们的存在为罗伦斯的商业活动提供了背景。",
+      "latest_seen_chunk_id": "volume_01-r000003",
+      "dialogue_count": 0
+    },
+    {
+      "entity_id": "npc_group_v2_000001",
+      "entity_type": "npc_group",
+      "display_name": "村民",
+      "aliases": [
+        "村民们",
+        "村落居民"
+      ],
+      "importance": "minor",
+      "summary": "村落中的普通居民，以种麦为生。他们使用狼与麦穗的比喻，但这些说法已逐渐失去严肃意义。村民不再需要某种守护，暗示村落文化或社会结构的变化。",
+      "latest_seen_chunk_id": "volume_01-r000001",
+      "dialogue_count": 0
+    }
+  ],
+  "unresolved_annotations": [
+    {
+      "dialogue_id": "volume_01-d000011",
+      "dialogue_index": 10,
+      "text": "呃……",
+      "speaker_entity_id": "mystery_v2_000004",
+      "speaker_display": "骑士",
+      "speaker_status": "mystery",
+      "confidence": 0.9,
+      "evidence": [
+        "骑士是前文已出现的角色，且是被罗伦斯递糖的对象，因此应为回应者"
+      ],
+      "needs_review": false,
+      "review_reason": ""
+    },
+    {
+      "dialogue_id": "volume_01-d000013",
+      "dialogue_index": 12,
+      "text": "原来如此。我看你车上还有货，是盐吗？",
+      "speaker_entity_id": "mystery_v2_000004",
+      "speaker_display": "骑士",
+      "speaker_status": "mystery",
+      "confidence": 0.9,
+      "evidence": [
+        "骑士在前文已出现，且是对话的另一方，因此应为提问者"
+      ],
+      "needs_review": false,
+      "review_reason": ""
+    },
+    {
+      "dialogue_id": "volume_01-d000015",
+      "dialogue_index": 14,
+      "text": "喔，那这是什么？",
+      "speaker_entity_id": "mystery_v2_000004",
+      "speaker_display": "骑士",
+      "speaker_status": "mystery",
+      "confidence": 0.9,
+      "evidence": [
+        "骑士在前文已出现，且是对话的另一方，因此应为提问者"
+      ],
+      "needs_review": false,
+      "review_reason": ""
+    },
+    {
+      "dialogue_id": "volume_01-d000017",
+      "dialogue_index": 16,
+      "text": "嗯。好了，你可以走了。",
+      "speaker_entity_id": "mystery_v2_000004",
+      "speaker_display": "骑士",
+      "speaker_status": "mystery",
+      "confidence": 0.9,
+      "evidence": [
+        "骑士在前文已出现，且是对话的另一方，因此应为发令者"
+      ],
+      "needs_review": false,
+      "review_reason": ""
+    },
+    {
+      "dialogue_id": "volume_01-d000019",
+      "dialogue_index": 18,
+      "text": "发生什么事了吗？平常在这里应该见不到骑士吧？",
+      "speaker_entity_id": "mystery_v2_000004",
+      "speaker_display": "骑士",
+      "speaker_status": "mystery",
+      "confidence": 0.9,
+      "evidence": [
+        "骑士在前文已出现，且是对话的另一方，因此应为提问者"
+      ],
+      "needs_review": false,
+      "review_reason": ""
+    }
+  ]
+}

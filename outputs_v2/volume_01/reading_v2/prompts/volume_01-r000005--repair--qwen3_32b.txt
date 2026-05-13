@@ -1,0 +1,475 @@
+你是通用小说当前 chunk 回看补标助手。任务：只回看 unresolved_annotations 中的 dialogue，利用当前 chunk 摘要、更新后的长期摘要和实体记忆尝试修正。仍不能判断就保留 unknown 或 review。
+只返回 JSON，格式：{"repairs":[{"dialogue_id":"...","previous_speaker_entity_id":"...","new_speaker_entity_id":"...","speaker_display":"...","speaker_status":"known|mystery|npc_group|unknown|review","confidence":0.0,"reason":"...","stop_reason":"resolved|unchanged|needs_review"}]}
+输入 JSON：
+{
+  "volume": {
+    "volume_id": "volume_01",
+    "volume": 1,
+    "title": ""
+  },
+  "chunk": {
+    "chunk_id": "volume_01-r000005",
+    "chunk_index": 4,
+    "chapter_id": "volume_01-c000",
+    "chapter_title": "front_matter",
+    "scene_id": "volume_01-c000-s004",
+    "paragraphs": [
+      {
+        "paragraph_id": "volume_01-c000-s004-p000043",
+        "paragraph_index": 42,
+        "chapter_id": "volume_01-c000",
+        "chapter_index": 0,
+        "chapter_title": "front_matter",
+        "scene_id": "volume_01-c000-s004",
+        "scene_index": 4,
+        "text": "目录"
+      },
+      {
+        "paragraph_id": "volume_01-c000-s004-p000044",
+        "paragraph_index": 43,
+        "chapter_id": "volume_01-c000",
+        "chapter_index": 0,
+        "chapter_title": "front_matter",
+        "scene_id": "volume_01-c000-s004",
+        "scene_index": 4,
+        "text": "Contents"
+      },
+      {
+        "paragraph_id": "volume_01-c000-s004-p000045",
+        "paragraph_index": 44,
+        "chapter_id": "volume_01-c000",
+        "chapter_index": 0,
+        "chapter_title": "front_matter",
+        "scene_id": "volume_01-c000-s004",
+        "scene_index": 4,
+        "text": "───序幕───"
+      },
+      {
+        "paragraph_id": "volume_01-c000-s004-p000046",
+        "paragraph_index": 45,
+        "chapter_id": "volume_01-c000",
+        "chapter_index": 0,
+        "chapter_title": "front_matter",
+        "scene_id": "volume_01-c000-s004",
+        "scene_index": 4,
+        "text": "───第一幕───"
+      },
+      {
+        "paragraph_id": "volume_01-c000-s004-p000047",
+        "paragraph_index": 46,
+        "chapter_id": "volume_01-c000",
+        "chapter_index": 0,
+        "chapter_title": "front_matter",
+        "scene_id": "volume_01-c000-s004",
+        "scene_index": 4,
+        "text": "───第二幕───"
+      },
+      {
+        "paragraph_id": "volume_01-c000-s004-p000048",
+        "paragraph_index": 47,
+        "chapter_id": "volume_01-c000",
+        "chapter_index": 0,
+        "chapter_title": "front_matter",
+        "scene_id": "volume_01-c000-s004",
+        "scene_index": 4,
+        "text": "───第三幕───"
+      },
+      {
+        "paragraph_id": "volume_01-c000-s004-p000049",
+        "paragraph_index": 48,
+        "chapter_id": "volume_01-c000",
+        "chapter_index": 0,
+        "chapter_title": "front_matter",
+        "scene_id": "volume_01-c000-s004",
+        "scene_index": 4,
+        "text": "───第四幕───"
+      },
+      {
+        "paragraph_id": "volume_01-c000-s004-p000050",
+        "paragraph_index": 49,
+        "chapter_id": "volume_01-c000",
+        "chapter_index": 0,
+        "chapter_title": "front_matter",
+        "scene_id": "volume_01-c000-s004",
+        "scene_index": 4,
+        "text": "───第五幕───"
+      },
+      {
+        "paragraph_id": "volume_01-c000-s004-p000051",
+        "paragraph_index": 50,
+        "chapter_id": "volume_01-c000",
+        "chapter_index": 0,
+        "chapter_title": "front_matter",
+        "scene_id": "volume_01-c000-s004",
+        "scene_index": 4,
+        "text": "───第六幕───"
+      },
+      {
+        "paragraph_id": "volume_01-c000-s004-p000052",
+        "paragraph_index": 51,
+        "chapter_id": "volume_01-c000",
+        "chapter_index": 0,
+        "chapter_title": "front_matter",
+        "scene_id": "volume_01-c000-s004",
+        "scene_index": 4,
+        "text": "───终幕───"
+      },
+      {
+        "paragraph_id": "volume_01-c000-s004-p000053",
+        "paragraph_index": 52,
+        "chapter_id": "volume_01-c000",
+        "chapter_index": 0,
+        "chapter_title": "front_matter",
+        "scene_id": "volume_01-c000-s004",
+        "scene_index": 4,
+        "text": "插图"
+      }
+    ],
+    "dialogues": []
+  },
+  "near_context": {
+    "lookback_paragraphs": [
+      {
+        "paragraph_id": "volume_01-c000-s003-p000040",
+        "paragraph_index": 39,
+        "chapter_id": "volume_01-c000",
+        "chapter_index": 0,
+        "chapter_title": "front_matter",
+        "scene_id": "volume_01-c000-s003",
+        "scene_index": 3,
+        "text": "插图"
+      },
+      {
+        "paragraph_id": "volume_01-c000-s003-p000041",
+        "paragraph_index": 40,
+        "chapter_id": "volume_01-c000",
+        "chapter_index": 0,
+        "chapter_title": "front_matter",
+        "scene_id": "volume_01-c000-s003",
+        "scene_index": 3,
+        "text": "插图"
+      },
+      {
+        "paragraph_id": "volume_01-c000-s003-p000042",
+        "paragraph_index": 41,
+        "chapter_id": "volume_01-c000",
+        "chapter_index": 0,
+        "chapter_title": "front_matter",
+        "scene_id": "volume_01-c000-s003",
+        "scene_index": 3,
+        "text": "插图"
+      }
+    ],
+    "lookahead_paragraphs": [
+      {
+        "paragraph_id": "volume_01-c001-s001-p000054",
+        "paragraph_index": 53,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "序幕",
+        "scene_id": "volume_01-c001-s001",
+        "scene_index": 1,
+        "text": "序幕"
+      }
+    ]
+  },
+  "memory": {
+    "previous_chunk_summary": {
+      "chunk_id": "volume_01-r000004",
+      "summary": "本 chunk 描述了行商人罗伦斯在马车货台上的麦束堆里发现了一个自称是丰收之神赫萝的美丽少女。赫萝拥有狼的耳朵和尾巴，并在对话中自称「咱是赫萝」。尽管罗伦斯对赫萝的身份存疑，但仍然决定让她一同旅行。不久后，他们遇到了一个发财机会，据说某种银币将在未来升值，罗伦斯决定尝试投资，但结果尚未揭晓。本 chunk 引入了主要人物罗伦斯和赫萝，并初步建立了他们之间的关系，同时埋下了一个关于银币投资的悬念。",
+      "active_entities": [
+        "char_v2_000003"
+      ],
+      "open_questions": [
+        "赫萝是否真的是丰收之神？",
+        "罗伦斯对银币的投资是否成功？",
+        "赫萝的狼耳和尾巴是否具有特殊意义？"
+      ],
+      "evidence_refs": [
+        "volume_01-c000-s003-p000031",
+        "volume_01-c000-s003-p000032",
+        "volume_01-c000-s003-p000033",
+        "volume_01-c000-s003-p000034",
+        "volume_01-c000-s003-p000035",
+        "volume_01-c000-s003-p000036",
+        "volume_01-c000-s003-p000037"
+      ]
+    },
+    "global_summary": "本卷包含小说的封面、标题页、制作信息页以及故事的开端。标题页上出现了英文短语 'Merchant meats spicy wolf.'，随后是中文词汇 '狼'、'与'、'辛'、'香'、'料' 和 'Ⅰ'，可能暗示小说的标题或主题。作者信息显示为 '支仓冻砂'（Isuna Hasekura），插画师为 '文仓十'（Jyuu Ayakura）。制作信息页补充了图源 'linpop'、录入者 '会灰的鸟弹' 以及发布网站 '天使动漫'（www.tsdm39.net），并注明了仅供个人学习交流、禁止商业用途、下载后需在24小时内删除，并要求尊重翻译、扫图、录入、校对的辛勤劳动，转载请保留信息。故事开端描述了行商人罗伦斯在马车货台上的麦束堆里发现了一个自称是丰收之神赫萝的美丽少女。赫萝拥有狼的耳朵和尾巴，并在对话中自称「咱是赫萝」。尽管罗伦斯对赫萝的身份存疑，但仍然决定让她一同旅行。不久后，他们遇到了一个发财机会，据说某种银币将在未来升值，罗伦斯决定尝试投资，但结果尚未揭晓。本卷初步建立了罗伦斯与赫萝之间的关系，并埋下了一个关于银币投资的悬念。",
+    "candidate_entities": [
+      {
+        "entity_id": "char_v2_000003",
+        "entity_type": "character",
+        "display_name": "赫萝",
+        "aliases": [],
+        "importance": "major",
+        "summary": "自称是丰收之神的美丽少女，拥有狼的耳朵和尾巴，与罗伦斯一同旅行。",
+        "latest_seen_chunk_id": "volume_01-r000004",
+        "dialogue_count": 3
+      },
+      {
+        "entity_id": "char_v2_000001",
+        "entity_type": "character",
+        "display_name": "支仓冻砂",
+        "aliases": [
+          "Isuna Hasekura"
+        ],
+        "importance": "major",
+        "summary": "小说的作者，出现在制作信息页的作者信息中。",
+        "latest_seen_chunk_id": "volume_01-r000003",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "char_v2_000002",
+        "entity_type": "character",
+        "display_name": "文仓十",
+        "aliases": [
+          "Jyuu Ayakura"
+        ],
+        "importance": "major",
+        "summary": "小说的插画师，出现在制作信息页的插画师信息中。",
+        "latest_seen_chunk_id": "volume_01-r000003",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "mystery_v2_000002",
+        "entity_type": "mystery",
+        "display_name": "linpop",
+        "aliases": [],
+        "importance": "medium",
+        "summary": "小说的图源提供者，出现在制作信息页中。",
+        "latest_seen_chunk_id": "volume_01-r000003",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "mystery_v2_000003",
+        "entity_type": "mystery",
+        "display_name": "会灰的鸟弹",
+        "aliases": [],
+        "importance": "medium",
+        "summary": "小说的录入者，出现在制作信息页中。",
+        "latest_seen_chunk_id": "volume_01-r000003",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "mystery_v2_000004",
+        "entity_type": "mystery",
+        "display_name": "天使动漫",
+        "aliases": [
+          "www.tsdm39.net"
+        ],
+        "importance": "medium",
+        "summary": "小说的发布网站，出现在制作信息页中。",
+        "latest_seen_chunk_id": "volume_01-r000003",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "mystery_v2_000001",
+        "entity_type": "mystery",
+        "display_name": "狼与辛香料Ⅰ",
+        "aliases": [
+          "狼",
+          "辛",
+          "香",
+          "料",
+          "Ⅰ",
+          "Merchant meats spicy wolf."
+        ],
+        "importance": "medium",
+        "summary": "小说的标题或主题，由英文短语 'Merchant meats spicy wolf.' 和中文词汇 '狼'、'与'、'辛'、'香'、'料'、'Ⅰ' 组成，暗示小说可能与香料贸易或奇幻冒险有关。",
+        "latest_seen_chunk_id": "volume_01-r000001",
+        "dialogue_count": 0
+      }
+    ]
+  },
+  "rules": {
+    "speaker_statuses": [
+      "known",
+      "mystery",
+      "npc_group",
+      "review",
+      "unknown"
+    ],
+    "importance_levels": [
+      "minor",
+      "medium",
+      "major"
+    ],
+    "general_novel_only": true
+  },
+  "task_a_annotations": [],
+  "task_b_chunk_summary": {
+    "chunk_id": "volume_01-r000005",
+    "summary": "本 chunk 主要呈现了小说的目录结构，包括序幕、第一幕至第六幕以及插图部分。目录以中英文形式列出，但未包含具体情节内容。此 chunk 未引入新角色或对话，主要作用是为读者提供故事结构的概览。结合前文，故事已进入序幕章节，暗示后续情节将逐步展开。目前尚未解决的问题包括赫萝的真实身份、罗伦斯对银币投资的结果，以及小说标题「狼与辛香料Ⅰ」的具体含义。",
+    "active_entities": [
+      "char_v2_000003"
+    ],
+    "open_questions": [
+      "赫萝是否真的是丰收之神？",
+      "罗伦斯对银币的投资是否成功？",
+      "赫萝的狼耳和尾巴是否具有特殊意义？",
+      "小说标题「狼与辛香料Ⅰ」的具体含义是什么？"
+    ],
+    "evidence_refs": [
+      "volume_01-c000-s004-p000043",
+      "volume_01-c000-s004-p000044",
+      "volume_01-c000-s004-p000045",
+      "volume_01-c000-s004-p000046",
+      "volume_01-c000-s004-p000047",
+      "volume_01-c000-s004-p000048",
+      "volume_01-c000-s004-p000049",
+      "volume_01-c000-s004-p000050",
+      "volume_01-c000-s004-p000051",
+      "volume_01-c000-s004-p000052",
+      "volume_01-c000-s004-p000053"
+    ]
+  },
+  "updated_global_summary": "本卷包含小说的封面、标题页、制作信息页、故事开端以及目录结构。标题页上出现了英文短语 'Merchant meats spicy wolf.'，随后是中文词汇 '狼'、'与'、'辛'、'香'、'料' 和 'Ⅰ'，可能暗示小说的标题或主题。作者信息显示为 '支仓冻砂'（Isuna Hasekura），插画师为 '文仓十'（Jyuu Ayakura）。制作信息页补充了图源 'linpop'、录入者 '会灰的鸟弹' 以及发布网站 '天使动漫'（www.tsdm39.net），并注明了仅供个人学习交流、禁止商业用途、下载后需在24小时内删除，并要求尊重翻译、扫图、录入、校对的辛勤劳动，转载请保留信息。故事开端描述了行商人罗伦斯在马车货台上的麦束堆里发现了一个自称是丰收之神赫萝的美丽少女。赫萝拥有狼的耳朵和尾巴，并在对话中自称「咱是赫萝」。尽管罗伦斯对赫萝的身份存疑，但仍然决定让她一同旅行。不久后，他们遇到了一个发财机会，据说某种银币将在未来升值，罗伦斯决定尝试投资，但结果尚未揭晓。本卷初步建立了罗伦斯与赫萝之间的关系，并埋下了一个关于银币投资的悬念。此外，本卷还提供了小说的目录结构，包括序幕、第一幕至第六幕以及插图部分，为读者提供了故事结构的概览。目前尚未解决的问题包括赫萝的真实身份、罗伦斯对银币投资的结果，以及小说标题「狼与辛香料Ⅰ」的具体含义。",
+  "updated_entity_memory": {
+    "characters": [
+      {
+        "entity_id": "char_v2_000001",
+        "entity_type": "character",
+        "display_name": "支仓冻砂",
+        "aliases": [
+          "Isuna Hasekura"
+        ],
+        "importance": "major",
+        "summary": "小说的作者，出现在制作信息页的作者信息中。",
+        "evidence_refs": [
+          "volume_01-c000-s001-p000011",
+          "volume_01-c000-s001-p000012",
+          "volume_01-c000-s002-p000019"
+        ],
+        "dialogue_count": 0,
+        "first_seen_chunk_id": "volume_01-r000001",
+        "latest_seen_chunk_id": "volume_01-r000003",
+        "relationship_updates": []
+      },
+      {
+        "entity_id": "char_v2_000002",
+        "entity_type": "character",
+        "display_name": "文仓十",
+        "aliases": [
+          "Jyuu Ayakura"
+        ],
+        "importance": "major",
+        "summary": "小说的插画师，出现在制作信息页的插画师信息中。",
+        "evidence_refs": [
+          "volume_01-c000-s001-p000013",
+          "volume_01-c000-s001-p000014",
+          "volume_01-c000-s001-p000015",
+          "volume_01-c000-s001-p000016",
+          "volume_01-c000-s002-p000020"
+        ],
+        "dialogue_count": 0,
+        "first_seen_chunk_id": "volume_01-r000001",
+        "latest_seen_chunk_id": "volume_01-r000003",
+        "relationship_updates": []
+      },
+      {
+        "entity_id": "char_v2_000003",
+        "entity_type": "character",
+        "display_name": "赫萝",
+        "aliases": [],
+        "importance": "major",
+        "summary": "自称是丰收之神的美丽少女，拥有狼的耳朵和尾巴，与罗伦斯一同旅行。本 chunk 中未出现对话，但作为故事核心角色，其重要性维持不变。",
+        "evidence_refs": [
+          "对话中自称是赫萝，且上下文提到‘自称是丰收之神赫萝的美丽少女’",
+          "volume_01-c000-s003-p000031",
+          "volume_01-c000-s003-p000034",
+          "volume_01-c000-s003-p000035",
+          "volume_01-c000-s003-p000032",
+          "volume_01-c000-s003-p000033",
+          "volume_01-c000-s004-p000045"
+        ],
+        "dialogue_count": 3,
+        "first_seen_chunk_id": "volume_01-r000004",
+        "latest_seen_chunk_id": "volume_01-r000005",
+        "relationship_updates": [
+          "{'target_entity_id': 'char_v2_000004', 'relation': 'travel_companion', 'evidence_ref': 'volume_01-c000-s003-p000035'}"
+        ]
+      }
+    ],
+    "mysteries": [
+      {
+        "entity_id": "mystery_v2_000001",
+        "entity_type": "mystery",
+        "display_name": "狼与辛香料Ⅰ",
+        "aliases": [
+          "狼",
+          "辛",
+          "香",
+          "料",
+          "Ⅰ",
+          "Merchant meats spicy wolf."
+        ],
+        "importance": "medium",
+        "summary": "小说的标题或主题，由英文短语 'Merchant meats spicy wolf.' 和中文词汇 '狼'、'与'、'辛'、'香'、'料'、'Ⅰ' 组成，暗示小说可能与香料贸易或奇幻冒险有关。",
+        "evidence_refs": [
+          "volume_01-c000-s001-p000003",
+          "volume_01-c000-s001-p000004",
+          "volume_01-c000-s001-p000005",
+          "volume_01-c000-s001-p000006",
+          "volume_01-c000-s001-p000007",
+          "volume_01-c000-s001-p000008",
+          "volume_01-c000-s001-p000009"
+        ],
+        "dialogue_count": 0,
+        "first_seen_chunk_id": "volume_01-r000001",
+        "latest_seen_chunk_id": "volume_01-r000001",
+        "relationship_updates": []
+      },
+      {
+        "entity_id": "mystery_v2_000002",
+        "entity_type": "mystery",
+        "display_name": "linpop",
+        "aliases": [],
+        "importance": "medium",
+        "summary": "小说的图源提供者，出现在制作信息页中。",
+        "evidence_refs": [
+          "volume_01-c000-s002-p000021"
+        ],
+        "dialogue_count": 0,
+        "first_seen_chunk_id": "volume_01-r000003",
+        "latest_seen_chunk_id": "volume_01-r000003",
+        "relationship_updates": []
+      },
+      {
+        "entity_id": "mystery_v2_000003",
+        "entity_type": "mystery",
+        "display_name": "会灰的鸟弹",
+        "aliases": [],
+        "importance": "medium",
+        "summary": "小说的录入者，出现在制作信息页中。",
+        "evidence_refs": [
+          "volume_01-c000-s002-p000022"
+        ],
+        "dialogue_count": 0,
+        "first_seen_chunk_id": "volume_01-r000003",
+        "latest_seen_chunk_id": "volume_01-r000003",
+        "relationship_updates": []
+      },
+      {
+        "entity_id": "mystery_v2_000004",
+        "entity_type": "mystery",
+        "display_name": "天使动漫",
+        "aliases": [
+          "www.tsdm39.net"
+        ],
+        "importance": "medium",
+        "summary": "小说的发布网站，出现在制作信息页中。",
+        "evidence_refs": [
+          "volume_01-c000-s002-p000023",
+          "volume_01-c000-s002-p000024"
+        ],
+        "dialogue_count": 0,
+        "first_seen_chunk_id": "volume_01-r000003",
+        "latest_seen_chunk_id": "volume_01-r000003",
+        "relationship_updates": []
+      }
+    ],
+    "npc_groups": []
+  },
+  "unresolved_annotations": []
+}

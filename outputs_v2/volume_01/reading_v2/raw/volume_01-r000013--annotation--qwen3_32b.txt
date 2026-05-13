@@ -1,0 +1,111 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000031",
+      "speaker_entity_id": "npc_group",
+      "speaker_display": "村民群体",
+      "speaker_status": "npc_group",
+      "confidence": 0.9,
+      "evidence": [
+        "对话内容为「有狼喔！有狼！」，属于群体性叫喊，符合祭典活动的氛围"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000032",
+      "speaker_entity_id": "npc_group",
+      "speaker_display": "村民群体",
+      "speaker_status": "npc_group",
+      "confidence": 0.9,
+      "evidence": [
+        "对话内容为「快看！狼就躺在那边！」，属于群体性叫喊，符合祭典活动的氛围"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000033",
+      "speaker_entity_id": "npc_group",
+      "speaker_display": "村民群体",
+      "speaker_status": "npc_group",
+      "confidence": 0.9,
+      "evidence": [
+        "对话内容为「是谁？是谁？最后会是谁抓到狼呢？」，属于群体性叫喊，符合祭典活动的氛围"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000034",
+      "speaker_entity_id": "npc_group",
+      "speaker_display": "村民群体",
+      "speaker_status": "npc_group",
+      "confidence": 0.9,
+      "evidence": [
+        "对话内容为「最后一束了！」，属于群体性叫喊，符合祭典活动的氛围"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000035",
+      "speaker_entity_id": "npc_group",
+      "speaker_display": "村民群体",
+      "speaker_status": "npc_group",
+      "confidence": 0.9,
+      "evidence": [
+        "对话内容为「小心不要割过头！」，属于群体性叫喊，符合祭典活动的氛围"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000036",
+      "speaker_entity_id": "npc_group",
+      "speaker_display": "村民群体",
+      "speaker_status": "npc_group",
+      "confidence": 0.9,
+      "evidence": [
+        "对话内容为「太贪心的话，会让赫萝逃跑喔！」，属于群体性叫喊，符合祭典活动的氛围"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000037",
+      "speaker_entity_id": "npc_group",
+      "speaker_display": "村民群体",
+      "speaker_status": "npc_group",
+      "confidence": 0.9,
+      "evidence": [
+        "对话内容为「是谁？是谁？是谁抓到狼呢？」，属于群体性叫喊，符合祭典活动的氛围"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000038",
+      "speaker_entity_id": "mystery_v2_000009",
+      "speaker_display": "叶勒",
+      "speaker_status": "mystery",
+      "confidence": 0.8,
+      "evidence": [
+        "对话内容为「是叶勒！叶勒！叶勒！」，是村民对叶勒的欢呼，符合场景描述中叶勒割下最后一束麦子的情节"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    }
+  ],
+  "chunk_notes": "本 chunk 中的对话主要为村民在祭典活动中的群体性叫喊，符合「丰收之神」相关仪式氛围。对话内容未明确指向重要角色，因此大部分标注为 npc_group。最后一句欢呼「是叶勒！」明确指向已知角色叶勒，因此标注为 mystery。"
+}
+```

@@ -1,0 +1,883 @@
+你是通用小说实体发现助手。任务：从当前 chunk 和初标注结果中提出新增实体候选，但不要直接修改角色库。
+建 character：有明确名字、稳定身份或多次影响剧情。建 mystery：可追踪但暂未命名的个体。建 npc_group：无名群体、路人、临时职能角色、围观者或低重要度群体。
+对 mystery 也要估计重要性：如果后续很可能确认身份或影响多段剧情，使用 medium/major；普通一次性未知路人保持 minor 或 npc_group。
+只返回 JSON，格式：{"new_entities":[{"entity_type":"character|mystery|npc_group","display_name":"...","aliases":[],"importance":"minor|medium|major","summary":"...","evidence_refs":[],"dialogue_count_delta":0}],"merge_candidates":[{"source_entity_id":"...","target_entity_id":"...","reason":"...","confidence":0.0}]}
+输入 JSON：
+{
+  "volume": {
+    "volume_id": "volume_01",
+    "volume": 1,
+    "title": ""
+  },
+  "chunk": {
+    "chunk_id": "volume_01-r000046",
+    "chunk_index": 45,
+    "chapter_id": "volume_01-c002",
+    "chapter_title": "第二幕",
+    "scene_id": "volume_01-c002-s003",
+    "paragraphs": [
+      {
+        "paragraph_id": "volume_01-c002-s003-p000694",
+        "paragraph_index": 693,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s003",
+        "scene_index": 3,
+        "text": "「这个嘛，咱知道汝刚刚提到咱的尾巴时，其实并没有要夸奖的意思。」"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000695",
+        "paragraph_index": 694,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s003",
+        "scene_index": 3,
+        "text": "罗伦斯吓了一跳，登时哑口无言，一旁的赫萝开心地笑笑。"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000696",
+        "paragraph_index": 695,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s003",
+        "scene_index": 3,
+        "text": "「是没有到百发百中啦。至于信或不信，那就是汝的事了。」"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000697",
+        "paragraph_index": 696,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s003",
+        "scene_index": 3,
+        "text": "赫萝舔了舔沾在手指头上的乳酪，有些恶作剧地笑着说，那模样仿佛幻想世界里会出现的妖精或小恶魔。"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000698",
+        "paragraph_index": 697,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s003",
+        "scene_index": 3,
+        "text": "罗伦斯确确实实被赫萝慑住，但这时如果过度反应的话，不知道赫萝又会爆出什么料来。罗伦斯打起精神接续先前的话题："
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000699",
+        "paragraph_index": 698,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s003",
+        "scene_index": 3,
+        "text": "「那么，我想问你一下，你觉得刚刚那个小毛头说的话可信吗？」"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000700",
+        "paragraph_index": 699,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s003",
+        "scene_index": 3,
+        "text": "「小毛头？」"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000701",
+        "paragraph_index": 700,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s003",
+        "scene_index": 3,
+        "text": "「那个在大厅里跟我们搭腔的家伙。」"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000702",
+        "paragraph_index": 701,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s003",
+        "scene_index": 3,
+        "text": "「喔喔。呵呵，小毛头啊。」"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000703",
+        "paragraph_index": 702,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s003",
+        "scene_index": 3,
+        "text": "「有什么好奇怪的？」"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000704",
+        "paragraph_index": 703,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s003",
+        "scene_index": 3,
+        "text": "「对咱来说，两个都是小毛头。」"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000705",
+        "paragraph_index": 704,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s003",
+        "scene_index": 3,
+        "text": "罗伦斯心想如果回答不好，大概又会被捉弄一番，所以硬是把卡在喉咙的话吞了回去。"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000706",
+        "paragraph_index": 705,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s003",
+        "scene_index": 3,
+        "text": "「呵，看来汝比他成熟些。回说那小毛头，咱觉得他在说谎。」"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000707",
+        "paragraph_index": 706,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s003",
+        "scene_index": 3,
+        "text": "听到赫萝的话，罗伦斯顿时恢复冷静，心中喃喃「果然没错」。"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000708",
+        "paragraph_index": 707,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s003",
+        "scene_index": 3,
+        "text": "在大厅里向罗伦斯搭腔，名叫杰廉的年轻旅行商人，提了一个发财的机会。"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s003-p000709",
+        "paragraph_index": 708,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s003",
+        "scene_index": 3,
+        "text": "那就是目前所发行的某种银币，将在不久后发行含银量较高的新银币。如果这消息正确，那么，旧银币的品质虽然比新银币来得差，但还是能够拥有相等于新银币的价值。然而，与其他货币相比时，含银量较高的新银币却又胜过旧银币。也就是说，如果事先知道哪种货币会发行新银币，只要大量收集旧银币，再换成新银币，就可以靠赚取差额发一笔横财。杰廉向罗伦斯表示，他能提供流通在世上的各种货币当中，哪种货币可以利用这种差额方式赚钱的情报。不过相对地，罗伦斯必须把赚取的利益分一份给他。罗伦斯当然不可能全盘相信杰廉说的话，他知道杰廉一定也向其他商人说过同样的话。"
+      }
+    ],
+    "dialogues": [
+      {
+        "dialogue_id": "volume_01-d000277",
+        "dialogue_index": 276,
+        "paragraph_id": "volume_01-c002-s003-p000694",
+        "paragraph_index": 693,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "这个嘛，咱知道汝刚刚提到咱的尾巴时，其实并没有要夸奖的意思。",
+        "quote_text": "「这个嘛，咱知道汝刚刚提到咱的尾巴时，其实并没有要夸奖的意思。」",
+        "char_start": 0,
+        "char_end": 32
+      },
+      {
+        "dialogue_id": "volume_01-d000278",
+        "dialogue_index": 277,
+        "paragraph_id": "volume_01-c002-s003-p000696",
+        "paragraph_index": 695,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "是没有到百发百中啦。至于信或不信，那就是汝的事了。",
+        "quote_text": "「是没有到百发百中啦。至于信或不信，那就是汝的事了。」",
+        "char_start": 0,
+        "char_end": 27
+      },
+      {
+        "dialogue_id": "volume_01-d000279",
+        "dialogue_index": 278,
+        "paragraph_id": "volume_01-c002-s003-p000699",
+        "paragraph_index": 698,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "那么，我想问你一下，你觉得刚刚那个小毛头说的话可信吗？",
+        "quote_text": "「那么，我想问你一下，你觉得刚刚那个小毛头说的话可信吗？」",
+        "char_start": 0,
+        "char_end": 29
+      },
+      {
+        "dialogue_id": "volume_01-d000280",
+        "dialogue_index": 279,
+        "paragraph_id": "volume_01-c002-s003-p000700",
+        "paragraph_index": 699,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "小毛头？",
+        "quote_text": "「小毛头？」",
+        "char_start": 0,
+        "char_end": 6
+      },
+      {
+        "dialogue_id": "volume_01-d000281",
+        "dialogue_index": 280,
+        "paragraph_id": "volume_01-c002-s003-p000701",
+        "paragraph_index": 700,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "那个在大厅里跟我们搭腔的家伙。",
+        "quote_text": "「那个在大厅里跟我们搭腔的家伙。」",
+        "char_start": 0,
+        "char_end": 17
+      },
+      {
+        "dialogue_id": "volume_01-d000282",
+        "dialogue_index": 281,
+        "paragraph_id": "volume_01-c002-s003-p000702",
+        "paragraph_index": 701,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "喔喔。呵呵，小毛头啊。",
+        "quote_text": "「喔喔。呵呵，小毛头啊。」",
+        "char_start": 0,
+        "char_end": 13
+      },
+      {
+        "dialogue_id": "volume_01-d000283",
+        "dialogue_index": 282,
+        "paragraph_id": "volume_01-c002-s003-p000703",
+        "paragraph_index": 702,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "有什么好奇怪的？",
+        "quote_text": "「有什么好奇怪的？」",
+        "char_start": 0,
+        "char_end": 10
+      },
+      {
+        "dialogue_id": "volume_01-d000284",
+        "dialogue_index": 283,
+        "paragraph_id": "volume_01-c002-s003-p000704",
+        "paragraph_index": 703,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "对咱来说，两个都是小毛头。",
+        "quote_text": "「对咱来说，两个都是小毛头。」",
+        "char_start": 0,
+        "char_end": 15
+      },
+      {
+        "dialogue_id": "volume_01-d000285",
+        "dialogue_index": 284,
+        "paragraph_id": "volume_01-c002-s003-p000706",
+        "paragraph_index": 705,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "呵，看来汝比他成熟些。回说那小毛头，咱觉得他在说谎。",
+        "quote_text": "「呵，看来汝比他成熟些。回说那小毛头，咱觉得他在说谎。」",
+        "char_start": 0,
+        "char_end": 28
+      },
+      {
+        "dialogue_id": "volume_01-d000286",
+        "dialogue_index": 285,
+        "paragraph_id": "volume_01-c002-s003-p000707",
+        "paragraph_index": 706,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "inline",
+        "text": "果然没错",
+        "quote_text": "「果然没错」",
+        "char_start": 21,
+        "char_end": 27
+      }
+    ]
+  },
+  "near_context": {
+    "lookback_paragraphs": [
+      {
+        "paragraph_id": "volume_01-c002-s002-p000691",
+        "paragraph_index": 690,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s002",
+        "scene_index": 2,
+        "text": "「嗯？喔，多多少少可以。」"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s002-p000692",
+        "paragraph_index": 691,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s002",
+        "scene_index": 2,
+        "text": "赫萝把捏死跳蚤的手指擦干净后，又开始吃起马铃薯。"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s002-p000693",
+        "paragraph_index": 692,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s002",
+        "scene_index": 2,
+        "text": "「可以分辨多少呢？」"
+      }
+    ],
+    "lookahead_paragraphs": [
+      {
+        "paragraph_id": "volume_01-c002-s003-p000710",
+        "paragraph_index": 709,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s003",
+        "scene_index": 3,
+        "text": "赫萝看看远方，回想当时她偷听到的谈话内容，接着把拿在手上的马铃薯块放入口中，一口吞下后开口说："
+      }
+    ]
+  },
+  "memory": {
+    "previous_chunk_summary": {
+      "chunk_id": "volume_01-r000045",
+      "summary": "罗伦斯和赫萝继续在第二幕的场景中互动。赫萝对马铃薯表现出矛盾的态度，一方面狼吞虎咽地吃，另一方面又抱怨自己天生与马铃薯不合。罗伦斯对此表示怀疑，但并未直接指出。赫萝在吃马铃薯时被噎到，罗伦斯递水给她，她解释狼的饮食习惯并非只吃肉。赫萝随后发现跳蚤，罗伦斯调侃她的长毛是跳蚤的温床，赫萝则得意地回应，表现出她对自身外貌的自信。罗伦斯进一步询问赫萝是否真的能识破谎言，赫萝表示「多多少少可以」，但未具体说明分辨的机制。对话中，赫萝的言行依旧轻松随意，而罗伦斯则试图探明她的能力真实性。赫萝的反应模糊，留下罗伦斯继续追问，但未给出明确答案。目前仍未解决的问题包括赫萝识破谎言的能力是否真实，以及她是否会在未来因跳蚤或其他外在因素引发新的冲突。",
+      "active_entities": [
+        "char_v2_000001",
+        "char_v2_000002"
+      ],
+      "open_questions": [
+        "赫萝识破谎言的能力是否真实？",
+        "赫萝是否会在未来因跳蚤或其他外在因素引发新的冲突？"
+      ],
+      "evidence_refs": [
+        "volume_01-c002-s002-p000678",
+        "volume_01-c002-s002-p000680",
+        "volume_01-c002-s002-p000682",
+        "volume_01-c002-s002-p000684",
+        "volume_01-c002-s002-p000685",
+        "volume_01-c002-s002-p000686",
+        "volume_01-c002-s002-p000688",
+        "volume_01-c002-s002-p000690",
+        "volume_01-c002-s002-p000691",
+        "volume_01-c002-s002-p000693"
+      ]
+    },
+    "global_summary": "本卷继续描绘罗伦斯与赫萝之间的互动，试图揭开赫萝的真实身份。赫萝表达了对故乡约伊兹森林的思念，并提到离开故乡的时间已无法记起。她希望先旅行，以了解故乡的变化，同时增广见闻。赫萝随后向罗伦斯提出希望与他一同旅行，前提是罗伦斯不会将她交给教会。罗伦斯虽未完全确认赫萝的身份，但认为她并非坏人，且与她交谈有趣。然而，出于商人的谨慎，他并未立刻答应赫萝的请求。赫萝则表示理解，并以轻松的语气强调自己是只狼，而非人类。赫萝的请求和罗伦斯的犹豫揭示了两人之间信任与怀疑的微妙关系。赫萝的动机仍不明确，她是否真的想回故乡，还是另有目的，仍是未解之谜。赫萝提到北方，暗示这一地点对她而言具有重要意义，可能是她的出生地或与她过去的经历有关。这一地点的神秘性暗示它可能在未来剧情中扮演关键角色。赫萝的言行显示出她对罗伦斯心理的掌控，而罗伦斯则在试图理解她的动机。赫萝以轻松的态度主导了与罗伦斯的对话，表现出她对当前局势的掌控。她假装要睡觉，实则是在结束对话，随后又突然探头询问罗伦斯是否要让她睡在外面，语气中带着调侃。罗伦斯虽然觉得无奈，但也觉得有趣，并未真正拒绝。赫萝的举动让罗伦斯怀疑她之前的一些反应是否是演戏，但罗伦斯仍相信她对故乡和村民的不满是真实的。清晨，罗伦斯醒来发现赫萝已经起床，并擅自翻找他的行李，换上了他最上等的衣服。罗伦斯责备赫萝擅自翻找他人行李的行为，但赫萝完全不以为意，反而得意地展示衣服，并询问是否可以剪开裤子以方便她的尾巴。赫萝的举动大胆而自信，而罗伦斯虽然不满，却并未真正生气，反而觉得赫萝穿着他的衣服显得可爱。赫萝的言行表明她对罗伦斯的反应有一定程度的掌控，而罗伦斯则在权衡是否要让她继续穿着这些衣物。赫萝在货台上轻快地跳下，动作自然得让罗伦斯一时未能反应。罗伦斯并未阻止她，因为他内心确信赫萝不会逃跑。赫萝确认了这一点后，主动脱下罗伦斯为她订制的熊皮外套，并指出衣服对她来说太长了。罗伦斯注意到赫萝的体型比他想象的要娇小，足足比他矮了两个头。随后，赫萝向罗伦斯提出希望与他一起旅行，并表示自己不会逃跑。罗伦斯虽然仍保持谨慎，但认为赫萝不像会偷东西的人，与她同行应该无妨。他最终答应了赫…",
+    "candidate_entities": [
+      {
+        "entity_id": "char_v2_000001",
+        "entity_type": "character",
+        "display_name": "罗伦斯",
+        "aliases": [
+          "罗伦斯先生"
+        ],
+        "importance": "major",
+        "summary": "罗伦斯继续以幽默和宽容的态度回应赫萝的行为，尤其在赫萝发现跳蚤并调侃她的长毛时，他巧妙地回应，同时进一步试探赫萝是否真的能识破谎言。他的言行巩固了他作为可靠旅伴和商人的形象。",
+        "latest_seen_chunk_id": "volume_01-r000045",
+        "dialogue_count": 119
+      },
+      {
+        "entity_id": "char_v2_000002",
+        "entity_type": "character",
+        "display_name": "赫萝",
+        "aliases": [
+          "赫萝（丰收之神）",
+          "丰收之神",
+          "狼赫萝",
+          "赫萝"
+        ],
+        "importance": "major",
+        "summary": "赫萝对食物的热情持续，尤其是马铃薯，尽管她抱怨自己天生与之不合。她表现出轻松随意的态度，甚至在被噎到后仍坚持享用。她对罗伦斯的调侃回应自信，展现出她对自身外貌的自豪。她对识破谎言的能力含糊其辞，留下…",
+        "latest_seen_chunk_id": "volume_01-r000045",
+        "dialogue_count": 140
+      },
+      {
+        "entity_id": "mystery_v2_000009",
+        "entity_type": "mystery",
+        "display_name": "赫萝",
+        "aliases": [
+          "赫萝（丰收之神）",
+          "丰收之神",
+          "狼",
+          "狼赫萝"
+        ],
+        "importance": "major",
+        "summary": "传说中在收割季节进入最后一束麦子中的人体内的神明。赫萝声称自己是丰收之神的化身，但罗伦斯的质疑和赫萝的解释暗示她可能并非传统意义上的神明，而是某种与麦子和丰收仪式相关的存在。",
+        "latest_seen_chunk_id": "volume_01-r000026",
+        "dialogue_count": 14
+      },
+      {
+        "entity_id": "char_v2_000005",
+        "entity_type": "character",
+        "display_name": "丰收之神赫萝",
+        "aliases": [
+          "赫萝（神明）",
+          "丰收之神"
+        ],
+        "importance": "major",
+        "summary": "赫萝进一步强调自己是「贤狼赫萝」，并否认自己是神明，但表现出对自身非人特征的自信。她的言行暗示她可能具有神性，但选择以狼的身份与罗伦斯互动。",
+        "latest_seen_chunk_id": "volume_01-r000025",
+        "dialogue_count": 2
+      },
+      {
+        "entity_id": "mystery_v2_000015",
+        "entity_type": "mystery",
+        "display_name": "女孩",
+        "aliases": [
+          "女孩（动物耳朵）",
+          "神秘女孩",
+          "有耳朵的女孩"
+        ],
+        "importance": "major",
+        "summary": "一名神秘的女孩，出现在罗伦斯的马车上，睡得香甜，美丽而安静。她反应迟缓，声音甜美，但头上长着像小狗的耳朵，暗示她可能并非普通人。她赤裸着身体缓缓站起，美丽得令人屏息，随后发出狼嚎，令罗伦斯误以为她是…",
+        "latest_seen_chunk_id": "volume_01-r000014",
+        "dialogue_count": 14
+      },
+      {
+        "entity_id": "char_v2_000013",
+        "entity_type": "character",
+        "display_name": "杰廉",
+        "aliases": [
+          "杰廉商人",
+          "新手杰廉"
+        ],
+        "importance": "medium",
+        "summary": "杰廉继续试图接近赫萝，并以神的指引为由请求与罗伦斯和赫萝交谈。他的言行显示出他试图建立某种联系，但其动机仍未明确。杰廉的自信和机智也逐渐显现。",
+        "latest_seen_chunk_id": "volume_01-r000043",
+        "dialogue_count": 13
+      },
+      {
+        "entity_id": "char_v2_000011",
+        "entity_type": "character",
+        "display_name": "佩连佐的葡萄园主人",
+        "aliases": [
+          "年长的丈夫",
+          "佩连佐的商人"
+        ],
+        "importance": "medium",
+        "summary": "佩连佐的葡萄园主人与罗伦斯在教会中对话，表现出对汇兑体制的兴趣，并邀请罗伦斯到佩连佐做客。随后，他与妻子一同告辞离开。他的对话表明他对商业知识的渴望，可能在未来与罗伦斯有进一步互动。",
+        "latest_seen_chunk_id": "volume_01-r000041",
+        "dialogue_count": 4
+      },
+      {
+        "entity_id": "char_v2_000012",
+        "entity_type": "character",
+        "display_name": "佩连佐的葡萄园主人的妻子",
+        "aliases": [
+          "年长丈夫的妻子"
+        ],
+        "importance": "medium",
+        "summary": "佩连佐的葡萄园主人的妻子，与丈夫一同出现在教会中。她未参与对话，但在对话中被提及为「妻子」，并随丈夫一同告辞离开。虽然未直接发言，但她的存在表明这对夫妻是重要人物，可能在未来剧情中与罗伦斯有进一步互…",
+        "latest_seen_chunk_id": "volume_01-r000041",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "char_v2_000006",
+        "entity_type": "character",
+        "display_name": "教会",
+        "aliases": [
+          "教会组织",
+          "宗教机构"
+        ],
+        "importance": "medium",
+        "summary": "教会是赫萝过往经历中的重要势力，她多次提及教会曾让她吃了不少苦头，并暗示她不愿再被教会抓住。在本段中，教会接纳了罗伦斯和赫萝的谎言，允许他们借宿，显示出教会对外来旅行者相对友善的态度，但对非人类存在…",
+        "latest_seen_chunk_id": "volume_01-r000036",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "char_v2_000010",
+        "entity_type": "character",
+        "display_name": "约伊兹森林",
+        "aliases": [
+          "赫萝的出生地",
+          "故乡森林"
+        ],
+        "importance": "medium",
+        "summary": "赫萝提到自己出生的故乡是约伊兹森林，并表示离开故乡的时间已无法记起。她对故乡充满思念，但未进一步解释其重要性。约伊兹森林可能是她身份或过去经历的关键地点。",
+        "latest_seen_chunk_id": "volume_01-r000030",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "mystery_v2_000018",
+        "entity_type": "mystery",
+        "display_name": "北方",
+        "aliases": [
+          "北方大地",
+          "赫萝的故乡"
+        ],
+        "importance": "medium",
+        "summary": "赫萝明确表示想回到北方，但未进一步解释原因。北方对她而言似乎具有重要的意义，可能是她的出生地或与她过去的经历有关。这一地点的神秘性暗示它可能在未来剧情中扮演关键角色。",
+        "latest_seen_chunk_id": "volume_01-r000029",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "char_v2_000009",
+        "entity_type": "character",
+        "display_name": "帕斯罗村的年轻村民",
+        "aliases": [
+          "年轻村民",
+          "赫萝承诺的年轻人"
+        ],
+        "importance": "medium",
+        "summary": "赫萝提到她曾答应过帕斯罗村的一名年轻人，要让村里的麦子丰收，并为此守护麦田多年。虽然未提及姓名，但此人对赫萝的承诺和行动有重要影响，是她留在村落的重要原因。",
+        "latest_seen_chunk_id": "volume_01-r000028",
+        "dialogue_count": 0
+      }
+    ]
+  },
+  "rules": {
+    "speaker_statuses": [
+      "known",
+      "mystery",
+      "npc_group",
+      "review",
+      "unknown"
+    ],
+    "importance_levels": [
+      "minor",
+      "medium",
+      "major"
+    ],
+    "general_novel_only": true
+  },
+  "task_a_annotations": [
+    {
+      "dialogue_id": "volume_01-d000277",
+      "dialogue_index": 276,
+      "volume_id": "",
+      "chapter_id": "",
+      "chapter_index": 0,
+      "chapter_title": "",
+      "scene_id": "",
+      "scene_index": 0,
+      "paragraph_id": "volume_01-c002-s003-p000694",
+      "paragraph_index": 693,
+      "local_dialogue_index": 1,
+      "text": "这个嘛，咱知道汝刚刚提到咱的尾巴时，其实并没有要夸奖的意思。",
+      "quote_text": "「这个嘛，咱知道汝刚刚提到咱的尾巴时，其实并没有要夸奖的意思。」",
+      "dialogue_kind": "standalone",
+      "char_start": 0,
+      "char_end": 32,
+      "speaker_entity_id": "char_v2_000002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "对话中使用了「咱」自称，与赫萝的说话风格一致"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false,
+      "review_reason": "",
+      "request_id": "volume_01-r000046--annotation--qwen3_32b"
+    },
+    {
+      "dialogue_id": "volume_01-d000278",
+      "dialogue_index": 277,
+      "volume_id": "",
+      "chapter_id": "",
+      "chapter_index": 0,
+      "chapter_title": "",
+      "scene_id": "",
+      "scene_index": 0,
+      "paragraph_id": "volume_01-c002-s003-p000696",
+      "paragraph_index": 695,
+      "local_dialogue_index": 1,
+      "text": "是没有到百发百中啦。至于信或不信，那就是汝的事了。",
+      "quote_text": "「是没有到百发百中啦。至于信或不信，那就是汝的事了。」",
+      "dialogue_kind": "standalone",
+      "char_start": 0,
+      "char_end": 27,
+      "speaker_entity_id": "char_v2_000002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "对话中使用了「咱」自称，与赫萝的说话风格一致"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false,
+      "review_reason": "",
+      "request_id": "volume_01-r000046--annotation--qwen3_32b"
+    },
+    {
+      "dialogue_id": "volume_01-d000279",
+      "dialogue_index": 278,
+      "volume_id": "",
+      "chapter_id": "",
+      "chapter_index": 0,
+      "chapter_title": "",
+      "scene_id": "",
+      "scene_index": 0,
+      "paragraph_id": "volume_01-c002-s003-p000699",
+      "paragraph_index": 698,
+      "local_dialogue_index": 1,
+      "text": "那么，我想问你一下，你觉得刚刚那个小毛头说的话可信吗？",
+      "quote_text": "「那么，我想问你一下，你觉得刚刚那个小毛头说的话可信吗？」",
+      "dialogue_kind": "standalone",
+      "char_start": 0,
+      "char_end": 29,
+      "speaker_entity_id": "char_v2_000001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "对话中使用了「你」称呼赫萝，符合罗伦斯的说话方式"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false,
+      "review_reason": "",
+      "request_id": "volume_01-r000046--annotation--qwen3_32b"
+    },
+    {
+      "dialogue_id": "volume_01-d000280",
+      "dialogue_index": 279,
+      "volume_id": "",
+      "chapter_id": "",
+      "chapter_index": 0,
+      "chapter_title": "",
+      "scene_id": "",
+      "scene_index": 0,
+      "paragraph_id": "volume_01-c002-s003-p000700",
+      "paragraph_index": 699,
+      "local_dialogue_index": 1,
+      "text": "小毛头？",
+      "quote_text": "「小毛头？」",
+      "dialogue_kind": "standalone",
+      "char_start": 0,
+      "char_end": 6,
+      "speaker_entity_id": "char_v2_000002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "赫萝对「小毛头」的称呼作出回应，符合她对话的节奏"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false,
+      "review_reason": "",
+      "request_id": "volume_01-r000046--annotation--qwen3_32b"
+    },
+    {
+      "dialogue_id": "volume_01-d000281",
+      "dialogue_index": 280,
+      "volume_id": "",
+      "chapter_id": "",
+      "chapter_index": 0,
+      "chapter_title": "",
+      "scene_id": "",
+      "scene_index": 0,
+      "paragraph_id": "volume_01-c002-s003-p000701",
+      "paragraph_index": 700,
+      "local_dialogue_index": 1,
+      "text": "那个在大厅里跟我们搭腔的家伙。",
+      "quote_text": "「那个在大厅里跟我们搭腔的家伙。」",
+      "dialogue_kind": "standalone",
+      "char_start": 0,
+      "char_end": 17,
+      "speaker_entity_id": "char_v2_000002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "赫萝解释「小毛头」指的是大厅里的搭话者，符合她的说话风格"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false,
+      "review_reason": "",
+      "request_id": "volume_01-r000046--annotation--qwen3_32b"
+    },
+    {
+      "dialogue_id": "volume_01-d000282",
+      "dialogue_index": 281,
+      "volume_id": "",
+      "chapter_id": "",
+      "chapter_index": 0,
+      "chapter_title": "",
+      "scene_id": "",
+      "scene_index": 0,
+      "paragraph_id": "volume_01-c002-s003-p000702",
+      "paragraph_index": 701,
+      "local_dialogue_index": 1,
+      "text": "喔喔。呵呵，小毛头啊。",
+      "quote_text": "「喔喔。呵呵，小毛头啊。」",
+      "dialogue_kind": "standalone",
+      "char_start": 0,
+      "char_end": 13,
+      "speaker_entity_id": "char_v2_000002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "赫萝以轻松的语气重复「小毛头」，符合她的说话方式"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false,
+      "review_reason": "",
+      "request_id": "volume_01-r000046--annotation--qwen3_32b"
+    },
+    {
+      "dialogue_id": "volume_01-d000283",
+      "dialogue_index": 282,
+      "volume_id": "",
+      "chapter_id": "",
+      "chapter_index": 0,
+      "chapter_title": "",
+      "scene_id": "",
+      "scene_index": 0,
+      "paragraph_id": "volume_01-c002-s003-p000703",
+      "paragraph_index": 702,
+      "local_dialogue_index": 1,
+      "text": "有什么好奇怪的？",
+      "quote_text": "「有什么好奇怪的？」",
+      "dialogue_kind": "standalone",
+      "char_start": 0,
+      "char_end": 10,
+      "speaker_entity_id": "char_v2_000002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "赫萝对「小毛头」的称呼提出质疑，符合她的说话风格"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false,
+      "review_reason": "",
+      "request_id": "volume_01-r000046--annotation--qwen3_32b"
+    },
+    {
+      "dialogue_id": "volume_01-d000284",
+      "dialogue_index": 283,
+      "volume_id": "",
+      "chapter_id": "",
+      "chapter_index": 0,
+      "chapter_title": "",
+      "scene_id": "",
+      "scene_index": 0,
+      "paragraph_id": "volume_01-c002-s003-p000704",
+      "paragraph_index": 703,
+      "local_dialogue_index": 1,
+      "text": "对咱来说，两个都是小毛头。",
+      "quote_text": "「对咱来说，两个都是小毛头。」",
+      "dialogue_kind": "standalone",
+      "char_start": 0,
+      "char_end": 15,
+      "speaker_entity_id": "char_v2_000002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "赫萝以「咱」自称，符合她的说话风格"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false,
+      "review_reason": "",
+      "request_id": "volume_01-r000046--annotation--qwen3_32b"
+    },
+    {
+      "dialogue_id": "volume_01-d000285",
+      "dialogue_index": 284,
+      "volume_id": "",
+      "chapter_id": "",
+      "chapter_index": 0,
+      "chapter_title": "",
+      "scene_id": "",
+      "scene_index": 0,
+      "paragraph_id": "volume_01-c002-s003-p000706",
+      "paragraph_index": 705,
+      "local_dialogue_index": 1,
+      "text": "呵，看来汝比他成熟些。回说那小毛头，咱觉得他在说谎。",
+      "quote_text": "「呵，看来汝比他成熟些。回说那小毛头，咱觉得他在说谎。」",
+      "dialogue_kind": "standalone",
+      "char_start": 0,
+      "char_end": 28,
+      "speaker_entity_id": "char_v2_000002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "赫萝以「咱」自称，符合她的说话风格"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false,
+      "review_reason": "",
+      "request_id": "volume_01-r000046--annotation--qwen3_32b"
+    },
+    {
+      "dialogue_id": "volume_01-d000286",
+      "dialogue_index": 285,
+      "volume_id": "",
+      "chapter_id": "",
+      "chapter_index": 0,
+      "chapter_title": "",
+      "scene_id": "",
+      "scene_index": 0,
+      "paragraph_id": "volume_01-c002-s003-p000707",
+      "paragraph_index": 706,
+      "local_dialogue_index": 1,
+      "text": "果然没错",
+      "quote_text": "「果然没错」",
+      "dialogue_kind": "inline",
+      "char_start": 21,
+      "char_end": 27,
+      "speaker_entity_id": "char_v2_000001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "罗伦斯内心独白「果然没错」，符合他的心理活动"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false,
+      "review_reason": "",
+      "request_id": "volume_01-r000046--annotation--qwen3_32b"
+    }
+  ],
+  "task_b_chunk_summary": {
+    "chunk_id": "volume_01-r000046",
+    "summary": "在第二幕的场景中，罗伦斯和赫萝继续互动。赫萝轻松地回应罗伦斯对她的调侃，表现出自信和幽默感。她指出罗伦斯提到她的尾巴时并无夸奖之意，并表示自己识破谎言的能力并非百发百中。罗伦斯则试探性地询问赫萝对大厅里搭话的年轻商人杰廉的评价，赫萝称其在说谎。罗伦斯对此表示认同，认为赫萝的判断力优于杰廉。杰廉向罗伦斯提出一个关于货币差额的赚钱机会，但罗伦斯并未完全信任他。赫萝的识破谎言能力仍是未解之谜，而杰廉的动机和提议的真实性也尚未明确。赫萝的言行表明她对罗伦斯的反应有一定程度的掌控，而罗伦斯则在权衡是否要相信赫萝的判断。",
+    "active_entities": [
+      "char_v2_000001",
+      "char_v2_000002",
+      "char_v2_000005",
+      "char_v2_000013"
+    ],
+    "open_questions": [
+      "赫萝识破谎言的能力是否真实？",
+      "杰廉的提议是否可信？",
+      "赫萝是否会在未来因识破谎言的能力引发新的冲突？"
+    ],
+    "evidence_refs": [
+      "volume_01-c002-s003-p000694",
+      "volume_01-c002-s003-p000696",
+      "volume_01-c002-s003-p000699",
+      "volume_01-c002-s003-p000700",
+      "volume_01-c002-s003-p000701",
+      "volume_01-c002-s003-p000702",
+      "volume_01-c002-s003-p000703",
+      "volume_01-c002-s003-p000704",
+      "volume_01-c002-s003-p000706",
+      "volume_01-c002-s003-p000707",
+      "volume_01-c002-s003-p000708",
+      "volume_01-c002-s003-p000709"
+    ]
+  }
+}

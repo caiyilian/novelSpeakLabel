@@ -1,0 +1,57 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000002",
+      "speaker_entity_id": "unknown",
+      "speaker_display": "未知说话者",
+      "speaker_status": "unknown",
+      "confidence": 0.3,
+      "evidence": [
+        "对话内容为「这是最后一件了吧？」，未提及说话者身份"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000003",
+      "speaker_entity_id": "unknown",
+      "speaker_display": "未知说话者",
+      "speaker_status": "unknown",
+      "confidence": 0.3,
+      "evidence": [
+        "对话内容为「嗯，这里确实有……七十件。多谢惠顾。」，未提及说话者身份"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000004",
+      "speaker_entity_id": "unknown",
+      "speaker_display": "未知说话者",
+      "speaker_status": "unknown",
+      "confidence": 0.3,
+      "evidence": [
+        "对话内容为「不，我们才要谢谢你呢。只有罗伦斯先生你愿意到这深山里来，真是帮了我们大忙。」，提及了罗伦斯，但未明确说话者身份"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000005",
+      "speaker_entity_id": "unknown",
+      "speaker_display": "未知说话者",
+      "speaker_status": "unknown",
+      "confidence": 0.3,
+      "evidence": [
+        "对话内容为「不过，我也因此拿到上等的皮草啊，我会再来的。」，未提及说话者身份"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    }
+  ],
+  "chunk_notes": "当前 chunk 中的对话均未明确提及说话者身份，仅在第三条对话中提及了「罗伦斯先生」，但无法确定该称呼是否指向说话者。因此，所有对话暂时标记为 unknown。"
+}

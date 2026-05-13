@@ -1,0 +1,987 @@
+你是通用小说角色记忆维护助手。任务：更新当前 chunk 出现过的已有实体卡片。只更新输入证据支持的内容，重要性只允许 minor、medium、major；升级可以提出，降级必须谨慎。
+只返回 JSON，格式：{"updates":[{"entity_id":"...","summary":"...","importance":"minor|medium|major","dialogue_count_delta":0,"latest_seen_chunk_id":"...","relationship_updates":[],"evidence_refs":[]}]}
+输入 JSON：
+{
+  "volume": {
+    "volume_id": "volume_01",
+    "volume": 1,
+    "title": ""
+  },
+  "chunk": {
+    "chunk_id": "volume_01-r000040",
+    "chunk_index": 39,
+    "chapter_id": "volume_01-c002",
+    "chapter_title": "第二幕",
+    "scene_id": "volume_01-c002-s001",
+    "paragraphs": [
+      {
+        "paragraph_id": "volume_01-c002-s001-p000598",
+        "paragraph_index": 597,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s001",
+        "scene_index": 1,
+        "text": "罗伦斯回头一看，发现赫萝已经把头藏好在外套底下，完全进入状况了。"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000599",
+        "paragraph_index": 598,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s001",
+        "scene_index": 1,
+        "text": "对商人来说，位置在城镇与城镇间广大距离之中的教会或旅店，是重要的情报站，特别是在教会能够遇到各式各样的人。在旅店通常只能看到老练的商人，或贫穷的旅人，但教会就不同了。从城里的啤酒师傅到富有的人，教会里住着形形色色的投宿客。"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000600",
+        "paragraph_index": 599,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s001",
+        "scene_index": 1,
+        "text": "罗伦斯和赫萝进来躲雨的这间教会，前前后后来了十二位客人。其中有几位看来像是商人，其他则像不同职业的人。"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000601",
+        "paragraph_index": 600,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s001",
+        "scene_index": 1,
+        "text": "「这样啊，所以你是从约连那边过来的？」"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000602",
+        "paragraph_index": 601,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s001",
+        "scene_index": 1,
+        "text": "「是的。我在约连买了盐之后，随即把盐送到客人那儿，再从客人那儿收了貂皮。」"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000603",
+        "paragraph_index": 602,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s001",
+        "scene_index": 1,
+        "text": "大厅里每个人坐在地板上，有的人忙着抓衣服上的跳蚤，有的人在用餐。其中就只有这对夫妻坐在椅子上，并霸占了暖炉正前方的位置。虽说是大厅，但这里的空间并不大。十二个人挤在这个空间里，只要暖炉里烧着满满的薪柴，无论在什么位置都不难把衣服烘干。不过，这对夫妻的衣服不像被雨淋湿过，以此看来，应该是捐赠大笔款项给教会，所以自认可大方出入这间教会的有钱人。"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000604",
+        "paragraph_index": 603,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s001",
+        "scene_index": 1,
+        "text": "罗伦斯如此猜测。他竖起耳朵听着这对夫妻容易中断的对话，并伺机顺利加入他们。"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000605",
+        "paragraph_index": 604,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s001",
+        "scene_index": 1,
+        "text": "妻子或许是因为旅途劳累而显得沉默，因此稍有年纪的丈夫对于罗伦斯加入他们的对话，自然表现出欢迎态度。"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000606",
+        "paragraph_index": 605,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s001",
+        "scene_index": 1,
+        "text": "「不过，要从这里再回到约连，这不是太折腾人了吗？」"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000607",
+        "paragraph_index": 606,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s001",
+        "scene_index": 1,
+        "text": "「这就得靠商人的智慧了。」"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000608",
+        "paragraph_index": 607,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s001",
+        "scene_index": 1,
+        "text": "「喔喔？有意思，说来听听如何？」"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000609",
+        "paragraph_index": 608,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s001",
+        "scene_index": 1,
+        "text": "「我在约连买盐的时候，并没有当场付钱。我把等金额的麦子，卖给了卖盐那家商行位在另一个城镇的分行。那时候我没有跟分行收取麦子的货款，但也没有支付盐的货款。也就是说，我在没有现金往来的情况下，完成两笔交易。」"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000610",
+        "paragraph_index": 609,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s001",
+        "scene_index": 1,
+        "text": "这是南方的商业国家在一百年前发明的汇兑体制。罗伦斯从他的师傅，也就是旅行商人的亲戚口中知道时，深深为这个体制的存在而感动不已。不过，罗伦斯是经过两个星期的冥思苦索，才理解其中的奥妙。眼前这位稍有年纪的男子只听了一次，似乎同样无法理解。"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000611",
+        "paragraph_index": 610,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s001",
+        "scene_index": 1,
+        "text": "「这……真是非常奇妙啊。」"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000612",
+        "paragraph_index": 611,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s001",
+        "scene_index": 1,
+        "text": "男子说完频频点头。"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000613",
+        "paragraph_index": 612,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s001",
+        "scene_index": 1,
+        "text": "「我住在一个叫做佩连佐的城镇，我的葡萄园从没采用过这么奇妙的方法来买卖葡萄，不知道这样会不会有问题啊？」"
+      }
+    ],
+    "dialogues": [
+      {
+        "dialogue_id": "volume_01-d000226",
+        "dialogue_index": 225,
+        "paragraph_id": "volume_01-c002-s001-p000601",
+        "paragraph_index": 600,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "这样啊，所以你是从约连那边过来的？",
+        "quote_text": "「这样啊，所以你是从约连那边过来的？」",
+        "char_start": 0,
+        "char_end": 19
+      },
+      {
+        "dialogue_id": "volume_01-d000227",
+        "dialogue_index": 226,
+        "paragraph_id": "volume_01-c002-s001-p000602",
+        "paragraph_index": 601,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "是的。我在约连买了盐之后，随即把盐送到客人那儿，再从客人那儿收了貂皮。",
+        "quote_text": "「是的。我在约连买了盐之后，随即把盐送到客人那儿，再从客人那儿收了貂皮。」",
+        "char_start": 0,
+        "char_end": 37
+      },
+      {
+        "dialogue_id": "volume_01-d000228",
+        "dialogue_index": 227,
+        "paragraph_id": "volume_01-c002-s001-p000606",
+        "paragraph_index": 605,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "不过，要从这里再回到约连，这不是太折腾人了吗？",
+        "quote_text": "「不过，要从这里再回到约连，这不是太折腾人了吗？」",
+        "char_start": 0,
+        "char_end": 25
+      },
+      {
+        "dialogue_id": "volume_01-d000229",
+        "dialogue_index": 228,
+        "paragraph_id": "volume_01-c002-s001-p000607",
+        "paragraph_index": 606,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "这就得靠商人的智慧了。",
+        "quote_text": "「这就得靠商人的智慧了。」",
+        "char_start": 0,
+        "char_end": 13
+      },
+      {
+        "dialogue_id": "volume_01-d000230",
+        "dialogue_index": 229,
+        "paragraph_id": "volume_01-c002-s001-p000608",
+        "paragraph_index": 607,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "喔喔？有意思，说来听听如何？",
+        "quote_text": "「喔喔？有意思，说来听听如何？」",
+        "char_start": 0,
+        "char_end": 16
+      },
+      {
+        "dialogue_id": "volume_01-d000231",
+        "dialogue_index": 230,
+        "paragraph_id": "volume_01-c002-s001-p000609",
+        "paragraph_index": 608,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "我在约连买盐的时候，并没有当场付钱。我把等金额的麦子，卖给了卖盐那家商行位在另一个城镇的分行。那时候我没有跟分行收取麦子的货款，但也没有支付盐的货款。也就是说，我在没有现金往来的情况下，完成两笔交易。",
+        "quote_text": "「我在约连买盐的时候，并没有当场付钱。我把等金额的麦子，卖给了卖盐那家商行位在另一个城镇的分行。那时候我没有跟分行收取麦子的货款，但也没有支付盐的货款。也就是说，我在没有现金往来的情况下，完成两笔交易。」",
+        "char_start": 0,
+        "char_end": 102
+      },
+      {
+        "dialogue_id": "volume_01-d000232",
+        "dialogue_index": 231,
+        "paragraph_id": "volume_01-c002-s001-p000611",
+        "paragraph_index": 610,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "这……真是非常奇妙啊。",
+        "quote_text": "「这……真是非常奇妙啊。」",
+        "char_start": 0,
+        "char_end": 13
+      },
+      {
+        "dialogue_id": "volume_01-d000233",
+        "dialogue_index": 232,
+        "paragraph_id": "volume_01-c002-s001-p000613",
+        "paragraph_index": 612,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "我住在一个叫做佩连佐的城镇，我的葡萄园从没采用过这么奇妙的方法来买卖葡萄，不知道这样会不会有问题啊？",
+        "quote_text": "「我住在一个叫做佩连佐的城镇，我的葡萄园从没采用过这么奇妙的方法来买卖葡萄，不知道这样会不会有问题啊？」",
+        "char_start": 0,
+        "char_end": 52
+      }
+    ]
+  },
+  "near_context": {
+    "lookback_paragraphs": [
+      {
+        "paragraph_id": "volume_01-c002-s001-p000595",
+        "paragraph_index": 594,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s001",
+        "scene_index": 1,
+        "text": "事实上，罗伦斯并不讨厌与赫萝的互动。"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000596",
+        "paragraph_index": 595,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s001",
+        "scene_index": 1,
+        "text": "「暖炉那儿还有其他人在，你可别露出马脚啊。」"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s001-p000597",
+        "paragraph_index": 596,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s001",
+        "scene_index": 1,
+        "text": "「咱是贤狼赫萝呐。再说，还没到帕斯罗村之前，咱也是以人类的模样一路旅行过来的。放心放心！」"
+      }
+    ],
+    "lookahead_paragraphs": [
+      {
+        "paragraph_id": "volume_01-c002-s002-p000614",
+        "paragraph_index": 613,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s002",
+        "scene_index": 2,
+        "text": "「这种交易体制称为汇兑，这是商人们为了方便和不同地方的人做生意才发明出来的体制。如果您是拥有葡萄园的领主，只要小心不要被葡萄酒商恶意贬低葡萄的品质，然后便宜收购就可以了。」"
+      }
+    ]
+  },
+  "memory": {
+    "previous_chunk_summary": {
+      "chunk_id": "volume_01-r000039",
+      "summary": "罗伦斯和赫萝继续互动，赫萝调侃罗伦斯的外表，指出他虽然长得不错，但需要更注重个人清洁。罗伦斯对此感到些许尴尬，因为他从未意识到整洁外表对女性的吸引力。赫萝进一步表示喜欢罗伦斯的胡子，但希望他留得更长一些，像狼一样。罗伦斯意识到自己被捉弄，决定不再理会赫萝，朝房门走去。赫萝则笑着跟随，并提醒他注意暖炉旁有其他人，不要暴露她的真实身份。赫萝强调自己是「贤狼赫萝」，并指出自己在到达帕斯罗村前一直以人类形态旅行，让罗伦斯放心。赫萝的自信和轻松态度表明她对自己的非人身份有充分掌控，而罗伦斯虽然察觉到被戏弄，但并未真正生气，反而对赫萝的陪伴感到安心。两人的互动显示出一种默契和信任，尽管赫萝的玩笑和捉弄仍让罗伦斯感到无奈。",
+      "active_entities": [
+        "char_v2_000001",
+        "char_v2_000002"
+      ],
+      "open_questions": [
+        "赫萝为何坚持以人类形态旅行？她是否担心暴露身份？",
+        "罗伦斯是否真正相信赫萝不会暴露自己？他是否在压抑自己的情绪？",
+        "赫萝的玩笑和捉弄是否暗示她对罗伦斯有某种特殊情感？"
+      ],
+      "evidence_refs": [
+        "volume_01-d000219",
+        "volume_01-d000220",
+        "volume_01-d000221",
+        "volume_01-d000222",
+        "volume_01-d000223",
+        "volume_01-d000224",
+        "volume_01-d000225"
+      ]
+    },
+    "global_summary": "本卷继续描绘罗伦斯与赫萝之间的互动，试图揭开赫萝的真实身份。赫萝表达了对故乡约伊兹森林的思念，并提到离开故乡的时间已无法记起。她希望先旅行，以了解故乡的变化，同时增广见闻。赫萝随后向罗伦斯提出希望与他一同旅行，前提是罗伦斯不会将她交给教会。罗伦斯虽未完全确认赫萝的身份，但认为她并非坏人，且与她交谈有趣。然而，出于商人的谨慎，他并未立刻答应赫萝的请求。赫萝则表示理解，并以轻松的语气强调自己是只狼，而非人类。赫萝的请求和罗伦斯的犹豫揭示了两人之间信任与怀疑的微妙关系。赫萝的动机仍不明确，她是否真的想回故乡，还是另有目的，仍是未解之谜。赫萝提到北方，暗示这一地点对她而言具有重要意义，可能是她的出生地或与她过去的经历有关。这一地点的神秘性暗示它可能在未来剧情中扮演关键角色。赫萝的言行显示出她对罗伦斯心理的掌控，而罗伦斯则在试图理解她的动机。赫萝以轻松的态度主导了与罗伦斯的对话，表现出她对当前局势的掌控。她假装要睡觉，实则是在结束对话，随后又突然探头询问罗伦斯是否要让她睡在外面，语气中带着调侃。罗伦斯虽然觉得无奈，但也觉得有趣，并未真正拒绝。赫萝的举动让罗伦斯怀疑她之前的一些反应是否是演戏，但罗伦斯仍相信她对故乡和村民的不满是真实的。清晨，罗伦斯醒来发现赫萝已经起床，并擅自翻找他的行李，换上了他最上等的衣服。罗伦斯责备赫萝擅自翻找他人行李的行为，但赫萝完全不以为意，反而得意地展示衣服，并询问是否可以剪开裤子以方便她的尾巴。赫萝的举动大胆而自信，而罗伦斯虽然不满，却并未真正生气，反而觉得赫萝穿着他的衣服显得可爱。赫萝的言行表明她对罗伦斯的反应有一定程度的掌控，而罗伦斯则在权衡是否要让她继续穿着这些衣物。赫萝在货台上轻快地跳下，动作自然得让罗伦斯一时未能反应。罗伦斯并未阻止她，因为他内心确信赫萝不会逃跑。赫萝确认了这一点后，主动脱下罗伦斯为她订制的熊皮外套，并指出衣服对她来说太长了。罗伦斯注意到赫萝的体型比他想象的要娇小，足足比他矮了两个头。随后，赫萝向罗伦斯提出希望与他一起旅行，并表示自己不会逃跑。罗伦斯虽然仍保持谨慎，但认为赫萝不像会偷东西的人，与她同行应该无妨。他最终答应了赫…",
+    "candidate_entities": [
+      {
+        "entity_id": "char_v2_000001",
+        "entity_type": "character",
+        "display_name": "罗伦斯",
+        "aliases": [
+          "罗伦斯先生"
+        ],
+        "importance": "major",
+        "summary": "罗伦斯与赫萝继续互动，赫萝调侃他的外表，指出他虽然长得不错，但需要更注重个人清洁。罗伦斯对此感到些许尴尬，因为他从未意识到整洁外表对女性的吸引力。赫萝的玩笑和捉弄让罗伦斯感到无奈，但他并未真正生气，…",
+        "latest_seen_chunk_id": "volume_01-r000039",
+        "dialogue_count": 97
+      },
+      {
+        "entity_id": "char_v2_000002",
+        "entity_type": "character",
+        "display_name": "赫萝",
+        "aliases": [
+          "赫萝（丰收之神）",
+          "丰收之神",
+          "狼赫萝",
+          "赫萝"
+        ],
+        "importance": "major",
+        "summary": "赫萝继续以轻松和自信的态度调侃罗伦斯的外表，指出他需要更注重个人清洁，并表示喜欢罗伦斯的胡子，但希望他留得更长一些，像狼一样。赫萝提醒罗伦斯注意暖炉旁有其他人，不要暴露她的真实身份，并强调自己是「贤…",
+        "latest_seen_chunk_id": "volume_01-r000039",
+        "dialogue_count": 124
+      },
+      {
+        "entity_id": "mystery_v2_000009",
+        "entity_type": "mystery",
+        "display_name": "赫萝",
+        "aliases": [
+          "赫萝（丰收之神）",
+          "丰收之神",
+          "狼",
+          "狼赫萝"
+        ],
+        "importance": "major",
+        "summary": "传说中在收割季节进入最后一束麦子中的人体内的神明。赫萝声称自己是丰收之神的化身，但罗伦斯的质疑和赫萝的解释暗示她可能并非传统意义上的神明，而是某种与麦子和丰收仪式相关的存在。",
+        "latest_seen_chunk_id": "volume_01-r000026",
+        "dialogue_count": 14
+      },
+      {
+        "entity_id": "char_v2_000005",
+        "entity_type": "character",
+        "display_name": "丰收之神赫萝",
+        "aliases": [
+          "赫萝（神明）",
+          "丰收之神"
+        ],
+        "importance": "major",
+        "summary": "赫萝进一步强调自己是「贤狼赫萝」，并否认自己是神明，但表现出对自身非人特征的自信。她的言行暗示她可能具有神性，但选择以狼的身份与罗伦斯互动。",
+        "latest_seen_chunk_id": "volume_01-r000025",
+        "dialogue_count": 2
+      },
+      {
+        "entity_id": "mystery_v2_000015",
+        "entity_type": "mystery",
+        "display_name": "女孩",
+        "aliases": [
+          "女孩（动物耳朵）",
+          "神秘女孩",
+          "有耳朵的女孩"
+        ],
+        "importance": "major",
+        "summary": "一名神秘的女孩，出现在罗伦斯的马车上，睡得香甜，美丽而安静。她反应迟缓，声音甜美，但头上长着像小狗的耳朵，暗示她可能并非普通人。她赤裸着身体缓缓站起，美丽得令人屏息，随后发出狼嚎，令罗伦斯误以为她是…",
+        "latest_seen_chunk_id": "volume_01-r000014",
+        "dialogue_count": 14
+      },
+      {
+        "entity_id": "char_v2_000006",
+        "entity_type": "character",
+        "display_name": "教会",
+        "aliases": [
+          "教会组织",
+          "宗教机构"
+        ],
+        "importance": "medium",
+        "summary": "教会是赫萝过往经历中的重要势力，她多次提及教会曾让她吃了不少苦头，并暗示她不愿再被教会抓住。在本段中，教会接纳了罗伦斯和赫萝的谎言，允许他们借宿，显示出教会对外来旅行者相对友善的态度，但对非人类存在…",
+        "latest_seen_chunk_id": "volume_01-r000036",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "char_v2_000010",
+        "entity_type": "character",
+        "display_name": "约伊兹森林",
+        "aliases": [
+          "赫萝的出生地",
+          "故乡森林"
+        ],
+        "importance": "medium",
+        "summary": "赫萝提到自己出生的故乡是约伊兹森林，并表示离开故乡的时间已无法记起。她对故乡充满思念，但未进一步解释其重要性。约伊兹森林可能是她身份或过去经历的关键地点。",
+        "latest_seen_chunk_id": "volume_01-r000030",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "mystery_v2_000018",
+        "entity_type": "mystery",
+        "display_name": "北方",
+        "aliases": [
+          "北方大地",
+          "赫萝的故乡"
+        ],
+        "importance": "medium",
+        "summary": "赫萝明确表示想回到北方，但未进一步解释原因。北方对她而言似乎具有重要的意义，可能是她的出生地或与她过去的经历有关。这一地点的神秘性暗示它可能在未来剧情中扮演关键角色。",
+        "latest_seen_chunk_id": "volume_01-r000029",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "char_v2_000009",
+        "entity_type": "character",
+        "display_name": "帕斯罗村的年轻村民",
+        "aliases": [
+          "年轻村民",
+          "赫萝承诺的年轻人"
+        ],
+        "importance": "medium",
+        "summary": "赫萝提到她曾答应过帕斯罗村的一名年轻人，要让村里的麦子丰收，并为此守护麦田多年。虽然未提及姓名，但此人对赫萝的承诺和行动有重要影响，是她留在村落的重要原因。",
+        "latest_seen_chunk_id": "volume_01-r000028",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "mystery_v2_000010",
+        "entity_type": "mystery",
+        "display_name": "亚伦多伯爵",
+        "aliases": [
+          "新领主",
+          "帕斯罗村的统治者"
+        ],
+        "importance": "medium",
+        "summary": "赫萝提到，几年前统治帕斯罗村一带的领主变成了现在的亚伦多伯爵，并开始引进南方的先进农耕方法。虽然未直接出场，但他的政策对村落和赫萝产生了深远影响，是导致赫萝离开的重要因素。",
+        "latest_seen_chunk_id": "volume_01-r000028",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "char_v2_000007",
+        "entity_type": "character",
+        "display_name": "叶勒",
+        "aliases": [],
+        "importance": "medium",
+        "summary": "叶勒是村民认为被赫萝附身的人，因割下最后一束麦子而被认定为「赫萝」的继承者。罗伦斯提到他时，暗示赫萝本应在他体内，但赫萝却出现在罗伦斯面前，引发对传说真实性的质疑。",
+        "latest_seen_chunk_id": "volume_01-r000026",
+        "dialogue_count": 4
+      },
+      {
+        "entity_id": "char_v2_000008",
+        "entity_type": "character",
+        "display_name": "帕斯罗村村民",
+        "aliases": [
+          "帕斯罗村人",
+          "村民"
+        ],
+        "importance": "medium",
+        "summary": "帕斯罗村的村民是丰收祭典的核心参与者，他们相信赫萝会进入割下最后一束麦子的人体内。罗伦斯提到自己与村民的长期关系，并提议将麦子带回村里，以避免他们因失去丰收之神而陷入困境。",
+        "latest_seen_chunk_id": "volume_01-r000026",
+        "dialogue_count": 0
+      }
+    ]
+  },
+  "rules": {
+    "speaker_statuses": [
+      "known",
+      "mystery",
+      "npc_group",
+      "review",
+      "unknown"
+    ],
+    "importance_levels": [
+      "minor",
+      "medium",
+      "major"
+    ],
+    "general_novel_only": true
+  },
+  "task_a_annotations": [
+    {
+      "dialogue_id": "volume_01-d000226",
+      "dialogue_index": 225,
+      "volume_id": "",
+      "chapter_id": "",
+      "chapter_index": 0,
+      "chapter_title": "",
+      "scene_id": "",
+      "scene_index": 0,
+      "paragraph_id": "volume_01-c002-s001-p000601",
+      "paragraph_index": 600,
+      "local_dialogue_index": 1,
+      "text": "这样啊，所以你是从约连那边过来的？",
+      "quote_text": "「这样啊，所以你是从约连那边过来的？」",
+      "dialogue_kind": "standalone",
+      "char_start": 0,
+      "char_end": 19,
+      "speaker_entity_id": "char_v2_000001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "对话发生在罗伦斯和赫萝躲雨的教会中，罗伦斯是主要叙述视角人物，且对话内容是对他人的提问"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false,
+      "review_reason": "",
+      "request_id": "volume_01-r000040--annotation--qwen3_32b"
+    },
+    {
+      "dialogue_id": "volume_01-d000227",
+      "dialogue_index": 226,
+      "volume_id": "",
+      "chapter_id": "",
+      "chapter_index": 0,
+      "chapter_title": "",
+      "scene_id": "",
+      "scene_index": 0,
+      "paragraph_id": "volume_01-c002-s001-p000602",
+      "paragraph_index": 601,
+      "local_dialogue_index": 1,
+      "text": "是的。我在约连买了盐之后，随即把盐送到客人那儿，再从客人那儿收了貂皮。",
+      "quote_text": "「是的。我在约连买了盐之后，随即把盐送到客人那儿，再从客人那儿收了貂皮。」",
+      "dialogue_kind": "standalone",
+      "char_start": 0,
+      "char_end": 37,
+      "speaker_entity_id": "char_v2_000001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "对话内容是罗伦斯对提问的回答，符合上下文对话轮次"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false,
+      "review_reason": "",
+      "request_id": "volume_01-r000040--annotation--qwen3_32b"
+    },
+    {
+      "dialogue_id": "volume_01-d000228",
+      "dialogue_index": 227,
+      "volume_id": "",
+      "chapter_id": "",
+      "chapter_index": 0,
+      "chapter_title": "",
+      "scene_id": "",
+      "scene_index": 0,
+      "paragraph_id": "volume_01-c002-s001-p000606",
+      "paragraph_index": 605,
+      "local_dialogue_index": 1,
+      "text": "不过，要从这里再回到约连，这不是太折腾人了吗？",
+      "quote_text": "「不过，要从这里再回到约连，这不是太折腾人了吗？」",
+      "dialogue_kind": "standalone",
+      "char_start": 0,
+      "char_end": 25,
+      "speaker_entity_id": "char_v2_000001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "对话是罗伦斯对商人提问的回应，符合上下文对话轮次"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false,
+      "review_reason": "",
+      "request_id": "volume_01-r000040--annotation--qwen3_32b"
+    },
+    {
+      "dialogue_id": "volume_01-d000229",
+      "dialogue_index": 228,
+      "volume_id": "",
+      "chapter_id": "",
+      "chapter_index": 0,
+      "chapter_title": "",
+      "scene_id": "",
+      "scene_index": 0,
+      "paragraph_id": "volume_01-c002-s001-p000607",
+      "paragraph_index": 606,
+      "local_dialogue_index": 1,
+      "text": "这就得靠商人的智慧了。",
+      "quote_text": "「这就得靠商人的智慧了。」",
+      "dialogue_kind": "standalone",
+      "char_start": 0,
+      "char_end": 13,
+      "speaker_entity_id": "char_v2_000001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "对话是罗伦斯对商人提问的回答，符合上下文对话轮次"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false,
+      "review_reason": "",
+      "request_id": "volume_01-r000040--annotation--qwen3_32b"
+    },
+    {
+      "dialogue_id": "volume_01-d000230",
+      "dialogue_index": 229,
+      "volume_id": "",
+      "chapter_id": "",
+      "chapter_index": 0,
+      "chapter_title": "",
+      "scene_id": "",
+      "scene_index": 0,
+      "paragraph_id": "volume_01-c002-s001-p000608",
+      "paragraph_index": 607,
+      "local_dialogue_index": 1,
+      "text": "喔喔？有意思，说来听听如何？",
+      "quote_text": "「喔喔？有意思，说来听听如何？」",
+      "dialogue_kind": "standalone",
+      "char_start": 0,
+      "char_end": 16,
+      "speaker_entity_id": "char_v2_000001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "对话是罗伦斯对商人提问的回答，符合上下文对话轮次"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false,
+      "review_reason": "",
+      "request_id": "volume_01-r000040--annotation--qwen3_32b"
+    },
+    {
+      "dialogue_id": "volume_01-d000231",
+      "dialogue_index": 230,
+      "volume_id": "",
+      "chapter_id": "",
+      "chapter_index": 0,
+      "chapter_title": "",
+      "scene_id": "",
+      "scene_index": 0,
+      "paragraph_id": "volume_01-c002-s001-p000609",
+      "paragraph_index": 608,
+      "local_dialogue_index": 1,
+      "text": "我在约连买盐的时候，并没有当场付钱。我把等金额的麦子，卖给了卖盐那家商行位在另一个城镇的分行。那时候我没有跟分行收取麦子的货款，但也没有支付盐的货款。也就是说，我在没有现金往来的情况下，完成两笔交易。",
+      "quote_text": "「我在约连买盐的时候，并没有当场付钱。我把等金额的麦子，卖给了卖盐那家商行位在另一个城镇的分行。那时候我没有跟分行收取麦子的货款，但也没有支付盐的货款。也就是说，我在没有现金往来的情况下，完成两笔交易。」",
+      "dialogue_kind": "standalone",
+      "char_start": 0,
+      "char_end": 102,
+      "speaker_entity_id": "char_v2_000001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "对话是罗伦斯对商人提问的详细回答，符合上下文对话轮次"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false,
+      "review_reason": "",
+      "request_id": "volume_01-r000040--annotation--qwen3_32b"
+    },
+    {
+      "dialogue_id": "volume_01-d000232",
+      "dialogue_index": 231,
+      "volume_id": "",
+      "chapter_id": "",
+      "chapter_index": 0,
+      "chapter_title": "",
+      "scene_id": "",
+      "scene_index": 0,
+      "paragraph_id": "volume_01-c002-s001-p000611",
+      "paragraph_index": 610,
+      "local_dialogue_index": 1,
+      "text": "这……真是非常奇妙啊。",
+      "quote_text": "「这……真是非常奇妙啊。」",
+      "dialogue_kind": "standalone",
+      "char_start": 0,
+      "char_end": 13,
+      "speaker_entity_id": "char_v2_000001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "对话是罗伦斯对商人反应的回应，符合上下文对话轮次"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false,
+      "review_reason": "",
+      "request_id": "volume_01-r000040--annotation--qwen3_32b"
+    },
+    {
+      "dialogue_id": "volume_01-d000233",
+      "dialogue_index": 232,
+      "volume_id": "",
+      "chapter_id": "",
+      "chapter_index": 0,
+      "chapter_title": "",
+      "scene_id": "",
+      "scene_index": 0,
+      "paragraph_id": "volume_01-c002-s001-p000613",
+      "paragraph_index": 612,
+      "local_dialogue_index": 1,
+      "text": "我住在一个叫做佩连佐的城镇，我的葡萄园从没采用过这么奇妙的方法来买卖葡萄，不知道这样会不会有问题啊？",
+      "quote_text": "「我住在一个叫做佩连佐的城镇，我的葡萄园从没采用过这么奇妙的方法来买卖葡萄，不知道这样会不会有问题啊？」",
+      "dialogue_kind": "standalone",
+      "char_start": 0,
+      "char_end": 52,
+      "speaker_entity_id": "char_v2_000001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "对话是罗伦斯对商人提问的进一步回应，符合上下文对话轮次"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false,
+      "review_reason": "",
+      "request_id": "volume_01-r000040--annotation--qwen3_32b"
+    }
+  ],
+  "task_b_chunk_summary": {
+    "chunk_id": "volume_01-r000040",
+    "summary": "罗伦斯和赫萝躲雨进入教会，发现教会是重要的情报交流场所。罗伦斯观察到十二位客人，其中几位像是商人。他加入一对夫妻的对话，向他们解释自己如何通过汇兑体制完成交易，即在约连买盐时未当场付款，而是将等值麦子卖给商行的分行，从而在没有现金往来的情况下完成两笔交易。这对夫妻中，年长的丈夫对罗伦斯的解释表现出浓厚兴趣，而沉默的妻子则未参与对话。罗伦斯的解释基于南方商业国家发明的汇兑体制，但年长男子似乎难以完全理解。对话中，罗伦斯展现出商人智慧，而赫萝则隐藏身份，未参与对话。罗伦斯的对话轮次表明他试图通过交流获取信息或建立联系，同时避免暴露赫萝的真实身份。目前仍未解决的问题包括：赫萝是否完全隐藏身份？这对夫妻是否会进一步提供有用信息？罗伦斯的汇兑解释是否能被他人理解？",
+    "active_entities": [
+      "char_v2_000001",
+      "char_v2_000002"
+    ],
+    "open_questions": [
+      "赫萝是否完全隐藏身份？",
+      "这对夫妻是否会进一步提供有用信息？",
+      "罗伦斯的汇兑解释是否能被他人理解？"
+    ],
+    "evidence_refs": [
+      "volume_01-c002-s001-p000598",
+      "volume_01-c002-s001-p000599",
+      "volume_01-c002-s001-p000600",
+      "volume_01-c002-s001-p000601",
+      "volume_01-c002-s001-p000602",
+      "volume_01-c002-s001-p000603",
+      "volume_01-c002-s001-p000604",
+      "volume_01-c002-s001-p000605",
+      "volume_01-c002-s001-p000606",
+      "volume_01-c002-s001-p000607",
+      "volume_01-c002-s001-p000608",
+      "volume_01-c002-s001-p000609",
+      "volume_01-c002-s001-p000610",
+      "volume_01-c002-s001-p000611",
+      "volume_01-c002-s001-p000612",
+      "volume_01-c002-s001-p000613"
+    ]
+  },
+  "task_d_entity_discovery": {
+    "new_entities": [
+      {
+        "entity_type": "character",
+        "display_name": "佩连佐的葡萄园主人",
+        "aliases": [
+          "年长的丈夫",
+          "佩连佐的商人"
+        ],
+        "importance": "medium",
+        "summary": "一位居住在佩连佐的葡萄园主人，对罗伦斯提到的汇兑交易方式表现出浓厚兴趣。他询问罗伦斯是否适用于葡萄买卖，并表示自己从未采用过这种交易方式。虽然未直接出场，但他的提问暗示他对商业知识的渴望，可能在未来剧情中与罗伦斯有进一步互动。",
+        "evidence_refs": [
+          "volume_01-d000233"
+        ],
+        "dialogue_count_delta": 1
+      },
+      {
+        "entity_type": "npc_group",
+        "display_name": "教会中的十二位客人",
+        "aliases": [
+          "教会投宿客",
+          "教会中的陌生人"
+        ],
+        "importance": "minor",
+        "summary": "在教会中投宿的十二位客人，包括商人和不同职业的人。他们构成了罗伦斯和赫萝躲雨时的背景环境，其中一对夫妻成为罗伦斯对话的对象，其余人则未参与剧情发展。",
+        "evidence_refs": [
+          "volume_01-c002-s001-p000600"
+        ],
+        "dialogue_count_delta": 0
+      }
+    ],
+    "merge_candidates": []
+  },
+  "current_entity_memory": [
+    {
+      "entity_id": "char_v2_000001",
+      "entity_type": "character",
+      "display_name": "罗伦斯",
+      "aliases": [
+        "罗伦斯先生"
+      ],
+      "importance": "major",
+      "summary": "罗伦斯与赫萝继续互动，赫萝调侃他的外表，指出他虽然长得不错，但需要更注重个人清洁。罗伦斯对此感到些许尴尬，因为他从未意识到整洁外表对女性的吸引力。赫萝的玩笑和捉弄让罗伦斯感到无奈，但他并未真正生气，…",
+      "latest_seen_chunk_id": "volume_01-r000039",
+      "dialogue_count": 97
+    },
+    {
+      "entity_id": "char_v2_000002",
+      "entity_type": "character",
+      "display_name": "赫萝",
+      "aliases": [
+        "赫萝（丰收之神）",
+        "丰收之神",
+        "狼赫萝",
+        "赫萝"
+      ],
+      "importance": "major",
+      "summary": "赫萝继续以轻松和自信的态度调侃罗伦斯的外表，指出他需要更注重个人清洁，并表示喜欢罗伦斯的胡子，但希望他留得更长一些，像狼一样。赫萝提醒罗伦斯注意暖炉旁有其他人，不要暴露她的真实身份，并强调自己是「贤…",
+      "latest_seen_chunk_id": "volume_01-r000039",
+      "dialogue_count": 124
+    },
+    {
+      "entity_id": "mystery_v2_000009",
+      "entity_type": "mystery",
+      "display_name": "赫萝",
+      "aliases": [
+        "赫萝（丰收之神）",
+        "丰收之神",
+        "狼",
+        "狼赫萝"
+      ],
+      "importance": "major",
+      "summary": "传说中在收割季节进入最后一束麦子中的人体内的神明。赫萝声称自己是丰收之神的化身，但罗伦斯的质疑和赫萝的解释暗示她可能并非传统意义上的神明，而是某种与麦子和丰收仪式相关的存在。",
+      "latest_seen_chunk_id": "volume_01-r000026",
+      "dialogue_count": 14
+    },
+    {
+      "entity_id": "char_v2_000005",
+      "entity_type": "character",
+      "display_name": "丰收之神赫萝",
+      "aliases": [
+        "赫萝（神明）",
+        "丰收之神"
+      ],
+      "importance": "major",
+      "summary": "赫萝进一步强调自己是「贤狼赫萝」，并否认自己是神明，但表现出对自身非人特征的自信。她的言行暗示她可能具有神性，但选择以狼的身份与罗伦斯互动。",
+      "latest_seen_chunk_id": "volume_01-r000025",
+      "dialogue_count": 2
+    },
+    {
+      "entity_id": "mystery_v2_000015",
+      "entity_type": "mystery",
+      "display_name": "女孩",
+      "aliases": [
+        "女孩（动物耳朵）",
+        "神秘女孩",
+        "有耳朵的女孩"
+      ],
+      "importance": "major",
+      "summary": "一名神秘的女孩，出现在罗伦斯的马车上，睡得香甜，美丽而安静。她反应迟缓，声音甜美，但头上长着像小狗的耳朵，暗示她可能并非普通人。她赤裸着身体缓缓站起，美丽得令人屏息，随后发出狼嚎，令罗伦斯误以为她是…",
+      "latest_seen_chunk_id": "volume_01-r000014",
+      "dialogue_count": 14
+    },
+    {
+      "entity_id": "char_v2_000011",
+      "entity_type": "character",
+      "display_name": "佩连佐的葡萄园主人",
+      "aliases": [
+        "年长的丈夫",
+        "佩连佐的商人"
+      ],
+      "importance": "medium",
+      "summary": "一位居住在佩连佐的葡萄园主人，对罗伦斯提到的汇兑交易方式表现出浓厚兴趣。他询问罗伦斯是否适用于葡萄买卖，并表示自己从未采用过这种交易方式。虽然未直接出场，但他的提问暗示他对商业知识的渴望，可能在未来…",
+      "latest_seen_chunk_id": "volume_01-r000040",
+      "dialogue_count": 1
+    },
+    {
+      "entity_id": "char_v2_000006",
+      "entity_type": "character",
+      "display_name": "教会",
+      "aliases": [
+        "教会组织",
+        "宗教机构"
+      ],
+      "importance": "medium",
+      "summary": "教会是赫萝过往经历中的重要势力，她多次提及教会曾让她吃了不少苦头，并暗示她不愿再被教会抓住。在本段中，教会接纳了罗伦斯和赫萝的谎言，允许他们借宿，显示出教会对外来旅行者相对友善的态度，但对非人类存在…",
+      "latest_seen_chunk_id": "volume_01-r000036",
+      "dialogue_count": 0
+    },
+    {
+      "entity_id": "char_v2_000010",
+      "entity_type": "character",
+      "display_name": "约伊兹森林",
+      "aliases": [
+        "赫萝的出生地",
+        "故乡森林"
+      ],
+      "importance": "medium",
+      "summary": "赫萝提到自己出生的故乡是约伊兹森林，并表示离开故乡的时间已无法记起。她对故乡充满思念，但未进一步解释其重要性。约伊兹森林可能是她身份或过去经历的关键地点。",
+      "latest_seen_chunk_id": "volume_01-r000030",
+      "dialogue_count": 0
+    },
+    {
+      "entity_id": "mystery_v2_000018",
+      "entity_type": "mystery",
+      "display_name": "北方",
+      "aliases": [
+        "北方大地",
+        "赫萝的故乡"
+      ],
+      "importance": "medium",
+      "summary": "赫萝明确表示想回到北方，但未进一步解释原因。北方对她而言似乎具有重要的意义，可能是她的出生地或与她过去的经历有关。这一地点的神秘性暗示它可能在未来剧情中扮演关键角色。",
+      "latest_seen_chunk_id": "volume_01-r000029",
+      "dialogue_count": 0
+    },
+    {
+      "entity_id": "char_v2_000009",
+      "entity_type": "character",
+      "display_name": "帕斯罗村的年轻村民",
+      "aliases": [
+        "年轻村民",
+        "赫萝承诺的年轻人"
+      ],
+      "importance": "medium",
+      "summary": "赫萝提到她曾答应过帕斯罗村的一名年轻人，要让村里的麦子丰收，并为此守护麦田多年。虽然未提及姓名，但此人对赫萝的承诺和行动有重要影响，是她留在村落的重要原因。",
+      "latest_seen_chunk_id": "volume_01-r000028",
+      "dialogue_count": 0
+    },
+    {
+      "entity_id": "mystery_v2_000010",
+      "entity_type": "mystery",
+      "display_name": "亚伦多伯爵",
+      "aliases": [
+        "新领主",
+        "帕斯罗村的统治者"
+      ],
+      "importance": "medium",
+      "summary": "赫萝提到，几年前统治帕斯罗村一带的领主变成了现在的亚伦多伯爵，并开始引进南方的先进农耕方法。虽然未直接出场，但他的政策对村落和赫萝产生了深远影响，是导致赫萝离开的重要因素。",
+      "latest_seen_chunk_id": "volume_01-r000028",
+      "dialogue_count": 0
+    },
+    {
+      "entity_id": "char_v2_000007",
+      "entity_type": "character",
+      "display_name": "叶勒",
+      "aliases": [],
+      "importance": "medium",
+      "summary": "叶勒是村民认为被赫萝附身的人，因割下最后一束麦子而被认定为「赫萝」的继承者。罗伦斯提到他时，暗示赫萝本应在他体内，但赫萝却出现在罗伦斯面前，引发对传说真实性的质疑。",
+      "latest_seen_chunk_id": "volume_01-r000026",
+      "dialogue_count": 4
+    }
+  ]
+}

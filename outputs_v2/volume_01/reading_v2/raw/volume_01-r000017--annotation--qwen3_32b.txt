@@ -1,0 +1,72 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000049",
+      "speaker_entity_id": "char_v2_000004",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "「喂！我说你啊！」是罗伦斯为了叫醒女孩而说的话，前文明确提到「罗伦斯还是打起精神开口说道」"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000050",
+      "speaker_entity_id": "mystery_v2_000014",
+      "speaker_display": "神秘女孩",
+      "speaker_status": "mystery",
+      "confidence": 0.9,
+      "evidence": [
+        "「……嗯唔？」是女孩在被叫醒时的反应，前文提到「随着罗伦斯的声音，女孩闭着双眼、慢了半拍做出反应」"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000051",
+      "speaker_entity_id": "char_v2_000004",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "「喂！起床啊！你在我的马车上做什么？」是罗伦斯在女孩没有反应后再次叫醒她，前文提到「罗伦斯打起精神，提足丹田之力开口说」"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000052",
+      "speaker_entity_id": "mystery_v2_000014",
+      "speaker_display": "神秘女孩",
+      "speaker_status": "mystery",
+      "confidence": 0.9,
+      "evidence": [
+        "「嗯……啊……」是女孩在被拉掉貂皮后发出的声音，前文提到「这时总算听见女孩显得不悦的声音」"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000053",
+      "speaker_entity_id": "char_v2_000004",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "「喂！你擅自坐上别人的马车，想干什么？」是罗伦斯在女孩仍未回应后再次质问，前文提到「罗伦斯打起精神，提足丹田之力开口说」"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    }
+  ],
+  "chunk_notes": "本 chunk 中的对话主要发生在罗伦斯与神秘女孩之间。罗伦斯的对话明确由他本人说出，而女孩的反应也明确由她发出。没有出现其他说话人，因此无需标记为 unknown 或 npc_group。"
+}
+```

@@ -1,0 +1,494 @@
+你是通用小说角色记忆维护助手。任务：更新当前 chunk 出现过的已有实体卡片。只更新输入证据支持的内容，重要性只允许 minor、medium、major；升级可以提出，降级必须谨慎。
+只返回 JSON，格式：{"updates":[{"entity_id":"...","summary":"...","importance":"minor|medium|major","dialogue_count_delta":0,"latest_seen_chunk_id":"...","relationship_updates":[],"evidence_refs":[]}]}
+输入 JSON：
+{
+  "volume": {
+    "volume_id": "volume_01",
+    "volume": 1,
+    "title": ""
+  },
+  "chunk": {
+    "chunk_id": "volume_01-r000007",
+    "chunk_index": 6,
+    "chapter_id": "volume_01-c001",
+    "chapter_title": "序幕",
+    "scene_id": "volume_01-c001-s001",
+    "paragraphs": [
+      {
+        "paragraph_id": "volume_01-c001-s001-p000070",
+        "paragraph_index": 69,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "序幕",
+        "scene_id": "volume_01-c001-s001",
+        "scene_index": 1,
+        "text": "闲来无事只好专心梳理尾巴的毛。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s001-p000071",
+        "paragraph_index": 70,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "序幕",
+        "scene_id": "volume_01-c001-s001",
+        "scene_index": 1,
+        "text": "秋天的天空高而清澈。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s001-p000072",
+        "paragraph_index": 71,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "序幕",
+        "scene_id": "volume_01-c001-s001",
+        "scene_index": 1,
+        "text": "今年又到了收割的时期。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s001-p000073",
+        "paragraph_index": 72,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "序幕",
+        "scene_id": "volume_01-c001-s001",
+        "scene_index": 1,
+        "text": "成群无数的狼在麦田里奔跑。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s001-p000074",
+        "paragraph_index": 73,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "序幕",
+        "scene_id": "volume_01-c001-s001",
+        "scene_index": 1,
+        "text": "插图"
+      }
+    ],
+    "dialogues": []
+  },
+  "near_context": {
+    "lookback_paragraphs": [
+      {
+        "paragraph_id": "volume_01-c001-s001-p000067",
+        "paragraph_index": 66,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "序幕",
+        "scene_id": "volume_01-c001-s001",
+        "scene_index": 1,
+        "text": "耸立在东方的高山，使得村落天空的云朵多半飘向北方。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s001-p000068",
+        "paragraph_index": 67,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "序幕",
+        "scene_id": "volume_01-c001-s001",
+        "scene_index": 1,
+        "text": "想起位在云朵飘去那一头的北方故乡，便忍不住叹了口气。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s001-p000069",
+        "paragraph_index": 68,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "序幕",
+        "scene_id": "volume_01-c001-s001",
+        "scene_index": 1,
+        "text": "把视线从天空拉回麦田，引以为傲的尾巴就在面前摇摆。"
+      }
+    ],
+    "lookahead_paragraphs": [
+      {
+        "paragraph_id": "volume_01-c002-s001-p000075",
+        "paragraph_index": 74,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c002-s001",
+        "scene_index": 1,
+        "text": "第一幕"
+      }
+    ]
+  },
+  "memory": {
+    "previous_chunk_summary": {
+      "chunk_id": "volume_01-r000006",
+      "summary": "本 chunk 为序幕章节，描述了一个以麦田为背景的村落，村民将麦穗的摇曳比喻为狼的奔跑，这种比喻虽生动但带有负面意味。如今这些比喻已变成玩笑，不再承载过去的亲密与恐惧。文中提到村落的天空和麦田依旧，但人事物已改变，村民不再需要“咱”（可能指赫萝）。叙述者似乎对北方故乡有所怀念，并将视线拉回麦田，注意到“引以为傲的尾巴”在摇摆，暗示赫萝的存在。本 chunk 未引入新角色或对话，但延续了赫萝与村落关系的线索。",
+      "active_entities": [
+        "char_v2_000003"
+      ],
+      "open_questions": [
+        "“咱”是否指赫萝？",
+        "赫萝的尾巴是否象征其身份？",
+        "村民为何不再需要“咱”？",
+        "叙述者对北方故乡的怀念是否与赫萝有关？"
+      ],
+      "evidence_refs": [
+        "volume_01-c001-s001-p000057",
+        "volume_01-c001-s001-p000058",
+        "volume_01-c001-s001-p000059",
+        "volume_01-c001-s001-p000060",
+        "volume_01-c001-s001-p000061",
+        "volume_01-c001-s001-p000062",
+        "volume_01-c001-s001-p000063",
+        "volume_01-c001-s001-p000064",
+        "volume_01-c001-s001-p000065",
+        "volume_01-c001-s001-p000066",
+        "volume_01-c001-s001-p000067",
+        "volume_01-c001-s001-p000068",
+        "volume_01-c001-s001-p000069"
+      ]
+    },
+    "global_summary": "本卷包含小说的封面、标题页、制作信息页、故事开端以及目录结构。标题页上出现了英文短语 'Merchant meats spicy wolf.'，随后是中文词汇 '狼'、'与'、'辛'、'香'、'料' 和 'Ⅰ'，可能暗示小说的标题或主题。作者信息显示为 '支仓冻砂'（Isuna Hasekura），插画师为 '文仓十'（Jyuu Ayakura）。制作信息页补充了图源 'linpop'、录入者 '会灰的鸟弹' 以及发布网站 '天使动漫'（www.tsdm39.net），并注明了仅供个人学习交流、禁止商业用途、下载后需在24小时内删除，并要求尊重翻译、扫图、录入、校对的辛勤劳动，转载请保留信息。故事开端描述了行商人罗伦斯在马车货台上的麦束堆里发现了一个自称是丰收之神赫萝的美丽少女。赫萝拥有狼的耳朵和尾巴，并在对话中自称「咱是赫萝」。尽管罗伦斯对赫萝的身份存疑，但仍然决定让她一同旅行。不久后，他们遇到了一个发财机会，据说某种银币将在未来升值，罗伦斯决定尝试投资，但结果尚未揭晓。本卷初步建立了罗伦斯与赫萝之间的关系，并埋下了一个关于银币投资的悬念。此外，本卷还提供了小说的目录结构，包括序幕、第一幕至第六幕以及插图部分，为读者提供了故事结构的概览。序幕章节描述了一个以麦田为背景的村落，村民将麦穗的摇曳比喻为狼的奔跑，这种比喻虽生动但带有负面意味。如今这些比喻已变成玩笑，不再承载过去的亲密与恐惧。文中提到村落的天空和麦田依旧，但人事物已改变，村民不再需要‘咱’（可能指赫萝）。叙述者似乎对北方故乡有所怀念，并将视线拉回麦田，注意到‘引以为傲的尾巴’在摇摆，暗示赫萝的存在。本 chunk 未引入新角色或对话，但延续了赫萝与村落关系的线索。",
+    "candidate_entities": [
+      {
+        "entity_id": "char_v2_000003",
+        "entity_type": "character",
+        "display_name": "赫萝",
+        "aliases": [],
+        "importance": "major",
+        "summary": "自称是丰收之神的美丽少女，拥有狼的耳朵和尾巴，与罗伦斯一同旅行。本 chunk 中未出现对话，但提到‘引以为傲的尾巴’，暗示其身份特征与村落的象征意义相关。",
+        "latest_seen_chunk_id": "volume_01-r000006",
+        "dialogue_count": 3
+      },
+      {
+        "entity_id": "char_v2_000001",
+        "entity_type": "character",
+        "display_name": "支仓冻砂",
+        "aliases": [
+          "Isuna Hasekura"
+        ],
+        "importance": "major",
+        "summary": "小说的作者，出现在制作信息页的作者信息中。",
+        "latest_seen_chunk_id": "volume_01-r000003",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "char_v2_000002",
+        "entity_type": "character",
+        "display_name": "文仓十",
+        "aliases": [
+          "Jyuu Ayakura"
+        ],
+        "importance": "major",
+        "summary": "小说的插画师，出现在制作信息页的插画师信息中。",
+        "latest_seen_chunk_id": "volume_01-r000003",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "mystery_v2_000005",
+        "entity_type": "mystery",
+        "display_name": "叙述者",
+        "aliases": [],
+        "importance": "medium",
+        "summary": "本 chunk 中的叙述者似乎对北方故乡有所怀念，并提到村落不再需要‘咱’，同时提及‘引以为傲的尾巴’，暗示与赫萝有关联。叙述者身份不明，但对村落和赫萝有情感联系。",
+        "latest_seen_chunk_id": "volume_01-r000006",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "mystery_v2_000002",
+        "entity_type": "mystery",
+        "display_name": "linpop",
+        "aliases": [],
+        "importance": "medium",
+        "summary": "小说的图源提供者，出现在制作信息页中。",
+        "latest_seen_chunk_id": "volume_01-r000003",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "mystery_v2_000003",
+        "entity_type": "mystery",
+        "display_name": "会灰的鸟弹",
+        "aliases": [],
+        "importance": "medium",
+        "summary": "小说的录入者，出现在制作信息页中。",
+        "latest_seen_chunk_id": "volume_01-r000003",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "mystery_v2_000004",
+        "entity_type": "mystery",
+        "display_name": "天使动漫",
+        "aliases": [
+          "www.tsdm39.net"
+        ],
+        "importance": "medium",
+        "summary": "小说的发布网站，出现在制作信息页中。",
+        "latest_seen_chunk_id": "volume_01-r000003",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "mystery_v2_000001",
+        "entity_type": "mystery",
+        "display_name": "狼与辛香料Ⅰ",
+        "aliases": [
+          "狼",
+          "辛",
+          "香",
+          "料",
+          "Ⅰ",
+          "Merchant meats spicy wolf."
+        ],
+        "importance": "medium",
+        "summary": "小说的标题或主题，由英文短语 'Merchant meats spicy wolf.' 和中文词汇 '狼'、'与'、'辛'、'香'、'料'、'Ⅰ' 组成，暗示小说可能与香料贸易或奇幻冒险有关。",
+        "latest_seen_chunk_id": "volume_01-r000001",
+        "dialogue_count": 0
+      }
+    ]
+  },
+  "rules": {
+    "speaker_statuses": [
+      "known",
+      "mystery",
+      "npc_group",
+      "review",
+      "unknown"
+    ],
+    "importance_levels": [
+      "minor",
+      "medium",
+      "major"
+    ],
+    "general_novel_only": true
+  },
+  "task_a_annotations": [],
+  "task_b_chunk_summary": {
+    "chunk_id": "volume_01-r000007",
+    "summary": "本 chunk 为序幕章节的延续，描述了秋天的天空和麦田的景象，提到今年进入收割季节，成群的狼在麦田中奔跑。叙述者闲来无事时专注于梳理尾巴的毛，暗示赫萝的存在。本 chunk 未引入新角色或对话，但延续了赫萝与村落的象征关系，以及叙述者对北方故乡的怀念。成群的狼与麦田的意象可能象征着变化或威胁，但具体含义尚未明确。",
+    "active_entities": [
+      "char_v2_000003"
+    ],
+    "open_questions": [
+      "成群的狼在麦田奔跑是否象征某种变化或威胁？",
+      "叙述者对北方故乡的怀念是否与赫萝有关？",
+      "赫萝的尾巴是否象征其身份或村落的某种象征？"
+    ],
+    "evidence_refs": [
+      "volume_01-c001-s001-p000070",
+      "volume_01-c001-s001-p000071",
+      "volume_01-c001-s001-p000072",
+      "volume_01-c001-s001-p000073",
+      "volume_01-c001-s001-p000074",
+      "volume_01-c001-s001-p000067",
+      "volume_01-c001-s001-p000068",
+      "volume_01-c001-s001-p000069"
+    ]
+  },
+  "task_d_entity_discovery": {
+    "new_entities": [
+      {
+        "entity_type": "mystery",
+        "display_name": "叙述者",
+        "aliases": [],
+        "importance": "medium",
+        "summary": "本 chunk 中的叙述者专注于梳理尾巴的毛，暗示与赫萝有关联。叙述者对北方故乡有所怀念，并提及村落的季节变化和麦田景象，可能与赫萝的象征意义相关。",
+        "evidence_refs": [
+          "volume_01-c001-s001-p000070",
+          "volume_01-c001-s001-p000068"
+        ],
+        "dialogue_count_delta": 0
+      },
+      {
+        "entity_type": "npc_group",
+        "display_name": "麦田中的狼群",
+        "aliases": [],
+        "importance": "minor",
+        "summary": "成群的狼在麦田中奔跑，可能象征季节变化或某种威胁。狼群作为无名群体出现，未参与对话，仅作为环境描写的一部分。",
+        "evidence_refs": [
+          "volume_01-c001-s001-p000073"
+        ],
+        "dialogue_count_delta": 0
+      }
+    ],
+    "merge_candidates": [
+      {
+        "source_entity_id": "mystery_v2_000005",
+        "target_entity_id": "mystery_v2_000005",
+        "reason": "当前 chunk 中的叙述者与之前 chunk 中的叙述者行为和情感一致，应视为同一实体。",
+        "confidence": 0.95
+      }
+    ]
+  },
+  "current_entity_memory": {
+    "characters": [
+      {
+        "entity_id": "char_v2_000001",
+        "entity_type": "character",
+        "display_name": "支仓冻砂",
+        "aliases": [
+          "Isuna Hasekura"
+        ],
+        "importance": "major",
+        "summary": "小说的作者，出现在制作信息页的作者信息中。",
+        "evidence_refs": [
+          "volume_01-c000-s001-p000011",
+          "volume_01-c000-s001-p000012",
+          "volume_01-c000-s002-p000019"
+        ],
+        "dialogue_count": 0,
+        "first_seen_chunk_id": "volume_01-r000001",
+        "latest_seen_chunk_id": "volume_01-r000003",
+        "relationship_updates": []
+      },
+      {
+        "entity_id": "char_v2_000002",
+        "entity_type": "character",
+        "display_name": "文仓十",
+        "aliases": [
+          "Jyuu Ayakura"
+        ],
+        "importance": "major",
+        "summary": "小说的插画师，出现在制作信息页的插画师信息中。",
+        "evidence_refs": [
+          "volume_01-c000-s001-p000013",
+          "volume_01-c000-s001-p000014",
+          "volume_01-c000-s001-p000015",
+          "volume_01-c000-s001-p000016",
+          "volume_01-c000-s002-p000020"
+        ],
+        "dialogue_count": 0,
+        "first_seen_chunk_id": "volume_01-r000001",
+        "latest_seen_chunk_id": "volume_01-r000003",
+        "relationship_updates": []
+      },
+      {
+        "entity_id": "char_v2_000003",
+        "entity_type": "character",
+        "display_name": "赫萝",
+        "aliases": [],
+        "importance": "major",
+        "summary": "自称是丰收之神的美丽少女，拥有狼的耳朵和尾巴，与罗伦斯一同旅行。本 chunk 中未出现对话，但提到‘引以为傲的尾巴’，暗示其身份特征与村落的象征意义相关。",
+        "evidence_refs": [
+          "对话中自称是赫萝，且上下文提到‘自称是丰收之神赫萝的美丽少女’",
+          "volume_01-c000-s003-p000031",
+          "volume_01-c000-s003-p000034",
+          "volume_01-c000-s003-p000035",
+          "volume_01-c000-s003-p000032",
+          "volume_01-c000-s003-p000033",
+          "volume_01-c000-s004-p000045",
+          "volume_01-c001-s001-p000069"
+        ],
+        "dialogue_count": 3,
+        "first_seen_chunk_id": "volume_01-r000004",
+        "latest_seen_chunk_id": "volume_01-r000006",
+        "relationship_updates": [
+          "{'target_entity_id': 'char_v2_000004', 'relation': 'travel_companion', 'evidence_ref': 'volume_01-c000-s003-p000035'}"
+        ]
+      }
+    ],
+    "mysteries": [
+      {
+        "entity_id": "mystery_v2_000001",
+        "entity_type": "mystery",
+        "display_name": "狼与辛香料Ⅰ",
+        "aliases": [
+          "狼",
+          "辛",
+          "香",
+          "料",
+          "Ⅰ",
+          "Merchant meats spicy wolf."
+        ],
+        "importance": "medium",
+        "summary": "小说的标题或主题，由英文短语 'Merchant meats spicy wolf.' 和中文词汇 '狼'、'与'、'辛'、'香'、'料'、'Ⅰ' 组成，暗示小说可能与香料贸易或奇幻冒险有关。",
+        "evidence_refs": [
+          "volume_01-c000-s001-p000003",
+          "volume_01-c000-s001-p000004",
+          "volume_01-c000-s001-p000005",
+          "volume_01-c000-s001-p000006",
+          "volume_01-c000-s001-p000007",
+          "volume_01-c000-s001-p000008",
+          "volume_01-c000-s001-p000009"
+        ],
+        "dialogue_count": 0,
+        "first_seen_chunk_id": "volume_01-r000001",
+        "latest_seen_chunk_id": "volume_01-r000001",
+        "relationship_updates": []
+      },
+      {
+        "entity_id": "mystery_v2_000002",
+        "entity_type": "mystery",
+        "display_name": "linpop",
+        "aliases": [],
+        "importance": "medium",
+        "summary": "小说的图源提供者，出现在制作信息页中。",
+        "evidence_refs": [
+          "volume_01-c000-s002-p000021"
+        ],
+        "dialogue_count": 0,
+        "first_seen_chunk_id": "volume_01-r000003",
+        "latest_seen_chunk_id": "volume_01-r000003",
+        "relationship_updates": []
+      },
+      {
+        "entity_id": "mystery_v2_000003",
+        "entity_type": "mystery",
+        "display_name": "会灰的鸟弹",
+        "aliases": [],
+        "importance": "medium",
+        "summary": "小说的录入者，出现在制作信息页中。",
+        "evidence_refs": [
+          "volume_01-c000-s002-p000022"
+        ],
+        "dialogue_count": 0,
+        "first_seen_chunk_id": "volume_01-r000003",
+        "latest_seen_chunk_id": "volume_01-r000003",
+        "relationship_updates": []
+      },
+      {
+        "entity_id": "mystery_v2_000004",
+        "entity_type": "mystery",
+        "display_name": "天使动漫",
+        "aliases": [
+          "www.tsdm39.net"
+        ],
+        "importance": "medium",
+        "summary": "小说的发布网站，出现在制作信息页中。",
+        "evidence_refs": [
+          "volume_01-c000-s002-p000023",
+          "volume_01-c000-s002-p000024"
+        ],
+        "dialogue_count": 0,
+        "first_seen_chunk_id": "volume_01-r000003",
+        "latest_seen_chunk_id": "volume_01-r000003",
+        "relationship_updates": []
+      },
+      {
+        "entity_id": "mystery_v2_000005",
+        "entity_type": "mystery",
+        "display_name": "叙述者",
+        "aliases": [],
+        "importance": "medium",
+        "summary": "本 chunk 中的叙述者专注于梳理尾巴的毛，暗示与赫萝有关联。叙述者对北方故乡有所怀念，并提及村落的季节变化和麦田景象，可能与赫萝的象征意义相关。",
+        "evidence_refs": [
+          "volume_01-c001-s001-p000066",
+          "volume_01-c001-s001-p000068",
+          "volume_01-c001-s001-p000069",
+          "volume_01-c001-s001-p000070"
+        ],
+        "dialogue_count": 0,
+        "first_seen_chunk_id": "volume_01-r000006",
+        "latest_seen_chunk_id": "volume_01-r000007"
+      }
+    ],
+    "npc_groups": [
+      {
+        "entity_id": "npc_group_v2_000001",
+        "entity_type": "npc_group",
+        "display_name": "麦田中的狼群",
+        "aliases": [],
+        "importance": "minor",
+        "summary": "成群的狼在麦田中奔跑，可能象征季节变化或某种威胁。狼群作为无名群体出现，未参与对话，仅作为环境描写的一部分。",
+        "evidence_refs": [
+          "volume_01-c001-s001-p000073"
+        ],
+        "dialogue_count": 0,
+        "first_seen_chunk_id": "volume_01-r000007",
+        "latest_seen_chunk_id": "volume_01-r000007"
+      }
+    ]
+  }
+}

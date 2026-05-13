@@ -1,0 +1,66 @@
+{
+  "updates": [
+    {
+      "entity_id": "char_v2_000003",
+      "summary": "赫萝在本 chunk 中进一步展示其非人类的特征，手臂变形成巨大的野兽前脚，与她的身体极不协调。她躺下后，询问罗伦斯是否愿意相信她，表现出一定的挑衅和试探。赫萝的变身进一步证明了她非人类的身份，但罗伦斯仍未完全相信。赫萝的举动表明她愿意展示部分真实形态，但不愿完全暴露，这加深了她对自身身份的矛盾心理。",
+      "importance": "major",
+      "dialogue_count_delta": 3,
+      "latest_seen_chunk_id": "volume_01-r000028",
+      "relationship_updates": [
+        {
+          "target_entity_id": "char_v2_000004",
+          "relation": "interlocutor",
+          "evidence_ref": "volume_01-d000135"
+        }
+      ],
+      "evidence_refs": [
+        "volume_01-c002-s005-p000397",
+        "volume_01-c002-s005-p000401",
+        "volume_01-c002-s005-p000403",
+        "volume_01-c002-s005-p000404",
+        "volume_01-d000133",
+        "volume_01-d000134",
+        "volume_01-d000135"
+      ]
+    },
+    {
+      "entity_id": "char_v2_000004",
+      "summary": "罗伦斯在本 chunk 中对赫萝的变身感到震惊和困惑，反复确认眼前景象是否为幻觉。他揉揉眼睛、甩头，并将水倒在脸上，试图确认现实。罗伦斯的反应显示出他的疑虑和不安，而赫萝则试图通过展示手臂来获得信任。罗伦斯的态度表明他仍未完全相信赫萝的非人类身份，但开始逐渐接受这一可能性。",
+      "importance": "major",
+      "dialogue_count_delta": 1,
+      "latest_seen_chunk_id": "volume_01-r000028",
+      "relationship_updates": [
+        {
+          "target_entity_id": "char_v2_000003",
+          "relation": "interlocutor",
+          "evidence_ref": "volume_01-d000136"
+        }
+      ],
+      "evidence_refs": [
+        "volume_01-c002-s005-p000398",
+        "volume_01-c002-s005-p000406",
+        "volume_01-c002-s005-p000407",
+        "volume_01-c002-s005-p000409",
+        "volume_01-c002-s005-p000410",
+        "volume_01-d000136"
+      ]
+    },
+    {
+      "entity_id": "mystery_v2_000021",
+      "summary": "在赫萝手臂变形成野兽前脚之前，一段诡异的声音传入罗伦斯耳中，像是上千百只老鼠在森林里狂奔，随后是踩进柔软泥土的闷响。这声音的来源不明，可能是某种魔法、幻术或赫萝变身过程中的自然现象。它在赫萝变身前出现，暗示其与变身机制有关。",
+      "importance": "medium",
+      "dialogue_count_delta": 0,
+      "latest_seen_chunk_id": "volume_01-r000028",
+      "relationship_updates": [
+        {
+          "target_entity_id": "char_v2_000003",
+          "relation": "related_to",
+          "evidence_ref": "volume_01-c002-s005-p000399"
+        }
+      ],
+      "evidence_refs": [
+        "volume_01-c002-s005-p000399"
+      ]
+    }
+  ]
+}

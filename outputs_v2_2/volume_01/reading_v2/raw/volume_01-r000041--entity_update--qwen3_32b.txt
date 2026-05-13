@@ -1,0 +1,119 @@
+```json
+{
+  "updates": [
+    {
+      "entity_id": "char_v2_000001",
+      "summary": "罗伦斯在教会中与佩连佐的葡萄园主人对话，解释了汇兑体制的运作方式，并建议领主在交易中避免被葡萄酒商压低葡萄品质。随后，一名年轻商人靠近罗伦斯，称赞他的能力，并表示自己是刚入行的同行。罗伦斯回应称自己只是普通的旅行商人。",
+      "importance": "major",
+      "dialogue_count_delta": 3,
+      "latest_seen_chunk_id": "volume_01-r000041",
+      "relationship_updates": [
+        {
+          "entity_id": "char_v2_000011",
+          "relation": "对话互动",
+          "importance": "medium"
+        },
+        {
+          "entity_id": "char_v2_000012",
+          "relation": "对话提及",
+          "importance": "minor"
+        },
+        {
+          "entity_id": "char_v2_000002",
+          "relation": "互动观察",
+          "importance": "medium"
+        }
+      ],
+      "evidence_refs": [
+        "volume_01-c002-s002-p000614",
+        "volume_01-c002-s002-p000615",
+        "volume_01-c002-s002-p000617",
+        "volume_01-c002-s002-p000618",
+        "volume_01-c002-s002-p000625",
+        "volume_01-c002-s002-p000627",
+        "volume_01-c002-s002-p000629"
+      ]
+    },
+    {
+      "entity_id": "char_v2_000011",
+      "summary": "佩连佐的葡萄园主人与罗伦斯在教会中对话，表现出对汇兑体制的兴趣，并邀请罗伦斯到佩连佐做客。随后，他与妻子一同告辞离开。他的对话表明他对商业知识的渴望，可能在未来与罗伦斯有进一步互动。",
+      "importance": "medium",
+      "dialogue_count_delta": 2,
+      "latest_seen_chunk_id": "volume_01-r000041",
+      "relationship_updates": [
+        {
+          "entity_id": "char_v2_000001",
+          "relation": "对话互动",
+          "importance": "medium"
+        },
+        {
+          "entity_id": "char_v2_000012",
+          "relation": "共同出场",
+          "importance": "minor"
+        }
+      ],
+      "evidence_refs": [
+        "volume_01-c002-s002-p000614",
+        "volume_01-c002-s002-p000615",
+        "volume_01-c002-s002-p000617",
+        "volume_01-c002-s002-p000621",
+        "volume_01-c002-s002-p000622"
+      ]
+    },
+    {
+      "entity_id": "char_v2_000012",
+      "summary": "佩连佐的葡萄园主人的妻子，与丈夫一同出现在教会中。她未参与对话，但在对话中被提及为「妻子」，并随丈夫一同告辞离开。虽然未直接发言，但她的存在表明这对夫妻是重要人物，可能在未来剧情中与罗伦斯有进一步互动。",
+      "importance": "medium",
+      "dialogue_count_delta": 0,
+      "latest_seen_chunk_id": "volume_01-r000041",
+      "relationship_updates": [
+        {
+          "entity_id": "char_v2_000011",
+          "relation": "共同出场",
+          "importance": "minor"
+        }
+      ],
+      "evidence_refs": [
+        "volume_01-c002-s002-p000617",
+        "volume_01-c002-s002-p000621",
+        "volume_01-c002-s002-p000622"
+      ]
+    },
+    {
+      "entity_id": "char_v2_000002",
+      "summary": "赫萝在罗伦斯与佩连佐的葡萄园主人对话时，完全隐藏身份，将头藏在外套下。她未参与对话，但通过动作暗示她对罗伦斯与年轻商人互动的关注。她的隐藏行为表明她对非人类身份的谨慎，同时她对罗伦斯的行动保持观察。",
+      "importance": "major",
+      "dialogue_count_delta": 0,
+      "latest_seen_chunk_id": "volume_01-r000041",
+      "relationship_updates": [
+        {
+          "entity_id": "char_v2_000001",
+          "relation": "互动观察",
+          "importance": "medium"
+        }
+      ],
+      "evidence_refs": [
+        "volume_01-c002-s002-p000628"
+      ]
+    },
+    {
+      "entity_id": "mystery_v2_000020",
+      "summary": "一名年轻商人，刚入行不久，对罗伦斯表示敬佩，并称自己是「随处可见的旅行商人」。他试图与罗伦斯建立联系，并提到自己曾想加入那对夫妻的对话但未能成功。虽然目前未显示重要性，但可能在未来成为罗伦斯的潜在对手或盟友。",
+      "importance": "minor",
+      "dialogue_count_delta": 2,
+      "latest_seen_chunk_id": "volume_01-r000041",
+      "relationship_updates": [
+        {
+          "entity_id": "char_v2_000001",
+          "relation": "对话互动",
+          "importance": "minor"
+        }
+      ],
+      "evidence_refs": [
+        "volume_01-c002-s002-p000625",
+        "volume_01-c002-s002-p000629"
+      ]
+    }
+  ]
+}
+```

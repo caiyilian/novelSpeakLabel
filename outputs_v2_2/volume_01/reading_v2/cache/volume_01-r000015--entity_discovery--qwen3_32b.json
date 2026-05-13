@@ -1,0 +1,28 @@
+{
+  "new_entities": [
+    {
+      "entity_type": "character",
+      "display_name": "赫萝",
+      "aliases": [
+        "赫萝（丰收之神）",
+        "丰收之神",
+        "狼赫萝"
+      ],
+      "importance": "major",
+      "summary": "神秘女孩自称「赫萝」，并提到自己「好久没有以这种模样出现了」，暗示她可能是传说中的丰收之神。她拥有非人类的特征，如红色的琥珀色眼睛和动物耳朵，但态度天真无邪。她对罗伦斯拔剑表示不满，认为这是不礼貌的行为，而罗伦斯则因她的举止感到困惑。赫萝的出现与帕斯罗村的丰收之神传说有关，可能揭示更多关于神秘存在的真相。",
+      "evidence_refs": [
+        "volume_01-c001-s003-p000222",
+        "volume_01-d000071"
+      ],
+      "dialogue_count_delta": 2
+    }
+  ],
+  "merge_candidates": [
+    {
+      "source_entity_id": "mystery_v2_000015",
+      "target_entity_id": "mystery_v2_000009",
+      "reason": "神秘女孩自称「赫萝」，与之前提到的「赫萝（丰收之神）」高度相关，且都与帕斯罗村的传说有关。",
+      "confidence": 0.9
+    }
+  ]
+}

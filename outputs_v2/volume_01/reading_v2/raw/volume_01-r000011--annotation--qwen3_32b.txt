@@ -1,0 +1,72 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000021",
+      "speaker_entity_id": "mystery_v2_000007",
+      "speaker_display": "修道院的骑士",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "对话内容为「嗯……真好吃，我得好好答谢你才行。」，罗伦斯刚刚递给他蜂蜜糖，因此说话者应为骑士。"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000022",
+      "speaker_entity_id": "mystery_v2_000007",
+      "speaker_display": "修道院的骑士",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "对话内容为「听说最近，这一带会有异教徒祭典，所以我们才受命在这里防卫。你知道什么消息吗？」，骑士在向罗伦斯提问，符合其身份。"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000023",
+      "speaker_entity_id": "char_v2_000004",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "对话内容为「我不知道耶。」，这是罗伦斯在回应骑士的问题，且上下文明确是罗伦斯在说谎。"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000024",
+      "speaker_entity_id": "mystery_v2_000007",
+      "speaker_display": "修道院的骑士",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "对话内容为「他们果然想在背地里偷偷举办祭典，异教徒真是一群胆小鬼。」，这是骑士对异教徒的评论，符合其立场。"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000025",
+      "speaker_entity_id": "char_v2_000004",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "对话内容为「异教徒祭典……还真会猜啊。」，这是罗伦斯在离开修道院后对骑士的评论，符合其视角。"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    }
+  ],
+  "chunk_notes": "本 chunk 中的对话主要发生在罗伦斯与修道院的骑士之间。所有对话角色均可通过上下文明确判断，无模糊或需要复核的情况。"
+}
+```

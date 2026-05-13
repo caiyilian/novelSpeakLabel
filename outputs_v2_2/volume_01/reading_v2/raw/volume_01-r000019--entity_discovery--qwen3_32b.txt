@@ -1,0 +1,30 @@
+```json
+{
+  "new_entities": [
+    {
+      "entity_type": "character",
+      "display_name": "丰收之神赫萝",
+      "aliases": [
+        "赫萝（神明）",
+        "丰收之神"
+      ],
+      "importance": "major",
+      "summary": "赫萝自称是丰收之神，并以狼的特征（耳朵和尾巴）作为身份象征。她表现出对自身神性的自信，提到自己在约伊兹的贤狼地位，以及对灾祸和谎言的敏锐感知。罗伦斯怀疑她是否真的是神明，但她的特征和行为暗示她可能具有超自然身份。",
+      "evidence_refs": [
+        "volume_01-c001-s004-p000275",
+        "volume_01-c001-s004-p000279",
+        "volume_01-c001-s004-p000284"
+      ],
+      "dialogue_count_delta": 1
+    }
+  ],
+  "merge_candidates": [
+    {
+      "source_entity_id": "char_v2_000002",
+      "target_entity_id": "char_v2_000002",
+      "reason": "赫萝的实体已存在，新增的「丰收之神赫萝」是其身份的进一步确认，无需合并。",
+      "confidence": 0.9
+    }
+  ]
+}
+```

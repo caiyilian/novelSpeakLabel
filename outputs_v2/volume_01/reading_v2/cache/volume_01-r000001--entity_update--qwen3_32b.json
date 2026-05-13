@@ -1,0 +1,46 @@
+{
+  "updates": [
+    {
+      "entity_id": "char_v2_000001",
+      "summary": "小说的作者，出现在标题页的作者信息中。",
+      "importance": "major",
+      "dialogue_count_delta": 0,
+      "latest_seen_chunk_id": "volume_01-r000001",
+      "relationship_updates": [],
+      "evidence_refs": [
+        "volume_01-c000-s001-p000011",
+        "volume_01-c000-s001-p000012"
+      ]
+    },
+    {
+      "entity_id": "char_v2_000002",
+      "summary": "小说的插画师，出现在标题页的插画师信息中。",
+      "importance": "major",
+      "dialogue_count_delta": 0,
+      "latest_seen_chunk_id": "volume_01-r000001",
+      "relationship_updates": [],
+      "evidence_refs": [
+        "volume_01-c000-s001-p000013",
+        "volume_01-c000-s001-p000014",
+        "volume_01-c000-s001-p000015"
+      ]
+    },
+    {
+      "entity_id": "mystery_v2_000001",
+      "summary": "小说的标题或主题，由英文短语 'Merchant meats spicy wolf.' 和中文词汇 '狼'、'与'、'辛'、'香'、'料'、'Ⅰ' 组成，暗示小说可能与香料贸易或奇幻冒险有关。",
+      "importance": "medium",
+      "dialogue_count_delta": 0,
+      "latest_seen_chunk_id": "volume_01-r000001",
+      "relationship_updates": [],
+      "evidence_refs": [
+        "volume_01-c000-s001-p000003",
+        "volume_01-c000-s001-p000004",
+        "volume_01-c000-s001-p000005",
+        "volume_01-c000-s001-p000006",
+        "volume_01-c000-s001-p000007",
+        "volume_01-c000-s001-p000008",
+        "volume_01-c000-s001-p000009"
+      ]
+    }
+  ]
+}

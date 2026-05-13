@@ -1,0 +1,26 @@
+```json
+{
+  "repairs": [
+    {
+      "dialogue_id": "volume_01-d000033",
+      "previous_speaker_entity_id": "mystery_v2_000008",
+      "new_speaker_entity_id": "mystery_v2_000008",
+      "speaker_display": "村民",
+      "speaker_status": "npc_group",
+      "confidence": 0.9,
+      "reason": "对话内容为集体呼喊，没有明确指向叶勒本人，而是村民对收割最后一束麦子的庆祝。",
+      "stop_reason": "resolved"
+    },
+    {
+      "dialogue_id": "volume_01-d000037",
+      "previous_speaker_entity_id": "mystery_v2_000008",
+      "new_speaker_entity_id": "mystery_v2_000008",
+      "speaker_display": "村民",
+      "speaker_status": "npc_group",
+      "confidence": 0.9,
+      "reason": "对话内容为村民集体欢呼叶勒的名字，而非叶勒本人直接发言。",
+      "stop_reason": "resolved"
+    }
+  ]
+}
+```

@@ -1,0 +1,49 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000054",
+      "speaker_entity_id": "mystery_v2_000014",
+      "speaker_display": "神秘女孩",
+      "speaker_status": "mystery",
+      "confidence": 0.95,
+      "evidence": [
+        "女孩缓缓张开嘴巴，闭起双眼朝天空发出长嚎声",
+        "罗伦斯惊觉那不像叶勒发出的模仿狼嚎声，而是真正的狼嚎",
+        "女孩把狼嚎余音慢慢收回闭起的口中，压低下腭微笑着说"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000055",
+      "speaker_entity_id": "char_v2_000004",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.98,
+      "evidence": [
+        "莫大的恐惧袭上罗伦斯心头，仿佛突来的冷风「唰唰唰唰唰」窜入身体般"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000056",
+      "speaker_entity_id": "mystery_v2_000014",
+      "speaker_display": "神秘女孩",
+      "speaker_status": "mystery",
+      "confidence": 0.95,
+      "evidence": [
+        "女孩把狼嚎余音慢慢收回闭起的口中，压低下腭微笑着说",
+        "「……呼，真是好月色，有没有酒啊？」"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    }
+  ],
+  "chunk_notes": "本 chunk 中的三段对话分别由神秘女孩和罗伦斯发出。狼嚎和后续的对话均指向神秘女孩，而「唰唰唰唰唰」是罗伦斯的恐惧反应，符合其已知身份。未出现其他重要角色的对话，因此无需标记为 review。"
+}
+```

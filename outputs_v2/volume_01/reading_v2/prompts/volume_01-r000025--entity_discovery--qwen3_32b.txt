@@ -1,0 +1,735 @@
+你是通用小说实体发现助手。任务：从当前 chunk 和初标注结果中提出新增实体候选，但不要直接修改角色库。
+建 character：有明确名字、稳定身份或多次影响剧情。建 mystery：可追踪但暂未命名的个体。建 npc_group：无名群体、路人、临时职能角色、围观者或低重要度群体。
+只返回 JSON，格式：{"new_entities":[{"entity_type":"character|mystery|npc_group","display_name":"...","aliases":[],"importance":"minor|medium|major","summary":"...","evidence_refs":[],"dialogue_count_delta":0}],"merge_candidates":[{"source_entity_id":"...","target_entity_id":"...","reason":"...","confidence":0.0}]}
+输入 JSON：
+{
+  "volume": {
+    "volume_id": "volume_01",
+    "volume": 1,
+    "title": ""
+  },
+  "chunk": {
+    "chunk_id": "volume_01-r000025",
+    "chunk_index": 24,
+    "chapter_id": "volume_01-c002",
+    "chapter_title": "第一幕",
+    "scene_id": "volume_01-c002-s004",
+    "paragraphs": [
+      {
+        "paragraph_id": "volume_01-c002-s004-p000347",
+        "paragraph_index": 346,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c002-s004",
+        "scene_index": 4,
+        "text": "听到罗伦斯这么说，赫萝先是愣了一会儿，随即脸上又浮现像是搞懂了似的表情。"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s004-p000348",
+        "paragraph_index": 347,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c002-s004",
+        "scene_index": 4,
+        "text": "「喔喔，汝的意思是要咱变成狼给汝看，是呗？」"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s004-p000349",
+        "paragraph_index": 348,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c002-s004",
+        "scene_index": 4,
+        "text": "罗伦斯点头表示回答，但其实他内心吃了一惊。"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s004-p000350",
+        "paragraph_index": 349,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c002-s004",
+        "scene_index": 4,
+        "text": "罗伦斯原以为赫萝的反应不是露出困扰的表情，就是用很容易被识破的谎言来敷衍他。"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s004-p000351",
+        "paragraph_index": 350,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c002-s004",
+        "scene_index": 4,
+        "text": "然而，赫萝的反应却是两者皆非，她露出厌恶的表情。比起用个烂借口解释自己原本可以轻松变成狼的谎言，厌恶的表情更具说服力。不仅表情显得厌恶，赫萝甚至直截了当地说："
+      },
+      {
+        "paragraph_id": "volume_01-c002-s004-p000352",
+        "paragraph_index": 351,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c002-s004",
+        "scene_index": 4,
+        "text": "「咱不要。」"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s004-p000353",
+        "paragraph_index": 352,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c002-s004",
+        "scene_index": 4,
+        "text": "「为什么？」"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s004-p000354",
+        "paragraph_index": 353,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c002-s004",
+        "scene_index": 4,
+        "text": "「咱还想问汝为什么非得要看呢？」"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s004-p000355",
+        "paragraph_index": 354,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c002-s004",
+        "scene_index": 4,
+        "text": "赫萝带着不悦的表情如此反问，罗伦斯不禁被她的气势压住。然而，对罗伦斯来说，赫萝究竟是不是人类确实是很重要的问题。罗伦斯重新振作起来，为了尽量让对话的主导权掌握在自己手中，他提足力量开口说："
+      },
+      {
+        "paragraph_id": "volume_01-c002-s004-p000356",
+        "paragraph_index": 355,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c002-s004",
+        "scene_index": 4,
+        "text": "「假如你是人类的话，我打算把你交给教会，毕竟恶魔附身者总是灾祸的根源。不过，如果你真的是丰收之神赫萝，又是狼的化身的话，或许我可以考虑一下。」"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s004-p000357",
+        "paragraph_index": 356,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c002-s004",
+        "scene_index": 4,
+        "text": "传说中，动物化身多是会带来好运的使者。如果女孩真是如假包换的赫萝，罗伦斯不但不会把她交给教会，甚至还可能拿出葡萄酒及面包款待她。不过，如果女孩不是动物化身的话，待遇可就不同了。"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s004-p000358",
+        "paragraph_index": 357,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c002-s004",
+        "scene_index": 4,
+        "text": "听到罗伦斯的话，赫萝脸上厌恶的表情加重，脸部变得扭曲，鼻头上爬满皱纹。"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s004-p000359",
+        "paragraph_index": 358,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c002-s004",
+        "scene_index": 4,
+        "text": "「根据我所听到的传说，动物化身不是可以自由自在变身吗？如果你真是动物的化身，应该可以变回原本的模样吧？」"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s004-p000360",
+        "paragraph_index": 359,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c002-s004",
+        "scene_index": 4,
+        "text": "赫萝依旧带着厌恶的表情，静静听着罗伦斯说话。过了不久后，赫萝轻轻叹了口气，从貂皮底下缓缓站起身子。"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s004-p000361",
+        "paragraph_index": 360,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c002-s004",
+        "scene_index": 4,
+        "text": "「教会让咱吃了不少苦头，咱可不想再被教会抓住了。可是……」"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s004-p000362",
+        "paragraph_index": 361,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c002-s004",
+        "scene_index": 4,
+        "text": "赫萝又再叹了口气，她一边抚摸尾巴，一边继续说："
+      }
+    ],
+    "dialogues": [
+      {
+        "dialogue_id": "volume_01-d000105",
+        "dialogue_index": 104,
+        "paragraph_id": "volume_01-c002-s004-p000348",
+        "paragraph_index": 347,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "喔喔，汝的意思是要咱变成狼给汝看，是呗？",
+        "quote_text": "「喔喔，汝的意思是要咱变成狼给汝看，是呗？」",
+        "char_start": 0,
+        "char_end": 22
+      },
+      {
+        "dialogue_id": "volume_01-d000106",
+        "dialogue_index": 105,
+        "paragraph_id": "volume_01-c002-s004-p000352",
+        "paragraph_index": 351,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "咱不要。",
+        "quote_text": "「咱不要。」",
+        "char_start": 0,
+        "char_end": 6
+      },
+      {
+        "dialogue_id": "volume_01-d000107",
+        "dialogue_index": 106,
+        "paragraph_id": "volume_01-c002-s004-p000353",
+        "paragraph_index": 352,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "为什么？",
+        "quote_text": "「为什么？」",
+        "char_start": 0,
+        "char_end": 6
+      },
+      {
+        "dialogue_id": "volume_01-d000108",
+        "dialogue_index": 107,
+        "paragraph_id": "volume_01-c002-s004-p000354",
+        "paragraph_index": 353,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "咱还想问汝为什么非得要看呢？",
+        "quote_text": "「咱还想问汝为什么非得要看呢？」",
+        "char_start": 0,
+        "char_end": 16
+      },
+      {
+        "dialogue_id": "volume_01-d000109",
+        "dialogue_index": 108,
+        "paragraph_id": "volume_01-c002-s004-p000356",
+        "paragraph_index": 355,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "假如你是人类的话，我打算把你交给教会，毕竟恶魔附身者总是灾祸的根源。不过，如果你真的是丰收之神赫萝，又是狼的化身的话，或许我可以考虑一下。",
+        "quote_text": "「假如你是人类的话，我打算把你交给教会，毕竟恶魔附身者总是灾祸的根源。不过，如果你真的是丰收之神赫萝，又是狼的化身的话，或许我可以考虑一下。」",
+        "char_start": 0,
+        "char_end": 71
+      },
+      {
+        "dialogue_id": "volume_01-d000110",
+        "dialogue_index": 109,
+        "paragraph_id": "volume_01-c002-s004-p000359",
+        "paragraph_index": 358,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "根据我所听到的传说，动物化身不是可以自由自在变身吗？如果你真是动物的化身，应该可以变回原本的模样吧？",
+        "quote_text": "「根据我所听到的传说，动物化身不是可以自由自在变身吗？如果你真是动物的化身，应该可以变回原本的模样吧？」",
+        "char_start": 0,
+        "char_end": 52
+      },
+      {
+        "dialogue_id": "volume_01-d000111",
+        "dialogue_index": 110,
+        "paragraph_id": "volume_01-c002-s004-p000361",
+        "paragraph_index": 360,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "教会让咱吃了不少苦头，咱可不想再被教会抓住了。可是……",
+        "quote_text": "「教会让咱吃了不少苦头，咱可不想再被教会抓住了。可是……」",
+        "char_start": 0,
+        "char_end": 29
+      }
+    ]
+  },
+  "near_context": {
+    "lookback_paragraphs": [
+      {
+        "paragraph_id": "volume_01-c002-s004-p000344",
+        "paragraph_index": 343,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c002-s004",
+        "scene_index": 4,
+        "text": "「你还说自己是狼。」"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s004-p000345",
+        "paragraph_index": 344,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c002-s004",
+        "scene_index": 4,
+        "text": "「嗯。」"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s004-p000346",
+        "paragraph_index": 345,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c002-s004",
+        "scene_index": 4,
+        "text": "「可是你身上只有狼耳朵和尾巴啊。如果你真的是狼的化身，应该还是可以变成狼吧？」"
+      }
+    ],
+    "lookahead_paragraphs": [
+      {
+        "paragraph_id": "volume_01-c002-s004-p000363",
+        "paragraph_index": 362,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c002-s004",
+        "scene_index": 4,
+        "text": "「无论是什么化身，都不可能不求报偿。人类想要改变面容也要化妆，想要改变体型也要吃食物，是呗？」"
+      }
+    ]
+  },
+  "memory": {
+    "previous_chunk_summary": {
+      "chunk_id": "volume_01-r000024",
+      "summary": "在本 chunk 中，赫萝继续强调自己是狼的化身，她骄傲地展示自己的耳朵和尾巴，并称自己是「约伊兹的贤狼」。然而，她随后因寒冷而缩进貂皮中，表现出脆弱的一面。罗伦斯对此感到震惊，不仅因为赫萝的外貌特征真实存在，还因为先前听到的狼嚎与她有关。他开始怀疑赫萝是否真的是丰收之神赫萝，但随即否定这一想法。罗伦斯继续质疑赫萝的身份，指出她身上只有耳朵和尾巴，若真是狼的化身，应该还能变回狼形。赫萝对此未直接回应，仅以简短的「嗯」作答，留下悬念。本 chunk 中，赫萝的狼身份与真实形态成为焦点，罗伦斯的怀疑态度进一步加深，而赫萝的反应则显得模棱两可。",
+      "active_entities": [
+        "char_v2_000003",
+        "char_v2_000004"
+      ],
+      "open_questions": [
+        "赫萝是否真的是狼的化身？",
+        "她是否还能变回狼形？",
+        "她与丰收之神赫萝之间是否存在关联？",
+        "罗伦斯对赫萝身份的怀疑会如何影响后续发展？"
+      ],
+      "evidence_refs": [
+        "volume_01-c002-s004-p000331",
+        "volume_01-c002-s004-p000332",
+        "volume_01-c002-s004-p000333",
+        "volume_01-c002-s004-p000334",
+        "volume_01-c002-s004-p000335",
+        "volume_01-c002-s004-p000336",
+        "volume_01-c002-s004-p000337",
+        "volume_01-c002-s004-p000342",
+        "volume_01-c002-s004-p000343",
+        "volume_01-c002-s004-p000344",
+        "volume_01-c002-s004-p000345",
+        "volume_01-c002-s004-p000346",
+        "volume_01-d000098",
+        "volume_01-d000099",
+        "volume_01-d000100",
+        "volume_01-d000101",
+        "volume_01-d000102",
+        "volume_01-d000103",
+        "volume_01-d000104"
+      ]
+    },
+    "global_summary": "本卷继续描绘旅行商人罗伦斯与神秘女孩赫萝的对话。赫萝进一步强调自己是狼的化身，自称「约伊兹的贤狼」，并展示自己的耳朵和尾巴，表现出骄傲和自信。然而，她随后因寒冷而缩进貂皮中，显露出脆弱的一面。罗伦斯对她的身份产生怀疑，认为她可能并非真正的狼，而是某种附身或幻象。他指出赫萝身上只有耳朵和尾巴，若真是狼的化身，应该还能变回狼形。赫萝对罗伦斯的质疑仅以简短回应，保持神秘感。赫萝的自称进一步加深了她的神秘感，并为她的身份增添了新的层次。罗伦斯的态度显示出对未知事物的谨慎和理性，同时表现出对赫萝的关心。赫萝的北方背景、约伊兹的神秘性以及她是否真的是狼的化身，仍是本卷的重要谜团。",
+    "candidate_entities": [
+      {
+        "entity_id": "char_v2_000003",
+        "entity_type": "character",
+        "display_name": "赫萝",
+        "aliases": [
+          "丰收之神"
+        ],
+        "importance": "major",
+        "summary": "赫萝进一步强调自己是狼的化身，自称「约伊兹的贤狼」，并展示自己的耳朵和尾巴。她表现出骄傲和自信，但随后因寒冷而缩进貂皮中，显露出脆弱的一面。罗伦斯对她的身份产生怀疑，认为她可能并非真正的狼，而是某种附身或幻象。赫萝对罗伦斯的质疑仅以简短回应，保持神秘感。",
+        "latest_seen_chunk_id": "volume_01-r000024",
+        "dialogue_count": 49
+      },
+      {
+        "entity_id": "char_v2_000004",
+        "entity_type": "character",
+        "display_name": "罗伦斯",
+        "aliases": [],
+        "importance": "major",
+        "summary": "罗伦斯继续质疑赫萝的身份，认为她可能只是部分具有狼的特征，而非真正的狼。他指出赫萝身上只有耳朵和尾巴，若真是狼的化身，应该还能变回狼形。罗伦斯的态度显示出对未知事物的谨慎和理性，同时表现出对赫萝的关心。赫萝的简短回应让他更加怀疑，但并未直接否定她的说法。",
+        "latest_seen_chunk_id": "volume_01-r000024",
+        "dialogue_count": 47
+      },
+      {
+        "entity_id": "mystery_v2_000014",
+        "entity_type": "mystery",
+        "display_name": "神秘女孩",
+        "aliases": [],
+        "importance": "major",
+        "summary": "神秘女孩在本 chunk 中正式自称「赫萝」，并明确与「丰收之神」的关联。她的身份已与「赫萝」实体合并，因此此实体将被移除。",
+        "latest_seen_chunk_id": "volume_01-r000020",
+        "dialogue_count": 9
+      },
+      {
+        "entity_id": "char_v2_000001",
+        "entity_type": "character",
+        "display_name": "支仓冻砂",
+        "aliases": [
+          "Isuna Hasekura"
+        ],
+        "importance": "major",
+        "summary": "小说的作者，出现在制作信息页的作者信息中。",
+        "latest_seen_chunk_id": "volume_01-r000003",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "char_v2_000002",
+        "entity_type": "character",
+        "display_name": "文仓十",
+        "aliases": [
+          "Jyuu Ayakura"
+        ],
+        "importance": "major",
+        "summary": "小说的插画师，出现在制作信息页的插画师信息中。",
+        "latest_seen_chunk_id": "volume_01-r000003",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "mystery_v2_000018",
+        "entity_type": "mystery",
+        "display_name": "约伊兹的贤狼",
+        "aliases": [],
+        "importance": "medium",
+        "summary": "赫萝自称是「约伊兹的贤狼」，并强调自己是唯一一位。这一称号与她的狼身份和北方背景相关，但其真实性尚未得到证实。罗伦斯对此表示怀疑，认为约伊兹可能只是传说中的地名。赫萝的自称进一步加深了她的神秘感，并为她的身份增添了新的层次。",
+        "latest_seen_chunk_id": "volume_01-r000024",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "mystery_v2_000017",
+        "entity_type": "mystery",
+        "display_name": "纽希拉",
+        "aliases": [],
+        "importance": "medium",
+        "summary": "赫萝提到的一个北方大地的城镇，以热泉闻名，目前仍是温泉街，受到贵族欢迎。赫萝表示自己曾经常去泡泉水，暗示她与该地有联系。",
+        "latest_seen_chunk_id": "volume_01-r000023",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "mystery_v2_000015",
+        "entity_type": "mystery",
+        "display_name": "约伊兹",
+        "aliases": [],
+        "importance": "medium",
+        "summary": "赫萝声称自己出生在约伊兹，但罗伦斯指出约伊兹是古老传说中提到的北方地名，暗示它可能并不存在。赫萝对约伊兹的描述和情感流露表明她对此地有真实记忆，但其真实性仍存疑。约伊兹的神秘性与赫萝的北方背景密切相关。",
+        "latest_seen_chunk_id": "volume_01-r000022",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "mystery_v2_000016",
+        "entity_type": "mystery",
+        "display_name": "亚罗西史托",
+        "aliases": [],
+        "importance": "medium",
+        "summary": "赫萝提到她曾去过亚罗西史托，一个位于北方的极端寒冷之地，全年吹着暴风雪。罗伦斯表示从未听过此地，暗示它可能是虚构或极为偏远的地方。亚罗西史托的提及进一步强化了赫萝与北方大地的联系。",
+        "latest_seen_chunk_id": "volume_01-r000022",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "mystery_v2_000010",
+        "entity_type": "mystery",
+        "display_name": "赫萝",
+        "aliases": [],
+        "importance": "medium",
+        "summary": "「赫萝」这一名称与丰收之神的关联已被赫萝本人否认，因此该实体将被合并至赫萝（char_v2_000003）实体中。",
+        "latest_seen_chunk_id": "volume_01-r000021",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "mystery_v2_000012",
+        "entity_type": "mystery",
+        "display_name": "丰收之神",
+        "aliases": [],
+        "importance": "medium",
+        "summary": "丰收之神被描述为附在人类身上的神秘存在，而赫萝被村民尊为丰收之神。因此，「丰收之神」这一身份应与赫萝实体合并，而非作为独立实体存在。",
+        "latest_seen_chunk_id": "volume_01-r000021",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "mystery_v2_000009",
+        "entity_type": "mystery",
+        "display_name": "叶勒",
+        "aliases": [],
+        "importance": "medium",
+        "summary": "帕斯罗村的麦田耕作者，今年雇用年轻人进行耕作。在罗伦斯的询问下被提及，并被指出位于另一块麦田中。农夫提到叶勒的田里可能有今年的『赫萝』，暗示其与村庄祭典或象征性人物有关联。本 chunk 中，叶勒成功割下最后一束麦子，成为村民欢呼的对象，进一步强化了其与『赫萝』的关联。叶勒对罗伦斯心存感激，因为罗伦斯曾帮助村里销售麦子。",
+        "latest_seen_chunk_id": "volume_01-r000014",
+        "dialogue_count": 0
+      }
+    ]
+  },
+  "rules": {
+    "speaker_statuses": [
+      "known",
+      "mystery",
+      "npc_group",
+      "review",
+      "unknown"
+    ],
+    "importance_levels": [
+      "minor",
+      "medium",
+      "major"
+    ],
+    "general_novel_only": true
+  },
+  "task_a_annotations": [
+    {
+      "dialogue_id": "volume_01-d000105",
+      "dialogue_index": 104,
+      "volume_id": "",
+      "chapter_id": "",
+      "chapter_index": 0,
+      "chapter_title": "",
+      "scene_id": "",
+      "scene_index": 0,
+      "paragraph_id": "volume_01-c002-s004-p000348",
+      "paragraph_index": 347,
+      "local_dialogue_index": 1,
+      "text": "喔喔，汝的意思是要咱变成狼给汝看，是呗？",
+      "quote_text": "「喔喔，汝的意思是要咱变成狼给汝看，是呗？」",
+      "dialogue_kind": "standalone",
+      "char_start": 0,
+      "char_end": 22,
+      "speaker_entity_id": "char_v2_000003",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "赫萝被描述为说话者，使用了「咱」自称"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false,
+      "review_reason": "",
+      "request_id": "volume_01-r000025--annotation--qwen3_32b"
+    },
+    {
+      "dialogue_id": "volume_01-d000106",
+      "dialogue_index": 105,
+      "volume_id": "",
+      "chapter_id": "",
+      "chapter_index": 0,
+      "chapter_title": "",
+      "scene_id": "",
+      "scene_index": 0,
+      "paragraph_id": "volume_01-c002-s004-p000352",
+      "paragraph_index": 351,
+      "local_dialogue_index": 1,
+      "text": "咱不要。",
+      "quote_text": "「咱不要。」",
+      "dialogue_kind": "standalone",
+      "char_start": 0,
+      "char_end": 6,
+      "speaker_entity_id": "char_v2_000003",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "赫萝被描述为说话者，使用了「咱」自称"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false,
+      "review_reason": "",
+      "request_id": "volume_01-r000025--annotation--qwen3_32b"
+    },
+    {
+      "dialogue_id": "volume_01-d000107",
+      "dialogue_index": 106,
+      "volume_id": "",
+      "chapter_id": "",
+      "chapter_index": 0,
+      "chapter_title": "",
+      "scene_id": "",
+      "scene_index": 0,
+      "paragraph_id": "volume_01-c002-s004-p000353",
+      "paragraph_index": 352,
+      "local_dialogue_index": 1,
+      "text": "为什么？",
+      "quote_text": "「为什么？」",
+      "dialogue_kind": "standalone",
+      "char_start": 0,
+      "char_end": 6,
+      "speaker_entity_id": "char_v2_000004",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "罗伦斯是赫萝的对话对象，且使用了「汝」称呼赫萝"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false,
+      "review_reason": "",
+      "request_id": "volume_01-r000025--annotation--qwen3_32b"
+    },
+    {
+      "dialogue_id": "volume_01-d000108",
+      "dialogue_index": 107,
+      "volume_id": "",
+      "chapter_id": "",
+      "chapter_index": 0,
+      "chapter_title": "",
+      "scene_id": "",
+      "scene_index": 0,
+      "paragraph_id": "volume_01-c002-s004-p000354",
+      "paragraph_index": 353,
+      "local_dialogue_index": 1,
+      "text": "咱还想问汝为什么非得要看呢？",
+      "quote_text": "「咱还想问汝为什么非得要看呢？」",
+      "dialogue_kind": "standalone",
+      "char_start": 0,
+      "char_end": 16,
+      "speaker_entity_id": "char_v2_000003",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "赫萝被描述为说话者，使用了「咱」自称"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false,
+      "review_reason": "",
+      "request_id": "volume_01-r000025--annotation--qwen3_32b"
+    },
+    {
+      "dialogue_id": "volume_01-d000109",
+      "dialogue_index": 108,
+      "volume_id": "",
+      "chapter_id": "",
+      "chapter_index": 0,
+      "chapter_title": "",
+      "scene_id": "",
+      "scene_index": 0,
+      "paragraph_id": "volume_01-c002-s004-p000356",
+      "paragraph_index": 355,
+      "local_dialogue_index": 1,
+      "text": "假如你是人类的话，我打算把你交给教会，毕竟恶魔附身者总是灾祸的根源。不过，如果你真的是丰收之神赫萝，又是狼的化身的话，或许我可以考虑一下。",
+      "quote_text": "「假如你是人类的话，我打算把你交给教会，毕竟恶魔附身者总是灾祸的根源。不过，如果你真的是丰收之神赫萝，又是狼的化身的话，或许我可以考虑一下。」",
+      "dialogue_kind": "standalone",
+      "char_start": 0,
+      "char_end": 71,
+      "speaker_entity_id": "char_v2_000004",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "罗伦斯是赫萝的对话对象，且使用了「你」称呼赫萝"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false,
+      "review_reason": "",
+      "request_id": "volume_01-r000025--annotation--qwen3_32b"
+    },
+    {
+      "dialogue_id": "volume_01-d000110",
+      "dialogue_index": 109,
+      "volume_id": "",
+      "chapter_id": "",
+      "chapter_index": 0,
+      "chapter_title": "",
+      "scene_id": "",
+      "scene_index": 0,
+      "paragraph_id": "volume_01-c002-s004-p000359",
+      "paragraph_index": 358,
+      "local_dialogue_index": 1,
+      "text": "根据我所听到的传说，动物化身不是可以自由自在变身吗？如果你真是动物的化身，应该可以变回原本的模样吧？",
+      "quote_text": "「根据我所听到的传说，动物化身不是可以自由自在变身吗？如果你真是动物的化身，应该可以变回原本的模样吧？」",
+      "dialogue_kind": "standalone",
+      "char_start": 0,
+      "char_end": 52,
+      "speaker_entity_id": "char_v2_000004",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "罗伦斯是赫萝的对话对象，且使用了「你」称呼赫萝"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false,
+      "review_reason": "",
+      "request_id": "volume_01-r000025--annotation--qwen3_32b"
+    },
+    {
+      "dialogue_id": "volume_01-d000111",
+      "dialogue_index": 110,
+      "volume_id": "",
+      "chapter_id": "",
+      "chapter_index": 0,
+      "chapter_title": "",
+      "scene_id": "",
+      "scene_index": 0,
+      "paragraph_id": "volume_01-c002-s004-p000361",
+      "paragraph_index": 360,
+      "local_dialogue_index": 1,
+      "text": "教会让咱吃了不少苦头，咱可不想再被教会抓住了。可是……",
+      "quote_text": "「教会让咱吃了不少苦头，咱可不想再被教会抓住了。可是……」",
+      "dialogue_kind": "standalone",
+      "char_start": 0,
+      "char_end": 29,
+      "speaker_entity_id": "char_v2_000003",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "赫萝被描述为说话者，使用了「咱」自称"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false,
+      "review_reason": "",
+      "request_id": "volume_01-r000025--annotation--qwen3_32b"
+    }
+  ],
+  "task_b_chunk_summary": {
+    "chunk_id": "volume_01-r000025",
+    "summary": "在本 chunk 中，罗伦斯继续质疑赫萝的身份，提出如果她真的是狼的化身，应该可以变回狼形。赫萝对此表现出强烈的厌恶和抗拒，明确表示「咱不要」，并反问罗伦斯为何非要她变回狼形。罗伦斯进一步说明，如果赫萝是人类，他打算将她交给教会，但如果她是丰收之神赫萝和狼的化身，他可能会考虑宽恕。赫萝对此感到不悦，但并未直接否认，而是提到教会曾让她吃尽苦头，不愿再被抓住。尽管如此，她仍表示「可是……」，暗示她可能愿意配合。赫萝的反应表明她不愿暴露真实形态，同时对教会怀有敌意。罗伦斯的质疑和赫萝的回避态度加深了两人之间的紧张关系，也进一步揭示了赫萝对教会的复杂情绪。",
+    "active_entities": [
+      "char_v2_000003",
+      "char_v2_000004"
+    ],
+    "open_questions": [
+      "赫萝是否真的能变回狼形？",
+      "她为何对教会怀有如此强烈的敌意？",
+      "她是否真的是丰收之神赫萝？",
+      "罗伦斯是否会真的将她交给教会？"
+    ],
+    "evidence_refs": [
+      "volume_01-c002-s004-p000348",
+      "volume_01-c002-s004-p000352",
+      "volume_01-c002-s004-p000353",
+      "volume_01-c002-s004-p000354",
+      "volume_01-c002-s004-p000356",
+      "volume_01-c002-s004-p000359",
+      "volume_01-c002-s004-p000361",
+      "volume_01-d000105",
+      "volume_01-d000106",
+      "volume_01-d000107",
+      "volume_01-d000108",
+      "volume_01-d000109",
+      "volume_01-d000110",
+      "volume_01-d000111"
+    ]
+  }
+}

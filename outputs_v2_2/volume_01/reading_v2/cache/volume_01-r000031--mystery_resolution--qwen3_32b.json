@@ -1,0 +1,20 @@
+{
+  "merge_candidates": [
+    {
+      "source_entity_id": "mystery_v2_000009",
+      "target_entity_id": "char_v2_000002",
+      "confidence": 0.95,
+      "reason": "当前 chunk 明确提到赫萝与罗伦斯的互动，且与已有角色 char_v2_000002（赫萝）的描述完全一致，包括她的行为、语言和动机。"
+    }
+  ],
+  "keep_pending": [
+    "mystery_v2_000015",
+    "mystery_v2_000018",
+    "mystery_v2_000010",
+    "mystery_v2_000017",
+    "mystery_v2_000013",
+    "mystery_v2_000008",
+    "mystery_v2_000007"
+  ],
+  "expire_pending": []
+}

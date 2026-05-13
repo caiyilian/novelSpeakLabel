@@ -1,0 +1,57 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000001",
+      "speaker_entity_id": "mystery_v2_000001",
+      "speaker_display": "叙述者",
+      "speaker_status": "mystery",
+      "confidence": 0.7,
+      "evidence": [
+        "对话发生在离开深山村落的场景中，与前文提到的‘叙述者’身份相符"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000002",
+      "speaker_entity_id": "mystery_v2_000001",
+      "speaker_display": "叙述者",
+      "speaker_status": "mystery",
+      "confidence": 0.7,
+      "evidence": [
+        "对话内容是对前一句的回应，符合同一角色的连续对话"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000003",
+      "speaker_entity_id": "mystery_v2_000001",
+      "speaker_display": "叙述者",
+      "speaker_status": "mystery",
+      "confidence": 0.7,
+      "evidence": [
+        "对话中提到‘罗伦斯先生’，表明说话者不是罗伦斯本人，而是与他互动的村民"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000004",
+      "speaker_entity_id": "mystery_v2_000001",
+      "speaker_display": "叙述者",
+      "speaker_status": "mystery",
+      "confidence": 0.7,
+      "evidence": [
+        "对话延续了前几句的互动，符合同一角色的连续对话"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    }
+  ],
+  "chunk_notes": "本段对话发生在深山村落与商人罗伦斯之间的交易场景中。对话内容表明说话者为村民或与罗伦斯互动的群体，但未明确提及具体角色名称。基于前文‘叙述者’的神秘身份，暂时将其归为‘mystery’，避免误判重要角色。"
+}

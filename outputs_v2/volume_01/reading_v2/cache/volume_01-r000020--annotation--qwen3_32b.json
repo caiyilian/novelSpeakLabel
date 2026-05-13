@@ -1,0 +1,148 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000064",
+      "speaker_entity_id": "mystery_v2_000014",
+      "speaker_display": "神秘女孩",
+      "speaker_status": "mystery",
+      "confidence": 0.9,
+      "evidence": [
+        "自称“咱”，与后文自称“赫萝”一致"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000065",
+      "speaker_entity_id": "char_v2_000004",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "反问语气，针对前一句的提问"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000066",
+      "speaker_entity_id": "mystery_v2_000014",
+      "speaker_display": "神秘女孩",
+      "speaker_status": "mystery",
+      "confidence": 0.85,
+      "evidence": [
+        "对话风格与神秘女孩一致"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000067",
+      "speaker_entity_id": "char_v2_000004",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.8,
+      "evidence": [
+        "沉默回应，符合罗伦斯的反应"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000068",
+      "speaker_entity_id": "char_v2_000004",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "直接提问，符合罗伦斯的语气"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000069",
+      "speaker_entity_id": "mystery_v2_000014",
+      "speaker_display": "神秘女孩",
+      "speaker_status": "mystery",
+      "confidence": 0.9,
+      "evidence": [
+        "自称“咱”，语气轻松，符合神秘女孩风格"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000070",
+      "speaker_entity_id": "char_v2_000004",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "evidence": [
+        "回应神秘女孩的挑衅，语气惊讶"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000071",
+      "speaker_entity_id": "mystery_v2_000014",
+      "speaker_display": "神秘女孩",
+      "speaker_status": "mystery",
+      "confidence": 0.9,
+      "evidence": [
+        "自称“咱”，语气轻松，符合神秘女孩风格"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000072",
+      "speaker_entity_id": "mystery_v2_000014",
+      "speaker_display": "神秘女孩",
+      "speaker_status": "mystery",
+      "confidence": 0.95,
+      "evidence": [
+        "自称“咱”，并首次说出名字“赫萝”"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000073",
+      "speaker_entity_id": "char_v2_000004",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "evidence": [
+        "重复“赫萝”名字，表示惊讶"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000074",
+      "speaker_entity_id": "mystery_v2_000014",
+      "speaker_display": "神秘女孩",
+      "speaker_status": "mystery",
+      "confidence": 0.9,
+      "evidence": [
+        "自称“咱”，语气轻松，符合神秘女孩风格"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    }
+  ],
+  "chunk_notes": "神秘女孩在本 chunk 中多次自称“咱”，并首次说出名字“赫萝”，与记忆中“赫萝”实体的描述一致。罗伦斯的对话风格为直接、质问，符合其已知角色。对话中未出现其他重要角色，因此未使用 review。"
+}

@@ -1,0 +1,24 @@
+{
+  "updates": [
+    {
+      "entity_id": "mystery_v2_000014",
+      "summary": "一名拥有小狗耳朵的神秘女孩，出现在罗伦斯的马车上。她睡得香甜，对罗伦斯的叫醒反应迟缓，仅以模糊的语气回应。她的美貌和异常特征（小狗耳朵）引起罗伦斯的注意和震惊。她的出现打破了罗伦斯独自旅行的平静，暗示了新的互动即将展开。",
+      "importance": "medium",
+      "dialogue_count_delta": 2,
+      "latest_seen_chunk_id": "volume_01-r000017",
+      "relationship_updates": [
+        {
+          "target_entity_id": "char_v2_000004",
+          "relation": "observer",
+          "evidence_ref": "volume_01-c002-s002-p000230"
+        }
+      ],
+      "evidence_refs": [
+        "volume_01-c002-s002-p000221",
+        "volume_01-c002-s002-p000223",
+        "volume_01-c002-s002-p000224",
+        "volume_01-c002-s002-p000231"
+      ]
+    }
+  ]
+}

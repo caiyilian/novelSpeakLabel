@@ -1,0 +1,22 @@
+```json
+{
+  "merge_candidates": [
+    {
+      "source_entity_id": "mystery_v2_000015",
+      "target_entity_id": "char_v2_000002",
+      "confidence": 0.95,
+      "reason": "当前 chunk 明确指出赫萝拥有耳朵和尾巴，并且她的行为和身份描述与「女孩（动物耳朵）」完全一致。此外，赫萝的特征（如尾巴和耳朵）与「女孩」首次出现时的描述相符，且她以人类形态出现，与「女孩」的设定一致。"
+    }
+  ],
+  "keep_pending": [
+    "mystery_v2_000017",
+    "mystery_v2_000013",
+    "mystery_v2_000008",
+    "mystery_v2_000010",
+    "mystery_v2_000003",
+    "mystery_v2_000007",
+    "mystery_v2_000004"
+  ],
+  "expire_pending": []
+}
+```

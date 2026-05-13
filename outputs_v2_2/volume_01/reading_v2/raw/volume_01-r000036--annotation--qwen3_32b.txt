@@ -1,0 +1,59 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000197",
+      "speaker_entity_id": "char_v2_000002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "赫萝被描述为与罗伦斯同行的狼耳女孩，且对话中使用了「咱」自称，符合赫萝的说话风格"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000198",
+      "speaker_entity_id": "char_v2_000002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "赫萝继续使用「咱」自称，且对话内容与前一句风格一致，符合赫萝的说话方式"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000199",
+      "speaker_entity_id": "char_v2_000001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "evidence": [
+        "这是赫萝前一句的回应，符合罗伦斯作为商人对貂皮价值的关心"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000200",
+      "speaker_entity_id": "char_v2_000002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "赫萝继续使用「咱」自称，且语气轻松，符合她对商业话题的不熟悉和调侃态度"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    }
+  ],
+  "chunk_notes": "赫萝和罗伦斯的对话轮次清晰，赫萝使用「咱」自称，罗伦斯作为回应者出现。无其他说话人出现，无需标记为未知或群体。"
+}
+```

@@ -1,0 +1,22 @@
+```json
+{
+  "merge_candidates": [
+    {
+      "source_entity_id": "mystery_v2_000011",
+      "target_entity_id": "mystery_v2_000009",
+      "confidence": 0.95,
+      "reason": "『赫萝（丰收之神）』与『赫萝』在当前 chunk 中被明确关联，村民称狼为丰收之神的化身，且『赫萝』传说中提到其会进入割最后一束麦子的人体内。这表明『赫萝（丰收之神）』是『赫萝』的具象化或象征，可合并。"
+    }
+  ],
+  "keep_pending": [
+    "mystery_v2_000008",
+    "mystery_v2_000009",
+    "mystery_v2_000010",
+    "mystery_v2_000003",
+    "mystery_v2_000007",
+    "mystery_v2_000004",
+    "mystery_v2_000001"
+  ],
+  "expire_pending": []
+}
+```

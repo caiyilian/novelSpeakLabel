@@ -1,0 +1,83 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000039",
+      "speaker_entity_id": "mystery_v2_000010",
+      "speaker_display": "赫萝",
+      "speaker_status": "mystery",
+      "confidence": 0.7,
+      "evidence": [
+        "对话内容为「嗷呜～～～～～～～」，与狼的叫声相符，而赫萝是狼的化身"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000040",
+      "speaker_entity_id": "npc_group",
+      "speaker_display": "村民群体",
+      "speaker_status": "npc_group",
+      "confidence": 0.8,
+      "evidence": [
+        "对话内容为「赫萝！赫萝！赫萝！」，是村民在庆祝赫萝出现的欢呼声"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000041",
+      "speaker_entity_id": "npc_group",
+      "speaker_display": "村民群体",
+      "speaker_status": "npc_group",
+      "confidence": 0.8,
+      "evidence": [
+        "对话内容为「狼赫萝出现了！狼赫萝出现了！」，是村民在宣告丰收之神的出现"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000042",
+      "speaker_entity_id": "npc_group",
+      "speaker_display": "村民群体",
+      "speaker_status": "npc_group",
+      "confidence": 0.8,
+      "evidence": [
+        "对话内容为「抓住祂！快抓住！」，是村民在组织行动，语气一致"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000043",
+      "speaker_entity_id": "npc_group",
+      "speaker_display": "村民群体",
+      "speaker_status": "npc_group",
+      "confidence": 0.8,
+      "evidence": [
+        "对话内容为「别让祂逃走了！快追！」，是村民在组织行动，语气一致"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000044",
+      "speaker_entity_id": "char_v2_000004",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "evidence": [
+        "对话内容为「算了……」，语气低沉，符合罗伦斯的性格和当前情境"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    }
+  ],
+  "chunk_notes": "本 chunk 中的对话主要围绕村民对「赫萝」的庆祝和行动展开，赫萝的叫声和村民的欢呼声清晰可辨。罗伦斯的独白出现在最后，语气表明他已决定放弃与叶勒的交流。所有对话均未提及重要角色之间的互动，因此未使用 review 标记。"
+}

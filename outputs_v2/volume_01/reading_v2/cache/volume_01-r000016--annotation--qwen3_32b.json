@@ -1,0 +1,44 @@
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000046",
+      "speaker_entity_id": "char_v2_000004",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "罗伦斯在段落中多次被描述为行动主体，包括思考、决定露宿、拉缰绳、喂马等行为，表明他为该对话的说话人。"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000047",
+      "speaker_entity_id": "mystery",
+      "speaker_display": "未知人物",
+      "speaker_status": "mystery",
+      "confidence": 0.7,
+      "evidence": [
+        "对话为省略号，未明确说话人，但上下文提到‘竟然有人捷足先登’，暗示有他人存在。"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000048",
+      "speaker_entity_id": "mystery",
+      "speaker_display": "未知人物",
+      "speaker_status": "mystery",
+      "confidence": 0.75,
+      "evidence": [
+        "对话为‘喂！’，紧接着罗伦斯的反应，暗示有他人在场并主动说话。"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    }
+  ],
+  "chunk_notes": "本 chunk 中，罗伦斯是明确的说话人，其余对话为他人或未知人物，未出现明确的已知角色。"
+}

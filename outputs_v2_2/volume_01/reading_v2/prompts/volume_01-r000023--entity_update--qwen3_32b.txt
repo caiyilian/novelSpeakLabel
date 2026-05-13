@@ -1,0 +1,807 @@
+你是通用小说角色记忆维护助手。任务：更新当前 chunk 出现过的已有实体卡片。只更新输入证据支持的内容，重要性只允许 minor、medium、major；升级可以提出，降级必须谨慎。
+只返回 JSON，格式：{"updates":[{"entity_id":"...","summary":"...","importance":"minor|medium|major","dialogue_count_delta":0,"latest_seen_chunk_id":"...","relationship_updates":[],"evidence_refs":[]}]}
+输入 JSON：
+{
+  "volume": {
+    "volume_id": "volume_01",
+    "volume": 1,
+    "title": ""
+  },
+  "chunk": {
+    "chunk_id": "volume_01-r000023",
+    "chunk_index": 22,
+    "chapter_id": "volume_01-c001",
+    "chapter_title": "第一幕",
+    "scene_id": "volume_01-c001-s005",
+    "paragraphs": [
+      {
+        "paragraph_id": "volume_01-c001-s005-p000339",
+        "paragraph_index": 338,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s005",
+        "scene_index": 5,
+        "text": "还没去壳的麦穗根本就吃不得。罗伦斯想像着麦穗的苦涩味道在口中蔓延开来的感觉，不禁皱起眉头。然而，在下一瞬间，这般小事早就飞到脑海之外了。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s005-p000340",
+        "paragraph_index": 339,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s005",
+        "scene_index": 5,
+        "text": "「呜、呜……！」"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s005-p000341",
+        "paragraph_index": 340,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s005",
+        "scene_index": 5,
+        "text": "赫萝突然呻吟起来，她抱住左手臂，扑倒在貂皮上。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s005-p000342",
+        "paragraph_index": 341,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s005",
+        "scene_index": 5,
+        "text": "赫萝的样子看起来根本不像演戏，罗伦斯慌张地正想开口询问，诡异的声音却传进耳里。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s005-p000343",
+        "paragraph_index": 342,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s005",
+        "scene_index": 5,
+        "text": "唰唰唰唰，那声音仿佛上千百只老鼠在森林里狂奔而去。声音持续了几秒钟，紧接着又听到像是踩进柔软的泥土里会发出的闷响。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s005-p000344",
+        "paragraph_index": 343,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s005",
+        "scene_index": 5,
+        "text": "罗伦斯除了惊讶以外，无法做出任何反应。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s005-p000345",
+        "paragraph_index": 344,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s005",
+        "scene_index": 5,
+        "text": "诡异的声音一停，赫萝那原本纤细的手臂，就变成与身体完全不搭调的巨大野兽前脚。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s005-p000346",
+        "paragraph_index": 345,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s005",
+        "scene_index": 5,
+        "text": "「嗯……唔，果然很不搭。」"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s005-p000347",
+        "paragraph_index": 346,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s005",
+        "scene_index": 5,
+        "text": "赫萝似乎无法用身体支撑住变得太大的手臂，她把那从肩膀上长出来的野兽前脚放在貂皮上，躺了下来。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s005-p000348",
+        "paragraph_index": 347,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s005",
+        "scene_index": 5,
+        "text": "「如何？愿意相信咱了呗？」"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s005-p000349",
+        "paragraph_index": 348,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s005",
+        "scene_index": 5,
+        "text": "赫萝仰头看着罗伦斯说。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s005-p000350",
+        "paragraph_index": 349,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s005",
+        "scene_index": 5,
+        "text": "「唔……嗯……」"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s005-p000351",
+        "paragraph_index": 350,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s005",
+        "scene_index": 5,
+        "text": "罗伦斯回答不出来。他揉揉自己的眼睛好几次，还不停甩头，反复看着那只脚。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s005-p000352",
+        "paragraph_index": 351,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s005",
+        "scene_index": 5,
+        "text": "那只脚生有褐色长毛，十分健壮。依其大小看来，可以判定拥有这只前脚的身躯，大到足以与马儿匹敌。脚部前端的爪子，就像女性在割麦时使用的镰刀一般大。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s005-p000353",
+        "paragraph_index": 352,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s005",
+        "scene_index": 5,
+        "text": "如此巨大的前脚竟然会从女孩纤细的肩膀长出来，这不是幻觉是什么？"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s005-p000354",
+        "paragraph_index": 353,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s005",
+        "scene_index": 5,
+        "text": "罗伦斯怎么也无法相信眼前的光景，他拿起装满水的皮袋，把水往脸上倒。"
+      }
+    ],
+    "dialogues": [
+      {
+        "dialogue_id": "volume_01-d000132",
+        "dialogue_index": 131,
+        "paragraph_id": "volume_01-c001-s005-p000340",
+        "paragraph_index": 339,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "呜、呜……！",
+        "quote_text": "「呜、呜……！」",
+        "char_start": 0,
+        "char_end": 8
+      },
+      {
+        "dialogue_id": "volume_01-d000133",
+        "dialogue_index": 132,
+        "paragraph_id": "volume_01-c001-s005-p000346",
+        "paragraph_index": 345,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "嗯……唔，果然很不搭。",
+        "quote_text": "「嗯……唔，果然很不搭。」",
+        "char_start": 0,
+        "char_end": 13
+      },
+      {
+        "dialogue_id": "volume_01-d000134",
+        "dialogue_index": 133,
+        "paragraph_id": "volume_01-c001-s005-p000348",
+        "paragraph_index": 347,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "如何？愿意相信咱了呗？",
+        "quote_text": "「如何？愿意相信咱了呗？」",
+        "char_start": 0,
+        "char_end": 13
+      },
+      {
+        "dialogue_id": "volume_01-d000135",
+        "dialogue_index": 134,
+        "paragraph_id": "volume_01-c001-s005-p000350",
+        "paragraph_index": 349,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "唔……嗯……",
+        "quote_text": "「唔……嗯……」",
+        "char_start": 0,
+        "char_end": 8
+      }
+    ]
+  },
+  "near_context": {
+    "lookback_paragraphs": [
+      {
+        "paragraph_id": "volume_01-c001-s004-p000336",
+        "paragraph_index": 335,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s004",
+        "scene_index": 4,
+        "text": "原以为这是赫萝变身前必须有的特殊姿势，但在下一瞬间，罗伦斯立刻明白赫萝伸手的用意了。赫萝从货台角落的麦束上，摘了几粒麦穗下来。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s004-p000337",
+        "paragraph_index": 336,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s004",
+        "scene_index": 4,
+        "text": "「那些麦穗要做什么？」"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s004-p000338",
+        "paragraph_index": 337,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s004",
+        "scene_index": 4,
+        "text": "罗伦斯不自觉地发问，但他还来不及把问题说完，赫萝早已把手中的麦穗放入口中，闭着眼睛像在吞药丸一样，吞了下去。"
+      }
+    ],
+    "lookahead_paragraphs": [
+      {
+        "paragraph_id": "volume_01-c001-s005-p000355",
+        "paragraph_index": 354,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s005",
+        "scene_index": 5,
+        "text": "「汝的疑心病还真重。汝如果认为是幻觉的话，不妨摸摸看啊？」"
+      }
+    ]
+  },
+  "memory": {
+    "previous_chunk_summary": {
+      "chunk_id": "volume_01-r000022",
+      "summary": "赫萝主动提出要展示变身，但只变手臂以节省体力。她伸手摘下麦穗并吞下，暗示麦穗是变身的媒介。罗伦斯对此感到困惑并询问麦穗的用途，赫萝并未直接解释，而是以轻松的语气表示将就。赫萝的举动表明她对变身过程已有准备，但并未完全展示狼的形态，而是选择部分变身。罗伦斯虽然质疑，但因先前的承诺而无法反悔，陷入被动。赫萝的自信和罗伦斯的犹豫形成对比，暗示两人之间的权力动态。赫萝的变身方式和麦穗的用途仍是未解之谜，同时她对教会的过往和变身后的形象仍存疑。",
+      "active_entities": [
+        "char_v2_000001",
+        "char_v2_000002"
+      ],
+      "open_questions": [
+        "赫萝为何选择只变手臂而不是全身？",
+        "麦穗在变身过程中具体起到什么作用？",
+        "赫萝是否真的会因变身而吓到罗伦斯？",
+        "她提到的教会迫害与她的变身能力有何关联？"
+      ],
+      "evidence_refs": [
+        "volume_01-c001-s004-p000323",
+        "volume_01-c001-s004-p000325",
+        "volume_01-c001-s004-p000327",
+        "volume_01-c001-s004-p000328",
+        "volume_01-c001-s004-p000329",
+        "volume_01-c001-s004-p000330",
+        "volume_01-c001-s004-p000332",
+        "volume_01-c001-s004-p000334",
+        "volume_01-c001-s004-p000337"
+      ]
+    },
+    "global_summary": "本卷继续描绘罗伦斯与赫萝之间的对话，试图揭开她的身份之谜。赫萝在貂皮下缩着身体，骄傲地宣称自己是狼，并详细描述了她的耳朵和尾巴，强调它们象征着她的身份和地位。她提到自己是约伊兹的贤狼，能够感知灾祸和谎言，解救过无数同伴。罗伦斯对此感到震惊，因为他看到她的尾巴确实动了，耳朵也真实存在。他回忆起先前听到的狼嚎，怀疑赫萝是否真的是丰收之神赫萝。罗伦斯质疑赫萝是否能完全变回狼形，但赫萝只是简单回应，没有进一步解释。对话中，罗伦斯试图确认赫萝的非人类身份，而赫萝则表现出自信和神秘。赫萝还提到她可能为人类带来好运或奇迹，这使罗伦斯联想到她对麦子交易的潜在帮助。罗伦斯进一步提出，如果赫萝是动物化身，应该可以自由变身，但赫萝依旧没有正面回应，只是表示教会曾让她吃了不少苦头，她不想再被抓住。赫萝的厌恶情绪和对教会的敌意在对话中逐渐显现，而罗伦斯则试图通过逻辑推理和威胁来获取答案。赫萝表示变身需要麦子或鲜血，罗伦斯对此感到震惊并质疑鲜血的必要性。赫萝解释不需要很多鲜血，但罗伦斯因紧张而联想到她之前咬肉干时露出的尖牙，怀疑她的非人身份。赫萝随后表现出失望，称罗伦斯的反应让她更不想变身，并解释说她希望避免被人类和动物畏惧。她提到自己因教会的迫害而受苦，不愿再被当作特别的存在。罗伦斯试图安抚她，表示自己不会害怕，但赫萝的反应暗示她对变身后的形象有深层的不安。赫萝主动提出展示变身，但只变手臂以节省体力。她伸手摘下麦穗并吞下，暗示麦穗是变身的媒介。赫萝的举动表明她对变身过程已有准备，但并未完全展示狼的形态，而是选择部分变身。罗伦斯虽然质疑，但因先前的承诺而无法反悔，陷入被动。赫萝的自信和罗伦斯的犹豫形成对比，暗示两人之间的权力动态。赫萝的变身方式和麦穗的用途仍是未解之谜，同时她对教会的过往和变身后的形象仍存疑。",
+    "candidate_entities": [
+      {
+        "entity_id": "char_v2_000001",
+        "entity_type": "character",
+        "display_name": "罗伦斯",
+        "aliases": [
+          "罗伦斯先生"
+        ],
+        "importance": "major",
+        "summary": "罗伦斯对赫萝的变身展示感到困惑，并询问麦穗的用途。他因先前的承诺而无法反悔，陷入被动。罗伦斯的犹豫和赫萝的自信形成对比，显示出两人之间的权力动态。他对赫萝的非人身份和教会的关联仍存疑虑。",
+        "latest_seen_chunk_id": "volume_01-r000022",
+        "dialogue_count": 58
+      },
+      {
+        "entity_id": "char_v2_000002",
+        "entity_type": "character",
+        "display_name": "赫萝",
+        "aliases": [
+          "赫萝（丰收之神）",
+          "丰收之神",
+          "狼赫萝",
+          "赫萝"
+        ],
+        "importance": "major",
+        "summary": "赫萝主动提出展示变身，但只变手臂以节省体力。她伸手摘下麦穗并吞下，暗示麦穗是变身的媒介。赫萝的举动表明她对变身过程已有准备，但并未完全展示狼的形态，而是选择部分变身。她表现出轻松自信的态度，同时提及…",
+        "latest_seen_chunk_id": "volume_01-r000022",
+        "dialogue_count": 62
+      },
+      {
+        "entity_id": "char_v2_000005",
+        "entity_type": "character",
+        "display_name": "丰收之神赫萝",
+        "aliases": [
+          "赫萝（神明）",
+          "丰收之神"
+        ],
+        "importance": "major",
+        "summary": "赫萝自称是丰收之神，并以狼的特征（耳朵和尾巴）作为身份象征。她表现出对自身神性的自信，提到自己在约伊兹的贤狼地位，以及对灾祸和谎言的敏锐感知。罗伦斯怀疑她是否真的是神明，但她的特征和行为暗示她可能具…",
+        "latest_seen_chunk_id": "volume_01-r000019",
+        "dialogue_count": 1
+      },
+      {
+        "entity_id": "mystery_v2_000015",
+        "entity_type": "mystery",
+        "display_name": "女孩",
+        "aliases": [
+          "女孩（动物耳朵）",
+          "神秘女孩",
+          "有耳朵的女孩"
+        ],
+        "importance": "major",
+        "summary": "一名神秘的女孩，出现在罗伦斯的马车上，睡得香甜，美丽而安静。她反应迟缓，声音甜美，但头上长着像小狗的耳朵，暗示她可能并非普通人。她赤裸着身体缓缓站起，美丽得令人屏息，随后发出狼嚎，令罗伦斯误以为她是…",
+        "latest_seen_chunk_id": "volume_01-r000014",
+        "dialogue_count": 14
+      },
+      {
+        "entity_id": "char_v2_000006",
+        "entity_type": "character",
+        "display_name": "教会",
+        "aliases": [
+          "教会组织",
+          "宗教机构"
+        ],
+        "importance": "medium",
+        "summary": "教会是赫萝过往经历中的重要势力，她多次提及教会曾让她吃了不少苦头，并暗示她不愿再被教会抓住。这表明教会可能与她的身份和变身能力有关，是她不愿提及的敏感话题。",
+        "latest_seen_chunk_id": "volume_01-r000022",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "char_v2_000004",
+        "entity_type": "character",
+        "display_name": "纽希拉",
+        "aliases": [
+          "纽希拉镇",
+          "纽希拉城"
+        ],
+        "importance": "medium",
+        "summary": "纽希拉是赫萝提到的北方大地上的一个城镇，以热泉闻名，是王室贵族度假的温泉街。赫萝称自己曾经常去那里泡泉水，暗示她与该地有长期联系。纽希拉至今仍然存在，与约伊兹不同，未被传说毁灭。",
+        "latest_seen_chunk_id": "volume_01-r000018",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "char_v2_000003",
+        "entity_type": "character",
+        "display_name": "约伊兹",
+        "aliases": [
+          "约伊兹镇",
+          "约伊兹城"
+        ],
+        "importance": "medium",
+        "summary": "赫萝声称自己出生的城镇，位于北方大地。罗伦斯指出约伊兹在古老传说中早已被熊怪毁灭，因此赫萝的出生地真实性存疑。赫萝对约伊兹的描述和情感反应表明她可能与该地有真实联系，但其真实性仍需进一步验证。",
+        "latest_seen_chunk_id": "volume_01-r000017",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "mystery_v2_000017",
+        "entity_type": "mystery",
+        "display_name": "亚罗西史托",
+        "aliases": [
+          "亚罗西史托镇",
+          "亚罗西史托城"
+        ],
+        "importance": "medium",
+        "summary": "罗伦斯提到的北方极寒之地，据称全年吹着暴风雪，是极其危险的地方。赫萝表示从未听说过此地，暗示她可能对北方大地的地理了解有限，或她的记忆存在缺失。该地的提及加深了赫萝身份的谜团。",
+        "latest_seen_chunk_id": "volume_01-r000017",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "mystery_v2_000013",
+        "entity_type": "mystery",
+        "display_name": "马儿",
+        "aliases": [
+          "罗伦斯的马"
+        ],
+        "importance": "medium",
+        "summary": "罗伦斯的马是一匹强壮有力的公马，是他旅行的重要伙伴。罗伦斯开始幻想马儿能说话，并听说旅行商人之间流传着马儿变成人类的传说。他后悔当初没有选择母马，因为有传言称母马更可能变成人类。这匹马在罗伦斯的孤独…",
+        "latest_seen_chunk_id": "volume_01-r000010",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "mystery_v2_000008",
+        "entity_type": "mystery",
+        "display_name": "叶勒",
+        "aliases": [],
+        "importance": "medium",
+        "summary": "叶勒被村民认定为「赫萝」的继承者，因割下最后一束麦子而被追赶。他将被关在谷仓中，无法与罗伦斯交流，这使罗伦斯感到困扰。叶勒的处境表明他与丰收祭典的核心仪式有直接关联，可能揭示更多关于「赫萝」的传说。",
+        "latest_seen_chunk_id": "volume_01-r000009",
+        "dialogue_count": 2
+      },
+      {
+        "entity_id": "mystery_v2_000004",
+        "entity_type": "character",
+        "display_name": "骑士",
+        "aliases": [],
+        "importance": "medium",
+        "summary": "农夫与罗伦斯进行对话，回应其关于叶勒的询问，并提到叶勒雇用年轻人耕作，暗示今年的『赫萝』可能出自他们之中。农夫的对话透露出对地方农业和祭典的熟悉，但未表现出对教会或异教徒问题的直接态度。",
+        "latest_seen_chunk_id": "volume_01-r000007",
+        "dialogue_count": 7
+      },
+      {
+        "entity_id": "mystery_v2_000010",
+        "entity_type": "mystery",
+        "display_name": "亚伦多伯爵",
+        "aliases": [],
+        "importance": "medium",
+        "summary": "亚伦多伯爵是管理帕斯罗村一带的贵族，以亲自下田耕作为特点，并愿意赞助祭典。其行为可能影响地方与教会的关系，以及祭典的规模和性质。",
+        "latest_seen_chunk_id": "volume_01-r000007",
+        "dialogue_count": 0
+      }
+    ]
+  },
+  "rules": {
+    "speaker_statuses": [
+      "known",
+      "mystery",
+      "npc_group",
+      "review",
+      "unknown"
+    ],
+    "importance_levels": [
+      "minor",
+      "medium",
+      "major"
+    ],
+    "general_novel_only": true
+  },
+  "task_a_annotations": [
+    {
+      "dialogue_id": "volume_01-d000132",
+      "dialogue_index": 131,
+      "volume_id": "",
+      "chapter_id": "",
+      "chapter_index": 0,
+      "chapter_title": "",
+      "scene_id": "",
+      "scene_index": 0,
+      "paragraph_id": "volume_01-c001-s005-p000340",
+      "paragraph_index": 339,
+      "local_dialogue_index": 1,
+      "text": "呜、呜……！",
+      "quote_text": "「呜、呜……！」",
+      "dialogue_kind": "standalone",
+      "char_start": 0,
+      "char_end": 8,
+      "speaker_entity_id": "char_v2_000002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "赫萝突然呻吟起来，她抱住左手臂，扑倒在貂皮上。"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false,
+      "review_reason": "",
+      "request_id": "volume_01-r000023--annotation--qwen3_32b"
+    },
+    {
+      "dialogue_id": "volume_01-d000133",
+      "dialogue_index": 132,
+      "volume_id": "",
+      "chapter_id": "",
+      "chapter_index": 0,
+      "chapter_title": "",
+      "scene_id": "",
+      "scene_index": 0,
+      "paragraph_id": "volume_01-c001-s005-p000346",
+      "paragraph_index": 345,
+      "local_dialogue_index": 1,
+      "text": "嗯……唔，果然很不搭。",
+      "quote_text": "「嗯……唔，果然很不搭。」",
+      "dialogue_kind": "standalone",
+      "char_start": 0,
+      "char_end": 13,
+      "speaker_entity_id": "char_v2_000002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "赫萝似乎无法用身体支撑住变得太大的手臂，她把那从肩膀上长出来的野兽前脚放在貂皮上，躺了下来。"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false,
+      "review_reason": "",
+      "request_id": "volume_01-r000023--annotation--qwen3_32b"
+    },
+    {
+      "dialogue_id": "volume_01-d000134",
+      "dialogue_index": 133,
+      "volume_id": "",
+      "chapter_id": "",
+      "chapter_index": 0,
+      "chapter_title": "",
+      "scene_id": "",
+      "scene_index": 0,
+      "paragraph_id": "volume_01-c001-s005-p000348",
+      "paragraph_index": 347,
+      "local_dialogue_index": 1,
+      "text": "如何？愿意相信咱了呗？",
+      "quote_text": "「如何？愿意相信咱了呗？」",
+      "dialogue_kind": "standalone",
+      "char_start": 0,
+      "char_end": 13,
+      "speaker_entity_id": "char_v2_000002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "赫萝仰头看着罗伦斯说。"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false,
+      "review_reason": "",
+      "request_id": "volume_01-r000023--annotation--qwen3_32b"
+    },
+    {
+      "dialogue_id": "volume_01-d000135",
+      "dialogue_index": 134,
+      "volume_id": "",
+      "chapter_id": "",
+      "chapter_index": 0,
+      "chapter_title": "",
+      "scene_id": "",
+      "scene_index": 0,
+      "paragraph_id": "volume_01-c001-s005-p000350",
+      "paragraph_index": 349,
+      "local_dialogue_index": 1,
+      "text": "唔……嗯……",
+      "quote_text": "「唔……嗯……」",
+      "dialogue_kind": "standalone",
+      "char_start": 0,
+      "char_end": 8,
+      "speaker_entity_id": "char_v2_000001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "罗伦斯回答不出来。他揉揉自己的眼睛好几次，还不停甩头，反复看着那只脚。"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false,
+      "review_reason": "",
+      "request_id": "volume_01-r000023--annotation--qwen3_32b"
+    }
+  ],
+  "task_b_chunk_summary": {
+    "chunk_id": "volume_01-r000023",
+    "summary": "赫萝突然呻吟并扑倒在貂皮上，随后发出奇怪的声音，她的左手臂迅速变成巨大的野兽前脚，与身体极不协调。罗伦斯震惊不已，反复确认这是否是幻觉。赫萝轻松地表示这正是她希望罗伦斯相信的证据，并询问他是否愿意相信她。罗伦斯一时语塞，无法回应。赫萝的变身展示虽然只涉及手臂，但其规模和细节（如毛发、爪子）表明她确实拥有非人类的力量。罗伦斯试图通过倒水清醒自己，但仍未完全相信眼前所见。赫萝的自信与罗伦斯的犹豫形成鲜明对比，暗示她对自身能力的掌控和对罗伦斯反应的预判。此段进一步加深了赫萝身份的神秘感，同时留下她为何选择只变手臂、是否还会继续变身、以及她对教会的过往是否与此有关等问题。",
+    "active_entities": [
+      "char_v2_000001",
+      "char_v2_000002"
+    ],
+    "open_questions": [
+      "赫萝为何选择只变手臂而不是全身？",
+      "她是否还会继续变身，展示更多狼的特征？",
+      "赫萝的变身是否与她提到的教会迫害有关？",
+      "罗伦斯最终是否会完全相信赫萝的非人身份？"
+    ],
+    "evidence_refs": [
+      "volume_01-c001-s005-p000341",
+      "volume_01-c001-s005-p000343",
+      "volume_01-c001-s005-p000345",
+      "volume_01-c001-s005-p000346",
+      "volume_01-c001-s005-p000348",
+      "volume_01-c001-s005-p000350",
+      "volume_01-c001-s005-p000351",
+      "volume_01-c001-s005-p000352",
+      "volume_01-c001-s005-p000353",
+      "volume_01-c001-s005-p000354"
+    ]
+  },
+  "task_d_entity_discovery": {
+    "new_entities": [
+      {
+        "entity_type": "character",
+        "display_name": "罗伦斯",
+        "aliases": [
+          "罗伦斯先生"
+        ],
+        "importance": "major",
+        "summary": "罗伦斯对赫萝的变身展示感到震惊和困惑，反复确认是否为幻觉。他试图通过倒水清醒自己，但仍未完全相信眼前所见。罗伦斯的犹豫和赫萝的自信形成对比，显示出两人之间的权力动态。他对赫萝的非人身份和教会的关联仍存疑虑。",
+        "evidence_refs": [
+          "volume_01-c001-s005-p000341",
+          "volume_01-c001-s005-p000350",
+          "volume_01-c001-s005-p000351",
+          "volume_01-c001-s005-p000354"
+        ],
+        "dialogue_count_delta": 1
+      },
+      {
+        "entity_type": "character",
+        "display_name": "赫萝",
+        "aliases": [
+          "赫萝（丰收之神）",
+          "丰收之神",
+          "狼赫萝",
+          "赫萝"
+        ],
+        "importance": "major",
+        "summary": "赫萝突然呻吟并扑倒在貂皮上，随后她的左手臂迅速变成巨大的野兽前脚，与身体极不协调。她轻松地表示这正是她希望罗伦斯相信的证据，并询问他是否愿意相信她。赫萝的变身展示虽然只涉及手臂，但其规模和细节（如毛发、爪子）表明她确实拥有非人类的力量。她的自信与罗伦斯的犹豫形成鲜明对比，暗示她对自身能力的掌控和对罗伦斯反应的预判。",
+        "evidence_refs": [
+          "volume_01-c001-s005-p000341",
+          "volume_01-c001-s005-p000343",
+          "volume_01-c001-s005-p000345",
+          "volume_01-c001-s005-p000346",
+          "volume_01-c001-s005-p000348"
+        ],
+        "dialogue_count_delta": 3
+      }
+    ],
+    "merge_candidates": []
+  },
+  "current_entity_memory": [
+    {
+      "entity_id": "char_v2_000001",
+      "entity_type": "character",
+      "display_name": "罗伦斯",
+      "aliases": [
+        "罗伦斯先生"
+      ],
+      "importance": "major",
+      "summary": "罗伦斯对赫萝的变身展示感到震惊和困惑，反复确认是否为幻觉。他试图通过倒水清醒自己，但仍未完全相信眼前所见。罗伦斯的犹豫和赫萝的自信形成对比，显示出两人之间的权力动态。他对赫萝的非人身份和教会的关联仍…",
+      "latest_seen_chunk_id": "volume_01-r000023",
+      "dialogue_count": 59
+    },
+    {
+      "entity_id": "char_v2_000002",
+      "entity_type": "character",
+      "display_name": "赫萝",
+      "aliases": [
+        "赫萝（丰收之神）",
+        "丰收之神",
+        "狼赫萝",
+        "赫萝"
+      ],
+      "importance": "major",
+      "summary": "赫萝突然呻吟并扑倒在貂皮上，随后她的左手臂迅速变成巨大的野兽前脚，与身体极不协调。她轻松地表示这正是她希望罗伦斯相信的证据，并询问他是否愿意相信她。赫萝的变身展示虽然只涉及手臂，但其规模和细节（如毛…",
+      "latest_seen_chunk_id": "volume_01-r000023",
+      "dialogue_count": 65
+    },
+    {
+      "entity_id": "char_v2_000005",
+      "entity_type": "character",
+      "display_name": "丰收之神赫萝",
+      "aliases": [
+        "赫萝（神明）",
+        "丰收之神"
+      ],
+      "importance": "major",
+      "summary": "赫萝自称是丰收之神，并以狼的特征（耳朵和尾巴）作为身份象征。她表现出对自身神性的自信，提到自己在约伊兹的贤狼地位，以及对灾祸和谎言的敏锐感知。罗伦斯怀疑她是否真的是神明，但她的特征和行为暗示她可能具…",
+      "latest_seen_chunk_id": "volume_01-r000019",
+      "dialogue_count": 1
+    },
+    {
+      "entity_id": "mystery_v2_000015",
+      "entity_type": "mystery",
+      "display_name": "女孩",
+      "aliases": [
+        "女孩（动物耳朵）",
+        "神秘女孩",
+        "有耳朵的女孩"
+      ],
+      "importance": "major",
+      "summary": "一名神秘的女孩，出现在罗伦斯的马车上，睡得香甜，美丽而安静。她反应迟缓，声音甜美，但头上长着像小狗的耳朵，暗示她可能并非普通人。她赤裸着身体缓缓站起，美丽得令人屏息，随后发出狼嚎，令罗伦斯误以为她是…",
+      "latest_seen_chunk_id": "volume_01-r000014",
+      "dialogue_count": 14
+    },
+    {
+      "entity_id": "char_v2_000006",
+      "entity_type": "character",
+      "display_name": "教会",
+      "aliases": [
+        "教会组织",
+        "宗教机构"
+      ],
+      "importance": "medium",
+      "summary": "教会是赫萝过往经历中的重要势力，她多次提及教会曾让她吃了不少苦头，并暗示她不愿再被教会抓住。这表明教会可能与她的身份和变身能力有关，是她不愿提及的敏感话题。",
+      "latest_seen_chunk_id": "volume_01-r000022",
+      "dialogue_count": 0
+    },
+    {
+      "entity_id": "char_v2_000004",
+      "entity_type": "character",
+      "display_name": "纽希拉",
+      "aliases": [
+        "纽希拉镇",
+        "纽希拉城"
+      ],
+      "importance": "medium",
+      "summary": "纽希拉是赫萝提到的北方大地上的一个城镇，以热泉闻名，是王室贵族度假的温泉街。赫萝称自己曾经常去那里泡泉水，暗示她与该地有长期联系。纽希拉至今仍然存在，与约伊兹不同，未被传说毁灭。",
+      "latest_seen_chunk_id": "volume_01-r000018",
+      "dialogue_count": 0
+    },
+    {
+      "entity_id": "char_v2_000003",
+      "entity_type": "character",
+      "display_name": "约伊兹",
+      "aliases": [
+        "约伊兹镇",
+        "约伊兹城"
+      ],
+      "importance": "medium",
+      "summary": "赫萝声称自己出生的城镇，位于北方大地。罗伦斯指出约伊兹在古老传说中早已被熊怪毁灭，因此赫萝的出生地真实性存疑。赫萝对约伊兹的描述和情感反应表明她可能与该地有真实联系，但其真实性仍需进一步验证。",
+      "latest_seen_chunk_id": "volume_01-r000017",
+      "dialogue_count": 0
+    },
+    {
+      "entity_id": "mystery_v2_000017",
+      "entity_type": "mystery",
+      "display_name": "亚罗西史托",
+      "aliases": [
+        "亚罗西史托镇",
+        "亚罗西史托城"
+      ],
+      "importance": "medium",
+      "summary": "罗伦斯提到的北方极寒之地，据称全年吹着暴风雪，是极其危险的地方。赫萝表示从未听说过此地，暗示她可能对北方大地的地理了解有限，或她的记忆存在缺失。该地的提及加深了赫萝身份的谜团。",
+      "latest_seen_chunk_id": "volume_01-r000017",
+      "dialogue_count": 0
+    },
+    {
+      "entity_id": "mystery_v2_000013",
+      "entity_type": "mystery",
+      "display_name": "马儿",
+      "aliases": [
+        "罗伦斯的马"
+      ],
+      "importance": "medium",
+      "summary": "罗伦斯的马是一匹强壮有力的公马，是他旅行的重要伙伴。罗伦斯开始幻想马儿能说话，并听说旅行商人之间流传着马儿变成人类的传说。他后悔当初没有选择母马，因为有传言称母马更可能变成人类。这匹马在罗伦斯的孤独…",
+      "latest_seen_chunk_id": "volume_01-r000010",
+      "dialogue_count": 0
+    },
+    {
+      "entity_id": "mystery_v2_000008",
+      "entity_type": "mystery",
+      "display_name": "叶勒",
+      "aliases": [],
+      "importance": "medium",
+      "summary": "叶勒被村民认定为「赫萝」的继承者，因割下最后一束麦子而被追赶。他将被关在谷仓中，无法与罗伦斯交流，这使罗伦斯感到困扰。叶勒的处境表明他与丰收祭典的核心仪式有直接关联，可能揭示更多关于「赫萝」的传说。",
+      "latest_seen_chunk_id": "volume_01-r000009",
+      "dialogue_count": 2
+    },
+    {
+      "entity_id": "mystery_v2_000004",
+      "entity_type": "character",
+      "display_name": "骑士",
+      "aliases": [],
+      "importance": "medium",
+      "summary": "农夫与罗伦斯进行对话，回应其关于叶勒的询问，并提到叶勒雇用年轻人耕作，暗示今年的『赫萝』可能出自他们之中。农夫的对话透露出对地方农业和祭典的熟悉，但未表现出对教会或异教徒问题的直接态度。",
+      "latest_seen_chunk_id": "volume_01-r000007",
+      "dialogue_count": 7
+    },
+    {
+      "entity_id": "mystery_v2_000010",
+      "entity_type": "mystery",
+      "display_name": "亚伦多伯爵",
+      "aliases": [],
+      "importance": "medium",
+      "summary": "亚伦多伯爵是管理帕斯罗村一带的贵族，以亲自下田耕作为特点，并愿意赞助祭典。其行为可能影响地方与教会的关系，以及祭典的规模和性质。",
+      "latest_seen_chunk_id": "volume_01-r000007",
+      "dialogue_count": 0
+    }
+  ]
+}

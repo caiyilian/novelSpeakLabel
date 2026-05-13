@@ -6,6 +6,7 @@ from pathlib import Path
 from .annotation import AnnotationConfig, annotate_volume
 from .discovery import DiscoveryConfig, discover_volume
 from .preprocess import PreprocessConfig, find_volume_file, preprocess_volume
+from .reading_v2 import ReadingV2Config, annotate_v2_volume
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -202,6 +203,50 @@ def main(argv: list[str] | None = None) -> int:
     annotate_parser.add_argument("--min-margin", type=float, default=0.20)
     annotate_parser.add_argument("--min-support-models", type=int, default=2)
 
+    annotate_v2_parser = subparsers.add_parser(
+        "annotate-v2",
+        help="Stage 2 V2: reading-style sequential speaker labeling.",
+    )
+    _add_common_volume_args(annotate_v2_parser, require_input=False)
+    annotate_v2_parser.add_argument("--model", default="qwen3:32b")
+    annotate_v2_parser.add_argument("--ollama-host", default="http://127.0.0.1:11434")
+    annotate_v2_parser.add_argument(
+        "--timeout",
+        type=int,
+        default=1800,
+        help="Socket timeout in seconds. Use 0 to disable it for long local runs.",
+    )
+    annotate_v2_parser.add_argument("--temperature", type=float, default=0.0)
+    annotate_v2_parser.add_argument("--num-predict", type=int, default=4096)
+    annotate_v2_parser.add_argument(
+        "--dry-run",
+        action="store_true",
+        help="Generate prompts and prompt length reports only; do not call Ollama.",
+    )
+    annotate_v2_parser.add_argument("--overwrite-cache", action="store_true")
+    annotate_v2_parser.add_argument(
+        "--cache-only",
+        action="store_true",
+        help="Only read existing reading_v2/cache JSON files; never call Ollama.",
+    )
+    annotate_v2_parser.add_argument("--stop-on-error", action="store_true")
+    annotate_v2_parser.add_argument("--max-paragraphs-per-chunk", type=int, default=16)
+    annotate_v2_parser.add_argument("--max-dialogues-per-chunk", type=int, default=32)
+    annotate_v2_parser.add_argument("--lookback-paragraphs", type=int, default=3)
+    annotate_v2_parser.add_argument("--lookahead-paragraphs", type=int, default=1)
+    annotate_v2_parser.add_argument("--start-chunk-index", type=int, default=0)
+    annotate_v2_parser.add_argument(
+        "--chunk-limit",
+        type=int,
+        default=None,
+        help="Maximum number of reading chunks to process.",
+    )
+    annotate_v2_parser.add_argument("--max-prompt-tokens", type=int, default=24000)
+    annotate_v2_parser.add_argument("--hard-prompt-tokens", type=int, default=30000)
+    annotate_v2_parser.add_argument("--max-candidate-entities", type=int, default=12)
+    annotate_v2_parser.add_argument("--max-pending-mysteries", type=int, default=8)
+    annotate_v2_parser.add_argument("--pending-mystery-ttl-chunks", type=int, default=12)
+
     rebuild_parser = subparsers.add_parser(
         "rebuild-memory",
         help="Rebuild scene_discoveries and memory files from existing cache only.",
@@ -320,6 +365,35 @@ def main(argv: list[str] | None = None) -> int:
             )
         )
         _print_summary("annotate", summary)
+        return 0
+
+    if args.command == "annotate-v2":
+        summary = annotate_v2_volume(
+            ReadingV2Config(
+                output_dir=_resolve_output(args),
+                model=args.model,
+                ollama_host=args.ollama_host,
+                timeout=args.timeout,
+                temperature=args.temperature,
+                num_predict=args.num_predict,
+                dry_run=args.dry_run,
+                overwrite_cache=args.overwrite_cache,
+                cache_only=args.cache_only,
+                continue_on_error=not args.stop_on_error,
+                max_paragraphs_per_chunk=args.max_paragraphs_per_chunk,
+                max_dialogues_per_chunk=args.max_dialogues_per_chunk,
+                lookback_paragraphs=args.lookback_paragraphs,
+                lookahead_paragraphs=args.lookahead_paragraphs,
+                start_chunk_index=args.start_chunk_index,
+                chunk_limit=args.chunk_limit,
+                max_prompt_tokens=args.max_prompt_tokens,
+                hard_prompt_tokens=args.hard_prompt_tokens,
+                max_candidate_entities=args.max_candidate_entities,
+                max_pending_mysteries=args.max_pending_mysteries,
+                pending_mystery_ttl_chunks=args.pending_mystery_ttl_chunks,
+            )
+        )
+        _print_summary("annotate-v2", summary)
         return 0
 
     if args.command == "rebuild-memory":

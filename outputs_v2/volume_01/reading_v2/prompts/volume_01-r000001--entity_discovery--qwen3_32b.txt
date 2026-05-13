@@ -1,0 +1,236 @@
+你是通用小说实体发现助手。任务：从当前 chunk 和初标注结果中提出新增实体候选，但不要直接修改角色库。
+建 character：有明确名字、稳定身份或多次影响剧情。建 mystery：可追踪但暂未命名的个体。建 npc_group：无名群体、路人、临时职能角色、围观者或低重要度群体。
+只返回 JSON，格式：{"new_entities":[{"entity_type":"character|mystery|npc_group","display_name":"...","aliases":[],"importance":"minor|medium|major","summary":"...","evidence_refs":[],"dialogue_count_delta":0}],"merge_candidates":[{"source_entity_id":"...","target_entity_id":"...","reason":"...","confidence":0.0}]}
+输入 JSON：
+{
+  "volume": {
+    "volume_id": "volume_01",
+    "volume": 1,
+    "title": ""
+  },
+  "chunk": {
+    "chunk_id": "volume_01-r000001",
+    "chunk_index": 0,
+    "chapter_id": "volume_01-c000",
+    "chapter_title": "front_matter",
+    "scene_id": "volume_01-c000-s001",
+    "paragraphs": [
+      {
+        "paragraph_id": "volume_01-c000-s001-p000001",
+        "paragraph_index": 0,
+        "chapter_id": "volume_01-c000",
+        "chapter_index": 0,
+        "chapter_title": "front_matter",
+        "scene_id": "volume_01-c000-s001",
+        "scene_index": 1,
+        "text": "封面"
+      },
+      {
+        "paragraph_id": "volume_01-c000-s001-p000002",
+        "paragraph_index": 1,
+        "chapter_id": "volume_01-c000",
+        "chapter_index": 0,
+        "chapter_title": "front_matter",
+        "scene_id": "volume_01-c000-s001",
+        "scene_index": 1,
+        "text": "标题"
+      },
+      {
+        "paragraph_id": "volume_01-c000-s001-p000003",
+        "paragraph_index": 2,
+        "chapter_id": "volume_01-c000",
+        "chapter_index": 0,
+        "chapter_title": "front_matter",
+        "scene_id": "volume_01-c000-s001",
+        "scene_index": 1,
+        "text": "Merchant meats spicy wolf."
+      },
+      {
+        "paragraph_id": "volume_01-c000-s001-p000004",
+        "paragraph_index": 3,
+        "chapter_id": "volume_01-c000",
+        "chapter_index": 0,
+        "chapter_title": "front_matter",
+        "scene_id": "volume_01-c000-s001",
+        "scene_index": 1,
+        "text": "狼"
+      },
+      {
+        "paragraph_id": "volume_01-c000-s001-p000005",
+        "paragraph_index": 4,
+        "chapter_id": "volume_01-c000",
+        "chapter_index": 0,
+        "chapter_title": "front_matter",
+        "scene_id": "volume_01-c000-s001",
+        "scene_index": 1,
+        "text": "与"
+      },
+      {
+        "paragraph_id": "volume_01-c000-s001-p000006",
+        "paragraph_index": 5,
+        "chapter_id": "volume_01-c000",
+        "chapter_index": 0,
+        "chapter_title": "front_matter",
+        "scene_id": "volume_01-c000-s001",
+        "scene_index": 1,
+        "text": "辛"
+      },
+      {
+        "paragraph_id": "volume_01-c000-s001-p000007",
+        "paragraph_index": 6,
+        "chapter_id": "volume_01-c000",
+        "chapter_index": 0,
+        "chapter_title": "front_matter",
+        "scene_id": "volume_01-c000-s001",
+        "scene_index": 1,
+        "text": "香"
+      },
+      {
+        "paragraph_id": "volume_01-c000-s001-p000008",
+        "paragraph_index": 7,
+        "chapter_id": "volume_01-c000",
+        "chapter_index": 0,
+        "chapter_title": "front_matter",
+        "scene_id": "volume_01-c000-s001",
+        "scene_index": 1,
+        "text": "料"
+      },
+      {
+        "paragraph_id": "volume_01-c000-s001-p000009",
+        "paragraph_index": 8,
+        "chapter_id": "volume_01-c000",
+        "chapter_index": 0,
+        "chapter_title": "front_matter",
+        "scene_id": "volume_01-c000-s001",
+        "scene_index": 1,
+        "text": "Ⅰ"
+      },
+      {
+        "paragraph_id": "volume_01-c000-s001-p000010",
+        "paragraph_index": 9,
+        "chapter_id": "volume_01-c000",
+        "chapter_index": 0,
+        "chapter_title": "front_matter",
+        "scene_id": "volume_01-c000-s001",
+        "scene_index": 1,
+        "text": "Author"
+      },
+      {
+        "paragraph_id": "volume_01-c000-s001-p000011",
+        "paragraph_index": 10,
+        "chapter_id": "volume_01-c000",
+        "chapter_index": 0,
+        "chapter_title": "front_matter",
+        "scene_id": "volume_01-c000-s001",
+        "scene_index": 1,
+        "text": "支仓冻砂"
+      },
+      {
+        "paragraph_id": "volume_01-c000-s001-p000012",
+        "paragraph_index": 11,
+        "chapter_id": "volume_01-c000",
+        "chapter_index": 0,
+        "chapter_title": "front_matter",
+        "scene_id": "volume_01-c000-s001",
+        "scene_index": 1,
+        "text": "Isuna Hasekura"
+      },
+      {
+        "paragraph_id": "volume_01-c000-s001-p000013",
+        "paragraph_index": 12,
+        "chapter_id": "volume_01-c000",
+        "chapter_index": 0,
+        "chapter_title": "front_matter",
+        "scene_id": "volume_01-c000-s001",
+        "scene_index": 1,
+        "text": "Illusation"
+      },
+      {
+        "paragraph_id": "volume_01-c000-s001-p000014",
+        "paragraph_index": 13,
+        "chapter_id": "volume_01-c000",
+        "chapter_index": 0,
+        "chapter_title": "front_matter",
+        "scene_id": "volume_01-c000-s001",
+        "scene_index": 1,
+        "text": "文仓十"
+      },
+      {
+        "paragraph_id": "volume_01-c000-s001-p000015",
+        "paragraph_index": 14,
+        "chapter_id": "volume_01-c000",
+        "chapter_index": 0,
+        "chapter_title": "front_matter",
+        "scene_id": "volume_01-c000-s001",
+        "scene_index": 1,
+        "text": "Jyuu Ayakura"
+      },
+      {
+        "paragraph_id": "volume_01-c000-s001-p000016",
+        "paragraph_index": 15,
+        "chapter_id": "volume_01-c000",
+        "chapter_index": 0,
+        "chapter_title": "front_matter",
+        "scene_id": "volume_01-c000-s001",
+        "scene_index": 1,
+        "text": "制作信息"
+      }
+    ],
+    "dialogues": []
+  },
+  "near_context": {
+    "lookback_paragraphs": [],
+    "lookahead_paragraphs": [
+      {
+        "paragraph_id": "volume_01-c000-s001-p000017",
+        "paragraph_index": 16,
+        "chapter_id": "volume_01-c000",
+        "chapter_index": 0,
+        "chapter_title": "front_matter",
+        "scene_id": "volume_01-c000-s001",
+        "scene_index": 1,
+        "text": "制作信息"
+      }
+    ]
+  },
+  "memory": {
+    "previous_chunk_summary": {},
+    "global_summary": "",
+    "candidate_entities": []
+  },
+  "rules": {
+    "speaker_statuses": [
+      "known",
+      "mystery",
+      "npc_group",
+      "review",
+      "unknown"
+    ],
+    "importance_levels": [
+      "minor",
+      "medium",
+      "major"
+    ],
+    "general_novel_only": true
+  },
+  "task_a_annotations": [],
+  "task_b_chunk_summary": {
+    "chunk_id": "volume_01-r000001",
+    "summary": "本 chunk 包含小说的封面、标题页和制作信息页。标题页上出现了 'Merchant meats spicy wolf.' 的英文短语，随后是中文词汇 '狼'、'与'、'辛'、'香'、'料' 和 'Ⅰ'，可能暗示小说的标题或主题。作者信息显示为 '支仓冻砂'（Isuna Hasekura），插画师为 '文仓十'（Jyuu Ayakura）。尚未明确标题的完整含义或小说的类型，但已确认作者和插画师的身份。",
+    "active_entities": [
+      "volume_01-c000-s001-p000003",
+      "volume_01-c000-s001-p000011",
+      "volume_01-c000-s001-p000014"
+    ],
+    "open_questions": [
+      "小说的完整标题是什么？",
+      "'Merchant meats spicy wolf.' 与后续中文词汇之间的关系是什么？",
+      "小说的类型或主题是什么？"
+    ],
+    "evidence_refs": [
+      "volume_01-c000-s001-p000003",
+      "volume_01-c000-s001-p000011",
+      "volume_01-c000-s001-p000014"
+    ]
+  }
+}

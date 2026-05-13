@@ -1,0 +1,217 @@
+你是通用小说阅读记忆助手。任务：把刚读完的 chunk 压缩成短期摘要，供后续几个 chunk 使用。
+摘要要围绕事件、人物关系、对话轮次和仍未解决的问题；不得添加输入中没有的信息。
+只返回 JSON，格式：{"chunk_id":"...","summary":"50到450字","active_entities":["entity_id"],"open_questions":[],"evidence_refs":["paragraph_id或dialogue_id"]}
+输入 JSON：
+{
+  "volume": {
+    "volume_id": "volume_01",
+    "volume": 1,
+    "title": ""
+  },
+  "chunk": {
+    "chunk_id": "volume_01-r000001",
+    "chunk_index": 0,
+    "chapter_id": "volume_01-c000",
+    "chapter_title": "front_matter",
+    "scene_id": "volume_01-c000-s001",
+    "paragraphs": [
+      {
+        "paragraph_id": "volume_01-c000-s001-p000001",
+        "paragraph_index": 0,
+        "chapter_id": "volume_01-c000",
+        "chapter_index": 0,
+        "chapter_title": "front_matter",
+        "scene_id": "volume_01-c000-s001",
+        "scene_index": 1,
+        "text": "封面"
+      },
+      {
+        "paragraph_id": "volume_01-c000-s001-p000002",
+        "paragraph_index": 1,
+        "chapter_id": "volume_01-c000",
+        "chapter_index": 0,
+        "chapter_title": "front_matter",
+        "scene_id": "volume_01-c000-s001",
+        "scene_index": 1,
+        "text": "标题"
+      },
+      {
+        "paragraph_id": "volume_01-c000-s001-p000003",
+        "paragraph_index": 2,
+        "chapter_id": "volume_01-c000",
+        "chapter_index": 0,
+        "chapter_title": "front_matter",
+        "scene_id": "volume_01-c000-s001",
+        "scene_index": 1,
+        "text": "Merchant meats spicy wolf."
+      },
+      {
+        "paragraph_id": "volume_01-c000-s001-p000004",
+        "paragraph_index": 3,
+        "chapter_id": "volume_01-c000",
+        "chapter_index": 0,
+        "chapter_title": "front_matter",
+        "scene_id": "volume_01-c000-s001",
+        "scene_index": 1,
+        "text": "狼"
+      },
+      {
+        "paragraph_id": "volume_01-c000-s001-p000005",
+        "paragraph_index": 4,
+        "chapter_id": "volume_01-c000",
+        "chapter_index": 0,
+        "chapter_title": "front_matter",
+        "scene_id": "volume_01-c000-s001",
+        "scene_index": 1,
+        "text": "与"
+      },
+      {
+        "paragraph_id": "volume_01-c000-s001-p000006",
+        "paragraph_index": 5,
+        "chapter_id": "volume_01-c000",
+        "chapter_index": 0,
+        "chapter_title": "front_matter",
+        "scene_id": "volume_01-c000-s001",
+        "scene_index": 1,
+        "text": "辛"
+      },
+      {
+        "paragraph_id": "volume_01-c000-s001-p000007",
+        "paragraph_index": 6,
+        "chapter_id": "volume_01-c000",
+        "chapter_index": 0,
+        "chapter_title": "front_matter",
+        "scene_id": "volume_01-c000-s001",
+        "scene_index": 1,
+        "text": "香"
+      },
+      {
+        "paragraph_id": "volume_01-c000-s001-p000008",
+        "paragraph_index": 7,
+        "chapter_id": "volume_01-c000",
+        "chapter_index": 0,
+        "chapter_title": "front_matter",
+        "scene_id": "volume_01-c000-s001",
+        "scene_index": 1,
+        "text": "料"
+      },
+      {
+        "paragraph_id": "volume_01-c000-s001-p000009",
+        "paragraph_index": 8,
+        "chapter_id": "volume_01-c000",
+        "chapter_index": 0,
+        "chapter_title": "front_matter",
+        "scene_id": "volume_01-c000-s001",
+        "scene_index": 1,
+        "text": "Ⅰ"
+      },
+      {
+        "paragraph_id": "volume_01-c000-s001-p000010",
+        "paragraph_index": 9,
+        "chapter_id": "volume_01-c000",
+        "chapter_index": 0,
+        "chapter_title": "front_matter",
+        "scene_id": "volume_01-c000-s001",
+        "scene_index": 1,
+        "text": "Author"
+      },
+      {
+        "paragraph_id": "volume_01-c000-s001-p000011",
+        "paragraph_index": 10,
+        "chapter_id": "volume_01-c000",
+        "chapter_index": 0,
+        "chapter_title": "front_matter",
+        "scene_id": "volume_01-c000-s001",
+        "scene_index": 1,
+        "text": "支仓冻砂"
+      },
+      {
+        "paragraph_id": "volume_01-c000-s001-p000012",
+        "paragraph_index": 11,
+        "chapter_id": "volume_01-c000",
+        "chapter_index": 0,
+        "chapter_title": "front_matter",
+        "scene_id": "volume_01-c000-s001",
+        "scene_index": 1,
+        "text": "Isuna Hasekura"
+      },
+      {
+        "paragraph_id": "volume_01-c000-s001-p000013",
+        "paragraph_index": 12,
+        "chapter_id": "volume_01-c000",
+        "chapter_index": 0,
+        "chapter_title": "front_matter",
+        "scene_id": "volume_01-c000-s001",
+        "scene_index": 1,
+        "text": "Illusation"
+      },
+      {
+        "paragraph_id": "volume_01-c000-s001-p000014",
+        "paragraph_index": 13,
+        "chapter_id": "volume_01-c000",
+        "chapter_index": 0,
+        "chapter_title": "front_matter",
+        "scene_id": "volume_01-c000-s001",
+        "scene_index": 1,
+        "text": "文仓十"
+      },
+      {
+        "paragraph_id": "volume_01-c000-s001-p000015",
+        "paragraph_index": 14,
+        "chapter_id": "volume_01-c000",
+        "chapter_index": 0,
+        "chapter_title": "front_matter",
+        "scene_id": "volume_01-c000-s001",
+        "scene_index": 1,
+        "text": "Jyuu Ayakura"
+      },
+      {
+        "paragraph_id": "volume_01-c000-s001-p000016",
+        "paragraph_index": 15,
+        "chapter_id": "volume_01-c000",
+        "chapter_index": 0,
+        "chapter_title": "front_matter",
+        "scene_id": "volume_01-c000-s001",
+        "scene_index": 1,
+        "text": "制作信息"
+      }
+    ],
+    "dialogues": []
+  },
+  "near_context": {
+    "lookback_paragraphs": [],
+    "lookahead_paragraphs": [
+      {
+        "paragraph_id": "volume_01-c000-s001-p000017",
+        "paragraph_index": 16,
+        "chapter_id": "volume_01-c000",
+        "chapter_index": 0,
+        "chapter_title": "front_matter",
+        "scene_id": "volume_01-c000-s001",
+        "scene_index": 1,
+        "text": "制作信息"
+      }
+    ]
+  },
+  "memory": {
+    "previous_chunk_summary": {},
+    "global_summary": "",
+    "candidate_entities": []
+  },
+  "rules": {
+    "speaker_statuses": [
+      "known",
+      "mystery",
+      "npc_group",
+      "review",
+      "unknown"
+    ],
+    "importance_levels": [
+      "minor",
+      "medium",
+      "major"
+    ],
+    "general_novel_only": true
+  },
+  "task_a_annotations": []
+}

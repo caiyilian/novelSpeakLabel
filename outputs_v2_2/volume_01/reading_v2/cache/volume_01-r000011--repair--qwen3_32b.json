@@ -1,0 +1,24 @@
+{
+  "repairs": [
+    {
+      "dialogue_id": "volume_01-d000046",
+      "previous_speaker_entity_id": "unknown",
+      "new_speaker_entity_id": "mystery_v2_000015",
+      "speaker_display": "女孩",
+      "speaker_status": "mystery",
+      "confidence": 0.8,
+      "reason": "根据上下文，罗伦斯发现有人捷足先登占据货台，且后续提到女孩睡得香甜，因此推测‘……’是女孩的沉默反应。",
+      "stop_reason": "resolved"
+    },
+    {
+      "dialogue_id": "volume_01-d000047",
+      "previous_speaker_entity_id": "unknown",
+      "new_speaker_entity_id": "char_v2_000001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "reason": "‘喂！’是罗伦斯在发现女孩后发出的惊讶反应，符合他面对意外情况时的语气。",
+      "stop_reason": "resolved"
+    }
+  ]
+}

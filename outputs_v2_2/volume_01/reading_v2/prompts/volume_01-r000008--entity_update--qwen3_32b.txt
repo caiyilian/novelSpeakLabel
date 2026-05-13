@@ -1,0 +1,938 @@
+你是通用小说角色记忆维护助手。任务：更新当前 chunk 出现过的已有实体卡片。只更新输入证据支持的内容，重要性只允许 minor、medium、major；升级可以提出，降级必须谨慎。
+只返回 JSON，格式：{"updates":[{"entity_id":"...","summary":"...","importance":"minor|medium|major","dialogue_count_delta":0,"latest_seen_chunk_id":"...","relationship_updates":[],"evidence_refs":[]}]}
+输入 JSON：
+{
+  "volume": {
+    "volume_id": "volume_01",
+    "volume": 1,
+    "title": ""
+  },
+  "chunk": {
+    "chunk_id": "volume_01-r000008",
+    "chunk_index": 7,
+    "chapter_id": "volume_01-c001",
+    "chapter_title": "第一幕",
+    "scene_id": "volume_01-c001-s002",
+    "paragraphs": [
+      {
+        "paragraph_id": "volume_01-c001-s002-p000099",
+        "paragraph_index": 98,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s002",
+        "scene_index": 2,
+        "text": "农夫晒得黝黑的脸上堆满了笑容说道。那是绝对不会出现在商人脸上，只有没心机的人才会露出的笑容。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s002-p000100",
+        "paragraph_index": 99,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s002",
+        "scene_index": 2,
+        "text": "罗伦斯以营业用笑容向农夫答谢后，驾着马车朝叶勒的方向前去。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s002-p000101",
+        "paragraph_index": 100,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s002",
+        "scene_index": 2,
+        "text": "如农夫所说，确实有很多人聚集在那里，人人都朝麦田中央叫喊着。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s002-p000102",
+        "paragraph_index": 101,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s002",
+        "scene_index": 2,
+        "text": "他们对进行最后工作的人叫喊。不过，他们并非在斥骂工作延迟。斥骂本身其实已是祭典的活动之一。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s002-p000103",
+        "paragraph_index": 102,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s002",
+        "scene_index": 2,
+        "text": "罗伦斯悠哉地慢慢靠近，终于听见了他们叫喊的内容。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s002-p000104",
+        "paragraph_index": 103,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s002",
+        "scene_index": 2,
+        "text": "「有狼喔！有狼！」"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s002-p000105",
+        "paragraph_index": 104,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s002",
+        "scene_index": 2,
+        "text": "「快看！狼就躺在那边！」"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s002-p000106",
+        "paragraph_index": 105,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s002",
+        "scene_index": 2,
+        "text": "「是谁？是谁？最后会是谁抓到狼呢？」"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s002-p000107",
+        "paragraph_index": 106,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s002",
+        "scene_index": 2,
+        "text": "人人脸上展露像是喝了酒似的爽朗笑容，高声叫喊着。就算罗伦斯在人墙后方停下马车，也完全没有人发现他。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s002-p000108",
+        "paragraph_index": 107,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s002",
+        "scene_index": 2,
+        "text": "狼是丰收之神的化身。据村民所说，丰收之神就藏在最后割下的麦子里，传说丰收之神会跑进割下最后一束麦子的人体内。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s002-p000109",
+        "paragraph_index": 108,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s002",
+        "scene_index": 2,
+        "text": "「最后一束了！」"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s002-p000110",
+        "paragraph_index": 109,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s002",
+        "scene_index": 2,
+        "text": "「小心不要割过头！」"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s002-p000111",
+        "paragraph_index": 110,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s002",
+        "scene_index": 2,
+        "text": "「太贪心的话，会让赫萝逃跑喔！」"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s002-p000112",
+        "paragraph_index": 111,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s002",
+        "scene_index": 2,
+        "text": "「是谁？是谁？是谁抓到狼呢？」"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s002-p000113",
+        "paragraph_index": 112,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s002",
+        "scene_index": 2,
+        "text": "「是叶勒！叶勒！叶勒！」"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s002-p000114",
+        "paragraph_index": 113,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s002",
+        "scene_index": 2,
+        "text": "罗伦斯从马车上走下，探头往人墙的另一边望去，正好看见叶勒抓住最后一束麦子。叶勒沾满泥土和汗水的黑脸露出苦笑，他一口气割下麦子后，举高整束麦子，朝着天空大喊："
+      }
+    ],
+    "dialogues": [
+      {
+        "dialogue_id": "volume_01-d000030",
+        "dialogue_index": 29,
+        "paragraph_id": "volume_01-c001-s002-p000104",
+        "paragraph_index": 103,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "有狼喔！有狼！",
+        "quote_text": "「有狼喔！有狼！」",
+        "char_start": 0,
+        "char_end": 9
+      },
+      {
+        "dialogue_id": "volume_01-d000031",
+        "dialogue_index": 30,
+        "paragraph_id": "volume_01-c001-s002-p000105",
+        "paragraph_index": 104,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "快看！狼就躺在那边！",
+        "quote_text": "「快看！狼就躺在那边！」",
+        "char_start": 0,
+        "char_end": 12
+      },
+      {
+        "dialogue_id": "volume_01-d000032",
+        "dialogue_index": 31,
+        "paragraph_id": "volume_01-c001-s002-p000106",
+        "paragraph_index": 105,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "是谁？是谁？最后会是谁抓到狼呢？",
+        "quote_text": "「是谁？是谁？最后会是谁抓到狼呢？」",
+        "char_start": 0,
+        "char_end": 18
+      },
+      {
+        "dialogue_id": "volume_01-d000033",
+        "dialogue_index": 32,
+        "paragraph_id": "volume_01-c001-s002-p000109",
+        "paragraph_index": 108,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "最后一束了！",
+        "quote_text": "「最后一束了！」",
+        "char_start": 0,
+        "char_end": 8
+      },
+      {
+        "dialogue_id": "volume_01-d000034",
+        "dialogue_index": 33,
+        "paragraph_id": "volume_01-c001-s002-p000110",
+        "paragraph_index": 109,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "小心不要割过头！",
+        "quote_text": "「小心不要割过头！」",
+        "char_start": 0,
+        "char_end": 10
+      },
+      {
+        "dialogue_id": "volume_01-d000035",
+        "dialogue_index": 34,
+        "paragraph_id": "volume_01-c001-s002-p000111",
+        "paragraph_index": 110,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "太贪心的话，会让赫萝逃跑喔！",
+        "quote_text": "「太贪心的话，会让赫萝逃跑喔！」",
+        "char_start": 0,
+        "char_end": 16
+      },
+      {
+        "dialogue_id": "volume_01-d000036",
+        "dialogue_index": 35,
+        "paragraph_id": "volume_01-c001-s002-p000112",
+        "paragraph_index": 111,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "是谁？是谁？是谁抓到狼呢？",
+        "quote_text": "「是谁？是谁？是谁抓到狼呢？」",
+        "char_start": 0,
+        "char_end": 15
+      },
+      {
+        "dialogue_id": "volume_01-d000037",
+        "dialogue_index": 36,
+        "paragraph_id": "volume_01-c001-s002-p000113",
+        "paragraph_index": 112,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "是叶勒！叶勒！叶勒！",
+        "quote_text": "「是叶勒！叶勒！叶勒！」",
+        "char_start": 0,
+        "char_end": 12
+      }
+    ]
+  },
+  "near_context": {
+    "lookback_paragraphs": [
+      {
+        "paragraph_id": "volume_01-c001-s001-p000096",
+        "paragraph_index": 95,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s001",
+        "scene_index": 1,
+        "text": "「喔？」"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s001-p000097",
+        "paragraph_index": 96,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s001",
+        "scene_index": 1,
+        "text": "「请问叶勒在哪里啊？」"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s001-p000098",
+        "paragraph_index": 97,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s001",
+        "scene_index": 1,
+        "text": "「喔！叶勒在那儿。有没有看到很多人聚集在那边？他就在那块麦田里。叶勒今年都雇用年轻人来种田，因为他们比较不得要领，今年应该是他们田里的某个人会是『赫萝』吧。」"
+      }
+    ],
+    "lookahead_paragraphs": [
+      {
+        "paragraph_id": "volume_01-c001-s002-p000115",
+        "paragraph_index": 114,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s002",
+        "scene_index": 2,
+        "text": "「嗷呜～～～～～～～」"
+      }
+    ]
+  },
+  "memory": {
+    "previous_chunk_summary": {
+      "chunk_id": "volume_01-r000007",
+      "summary": "本段描述了教会权威逐渐衰落的背景，包括对异端审判和神学者与自然学者的言论斗争。民众不再无条件服从教会，甚至教皇因教会税减少而向国王求助。罗伦斯在麦田中感叹生意艰难，随后与一名农夫对话，询问叶勒的下落。农夫指出叶勒在另一块麦田，并提到叶勒雇用年轻人耕作，暗示今年的『赫萝』可能出自他们之中。『赫萝』一词未明确定义，但可能与丰收祭典有关。罗伦斯与农夫的对话揭示了地方农业活动的繁荣，以及帕斯罗村因高产麦田而富裕的背景。然而，外人无法参与该村的祭典，暗示地方封闭性与教会控制的潜在关联。",
+      "active_entities": [
+        "char_v2_000001",
+        "mystery_v2_000004"
+      ],
+      "open_questions": [
+        "『赫萝』具体指什么？是否与丰收祭典有关？",
+        "教会为何对地方祭典特别敏感？是否试图扩大控制？",
+        "帕斯罗村的祭典为何对外人封闭？是否涉及教会或地方势力的限制？"
+      ],
+      "evidence_refs": [
+        "volume_01-c001-s001-p000083",
+        "volume_01-c001-s001-p000084",
+        "volume_01-c001-s001-p000086",
+        "volume_01-c001-s001-p000088",
+        "volume_01-c001-s001-p000094",
+        "volume_01-c001-s001-p000097",
+        "volume_01-c001-s001-p000098"
+      ]
+    },
+    "global_summary": "本卷继续描绘教会权威逐渐衰落的背景，包括对异端审判的热衷、神学者与自然学者的言论斗争，以及民众对教会的服从度下降。教皇因教会税减少而向国王求助，显示出教会财政和威望的双重危机。罗伦斯在麦田中感叹生意艰难，并与一名农夫对话，询问叶勒的下落。农夫指出叶勒在另一块麦田，并提到叶勒雇用年轻人耕作，暗示今年的『赫萝』可能出自他们之中。『赫萝』一词未明确定义，但可能与丰收祭典有关。罗伦斯与农夫的对话揭示了地方农业活动的繁荣，以及帕斯罗村因高产麦田而富裕的背景。然而，外人无法参与该村的祭典，暗示地方封闭性与教会控制的潜在关联。亚伦多伯爵作为地方贵族，亲自下田耕作并赞助祭典，其行为可能影响地方与教会的关系。",
+    "candidate_entities": [
+      {
+        "entity_id": "char_v2_000001",
+        "entity_type": "character",
+        "display_name": "罗伦斯",
+        "aliases": [
+          "罗伦斯先生"
+        ],
+        "importance": "major",
+        "summary": "罗伦斯在麦田中感叹生意艰难，并与一名农夫对话，询问叶勒的下落。他表现出对地方农业活动的兴趣，并试图了解帕斯罗村的祭典背景。罗伦斯的对话风格依旧谨慎，避免透露过多信息。",
+        "latest_seen_chunk_id": "volume_01-r000007",
+        "dialogue_count": 24
+      },
+      {
+        "entity_id": "mystery_v2_000004",
+        "entity_type": "character",
+        "display_name": "骑士",
+        "aliases": [],
+        "importance": "medium",
+        "summary": "农夫与罗伦斯进行对话，回应其关于叶勒的询问，并提到叶勒雇用年轻人耕作，暗示今年的『赫萝』可能出自他们之中。农夫的对话透露出对地方农业和祭典的熟悉，但未表现出对教会或异教徒问题的直接态度。",
+        "latest_seen_chunk_id": "volume_01-r000007",
+        "dialogue_count": 7
+      },
+      {
+        "entity_id": "mystery_v2_000008",
+        "entity_type": "mystery",
+        "display_name": "叶勒",
+        "aliases": [],
+        "importance": "medium",
+        "summary": "叶勒是帕斯罗村的麦田管理者，今年雇用年轻人耕作，并被提及可能与『赫萝』有关。虽然未直接出场，但其行为和决策对地方农业和祭典有潜在影响。",
+        "latest_seen_chunk_id": "volume_01-r000007",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "mystery_v2_000009",
+        "entity_type": "mystery",
+        "display_name": "赫萝",
+        "aliases": [],
+        "importance": "medium",
+        "summary": "农夫提及的『赫萝』，可能与丰收祭典或地方传统有关，但具体含义尚未明确。该词的出现暗示了地方文化或宗教仪式中的某种象征或人物。",
+        "latest_seen_chunk_id": "volume_01-r000007",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "mystery_v2_000010",
+        "entity_type": "mystery",
+        "display_name": "亚伦多伯爵",
+        "aliases": [],
+        "importance": "medium",
+        "summary": "亚伦多伯爵是管理帕斯罗村一带的贵族，以亲自下田耕作为特点，并愿意赞助祭典。其行为可能影响地方与教会的关系，以及祭典的规模和性质。",
+        "latest_seen_chunk_id": "volume_01-r000007",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "mystery_v2_000003",
+        "entity_type": "mystery",
+        "display_name": "修道院的修道士",
+        "aliases": [
+          "修道士",
+          "修道院成员"
+        ],
+        "importance": "medium",
+        "summary": "一所偏僻修道院的居民，人数约二十多位，生活节俭且独立运作。他们不与民间商人往来，而是通过独自的通路调度物资。尽管罗伦斯对其商业潜力感到失望，但修道士的存在可能在后续情节中引发新的发展。",
+        "latest_seen_chunk_id": "volume_01-r000006",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "mystery_v2_000007",
+        "entity_type": "mystery",
+        "display_name": "异教徒",
+        "aliases": [
+          "异端徒",
+          "异教徒群体"
+        ],
+        "importance": "medium",
+        "summary": "被骑士提及的异教徒，据称在北边或东边出没，但骑士误认为该地的丰收祭典是异教徒活动。虽然罗伦斯指出这并非事实，但异教徒的存在仍可能在后续情节中引发冲突或调查。",
+        "latest_seen_chunk_id": "volume_01-r000006",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "mystery_v2_000004",
+        "entity_type": "mystery",
+        "display_name": "修道院的骑士",
+        "aliases": [
+          "银甲骑士",
+          "下级骑士",
+          "骑士"
+        ],
+        "importance": "medium",
+        "summary": "修道院的骑士出现在修道院附近，穿着银色盔甲，态度傲慢。他质疑罗伦斯的出现，并与罗伦斯展开对话。虽然被描述为下级骑士，但其行为显示出一定的自信和戒备，可能与修道院的特殊安排有关。修道院内还有另一名骑士…",
+        "latest_seen_chunk_id": "volume_01-r000005",
+        "dialogue_count": 14
+      },
+      {
+        "entity_id": "mystery_v2_000001",
+        "entity_type": "mystery",
+        "display_name": "叙述者",
+        "aliases": [
+          "我",
+          "他"
+        ],
+        "importance": "medium",
+        "summary": "本段的叙述者，具有非人类特征的暗示（如尾巴的存在），对村落文化有深刻观察，并流露出对北方故乡的怀念。其身份尚未明确，但对情节发展可能有重要影响。",
+        "latest_seen_chunk_id": "volume_01-r000001",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "mystery_v2_000002",
+        "entity_type": "mystery",
+        "display_name": "狼群",
+        "aliases": [
+          "狼",
+          "奔跑的狼"
+        ],
+        "importance": "medium",
+        "summary": "在段落结尾出现的‘成群无数的狼’，可能是比喻，也可能暗示真实事件。其出现为后续情节埋下伏笔，可能与村落文化或叙述者的身份有关。",
+        "latest_seen_chunk_id": "volume_01-r000001",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "mystery_v2_000006",
+        "entity_type": "mystery",
+        "display_name": "深山村落的村民",
+        "aliases": [
+          "村民",
+          "山里居民"
+        ],
+        "importance": "minor",
+        "summary": "居住在东边山头的小村落居民，种植耐寒且抗虫的麦子，并与罗伦斯进行交易。他们赠予罗伦斯麦子，作为其商业路线的一部分。虽然未直接参与当前对话，但他们的存在为罗伦斯的货物来源提供了背景。",
+        "latest_seen_chunk_id": "volume_01-r000005",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "npc_group_v2_000002",
+        "entity_type": "npc_group",
+        "display_name": "深山村落的村民",
+        "aliases": [
+          "村民",
+          "深山居民"
+        ],
+        "importance": "minor",
+        "summary": "居住在深山中的普通村民，与罗伦斯进行交易。他们对罗伦斯的到访表示感激，并希望他能再次光顾。虽然未直接参与后续剧情，但他们的存在为罗伦斯的商业活动提供了背景。",
+        "latest_seen_chunk_id": "volume_01-r000003",
+        "dialogue_count": 0
+      }
+    ]
+  },
+  "rules": {
+    "speaker_statuses": [
+      "known",
+      "mystery",
+      "npc_group",
+      "review",
+      "unknown"
+    ],
+    "importance_levels": [
+      "minor",
+      "medium",
+      "major"
+    ],
+    "general_novel_only": true
+  },
+  "task_a_annotations": [
+    {
+      "dialogue_id": "volume_01-d000030",
+      "dialogue_index": 29,
+      "volume_id": "",
+      "chapter_id": "",
+      "chapter_index": 0,
+      "chapter_title": "",
+      "scene_id": "",
+      "scene_index": 0,
+      "paragraph_id": "volume_01-c001-s002-p000104",
+      "paragraph_index": 103,
+      "local_dialogue_index": 1,
+      "text": "有狼喔！有狼！",
+      "quote_text": "「有狼喔！有狼！」",
+      "dialogue_kind": "standalone",
+      "char_start": 0,
+      "char_end": 9,
+      "speaker_entity_id": "npc_group_v2_000002",
+      "speaker_display": "村民",
+      "speaker_status": "npc_group",
+      "confidence": 0.9,
+      "evidence": [
+        "对话内容为集体叫喊，没有明确指向某个个体"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false,
+      "review_reason": "",
+      "request_id": "volume_01-r000008--annotation--qwen3_32b"
+    },
+    {
+      "dialogue_id": "volume_01-d000031",
+      "dialogue_index": 30,
+      "volume_id": "",
+      "chapter_id": "",
+      "chapter_index": 0,
+      "chapter_title": "",
+      "scene_id": "",
+      "scene_index": 0,
+      "paragraph_id": "volume_01-c001-s002-p000105",
+      "paragraph_index": 104,
+      "local_dialogue_index": 1,
+      "text": "快看！狼就躺在那边！",
+      "quote_text": "「快看！狼就躺在那边！」",
+      "dialogue_kind": "standalone",
+      "char_start": 0,
+      "char_end": 12,
+      "speaker_entity_id": "npc_group_v2_000002",
+      "speaker_display": "村民",
+      "speaker_status": "npc_group",
+      "confidence": 0.9,
+      "evidence": [
+        "对话内容为集体叫喊，没有明确指向某个个体"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false,
+      "review_reason": "",
+      "request_id": "volume_01-r000008--annotation--qwen3_32b"
+    },
+    {
+      "dialogue_id": "volume_01-d000032",
+      "dialogue_index": 31,
+      "volume_id": "",
+      "chapter_id": "",
+      "chapter_index": 0,
+      "chapter_title": "",
+      "scene_id": "",
+      "scene_index": 0,
+      "paragraph_id": "volume_01-c001-s002-p000106",
+      "paragraph_index": 105,
+      "local_dialogue_index": 1,
+      "text": "是谁？是谁？最后会是谁抓到狼呢？",
+      "quote_text": "「是谁？是谁？最后会是谁抓到狼呢？」",
+      "dialogue_kind": "standalone",
+      "char_start": 0,
+      "char_end": 18,
+      "speaker_entity_id": "npc_group_v2_000002",
+      "speaker_display": "村民",
+      "speaker_status": "npc_group",
+      "confidence": 0.9,
+      "evidence": [
+        "对话内容为集体叫喊，没有明确指向某个个体"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false,
+      "review_reason": "",
+      "request_id": "volume_01-r000008--annotation--qwen3_32b"
+    },
+    {
+      "dialogue_id": "volume_01-d000033",
+      "dialogue_index": 32,
+      "volume_id": "",
+      "chapter_id": "",
+      "chapter_index": 0,
+      "chapter_title": "",
+      "scene_id": "",
+      "scene_index": 0,
+      "paragraph_id": "volume_01-c001-s002-p000109",
+      "paragraph_index": 108,
+      "local_dialogue_index": 1,
+      "text": "最后一束了！",
+      "quote_text": "「最后一束了！」",
+      "dialogue_kind": "standalone",
+      "char_start": 0,
+      "char_end": 8,
+      "speaker_entity_id": "mystery_v2_000008",
+      "speaker_display": "叶勒",
+      "speaker_status": "mystery",
+      "confidence": 0.8,
+      "evidence": [
+        "对话内容为「最后一束了！」，与叶勒正在收割最后一束麦子的情节吻合"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false,
+      "review_reason": "",
+      "request_id": "volume_01-r000008--annotation--qwen3_32b"
+    },
+    {
+      "dialogue_id": "volume_01-d000034",
+      "dialogue_index": 33,
+      "volume_id": "",
+      "chapter_id": "",
+      "chapter_index": 0,
+      "chapter_title": "",
+      "scene_id": "",
+      "scene_index": 0,
+      "paragraph_id": "volume_01-c001-s002-p000110",
+      "paragraph_index": 109,
+      "local_dialogue_index": 1,
+      "text": "小心不要割过头！",
+      "quote_text": "「小心不要割过头！」",
+      "dialogue_kind": "standalone",
+      "char_start": 0,
+      "char_end": 10,
+      "speaker_entity_id": "npc_group_v2_000002",
+      "speaker_display": "村民",
+      "speaker_status": "npc_group",
+      "confidence": 0.9,
+      "evidence": [
+        "对话内容为集体叫喊，没有明确指向某个个体"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false,
+      "review_reason": "",
+      "request_id": "volume_01-r000008--annotation--qwen3_32b"
+    },
+    {
+      "dialogue_id": "volume_01-d000035",
+      "dialogue_index": 34,
+      "volume_id": "",
+      "chapter_id": "",
+      "chapter_index": 0,
+      "chapter_title": "",
+      "scene_id": "",
+      "scene_index": 0,
+      "paragraph_id": "volume_01-c001-s002-p000111",
+      "paragraph_index": 110,
+      "local_dialogue_index": 1,
+      "text": "太贪心的话，会让赫萝逃跑喔！",
+      "quote_text": "「太贪心的话，会让赫萝逃跑喔！」",
+      "dialogue_kind": "standalone",
+      "char_start": 0,
+      "char_end": 16,
+      "speaker_entity_id": "npc_group_v2_000002",
+      "speaker_display": "村民",
+      "speaker_status": "npc_group",
+      "confidence": 0.9,
+      "evidence": [
+        "对话内容为集体叫喊，没有明确指向某个个体"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false,
+      "review_reason": "",
+      "request_id": "volume_01-r000008--annotation--qwen3_32b"
+    },
+    {
+      "dialogue_id": "volume_01-d000036",
+      "dialogue_index": 35,
+      "volume_id": "",
+      "chapter_id": "",
+      "chapter_index": 0,
+      "chapter_title": "",
+      "scene_id": "",
+      "scene_index": 0,
+      "paragraph_id": "volume_01-c001-s002-p000112",
+      "paragraph_index": 111,
+      "local_dialogue_index": 1,
+      "text": "是谁？是谁？是谁抓到狼呢？",
+      "quote_text": "「是谁？是谁？是谁抓到狼呢？」",
+      "dialogue_kind": "standalone",
+      "char_start": 0,
+      "char_end": 15,
+      "speaker_entity_id": "npc_group_v2_000002",
+      "speaker_display": "村民",
+      "speaker_status": "npc_group",
+      "confidence": 0.9,
+      "evidence": [
+        "对话内容为集体叫喊，没有明确指向某个个体"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false,
+      "review_reason": "",
+      "request_id": "volume_01-r000008--annotation--qwen3_32b"
+    },
+    {
+      "dialogue_id": "volume_01-d000037",
+      "dialogue_index": 36,
+      "volume_id": "",
+      "chapter_id": "",
+      "chapter_index": 0,
+      "chapter_title": "",
+      "scene_id": "",
+      "scene_index": 0,
+      "paragraph_id": "volume_01-c001-s002-p000113",
+      "paragraph_index": 112,
+      "local_dialogue_index": 1,
+      "text": "是叶勒！叶勒！叶勒！",
+      "quote_text": "「是叶勒！叶勒！叶勒！」",
+      "dialogue_kind": "standalone",
+      "char_start": 0,
+      "char_end": 12,
+      "speaker_entity_id": "mystery_v2_000008",
+      "speaker_display": "叶勒",
+      "speaker_status": "mystery",
+      "confidence": 0.8,
+      "evidence": [
+        "对话内容为「是叶勒！」，与叶勒正在收割最后一束麦子的情节吻合"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false,
+      "review_reason": "",
+      "request_id": "volume_01-r000008--annotation--qwen3_32b"
+    }
+  ],
+  "task_b_chunk_summary": {
+    "chunk_id": "volume_01-r000008",
+    "summary": "罗伦斯在农夫的指引下前往叶勒所在的麦田，发现村民正在举行一场类似丰收祭典的活动。人们围绕麦田中央高声呼喊，称「有狼」，并庆祝最后一束麦子的收割。村民认为狼是丰收之神的化身，传说中它会进入割下最后一束麦子的人体内。叶勒最终割下最后一束麦子，被村民欢呼为「赫萝」的继承者。罗伦斯在人墙后观察，未被发现。村民的集体呼喊和仪式性行为暗示了「赫萝」与丰收祭典的紧密联系，但其具体含义仍未明确。叶勒的出现和村民的反应为后续情节提供了关键线索。",
+    "active_entities": [
+      "char_v2_000001",
+      "mystery_v2_000008",
+      "mystery_v2_000009"
+    ],
+    "open_questions": [
+      "「赫萝」具体指什么？是否与丰收之神有关？",
+      "叶勒是否真的继承了「赫萝」？这将如何影响后续情节？",
+      "村民的仪式是否与教会的控制有关？"
+    ],
+    "evidence_refs": [
+      "volume_01-c001-s002-p000104",
+      "volume_01-c001-s002-p000105",
+      "volume_01-c001-s002-p000106",
+      "volume_01-c001-s002-p000108",
+      "volume_01-c001-s002-p000113",
+      "volume_01-c001-s002-p000114"
+    ]
+  },
+  "task_d_entity_discovery": {
+    "new_entities": [
+      {
+        "entity_type": "mystery",
+        "display_name": "赫萝（丰收之神）",
+        "aliases": [
+          "丰收之神",
+          "狼"
+        ],
+        "importance": "medium",
+        "summary": "村民认为狼是丰收之神的化身，传说中它会进入割下最后一束麦子的人体内。这一神秘存在与「赫萝」的传说紧密相关，可能在后续情节中揭示其真实身份或象征意义。",
+        "evidence_refs": [
+          "volume_01-c001-s002-p000108"
+        ],
+        "dialogue_count_delta": 0
+      }
+    ],
+    "merge_candidates": []
+  },
+  "current_entity_memory": [
+    {
+      "entity_id": "char_v2_000001",
+      "entity_type": "character",
+      "display_name": "罗伦斯",
+      "aliases": [
+        "罗伦斯先生"
+      ],
+      "importance": "major",
+      "summary": "罗伦斯在麦田中感叹生意艰难，并与一名农夫对话，询问叶勒的下落。他表现出对地方农业活动的兴趣，并试图了解帕斯罗村的祭典背景。罗伦斯的对话风格依旧谨慎，避免透露过多信息。",
+      "latest_seen_chunk_id": "volume_01-r000007",
+      "dialogue_count": 24
+    },
+    {
+      "entity_id": "mystery_v2_000011",
+      "entity_type": "mystery",
+      "display_name": "赫萝（丰收之神）",
+      "aliases": [
+        "丰收之神",
+        "狼"
+      ],
+      "importance": "medium",
+      "summary": "村民认为狼是丰收之神的化身，传说中它会进入割下最后一束麦子的人体内。这一神秘存在与「赫萝」的传说紧密相关，可能在后续情节中揭示其真实身份或象征意义。",
+      "latest_seen_chunk_id": "volume_01-r000008",
+      "dialogue_count": 0
+    },
+    {
+      "entity_id": "mystery_v2_000004",
+      "entity_type": "character",
+      "display_name": "骑士",
+      "aliases": [],
+      "importance": "medium",
+      "summary": "农夫与罗伦斯进行对话，回应其关于叶勒的询问，并提到叶勒雇用年轻人耕作，暗示今年的『赫萝』可能出自他们之中。农夫的对话透露出对地方农业和祭典的熟悉，但未表现出对教会或异教徒问题的直接态度。",
+      "latest_seen_chunk_id": "volume_01-r000007",
+      "dialogue_count": 7
+    },
+    {
+      "entity_id": "mystery_v2_000008",
+      "entity_type": "mystery",
+      "display_name": "叶勒",
+      "aliases": [],
+      "importance": "medium",
+      "summary": "叶勒是帕斯罗村的麦田管理者，今年雇用年轻人耕作，并被提及可能与『赫萝』有关。虽然未直接出场，但其行为和决策对地方农业和祭典有潜在影响。",
+      "latest_seen_chunk_id": "volume_01-r000007",
+      "dialogue_count": 0
+    },
+    {
+      "entity_id": "mystery_v2_000009",
+      "entity_type": "mystery",
+      "display_name": "赫萝",
+      "aliases": [],
+      "importance": "medium",
+      "summary": "农夫提及的『赫萝』，可能与丰收祭典或地方传统有关，但具体含义尚未明确。该词的出现暗示了地方文化或宗教仪式中的某种象征或人物。",
+      "latest_seen_chunk_id": "volume_01-r000007",
+      "dialogue_count": 0
+    },
+    {
+      "entity_id": "mystery_v2_000010",
+      "entity_type": "mystery",
+      "display_name": "亚伦多伯爵",
+      "aliases": [],
+      "importance": "medium",
+      "summary": "亚伦多伯爵是管理帕斯罗村一带的贵族，以亲自下田耕作为特点，并愿意赞助祭典。其行为可能影响地方与教会的关系，以及祭典的规模和性质。",
+      "latest_seen_chunk_id": "volume_01-r000007",
+      "dialogue_count": 0
+    },
+    {
+      "entity_id": "mystery_v2_000003",
+      "entity_type": "mystery",
+      "display_name": "修道院的修道士",
+      "aliases": [
+        "修道士",
+        "修道院成员"
+      ],
+      "importance": "medium",
+      "summary": "一所偏僻修道院的居民，人数约二十多位，生活节俭且独立运作。他们不与民间商人往来，而是通过独自的通路调度物资。尽管罗伦斯对其商业潜力感到失望，但修道士的存在可能在后续情节中引发新的发展。",
+      "latest_seen_chunk_id": "volume_01-r000006",
+      "dialogue_count": 0
+    },
+    {
+      "entity_id": "mystery_v2_000007",
+      "entity_type": "mystery",
+      "display_name": "异教徒",
+      "aliases": [
+        "异端徒",
+        "异教徒群体"
+      ],
+      "importance": "medium",
+      "summary": "被骑士提及的异教徒，据称在北边或东边出没，但骑士误认为该地的丰收祭典是异教徒活动。虽然罗伦斯指出这并非事实，但异教徒的存在仍可能在后续情节中引发冲突或调查。",
+      "latest_seen_chunk_id": "volume_01-r000006",
+      "dialogue_count": 0
+    },
+    {
+      "entity_id": "mystery_v2_000004",
+      "entity_type": "mystery",
+      "display_name": "修道院的骑士",
+      "aliases": [
+        "银甲骑士",
+        "下级骑士",
+        "骑士"
+      ],
+      "importance": "medium",
+      "summary": "修道院的骑士出现在修道院附近，穿着银色盔甲，态度傲慢。他质疑罗伦斯的出现，并与罗伦斯展开对话。虽然被描述为下级骑士，但其行为显示出一定的自信和戒备，可能与修道院的特殊安排有关。修道院内还有另一名骑士…",
+      "latest_seen_chunk_id": "volume_01-r000005",
+      "dialogue_count": 14
+    },
+    {
+      "entity_id": "mystery_v2_000001",
+      "entity_type": "mystery",
+      "display_name": "叙述者",
+      "aliases": [
+        "我",
+        "他"
+      ],
+      "importance": "medium",
+      "summary": "本段的叙述者，具有非人类特征的暗示（如尾巴的存在），对村落文化有深刻观察，并流露出对北方故乡的怀念。其身份尚未明确，但对情节发展可能有重要影响。",
+      "latest_seen_chunk_id": "volume_01-r000001",
+      "dialogue_count": 0
+    },
+    {
+      "entity_id": "mystery_v2_000002",
+      "entity_type": "mystery",
+      "display_name": "狼群",
+      "aliases": [
+        "狼",
+        "奔跑的狼"
+      ],
+      "importance": "medium",
+      "summary": "在段落结尾出现的‘成群无数的狼’，可能是比喻，也可能暗示真实事件。其出现为后续情节埋下伏笔，可能与村落文化或叙述者的身份有关。",
+      "latest_seen_chunk_id": "volume_01-r000001",
+      "dialogue_count": 0
+    },
+    {
+      "entity_id": "mystery_v2_000006",
+      "entity_type": "mystery",
+      "display_name": "深山村落的村民",
+      "aliases": [
+        "村民",
+        "山里居民"
+      ],
+      "importance": "minor",
+      "summary": "居住在东边山头的小村落居民，种植耐寒且抗虫的麦子，并与罗伦斯进行交易。他们赠予罗伦斯麦子，作为其商业路线的一部分。虽然未直接参与当前对话，但他们的存在为罗伦斯的货物来源提供了背景。",
+      "latest_seen_chunk_id": "volume_01-r000005",
+      "dialogue_count": 0
+    }
+  ]
+}

@@ -1,0 +1,98 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000190",
+      "speaker_entity_id": "char_v2_000002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "对话中称呼「尊贵的狼」，而赫萝是已知的狼形角色，且上下文显示她刚刚自嘲，符合说话者身份"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000191",
+      "speaker_entity_id": "char_v2_000002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "evidence": [
+        "对话出现在赫萝刚刚自嘲之后，且上下文显示她正在与罗伦斯互动，符合说话者身份"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000192",
+      "speaker_entity_id": "char_v2_000001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "对话中罗伦斯介绍自己，明确表明说话者身份"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000193",
+      "speaker_entity_id": "char_v2_000002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "evidence": [
+        "对话中使用「咱」自称，符合赫萝的说话风格，且上下文显示她正在回应罗伦斯的自我介绍"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000194",
+      "speaker_entity_id": "char_v2_000002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "evidence": [
+        "对话出现在赫萝刚刚表达对罗伦斯的承诺之后，且上下文显示她正在主导对话节奏"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000195",
+      "speaker_entity_id": "char_v2_000001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "对话中罗伦斯对赫萝的发言表示惊讶，符合上下文中的反应逻辑"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000196",
+      "speaker_entity_id": "char_v2_000002",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.9,
+      "evidence": [
+        "对话出现在赫萝主导准备出发的场景中，符合她的行为模式和说话风格"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    }
+  ],
+  "chunk_notes": "本 chunk 中对话主要围绕赫萝与罗伦斯的互动展开，对话轮次清晰，角色身份明确。赫萝多次发言，表现出主导对话的倾向，而罗伦斯则在回应中逐渐接受赫萝的陪伴。所有对话均可通过上下文和角色行为模式准确判断说话人，无需额外审查。"
+}
+```

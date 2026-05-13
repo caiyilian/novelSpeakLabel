@@ -1,0 +1,484 @@
+你是通用小说说话人标注助手。只根据输入文本和已形成的记忆判断，不使用任何外部作品知识。
+任务：给当前 chunk 内每条 dialogue 标注说话人。允许 unknown、mystery、npc_group、review，不要为了降低复核数而猜测重要角色。
+关键规则：被称呼者通常不是说话者；如果只能判断为无名低重要度群体，使用 npc_group；可能误伤重要角色时使用 review。要结合当前段落、前后文叙述、对话轮次、场景角色和称呼关系实时判断，不要依赖任何特定作品、角色或固定剧情先验。
+只返回 JSON，格式：{"annotations":[{"dialogue_id":"...","speaker_entity_id":"...","speaker_display":"...","speaker_status":"known|mystery|npc_group|unknown|review","confidence":0.0,"evidence":["短证据"],"negative_evidence":[],"is_backfillable":true,"needs_review":false}],"chunk_notes":"..."}
+输入 JSON：
+{
+  "volume": {
+    "volume_id": "volume_01",
+    "volume": 1,
+    "title": ""
+  },
+  "chunk": {
+    "chunk_id": "volume_01-r000032",
+    "chunk_index": 31,
+    "chapter_id": "volume_01-c001",
+    "chapter_title": "第一幕",
+    "scene_id": "volume_01-c001-s006",
+    "paragraphs": [
+      {
+        "paragraph_id": "volume_01-c001-s006-p000483",
+        "paragraph_index": 482,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s006",
+        "scene_index": 6,
+        "text": "罗伦斯苦笑着闭上双眼。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s006-p000484",
+        "paragraph_index": 483,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s006",
+        "scene_index": 6,
+        "text": "罗伦斯一向很早起床。为了善用一整天的时间好多赚取一些利益，商人们每天都会一大早起床。罗伦斯在清晨天色朦胧之中醒来时，赫萝早已起床，并坐在罗伦斯身旁不知摸索着什么。虽然赫萝做着出乎罗伦斯意料的事，但她未免也太大胆了。当罗伦斯抬头转过身来，才发现原来赫萝似乎从他的行李中找到衣物换穿，正准备绑上鞋带。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s006-p000485",
+        "paragraph_index": 484,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s006",
+        "scene_index": 6,
+        "text": "「喂！那是我的东西耶！」"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s006-p000486",
+        "paragraph_index": 485,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s006",
+        "scene_index": 6,
+        "text": "就算不是偷东西，但从他人行李中擅自翻找物品的行为，同样不被神允许。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s006-p000487",
+        "paragraph_index": 486,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s006",
+        "scene_index": 6,
+        "text": "罗伦斯刻意用带点责备的语气说话，但回过头来的赫萝脸上却没有半点做错事的表情。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s006-p000488",
+        "paragraph_index": 487,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s006",
+        "scene_index": 6,
+        "text": "「嗯？醒了啊。咱穿起来如何？合适吗？」"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s006-p000489",
+        "paragraph_index": 488,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s006",
+        "scene_index": 6,
+        "text": "赫萝完全不理会罗伦斯说的话，她张开双臂，对罗伦斯问道。赫萝不但不认为自己做错事，甚至还显得有些得意。看见此刻的赫萝，不禁觉得昨晚她那失去冷静的模样简直就像梦境。或许毫不客气的霸道模样，才是赫萝的本性吧。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s006-p000490",
+        "paragraph_index": 489,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s006",
+        "scene_index": 6,
+        "text": "赫萝身上穿的是罗伦斯拥有的最上等衣服。每当罗伦斯要与镇上的富商名流谈生意时，都会穿上这套衣服。蓝色的长袖上衣，搭配七分长的流行背心。用麻布与毛皮混织的稀奇长裤，加上绑在长裤外面，恰巧围住下半身的腰巾，以及绑紧腰巾的上等羊皮腰带。靴子是用三层鞣皮制成，厚重得足以抵挡雪山严寒气候的极品。最外面则是披着一件用上好野熊皮毛做成的外套。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s006-p000491",
+        "paragraph_index": 490,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s006",
+        "scene_index": 6,
+        "text": "对旅行商人来说，拥有一套具有实用性、质感高尚的衣服是值得骄傲的事。罗伦斯从学徒时代就开始储蓄，整整花了十年的时间才拥有这一整套衣服。谈生意时只要穿上这套衣服，再稍加整理一下胡须，对手多会对罗伦斯表现出敬意。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s006-p000492",
+        "paragraph_index": 491,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s006",
+        "scene_index": 6,
+        "text": "如此意义深重的衣服却被赫萝穿在身上。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s006-p000493",
+        "paragraph_index": 492,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s006",
+        "scene_index": 6,
+        "text": "然而，罗伦斯并没有生气。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s006-p000494",
+        "paragraph_index": 493,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s006",
+        "scene_index": 6,
+        "text": "那是因为尺寸明显过大的衣服穿在赫萝身上，竟显得如此可爱。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s006-p000495",
+        "paragraph_index": 494,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s006",
+        "scene_index": 6,
+        "text": "「这件黑色熊皮的外套真是上等货呐，与咱的褐色毛发非常搭配。不过，这条裤子穿起来会阻碍到咱的尾巴。咱可以在上面剪个洞吗？」"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s006-p000496",
+        "paragraph_index": 495,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s006",
+        "scene_index": 6,
+        "text": "虽然赫萝说得轻松，但这条长裤是罗伦斯在百般苦求下，老手织工师傅才肯为他做的裤子。如果在长裤上剪个洞，恐怕就永远无法复原了。罗伦斯以非常坚决的态度用力摇头。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s006-p000497",
+        "paragraph_index": 496,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s006",
+        "scene_index": 6,
+        "text": "「唔。也罢，幸好裤子很大，总有办法穿的。」"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s006-p000498",
+        "paragraph_index": 497,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s006",
+        "scene_index": 6,
+        "text": "罗伦斯看着赫萝一副确信自己不会要她脱下所有衣物的模样，一边坐起身子注视着赫萝，一边担心她该不会穿着这身衣服拔腿就跑吧？如果把整套衣服拿去城里变卖，相信可以卖到一笔不小的金额。"
+      }
+    ],
+    "dialogues": [
+      {
+        "dialogue_id": "volume_01-d000180",
+        "dialogue_index": 179,
+        "paragraph_id": "volume_01-c001-s006-p000485",
+        "paragraph_index": 484,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "喂！那是我的东西耶！",
+        "quote_text": "「喂！那是我的东西耶！」",
+        "char_start": 0,
+        "char_end": 12
+      },
+      {
+        "dialogue_id": "volume_01-d000181",
+        "dialogue_index": 180,
+        "paragraph_id": "volume_01-c001-s006-p000488",
+        "paragraph_index": 487,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "嗯？醒了啊。咱穿起来如何？合适吗？",
+        "quote_text": "「嗯？醒了啊。咱穿起来如何？合适吗？」",
+        "char_start": 0,
+        "char_end": 19
+      },
+      {
+        "dialogue_id": "volume_01-d000182",
+        "dialogue_index": 181,
+        "paragraph_id": "volume_01-c001-s006-p000495",
+        "paragraph_index": 494,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "这件黑色熊皮的外套真是上等货呐，与咱的褐色毛发非常搭配。不过，这条裤子穿起来会阻碍到咱的尾巴。咱可以在上面剪个洞吗？",
+        "quote_text": "「这件黑色熊皮的外套真是上等货呐，与咱的褐色毛发非常搭配。不过，这条裤子穿起来会阻碍到咱的尾巴。咱可以在上面剪个洞吗？」",
+        "char_start": 0,
+        "char_end": 60
+      },
+      {
+        "dialogue_id": "volume_01-d000183",
+        "dialogue_index": 182,
+        "paragraph_id": "volume_01-c001-s006-p000497",
+        "paragraph_index": 496,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "唔。也罢，幸好裤子很大，总有办法穿的。",
+        "quote_text": "「唔。也罢，幸好裤子很大，总有办法穿的。」",
+        "char_start": 0,
+        "char_end": 21
+      }
+    ]
+  },
+  "near_context": {
+    "lookback_paragraphs": [
+      {
+        "paragraph_id": "volume_01-c001-s006-p000480",
+        "paragraph_index": 479,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s006",
+        "scene_index": 6,
+        "text": "不管怎么说，罗伦斯已经许久不曾与自己以外的人一起睡觉了。在貂皮的刺鼻腥味中，如果能与散发着香甜气息的女孩一起入睡，终究是令人开心的事。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s006-p000481",
+        "paragraph_index": 480,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s006",
+        "scene_index": 6,
+        "text": "或许是察觉到罗伦斯内心如此单纯的想法，一旁的马儿叹气似的甩了甩头。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s006-p000482",
+        "paragraph_index": 481,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s006",
+        "scene_index": 6,
+        "text": "或许马儿懂得人类在思考什么，只是没有开口说话罢了。"
+      }
+    ],
+    "lookahead_paragraphs": [
+      {
+        "paragraph_id": "volume_01-c001-s007-p000499",
+        "paragraph_index": 498,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s007",
+        "scene_index": 7,
+        "text": "「看来汝天生就是做商人的料，汝清楚知道自己脸上的表情能够带来什么样的效果。」"
+      }
+    ]
+  },
+  "memory": {
+    "previous_chunk_summary": {
+      "chunk_id": "volume_01-r000031",
+      "summary": "赫萝以轻松的态度主导了与罗伦斯的对话，表现出她对当前局势的掌控。她假装要睡觉，实则是在结束对话，随后又突然探头询问罗伦斯是否要让她睡在外面，语气中带着调侃。罗伦斯虽然觉得无奈，但也觉得有趣，并未真正拒绝。赫萝的举动让罗伦斯怀疑她之前的一些反应是否是演戏，但罗伦斯仍相信她对故乡和村民的不满是真实的。最终，罗伦斯决定与赫萝一同睡觉，表示如果明天赫萝没有偷走货物，他或许会同意带她旅行。赫萝的动机和真实身份仍是未解之谜。",
+      "active_entities": [
+        "char_v2_000001",
+        "char_v2_000002"
+      ],
+      "open_questions": [
+        "赫萝是否真的想回故乡，还是另有目的？",
+        "罗伦斯是否最终会答应赫萝的请求，与她一同旅行？",
+        "赫萝提到的「教会」是否与她过去的经历有关？",
+        "赫萝是否会在后续对话中进一步解释她与约伊兹森林的联系？",
+        "赫萝为何表现出对罗伦斯心理的掌控？"
+      ],
+      "evidence_refs": [
+        "volume_01-c001-s006-p000467",
+        "volume_01-c001-s006-p000468",
+        "volume_01-c001-s006-p000469",
+        "volume_01-d000179",
+        "volume_01-c001-s006-p000471",
+        "volume_01-c001-s006-p000472",
+        "volume_01-c001-s006-p000473",
+        "volume_01-c001-s006-p000474",
+        "volume_01-c001-s006-p000475",
+        "volume_01-c001-s006-p000476",
+        "volume_01-c001-s006-p000477",
+        "volume_01-c001-s006-p000478",
+        "volume_01-c001-s006-p000479"
+      ]
+    },
+    "global_summary": "本卷继续描绘罗伦斯与赫萝之间的互动，试图揭开赫萝的真实身份。赫萝表达了对故乡约伊兹森林的思念，并提到离开故乡的时间已无法记起。她希望先旅行，以了解故乡的变化，同时增广见闻。赫萝随后向罗伦斯提出希望与他一同旅行，前提是罗伦斯不会将她交给教会。罗伦斯虽未完全确认赫萝的身份，但认为她并非坏人，且与她交谈有趣。然而，出于商人的谨慎，他并未立刻答应赫萝的请求。赫萝则表示理解，并以轻松的语气强调自己是只狼，而非人类。赫萝的请求和罗伦斯的犹豫揭示了两人之间信任与怀疑的微妙关系。赫萝的动机仍不明确，她是否真的想回故乡，还是另有目的，仍是未解之谜。赫萝提到北方，暗示这一地点对她而言具有重要意义，可能是她的出生地或与她过去的经历有关。这一地点的神秘性暗示它可能在未来剧情中扮演关键角色。赫萝的言行显示出她对罗伦斯心理的掌控，而罗伦斯则在试图理解她的动机。赫萝以轻松的态度主导了与罗伦斯的对话，表现出她对当前局势的掌控。她假装要睡觉，实则是在结束对话，随后又突然探头询问罗伦斯是否要让她睡在外面，语气中带着调侃。罗伦斯虽然觉得无奈，但也觉得有趣，并未真正拒绝。赫萝的举动让罗伦斯怀疑她之前的一些反应是否是演戏，但罗伦斯仍相信她对故乡和村民的不满是真实的。最终，罗伦斯决定与赫萝一同睡觉，表示如果明天赫萝没有偷走货物，他或许会同意带她旅行。",
+    "candidate_entities": [
+      {
+        "entity_id": "char_v2_000001",
+        "entity_type": "character",
+        "display_name": "罗伦斯",
+        "aliases": [
+          "罗伦斯先生"
+        ],
+        "importance": "major",
+        "summary": "罗伦斯虽然未完全确认赫萝的身份，但认为她并非坏人，且与她交谈有趣。他决定不再继续思考下去，于是站起身子爬到货台上，表示如果明天一早赫萝没有偷走货物，或许可以带她一同旅行。罗伦斯的犹豫和谨慎态度显示出…",
+        "latest_seen_chunk_id": "volume_01-r000031",
+        "dialogue_count": 77
+      },
+      {
+        "entity_id": "char_v2_000002",
+        "entity_type": "character",
+        "display_name": "赫萝",
+        "aliases": [
+          "赫萝（丰收之神）",
+          "丰收之神",
+          "狼赫萝",
+          "赫萝"
+        ],
+        "importance": "major",
+        "summary": "赫萝以轻松的态度主导了与罗伦斯的对话，表现出她对当前局势的掌控。她假装要睡觉，实则是在结束对话，随后又突然探头询问罗伦斯是否要让她睡在外面，语气中带着调侃。赫萝的举动让罗伦斯怀疑她之前的一些反应是否…",
+        "latest_seen_chunk_id": "volume_01-r000031",
+        "dialogue_count": 96
+      },
+      {
+        "entity_id": "mystery_v2_000009",
+        "entity_type": "mystery",
+        "display_name": "赫萝",
+        "aliases": [
+          "赫萝（丰收之神）",
+          "丰收之神",
+          "狼",
+          "狼赫萝"
+        ],
+        "importance": "major",
+        "summary": "传说中在收割季节进入最后一束麦子中的人体内的神明。赫萝声称自己是丰收之神的化身，但罗伦斯的质疑和赫萝的解释暗示她可能并非传统意义上的神明，而是某种与麦子和丰收仪式相关的存在。",
+        "latest_seen_chunk_id": "volume_01-r000026",
+        "dialogue_count": 14
+      },
+      {
+        "entity_id": "char_v2_000005",
+        "entity_type": "character",
+        "display_name": "丰收之神赫萝",
+        "aliases": [
+          "赫萝（神明）",
+          "丰收之神"
+        ],
+        "importance": "major",
+        "summary": "赫萝进一步强调自己是「贤狼赫萝」，并否认自己是神明，但表现出对自身非人特征的自信。她的言行暗示她可能具有神性，但选择以狼的身份与罗伦斯互动。",
+        "latest_seen_chunk_id": "volume_01-r000025",
+        "dialogue_count": 2
+      },
+      {
+        "entity_id": "mystery_v2_000015",
+        "entity_type": "mystery",
+        "display_name": "女孩",
+        "aliases": [
+          "女孩（动物耳朵）",
+          "神秘女孩",
+          "有耳朵的女孩"
+        ],
+        "importance": "major",
+        "summary": "一名神秘的女孩，出现在罗伦斯的马车上，睡得香甜，美丽而安静。她反应迟缓，声音甜美，但头上长着像小狗的耳朵，暗示她可能并非普通人。她赤裸着身体缓缓站起，美丽得令人屏息，随后发出狼嚎，令罗伦斯误以为她是…",
+        "latest_seen_chunk_id": "volume_01-r000014",
+        "dialogue_count": 14
+      },
+      {
+        "entity_id": "char_v2_000010",
+        "entity_type": "character",
+        "display_name": "约伊兹森林",
+        "aliases": [
+          "赫萝的出生地",
+          "故乡森林"
+        ],
+        "importance": "medium",
+        "summary": "赫萝提到自己出生的故乡是约伊兹森林，并表示离开故乡的时间已无法记起。她对故乡充满思念，但未进一步解释其重要性。约伊兹森林可能是她身份或过去经历的关键地点。",
+        "latest_seen_chunk_id": "volume_01-r000030",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "mystery_v2_000018",
+        "entity_type": "mystery",
+        "display_name": "北方",
+        "aliases": [
+          "北方大地",
+          "赫萝的故乡"
+        ],
+        "importance": "medium",
+        "summary": "赫萝明确表示想回到北方，但未进一步解释原因。北方对她而言似乎具有重要的意义，可能是她的出生地或与她过去的经历有关。这一地点的神秘性暗示它可能在未来剧情中扮演关键角色。",
+        "latest_seen_chunk_id": "volume_01-r000029",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "char_v2_000009",
+        "entity_type": "character",
+        "display_name": "帕斯罗村的年轻村民",
+        "aliases": [
+          "年轻村民",
+          "赫萝承诺的年轻人"
+        ],
+        "importance": "medium",
+        "summary": "赫萝提到她曾答应过帕斯罗村的一名年轻人，要让村里的麦子丰收，并为此守护麦田多年。虽然未提及姓名，但此人对赫萝的承诺和行动有重要影响，是她留在村落的重要原因。",
+        "latest_seen_chunk_id": "volume_01-r000028",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "mystery_v2_000010",
+        "entity_type": "mystery",
+        "display_name": "亚伦多伯爵",
+        "aliases": [
+          "新领主",
+          "帕斯罗村的统治者"
+        ],
+        "importance": "medium",
+        "summary": "赫萝提到，几年前统治帕斯罗村一带的领主变成了现在的亚伦多伯爵，并开始引进南方的先进农耕方法。虽然未直接出场，但他的政策对村落和赫萝产生了深远影响，是导致赫萝离开的重要因素。",
+        "latest_seen_chunk_id": "volume_01-r000028",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "char_v2_000007",
+        "entity_type": "character",
+        "display_name": "叶勒",
+        "aliases": [],
+        "importance": "medium",
+        "summary": "叶勒是村民认为被赫萝附身的人，因割下最后一束麦子而被认定为「赫萝」的继承者。罗伦斯提到他时，暗示赫萝本应在他体内，但赫萝却出现在罗伦斯面前，引发对传说真实性的质疑。",
+        "latest_seen_chunk_id": "volume_01-r000026",
+        "dialogue_count": 4
+      },
+      {
+        "entity_id": "char_v2_000008",
+        "entity_type": "character",
+        "display_name": "帕斯罗村村民",
+        "aliases": [
+          "帕斯罗村人",
+          "村民"
+        ],
+        "importance": "medium",
+        "summary": "帕斯罗村的村民是丰收祭典的核心参与者，他们相信赫萝会进入割下最后一束麦子的人体内。罗伦斯提到自己与村民的长期关系，并提议将麦子带回村里，以避免他们因失去丰收之神而陷入困境。",
+        "latest_seen_chunk_id": "volume_01-r000026",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "char_v2_000006",
+        "entity_type": "character",
+        "display_name": "教会",
+        "aliases": [
+          "教会组织",
+          "宗教机构"
+        ],
+        "importance": "medium",
+        "summary": "教会是赫萝过往经历中的重要势力，她多次提及教会曾让她吃了不少苦头，并暗示她不愿再被教会抓住。这表明教会可能与她的身份和变身能力有关，是她不愿提及的敏感话题。",
+        "latest_seen_chunk_id": "volume_01-r000022",
+        "dialogue_count": 0
+      }
+    ]
+  },
+  "rules": {
+    "speaker_statuses": [
+      "known",
+      "mystery",
+      "npc_group",
+      "review",
+      "unknown"
+    ],
+    "importance_levels": [
+      "minor",
+      "medium",
+      "major"
+    ],
+    "general_novel_only": true
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "updates": [
+    {
+      "entity_id": "char_v2_000003",
+      "summary": "赫萝在本 chunk 中正式自称「赫萝」，并提到自己「好久没有以这种模样出现了」。她展现出天真无邪的笑容，同时具备动物特征（如耳朵和尖牙），并表现出与「丰收之神」的关联。她的出现打破了罗伦斯独自旅行的平静，并引发一系列互动。赫萝的身份与传说中的「丰收之神」有关，暗示她可能是某种神灵的化身。",
+      "importance": "major",
+      "dialogue_count_delta": 4,
+      "latest_seen_chunk_id": "volume_01-r000020",
+      "relationship_updates": [
+        {
+          "target_entity_id": "char_v2_000004",
+          "relation": "interlocutor",
+          "evidence_ref": "volume_01-d000068"
+        }
+      ],
+      "evidence_refs": [
+        "volume_01-c002-s003-p000278",
+        "volume_01-d000072"
+      ]
+    },
+    {
+      "entity_id": "char_v2_000004",
+      "summary": "罗伦斯拔出短剑质问神秘女孩的身份，女孩则以轻松的态度回应，自称「赫萝」，并表示自己「好久没有以这种模样出现了」。罗伦斯虽然对「赫萝」这个名字感到熟悉，但仍未完全理解她的身份。这一场景进一步揭示了女孩与「赫萝」的关联，以及她与罗伦斯之间逐渐展开的互动。",
+      "importance": "major",
+      "dialogue_count_delta": 0,
+      "latest_seen_chunk_id": "volume_01-r000020",
+      "relationship_updates": [
+        {
+          "target_entity_id": "char_v2_000003",
+          "relation": "interlocutor",
+          "evidence_ref": "volume_01-d000068"
+        }
+      ],
+      "evidence_refs": [
+        "volume_01-c002-s003-p000271",
+        "volume_01-c002-s003-p000272"
+      ]
+    },
+    {
+      "entity_id": "mystery_v2_000014",
+      "summary": "神秘女孩在本 chunk 中正式自称「赫萝」，并明确与「丰收之神」的关联。她的身份已与「赫萝」实体合并，因此此实体将被移除。",
+      "importance": "major",
+      "dialogue_count_delta": 0,
+      "latest_seen_chunk_id": "volume_01-r000020",
+      "relationship_updates": [],
+      "evidence_refs": [
+        "volume_01-c002-s003-p000278",
+        "volume_01-d000072"
+      ]
+    }
+  ]
+}

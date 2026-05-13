@@ -1,0 +1,30 @@
+```json
+{
+  "new_entities": [
+    {
+      "entity_type": "character",
+      "display_name": "赫萝",
+      "aliases": [
+        "丰收之神"
+      ],
+      "importance": "major",
+      "summary": "拥有动物耳朵和尖牙的神秘女孩，与罗伦斯在旅途中相遇。她展现出超凡的美貌和独特的魅力，同时具备动物般的特征，如狼嚎和耳朵。她的出现打破了罗伦斯独自旅行的平静，并引发一系列互动。赫萝的身份与传说中的『丰收之神』有关，暗示她可能是某种神灵的化身。",
+      "evidence_refs": [
+        "volume_01-c002-s003-p000254",
+        "volume_01-c002-s003-p000255",
+        "volume_01-c002-s003-p000261",
+        "volume_01-c002-s003-p000265"
+      ],
+      "dialogue_count_delta": 3
+    }
+  ],
+  "merge_candidates": [
+    {
+      "source_entity_id": "mystery_v2_000014",
+      "target_entity_id": "char_v2_000003",
+      "reason": "神秘女孩与赫萝在特征（动物耳朵、尖牙、狼嚎）和行为模式上高度一致，且在多个场景中被提及，应为同一实体。",
+      "confidence": 0.98
+    }
+  ]
+}
+```

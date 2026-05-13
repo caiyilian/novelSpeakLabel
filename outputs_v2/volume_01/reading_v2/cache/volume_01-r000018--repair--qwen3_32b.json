@@ -1,0 +1,24 @@
+{
+  "repairs": [
+    {
+      "dialogue_id": "volume_01-d000054",
+      "previous_speaker_entity_id": "mystery_v2_000014",
+      "new_speaker_entity_id": "char_v2_000003",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.98,
+      "reason": "当前 chunk 和长期摘要中明确提到神秘女孩拥有动物耳朵和狼嚎特征，与已知角色『赫萝』的特征高度吻合。此外，赫萝的实体记忆中也提到她会发出狼嚎，因此可以确认该对话属于赫萝。",
+      "stop_reason": "resolved"
+    },
+    {
+      "dialogue_id": "volume_01-d000056",
+      "previous_speaker_entity_id": "mystery_v2_000014",
+      "new_speaker_entity_id": "char_v2_000003",
+      "speaker_display": "赫萝",
+      "speaker_status": "known",
+      "confidence": 0.98,
+      "reason": "该对话出现在神秘女孩发出狼嚎之后，并且描述她微笑着说话，与赫萝的实体记忆中提到的特征一致。结合上下文和长期摘要，可以确认该对话属于赫萝。",
+      "stop_reason": "resolved"
+    }
+  ]
+}

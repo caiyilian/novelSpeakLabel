@@ -1,0 +1,47 @@
+{
+  "updates": [
+    {
+      "entity_id": "char_v2_000004",
+      "summary": "二十五岁的自力更生旅行商人，已行商七年。本 chunk 中与村民交易皮草，并在草原上驾驶马车前往修道院方向。他表现出自信与商业头脑，对修道院的商业潜力感到失望。在修道院附近与骑士发生互动，骑士质疑他的来历，罗伦斯以从容态度应对，试图建立联系。",
+      "importance": "major",
+      "dialogue_count_delta": 3,
+      "latest_seen_chunk_id": "volume_01-r000009",
+      "relationship_updates": [
+        "{'target_entity_id': 'mystery_v2_000007', 'relation': 'interlocutor', 'evidence_ref': 'volume_01-c002-s001-p000104'}"
+      ],
+      "evidence_refs": [
+        "volume_01-c002-s001-p000093",
+        "volume_01-c002-s001-p000097",
+        "volume_01-c002-s001-p000101"
+      ]
+    },
+    {
+      "entity_id": "mystery_v2_000006",
+      "summary": "位于草原远处的修道院中的修道士群体，人数约二十多位，还有男仆。他们不与民间商人往来，而是通过独立通路调度物资。罗伦斯曾对修道院抱有商业期望，但因无法建立联系而失望。本 chunk 中，修道院的骑士与罗伦斯发生互动，表现出对外来者的戒备态度，进一步揭示了修道院对外封闭的立场。",
+      "importance": "medium",
+      "dialogue_count_delta": 2,
+      "latest_seen_chunk_id": "volume_01-r000009",
+      "relationship_updates": [
+        "{'target_entity_id': 'char_v2_000004', 'relation': 'interlocutor', 'evidence_ref': 'volume_01-c002-s001-p000104'}"
+      ],
+      "evidence_refs": [
+        "volume_01-c002-s001-p000099",
+        "volume_01-c002-s001-p000104"
+      ]
+    },
+    {
+      "entity_id": "mystery_v2_000007",
+      "summary": "出现在修道院附近的骑士，身穿银色盔甲，态度傲慢。他质疑罗伦斯的来历，并表现出对修道院安全的警觉。虽然被描述为下级骑士，但其行为显示出一定的权威性。本 chunk 中，骑士与罗伦斯发生对话，进一步揭示了修道院对外来者的戒备态度。",
+      "importance": "medium",
+      "dialogue_count_delta": 2,
+      "latest_seen_chunk_id": "volume_01-r000009",
+      "relationship_updates": [
+        "{'target_entity_id': 'char_v2_000004', 'relation': 'interlocutor', 'evidence_ref': 'volume_01-c002-s001-p000104'}"
+      ],
+      "evidence_refs": [
+        "volume_01-c002-s001-p000099",
+        "volume_01-c002-s001-p000104"
+      ]
+    }
+  ]
+}

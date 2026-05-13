@@ -1,0 +1,770 @@
+你是通用小说阅读记忆助手。任务：把刚读完的 chunk 压缩成短期摘要，供后续几个 chunk 使用。
+摘要要围绕事件、人物关系、对话轮次和仍未解决的问题；不得添加输入中没有的信息。
+只返回 JSON，格式：{"chunk_id":"...","summary":"50到450字","active_entities":["entity_id"],"open_questions":[],"evidence_refs":["paragraph_id或dialogue_id"]}
+输入 JSON：
+{
+  "volume": {
+    "volume_id": "volume_01",
+    "volume": 1,
+    "title": ""
+  },
+  "chunk": {
+    "chunk_id": "volume_01-r000042",
+    "chunk_index": 41,
+    "chapter_id": "volume_01-c002",
+    "chapter_title": "第二幕",
+    "scene_id": "volume_01-c002-s002",
+    "paragraphs": [
+      {
+        "paragraph_id": "volume_01-c002-s002-p000630",
+        "paragraph_index": 629,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s002",
+        "scene_index": 2,
+        "text": "男子露出笑容说，缺了一颗门牙让他的表情显得可爱。或许他是故意拔掉门牙，好让他那有点笨拙的笑容告诉大家自己还是个新手。如果是个商人，就一定知道自己的脸会带给对方什么样的印象。"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s002-p000631",
+        "paragraph_index": 630,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s002",
+        "scene_index": 2,
+        "text": "这男子小看不得。"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s002-p000632",
+        "paragraph_index": 631,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s002",
+        "scene_index": 2,
+        "text": "不过，罗伦斯想起自己还是新手时，也和男子有过同样的想法。于是他表示赞同地说："
+      },
+      {
+        "paragraph_id": "volume_01-c002-s002-p000633",
+        "paragraph_index": 632,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s002",
+        "scene_index": 2,
+        "text": "「这没什么，我刚踏入这一行时，所有旅行商人在我眼里看来都是妖怪。到了现在，也仍然觉得一半以上的人是妖怪。尽管如此，总还是可以混口饭吃。凡事靠努力啊。」"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s002-p000634",
+        "paragraph_index": 633,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s002",
+        "scene_index": 2,
+        "text": "「嘿嘿，听到您这么说，小的就安心多了。啊！小的名叫杰廉，我想您应该看出来了，小的是刚入行的旅行商人，还请多多关照。」"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s002-p000635",
+        "paragraph_index": 634,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s002",
+        "scene_index": 2,
+        "text": "「我是罗伦斯。」"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s002-p000636",
+        "paragraph_index": 635,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s002",
+        "scene_index": 2,
+        "text": "罗伦斯想起自己刚踏入这一行时，为了多认识旅行商人，也是像这样到处与人搭讪，当时他曾经因为所有人的态度都很冷淡而生气。然而，如今自己变成被新手搭讪的对象后，也就能理解当初大家为何会对他冷淡了。"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s002-p000637",
+        "paragraph_index": 636,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s002",
+        "scene_index": 2,
+        "text": "初入行的旅行商人只能一味从别人身上找情报，自己却没有任何情报可以给人。"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s002-p000638",
+        "paragraph_index": 637,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s002",
+        "scene_index": 2,
+        "text": "「呃……啊，那位是您的同伴吗？」"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s002-p000639",
+        "paragraph_index": 638,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s002",
+        "scene_index": 2,
+        "text": "不知道杰廉是因为没有任何情报可以提供，还是犯了新手常会有的毛病——就是想尽办法在自己不提供任何情报之下，多得到一些情报的毛病——他开口问道。如果是两个老经验的旅行商人对谈，相信早就互换了好几个地方上的交易情报。"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s002-p000640",
+        "paragraph_index": 639,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s002",
+        "scene_index": 2,
+        "text": "「我妻子赫萝。」"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s002-p000641",
+        "paragraph_index": 640,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s002",
+        "scene_index": 2,
+        "text": "虽然罗伦斯犹豫着是否该使用假名，但后来想想，认为没那个必要，便如此回答。"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s002-p000642",
+        "paragraph_index": 641,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s002",
+        "scene_index": 2,
+        "text": "罗伦斯一提到赫萝的名字，她便轻轻点头向杰廉打招呼。"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s002-p000643",
+        "paragraph_index": 642,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s002",
+        "scene_index": 2,
+        "text": "「喔，夫妻俩一同行商啊？」"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s002-p000644",
+        "paragraph_index": 643,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s002",
+        "scene_index": 2,
+        "text": "「妻子生性古怪，认为待在家里不如待在马车上好。」"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s002-p000645",
+        "paragraph_index": 644,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s002",
+        "scene_index": 2,
+        "text": "「不过，老板您让妻子这样套着外套，还真是保护周到呢。」"
+      }
+    ],
+    "dialogues": [
+      {
+        "dialogue_id": "volume_01-d000243",
+        "dialogue_index": 242,
+        "paragraph_id": "volume_01-c002-s002-p000633",
+        "paragraph_index": 632,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "这没什么，我刚踏入这一行时，所有旅行商人在我眼里看来都是妖怪。到了现在，也仍然觉得一半以上的人是妖怪。尽管如此，总还是可以混口饭吃。凡事靠努力啊。",
+        "quote_text": "「这没什么，我刚踏入这一行时，所有旅行商人在我眼里看来都是妖怪。到了现在，也仍然觉得一半以上的人是妖怪。尽管如此，总还是可以混口饭吃。凡事靠努力啊。」",
+        "char_start": 0,
+        "char_end": 75
+      },
+      {
+        "dialogue_id": "volume_01-d000244",
+        "dialogue_index": 243,
+        "paragraph_id": "volume_01-c002-s002-p000634",
+        "paragraph_index": 633,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "嘿嘿，听到您这么说，小的就安心多了。啊！小的名叫杰廉，我想您应该看出来了，小的是刚入行的旅行商人，还请多多关照。",
+        "quote_text": "「嘿嘿，听到您这么说，小的就安心多了。啊！小的名叫杰廉，我想您应该看出来了，小的是刚入行的旅行商人，还请多多关照。」",
+        "char_start": 0,
+        "char_end": 58
+      },
+      {
+        "dialogue_id": "volume_01-d000245",
+        "dialogue_index": 244,
+        "paragraph_id": "volume_01-c002-s002-p000635",
+        "paragraph_index": 634,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "我是罗伦斯。",
+        "quote_text": "「我是罗伦斯。」",
+        "char_start": 0,
+        "char_end": 8
+      },
+      {
+        "dialogue_id": "volume_01-d000246",
+        "dialogue_index": 245,
+        "paragraph_id": "volume_01-c002-s002-p000638",
+        "paragraph_index": 637,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "呃……啊，那位是您的同伴吗？",
+        "quote_text": "「呃……啊，那位是您的同伴吗？」",
+        "char_start": 0,
+        "char_end": 16
+      },
+      {
+        "dialogue_id": "volume_01-d000247",
+        "dialogue_index": 246,
+        "paragraph_id": "volume_01-c002-s002-p000640",
+        "paragraph_index": 639,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "我妻子赫萝。",
+        "quote_text": "「我妻子赫萝。」",
+        "char_start": 0,
+        "char_end": 8
+      },
+      {
+        "dialogue_id": "volume_01-d000248",
+        "dialogue_index": 247,
+        "paragraph_id": "volume_01-c002-s002-p000643",
+        "paragraph_index": 642,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "喔，夫妻俩一同行商啊？",
+        "quote_text": "「喔，夫妻俩一同行商啊？」",
+        "char_start": 0,
+        "char_end": 13
+      },
+      {
+        "dialogue_id": "volume_01-d000249",
+        "dialogue_index": 248,
+        "paragraph_id": "volume_01-c002-s002-p000644",
+        "paragraph_index": 643,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "妻子生性古怪，认为待在家里不如待在马车上好。",
+        "quote_text": "「妻子生性古怪，认为待在家里不如待在马车上好。」",
+        "char_start": 0,
+        "char_end": 24
+      },
+      {
+        "dialogue_id": "volume_01-d000250",
+        "dialogue_index": 249,
+        "paragraph_id": "volume_01-c002-s002-p000645",
+        "paragraph_index": 644,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "不过，老板您让妻子这样套着外套，还真是保护周到呢。",
+        "quote_text": "「不过，老板您让妻子这样套着外套，还真是保护周到呢。」",
+        "char_start": 0,
+        "char_end": 27
+      }
+    ]
+  },
+  "near_context": {
+    "lookback_paragraphs": [
+      {
+        "paragraph_id": "volume_01-c002-s002-p000627",
+        "paragraph_index": 626,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s002",
+        "scene_index": 2,
+        "text": "「我不过是个随处可见的旅行商人罢了。」"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s002-p000628",
+        "paragraph_index": 627,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s002",
+        "scene_index": 2,
+        "text": "罗伦斯冷冷地回答，坐在罗伦斯另一边的赫萝稍稍把身子坐正。这时，赫萝套在头上的外套稍微动了一下。不过，应该只有罗伦斯发现那是赫萝在动耳朵。"
+      },
+      {
+        "paragraph_id": "volume_01-c002-s002-p000629",
+        "paragraph_index": 628,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s002",
+        "scene_index": 2,
+        "text": "「您客气了。小的刚刚也一直想加入那对夫妻的对话，只是老找不到机会，但老板您却轻轻松松做到了。想到将来要和老板这样的对手竞争，就让人觉得意志消沉。」"
+      }
+    ],
+    "lookahead_paragraphs": [
+      {
+        "paragraph_id": "volume_01-c002-s002-p000646",
+        "paragraph_index": 645,
+        "chapter_id": "volume_01-c002",
+        "chapter_index": 2,
+        "chapter_title": "第二幕",
+        "scene_id": "volume_01-c002-s002",
+        "scene_index": 2,
+        "text": "或许杰廉以前曾是城里的市井无赖，他的能言善道让罗伦斯有些佩服。不过，旅行商人亲戚曾告诫过罗伦斯，最好不要有像他这样的说话态度。"
+      }
+    ]
+  },
+  "memory": {
+    "previous_chunk_summary": {
+      "chunk_id": "volume_01-r000041",
+      "summary": "在教会中，罗伦斯与佩连佐的葡萄园主人（年长的丈夫）继续对话，解释了汇兑体制的运作方式，并建议领主在交易中避免被葡萄酒商压低葡萄品质。葡萄园主人对罗伦斯的解释表示认同，并邀请他到佩连佐做客。随后，葡萄园主人与妻子告辞离开。罗伦斯与赫萝回到大厅，一名年轻商人靠近罗伦斯，称赞他的能力，并表示自己是刚入行的同行。罗伦斯回应称自己只是普通的旅行商人。赫萝在旁观察，通过动作暗示她对罗伦斯与年轻商人互动的关注。年轻商人进一步表示，自己一直想加入那对夫妻的对话，但未能成功，而罗伦斯则显得游刃有余。对话中未解决的问题包括：赫萝是否完全隐藏身份？年轻商人是否会成为罗伦斯的潜在对手？罗伦斯与佩连佐的葡萄园主人是否会有进一步的互动？",
+      "active_entities": [
+        "char_v2_000001",
+        "char_v2_000002",
+        "char_v2_000011"
+      ],
+      "open_questions": [
+        "赫萝是否完全隐藏身份？",
+        "年轻商人是否会成为罗伦斯的潜在对手？",
+        "罗伦斯与佩连佐的葡萄园主人是否会有进一步的互动？"
+      ],
+      "evidence_refs": [
+        "volume_01-c002-s002-p000614",
+        "volume_01-c002-s002-p000615",
+        "volume_01-c002-s002-p000617",
+        "volume_01-c002-s002-p000618",
+        "volume_01-c002-s002-p000621",
+        "volume_01-c002-s002-p000622",
+        "volume_01-c002-s002-p000625",
+        "volume_01-c002-s002-p000627",
+        "volume_01-c002-s002-p000629"
+      ]
+    },
+    "global_summary": "本卷继续描绘罗伦斯与赫萝之间的互动，试图揭开赫萝的真实身份。赫萝表达了对故乡约伊兹森林的思念，并提到离开故乡的时间已无法记起。她希望先旅行，以了解故乡的变化，同时增广见闻。赫萝随后向罗伦斯提出希望与他一同旅行，前提是罗伦斯不会将她交给教会。罗伦斯虽未完全确认赫萝的身份，但认为她并非坏人，且与她交谈有趣。然而，出于商人的谨慎，他并未立刻答应赫萝的请求。赫萝则表示理解，并以轻松的语气强调自己是只狼，而非人类。赫萝的请求和罗伦斯的犹豫揭示了两人之间信任与怀疑的微妙关系。赫萝的动机仍不明确，她是否真的想回故乡，还是另有目的，仍是未解之谜。赫萝提到北方，暗示这一地点对她而言具有重要意义，可能是她的出生地或与她过去的经历有关。这一地点的神秘性暗示它可能在未来剧情中扮演关键角色。赫萝的言行显示出她对罗伦斯心理的掌控，而罗伦斯则在试图理解她的动机。赫萝以轻松的态度主导了与罗伦斯的对话，表现出她对当前局势的掌控。她假装要睡觉，实则是在结束对话，随后又突然探头询问罗伦斯是否要让她睡在外面，语气中带着调侃。罗伦斯虽然觉得无奈，但也觉得有趣，并未真正拒绝。赫萝的举动让罗伦斯怀疑她之前的一些反应是否是演戏，但罗伦斯仍相信她对故乡和村民的不满是真实的。清晨，罗伦斯醒来发现赫萝已经起床，并擅自翻找他的行李，换上了他最上等的衣服。罗伦斯责备赫萝擅自翻找他人行李的行为，但赫萝完全不以为意，反而得意地展示衣服，并询问是否可以剪开裤子以方便她的尾巴。赫萝的举动大胆而自信，而罗伦斯虽然不满，却并未真正生气，反而觉得赫萝穿着他的衣服显得可爱。赫萝的言行表明她对罗伦斯的反应有一定程度的掌控，而罗伦斯则在权衡是否要让她继续穿着这些衣物。赫萝在货台上轻快地跳下，动作自然得让罗伦斯一时未能反应。罗伦斯并未阻止她，因为他内心确信赫萝不会逃跑。赫萝确认了这一点后，主动脱下罗伦斯为她订制的熊皮外套，并指出衣服对她来说太长了。罗伦斯注意到赫萝的体型比他想象的要娇小，足足比他矮了两个头。随后，赫萝向罗伦斯提出希望与他一起旅行，并表示自己不会逃跑。罗伦斯虽然仍保持谨慎，但认为赫萝不像会偷东西的人，与她同行应该无妨。他最终答应了赫…",
+    "candidate_entities": [
+      {
+        "entity_id": "char_v2_000001",
+        "entity_type": "character",
+        "display_name": "罗伦斯",
+        "aliases": [
+          "罗伦斯先生"
+        ],
+        "importance": "major",
+        "summary": "罗伦斯在教会中与佩连佐的葡萄园主人对话，解释了汇兑体制的运作方式，并建议领主在交易中避免被葡萄酒商压低葡萄品质。随后，一名年轻商人靠近罗伦斯，称赞他的能力，并表示自己是刚入行的同行。罗伦斯回应称自己…",
+        "latest_seen_chunk_id": "volume_01-r000041",
+        "dialogue_count": 108
+      },
+      {
+        "entity_id": "char_v2_000002",
+        "entity_type": "character",
+        "display_name": "赫萝",
+        "aliases": [
+          "赫萝（丰收之神）",
+          "丰收之神",
+          "狼赫萝",
+          "赫萝"
+        ],
+        "importance": "major",
+        "summary": "赫萝在罗伦斯与佩连佐的葡萄园主人对话时，完全隐藏身份，将头藏在外套下。她未参与对话，但通过动作暗示她对罗伦斯与年轻商人互动的关注。她的隐藏行为表明她对非人类身份的谨慎，同时她对罗伦斯的行动保持观察。",
+        "latest_seen_chunk_id": "volume_01-r000041",
+        "dialogue_count": 124
+      },
+      {
+        "entity_id": "mystery_v2_000009",
+        "entity_type": "mystery",
+        "display_name": "赫萝",
+        "aliases": [
+          "赫萝（丰收之神）",
+          "丰收之神",
+          "狼",
+          "狼赫萝"
+        ],
+        "importance": "major",
+        "summary": "传说中在收割季节进入最后一束麦子中的人体内的神明。赫萝声称自己是丰收之神的化身，但罗伦斯的质疑和赫萝的解释暗示她可能并非传统意义上的神明，而是某种与麦子和丰收仪式相关的存在。",
+        "latest_seen_chunk_id": "volume_01-r000026",
+        "dialogue_count": 14
+      },
+      {
+        "entity_id": "char_v2_000005",
+        "entity_type": "character",
+        "display_name": "丰收之神赫萝",
+        "aliases": [
+          "赫萝（神明）",
+          "丰收之神"
+        ],
+        "importance": "major",
+        "summary": "赫萝进一步强调自己是「贤狼赫萝」，并否认自己是神明，但表现出对自身非人特征的自信。她的言行暗示她可能具有神性，但选择以狼的身份与罗伦斯互动。",
+        "latest_seen_chunk_id": "volume_01-r000025",
+        "dialogue_count": 2
+      },
+      {
+        "entity_id": "mystery_v2_000015",
+        "entity_type": "mystery",
+        "display_name": "女孩",
+        "aliases": [
+          "女孩（动物耳朵）",
+          "神秘女孩",
+          "有耳朵的女孩"
+        ],
+        "importance": "major",
+        "summary": "一名神秘的女孩，出现在罗伦斯的马车上，睡得香甜，美丽而安静。她反应迟缓，声音甜美，但头上长着像小狗的耳朵，暗示她可能并非普通人。她赤裸着身体缓缓站起，美丽得令人屏息，随后发出狼嚎，令罗伦斯误以为她是…",
+        "latest_seen_chunk_id": "volume_01-r000014",
+        "dialogue_count": 14
+      },
+      {
+        "entity_id": "char_v2_000011",
+        "entity_type": "character",
+        "display_name": "佩连佐的葡萄园主人",
+        "aliases": [
+          "年长的丈夫",
+          "佩连佐的商人"
+        ],
+        "importance": "medium",
+        "summary": "佩连佐的葡萄园主人与罗伦斯在教会中对话，表现出对汇兑体制的兴趣，并邀请罗伦斯到佩连佐做客。随后，他与妻子一同告辞离开。他的对话表明他对商业知识的渴望，可能在未来与罗伦斯有进一步互动。",
+        "latest_seen_chunk_id": "volume_01-r000041",
+        "dialogue_count": 4
+      },
+      {
+        "entity_id": "char_v2_000012",
+        "entity_type": "character",
+        "display_name": "佩连佐的葡萄园主人的妻子",
+        "aliases": [
+          "年长丈夫的妻子"
+        ],
+        "importance": "medium",
+        "summary": "佩连佐的葡萄园主人的妻子，与丈夫一同出现在教会中。她未参与对话，但在对话中被提及为「妻子」，并随丈夫一同告辞离开。虽然未直接发言，但她的存在表明这对夫妻是重要人物，可能在未来剧情中与罗伦斯有进一步互…",
+        "latest_seen_chunk_id": "volume_01-r000041",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "char_v2_000006",
+        "entity_type": "character",
+        "display_name": "教会",
+        "aliases": [
+          "教会组织",
+          "宗教机构"
+        ],
+        "importance": "medium",
+        "summary": "教会是赫萝过往经历中的重要势力，她多次提及教会曾让她吃了不少苦头，并暗示她不愿再被教会抓住。在本段中，教会接纳了罗伦斯和赫萝的谎言，允许他们借宿，显示出教会对外来旅行者相对友善的态度，但对非人类存在…",
+        "latest_seen_chunk_id": "volume_01-r000036",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "char_v2_000010",
+        "entity_type": "character",
+        "display_name": "约伊兹森林",
+        "aliases": [
+          "赫萝的出生地",
+          "故乡森林"
+        ],
+        "importance": "medium",
+        "summary": "赫萝提到自己出生的故乡是约伊兹森林，并表示离开故乡的时间已无法记起。她对故乡充满思念，但未进一步解释其重要性。约伊兹森林可能是她身份或过去经历的关键地点。",
+        "latest_seen_chunk_id": "volume_01-r000030",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "mystery_v2_000018",
+        "entity_type": "mystery",
+        "display_name": "北方",
+        "aliases": [
+          "北方大地",
+          "赫萝的故乡"
+        ],
+        "importance": "medium",
+        "summary": "赫萝明确表示想回到北方，但未进一步解释原因。北方对她而言似乎具有重要的意义，可能是她的出生地或与她过去的经历有关。这一地点的神秘性暗示它可能在未来剧情中扮演关键角色。",
+        "latest_seen_chunk_id": "volume_01-r000029",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "char_v2_000009",
+        "entity_type": "character",
+        "display_name": "帕斯罗村的年轻村民",
+        "aliases": [
+          "年轻村民",
+          "赫萝承诺的年轻人"
+        ],
+        "importance": "medium",
+        "summary": "赫萝提到她曾答应过帕斯罗村的一名年轻人，要让村里的麦子丰收，并为此守护麦田多年。虽然未提及姓名，但此人对赫萝的承诺和行动有重要影响，是她留在村落的重要原因。",
+        "latest_seen_chunk_id": "volume_01-r000028",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "mystery_v2_000010",
+        "entity_type": "mystery",
+        "display_name": "亚伦多伯爵",
+        "aliases": [
+          "新领主",
+          "帕斯罗村的统治者"
+        ],
+        "importance": "medium",
+        "summary": "赫萝提到，几年前统治帕斯罗村一带的领主变成了现在的亚伦多伯爵，并开始引进南方的先进农耕方法。虽然未直接出场，但他的政策对村落和赫萝产生了深远影响，是导致赫萝离开的重要因素。",
+        "latest_seen_chunk_id": "volume_01-r000028",
+        "dialogue_count": 0
+      }
+    ]
+  },
+  "rules": {
+    "speaker_statuses": [
+      "known",
+      "mystery",
+      "npc_group",
+      "review",
+      "unknown"
+    ],
+    "importance_levels": [
+      "minor",
+      "medium",
+      "major"
+    ],
+    "general_novel_only": true
+  },
+  "task_a_annotations": [
+    {
+      "dialogue_id": "volume_01-d000243",
+      "dialogue_index": 242,
+      "volume_id": "",
+      "chapter_id": "",
+      "chapter_index": 0,
+      "chapter_title": "",
+      "scene_id": "",
+      "scene_index": 0,
+      "paragraph_id": "volume_01-c002-s002-p000633",
+      "paragraph_index": 632,
+      "local_dialogue_index": 1,
+      "text": "这没什么，我刚踏入这一行时，所有旅行商人在我眼里看来都是妖怪。到了现在，也仍然觉得一半以上的人是妖怪。尽管如此，总还是可以混口饭吃。凡事靠努力啊。",
+      "quote_text": "「这没什么，我刚踏入这一行时，所有旅行商人在我眼里看来都是妖怪。到了现在，也仍然觉得一半以上的人是妖怪。尽管如此，总还是可以混口饭吃。凡事靠努力啊。」",
+      "dialogue_kind": "standalone",
+      "char_start": 0,
+      "char_end": 75,
+      "speaker_entity_id": "char_v2_000001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "罗伦斯表示赞同地说"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false,
+      "review_reason": "",
+      "request_id": "volume_01-r000042--annotation--qwen3_32b"
+    },
+    {
+      "dialogue_id": "volume_01-d000244",
+      "dialogue_index": 243,
+      "volume_id": "",
+      "chapter_id": "",
+      "chapter_index": 0,
+      "chapter_title": "",
+      "scene_id": "",
+      "scene_index": 0,
+      "paragraph_id": "volume_01-c002-s002-p000634",
+      "paragraph_index": 633,
+      "local_dialogue_index": 1,
+      "text": "嘿嘿，听到您这么说，小的就安心多了。啊！小的名叫杰廉，我想您应该看出来了，小的是刚入行的旅行商人，还请多多关照。",
+      "quote_text": "「嘿嘿，听到您这么说，小的就安心多了。啊！小的名叫杰廉，我想您应该看出来了，小的是刚入行的旅行商人，还请多多关照。」",
+      "dialogue_kind": "standalone",
+      "char_start": 0,
+      "char_end": 58,
+      "speaker_entity_id": "char_v2_000013",
+      "speaker_display": "杰廉",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "小的名叫杰廉"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false,
+      "review_reason": "",
+      "request_id": "volume_01-r000042--annotation--qwen3_32b"
+    },
+    {
+      "dialogue_id": "volume_01-d000245",
+      "dialogue_index": 244,
+      "volume_id": "",
+      "chapter_id": "",
+      "chapter_index": 0,
+      "chapter_title": "",
+      "scene_id": "",
+      "scene_index": 0,
+      "paragraph_id": "volume_01-c002-s002-p000635",
+      "paragraph_index": 634,
+      "local_dialogue_index": 1,
+      "text": "我是罗伦斯。",
+      "quote_text": "「我是罗伦斯。」",
+      "dialogue_kind": "standalone",
+      "char_start": 0,
+      "char_end": 8,
+      "speaker_entity_id": "char_v2_000001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "罗伦斯表示：「我是罗伦斯。」"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false,
+      "review_reason": "",
+      "request_id": "volume_01-r000042--annotation--qwen3_32b"
+    },
+    {
+      "dialogue_id": "volume_01-d000246",
+      "dialogue_index": 245,
+      "volume_id": "",
+      "chapter_id": "",
+      "chapter_index": 0,
+      "chapter_title": "",
+      "scene_id": "",
+      "scene_index": 0,
+      "paragraph_id": "volume_01-c002-s002-p000638",
+      "paragraph_index": 637,
+      "local_dialogue_index": 1,
+      "text": "呃……啊，那位是您的同伴吗？",
+      "quote_text": "「呃……啊，那位是您的同伴吗？」",
+      "dialogue_kind": "standalone",
+      "char_start": 0,
+      "char_end": 16,
+      "speaker_entity_id": "char_v2_000013",
+      "speaker_display": "杰廉",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "杰廉开口问道"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false,
+      "review_reason": "",
+      "request_id": "volume_01-r000042--annotation--qwen3_32b"
+    },
+    {
+      "dialogue_id": "volume_01-d000247",
+      "dialogue_index": 246,
+      "volume_id": "",
+      "chapter_id": "",
+      "chapter_index": 0,
+      "chapter_title": "",
+      "scene_id": "",
+      "scene_index": 0,
+      "paragraph_id": "volume_01-c002-s002-p000640",
+      "paragraph_index": 639,
+      "local_dialogue_index": 1,
+      "text": "我妻子赫萝。",
+      "quote_text": "「我妻子赫萝。」",
+      "dialogue_kind": "standalone",
+      "char_start": 0,
+      "char_end": 8,
+      "speaker_entity_id": "char_v2_000001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "罗伦斯回答：「我妻子赫萝。」"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false,
+      "review_reason": "",
+      "request_id": "volume_01-r000042--annotation--qwen3_32b"
+    },
+    {
+      "dialogue_id": "volume_01-d000248",
+      "dialogue_index": 247,
+      "volume_id": "",
+      "chapter_id": "",
+      "chapter_index": 0,
+      "chapter_title": "",
+      "scene_id": "",
+      "scene_index": 0,
+      "paragraph_id": "volume_01-c002-s002-p000643",
+      "paragraph_index": 642,
+      "local_dialogue_index": 1,
+      "text": "喔，夫妻俩一同行商啊？",
+      "quote_text": "「喔，夫妻俩一同行商啊？」",
+      "dialogue_kind": "standalone",
+      "char_start": 0,
+      "char_end": 13,
+      "speaker_entity_id": "char_v2_000013",
+      "speaker_display": "杰廉",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "杰廉继续提问"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false,
+      "review_reason": "",
+      "request_id": "volume_01-r000042--annotation--qwen3_32b"
+    },
+    {
+      "dialogue_id": "volume_01-d000249",
+      "dialogue_index": 248,
+      "volume_id": "",
+      "chapter_id": "",
+      "chapter_index": 0,
+      "chapter_title": "",
+      "scene_id": "",
+      "scene_index": 0,
+      "paragraph_id": "volume_01-c002-s002-p000644",
+      "paragraph_index": 643,
+      "local_dialogue_index": 1,
+      "text": "妻子生性古怪，认为待在家里不如待在马车上好。",
+      "quote_text": "「妻子生性古怪，认为待在家里不如待在马车上好。」",
+      "dialogue_kind": "standalone",
+      "char_start": 0,
+      "char_end": 24,
+      "speaker_entity_id": "char_v2_000001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "罗伦斯回答杰廉的问题"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false,
+      "review_reason": "",
+      "request_id": "volume_01-r000042--annotation--qwen3_32b"
+    },
+    {
+      "dialogue_id": "volume_01-d000250",
+      "dialogue_index": 249,
+      "volume_id": "",
+      "chapter_id": "",
+      "chapter_index": 0,
+      "chapter_title": "",
+      "scene_id": "",
+      "scene_index": 0,
+      "paragraph_id": "volume_01-c002-s002-p000645",
+      "paragraph_index": 644,
+      "local_dialogue_index": 1,
+      "text": "不过，老板您让妻子这样套着外套，还真是保护周到呢。",
+      "quote_text": "「不过，老板您让妻子这样套着外套，还真是保护周到呢。」",
+      "dialogue_kind": "standalone",
+      "char_start": 0,
+      "char_end": 27,
+      "speaker_entity_id": "char_v2_000013",
+      "speaker_display": "杰廉",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "杰廉继续提问"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false,
+      "review_reason": "",
+      "request_id": "volume_01-r000042--annotation--qwen3_32b"
+    }
+  ]
+}

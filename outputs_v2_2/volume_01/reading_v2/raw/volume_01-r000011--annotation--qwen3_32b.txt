@@ -1,0 +1,50 @@
+```json
+{
+  "annotations": [
+    {
+      "dialogue_id": "volume_01-d000045",
+      "speaker_entity_id": "char_v2_000001",
+      "speaker_display": "罗伦斯",
+      "speaker_status": "known",
+      "confidence": 0.95,
+      "evidence": [
+        "罗伦斯在段落中自言自语，提到‘糟糕’，符合其内心独白的语气。"
+      ],
+      "negative_evidence": [],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000046",
+      "speaker_entity_id": "unknown",
+      "speaker_display": "未知",
+      "speaker_status": "unknown",
+      "confidence": 0.6,
+      "evidence": [
+        "对话为‘……’，未明确说话者，且上下文未提及新角色。"
+      ],
+      "negative_evidence": [
+        "未出现新角色或明确说话者。"
+      ],
+      "is_backfillable": true,
+      "needs_review": false
+    },
+    {
+      "dialogue_id": "volume_01-d000047",
+      "speaker_entity_id": "unknown",
+      "speaker_display": "未知",
+      "speaker_status": "unknown",
+      "confidence": 0.5,
+      "evidence": [
+        "对话为‘喂！’，未明确说话者，且上下文未提及新角色。"
+      ],
+      "negative_evidence": [
+        "未出现新角色或明确说话者。"
+      ],
+      "is_backfillable": true,
+      "needs_review": false
+    }
+  ],
+  "chunk_notes": "当前 chunk 中，罗伦斯是唯一明确提及的说话角色，其余对话未明确说话者，且上下文未引入新角色。因此，未明确说话者的对话标记为 unknown。"
+}
+```

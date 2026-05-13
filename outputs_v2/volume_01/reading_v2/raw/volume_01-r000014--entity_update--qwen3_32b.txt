@@ -1,0 +1,86 @@
+```json
+{
+  "updates": [
+    {
+      "entity_id": "mystery_v2_000012",
+      "summary": "被村民认为会附在人类身上、象征丰收的神秘存在。在祭典中，丰收之神被认为藏在最后一束麦子里，并会附身在收割者身上。村民试图抓住祂，以确保祂留在村庄的麦田中。虽然没人知道祂是否真实存在，但这个习俗已延续很久。",
+      "importance": "medium",
+      "dialogue_count_delta": 0,
+      "latest_seen_chunk_id": "volume_01-r000014",
+      "relationship_updates": [],
+      "evidence_refs": [
+        "volume_01-c002-s002-p000176",
+        "volume_01-c002-s002-p000177",
+        "volume_01-c002-s002-p000178"
+      ]
+    },
+    {
+      "entity_id": "char_v2_000004",
+      "summary": "二十五岁的自力更生旅行商人，已行商七年。本 chunk 中，罗伦斯驾马车前往叶勒所在的麦田，观察村民的祭典活动，并未直接参与。他似乎在关注叶勒和『赫萝』的动态，暗示其对祭典背后的意义或商业机会感兴趣。罗伦斯的行动表明他善于观察环境，同时保持低调。他并不相信教会的教诲，也不关心这些仪式，但叶勒成为『赫萝』让他感到困扰，因为这会阻碍他与叶勒的交流。",
+      "importance": "major",
+      "dialogue_count_delta": 1,
+      "latest_seen_chunk_id": "volume_01-r000014",
+      "relationship_updates": [
+        {
+          "target_entity_id": "mystery_v2_000012",
+          "relation": "observer",
+          "evidence_ref": "volume_01-c002-s002-p000179"
+        }
+      ],
+      "evidence_refs": [
+        "volume_01-c002-s002-p000179",
+        "volume_01-c002-s002-p000180",
+        "volume_01-c002-s002-p000181"
+      ]
+    },
+    {
+      "entity_id": "mystery_v2_000009",
+      "summary": "帕斯罗村的麦田耕作者，今年雇用年轻人进行耕作。在罗伦斯的询问下被提及，并被指出位于另一块麦田中。农夫提到叶勒的田里可能有今年的『赫萝』，暗示其与村庄祭典或象征性人物有关联。本 chunk 中，叶勒成功割下最后一束麦子，成为村民欢呼的对象，进一步强化了其与『赫萝』的关联。叶勒对罗伦斯心存感激，因为罗伦斯曾帮助村里销售麦子。",
+      "importance": "medium",
+      "dialogue_count_delta": 0,
+      "latest_seen_chunk_id": "volume_01-r000014",
+      "relationship_updates": [
+        {
+          "target_entity_id": "mystery_v2_000012",
+          "relation": "potential_host",
+          "evidence_ref": "volume_01-c002-s002-p000176"
+        },
+        {
+          "target_entity_id": "char_v2_000004",
+          "relation": "grateful",
+          "evidence_ref": "volume_01-c002-s002-p000186"
+        }
+      ],
+      "evidence_refs": [
+        "volume_01-c002-s002-p000176",
+        "volume_01-c002-s002-p000186"
+      ]
+    },
+    {
+      "entity_id": "mystery_v2_000010",
+      "summary": "在村民的叫喊中被提及的象征性人物，与狼和丰收之神相关。村民相信『赫萝』会藏在最后一束麦子中，并进入割下最后一束麦子的人体内。本 chunk 中，村民多次提到『赫萝』，并将其与祭典活动联系在一起。『赫萝』的出现引发了村民的热烈反应，并成为祭典的核心象征。",
+      "importance": "medium",
+      "dialogue_count_delta": 0,
+      "latest_seen_chunk_id": "volume_01-r000014",
+      "relationship_updates": [
+        {
+          "target_entity_id": "mystery_v2_000012",
+          "relation": "manifestation",
+          "evidence_ref": "volume_01-c002-s002-p000177"
+        },
+        {
+          "target_entity_id": "mystery_v2_000009",
+          "relation": "potential_host",
+          "evidence_ref": "volume_01-c002-s002-p000176"
+        }
+      ],
+      "evidence_refs": [
+        "volume_01-c002-s002-p000171",
+        "volume_01-c002-s002-p000172",
+        "volume_01-c002-s002-p000173",
+        "volume_01-c002-s002-p000177"
+      ]
+    }
+  ]
+}
+```

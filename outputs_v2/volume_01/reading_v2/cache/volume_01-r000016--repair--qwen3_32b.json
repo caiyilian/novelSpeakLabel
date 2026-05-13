@@ -1,0 +1,24 @@
+{
+  "repairs": [
+    {
+      "dialogue_id": "volume_01-d000047",
+      "previous_speaker_entity_id": "mystery",
+      "new_speaker_entity_id": "mystery_v2_000014",
+      "speaker_display": "神秘女孩",
+      "speaker_status": "mystery",
+      "confidence": 0.85,
+      "reason": "对话为‘……’，紧接着罗伦斯发现有人捷足先登的描述，暗示说话人是神秘女孩。根据上下文和实体记忆，该人物尚未被明确识别，因此标记为mystery。",
+      "stop_reason": "resolved"
+    },
+    {
+      "dialogue_id": "volume_01-d000048",
+      "previous_speaker_entity_id": "mystery",
+      "new_speaker_entity_id": "mystery_v2_000014",
+      "speaker_display": "神秘女孩",
+      "speaker_status": "mystery",
+      "confidence": 0.85,
+      "reason": "对话为‘喂！’，紧接着罗伦斯的反应，暗示说话人是神秘女孩。根据上下文和实体记忆，该人物尚未被明确识别，因此标记为mystery。",
+      "stop_reason": "resolved"
+    }
+  ]
+}

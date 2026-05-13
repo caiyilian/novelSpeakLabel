@@ -25,6 +25,17 @@ from novel_speaker_label.discovery import CharacterStore, _split_scene_into_requ
 from novel_speaker_label.jsonl import read_json, read_jsonl, write_json, write_jsonl
 from novel_speaker_label.ollama_client import OllamaConfig, OllamaClient, collect_streaming_response
 from novel_speaker_label.preprocess import PreprocessConfig, preprocess_volume
+from novel_speaker_label.reading_v2 import (
+    ReadingV2Config,
+    ReadingV2State,
+    _apply_entity_merges,
+    _apply_mystery_resolution,
+    _pending_mystery_cards,
+    _refresh_pending_mysteries,
+    annotate_v2_volume,
+    estimate_prompt_tokens,
+    prompt_length_status,
+)
 
 
 def _annotation_dialogue(
@@ -1505,6 +1516,459 @@ class AnnotationTests(unittest.TestCase):
         self.assertIn("candidate_speakers 最多 2 个候选", prompt)
         self.assertIn("evidence 最多 3 条", prompt)
         self.assertNotIn('"should_create_new_entity": false', prompt)
+
+
+class ReadingV2Tests(unittest.TestCase):
+    def _write_v2_fixture(self, output_dir: Path) -> None:
+        paragraph = "「Hello there.」"
+        write_json(output_dir / "volume.json", {"volume_id": "volume_01", "volume": 1})
+        write_jsonl(
+            output_dir / "preprocess" / "paragraphs.jsonl",
+            [
+                {
+                    "paragraph_id": "p1",
+                    "paragraph_index": 0,
+                    "volume_id": "volume_01",
+                    "chapter_id": "volume_01-c001",
+                    "chapter_index": 1,
+                    "chapter_title": "Chapter 1",
+                    "scene_id": "volume_01-c001-s001",
+                    "scene_index": 1,
+                    "text": paragraph,
+                }
+            ],
+        )
+        write_jsonl(
+            output_dir / "preprocess" / "dialogues.jsonl",
+            [
+                {
+                    "dialogue_id": "volume_01-d000001",
+                    "dialogue_index": 0,
+                    "volume_id": "volume_01",
+                    "chapter_id": "volume_01-c001",
+                    "chapter_index": 1,
+                    "chapter_title": "Chapter 1",
+                    "scene_id": "volume_01-c001-s001",
+                    "scene_index": 1,
+                    "paragraph_id": "p1",
+                    "paragraph_index": 0,
+                    "local_dialogue_index": 1,
+                    "text": "Hello there.",
+                    "quote_text": paragraph,
+                    "dialogue_kind": "standalone",
+                    "char_start": 0,
+                    "char_end": len(paragraph),
+                }
+            ],
+        )
+
+    def _write_v2_no_dialogue_fixture(
+        self, output_dir: Path, *, chapter_index: int = 1
+    ) -> None:
+        write_json(output_dir / "volume.json", {"volume_id": "volume_01", "volume": 1})
+        write_jsonl(
+            output_dir / "preprocess" / "paragraphs.jsonl",
+            [
+                {
+                    "paragraph_id": "p1",
+                    "paragraph_index": 0,
+                    "volume_id": "volume_01",
+                    "chapter_id": f"volume_01-c{chapter_index:03d}",
+                    "chapter_index": chapter_index,
+                    "chapter_title": "Chapter",
+                    "scene_id": f"volume_01-c{chapter_index:03d}-s001",
+                    "scene_index": 1,
+                    "text": "Alice entered the old city and remembered the promise.",
+                },
+                {
+                    "paragraph_id": "p2",
+                    "paragraph_index": 1,
+                    "volume_id": "volume_01",
+                    "chapter_id": f"volume_01-c{chapter_index:03d}",
+                    "chapter_index": chapter_index,
+                    "chapter_title": "Chapter",
+                    "scene_id": f"volume_01-c{chapter_index:03d}-s001",
+                    "scene_index": 1,
+                    "text": "The narration introduces her route before anyone speaks.",
+                },
+            ],
+        )
+        write_jsonl(output_dir / "preprocess" / "dialogues.jsonl", [])
+
+    def test_prompt_length_status_uses_hard_limit(self) -> None:
+        self.assertGreater(estimate_prompt_tokens("汉字abc{}"), 0)
+        self.assertEqual(prompt_length_status(8, 10, 20), "ok")
+        self.assertEqual(prompt_length_status(15, 10, 20), "near_limit")
+        self.assertEqual(prompt_length_status(25, 10, 20), "over_limit")
+
+    def test_annotate_v2_dry_run_writes_prompt_length_report(self) -> None:
+        with tempfile.TemporaryDirectory(dir=Path.cwd()) as tmp:
+            output_dir = Path(tmp) / "outputs" / "volume_01"
+            self._write_v2_fixture(output_dir)
+
+            summary = annotate_v2_volume(
+                ReadingV2Config(
+                    output_dir=output_dir,
+                    model="fake-model",
+                    dry_run=True,
+                    max_paragraphs_per_chunk=2,
+                    max_dialogues_per_chunk=2,
+                )
+            )
+
+            report = read_json(output_dir / "reading_v2" / "prompt_length_report.json")
+            rows = list(
+                read_jsonl(output_dir / "reading_v2" / "prompt_length_report.jsonl")
+            )
+            prompts = list((output_dir / "reading_v2" / "prompts").glob("*.txt"))
+            self.assertEqual(summary["pipeline"], "reading-v2")
+            self.assertEqual(summary["prompt_count"], 5)
+            self.assertEqual(summary["prompt_over_limit_count"], 0)
+            self.assertEqual(report["prompt_count"], 5)
+            self.assertEqual(report["task_counts"]["annotation"], 1)
+            self.assertEqual(report["task_counts"]["repair"], 0)
+            self.assertEqual(len(rows), 5)
+            self.assertEqual(len(prompts), 5)
+
+    def test_annotate_v2_no_dialogue_narrative_updates_memory(self) -> None:
+        with tempfile.TemporaryDirectory(dir=Path.cwd()) as tmp:
+            output_dir = Path(tmp) / "outputs" / "volume_01"
+            self._write_v2_no_dialogue_fixture(output_dir)
+            cache_dir = output_dir / "reading_v2" / "cache"
+            request_prefix = "volume_01-r000001"
+            model_suffix = "fake_model"
+            write_json(
+                cache_dir / f"{request_prefix}--chunk_summary--{model_suffix}.json",
+                {
+                    "chunk_id": request_prefix,
+                    "summary": "Alice travels through an old city before any dialogue.",
+                    "active_entities": ["char_0001"],
+                    "open_questions": [],
+                    "evidence_refs": ["p1", "p2"],
+                },
+            )
+            write_json(
+                cache_dir
+                / f"{request_prefix}--entity_discovery--{model_suffix}.json",
+                {
+                    "new_entities": [
+                        {
+                            "entity_id": "char_0001",
+                            "entity_type": "character",
+                            "display_name": "Alice",
+                            "importance": "medium",
+                            "summary": "A character introduced by narration.",
+                            "evidence_refs": ["p1"],
+                            "dialogue_count_delta": 0,
+                        }
+                    ],
+                    "merge_candidates": [],
+                },
+            )
+            write_json(
+                cache_dir / f"{request_prefix}--entity_update--{model_suffix}.json",
+                {
+                    "updates": [
+                        {
+                            "entity_id": "char_0001",
+                            "summary": "Alice is introduced while travelling.",
+                            "importance": "medium",
+                            "dialogue_count_delta": 0,
+                            "latest_seen_chunk_id": request_prefix,
+                            "relationship_updates": [],
+                            "evidence_refs": ["p1"],
+                        }
+                    ]
+                },
+            )
+            write_json(
+                cache_dir / f"{request_prefix}--global_summary--{model_suffix}.json",
+                {
+                    "summary": "Alice travels through an old city.",
+                    "new_facts": ["Alice is introduced before dialogue starts."],
+                    "retained_facts": [],
+                    "dropped_facts_reason": [],
+                },
+            )
+
+            summary = annotate_v2_volume(
+                ReadingV2Config(
+                    output_dir=output_dir,
+                    model="fake-model",
+                    cache_only=True,
+                    write_prompts=False,
+                )
+            )
+
+            report = read_json(output_dir / "reading_v2" / "prompt_length_report.json")
+            annotations = list(
+                read_jsonl(output_dir / "annotation_v2" / "annotations.jsonl")
+            )
+            chunk_summaries = list(
+                read_jsonl(output_dir / "memory_v2" / "chunk_summaries.jsonl")
+            )
+            characters = list(read_jsonl(output_dir / "memory_v2" / "characters.jsonl"))
+            self.assertEqual(summary["memory_only_chunk_count"], 1)
+            self.assertEqual(summary["annotation_count"], 0)
+            self.assertEqual(report["task_counts"]["annotation"], 0)
+            self.assertEqual(report["task_counts"]["repair"], 0)
+            self.assertEqual(report["task_counts"]["chunk_summary"], 1)
+            self.assertEqual(report["task_counts"]["global_summary"], 1)
+            self.assertEqual(len(annotations), 0)
+            self.assertEqual(chunk_summaries[0]["chunk_id"], request_prefix)
+            self.assertEqual(characters[0]["display_name"], "Alice")
+
+    def test_entity_merge_backfills_existing_annotations(self) -> None:
+        state = ReadingV2State()
+        state.mysteries["mystery_v2_000014"] = {
+            "entity_id": "mystery_v2_000014",
+            "entity_type": "mystery",
+            "display_name": "神秘女孩",
+            "aliases": ["女孩"],
+            "importance": "major",
+            "summary": "藏在货车里的神秘女孩。",
+            "evidence_refs": ["d1"],
+            "dialogue_count": 1,
+            "first_seen_chunk_id": "volume_01-r000018",
+            "latest_seen_chunk_id": "volume_01-r000018",
+        }
+        state.characters["char_v2_000003"] = {
+            "entity_id": "char_v2_000003",
+            "entity_type": "character",
+            "display_name": "赫萝",
+            "aliases": [],
+            "importance": "major",
+            "summary": "自称赫萝的女孩。",
+            "evidence_refs": ["d2"],
+            "dialogue_count": 2,
+            "first_seen_chunk_id": "volume_01-r000020",
+            "latest_seen_chunk_id": "volume_01-r000020",
+        }
+        annotations_by_id = {
+            "d1": {
+                "dialogue_id": "d1",
+                "speaker_entity_id": "mystery_v2_000014",
+                "speaker_display": "神秘女孩",
+                "speaker_status": "mystery",
+                "confidence": 0.72,
+                "evidence": [],
+                "needs_review": False,
+                "review_reason": "",
+            }
+        }
+
+        events = _apply_entity_merges(
+            {
+                "merge_candidates": [
+                    {
+                        "source_entity_id": "mystery_v2_000014",
+                        "target_entity_id": "char_v2_000003",
+                        "confidence": 0.92,
+                        "reason": "神秘女孩后来明确自称赫萝。",
+                    }
+                ]
+            },
+            state=state,
+            chunk_id="volume_01-r000020",
+            annotations_by_id=annotations_by_id,
+            current_annotations=[],
+        )
+
+        self.assertEqual(events[0]["event_type"], "entity_merge")
+        self.assertEqual(
+            annotations_by_id["d1"]["speaker_entity_id"], "char_v2_000003"
+        )
+        self.assertEqual(annotations_by_id["d1"]["speaker_display"], "赫萝")
+        self.assertEqual(annotations_by_id["d1"]["speaker_status"], "known")
+        self.assertIn("神秘女孩", state.characters["char_v2_000003"]["aliases"])
+        self.assertEqual(
+            state.mysteries["mystery_v2_000014"]["merged_into"], "char_v2_000003"
+        )
+
+    def test_pending_mystery_resolution_expires_or_merges(self) -> None:
+        state = ReadingV2State()
+        state.mysteries["mystery_v2_000014"] = {
+            "entity_id": "mystery_v2_000014",
+            "entity_type": "mystery",
+            "display_name": "Hidden Visitor",
+            "aliases": [],
+            "importance": "major",
+            "summary": "A recurring unidentified visitor.",
+            "evidence_refs": ["d1"],
+            "dialogue_count": 1,
+            "first_seen_chunk_id": "volume_01-r000001",
+            "latest_seen_chunk_id": "volume_01-r000001",
+        }
+        state.characters["char_v2_000003"] = {
+            "entity_id": "char_v2_000003",
+            "entity_type": "character",
+            "display_name": "Alice",
+            "aliases": [],
+            "importance": "major",
+            "summary": "A named character.",
+            "evidence_refs": ["d2"],
+            "dialogue_count": 2,
+            "first_seen_chunk_id": "volume_01-r000002",
+            "latest_seen_chunk_id": "volume_01-r000002",
+        }
+        annotations_by_id = {
+            "d1": {
+                "dialogue_id": "d1",
+                "speaker_entity_id": "mystery_v2_000014",
+                "speaker_display": "Hidden Visitor",
+                "speaker_status": "mystery",
+                "confidence": 0.7,
+                "evidence": [],
+                "needs_review": False,
+                "review_reason": "",
+            }
+        }
+
+        events = _refresh_pending_mysteries(
+            state=state,
+            chunk_id="volume_01-r000001",
+            config=ReadingV2Config(output_dir=Path(".")),
+        )
+        self.assertEqual(events[0]["event_type"], "pending_mystery_added")
+        self.assertEqual(
+            _pending_mystery_cards(
+                state, ReadingV2Config(output_dir=Path("."), max_pending_mysteries=4)
+            )[0]["entity_id"],
+            "mystery_v2_000014",
+        )
+
+        response = {
+            "merge_candidates": [
+                {
+                    "source_entity_id": "mystery_v2_000014",
+                    "target_entity_id": "char_v2_000003",
+                    "confidence": 0.91,
+                    "reason": "The current chunk gives enough matching evidence.",
+                }
+            ],
+            "keep_pending": [],
+            "expire_pending": [],
+        }
+        merge_events = _apply_entity_merges(
+            response,
+            state=state,
+            chunk_id="volume_01-r000002",
+            annotations_by_id=annotations_by_id,
+            current_annotations=[],
+        )
+        resolution_events = _apply_mystery_resolution(
+            response, state=state, chunk_id="volume_01-r000002"
+        )
+
+        self.assertEqual(merge_events[0]["event_type"], "entity_merge")
+        self.assertEqual(resolution_events, [])
+        self.assertNotIn("mystery_v2_000014", state.pending_mysteries)
+        self.assertEqual(
+            annotations_by_id["d1"]["speaker_entity_id"], "char_v2_000003"
+        )
+
+    def test_annotate_v2_cache_only_writes_annotations_and_memory(self) -> None:
+        with tempfile.TemporaryDirectory(dir=Path.cwd()) as tmp:
+            output_dir = Path(tmp) / "outputs" / "volume_01"
+            self._write_v2_fixture(output_dir)
+            cache_dir = output_dir / "reading_v2" / "cache"
+            request_prefix = "volume_01-r000001"
+            model_suffix = "fake_model"
+            write_json(
+                cache_dir / f"{request_prefix}--annotation--{model_suffix}.json",
+                {
+                    "annotations": [
+                        {
+                            "dialogue_id": "volume_01-d000001",
+                            "speaker_entity_id": "char_0001",
+                            "speaker_display": "Alice",
+                            "speaker_status": "known",
+                            "confidence": 0.91,
+                            "evidence": ["Narration attributes the line to Alice."],
+                            "needs_review": False,
+                        }
+                    ]
+                },
+            )
+            write_json(
+                cache_dir / f"{request_prefix}--chunk_summary--{model_suffix}.json",
+                {
+                    "chunk_id": request_prefix,
+                    "summary": "Alice greets someone.",
+                    "active_entities": ["char_0001"],
+                    "open_questions": [],
+                    "evidence_refs": ["volume_01-d000001"],
+                },
+            )
+            write_json(
+                cache_dir / f"{request_prefix}--entity_discovery--{model_suffix}.json",
+                {
+                    "new_entities": [
+                        {
+                            "entity_id": "char_0001",
+                            "entity_type": "character",
+                            "display_name": "Alice",
+                            "importance": "medium",
+                            "summary": "A named speaker in the current chunk.",
+                            "evidence_refs": ["volume_01-d000001"],
+                            "dialogue_count_delta": 1,
+                        }
+                    ],
+                    "merge_candidates": [],
+                },
+            )
+            write_json(
+                cache_dir / f"{request_prefix}--entity_update--{model_suffix}.json",
+                {
+                    "updates": [
+                        {
+                            "entity_id": "char_0001",
+                            "summary": "Alice greets someone.",
+                            "importance": "medium",
+                            "dialogue_count_delta": 1,
+                            "latest_seen_chunk_id": request_prefix,
+                            "relationship_updates": [],
+                            "evidence_refs": ["volume_01-d000001"],
+                        }
+                    ]
+                },
+            )
+            write_json(
+                cache_dir / f"{request_prefix}--global_summary--{model_suffix}.json",
+                {
+                    "summary": "Alice has appeared and greeted someone.",
+                    "new_facts": ["Alice speaks in the opening chunk."],
+                    "retained_facts": [],
+                    "dropped_facts_reason": [],
+                },
+            )
+            write_json(
+                cache_dir / f"{request_prefix}--repair--{model_suffix}.json",
+                {"repairs": []},
+            )
+
+            summary = annotate_v2_volume(
+                ReadingV2Config(
+                    output_dir=output_dir,
+                    model="fake-model",
+                    cache_only=True,
+                    write_prompts=False,
+                )
+            )
+
+            annotations = list(
+                read_jsonl(output_dir / "annotation_v2" / "annotations.jsonl")
+            )
+            characters = list(read_jsonl(output_dir / "memory_v2" / "characters.jsonl"))
+            labeled = (output_dir / "annotation_v2" / "final_labeled.txt").read_text(
+                encoding="utf-8"
+            )
+            self.assertEqual(summary["annotation_count"], 1)
+            self.assertEqual(summary["failed_request_count"], 0)
+            self.assertEqual(annotations[0]["speaker_display"], "Alice")
+            self.assertFalse(annotations[0]["needs_review"])
+            self.assertEqual(characters[0]["display_name"], "Alice")
+            self.assertIn("【Alice】", labeled)
 
 
 class CliOutputPathTests(unittest.TestCase):

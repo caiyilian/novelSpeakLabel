@@ -1,0 +1,521 @@
+你是通用小说角色身份回填助手。任务：在读完当前 chunk 后，判断 pending_mysteries 中尚未确认身份的 mystery 是否已经可以与已有 character 合并。
+只允许基于当前 chunk、短期摘要、长期摘要、候选实体卡和证据判断；不要使用任何外部作品知识。证据不足时保持 pending，不要为了减少列表而强行合并。
+只返回 JSON，格式：{"merge_candidates":[{"source_entity_id":"mystery_id","target_entity_id":"char_id","confidence":0.0,"reason":"短证据"}],"keep_pending":["mystery_id"],"expire_pending":[{"entity_id":"mystery_id","reason":"..."}]}
+合并置信度必须足够高；如果只是可能相似但证据不足，放入 keep_pending。
+输入 JSON：
+{
+  "volume": {
+    "volume_id": "volume_01",
+    "volume": 1,
+    "title": ""
+  },
+  "chunk": {
+    "chunk_id": "volume_01-r000003",
+    "chunk_index": 2,
+    "chapter_id": "volume_01-c001",
+    "chapter_title": "第一幕",
+    "scene_id": "volume_01-c001-s001",
+    "paragraphs": [
+      {
+        "paragraph_id": "volume_01-c001-s001-p000019",
+        "paragraph_index": 18,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s001",
+        "scene_index": 1,
+        "text": "第一幕"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s001-p000020",
+        "paragraph_index": 19,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s001",
+        "scene_index": 1,
+        "text": "第"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s001-p000021",
+        "paragraph_index": 20,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s001",
+        "scene_index": 1,
+        "text": "一"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s001-p000022",
+        "paragraph_index": 21,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s001",
+        "scene_index": 1,
+        "text": "幕"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s001-p000023",
+        "paragraph_index": 22,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s001",
+        "scene_index": 1,
+        "text": "「这是最后一件了吧？」"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s001-p000024",
+        "paragraph_index": 23,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s001",
+        "scene_index": 1,
+        "text": "「嗯，这里确实有……七十件。多谢惠顾。」"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s001-p000025",
+        "paragraph_index": 24,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s001",
+        "scene_index": 1,
+        "text": "「不，我们才要谢谢你呢。只有罗伦斯先生你愿意到这深山里来，真是帮了我们大忙。」"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s001-p000026",
+        "paragraph_index": 25,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s001",
+        "scene_index": 1,
+        "text": "「不过，我也因此拿到上等的皮草啊，我会再来的。」"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s001-p000027",
+        "paragraph_index": 26,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s001",
+        "scene_index": 1,
+        "text": "结束一如往常的对话，离开深山里的村落已过了五个小时。太阳升起后就立刻动身，下山来到这片草原时已过了中午。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s001-p000028",
+        "paragraph_index": 27,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s001",
+        "scene_index": 1,
+        "text": "这天的天气晴朗，没有半点风，是个适合坐在马车上，悠哉横越草原的日子。因为这阵子的天气寒冷，原以为冬天就快到了，现在却一点儿也感觉不到。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s001-p000029",
+        "paragraph_index": 28,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s001",
+        "scene_index": 1,
+        "text": "成为自力更生的旅行商人，只身行商至今已有七个年头，今年二十五岁的罗伦斯坐在马车驾座上，泰然自若地打着呵欠。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s001-p000030",
+        "paragraph_index": 29,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s001",
+        "scene_index": 1,
+        "text": "这里几乎没有高大的草木会阻碍视线，眼前景色一望无际，也因此可以看清远方的景象。在视野最远处，可看到一所几年前建盖好的修道院。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s001-p000031",
+        "paragraph_index": 30,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s001",
+        "scene_index": 1,
+        "text": "或许是有某地方的贵族子弟成了他们的修道士吧，尽管在如此偏僻荒远的土地上，但这所修道院不仅是一栋优良的石造建筑物，甚至还使用了铁制门窗，令人难以置信。记得没错的话，修道院里应该有二十多位修道士，另外还有将近同样人数的男仆为他们打点生活。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s001-p000032",
+        "paragraph_index": 31,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s001",
+        "scene_index": 1,
+        "text": "修道院刚开始建盖时，罗伦斯以为可以招揽到新顾客而满怀期待。可惜修道院似乎不跟民间商人往来，而是以独自的通路调度物资，罗伦斯的期望因而落空。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s001-p000033",
+        "paragraph_index": 32,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s001",
+        "scene_index": 1,
+        "text": "虽然期望是落了空，但是修道士的生活并不奢侈，他们甚至会下田耕作；就算做成了生意，可能也没有太多利益可图。不仅如此，或许还有可能被迫捐款，或者被倒债。"
+      },
+      {
+        "paragraph_id": "volume_01-c001-s001-p000034",
+        "paragraph_index": 33,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s001",
+        "scene_index": 1,
+        "text": "单纯就买卖的对象来说，修道士比盗贼还要恶劣。不过，只要能够和他们做生意，对商人来说还是有好处。"
+      }
+    ],
+    "dialogues": [
+      {
+        "dialogue_id": "volume_01-d000001",
+        "dialogue_index": 0,
+        "paragraph_id": "volume_01-c001-s001-p000023",
+        "paragraph_index": 22,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "这是最后一件了吧？",
+        "quote_text": "「这是最后一件了吧？」",
+        "char_start": 0,
+        "char_end": 11
+      },
+      {
+        "dialogue_id": "volume_01-d000002",
+        "dialogue_index": 1,
+        "paragraph_id": "volume_01-c001-s001-p000024",
+        "paragraph_index": 23,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "嗯，这里确实有……七十件。多谢惠顾。",
+        "quote_text": "「嗯，这里确实有……七十件。多谢惠顾。」",
+        "char_start": 0,
+        "char_end": 20
+      },
+      {
+        "dialogue_id": "volume_01-d000003",
+        "dialogue_index": 2,
+        "paragraph_id": "volume_01-c001-s001-p000025",
+        "paragraph_index": 24,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "不，我们才要谢谢你呢。只有罗伦斯先生你愿意到这深山里来，真是帮了我们大忙。",
+        "quote_text": "「不，我们才要谢谢你呢。只有罗伦斯先生你愿意到这深山里来，真是帮了我们大忙。」",
+        "char_start": 0,
+        "char_end": 39
+      },
+      {
+        "dialogue_id": "volume_01-d000004",
+        "dialogue_index": 3,
+        "paragraph_id": "volume_01-c001-s001-p000026",
+        "paragraph_index": 25,
+        "local_dialogue_index": 1,
+        "dialogue_kind": "standalone",
+        "text": "不过，我也因此拿到上等的皮草啊，我会再来的。",
+        "quote_text": "「不过，我也因此拿到上等的皮草啊，我会再来的。」",
+        "char_start": 0,
+        "char_end": 24
+      }
+    ]
+  },
+  "near_context": {
+    "lookback_paragraphs": [
+      {
+        "paragraph_id": "volume_01-c000-s001-p000016",
+        "paragraph_index": 15,
+        "chapter_id": "volume_01-c000",
+        "chapter_index": 0,
+        "chapter_title": "front_matter",
+        "scene_id": "volume_01-c000-s001",
+        "scene_index": 1,
+        "text": "今年又到了收割的时期。"
+      },
+      {
+        "paragraph_id": "volume_01-c000-s001-p000017",
+        "paragraph_index": 16,
+        "chapter_id": "volume_01-c000",
+        "chapter_index": 0,
+        "chapter_title": "front_matter",
+        "scene_id": "volume_01-c000-s001",
+        "scene_index": 1,
+        "text": "成群无数的狼在麦田里奔跑。"
+      },
+      {
+        "paragraph_id": "volume_01-c000-s001-p000018",
+        "paragraph_index": 17,
+        "chapter_id": "volume_01-c000",
+        "chapter_index": 0,
+        "chapter_title": "front_matter",
+        "scene_id": "volume_01-c000-s001",
+        "scene_index": 1,
+        "text": "插图"
+      }
+    ],
+    "lookahead_paragraphs": [
+      {
+        "paragraph_id": "volume_01-c001-s001-p000035",
+        "paragraph_index": 34,
+        "chapter_id": "volume_01-c001",
+        "chapter_index": 1,
+        "chapter_title": "第一幕",
+        "scene_id": "volume_01-c001-s001",
+        "scene_index": 1,
+        "text": "因为这个缘故，罗伦斯还是恋恋不舍地望着修道院，但是他突然瞇起眼睛。"
+      }
+    ]
+  },
+  "memory": {
+    "previous_chunk_summary": {
+      "chunk_id": "volume_01-r000001",
+      "summary": "本段描述了一个村落中人们将麦田与狼进行比喻的文化现象。饱满摇曳的麦穗被形容为奔跑的狼，而风吹倒麦穗则被比喻为狼的践踏，这些说法虽贴切但带有负面意味。如今，这些比喻已逐渐失去原有的严肃意义，变成一种玩笑性质的表达。文中提到，尽管天空和麦田的景象数百年不变，但村落的人事物已发生巨大变化。村民不再需要某种守护，而叙述者似乎对北方故乡有所怀念。最后，叙述者专注于梳理尾巴的毛，暗示其可能具有非人类的特征。段落结尾提到“成群无数的狼在麦田里奔跑”，为后续情节埋下伏笔。",
+      "active_entities": [],
+      "open_questions": [
+        "叙述者是否具有非人类的特征？",
+        "村民不再需要的‘守护’具体指什么？",
+        "北方故乡与当前村落之间是否存在某种联系？",
+        "‘成群无数的狼在麦田里奔跑’是比喻还是真实事件？"
+      ],
+      "evidence_refs": [
+        "volume_01-c000-s001-p000001",
+        "volume_01-c000-s001-p000003",
+        "volume_01-c000-s001-p000005",
+        "volume_01-c000-s001-p000010",
+        "volume_01-c000-s001-p000012",
+        "volume_01-c000-s001-p000013",
+        "volume_01-c000-s001-p000017"
+      ]
+    },
+    "global_summary": "本卷开篇描绘了一个村落中独特的文化现象：村民们将麦田与狼进行比喻。饱满摇曳的麦穗被形容为奔跑的狼，风吹倒麦穗则被比喻为狼的践踏，这些说法虽贴切但带有负面意味。如今，这些比喻已逐渐失去原有的严肃意义，变成一种玩笑性质的表达。文中提到，尽管秋天的天空和麦田的景象数百年不变，但村落的人事物已发生巨大变化。村民不再需要某种守护，暗示村落文化或社会结构的变化。叙述者似乎对北方故乡有所怀念，并流露出对当前处境的复杂情绪。叙述者专注于梳理尾巴的毛，暗示其可能具有非人类的特征。段落结尾提到‘成群无数的狼在麦田里奔跑’，为后续情节埋下伏笔。",
+    "candidate_entities": [
+      {
+        "entity_id": "mystery_v2_000001",
+        "entity_type": "mystery",
+        "display_name": "叙述者",
+        "aliases": [
+          "我",
+          "他"
+        ],
+        "importance": "medium",
+        "summary": "本段的叙述者，具有非人类特征的暗示（如尾巴的存在），对村落文化有深刻观察，并流露出对北方故乡的怀念。其身份尚未明确，但对情节发展可能有重要影响。",
+        "latest_seen_chunk_id": "volume_01-r000001",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "mystery_v2_000002",
+        "entity_type": "mystery",
+        "display_name": "狼群",
+        "aliases": [
+          "狼",
+          "奔跑的狼"
+        ],
+        "importance": "medium",
+        "summary": "在段落结尾出现的‘成群无数的狼’，可能是比喻，也可能暗示真实事件。其出现为后续情节埋下伏笔，可能与村落文化或叙述者的身份有关。",
+        "latest_seen_chunk_id": "volume_01-r000001",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "npc_group_v2_000001",
+        "entity_type": "npc_group",
+        "display_name": "村民",
+        "aliases": [
+          "村民们",
+          "村落居民"
+        ],
+        "importance": "minor",
+        "summary": "村落中的普通居民，以种麦为生。他们使用狼与麦穗的比喻，但这些说法已逐渐失去严肃意义。村民不再需要某种守护，暗示村落文化或社会结构的变化。",
+        "latest_seen_chunk_id": "volume_01-r000001",
+        "dialogue_count": 0
+      }
+    ]
+  },
+  "rules": {
+    "speaker_statuses": [
+      "known",
+      "mystery",
+      "npc_group",
+      "review",
+      "unknown"
+    ],
+    "importance_levels": [
+      "minor",
+      "medium",
+      "major"
+    ],
+    "general_novel_only": true
+  },
+  "task_b_chunk_summary": {
+    "chunk_id": "volume_01-r000003",
+    "summary": "本段描述了罗伦斯在深山村落完成交易后，离开并途经草原的场景。对话中，罗伦斯与村民互动，确认交易物品数量为七十件，并表达对村民的感谢。村民则称赞罗伦斯愿意深入山区，罗伦斯也表示会再次光顾。离开村落五小时后，罗伦斯坐在马车上，穿越晴朗无风的草原，途中观察到远处的修道院。修道院虽建筑坚固、设施完善，但罗伦斯因无法与修道士做生意而感到失望。修道院的物资调度独立，且修道士生活节俭，罗伦斯认为与他们做生意可能无利可图，甚至可能带来风险。本段围绕罗伦斯的商业活动展开，揭示了他与村民的友好关系，以及他对修道院的商业潜力的评估。",
+    "active_entities": [
+      "mystery_v2_000001",
+      "mystery_v2_000002",
+      "npc_group_v2_000001"
+    ],
+    "open_questions": [
+      "罗伦斯是否会再次与修道院建立商业联系？",
+      "修道院的独立物资调度是否暗示其背后有特殊势力？",
+      "罗伦斯对修道院的负面看法是否会影响后续情节发展？"
+    ],
+    "evidence_refs": [
+      "volume_01-c001-s001-p000023",
+      "volume_01-c001-s001-p000024",
+      "volume_01-c001-s001-p000025",
+      "volume_01-c001-s001-p000026",
+      "volume_01-c001-s001-p000027",
+      "volume_01-c001-s001-p000028",
+      "volume_01-c001-s001-p000029",
+      "volume_01-c001-s001-p000030",
+      "volume_01-c001-s001-p000031",
+      "volume_01-c001-s001-p000032",
+      "volume_01-c001-s001-p000033",
+      "volume_01-c001-s001-p000034"
+    ]
+  },
+  "updated_global_summary": "本卷开篇描绘了一个村落中独特的文化现象：村民们将麦田与狼进行比喻。饱满摇曳的麦穗被形容为奔跑的狼，风吹倒麦穗则被比喻为狼的践踏，这些说法虽贴切但带有负面意味。如今，这些比喻已逐渐失去原有的严肃意义，变成一种玩笑性质的表达。文中提到，尽管秋天的天空和麦田的景象数百年不变，但村落的人事物已发生巨大变化。村民不再需要某种守护，暗示村落文化或社会结构的变化。叙述者似乎对北方故乡有所怀念，并流露出对当前处境的复杂情绪。叙述者专注于梳理尾巴的毛，暗示其可能具有非人类的特征。段落结尾提到‘成群无数的狼在麦田里奔跑’，为后续情节埋下伏笔。随后，罗伦斯在深山村落完成交易后，离开并途经草原的场景。对话中，罗伦斯与村民互动，确认交易物品数量为七十件，并表达对村民的感谢。村民则称赞罗伦斯愿意深入山区，罗伦斯也表示会再次光顾。离开村落五小时后，罗伦斯坐在马车上，穿越晴朗无风的草原，途中观察到远处的修道院。修道院虽建筑坚固、设施完善，但罗伦斯因无法与修道士做生意而感到失望。修道院的物资调度独立，且修道士生活节俭，罗伦斯认为与他们做生意可能无利可图，甚至可能带来风险。本段围绕罗伦斯的商业活动展开，揭示了他与村民的友好关系，以及他对修道院的商业潜力的评估。",
+  "candidate_entities": [
+    {
+      "entity_id": "char_v2_000001",
+      "entity_type": "character",
+      "display_name": "罗伦斯",
+      "aliases": [
+        "罗伦斯先生"
+      ],
+      "importance": "major",
+      "summary": "一位二十五岁的自力更生旅行商人，已有七年行商经验。他与深山村落的村民进行交易，表现出专业且友善的态度。他计划再次光顾，并对修道院的商业潜力持保留态度。",
+      "latest_seen_chunk_id": "volume_01-r000003",
+      "dialogue_count": 8
+    },
+    {
+      "entity_id": "mystery_v2_000003",
+      "entity_type": "mystery",
+      "display_name": "修道院的修道士",
+      "aliases": [
+        "修道士",
+        "修道院成员"
+      ],
+      "importance": "medium",
+      "summary": "一所偏僻修道院的居民，人数约二十多位，生活节俭且独立运作。他们不与民间商人往来，而是通过独自的通路调度物资。尽管罗伦斯对其商业潜力感到失望，但修道士的存在可能在后续情节中引发新的发展。",
+      "latest_seen_chunk_id": "volume_01-r000003",
+      "dialogue_count": 0
+    },
+    {
+      "entity_id": "mystery_v2_000001",
+      "entity_type": "mystery",
+      "display_name": "叙述者",
+      "aliases": [
+        "我",
+        "他"
+      ],
+      "importance": "medium",
+      "summary": "本段的叙述者，具有非人类特征的暗示（如尾巴的存在），对村落文化有深刻观察，并流露出对北方故乡的怀念。其身份尚未明确，但对情节发展可能有重要影响。",
+      "latest_seen_chunk_id": "volume_01-r000001",
+      "dialogue_count": 0
+    },
+    {
+      "entity_id": "mystery_v2_000002",
+      "entity_type": "mystery",
+      "display_name": "狼群",
+      "aliases": [
+        "狼",
+        "奔跑的狼"
+      ],
+      "importance": "medium",
+      "summary": "在段落结尾出现的‘成群无数的狼’，可能是比喻，也可能暗示真实事件。其出现为后续情节埋下伏笔，可能与村落文化或叙述者的身份有关。",
+      "latest_seen_chunk_id": "volume_01-r000001",
+      "dialogue_count": 0
+    },
+    {
+      "entity_id": "npc_group_v2_000002",
+      "entity_type": "npc_group",
+      "display_name": "深山村落的村民",
+      "aliases": [
+        "村民",
+        "深山居民"
+      ],
+      "importance": "minor",
+      "summary": "居住在深山中的普通村民，与罗伦斯进行交易。他们对罗伦斯的到访表示感激，并希望他能再次光顾。虽然未直接参与后续剧情，但他们的存在为罗伦斯的商业活动提供了背景。",
+      "latest_seen_chunk_id": "volume_01-r000003",
+      "dialogue_count": 0
+    },
+    {
+      "entity_id": "npc_group_v2_000001",
+      "entity_type": "npc_group",
+      "display_name": "村民",
+      "aliases": [
+        "村民们",
+        "村落居民"
+      ],
+      "importance": "minor",
+      "summary": "村落中的普通居民，以种麦为生。他们使用狼与麦穗的比喻，但这些说法已逐渐失去严肃意义。村民不再需要某种守护，暗示村落文化或社会结构的变化。",
+      "latest_seen_chunk_id": "volume_01-r000001",
+      "dialogue_count": 0
+    }
+  ],
+  "pending_mysteries": [
+    {
+      "entity_id": "mystery_v2_000003",
+      "display_name": "修道院的修道士",
+      "aliases": [
+        "修道士",
+        "修道院成员"
+      ],
+      "importance": "medium",
+      "summary": "一所偏僻修道院的居民，人数约二十多位，生活节俭且独立运作。他们不与民间商人往来，而是通过独自的通路调度物资。尽管罗伦斯对其商业潜力感到失望，但修道士的存在可能在后续情节中引发新的发展。",
+      "evidence_refs": [
+        "volume_01-c001-s001-p000030",
+        "volume_01-c001-s001-p000031",
+        "volume_01-c001-s001-p000032"
+      ],
+      "first_seen_chunk_id": "volume_01-r000003",
+      "latest_seen_chunk_id": "volume_01-r000003",
+      "first_pending_chunk_id": "volume_01-r000003",
+      "last_checked_chunk_id": ""
+    },
+    {
+      "entity_id": "mystery_v2_000001",
+      "display_name": "叙述者",
+      "aliases": [
+        "我",
+        "他"
+      ],
+      "importance": "medium",
+      "summary": "本段的叙述者，具有非人类特征的暗示（如尾巴的存在），对村落文化有深刻观察，并流露出对北方故乡的怀念。其身份尚未明确，但对情节发展可能有重要影响。",
+      "evidence_refs": [
+        "volume_01-c000-s001-p000013",
+        "volume_01-c000-s001-p000014",
+        "volume_01-c000-s001-p000012"
+      ],
+      "first_seen_chunk_id": "volume_01-r000001",
+      "latest_seen_chunk_id": "volume_01-r000001",
+      "first_pending_chunk_id": "volume_01-r000001",
+      "last_checked_chunk_id": ""
+    },
+    {
+      "entity_id": "mystery_v2_000002",
+      "display_name": "狼群",
+      "aliases": [
+        "狼",
+        "奔跑的狼"
+      ],
+      "importance": "medium",
+      "summary": "在段落结尾出现的‘成群无数的狼’，可能是比喻，也可能暗示真实事件。其出现为后续情节埋下伏笔，可能与村落文化或叙述者的身份有关。",
+      "evidence_refs": [
+        "volume_01-c000-s001-p000017"
+      ],
+      "first_seen_chunk_id": "volume_01-r000001",
+      "latest_seen_chunk_id": "volume_01-r000001",
+      "first_pending_chunk_id": "volume_01-r000001",
+      "last_checked_chunk_id": ""
+    }
+  ]
+}

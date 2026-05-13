@@ -1,0 +1,259 @@
+你是通用小说当前 chunk 回看补标助手。任务：只回看 unresolved_annotations 中的 dialogue，利用当前 chunk 摘要、更新后的长期摘要和实体记忆尝试修正。仍不能判断就保留 unknown 或 review。
+只返回 JSON，格式：{"repairs":[{"dialogue_id":"...","previous_speaker_entity_id":"...","new_speaker_entity_id":"...","speaker_display":"...","speaker_status":"known|mystery|npc_group|unknown|review","confidence":0.0,"reason":"...","stop_reason":"resolved|unchanged|needs_review"}]}
+输入 JSON：
+{
+  "volume": {
+    "volume_id": "volume_01",
+    "volume": 1,
+    "title": ""
+  },
+  "chunk": {
+    "chunk_id": "volume_01-r000002",
+    "chunk_index": 1,
+    "chapter_id": "volume_01-c000",
+    "chapter_title": "front_matter",
+    "scene_id": "volume_01-c000-s001",
+    "paragraphs": [
+      {
+        "paragraph_id": "volume_01-c000-s001-p000017",
+        "paragraph_index": 16,
+        "chapter_id": "volume_01-c000",
+        "chapter_index": 0,
+        "chapter_title": "front_matter",
+        "scene_id": "volume_01-c000-s001",
+        "scene_index": 1,
+        "text": "制作信息"
+      },
+      {
+        "paragraph_id": "volume_01-c000-s001-p000018",
+        "paragraph_index": 17,
+        "chapter_id": "volume_01-c000",
+        "chapter_index": 0,
+        "chapter_title": "front_matter",
+        "scene_id": "volume_01-c000-s001",
+        "scene_index": 1,
+        "text": "──────────────"
+      }
+    ],
+    "dialogues": []
+  },
+  "near_context": {
+    "lookback_paragraphs": [
+      {
+        "paragraph_id": "volume_01-c000-s001-p000014",
+        "paragraph_index": 13,
+        "chapter_id": "volume_01-c000",
+        "chapter_index": 0,
+        "chapter_title": "front_matter",
+        "scene_id": "volume_01-c000-s001",
+        "scene_index": 1,
+        "text": "文仓十"
+      },
+      {
+        "paragraph_id": "volume_01-c000-s001-p000015",
+        "paragraph_index": 14,
+        "chapter_id": "volume_01-c000",
+        "chapter_index": 0,
+        "chapter_title": "front_matter",
+        "scene_id": "volume_01-c000-s001",
+        "scene_index": 1,
+        "text": "Jyuu Ayakura"
+      },
+      {
+        "paragraph_id": "volume_01-c000-s001-p000016",
+        "paragraph_index": 15,
+        "chapter_id": "volume_01-c000",
+        "chapter_index": 0,
+        "chapter_title": "front_matter",
+        "scene_id": "volume_01-c000-s001",
+        "scene_index": 1,
+        "text": "制作信息"
+      }
+    ],
+    "lookahead_paragraphs": [
+      {
+        "paragraph_id": "volume_01-c000-s002-p000019",
+        "paragraph_index": 18,
+        "chapter_id": "volume_01-c000",
+        "chapter_index": 0,
+        "chapter_title": "front_matter",
+        "scene_id": "volume_01-c000-s002",
+        "scene_index": 2,
+        "text": "作者：支仓冻砂"
+      }
+    ]
+  },
+  "memory": {
+    "previous_chunk_summary": {
+      "chunk_id": "volume_01-r000001",
+      "summary": "本 chunk 包含小说的封面、标题页和制作信息页。标题页上出现了 'Merchant meats spicy wolf.' 的英文短语，随后是中文词汇 '狼'、'与'、'辛'、'香'、'料' 和 'Ⅰ'，可能暗示小说的标题或主题。作者信息显示为 '支仓冻砂'（Isuna Hasekura），插画师为 '文仓十'（Jyuu Ayakura）。尚未明确标题的完整含义或小说的类型，但已确认作者和插画师的身份。",
+      "active_entities": [
+        "volume_01-c000-s001-p000003",
+        "volume_01-c000-s001-p000011",
+        "volume_01-c000-s001-p000014"
+      ],
+      "open_questions": [
+        "小说的完整标题是什么？",
+        "'Merchant meats spicy wolf.' 与后续中文词汇之间的关系是什么？",
+        "小说的类型或主题是什么？"
+      ],
+      "evidence_refs": [
+        "volume_01-c000-s001-p000003",
+        "volume_01-c000-s001-p000011",
+        "volume_01-c000-s001-p000014"
+      ]
+    },
+    "global_summary": "本卷包含小说的封面、标题页和制作信息页。标题页上出现了英文短语 'Merchant meats spicy wolf.'，随后是中文词汇 '狼'、'与'、'辛'、'香'、'料' 和 'Ⅰ'，可能暗示小说的标题或主题。作者信息显示为 '支仓冻砂'（Isuna Hasekura），插画师为 '文仓十'（Jyuu Ayakura）。尚未明确标题的完整含义或小说的类型，但已确认作者和插画师的身份。",
+    "candidate_entities": [
+      {
+        "entity_id": "char_v2_000001",
+        "entity_type": "character",
+        "display_name": "支仓冻砂",
+        "aliases": [
+          "Isuna Hasekura"
+        ],
+        "importance": "major",
+        "summary": "小说的作者，出现在标题页的作者信息中。",
+        "latest_seen_chunk_id": "volume_01-r000001",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "char_v2_000002",
+        "entity_type": "character",
+        "display_name": "文仓十",
+        "aliases": [
+          "Jyuu Ayakura"
+        ],
+        "importance": "major",
+        "summary": "小说的插画师，出现在标题页的插画师信息中。",
+        "latest_seen_chunk_id": "volume_01-r000001",
+        "dialogue_count": 0
+      },
+      {
+        "entity_id": "mystery_v2_000001",
+        "entity_type": "mystery",
+        "display_name": "狼与辛香料Ⅰ",
+        "aliases": [
+          "狼",
+          "辛",
+          "香",
+          "料",
+          "Ⅰ",
+          "Merchant meats spicy wolf."
+        ],
+        "importance": "medium",
+        "summary": "小说的标题或主题，由英文短语 'Merchant meats spicy wolf.' 和中文词汇 '狼'、'与'、'辛'、'香'、'料'、'Ⅰ' 组成，暗示小说可能与香料贸易或奇幻冒险有关。",
+        "latest_seen_chunk_id": "volume_01-r000001",
+        "dialogue_count": 0
+      }
+    ]
+  },
+  "rules": {
+    "speaker_statuses": [
+      "known",
+      "mystery",
+      "npc_group",
+      "review",
+      "unknown"
+    ],
+    "importance_levels": [
+      "minor",
+      "medium",
+      "major"
+    ],
+    "general_novel_only": true
+  },
+  "task_a_annotations": [],
+  "task_b_chunk_summary": {
+    "chunk_id": "volume_01-r000002",
+    "summary": "本 chunk 包含小说的制作信息页，显示了插画师 '文仓十'（Jyuu Ayakura）和 '制作信息' 的字样。此 chunk 未引入新事件或人物对话，但进一步确认了插画师的身份。尚未明确小说的完整标题或类型，但已确认作者和插画师的基本信息。",
+    "active_entities": [
+      "char_v2_000002"
+    ],
+    "open_questions": [
+      "小说的完整标题是什么？",
+      "'Merchant meats spicy wolf.' 与后续中文词汇之间的关系是什么？",
+      "小说的类型或主题是什么？"
+    ],
+    "evidence_refs": [
+      "volume_01-c000-s001-p000014",
+      "volume_01-c000-s001-p000015",
+      "volume_01-c000-s001-p000016"
+    ]
+  },
+  "updated_global_summary": "本卷包含小说的封面、标题页和制作信息页。标题页上出现了英文短语 'Merchant meats spicy wolf.'，随后是中文词汇 '狼'、'与'、'辛'、'香'、'料' 和 'Ⅰ'，可能暗示小说的标题或主题。作者信息显示为 '支仓冻砂'（Isuna Hasekura），插画师为 '文仓十'（Jyuu Ayakura）。制作信息页进一步确认了插画师的身份。尚未明确标题的完整含义或小说的类型，但已确认作者和插画师的基本信息。",
+  "updated_entity_memory": {
+    "characters": [
+      {
+        "entity_id": "char_v2_000001",
+        "entity_type": "character",
+        "display_name": "支仓冻砂",
+        "aliases": [
+          "Isuna Hasekura"
+        ],
+        "importance": "major",
+        "summary": "小说的作者，出现在标题页的作者信息中。",
+        "evidence_refs": [
+          "volume_01-c000-s001-p000011",
+          "volume_01-c000-s001-p000012"
+        ],
+        "dialogue_count": 0,
+        "first_seen_chunk_id": "volume_01-r000001",
+        "latest_seen_chunk_id": "volume_01-r000001",
+        "relationship_updates": []
+      },
+      {
+        "entity_id": "char_v2_000002",
+        "entity_type": "character",
+        "display_name": "文仓十",
+        "aliases": [
+          "Jyuu Ayakura"
+        ],
+        "importance": "major",
+        "summary": "小说的插画师，出现在标题页和制作信息页的插画师信息中。",
+        "evidence_refs": [
+          "volume_01-c000-s001-p000013",
+          "volume_01-c000-s001-p000014",
+          "volume_01-c000-s001-p000015",
+          "volume_01-c000-s001-p000016"
+        ],
+        "dialogue_count": 0,
+        "first_seen_chunk_id": "volume_01-r000001",
+        "latest_seen_chunk_id": "volume_01-r000002",
+        "relationship_updates": []
+      }
+    ],
+    "mysteries": [
+      {
+        "entity_id": "mystery_v2_000001",
+        "entity_type": "mystery",
+        "display_name": "狼与辛香料Ⅰ",
+        "aliases": [
+          "狼",
+          "辛",
+          "香",
+          "料",
+          "Ⅰ",
+          "Merchant meats spicy wolf."
+        ],
+        "importance": "medium",
+        "summary": "小说的标题或主题，由英文短语 'Merchant meats spicy wolf.' 和中文词汇 '狼'、'与'、'辛'、'香'、'料'、'Ⅰ' 组成，暗示小说可能与香料贸易或奇幻冒险有关。",
+        "evidence_refs": [
+          "volume_01-c000-s001-p000003",
+          "volume_01-c000-s001-p000004",
+          "volume_01-c000-s001-p000005",
+          "volume_01-c000-s001-p000006",
+          "volume_01-c000-s001-p000007",
+          "volume_01-c000-s001-p000008",
+          "volume_01-c000-s001-p000009"
+        ],
+        "dialogue_count": 0,
+        "first_seen_chunk_id": "volume_01-r000001",
+        "latest_seen_chunk_id": "volume_01-r000001",
+        "relationship_updates": []
+      }
+    ],
+    "npc_groups": []
+  },
+  "unresolved_annotations": []
+}
